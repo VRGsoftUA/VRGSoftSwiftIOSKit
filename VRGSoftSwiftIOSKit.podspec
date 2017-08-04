@@ -26,6 +26,7 @@ Pod::Spec.new do |s|
 
         s.homepage  = 'https://github.com/VRGsoftUA'
         s.authors   = {'semenag01' => 'semenag01@meta.ua'}
+
         s.source    = { :git => 'https://github.com/VRGsoftUA/VRGSoftSwiftIOSKit.git', :branch => 'development', :tag => '1.0.0' }
 
     #platform
@@ -37,13 +38,13 @@ Pod::Spec.new do |s|
 
     #file patterns
 
-#       s.resources    = 'VRGSoftSwiftIOSKit/Resources/semenag01Kit.bundle'
+        s.resources    = 'VRGSoftSwiftIOSKit/Resources/VRGSoftSwiftIOSKit.bundle'
 
         s.frameworks   = 'QuartzCore'
         s.frameworks   = 'CoreData'
 
         s.source_files = 'VRGSoftSwiftIOSKit/Core/**/*.{h,m}'
 
-        s.dependency 'Alamofire'
-        s.dependency 'MulticastDelegateSwift'
+        s.dependency 'Alamofire', '~> 4.5'
+        s.dependency 'MulticastDelegateSwift', '~> 2.0'
 end

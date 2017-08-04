@@ -64,6 +64,7 @@
 		B74DF4251F34A40900405847 /* SMValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B74DF3F21F34A40800405847 /* SMValidator.swift */; };
 		B74DF4261F34A40900405847 /* SMViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B74DF3F41F34A40800405847 /* SMViewController.swift */; };
 		B74DF4271F34A40900405847 /* UIViewController+Help.swift in Sources */ = {isa = PBXBuildFile; fileRef = B74DF3F51F34A40800405847 /* UIViewController+Help.swift */; };
+		B7ED41F91F34B271006C24DC /* VRGSoftSwiftIOSKit.bundle in Resources */ = {isa = PBXBuildFile; fileRef = B7ED41F81F34B271006C24DC /* VRGSoftSwiftIOSKit.bundle */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -127,6 +128,7 @@
 		B74DF3F21F34A40800405847 /* SMValidator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMValidator.swift; sourceTree = "<group>"; };
 		B74DF3F41F34A40800405847 /* SMViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMViewController.swift; sourceTree = "<group>"; };
 		B74DF3F51F34A40800405847 /* UIViewController+Help.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Help.swift"; sourceTree = "<group>"; };
+		B7ED41F81F34B271006C24DC /* VRGSoftSwiftIOSKit.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = VRGSoftSwiftIOSKit.bundle; sourceTree = "<group>"; };
 		E744888B69F1358D3BD7E3F5 /* Pods-VRGSoftSwiftIOSKit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VRGSoftSwiftIOSKit.release.xcconfig"; path = "Pods/Target Support Files/Pods-VRGSoftSwiftIOSKit/Pods-VRGSoftSwiftIOSKit.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -174,6 +176,7 @@
 			isa = PBXGroup;
 			children = (
 				B74DF3AD1F34A40800405847 /* Core */,
+				B7ED41F71F34B1B6006C24DC /* Resources */,
 				B74DF3991F34955500405847 /* AppDelegate.swift */,
 				B74DF39B1F34955500405847 /* ViewController.swift */,
 				B74DF39D1F34955500405847 /* Main.storyboard */,
@@ -417,6 +420,14 @@
 			path = Vc;
 			sourceTree = "<group>";
 		};
+		B7ED41F71F34B1B6006C24DC /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				B7ED41F81F34B271006C24DC /* VRGSoftSwiftIOSKit.bundle */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		E57EA640F164A220DF80EC71 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -488,6 +499,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B74DF3A41F34955500405847 /* LaunchScreen.storyboard in Resources */,
+				B7ED41F91F34B271006C24DC /* VRGSoftSwiftIOSKit.bundle in Resources */,
 				B74DF3AC1F34A3FC00405847 /* VRGSoftSwiftIOSKit.podspec in Resources */,
 				B74DF3A11F34955500405847 /* Assets.xcassets in Resources */,
 				B74DF39F1F34955500405847 /* Main.storyboard in Resources */,
