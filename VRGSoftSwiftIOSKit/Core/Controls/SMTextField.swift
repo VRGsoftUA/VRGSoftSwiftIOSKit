@@ -1,0 +1,225 @@
+//
+//  SMTextField.swift
+//  Contractors
+//
+//  Created by OLEKSANDR SEMENIUK on 12/22/16.
+//  Copyright © 2016 VRG Soft. All rights reserved.
+//
+
+import UIKit
+
+class SMTextField: UITextField, SMValidationProtocol, SMFormatterProtocol, SMFilterProtocol
+{
+    // MARK: - SMFilterProtocol
+    
+    var filteredText: String? {get {return self.text}}
+    
+    var filter: SMFilter?
+    
+    var smdelegate: UITextFieldDelegate?
+    
+    var delegateHolder: SMTextFieldDelegateHolder?
+    
+    override init(frame: CGRect)
+    {
+        super.init(frame: frame)
+        
+        self.setup()
+    }
+    
+    required init?(coder aDecoder: NSCoder)
+    {
+        super.init(coder: aDecoder)
+        
+        self.setup()
+    }
+    
+    open func setup() -> Void
+    {
+        delegateHolder = SMTextFieldDelegateHolder(textField: self)
+        self.delegate = delegateHolder
+    }
+    
+    
+    // MARK: - SMValidationProtocol
+    var validatableText: String?
+    {
+        get
+        {
+            return self.text
+        }
+        set
+        {
+            self.text = newValue
+        }
+    }
+    
+    var validator: SMValidator?
+    {
+        didSet
+        {
+            if validator != nil
+            {
+                validator!.validatableObject = self
+            }
+        }
+    }
+    
+    func validate() -> Bool
+    {
+        return ((validator) != nil) ? validator!.validate() : true
+    }
+    
+    var placeholderColor: UIColor?
+    {
+        didSet
+        {
+            if self.placeholder != nil && placeholderColor != nil
+            {
+                let atrPlaceholder: NSAttributedString = NSAttributedString(string: self.placeholder!, attributes: [NSForegroundColorAttributeName: placeholderColor as Any])
+                self.attributedPlaceholder = atrPlaceholder
+            }
+        }
+    }
+    
+    override var placeholder: String?
+    {
+        didSet
+        {
+            if let placeholderColor = self.placeholderColor
+            {
+                self.placeholderColor = placeholderColor
+            }
+        }
+    }
+
+    
+    // MARK: - SMFormatterProtocol
+
+    var formatter: SMFormatter?
+    {
+        didSet
+        {
+            if formatter != nil
+            {
+                formatter!.formattableObject = self
+            }
+        }
+    }
+    
+    var formattingText: String?
+    {
+        get
+        {
+            return self.text
+        }
+        
+        set
+        {
+            self.text = newValue
+        }
+    }
+}
+
+class SMTextFieldDelegateHolder: NSObject, UITextFieldDelegate
+{
+    weak var holdedTextField: SMTextField?
+    
+    required init(textField aTextField: SMTextField)
+    {
+        holdedTextField = aTextField
+    }
+    
+    
+    // MARK: - UITextFieldDelegate
+    
+    public func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool
+    {
+        if self.holdedTextField != nil && self.holdedTextField!.smdelegate != nil && self.holdedTextField!.smdelegate!.textFieldShouldBeginEditing(_:) != nil
+        {
+            return self.holdedTextField!.smdelegate!.textFieldShouldBeginEditing!(textField)
+        }
+        
+        return true
+    }
+    
+    public func textFieldDidBeginEditing(_ textField: UITextField)
+    {
+        if self.holdedTextField != nil && self.holdedTextField!.smdelegate != nil && self.holdedTextField!.smdelegate!.textFieldDidBeginEditing(_:) != nil
+        {
+            self.holdedTextField!.smdelegate!.textFieldDidBeginEditing!(textField)
+        }
+    }
+    
+    public func textFieldShouldEndEditing(_ textField: UITextField) -> Bool
+    {
+        if self.holdedTextField != nil && self.holdedTextField!.smdelegate != nil && self.holdedTextField!.smdelegate!.textFieldShouldEndEditing(_:) != nil
+        {
+            return self.holdedTextField!.smdelegate!.textFieldShouldEndEditing!(textField)
+        }
+        
+        return true
+    }
+    
+    public func textFieldDidEndEditing(_ textField: UITextField)
+    {
+        if self.holdedTextField != nil && self.holdedTextField!.smdelegate != nil && self.holdedTextField!.smdelegate!.textFieldDidEndEditing(_:) != nil
+        {
+            self.holdedTextField!.smdelegate!.textFieldDidEndEditing!(textField)
+        }
+    }
+    
+    @available(iOS 10.0, *)
+    public func textFieldDidEndEditing(_ textField: UITextField, reason: UITextFieldDidEndEditingReason)
+    {
+        if self.holdedTextField != nil && self.holdedTextField!.smdelegate != nil && self.holdedTextField!.smdelegate!.textFieldDidEndEditing(_:reason:) != nil
+        {
+            self.holdedTextField!.smdelegate!.textFieldDidEndEditing!(textField, reason: reason)
+        }
+    }
+    
+    public func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool
+    {
+        var result: Bool = true
+        
+        let inputField = textField as! SMTextField
+        
+        if inputField.filter != nil
+        {
+            result = inputField.filter!.inputField(inputField, shouldChangeTextIn: range, replacementText: string)
+        }
+        
+        if result && self.holdedTextField != nil && self.holdedTextField!.formatter != nil
+        {
+            result = self.holdedTextField!.formatter!.formatWithNewCharactersIn(range: range, replacementString: string)
+        }
+
+        if result && self.holdedTextField != nil && self.holdedTextField!.smdelegate != nil && self.holdedTextField!.smdelegate!.textField(_:shouldChangeCharactersIn:replacementString:) != nil
+        {
+            result = self.holdedTextField!.smdelegate!.textField!(textField, shouldChangeCharactersIn: range, replacementString: string)
+        }
+        
+        return result
+    }
+    
+    public func textFieldShouldClear(_ textField: UITextField) -> Bool
+    {
+        if self.holdedTextField != nil && self.holdedTextField!.smdelegate != nil && self.holdedTextField!.smdelegate!.textFieldShouldClear(_:) != nil
+        {
+            return self.holdedTextField!.smdelegate!.textFieldShouldClear!(textField)
+        }
+        
+        return true
+    }
+    
+    public func textFieldShouldReturn(_ textField: UITextField) -> Bool
+    {
+        if self.holdedTextField != nil && self.holdedTextField!.smdelegate != nil && self.holdedTextField!.smdelegate!.textFieldShouldReturn(_:) != nil
+        {
+            return self.holdedTextField!.smdelegate!.textFieldShouldReturn!(textField)
+        }
+        
+        return true
+    }
+}
+
