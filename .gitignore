@@ -1,67 +1,32 @@
-# Xcode
-#
-# gitignore contributors: remember to update Global/Xcode.gitignore, Objective-C.gitignore & Swift.gitignore
+#osx noise
+.DS_Store
 
-## Build generated
-build/
-DerivedData/
-
-## Various settings
+#xcode noise
 *.pbxuser
-!default.pbxuser
+*.model
 *.mode1v3
-!default.mode1v3
 *.mode2v3
-!default.mode2v3
+*.perspective
 *.perspectivev3
-!default.perspectivev3
-xcuserdata/
 
-## Other
-*.moved-aside
-*.xccheckout
-*.xcscmblueprint
+#build noise
+build/*
+build.output/*
+pkg/*
+cpd-output.*
+DerivedData
 
-## Obj-C/Swift specific
-*.hmap
-*.ipa
-*.dSYM.zip
-*.dSYM
+#project user schemes etc.
+*.xcodeproj/**
+!*.xcodeproj/*.pbxproj
+!*.xcodeproj/xcshareddata
 
-## Playgrounds
-timeline.xctimeline
-playground.xcworkspace
+*.xcworkspace/**
+!*.xcworkspace/*.xcworkspacedata
 
-# Swift Package Manager
-#
-# Add this line if you want to avoid checking in source code from Swift Package Manager dependencies.
-# Packages/
-# Package.pins
-.build/
+Pods
+Podfile.lock
+.idea
 
-# CocoaPods
-#
-# We recommend against adding the Pods directory to your .gitignore. However
-# you should judge for yourself, the pros and cons are mentioned at:
-# https://guides.cocoapods.org/using/using-cocoapods.html#should-i-check-the-pods-directory-into-source-control
-#
-# Pods/
-
-# Carthage
-#
-# Add this line if you want to avoid checking in source code from Carthage dependencies.
-# Carthage/Checkouts
-
-Carthage/Build
-
-# fastlane
-#
-# It is recommended to not store the screenshots in the git repo. Instead, use fastlane to re-generate the
-# screenshots whenever they are needed.
-# For more information about the recommended setup visit:
-# https://docs.fastlane.tools/best-practices/source-control/#source-control
-
-fastlane/report.xml
-fastlane/Preview.html
-fastlane/screenshots
-fastlane/test_output
+Modules/*/*.xcodeproj/**
+!Modules/*/*.xcodeproj/*.pbxproj
