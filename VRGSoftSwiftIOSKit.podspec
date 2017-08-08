@@ -43,7 +43,7 @@ Pod::Spec.new do |s|
         s.frameworks   = 'QuartzCore'
         s.frameworks   = 'CoreData'
 
-        s.source_files = 'VRGSoftSwiftIOSKit/**/*.swift’
+        s.source_files = 'VRGSoftSwiftIOSKit/**/*.swift'
 
         s.dependency 'Alamofire', '~> 4.5'
         s.dependency 'MulticastDelegateSwift', '~> 2.0'
