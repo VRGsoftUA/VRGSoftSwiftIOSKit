@@ -15,56 +15,56 @@
 		B74DF3A41F34955500405847 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B74DF3A21F34955500405847 /* LaunchScreen.storyboard */; };
 		B74DF3AC1F34A3FC00405847 /* VRGSoftSwiftIOSKit.podspec in Resources */ = {isa = PBXBuildFile; fileRef = B74DF3AB1F34A3FC00405847 /* VRGSoftSwiftIOSKit.podspec */; };
 		B7ED41F91F34B271006C24DC /* VRGSoftSwiftIOSKit.bundle in Resources */ = {isa = PBXBuildFile; fileRef = B7ED41F81F34B271006C24DC /* VRGSoftSwiftIOSKit.bundle */; };
-		B7F833521F39F8B700B0BC67 /* SMActivityAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F8330B1F39F8B700B0BC67 /* SMActivityAdapter.swift */; };
-		B7F833531F39F8B700B0BC67 /* SMActivityPKHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F8330C1F39F8B700B0BC67 /* SMActivityPKHUD.swift */; };
-		B7F833541F39F8B700B0BC67 /* SMNativeMoreTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F8330D1F39F8B700B0BC67 /* SMNativeMoreTableViewCell.swift */; };
-		B7F833551F39F8B700B0BC67 /* SMNativePullToRefreshAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F8330E1F39F8B700B0BC67 /* SMNativePullToRefreshAdapter.swift */; };
-		B7F833561F39F8B700B0BC67 /* SMPullToRefreshAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F8330F1F39F8B700B0BC67 /* SMPullToRefreshAdapter.swift */; };
-		B7F833571F39F8B700B0BC67 /* SMAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F833111F39F8B700B0BC67 /* SMAlertController.swift */; };
-		B7F833581F39F8B700B0BC67 /* SMPair.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F833131F39F8B700B0BC67 /* SMPair.swift */; };
-		B7F833591F39F8B700B0BC67 /* SMTargetAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F833141F39F8B700B0BC67 /* SMTargetAction.swift */; };
-		B7F8335A1F39F8B700B0BC67 /* SMTitledID.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F833151F39F8B700B0BC67 /* SMTitledID.swift */; };
-		B7F8335B1F39F8B700B0BC67 /* SMLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F833171F39F8B700B0BC67 /* SMLabel.swift */; };
-		B7F8335C1F39F8B700B0BC67 /* SMTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F833181F39F8B700B0BC67 /* SMTextField.swift */; };
-		B7F8335D1F39F8B700B0BC67 /* SMTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F833191F39F8B700B0BC67 /* SMTextView.swift */; };
-		B7F8335E1F39F8B700B0BC67 /* SMStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F8331B1F39F8B700B0BC67 /* SMStorage.swift */; };
-		B7F8335F1F39F8B700B0BC67 /* SMDataFetcherProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F8331D1F39F8B700B0BC67 /* SMDataFetcherProtocol.swift */; };
-		B7F833601F39F8B700B0BC67 /* SMFetcherIntoStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F8331E1F39F8B700B0BC67 /* SMFetcherIntoStorage.swift */; };
-		B7F833611F39F8B700B0BC67 /* SMFetcherMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F8331F1F39F8B700B0BC67 /* SMFetcherMessage.swift */; };
-		B7F833621F39F8B700B0BC67 /* SMFetcherWithBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F833201F39F8B700B0BC67 /* SMFetcherWithBlock.swift */; };
-		B7F833631F39F8B700B0BC67 /* SMFetcherWithRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F833211F39F8B700B0BC67 /* SMFetcherWithRequest.swift */; };
-		B7F833641F39F8B700B0BC67 /* SMFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F833231F39F8B700B0BC67 /* SMFilter.swift */; };
-		B7F833651F39F8B700B0BC67 /* SMFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F833251F39F8B700B0BC67 /* SMFormatter.swift */; };
-		B7F833661F39F8B700B0BC67 /* SMGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F833271F39F8B700B0BC67 /* SMGateway.swift */; };
-		B7F833671F39F8B700B0BC67 /* SMGatewayConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F833281F39F8B700B0BC67 /* SMGatewayConfigurator.swift */; };
-		B7F833681F39F8B700B0BC67 /* SMGatewayRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F833291F39F8B700B0BC67 /* SMGatewayRequest.swift */; };
-		B7F833691F39F8B700B0BC67 /* SMColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F8332B1F39F8B700B0BC67 /* SMColor.swift */; };
-		B7F8336A1F39F8B700B0BC67 /* UIButton+Help.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F8332C1F39F8B700B0BC67 /* UIButton+Help.swift */; };
-		B7F8336B1F39F8B700B0BC67 /* UIImage+Help.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F8332D1F39F8B700B0BC67 /* UIImage+Help.swift */; };
-		B7F8336C1F39F8B700B0BC67 /* UIImageView+Help.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F8332E1F39F8B700B0BC67 /* UIImageView+Help.swift */; };
-		B7F8336D1F39F8B700B0BC67 /* UILabel+Help.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F8332F1F39F8B700B0BC67 /* UILabel+Help.swift */; };
-		B7F8336E1F39F8B700B0BC67 /* UIView+Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F833301F39F8B700B0BC67 /* UIView+Animation.swift */; };
-		B7F8336F1F39F8B700B0BC67 /* UIView+Help.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F833311F39F8B700B0BC67 /* UIView+Help.swift */; };
-		B7F833701F39F8B700B0BC67 /* UIView+PSSizes.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F833321F39F8B700B0BC67 /* UIView+PSSizes.swift */; };
-		B7F833711F39F8B700B0BC67 /* SMModuleList.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F833341F39F8B700B0BC67 /* SMModuleList.swift */; };
-		B7F833721F39F8B700B0BC67 /* SMModuleListPaging.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F833351F39F8B700B0BC67 /* SMModuleListPaging.swift */; };
-		B7F833731F39F8B700B0BC67 /* SMModuleRemotePushes.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F833361F39F8B700B0BC67 /* SMModuleRemotePushes.swift */; };
-		B7F833741F39F8B700B0BC67 /* SMDataBaseRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F833381F39F8B700B0BC67 /* SMDataBaseRequest.swift */; };
-		B7F833751F39F8B700B0BC67 /* SMRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F833391F39F8B700B0BC67 /* SMRequest.swift */; };
-		B7F833761F39F8B700B0BC67 /* SMResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F8333B1F39F8B700B0BC67 /* SMResponse.swift */; };
-		B7F833771F39F8B700B0BC67 /* SMCellData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F8333F1F39F8B700B0BC67 /* SMCellData.swift */; };
-		B7F833781F39F8B700B0BC67 /* SMCellDataMaped.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F833401F39F8B700B0BC67 /* SMCellDataMaped.swift */; };
-		B7F833791F39F8B700B0BC67 /* SMCellDataModeled.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F833411F39F8B700B0BC67 /* SMCellDataModeled.swift */; };
-		B7F8337A1F39F8B700B0BC67 /* SMCellProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F833421F39F8B700B0BC67 /* SMCellProtocol.swift */; };
-		B7F8337B1F39F8B700B0BC67 /* SMCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F833451F39F8B700B0BC67 /* SMCell.swift */; };
-		B7F8337C1F39F8B700B0BC67 /* SMSectionReadonly.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F833471F39F8B700B0BC67 /* SMSectionReadonly.swift */; };
-		B7F8337D1F39F8B700B0BC67 /* SMSectionWritable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F833481F39F8B700B0BC67 /* SMSectionWritable.swift */; };
-		B7F8337E1F39F8B700B0BC67 /* SMTableDisposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F8334A1F39F8B700B0BC67 /* SMTableDisposer.swift */; };
-		B7F8337F1F39F8B700B0BC67 /* SMTableDisposerModeled.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F8334B1F39F8B700B0BC67 /* SMTableDisposerModeled.swift */; };
-		B7F833801F39F8B700B0BC67 /* SMValidationGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F8334D1F39F8B700B0BC67 /* SMValidationGroup.swift */; };
-		B7F833811F39F8B700B0BC67 /* SMValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F8334E1F39F8B700B0BC67 /* SMValidator.swift */; };
-		B7F833821F39F8B700B0BC67 /* SMViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F833501F39F8B700B0BC67 /* SMViewController.swift */; };
-		B7F833831F39F8B700B0BC67 /* UIViewController+Help.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F833511F39F8B700B0BC67 /* UIViewController+Help.swift */; };
+		B7F833CF1F39FC2200B0BC67 /* SMActivityAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F833861F39FC2200B0BC67 /* SMActivityAdapter.swift */; };
+		B7F833D01F39FC2200B0BC67 /* SMActivityPKHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F833871F39FC2200B0BC67 /* SMActivityPKHUD.swift */; };
+		B7F833D11F39FC2200B0BC67 /* SMNativeMoreTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F833881F39FC2200B0BC67 /* SMNativeMoreTableViewCell.swift */; };
+		B7F833D21F39FC2200B0BC67 /* SMNativePullToRefreshAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F833891F39FC2200B0BC67 /* SMNativePullToRefreshAdapter.swift */; };
+		B7F833D31F39FC2200B0BC67 /* SMPullToRefreshAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F8338A1F39FC2200B0BC67 /* SMPullToRefreshAdapter.swift */; };
+		B7F833D41F39FC2200B0BC67 /* SMAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F8338C1F39FC2200B0BC67 /* SMAlertController.swift */; };
+		B7F833D51F39FC2200B0BC67 /* SMPair.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F8338E1F39FC2200B0BC67 /* SMPair.swift */; };
+		B7F833D61F39FC2200B0BC67 /* SMTargetAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F8338F1F39FC2200B0BC67 /* SMTargetAction.swift */; };
+		B7F833D71F39FC2200B0BC67 /* SMTitledID.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F833901F39FC2200B0BC67 /* SMTitledID.swift */; };
+		B7F833D81F39FC2200B0BC67 /* SMLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F833921F39FC2200B0BC67 /* SMLabel.swift */; };
+		B7F833D91F39FC2200B0BC67 /* SMTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F833931F39FC2200B0BC67 /* SMTextField.swift */; };
+		B7F833DA1F39FC2200B0BC67 /* SMTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F833941F39FC2200B0BC67 /* SMTextView.swift */; };
+		B7F833DB1F39FC2200B0BC67 /* SMStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F833961F39FC2200B0BC67 /* SMStorage.swift */; };
+		B7F833DC1F39FC2200B0BC67 /* SMDataFetcherProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F833981F39FC2200B0BC67 /* SMDataFetcherProtocol.swift */; };
+		B7F833DD1F39FC2200B0BC67 /* SMFetcherIntoStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F833991F39FC2200B0BC67 /* SMFetcherIntoStorage.swift */; };
+		B7F833DE1F39FC2200B0BC67 /* SMFetcherMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F8339A1F39FC2200B0BC67 /* SMFetcherMessage.swift */; };
+		B7F833DF1F39FC2200B0BC67 /* SMFetcherWithBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F8339B1F39FC2200B0BC67 /* SMFetcherWithBlock.swift */; };
+		B7F833E01F39FC2200B0BC67 /* SMFetcherWithRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F8339C1F39FC2200B0BC67 /* SMFetcherWithRequest.swift */; };
+		B7F833E11F39FC2200B0BC67 /* SMFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F8339E1F39FC2200B0BC67 /* SMFilter.swift */; };
+		B7F833E21F39FC2200B0BC67 /* SMFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F833A01F39FC2200B0BC67 /* SMFormatter.swift */; };
+		B7F833E31F39FC2200B0BC67 /* SMGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F833A21F39FC2200B0BC67 /* SMGateway.swift */; };
+		B7F833E41F39FC2200B0BC67 /* SMGatewayConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F833A31F39FC2200B0BC67 /* SMGatewayConfigurator.swift */; };
+		B7F833E51F39FC2200B0BC67 /* SMGatewayRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F833A41F39FC2200B0BC67 /* SMGatewayRequest.swift */; };
+		B7F833E61F39FC2200B0BC67 /* SMColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F833A61F39FC2200B0BC67 /* SMColor.swift */; };
+		B7F833E71F39FC2200B0BC67 /* UIButton+Help.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F833A71F39FC2200B0BC67 /* UIButton+Help.swift */; };
+		B7F833E81F39FC2200B0BC67 /* UIImage+Help.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F833A81F39FC2200B0BC67 /* UIImage+Help.swift */; };
+		B7F833E91F39FC2200B0BC67 /* UIImageView+Help.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F833A91F39FC2200B0BC67 /* UIImageView+Help.swift */; };
+		B7F833EA1F39FC2200B0BC67 /* UILabel+Help.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F833AA1F39FC2200B0BC67 /* UILabel+Help.swift */; };
+		B7F833EB1F39FC2200B0BC67 /* UIView+Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F833AB1F39FC2200B0BC67 /* UIView+Animation.swift */; };
+		B7F833EC1F39FC2200B0BC67 /* UIView+Help.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F833AC1F39FC2200B0BC67 /* UIView+Help.swift */; };
+		B7F833ED1F39FC2200B0BC67 /* UIView+PSSizes.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F833AD1F39FC2200B0BC67 /* UIView+PSSizes.swift */; };
+		B7F833EE1F39FC2200B0BC67 /* SMModuleList.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F833AF1F39FC2200B0BC67 /* SMModuleList.swift */; };
+		B7F833EF1F39FC2200B0BC67 /* SMModuleListPaging.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F833B01F39FC2200B0BC67 /* SMModuleListPaging.swift */; };
+		B7F833F01F39FC2200B0BC67 /* SMModuleRemotePushes.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F833B11F39FC2200B0BC67 /* SMModuleRemotePushes.swift */; };
+		B7F833F11F39FC2200B0BC67 /* SMDataBaseRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F833B31F39FC2200B0BC67 /* SMDataBaseRequest.swift */; };
+		B7F833F21F39FC2200B0BC67 /* SMRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F833B41F39FC2200B0BC67 /* SMRequest.swift */; };
+		B7F833F41F39FC2200B0BC67 /* SMResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F833B81F39FC2200B0BC67 /* SMResponse.swift */; };
+		B7F833F51F39FC2200B0BC67 /* SMCellData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F833BC1F39FC2200B0BC67 /* SMCellData.swift */; };
+		B7F833F61F39FC2200B0BC67 /* SMCellDataMaped.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F833BD1F39FC2200B0BC67 /* SMCellDataMaped.swift */; };
+		B7F833F71F39FC2200B0BC67 /* SMCellDataModeled.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F833BE1F39FC2200B0BC67 /* SMCellDataModeled.swift */; };
+		B7F833F81F39FC2200B0BC67 /* SMCellProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F833BF1F39FC2200B0BC67 /* SMCellProtocol.swift */; };
+		B7F833F91F39FC2200B0BC67 /* SMCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F833C21F39FC2200B0BC67 /* SMCell.swift */; };
+		B7F833FA1F39FC2200B0BC67 /* SMSectionReadonly.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F833C41F39FC2200B0BC67 /* SMSectionReadonly.swift */; };
+		B7F833FB1F39FC2200B0BC67 /* SMSectionWritable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F833C51F39FC2200B0BC67 /* SMSectionWritable.swift */; };
+		B7F833FC1F39FC2200B0BC67 /* SMTableDisposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F833C71F39FC2200B0BC67 /* SMTableDisposer.swift */; };
+		B7F833FD1F39FC2200B0BC67 /* SMTableDisposerModeled.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F833C81F39FC2200B0BC67 /* SMTableDisposerModeled.swift */; };
+		B7F833FE1F39FC2200B0BC67 /* SMValidationGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F833CA1F39FC2200B0BC67 /* SMValidationGroup.swift */; };
+		B7F833FF1F39FC2200B0BC67 /* SMValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F833CB1F39FC2200B0BC67 /* SMValidator.swift */; };
+		B7F834001F39FC2200B0BC67 /* SMViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F833CD1F39FC2200B0BC67 /* SMViewController.swift */; };
+		B7F834011F39FC2200B0BC67 /* UIViewController+Help.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F833CE1F39FC2200B0BC67 /* UIViewController+Help.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -79,56 +79,56 @@
 		B74DF3A51F34955500405847 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B74DF3AB1F34A3FC00405847 /* VRGSoftSwiftIOSKit.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = VRGSoftSwiftIOSKit.podspec; sourceTree = "<group>"; };
 		B7ED41F81F34B271006C24DC /* VRGSoftSwiftIOSKit.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = VRGSoftSwiftIOSKit.bundle; sourceTree = "<group>"; };
-		B7F8330B1F39F8B700B0BC67 /* SMActivityAdapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMActivityAdapter.swift; sourceTree = "<group>"; };
-		B7F8330C1F39F8B700B0BC67 /* SMActivityPKHUD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMActivityPKHUD.swift; sourceTree = "<group>"; };
-		B7F8330D1F39F8B700B0BC67 /* SMNativeMoreTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMNativeMoreTableViewCell.swift; sourceTree = "<group>"; };
-		B7F8330E1F39F8B700B0BC67 /* SMNativePullToRefreshAdapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMNativePullToRefreshAdapter.swift; sourceTree = "<group>"; };
-		B7F8330F1F39F8B700B0BC67 /* SMPullToRefreshAdapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMPullToRefreshAdapter.swift; sourceTree = "<group>"; };
-		B7F833111F39F8B700B0BC67 /* SMAlertController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMAlertController.swift; sourceTree = "<group>"; };
-		B7F833131F39F8B700B0BC67 /* SMPair.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMPair.swift; sourceTree = "<group>"; };
-		B7F833141F39F8B700B0BC67 /* SMTargetAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMTargetAction.swift; sourceTree = "<group>"; };
-		B7F833151F39F8B700B0BC67 /* SMTitledID.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMTitledID.swift; sourceTree = "<group>"; };
-		B7F833171F39F8B700B0BC67 /* SMLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMLabel.swift; sourceTree = "<group>"; };
-		B7F833181F39F8B700B0BC67 /* SMTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMTextField.swift; sourceTree = "<group>"; };
-		B7F833191F39F8B700B0BC67 /* SMTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMTextView.swift; sourceTree = "<group>"; };
-		B7F8331B1F39F8B700B0BC67 /* SMStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMStorage.swift; sourceTree = "<group>"; };
-		B7F8331D1F39F8B700B0BC67 /* SMDataFetcherProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMDataFetcherProtocol.swift; sourceTree = "<group>"; };
-		B7F8331E1F39F8B700B0BC67 /* SMFetcherIntoStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMFetcherIntoStorage.swift; sourceTree = "<group>"; };
-		B7F8331F1F39F8B700B0BC67 /* SMFetcherMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMFetcherMessage.swift; sourceTree = "<group>"; };
-		B7F833201F39F8B700B0BC67 /* SMFetcherWithBlock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMFetcherWithBlock.swift; sourceTree = "<group>"; };
-		B7F833211F39F8B700B0BC67 /* SMFetcherWithRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMFetcherWithRequest.swift; sourceTree = "<group>"; };
-		B7F833231F39F8B700B0BC67 /* SMFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMFilter.swift; sourceTree = "<group>"; };
-		B7F833251F39F8B700B0BC67 /* SMFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMFormatter.swift; sourceTree = "<group>"; };
-		B7F833271F39F8B700B0BC67 /* SMGateway.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMGateway.swift; sourceTree = "<group>"; };
-		B7F833281F39F8B700B0BC67 /* SMGatewayConfigurator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMGatewayConfigurator.swift; sourceTree = "<group>"; };
-		B7F833291F39F8B700B0BC67 /* SMGatewayRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMGatewayRequest.swift; sourceTree = "<group>"; };
-		B7F8332B1F39F8B700B0BC67 /* SMColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMColor.swift; sourceTree = "<group>"; };
-		B7F8332C1F39F8B700B0BC67 /* UIButton+Help.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIButton+Help.swift"; sourceTree = "<group>"; };
-		B7F8332D1F39F8B700B0BC67 /* UIImage+Help.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Help.swift"; sourceTree = "<group>"; };
-		B7F8332E1F39F8B700B0BC67 /* UIImageView+Help.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+Help.swift"; sourceTree = "<group>"; };
-		B7F8332F1F39F8B700B0BC67 /* UILabel+Help.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UILabel+Help.swift"; sourceTree = "<group>"; };
-		B7F833301F39F8B700B0BC67 /* UIView+Animation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Animation.swift"; sourceTree = "<group>"; };
-		B7F833311F39F8B700B0BC67 /* UIView+Help.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Help.swift"; sourceTree = "<group>"; };
-		B7F833321F39F8B700B0BC67 /* UIView+PSSizes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+PSSizes.swift"; sourceTree = "<group>"; };
-		B7F833341F39F8B700B0BC67 /* SMModuleList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMModuleList.swift; sourceTree = "<group>"; };
-		B7F833351F39F8B700B0BC67 /* SMModuleListPaging.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMModuleListPaging.swift; sourceTree = "<group>"; };
-		B7F833361F39F8B700B0BC67 /* SMModuleRemotePushes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMModuleRemotePushes.swift; sourceTree = "<group>"; };
-		B7F833381F39F8B700B0BC67 /* SMDataBaseRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMDataBaseRequest.swift; sourceTree = "<group>"; };
-		B7F833391F39F8B700B0BC67 /* SMRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMRequest.swift; sourceTree = "<group>"; };
-		B7F8333B1F39F8B700B0BC67 /* SMResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMResponse.swift; sourceTree = "<group>"; };
-		B7F8333F1F39F8B700B0BC67 /* SMCellData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMCellData.swift; sourceTree = "<group>"; };
-		B7F833401F39F8B700B0BC67 /* SMCellDataMaped.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMCellDataMaped.swift; sourceTree = "<group>"; };
-		B7F833411F39F8B700B0BC67 /* SMCellDataModeled.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMCellDataModeled.swift; sourceTree = "<group>"; };
-		B7F833421F39F8B700B0BC67 /* SMCellProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMCellProtocol.swift; sourceTree = "<group>"; };
-		B7F833451F39F8B700B0BC67 /* SMCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMCell.swift; sourceTree = "<group>"; };
-		B7F833471F39F8B700B0BC67 /* SMSectionReadonly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMSectionReadonly.swift; sourceTree = "<group>"; };
-		B7F833481F39F8B700B0BC67 /* SMSectionWritable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMSectionWritable.swift; sourceTree = "<group>"; };
-		B7F8334A1F39F8B700B0BC67 /* SMTableDisposer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMTableDisposer.swift; sourceTree = "<group>"; };
-		B7F8334B1F39F8B700B0BC67 /* SMTableDisposerModeled.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMTableDisposerModeled.swift; sourceTree = "<group>"; };
-		B7F8334D1F39F8B700B0BC67 /* SMValidationGroup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMValidationGroup.swift; sourceTree = "<group>"; };
-		B7F8334E1F39F8B700B0BC67 /* SMValidator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMValidator.swift; sourceTree = "<group>"; };
-		B7F833501F39F8B700B0BC67 /* SMViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMViewController.swift; sourceTree = "<group>"; };
-		B7F833511F39F8B700B0BC67 /* UIViewController+Help.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Help.swift"; sourceTree = "<group>"; };
+		B7F833861F39FC2200B0BC67 /* SMActivityAdapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMActivityAdapter.swift; sourceTree = "<group>"; };
+		B7F833871F39FC2200B0BC67 /* SMActivityPKHUD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMActivityPKHUD.swift; sourceTree = "<group>"; };
+		B7F833881F39FC2200B0BC67 /* SMNativeMoreTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMNativeMoreTableViewCell.swift; sourceTree = "<group>"; };
+		B7F833891F39FC2200B0BC67 /* SMNativePullToRefreshAdapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMNativePullToRefreshAdapter.swift; sourceTree = "<group>"; };
+		B7F8338A1F39FC2200B0BC67 /* SMPullToRefreshAdapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMPullToRefreshAdapter.swift; sourceTree = "<group>"; };
+		B7F8338C1F39FC2200B0BC67 /* SMAlertController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMAlertController.swift; sourceTree = "<group>"; };
+		B7F8338E1F39FC2200B0BC67 /* SMPair.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMPair.swift; sourceTree = "<group>"; };
+		B7F8338F1F39FC2200B0BC67 /* SMTargetAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMTargetAction.swift; sourceTree = "<group>"; };
+		B7F833901F39FC2200B0BC67 /* SMTitledID.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMTitledID.swift; sourceTree = "<group>"; };
+		B7F833921F39FC2200B0BC67 /* SMLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMLabel.swift; sourceTree = "<group>"; };
+		B7F833931F39FC2200B0BC67 /* SMTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMTextField.swift; sourceTree = "<group>"; };
+		B7F833941F39FC2200B0BC67 /* SMTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMTextView.swift; sourceTree = "<group>"; };
+		B7F833961F39FC2200B0BC67 /* SMStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMStorage.swift; sourceTree = "<group>"; };
+		B7F833981F39FC2200B0BC67 /* SMDataFetcherProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMDataFetcherProtocol.swift; sourceTree = "<group>"; };
+		B7F833991F39FC2200B0BC67 /* SMFetcherIntoStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMFetcherIntoStorage.swift; sourceTree = "<group>"; };
+		B7F8339A1F39FC2200B0BC67 /* SMFetcherMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMFetcherMessage.swift; sourceTree = "<group>"; };
+		B7F8339B1F39FC2200B0BC67 /* SMFetcherWithBlock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMFetcherWithBlock.swift; sourceTree = "<group>"; };
+		B7F8339C1F39FC2200B0BC67 /* SMFetcherWithRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMFetcherWithRequest.swift; sourceTree = "<group>"; };
+		B7F8339E1F39FC2200B0BC67 /* SMFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMFilter.swift; sourceTree = "<group>"; };
+		B7F833A01F39FC2200B0BC67 /* SMFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMFormatter.swift; sourceTree = "<group>"; };
+		B7F833A21F39FC2200B0BC67 /* SMGateway.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMGateway.swift; sourceTree = "<group>"; };
+		B7F833A31F39FC2200B0BC67 /* SMGatewayConfigurator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMGatewayConfigurator.swift; sourceTree = "<group>"; };
+		B7F833A41F39FC2200B0BC67 /* SMGatewayRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMGatewayRequest.swift; sourceTree = "<group>"; };
+		B7F833A61F39FC2200B0BC67 /* SMColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMColor.swift; sourceTree = "<group>"; };
+		B7F833A71F39FC2200B0BC67 /* UIButton+Help.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIButton+Help.swift"; sourceTree = "<group>"; };
+		B7F833A81F39FC2200B0BC67 /* UIImage+Help.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Help.swift"; sourceTree = "<group>"; };
+		B7F833A91F39FC2200B0BC67 /* UIImageView+Help.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+Help.swift"; sourceTree = "<group>"; };
+		B7F833AA1F39FC2200B0BC67 /* UILabel+Help.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UILabel+Help.swift"; sourceTree = "<group>"; };
+		B7F833AB1F39FC2200B0BC67 /* UIView+Animation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Animation.swift"; sourceTree = "<group>"; };
+		B7F833AC1F39FC2200B0BC67 /* UIView+Help.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Help.swift"; sourceTree = "<group>"; };
+		B7F833AD1F39FC2200B0BC67 /* UIView+PSSizes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+PSSizes.swift"; sourceTree = "<group>"; };
+		B7F833AF1F39FC2200B0BC67 /* SMModuleList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMModuleList.swift; sourceTree = "<group>"; };
+		B7F833B01F39FC2200B0BC67 /* SMModuleListPaging.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMModuleListPaging.swift; sourceTree = "<group>"; };
+		B7F833B11F39FC2200B0BC67 /* SMModuleRemotePushes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMModuleRemotePushes.swift; sourceTree = "<group>"; };
+		B7F833B31F39FC2200B0BC67 /* SMDataBaseRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMDataBaseRequest.swift; sourceTree = "<group>"; };
+		B7F833B41F39FC2200B0BC67 /* SMRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMRequest.swift; sourceTree = "<group>"; };
+		B7F833B81F39FC2200B0BC67 /* SMResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMResponse.swift; sourceTree = "<group>"; };
+		B7F833BC1F39FC2200B0BC67 /* SMCellData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMCellData.swift; sourceTree = "<group>"; };
+		B7F833BD1F39FC2200B0BC67 /* SMCellDataMaped.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMCellDataMaped.swift; sourceTree = "<group>"; };
+		B7F833BE1F39FC2200B0BC67 /* SMCellDataModeled.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMCellDataModeled.swift; sourceTree = "<group>"; };
+		B7F833BF1F39FC2200B0BC67 /* SMCellProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMCellProtocol.swift; sourceTree = "<group>"; };
+		B7F833C21F39FC2200B0BC67 /* SMCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMCell.swift; sourceTree = "<group>"; };
+		B7F833C41F39FC2200B0BC67 /* SMSectionReadonly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMSectionReadonly.swift; sourceTree = "<group>"; };
+		B7F833C51F39FC2200B0BC67 /* SMSectionWritable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMSectionWritable.swift; sourceTree = "<group>"; };
+		B7F833C71F39FC2200B0BC67 /* SMTableDisposer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMTableDisposer.swift; sourceTree = "<group>"; };
+		B7F833C81F39FC2200B0BC67 /* SMTableDisposerModeled.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMTableDisposerModeled.swift; sourceTree = "<group>"; };
+		B7F833CA1F39FC2200B0BC67 /* SMValidationGroup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMValidationGroup.swift; sourceTree = "<group>"; };
+		B7F833CB1F39FC2200B0BC67 /* SMValidator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMValidator.swift; sourceTree = "<group>"; };
+		B7F833CD1F39FC2200B0BC67 /* SMViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMViewController.swift; sourceTree = "<group>"; };
+		B7F833CE1F39FC2200B0BC67 /* UIViewController+Help.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Help.swift"; sourceTree = "<group>"; };
 		E744888B69F1358D3BD7E3F5 /* Pods-VRGSoftSwiftIOSKit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VRGSoftSwiftIOSKit.release.xcconfig"; path = "Pods/Target Support Files/Pods-VRGSoftSwiftIOSKit/Pods-VRGSoftSwiftIOSKit.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -175,22 +175,7 @@
 		B74DF3981F34955500405847 /* VRGSoftSwiftIOSKit */ = {
 			isa = PBXGroup;
 			children = (
-				B7F8330A1F39F8B700B0BC67 /* Activities */,
-				B7F833101F39F8B700B0BC67 /* AlertController */,
-				B7F833121F39F8B700B0BC67 /* Base */,
-				B7F833161F39F8B700B0BC67 /* Controls */,
-				B7F8331A1F39F8B700B0BC67 /* CoreData */,
-				B7F8331C1F39F8B700B0BC67 /* Fetcher */,
-				B7F833221F39F8B700B0BC67 /* Filter */,
-				B7F833241F39F8B700B0BC67 /* Formatter */,
-				B7F833261F39F8B700B0BC67 /* Gateway */,
-				B7F8332A1F39F8B700B0BC67 /* Help */,
-				B7F833331F39F8B700B0BC67 /* Modules */,
-				B7F833371F39F8B700B0BC67 /* Request */,
-				B7F8333A1F39F8B700B0BC67 /* Response */,
-				B7F8333C1F39F8B700B0BC67 /* TableDisposer */,
-				B7F8334C1F39F8B700B0BC67 /* Validators */,
-				B7F8334F1F39F8B700B0BC67 /* Vc */,
+				B7F833841F39FBFC00B0BC67 /* Core */,
 				B7ED41F71F34B1B6006C24DC /* Resources */,
 				B74DF3991F34955500405847 /* AppDelegate.swift */,
 				B74DF39B1F34955500405847 /* ViewController.swift */,
@@ -210,212 +195,235 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
-		B7F8330A1F39F8B700B0BC67 /* Activities */ = {
+		B7F833841F39FBFC00B0BC67 /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				B7F8330B1F39F8B700B0BC67 /* SMActivityAdapter.swift */,
-				B7F8330C1F39F8B700B0BC67 /* SMActivityPKHUD.swift */,
-				B7F8330D1F39F8B700B0BC67 /* SMNativeMoreTableViewCell.swift */,
-				B7F8330E1F39F8B700B0BC67 /* SMNativePullToRefreshAdapter.swift */,
-				B7F8330F1F39F8B700B0BC67 /* SMPullToRefreshAdapter.swift */,
+				B7F833851F39FC2200B0BC67 /* Activities */,
+				B7F8338B1F39FC2200B0BC67 /* AlertController */,
+				B7F8338D1F39FC2200B0BC67 /* Base */,
+				B7F833911F39FC2200B0BC67 /* Controls */,
+				B7F833951F39FC2200B0BC67 /* CoreData */,
+				B7F833971F39FC2200B0BC67 /* Fetcher */,
+				B7F8339D1F39FC2200B0BC67 /* Filter */,
+				B7F8339F1F39FC2200B0BC67 /* Formatter */,
+				B7F833A11F39FC2200B0BC67 /* Gateway */,
+				B7F833A51F39FC2200B0BC67 /* Help */,
+				B7F833AE1F39FC2200B0BC67 /* Modules */,
+				B7F833B21F39FC2200B0BC67 /* Request */,
+				B7F833B71F39FC2200B0BC67 /* Response */,
+				B7F833B91F39FC2200B0BC67 /* TableDisposer */,
+				B7F833C91F39FC2200B0BC67 /* Validators */,
+				B7F833CC1F39FC2200B0BC67 /* Vc */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		B7F833851F39FC2200B0BC67 /* Activities */ = {
+			isa = PBXGroup;
+			children = (
+				B7F833861F39FC2200B0BC67 /* SMActivityAdapter.swift */,
+				B7F833871F39FC2200B0BC67 /* SMActivityPKHUD.swift */,
+				B7F833881F39FC2200B0BC67 /* SMNativeMoreTableViewCell.swift */,
+				B7F833891F39FC2200B0BC67 /* SMNativePullToRefreshAdapter.swift */,
+				B7F8338A1F39FC2200B0BC67 /* SMPullToRefreshAdapter.swift */,
 			);
 			path = Activities;
 			sourceTree = "<group>";
 		};
-		B7F833101F39F8B700B0BC67 /* AlertController */ = {
+		B7F8338B1F39FC2200B0BC67 /* AlertController */ = {
 			isa = PBXGroup;
 			children = (
-				B7F833111F39F8B700B0BC67 /* SMAlertController.swift */,
+				B7F8338C1F39FC2200B0BC67 /* SMAlertController.swift */,
 			);
 			path = AlertController;
 			sourceTree = "<group>";
 		};
-		B7F833121F39F8B700B0BC67 /* Base */ = {
+		B7F8338D1F39FC2200B0BC67 /* Base */ = {
 			isa = PBXGroup;
 			children = (
-				B7F833131F39F8B700B0BC67 /* SMPair.swift */,
-				B7F833141F39F8B700B0BC67 /* SMTargetAction.swift */,
-				B7F833151F39F8B700B0BC67 /* SMTitledID.swift */,
+				B7F8338E1F39FC2200B0BC67 /* SMPair.swift */,
+				B7F8338F1F39FC2200B0BC67 /* SMTargetAction.swift */,
+				B7F833901F39FC2200B0BC67 /* SMTitledID.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
 		};
-		B7F833161F39F8B700B0BC67 /* Controls */ = {
+		B7F833911F39FC2200B0BC67 /* Controls */ = {
 			isa = PBXGroup;
 			children = (
-				B7F833171F39F8B700B0BC67 /* SMLabel.swift */,
-				B7F833181F39F8B700B0BC67 /* SMTextField.swift */,
-				B7F833191F39F8B700B0BC67 /* SMTextView.swift */,
+				B7F833921F39FC2200B0BC67 /* SMLabel.swift */,
+				B7F833931F39FC2200B0BC67 /* SMTextField.swift */,
+				B7F833941F39FC2200B0BC67 /* SMTextView.swift */,
 			);
 			path = Controls;
 			sourceTree = "<group>";
 		};
-		B7F8331A1F39F8B700B0BC67 /* CoreData */ = {
+		B7F833951F39FC2200B0BC67 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
-				B7F8331B1F39F8B700B0BC67 /* SMStorage.swift */,
+				B7F833961F39FC2200B0BC67 /* SMStorage.swift */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
 		};
-		B7F8331C1F39F8B700B0BC67 /* Fetcher */ = {
+		B7F833971F39FC2200B0BC67 /* Fetcher */ = {
 			isa = PBXGroup;
 			children = (
-				B7F8331D1F39F8B700B0BC67 /* SMDataFetcherProtocol.swift */,
-				B7F8331E1F39F8B700B0BC67 /* SMFetcherIntoStorage.swift */,
-				B7F8331F1F39F8B700B0BC67 /* SMFetcherMessage.swift */,
-				B7F833201F39F8B700B0BC67 /* SMFetcherWithBlock.swift */,
-				B7F833211F39F8B700B0BC67 /* SMFetcherWithRequest.swift */,
+				B7F833981F39FC2200B0BC67 /* SMDataFetcherProtocol.swift */,
+				B7F833991F39FC2200B0BC67 /* SMFetcherIntoStorage.swift */,
+				B7F8339A1F39FC2200B0BC67 /* SMFetcherMessage.swift */,
+				B7F8339B1F39FC2200B0BC67 /* SMFetcherWithBlock.swift */,
+				B7F8339C1F39FC2200B0BC67 /* SMFetcherWithRequest.swift */,
 			);
 			path = Fetcher;
 			sourceTree = "<group>";
 		};
-		B7F833221F39F8B700B0BC67 /* Filter */ = {
+		B7F8339D1F39FC2200B0BC67 /* Filter */ = {
 			isa = PBXGroup;
 			children = (
-				B7F833231F39F8B700B0BC67 /* SMFilter.swift */,
+				B7F8339E1F39FC2200B0BC67 /* SMFilter.swift */,
 			);
 			path = Filter;
 			sourceTree = "<group>";
 		};
-		B7F833241F39F8B700B0BC67 /* Formatter */ = {
+		B7F8339F1F39FC2200B0BC67 /* Formatter */ = {
 			isa = PBXGroup;
 			children = (
-				B7F833251F39F8B700B0BC67 /* SMFormatter.swift */,
+				B7F833A01F39FC2200B0BC67 /* SMFormatter.swift */,
 			);
 			path = Formatter;
 			sourceTree = "<group>";
 		};
-		B7F833261F39F8B700B0BC67 /* Gateway */ = {
+		B7F833A11F39FC2200B0BC67 /* Gateway */ = {
 			isa = PBXGroup;
 			children = (
-				B7F833271F39F8B700B0BC67 /* SMGateway.swift */,
-				B7F833281F39F8B700B0BC67 /* SMGatewayConfigurator.swift */,
-				B7F833291F39F8B700B0BC67 /* SMGatewayRequest.swift */,
+				B7F833A21F39FC2200B0BC67 /* SMGateway.swift */,
+				B7F833A31F39FC2200B0BC67 /* SMGatewayConfigurator.swift */,
+				B7F833A41F39FC2200B0BC67 /* SMGatewayRequest.swift */,
 			);
 			path = Gateway;
 			sourceTree = "<group>";
 		};
-		B7F8332A1F39F8B700B0BC67 /* Help */ = {
+		B7F833A51F39FC2200B0BC67 /* Help */ = {
 			isa = PBXGroup;
 			children = (
-				B7F8332B1F39F8B700B0BC67 /* SMColor.swift */,
-				B7F8332C1F39F8B700B0BC67 /* UIButton+Help.swift */,
-				B7F8332D1F39F8B700B0BC67 /* UIImage+Help.swift */,
-				B7F8332E1F39F8B700B0BC67 /* UIImageView+Help.swift */,
-				B7F8332F1F39F8B700B0BC67 /* UILabel+Help.swift */,
-				B7F833301F39F8B700B0BC67 /* UIView+Animation.swift */,
-				B7F833311F39F8B700B0BC67 /* UIView+Help.swift */,
-				B7F833321F39F8B700B0BC67 /* UIView+PSSizes.swift */,
+				B7F833A61F39FC2200B0BC67 /* SMColor.swift */,
+				B7F833A71F39FC2200B0BC67 /* UIButton+Help.swift */,
+				B7F833A81F39FC2200B0BC67 /* UIImage+Help.swift */,
+				B7F833A91F39FC2200B0BC67 /* UIImageView+Help.swift */,
+				B7F833AA1F39FC2200B0BC67 /* UILabel+Help.swift */,
+				B7F833AB1F39FC2200B0BC67 /* UIView+Animation.swift */,
+				B7F833AC1F39FC2200B0BC67 /* UIView+Help.swift */,
+				B7F833AD1F39FC2200B0BC67 /* UIView+PSSizes.swift */,
 			);
 			path = Help;
 			sourceTree = "<group>";
 		};
-		B7F833331F39F8B700B0BC67 /* Modules */ = {
+		B7F833AE1F39FC2200B0BC67 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				B7F833341F39F8B700B0BC67 /* SMModuleList.swift */,
-				B7F833351F39F8B700B0BC67 /* SMModuleListPaging.swift */,
-				B7F833361F39F8B700B0BC67 /* SMModuleRemotePushes.swift */,
+				B7F833AF1F39FC2200B0BC67 /* SMModuleList.swift */,
+				B7F833B01F39FC2200B0BC67 /* SMModuleListPaging.swift */,
+				B7F833B11F39FC2200B0BC67 /* SMModuleRemotePushes.swift */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
 		};
-		B7F833371F39F8B700B0BC67 /* Request */ = {
+		B7F833B21F39FC2200B0BC67 /* Request */ = {
 			isa = PBXGroup;
 			children = (
-				B7F833381F39F8B700B0BC67 /* SMDataBaseRequest.swift */,
-				B7F833391F39F8B700B0BC67 /* SMRequest.swift */,
+				B7F833B31F39FC2200B0BC67 /* SMDataBaseRequest.swift */,
+				B7F833B41F39FC2200B0BC67 /* SMRequest.swift */,
 			);
 			path = Request;
 			sourceTree = "<group>";
 		};
-		B7F8333A1F39F8B700B0BC67 /* Response */ = {
+		B7F833B71F39FC2200B0BC67 /* Response */ = {
 			isa = PBXGroup;
 			children = (
-				B7F8333B1F39F8B700B0BC67 /* SMResponse.swift */,
+				B7F833B81F39FC2200B0BC67 /* SMResponse.swift */,
 			);
 			path = Response;
 			sourceTree = "<group>";
 		};
-		B7F8333C1F39F8B700B0BC67 /* TableDisposer */ = {
+		B7F833B91F39FC2200B0BC67 /* TableDisposer */ = {
 			isa = PBXGroup;
 			children = (
-				B7F8333D1F39F8B700B0BC67 /* CellDatas */,
-				B7F833431F39F8B700B0BC67 /* Cells */,
-				B7F833461F39F8B700B0BC67 /* Sections */,
-				B7F833491F39F8B700B0BC67 /* TableDisposers */,
+				B7F833BA1F39FC2200B0BC67 /* CellDatas */,
+				B7F833C01F39FC2200B0BC67 /* Cells */,
+				B7F833C31F39FC2200B0BC67 /* Sections */,
+				B7F833C61F39FC2200B0BC67 /* TableDisposers */,
 			);
 			path = TableDisposer;
 			sourceTree = "<group>";
 		};
-		B7F8333D1F39F8B700B0BC67 /* CellDatas */ = {
+		B7F833BA1F39FC2200B0BC67 /* CellDatas */ = {
 			isa = PBXGroup;
 			children = (
-				B7F8333E1F39F8B700B0BC67 /* Base */,
+				B7F833BB1F39FC2200B0BC67 /* Base */,
 			);
 			path = CellDatas;
 			sourceTree = "<group>";
 		};
-		B7F8333E1F39F8B700B0BC67 /* Base */ = {
+		B7F833BB1F39FC2200B0BC67 /* Base */ = {
 			isa = PBXGroup;
 			children = (
-				B7F8333F1F39F8B700B0BC67 /* SMCellData.swift */,
-				B7F833401F39F8B700B0BC67 /* SMCellDataMaped.swift */,
-				B7F833411F39F8B700B0BC67 /* SMCellDataModeled.swift */,
-				B7F833421F39F8B700B0BC67 /* SMCellProtocol.swift */,
+				B7F833BC1F39FC2200B0BC67 /* SMCellData.swift */,
+				B7F833BD1F39FC2200B0BC67 /* SMCellDataMaped.swift */,
+				B7F833BE1F39FC2200B0BC67 /* SMCellDataModeled.swift */,
+				B7F833BF1F39FC2200B0BC67 /* SMCellProtocol.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
 		};
-		B7F833431F39F8B700B0BC67 /* Cells */ = {
+		B7F833C01F39FC2200B0BC67 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				B7F833441F39F8B700B0BC67 /* Base */,
+				B7F833C11F39FC2200B0BC67 /* Base */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
 		};
-		B7F833441F39F8B700B0BC67 /* Base */ = {
+		B7F833C11F39FC2200B0BC67 /* Base */ = {
 			isa = PBXGroup;
 			children = (
-				B7F833451F39F8B700B0BC67 /* SMCell.swift */,
+				B7F833C21F39FC2200B0BC67 /* SMCell.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
 		};
-		B7F833461F39F8B700B0BC67 /* Sections */ = {
+		B7F833C31F39FC2200B0BC67 /* Sections */ = {
 			isa = PBXGroup;
 			children = (
-				B7F833471F39F8B700B0BC67 /* SMSectionReadonly.swift */,
-				B7F833481F39F8B700B0BC67 /* SMSectionWritable.swift */,
+				B7F833C41F39FC2200B0BC67 /* SMSectionReadonly.swift */,
+				B7F833C51F39FC2200B0BC67 /* SMSectionWritable.swift */,
 			);
 			path = Sections;
 			sourceTree = "<group>";
 		};
-		B7F833491F39F8B700B0BC67 /* TableDisposers */ = {
+		B7F833C61F39FC2200B0BC67 /* TableDisposers */ = {
 			isa = PBXGroup;
 			children = (
-				B7F8334A1F39F8B700B0BC67 /* SMTableDisposer.swift */,
-				B7F8334B1F39F8B700B0BC67 /* SMTableDisposerModeled.swift */,
+				B7F833C71F39FC2200B0BC67 /* SMTableDisposer.swift */,
+				B7F833C81F39FC2200B0BC67 /* SMTableDisposerModeled.swift */,
 			);
 			path = TableDisposers;
 			sourceTree = "<group>";
 		};
-		B7F8334C1F39F8B700B0BC67 /* Validators */ = {
+		B7F833C91F39FC2200B0BC67 /* Validators */ = {
 			isa = PBXGroup;
 			children = (
-				B7F8334D1F39F8B700B0BC67 /* SMValidationGroup.swift */,
-				B7F8334E1F39F8B700B0BC67 /* SMValidator.swift */,
+				B7F833CA1F39FC2200B0BC67 /* SMValidationGroup.swift */,
+				B7F833CB1F39FC2200B0BC67 /* SMValidator.swift */,
 			);
 			path = Validators;
 			sourceTree = "<group>";
 		};
-		B7F8334F1F39F8B700B0BC67 /* Vc */ = {
+		B7F833CC1F39FC2200B0BC67 /* Vc */ = {
 			isa = PBXGroup;
 			children = (
-				B7F833501F39F8B700B0BC67 /* SMViewController.swift */,
-				B7F833511F39F8B700B0BC67 /* UIViewController+Help.swift */,
+				B7F833CD1F39FC2200B0BC67 /* SMViewController.swift */,
+				B7F833CE1F39FC2200B0BC67 /* UIViewController+Help.swift */,
 			);
 			path = Vc;
 			sourceTree = "<group>";
@@ -554,57 +562,57 @@
 			buildActionMask = 2147483647;
 			files = (
 				B74DF39C1F34955500405847 /* ViewController.swift in Sources */,
-				B7F8335D1F39F8B700B0BC67 /* SMTextView.swift in Sources */,
-				B7F8337F1F39F8B700B0BC67 /* SMTableDisposerModeled.swift in Sources */,
-				B7F8336B1F39F8B700B0BC67 /* UIImage+Help.swift in Sources */,
-				B7F833531F39F8B700B0BC67 /* SMActivityPKHUD.swift in Sources */,
-				B7F833631F39F8B700B0BC67 /* SMFetcherWithRequest.swift in Sources */,
-				B7F8335F1F39F8B700B0BC67 /* SMDataFetcherProtocol.swift in Sources */,
-				B7F833551F39F8B700B0BC67 /* SMNativePullToRefreshAdapter.swift in Sources */,
-				B7F8337B1F39F8B700B0BC67 /* SMCell.swift in Sources */,
-				B7F833721F39F8B700B0BC67 /* SMModuleListPaging.swift in Sources */,
-				B7F833801F39F8B700B0BC67 /* SMValidationGroup.swift in Sources */,
+				B7F833DA1F39FC2200B0BC67 /* SMTextView.swift in Sources */,
+				B7F833FD1F39FC2200B0BC67 /* SMTableDisposerModeled.swift in Sources */,
+				B7F833E81F39FC2200B0BC67 /* UIImage+Help.swift in Sources */,
+				B7F833D01F39FC2200B0BC67 /* SMActivityPKHUD.swift in Sources */,
+				B7F833E01F39FC2200B0BC67 /* SMFetcherWithRequest.swift in Sources */,
+				B7F833DC1F39FC2200B0BC67 /* SMDataFetcherProtocol.swift in Sources */,
+				B7F833D21F39FC2200B0BC67 /* SMNativePullToRefreshAdapter.swift in Sources */,
+				B7F833F91F39FC2200B0BC67 /* SMCell.swift in Sources */,
+				B7F833EF1F39FC2200B0BC67 /* SMModuleListPaging.swift in Sources */,
+				B7F833FE1F39FC2200B0BC67 /* SMValidationGroup.swift in Sources */,
 				B74DF39A1F34955500405847 /* AppDelegate.swift in Sources */,
-				B7F8335B1F39F8B700B0BC67 /* SMLabel.swift in Sources */,
-				B7F8337C1F39F8B700B0BC67 /* SMSectionReadonly.swift in Sources */,
-				B7F833811F39F8B700B0BC67 /* SMValidator.swift in Sources */,
-				B7F833791F39F8B700B0BC67 /* SMCellDataModeled.swift in Sources */,
-				B7F833701F39F8B700B0BC67 /* UIView+PSSizes.swift in Sources */,
-				B7F833661F39F8B700B0BC67 /* SMGateway.swift in Sources */,
-				B7F833621F39F8B700B0BC67 /* SMFetcherWithBlock.swift in Sources */,
-				B7F833771F39F8B700B0BC67 /* SMCellData.swift in Sources */,
-				B7F833541F39F8B700B0BC67 /* SMNativeMoreTableViewCell.swift in Sources */,
-				B7F833671F39F8B700B0BC67 /* SMGatewayConfigurator.swift in Sources */,
-				B7F8336A1F39F8B700B0BC67 /* UIButton+Help.swift in Sources */,
-				B7F833521F39F8B700B0BC67 /* SMActivityAdapter.swift in Sources */,
-				B7F833751F39F8B700B0BC67 /* SMRequest.swift in Sources */,
-				B7F8337E1F39F8B700B0BC67 /* SMTableDisposer.swift in Sources */,
-				B7F833691F39F8B700B0BC67 /* SMColor.swift in Sources */,
-				B7F833641F39F8B700B0BC67 /* SMFilter.swift in Sources */,
-				B7F833651F39F8B700B0BC67 /* SMFormatter.swift in Sources */,
-				B7F8335A1F39F8B700B0BC67 /* SMTitledID.swift in Sources */,
-				B7F833591F39F8B700B0BC67 /* SMTargetAction.swift in Sources */,
-				B7F833831F39F8B700B0BC67 /* UIViewController+Help.swift in Sources */,
-				B7F833581F39F8B700B0BC67 /* SMPair.swift in Sources */,
-				B7F833781F39F8B700B0BC67 /* SMCellDataMaped.swift in Sources */,
-				B7F8337A1F39F8B700B0BC67 /* SMCellProtocol.swift in Sources */,
-				B7F833681F39F8B700B0BC67 /* SMGatewayRequest.swift in Sources */,
-				B7F833601F39F8B700B0BC67 /* SMFetcherIntoStorage.swift in Sources */,
-				B7F8335C1F39F8B700B0BC67 /* SMTextField.swift in Sources */,
-				B7F833761F39F8B700B0BC67 /* SMResponse.swift in Sources */,
-				B7F8336C1F39F8B700B0BC67 /* UIImageView+Help.swift in Sources */,
-				B7F8337D1F39F8B700B0BC67 /* SMSectionWritable.swift in Sources */,
-				B7F8336F1F39F8B700B0BC67 /* UIView+Help.swift in Sources */,
-				B7F833741F39F8B700B0BC67 /* SMDataBaseRequest.swift in Sources */,
-				B7F833711F39F8B700B0BC67 /* SMModuleList.swift in Sources */,
-				B7F8335E1F39F8B700B0BC67 /* SMStorage.swift in Sources */,
-				B7F8336E1F39F8B700B0BC67 /* UIView+Animation.swift in Sources */,
-				B7F833571F39F8B700B0BC67 /* SMAlertController.swift in Sources */,
-				B7F833561F39F8B700B0BC67 /* SMPullToRefreshAdapter.swift in Sources */,
-				B7F833611F39F8B700B0BC67 /* SMFetcherMessage.swift in Sources */,
-				B7F833821F39F8B700B0BC67 /* SMViewController.swift in Sources */,
-				B7F8336D1F39F8B700B0BC67 /* UILabel+Help.swift in Sources */,
-				B7F833731F39F8B700B0BC67 /* SMModuleRemotePushes.swift in Sources */,
+				B7F833D81F39FC2200B0BC67 /* SMLabel.swift in Sources */,
+				B7F833FA1F39FC2200B0BC67 /* SMSectionReadonly.swift in Sources */,
+				B7F833FF1F39FC2200B0BC67 /* SMValidator.swift in Sources */,
+				B7F833F71F39FC2200B0BC67 /* SMCellDataModeled.swift in Sources */,
+				B7F833ED1F39FC2200B0BC67 /* UIView+PSSizes.swift in Sources */,
+				B7F833E31F39FC2200B0BC67 /* SMGateway.swift in Sources */,
+				B7F833DF1F39FC2200B0BC67 /* SMFetcherWithBlock.swift in Sources */,
+				B7F833F51F39FC2200B0BC67 /* SMCellData.swift in Sources */,
+				B7F833D11F39FC2200B0BC67 /* SMNativeMoreTableViewCell.swift in Sources */,
+				B7F833E41F39FC2200B0BC67 /* SMGatewayConfigurator.swift in Sources */,
+				B7F833E71F39FC2200B0BC67 /* UIButton+Help.swift in Sources */,
+				B7F833CF1F39FC2200B0BC67 /* SMActivityAdapter.swift in Sources */,
+				B7F833F21F39FC2200B0BC67 /* SMRequest.swift in Sources */,
+				B7F833FC1F39FC2200B0BC67 /* SMTableDisposer.swift in Sources */,
+				B7F833E61F39FC2200B0BC67 /* SMColor.swift in Sources */,
+				B7F833E11F39FC2200B0BC67 /* SMFilter.swift in Sources */,
+				B7F833E21F39FC2200B0BC67 /* SMFormatter.swift in Sources */,
+				B7F833D71F39FC2200B0BC67 /* SMTitledID.swift in Sources */,
+				B7F833D61F39FC2200B0BC67 /* SMTargetAction.swift in Sources */,
+				B7F834011F39FC2200B0BC67 /* UIViewController+Help.swift in Sources */,
+				B7F833D51F39FC2200B0BC67 /* SMPair.swift in Sources */,
+				B7F833F61F39FC2200B0BC67 /* SMCellDataMaped.swift in Sources */,
+				B7F833F81F39FC2200B0BC67 /* SMCellProtocol.swift in Sources */,
+				B7F833E51F39FC2200B0BC67 /* SMGatewayRequest.swift in Sources */,
+				B7F833DD1F39FC2200B0BC67 /* SMFetcherIntoStorage.swift in Sources */,
+				B7F833D91F39FC2200B0BC67 /* SMTextField.swift in Sources */,
+				B7F833F41F39FC2200B0BC67 /* SMResponse.swift in Sources */,
+				B7F833E91F39FC2200B0BC67 /* UIImageView+Help.swift in Sources */,
+				B7F833FB1F39FC2200B0BC67 /* SMSectionWritable.swift in Sources */,
+				B7F833EC1F39FC2200B0BC67 /* UIView+Help.swift in Sources */,
+				B7F833F11F39FC2200B0BC67 /* SMDataBaseRequest.swift in Sources */,
+				B7F833EE1F39FC2200B0BC67 /* SMModuleList.swift in Sources */,
+				B7F833DB1F39FC2200B0BC67 /* SMStorage.swift in Sources */,
+				B7F833EB1F39FC2200B0BC67 /* UIView+Animation.swift in Sources */,
+				B7F833D41F39FC2200B0BC67 /* SMAlertController.swift in Sources */,
+				B7F833D31F39FC2200B0BC67 /* SMPullToRefreshAdapter.swift in Sources */,
+				B7F833DE1F39FC2200B0BC67 /* SMFetcherMessage.swift in Sources */,
+				B7F834001F39FC2200B0BC67 /* SMViewController.swift in Sources */,
+				B7F833EA1F39FC2200B0BC67 /* UILabel+Help.swift in Sources */,
+				B7F833F01F39FC2200B0BC67 /* SMModuleRemotePushes.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
