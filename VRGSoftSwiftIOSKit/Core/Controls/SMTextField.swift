@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SMTextField: UITextField, SMValidationProtocol, SMFormatterProtocol, SMFilterProtocol
+open class SMTextField: UITextField, SMValidationProtocol, SMFormatterProtocol, SMFilterProtocol
 {
     // MARK: - SMFilterProtocol
     
@@ -27,7 +27,7 @@ class SMTextField: UITextField, SMValidationProtocol, SMFormatterProtocol, SMFil
         self.setup()
     }
     
-    required init?(coder aDecoder: NSCoder)
+    required public init?(coder aDecoder: NSCoder)
     {
         super.init(coder: aDecoder)
         
@@ -65,12 +65,12 @@ class SMTextField: UITextField, SMValidationProtocol, SMFormatterProtocol, SMFil
         }
     }
     
-    func validate() -> Bool
+    open func validate() -> Bool
     {
         return ((validator) != nil) ? validator!.validate() : true
     }
     
-    var placeholderColor: UIColor?
+    open var placeholderColor: UIColor?
     {
         didSet
         {
@@ -82,7 +82,7 @@ class SMTextField: UITextField, SMValidationProtocol, SMFormatterProtocol, SMFil
         }
     }
     
-    override var placeholder: String?
+    override open var placeholder: String?
     {
         didSet
         {

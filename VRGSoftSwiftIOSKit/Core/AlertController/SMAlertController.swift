@@ -8,10 +8,10 @@
 
 import UIKit
 
-class SMAlertController: UIAlertController
+open class SMAlertController: UIAlertController
 {
 
-    override func viewDidLoad()
+    override open func viewDidLoad()
     {
         super.viewDidLoad()
         
@@ -33,7 +33,7 @@ class SMAlertController: UIAlertController
         aVc.present(self, animated: true, completion: nil)
     }
 
-    class func showAlertController(style aStyle: UIAlertControllerStyle,
+    open class func showAlertController(style aStyle: UIAlertControllerStyle,
                                    title aTitle: String?,
                                    message aMessage: String?,
                                    fromVC aVC: UIViewController,
@@ -72,7 +72,7 @@ class SMAlertController: UIAlertController
         alertController.showFrom(vc: aVC)
     }
 
-    class func showAlertController(title aTitle: String?,
+    open class func showAlertController(title aTitle: String?,
                                    message aMessage: String?,
                                    fromVC aVC: UIViewController,
                                    cancelButtonTitle aCancelButtonTitle: String? = NSLocalizedString("OK", comment: ""),
@@ -82,7 +82,7 @@ class SMAlertController: UIAlertController
         self.showAlertController(style: UIAlertControllerStyle.alert, title: aTitle, message: aMessage, fromVC: aVC, otherButtonTitles: aOtherButtonTitles)
     }
 
-    class func showSheetController(title aTitle: String?,
+    open class func showSheetController(title aTitle: String?,
                                    message aMessage: String?,
                                    fromVC aVC: UIViewController,
                                    cancelButtonTitle aCancelButtonTitle: String? = NSLocalizedString("OK", comment: ""),

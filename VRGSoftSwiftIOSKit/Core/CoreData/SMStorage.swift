@@ -8,7 +8,7 @@
 
 import CoreData
 
-enum SMClonePolicy
+public enum SMClonePolicy
 {
     case asTemp
     case insertIntoContext
@@ -16,18 +16,18 @@ enum SMClonePolicy
 }
 
 @available(iOS 9.0, *)
-class SMStorage: AnyObject
+open class SMStorage: AnyObject
 {
     let storageQueue: DispatchQueue?
     let queueKey = DispatchSpecificKey<Void>()
     
-    var _managedObjectContext: NSManagedObjectContext!
+    open var _managedObjectContext: NSManagedObjectContext!
     var _persistentStoreCoordinator: NSPersistentStoreCoordinator!
     var _managedObjectModel: NSManagedObjectModel!
 
     var shouldCacheStorage: Bool = false
     
-    init()
+    public init()
     {
         storageQueue = DispatchQueue(label: String(describing: type(of: self)))
         storageQueue!.setSpecific(key:queueKey, value:())
@@ -63,22 +63,22 @@ class SMStorage: AnyObject
         }
     }
     
-    func storeType() -> String
+    open func storeType() -> String
     {
         return NSSQLiteStoreType
     }
     
-    func persistentStoreName() -> String?
+    open func persistentStoreName() -> String?
     {
         return nil
     }
     
-    func migrationPolicy() -> [AnyHashable : Any]?
+    open func migrationPolicy() -> [AnyHashable : Any]?
     {
         return [NSMigratePersistentStoresAutomaticallyOption : true, NSInferMappingModelAutomaticallyOption : true]
     }
     
-    func mergeModels() -> Bool
+    open func mergeModels() -> Bool
     {
         return true
     }
@@ -124,7 +124,7 @@ class SMStorage: AnyObject
         }
     }
     
-    var managedObjectContext: NSManagedObjectContext!
+    open var managedObjectContext: NSManagedObjectContext!
     {
         get
         {
@@ -150,7 +150,7 @@ class SMStorage: AnyObject
         }
     }
     
-    func save(isAsync aIsAsync: Bool) -> Void
+    open func save(isAsync aIsAsync: Bool) -> Void
     {
         let block:(Void)->Void =
         {
@@ -190,17 +190,17 @@ class SMStorage: AnyObject
         }
     }
     
-    func save() -> Void
+    open func save() -> Void
     {
         self.save(isAsync: false)
     }
     
-    func saveAsync() -> Void
+    open func saveAsync() -> Void
     {
         self.save(isAsync: true)
     }
     
-    func clear() -> Void
+    open func clear() -> Void
     {
         let allEntities: [NSEntityDescription] = self.managedObjectModel.entities
         
@@ -229,7 +229,7 @@ class SMStorage: AnyObject
         self.save()
     }
     
-    func sync(block aBlock: ()->Void) -> Void
+    open func sync(block aBlock: ()->Void) -> Void
     {
         assert(DispatchQueue.getSpecific(key: queueKey) == nil, "SMStorage: Invoked on incorrect queue")
         
@@ -238,7 +238,7 @@ class SMStorage: AnyObject
         }
     }
 
-    func async(block aBlock:@escaping ()->Void) -> Void
+    open func async(block aBlock:@escaping ()->Void) -> Void
     {
         assert(DispatchQueue.getSpecific(key: queueKey) == nil, "SMStorage: Invoked on incorrect queue")
         
@@ -247,7 +247,7 @@ class SMStorage: AnyObject
         }
     }
     
-    func object(ofClass aClass: AnyClass, entityName aEntityName: String) -> NSManagedObject
+    open func object(ofClass aClass: AnyClass, entityName aEntityName: String) -> NSManagedObject
     {
         var result: NSManagedObject?
         self.sync {
@@ -259,7 +259,7 @@ class SMStorage: AnyObject
         return result!
     }
     
-    func tempObject(ofClass aClass: AnyClass, entityName aEntityName: String) -> NSManagedObject
+    open func tempObject(ofClass aClass: AnyClass, entityName aEntityName: String) -> NSManagedObject
     {
         var result: NSManagedObject?
         self.sync {
@@ -271,7 +271,7 @@ class SMStorage: AnyObject
         return result!
     }
     
-    func clone(object aObject: NSManagedObject, clonePolicy aClonePolicy: SMClonePolicy = SMClonePolicy.asTemp) -> NSManagedObject
+    open func clone(object aObject: NSManagedObject, clonePolicy aClonePolicy: SMClonePolicy = SMClonePolicy.asTemp) -> NSManagedObject
     {
         var result: NSManagedObject!
         
@@ -305,14 +305,14 @@ class SMStorage: AnyObject
     
     //MARK: Remove entities
     
-    func remove(object aObject: NSManagedObject) -> Void
+    open func remove(object aObject: NSManagedObject) -> Void
     {
         self.sync {
             self.managedObjectContext.delete(aObject)
         }
     }
     
-    func remove(objects aObjects: [NSManagedObject]) -> Void
+    open func remove(objects aObjects: [NSManagedObject]) -> Void
     {
         self.sync {
             for object in aObjects
@@ -322,7 +322,7 @@ class SMStorage: AnyObject
         }
     }
     
-    func removeAllEntitiesWithName(_ anEntityName: String) -> Void
+    open func removeAllEntitiesWithName(_ anEntityName: String) -> Void
     {
         self.sync {
             let entitiesRequest = NSFetchRequest<NSFetchRequestResult>()
@@ -353,7 +353,7 @@ class SMStorage: AnyObject
     
     //MARK: Object creation
     
-    func objectOfClass(_ aClass: AnyClass, _ anEntityName: String) -> NSManagedObject
+    open func objectOfClass(_ aClass: AnyClass, _ anEntityName: String) -> NSManagedObject
     {
         var result: NSManagedObject? = nil
         self.sync {
@@ -363,7 +363,7 @@ class SMStorage: AnyObject
         return result!
     }
     
-    func tempObjectOfClass(_ aClass: AnyClass, _ anEntityName: String) -> NSManagedObject
+    open func tempObjectOfClass(_ aClass: AnyClass, _ anEntityName: String) -> NSManagedObject
     {
         var result: NSManagedObject? = nil
         self.sync {

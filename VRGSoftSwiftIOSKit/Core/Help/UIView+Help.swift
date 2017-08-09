@@ -10,20 +10,20 @@ import UIKit
 
 extension UIView
 {
-    class func loadFromNib() -> UIView
+    open class func loadFromNib() -> UIView
     {
         let result: UIView = Bundle.main.loadNibNamed(String(describing: self), owner: self, options: nil)?.last as! UIView
         
         return result
     }
 
-    func sm_roundBorder() -> Void
+    open func sm_roundBorder() -> Void
     {
         self.layer.cornerRadius = self.frame.size.height/2.0;
         self.layer.masksToBounds = true;
     }
     
-    func sm_showAnimate(_ aAnimate: Bool) -> Void
+    open func sm_showAnimate(_ aAnimate: Bool) -> Void
     {
         if aAnimate
         {
@@ -43,7 +43,7 @@ extension UIView
         }
     }
     
-    func sm_hideAnimate(_ aAnimate: Bool) -> Void
+    open func sm_hideAnimate(_ aAnimate: Bool) -> Void
     {
         if aAnimate
         {

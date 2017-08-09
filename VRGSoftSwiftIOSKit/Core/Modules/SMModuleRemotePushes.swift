@@ -12,16 +12,16 @@ class SMModuleRemotePushes
 {
     var deviceToken: String?
     
-    open func tryToRegisterForUserNotificationDefault() -> Void
-    {
-        self.tryToRegisterFor(userNotificationTypes: [UIUserNotificationType.alert, UIUserNotificationType.badge, UIUserNotificationType.sound])
-    }
-
-    open func tryToRegisterFor(userNotificationTypes aUserNotificationTypes: UIUserNotificationType) -> Void
-    {
-        let notificationSettings: UIUserNotificationSettings = UIUserNotificationSettings(types: aUserNotificationTypes, categories: nil)
-        UIApplication.shared.registerUserNotificationSettings(notificationSettings)
-    }
+//    open func tryToRegisterForUserNotificationDefault() -> Void
+//    {
+//        self.tryToRegisterFor(userNotificationTypes: [UIUserNotificationType.alert, UIUserNotificationType.badge, UIUserNotificationType.sound])
+//    }
+//
+//    open func tryToRegisterFor(userNotificationTypes aUserNotificationTypes: UIUserNotificationType) -> Void
+//    {
+//        let notificationSettings: UIUserNotificationSettings = UIUserNotificationSettings(types: aUserNotificationTypes, categories: nil)
+//        UIApplication.shared.registerUserNotificationSettings(notificationSettings)
+//    }
 
     open func didRegisterForRemoteNotificationsWith(deviceTokenData aDeviceTokenData: Data) -> Void
     {

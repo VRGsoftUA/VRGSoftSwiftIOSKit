@@ -10,11 +10,11 @@ import UIKit
 
 typealias SMViewControllerCallback = (SMViewController, AnyObject) -> Void
 
-class SMViewController: UIViewController
+open class SMViewController: UIViewController
 {
     var callBack: SMViewControllerCallback?
     
-    func performCallBackWith(sender aSender: AnyObject, goBack isGoBack: Bool) -> Void
+    open func performCallBackWith(sender aSender: AnyObject, goBack isGoBack: Bool) -> Void
     {
         if self.callBack != nil
         {
@@ -41,13 +41,13 @@ class SMViewController: UIViewController
         }
     }
     
-    func showActivity() -> Void
+    open func showActivity() -> Void
     {
         self.activity.configureWith(view: self.view)
         self.activity.show()
     }
 
-    func hideActivity() -> Void
+    open func hideActivity() -> Void
     {
         self.activity.hide()
     }
@@ -65,7 +65,7 @@ class SMViewController: UIViewController
         return _backgroundImageView
     }
     
-    override func viewDidLoad()
+    override open func viewDidLoad()
     {
         super.viewDidLoad()
 
@@ -126,27 +126,27 @@ class SMViewController: UIViewController
         }
     }
 
-    public func backgroundImage() -> UIImage?
+    open func backgroundImage() -> UIImage?
     {
         return nil
     }
 
-    public func createLeftNavButton() -> UIBarButtonItem?
+    open func createLeftNavButton() -> UIBarButtonItem?
     {
         return nil
     }
 
-    public func createRightNavButton() -> UIBarButtonItem?
+    open func createRightNavButton() -> UIBarButtonItem?
     {
         return nil
     }
 
-    public func createTitleViewNavItem() -> UIView?
+    open func createTitleViewNavItem() -> UIView?
     {
         return nil
     }
     
-    override func viewDidAppear(_ animated: Bool)
+    override open func viewDidAppear(_ animated: Bool)
     {
         super.viewDidAppear(animated)
         
@@ -156,12 +156,12 @@ class SMViewController: UIViewController
     
     // MARK: - Actions
     
-    public func didBtNavLeftClicked()
+    open func didBtNavLeftClicked()
     {
         self.close()
     }
 
-    public func close()
+    open func close()
     {
         if self.isModal
         {
@@ -172,7 +172,7 @@ class SMViewController: UIViewController
         }
     }
 
-    public func didBtNavRightClicked()
+    open func didBtNavRightClicked()
     {
         
     }

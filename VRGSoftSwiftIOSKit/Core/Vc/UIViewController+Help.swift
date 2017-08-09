@@ -10,7 +10,7 @@ import UIKit
 
 extension UIViewController
 {
-    class func topViewController(controller: UIViewController? = UIApplication.shared.keyWindow?.rootViewController) -> UIViewController?
+    open class func topViewController(controller: UIViewController? = UIApplication.shared.keyWindow?.rootViewController) -> UIViewController?
     {
         if let navigationController = controller as? UINavigationController
         {
@@ -33,7 +33,7 @@ extension UIViewController
         return controller
     }
     
-    func sm_showAlertController(title aTitle: String?, message aMessage: String?, cancelButtonTitle aCancelButtonTitle: String?)
+    open func sm_showAlertController(title aTitle: String?, message aMessage: String?, cancelButtonTitle aCancelButtonTitle: String?)
     {
         if aTitle == nil && aMessage == nil
         {
@@ -43,7 +43,7 @@ extension UIViewController
         self.sm_showAlertController(title: aTitle, message: aMessage, cancelButtonTitle: aCancelButtonTitle, otherButtonTitles: nil, handler: nil)
     }
 
-    func sm_showAlertController(title aTitle: String?,
+    open func sm_showAlertController(title aTitle: String?,
                                    message aMessage: String?,
                                    cancelButtonTitle aCancelButtonTitle: String? = NSLocalizedString("OK", comment: ""),
                                    otherButtonTitles aOtherButtonTitles: [String]?,
@@ -52,7 +52,7 @@ extension UIViewController
         SMAlertController.showAlertController(style: UIAlertControllerStyle.alert, title: aTitle, message: aMessage, fromVC: self, otherButtonTitles: aOtherButtonTitles)
     }
     
-    func sm_showSheetController(title aTitle: String?,
+    open func sm_showSheetController(title aTitle: String?,
                                    message aMessage: String?,
                                    cancelButtonTitle aCancelButtonTitle: String? = NSLocalizedString("OK", comment: ""),
                                    otherButtonTitles aOtherButtonTitles: [String]?,

@@ -10,7 +10,7 @@ import UIKit
 
 extension UIImage
 {
-    class func imageWith(color aColor: UIColor, size aSize: CGSize) -> UIImage!
+    open class func imageWith(color aColor: UIColor, size aSize: CGSize) -> UIImage!
     {
         let rect: CGRect = CGRect(origin: CGPoint(), size: aSize)
         UIGraphicsBeginImageContext(rect.size)
@@ -27,7 +27,7 @@ extension UIImage
         return image
     }
     
-    func sm_tintedImageWith(color aColor: UIColor) -> UIImage
+    open func sm_tintedImageWith(color aColor: UIColor) -> UIImage
     {
         var result: UIImage
         
@@ -53,13 +53,13 @@ extension UIImage
         return result
     }
     
-    class func resizableImageWith(color aColor: UIColor) -> UIImage!
+    open class func resizableImageWith(color aColor: UIColor) -> UIImage!
     {
         let image: UIImage = self.imageWith(color: aColor, size: CGSize(width: 1, height: 1)).resizableImage(withCapInsets: UIEdgeInsets.init(top: 0, left: 0, bottom: 0, right: 0), resizingMode: UIImageResizingMode.stretch)
         return image
     }
     
-    var roundedImage: UIImage
+    open var roundedImage: UIImage
     {
         let rect = CGRect(origin:CGPoint(x: 0, y: 0), size: self.size)
         UIGraphicsBeginImageContextWithOptions(self.size, false, self.scale)
