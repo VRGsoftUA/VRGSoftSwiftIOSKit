@@ -12,13 +12,13 @@ open class SMTextField: UITextField, SMValidationProtocol, SMFormatterProtocol, 
 {
     // MARK: - SMFilterProtocol
     
-    var filteredText: String? {get {return self.text}}
+    open var filteredText: String? {get {return self.text}}
     
-    var filter: SMFilter?
+    open var filter: SMFilter?
     
-    var smdelegate: UITextFieldDelegate?
+    open var smdelegate: UITextFieldDelegate?
     
-    var delegateHolder: SMTextFieldDelegateHolder?
+    open var delegateHolder: SMTextFieldDelegateHolder?
     
     override init(frame: CGRect)
     {
@@ -42,7 +42,7 @@ open class SMTextField: UITextField, SMValidationProtocol, SMFormatterProtocol, 
     
     
     // MARK: - SMValidationProtocol
-    var validatableText: String?
+    open var validatableText: String?
     {
         get
         {
@@ -54,7 +54,7 @@ open class SMTextField: UITextField, SMValidationProtocol, SMFormatterProtocol, 
         }
     }
     
-    var validator: SMValidator?
+    open var validator: SMValidator?
     {
         didSet
         {
@@ -121,11 +121,11 @@ open class SMTextField: UITextField, SMValidationProtocol, SMFormatterProtocol, 
     }
 }
 
-class SMTextFieldDelegateHolder: NSObject, UITextFieldDelegate
+open class SMTextFieldDelegateHolder: NSObject, UITextFieldDelegate
 {
     weak var holdedTextField: SMTextField?
     
-    required init(textField aTextField: SMTextField)
+    required public init(textField aTextField: SMTextField)
     {
         holdedTextField = aTextField
     }

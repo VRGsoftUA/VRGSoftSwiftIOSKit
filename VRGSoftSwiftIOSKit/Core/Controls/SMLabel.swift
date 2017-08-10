@@ -8,19 +8,19 @@
 
 import UIKit
 
-class SMLabel: UILabel
+open class SMLabel: UILabel
 {
-    var topT: CGFloat = 0.0
-    var leftT: CGFloat = 0.0
-    var bottomT: CGFloat = 0.0
-    var rightT: CGFloat = 0.0
+    open var topT: CGFloat = 0.0
+    open var leftT: CGFloat = 0.0
+    open var bottomT: CGFloat = 0.0
+    open var rightT: CGFloat = 0.0
 
-    override func draw(_ rect: CGRect)
+    override open func draw(_ rect: CGRect)
     {
         super.drawText(in: UIEdgeInsetsInsetRect(rect, UIEdgeInsetsMake(topT, leftT, bottomT, rightT)))
     }
     
-    override func textRect(forBounds bounds: CGRect, limitedToNumberOfLines numberOfLines: Int) -> CGRect
+    override open func textRect(forBounds bounds: CGRect, limitedToNumberOfLines numberOfLines: Int) -> CGRect
     {
         var rect: CGRect = super.textRect(forBounds: bounds, limitedToNumberOfLines: numberOfLines)
         

@@ -9,21 +9,21 @@
 import Foundation
 import UIKit
 
-protocol SMFilterProtocol
+public protocol SMFilterProtocol
 {
     var filteredText: String? { get }
 }
 
-class SMFilter: AnyObject
+open class SMFilter: AnyObject
 {
-    var maxLengthText:Int = Int.max
+    open var maxLengthText:Int = Int.max
     
     init(maxLengthText aMaxLengthText: Int)
     {
         maxLengthText = aMaxLengthText
     }
     
-    public func inputField(_ inputField: SMFilterProtocol, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool
+    open func inputField(_ inputField: SMFilterProtocol, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool
     {
         var result: Bool = true
         

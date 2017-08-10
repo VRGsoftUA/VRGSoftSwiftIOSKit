@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol SMValidationProtocol: AnyObject
+public protocol SMValidationProtocol: AnyObject
 {
     var validatableText: String? { get set }
     var validator: SMValidator? { get set }
@@ -18,8 +18,8 @@ protocol SMValidationProtocol: AnyObject
 
 open class SMValidator: AnyObject
 {
-    var _errorMessage: String?
-    var errorMessage: String?
+    open var _errorMessage: String?
+    open var errorMessage: String?
     {
         get
         {
@@ -31,8 +31,8 @@ open class SMValidator: AnyObject
         }
     }
     
-    var _titleMessage: String?
-    var titleMessage: String?
+    open var _titleMessage: String?
+    open var titleMessage: String?
     {
         get
         {
@@ -44,9 +44,9 @@ open class SMValidator: AnyObject
         }
     }
 
-    weak var validatableObject: SMValidationProtocol?
+    open weak var validatableObject: SMValidationProtocol?
     
-    func validate() -> Bool
+    open func validate() -> Bool
     {
         return false
     }
@@ -55,15 +55,15 @@ open class SMValidator: AnyObject
 
 open class SMCompoundValidator: SMValidator
 {
-    let validators: Array<SMValidator>!
-    var successIfAtLeastOne: Bool = false
+    open let validators: Array<SMValidator>!
+    open var successIfAtLeastOne: Bool = false
     
-    init(validators aValidators: Array<SMValidator>)
+    public init(validators aValidators: Array<SMValidator>)
     {
         validators = aValidators
     }
     
-    override func validate() -> Bool
+    override open func validate() -> Bool
     {
         assert(validators.count != 0, "count of validators should be more than 0")
         
@@ -87,7 +87,7 @@ open class SMCompoundValidator: SMValidator
         return result
     }
     
-    override var titleMessage: String?
+    override open var titleMessage: String?
     {
         get
         {
@@ -106,7 +106,7 @@ open class SMCompoundValidator: SMValidator
         }
     }
 
-    override var errorMessage: String?
+    override open var errorMessage: String?
     {
         get
         {
@@ -125,7 +125,7 @@ open class SMCompoundValidator: SMValidator
         }
     }
 
-    var firstNotValideValidator:SMValidator?
+    open var firstNotValideValidator:SMValidator?
     {
         get
         {
@@ -150,7 +150,7 @@ open class SMCompoundValidator: SMValidator
  
 open class SMValidatorAny: SMValidator
 {
-    override func validate() -> Bool
+    override open func validate() -> Bool
     {
         return true
     }
@@ -159,13 +159,13 @@ open class SMValidatorAny: SMValidator
 open class SMValidatorIntWithRange: SMValidator
 {
     var range: NSRange?
-    init(range aRange: NSRange)
+    public init(range aRange: NSRange)
     {
         super.init()
         range = aRange
     }
     
-    override func validate() -> Bool
+    override open func validate() -> Bool
     {
         var result: Bool = false
         self.validatableObject?.validatableText = self.validatableObject?.validatableText?.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines)
@@ -180,13 +180,13 @@ open class SMValidatorIntWithRange: SMValidator
 open class SMValidatorCountNumberInTextWithRange: SMValidator
 {
     var range: NSRange?
-    init(range aRange: NSRange)
+    public init(range aRange: NSRange)
     {
         super.init()
         range = aRange
     }
     
-    override func validate() -> Bool
+    override open func validate() -> Bool
     {
         let result: Bool = false
         assert(result)
@@ -197,13 +197,13 @@ open class SMValidatorCountNumberInTextWithRange: SMValidator
 open class SMValidatorStringWithRange: SMValidator
 {
     var range: NSRange?
-    init(range aRange: NSRange)
+    public init(range aRange: NSRange)
     {
         super.init()
         range = aRange
     }
 
-    override func validate() -> Bool
+    override open func validate() -> Bool
     {
         var result: Bool = false
         self.validatableObject?.validatableText = self.validatableObject?.validatableText?.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines)
@@ -221,7 +221,7 @@ open class SMValidatorStringWithRange: SMValidator
 
 open class SMValidatorEmail: SMValidator
 {
-    override func validate() -> Bool
+    override open func validate() -> Bool
     {
         self.validatableObject?.validatableText = self.validatableObject?.validatableText?.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines)
         
@@ -243,7 +243,7 @@ open class SMValidatorEmail: SMValidator
 
 open class SMValidatorNotEmpty: SMValidator
 {
-    override func validate() -> Bool
+    override open func validate() -> Bool
     {
         self.validatableObject?.validatableText = self.validatableObject?.validatableText?.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines)
         
@@ -258,19 +258,19 @@ open class SMValidatorEqual: SMValidator
     var isIgnoreCase: Bool
     
     
-    init(testedFieldValidator aTestedObject: SMValidationProtocol)
+    public init(testedFieldValidator aTestedObject: SMValidationProtocol)
     {
         testedValidator = aTestedObject.validator!
         isIgnoreCase = false
     }
 
-    init(testedValidator aTestedValidator: SMValidator)
+    public init(testedValidator aTestedValidator: SMValidator)
     {
         testedValidator = aTestedValidator
         isIgnoreCase = false
     }
 
-    override func validate() -> Bool
+    override open func validate() -> Bool
     {
         self.validatableObject?.validatableText = self.validatableObject?.validatableText?.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines)
 
@@ -291,12 +291,12 @@ open class SMValidatorRegExp: SMValidator
 {
     let regularExpression: NSRegularExpression!
 
-    init(regExp aRegExp: NSRegularExpression)
+    public init(regExp aRegExp: NSRegularExpression)
     {
         regularExpression = aRegExp
     }
     
-    override func validate() -> Bool
+    override open func validate() -> Bool
     {
         self.validatableObject?.validatableText = self.validatableObject?.validatableText?.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines)
         
@@ -314,7 +314,7 @@ open class SMValidatorRegExp: SMValidator
 
 open class SMValidatorUSAZipCode: SMValidator
 {
-    override func validate() -> Bool
+    override open func validate() -> Bool
     {
         self.validatableObject?.validatableText = self.validatableObject?.validatableText?.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines)
         
