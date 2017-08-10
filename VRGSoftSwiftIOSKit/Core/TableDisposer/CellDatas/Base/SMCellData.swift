@@ -77,7 +77,7 @@ class SMCellData: NSObject
     func createCell() -> UITableViewCell
     {
         var cell: UITableViewCell? = nil
-        if (cellNibName != nil)
+        if cellNibName != nil
         {
             cell = (Bundle.main.loadNibNamed(cellNibName!, owner: self, options: nil)?.last! as! SMCell)
         }

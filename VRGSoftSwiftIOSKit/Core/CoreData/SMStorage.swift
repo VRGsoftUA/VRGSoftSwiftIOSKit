@@ -109,7 +109,7 @@ open class SMStorage: AnyObject
                 return _managedObjectModel
             }
             
-            if (DispatchQueue.getSpecific(key: queueKey) != nil)
+            if DispatchQueue.getSpecific(key: queueKey) != nil
             {
                 result = block()
             } else
@@ -171,7 +171,7 @@ open class SMStorage: AnyObject
             }
         }
         
-        if (DispatchQueue.getSpecific(key: queueKey) != nil)
+        if DispatchQueue.getSpecific(key: queueKey) != nil
         {
             block()
         } else

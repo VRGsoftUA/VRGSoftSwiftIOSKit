@@ -55,7 +55,7 @@ class SMCell: UITableViewCell, SMCellProtocol
             frame.size.width = aCellData.cellWidth
             self.frame = frame
             
-            if (self.superview == nil)
+            if self.superview == nil
             {
                 self.contentView.frame = self.bounds
             }

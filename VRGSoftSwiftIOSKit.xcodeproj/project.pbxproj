@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		442C1DDCEB2B2B292945F835 /* Pods_VRGSoftSwiftIOSKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BC56EDC4EEA30A01FF18969 /* Pods_VRGSoftSwiftIOSKit.framework */; };
+		B71D37D61F3CA07F007DD6EE /* SMKeyboardAvoiding.swift in Sources */ = {isa = PBXBuildFile; fileRef = B71D37D51F3CA07F007DD6EE /* SMKeyboardAvoiding.swift */; };
+		B71D37D81F3CA2D1007DD6EE /* SMKeyboardToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B71D37D71F3CA2D1007DD6EE /* SMKeyboardToolbar.swift */; };
+		B71D37DA1F3CA585007DD6EE /* SMKeyboardAvoidingScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B71D37D91F3CA585007DD6EE /* SMKeyboardAvoidingScrollView.swift */; };
 		B74DF39A1F34955500405847 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B74DF3991F34955500405847 /* AppDelegate.swift */; };
 		B74DF39C1F34955500405847 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B74DF39B1F34955500405847 /* ViewController.swift */; };
 		B74DF39F1F34955500405847 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B74DF39D1F34955500405847 /* Main.storyboard */; };
@@ -70,6 +73,9 @@
 /* Begin PBXFileReference section */
 		74D214329718139F3B918BE8 /* Pods-VRGSoftSwiftIOSKit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VRGSoftSwiftIOSKit.debug.xcconfig"; path = "Pods/Target Support Files/Pods-VRGSoftSwiftIOSKit/Pods-VRGSoftSwiftIOSKit.debug.xcconfig"; sourceTree = "<group>"; };
 		8BC56EDC4EEA30A01FF18969 /* Pods_VRGSoftSwiftIOSKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VRGSoftSwiftIOSKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B71D37D51F3CA07F007DD6EE /* SMKeyboardAvoiding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMKeyboardAvoiding.swift; sourceTree = "<group>"; };
+		B71D37D71F3CA2D1007DD6EE /* SMKeyboardToolbar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMKeyboardToolbar.swift; sourceTree = "<group>"; };
+		B71D37D91F3CA585007DD6EE /* SMKeyboardAvoidingScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMKeyboardAvoidingScrollView.swift; sourceTree = "<group>"; };
 		B74DF3961F34955500405847 /* VRGSoftSwiftIOSKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VRGSoftSwiftIOSKit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B74DF3991F34955500405847 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B74DF39B1F34955500405847 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -151,6 +157,16 @@
 				E744888B69F1358D3BD7E3F5 /* Pods-VRGSoftSwiftIOSKit.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		B71D37D41F3CA065007DD6EE /* KeyboardAvoiding */ = {
+			isa = PBXGroup;
+			children = (
+				B71D37D51F3CA07F007DD6EE /* SMKeyboardAvoiding.swift */,
+				B71D37D71F3CA2D1007DD6EE /* SMKeyboardToolbar.swift */,
+				B71D37D91F3CA585007DD6EE /* SMKeyboardAvoidingScrollView.swift */,
+			);
+			path = KeyboardAvoiding;
 			sourceTree = "<group>";
 		};
 		B74DF38D1F34955500405847 = {
@@ -251,6 +267,7 @@
 		B7F833911F39FC2200B0BC67 /* Controls */ = {
 			isa = PBXGroup;
 			children = (
+				B71D37D41F3CA065007DD6EE /* KeyboardAvoiding */,
 				B7F833921F39FC2200B0BC67 /* SMLabel.swift */,
 				B7F833931F39FC2200B0BC67 /* SMTextField.swift */,
 				B7F833941F39FC2200B0BC67 /* SMTextView.swift */,
@@ -571,6 +588,7 @@
 				B7F833D21F39FC2200B0BC67 /* SMNativePullToRefreshAdapter.swift in Sources */,
 				B7F833F91F39FC2200B0BC67 /* SMCell.swift in Sources */,
 				B7F833EF1F39FC2200B0BC67 /* SMModuleListPaging.swift in Sources */,
+				B71D37D81F3CA2D1007DD6EE /* SMKeyboardToolbar.swift in Sources */,
 				B7F833FE1F39FC2200B0BC67 /* SMValidationGroup.swift in Sources */,
 				B74DF39A1F34955500405847 /* AppDelegate.swift in Sources */,
 				B7F833D81F39FC2200B0BC67 /* SMLabel.swift in Sources */,
@@ -591,6 +609,7 @@
 				B7F833E11F39FC2200B0BC67 /* SMFilter.swift in Sources */,
 				B7F833E21F39FC2200B0BC67 /* SMFormatter.swift in Sources */,
 				B7F833D71F39FC2200B0BC67 /* SMTitledID.swift in Sources */,
+				B71D37D61F3CA07F007DD6EE /* SMKeyboardAvoiding.swift in Sources */,
 				B7F833D61F39FC2200B0BC67 /* SMTargetAction.swift in Sources */,
 				B7F834011F39FC2200B0BC67 /* UIViewController+Help.swift in Sources */,
 				B7F833D51F39FC2200B0BC67 /* SMPair.swift in Sources */,
@@ -603,6 +622,7 @@
 				B7F833E91F39FC2200B0BC67 /* UIImageView+Help.swift in Sources */,
 				B7F833FB1F39FC2200B0BC67 /* SMSectionWritable.swift in Sources */,
 				B7F833EC1F39FC2200B0BC67 /* UIView+Help.swift in Sources */,
+				B71D37DA1F3CA585007DD6EE /* SMKeyboardAvoidingScrollView.swift in Sources */,
 				B7F833F11F39FC2200B0BC67 /* SMDataBaseRequest.swift in Sources */,
 				B7F833EE1F39FC2200B0BC67 /* SMModuleList.swift in Sources */,
 				B7F833DB1F39FC2200B0BC67 /* SMStorage.swift in Sources */,

@@ -16,7 +16,7 @@ class SMSectionWritable: SMSectionReadonly
     {
         for cellData: SMCellData in cellDataSource
         {
-            if (cellData is SMCellDataMaped)
+            if cellData is SMCellDataMaped
             {
                 (cellData as! SMCellDataMaped).mapToObject()
             }
@@ -27,7 +27,7 @@ class SMSectionWritable: SMSectionReadonly
     {
         for cellData: SMCellData in cellDataSource
         {
-            if (cellData is SMCellDataMaped)
+            if cellData is SMCellDataMaped
             {
                 (cellData as! SMCellDataMaped).mapFromObject()
             }
