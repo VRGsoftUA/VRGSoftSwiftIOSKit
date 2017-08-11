@@ -10,17 +10,17 @@ import UIKit
 
 public protocol SMKeyboardAvoidingProtocol: NSObjectProtocol
 {
-    var keyboardToolbar: SMKeyboardToolbar {get}
+    var keyboardToolbar: SMKeyboardToolbar? {get set}
     var isShowsKeyboardToolbar: Bool {get set}
 
     func adjustOffset() -> Void
     func hideKeyBoard() -> Void
     
-    func addObjectForKeyboard(_ aObjectForKeyboard: SMKeyboardAvoiderProtocol) -> Void
-    func removeObjectForKeyboard(_ aObjectForKeyboard: SMKeyboardAvoiderProtocol) -> Void
+    func addObjectForKeyboard(_ aObjectForKeyboard: UIResponder) -> Void
+    func removeObjectForKeyboard(_ aObjectForKeyboard: UIResponder) -> Void
 
-    func addObjectsForKeyboard(_ aObjectsForKeyboard: [SMKeyboardAvoiderProtocol]) -> Void
-    func removeObjectsForKeyboard(_ aObjectsForKeyboard: [SMKeyboardAvoiderProtocol]) -> Void
+    func addObjectsForKeyboard(_ aObjectsForKeyboard: [UIResponder]) -> Void
+    func removeObjectsForKeyboard(_ aObjectsForKeyboard: [UIResponder]) -> Void
 
     func removeAllObjectsForKeyboard() -> Void
     

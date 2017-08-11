@@ -17,6 +17,7 @@
 		B74DF3A11F34955500405847 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B74DF3A01F34955500405847 /* Assets.xcassets */; };
 		B74DF3A41F34955500405847 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B74DF3A21F34955500405847 /* LaunchScreen.storyboard */; };
 		B74DF3AC1F34A3FC00405847 /* VRGSoftSwiftIOSKit.podspec in Resources */ = {isa = PBXBuildFile; fileRef = B74DF3AB1F34A3FC00405847 /* VRGSoftSwiftIOSKit.podspec */; };
+		B750D16A1F3DD9D60086FEB7 /* SMToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B750D1691F3DD9D60086FEB7 /* SMToolbar.swift */; };
 		B7ED41F91F34B271006C24DC /* VRGSoftSwiftIOSKit.bundle in Resources */ = {isa = PBXBuildFile; fileRef = B7ED41F81F34B271006C24DC /* VRGSoftSwiftIOSKit.bundle */; };
 		B7F833CF1F39FC2200B0BC67 /* SMActivityAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F833861F39FC2200B0BC67 /* SMActivityAdapter.swift */; };
 		B7F833D01F39FC2200B0BC67 /* SMActivityPKHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F833871F39FC2200B0BC67 /* SMActivityPKHUD.swift */; };
@@ -84,6 +85,7 @@
 		B74DF3A31F34955500405847 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B74DF3A51F34955500405847 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B74DF3AB1F34A3FC00405847 /* VRGSoftSwiftIOSKit.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = VRGSoftSwiftIOSKit.podspec; sourceTree = "<group>"; };
+		B750D1691F3DD9D60086FEB7 /* SMToolbar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMToolbar.swift; sourceTree = "<group>"; };
 		B7ED41F81F34B271006C24DC /* VRGSoftSwiftIOSKit.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = VRGSoftSwiftIOSKit.bundle; sourceTree = "<group>"; };
 		B7F833861F39FC2200B0BC67 /* SMActivityAdapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMActivityAdapter.swift; sourceTree = "<group>"; };
 		B7F833871F39FC2200B0BC67 /* SMActivityPKHUD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMActivityPKHUD.swift; sourceTree = "<group>"; };
@@ -271,6 +273,7 @@
 				B7F833921F39FC2200B0BC67 /* SMLabel.swift */,
 				B7F833931F39FC2200B0BC67 /* SMTextField.swift */,
 				B7F833941F39FC2200B0BC67 /* SMTextView.swift */,
+				B750D1691F3DD9D60086FEB7 /* SMToolbar.swift */,
 			);
 			path = Controls;
 			sourceTree = "<group>";
@@ -599,6 +602,7 @@
 				B7F833E31F39FC2200B0BC67 /* SMGateway.swift in Sources */,
 				B7F833DF1F39FC2200B0BC67 /* SMFetcherWithBlock.swift in Sources */,
 				B7F833F51F39FC2200B0BC67 /* SMCellData.swift in Sources */,
+				B750D16A1F3DD9D60086FEB7 /* SMToolbar.swift in Sources */,
 				B7F833D11F39FC2200B0BC67 /* SMNativeMoreTableViewCell.swift in Sources */,
 				B7F833E41F39FC2200B0BC67 /* SMGatewayConfigurator.swift in Sources */,
 				B7F833E71F39FC2200B0BC67 /* UIButton+Help.swift in Sources */,
