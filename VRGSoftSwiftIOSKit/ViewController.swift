@@ -12,6 +12,8 @@ class ViewController: UIViewController
 {
     @IBOutlet weak var scrollView: SMKeyboardAvoidingScrollView!
 
+    @IBOutlet weak var tvTest: SMTextView!
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()
@@ -23,6 +25,7 @@ class ViewController: UIViewController
             self.scrollView.addObjectForKeyboard(tf)
         }
         
+        self.scrollView.addObjectForKeyboard(self.tvTest)
         self.scrollView.isShowsKeyboardToolbar = true
     }
 

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SMTextView: UITextView, SMValidationProtocol, SMFilterProtocol
+class SMTextView: UITextView, SMKeyboardAvoiderProtocol, SMValidationProtocol, SMFilterProtocol
 {
     var smdelegate: UITextViewDelegate?
     
@@ -151,6 +151,11 @@ class SMTextView: UITextView, SMValidationProtocol, SMFilterProtocol
     }
 
     
+    // MARK: - SMKeyboardAvoiderProtocol
+    
+    public weak var keyboardAvoiding: SMKeyboardAvoidingProtocol?
+    
+    
     // MARK: - SMFilterProtocol
     
     var filteredText: String? {get {return self.text}}
@@ -224,6 +229,11 @@ class SMTextViewDelegateHolder: NSObject, UITextViewDelegate
     
     public func textViewDidBeginEditing(_ textView: UITextView)
     {
+        if self.holdedTextView != nil && self.holdedTextView!.keyboardAvoiding != nil
+        {
+            self.holdedTextView!.keyboardAvoiding!.adjustOffset()
+        }
+
         if self.holdedTextView != nil && self.holdedTextView!.smdelegate != nil && self.holdedTextView!.smdelegate!.textViewDidBeginEditing(_:) != nil
         {
             self.holdedTextView!.smdelegate!.textViewDidBeginEditing!(_:textView)

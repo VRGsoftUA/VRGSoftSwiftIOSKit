@@ -87,12 +87,24 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="gA1-er-eyc" customClass="SMTextView" customModule="VRGSoftSwiftIOSKit" customModuleProvider="target">
+                                                <rect key="frame" x="23" y="608" width="328" height="39"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="39" id="WG0-3D-3zS"/>
+                                                </constraints>
+                                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                            </textView>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="nNa-aP-XeF" secondAttribute="trailing" constant="24" id="3gD-p9-WiF"/>
                                             <constraint firstItem="nNa-aP-XeF" firstAttribute="leading" secondItem="gmv-xw-4eM" secondAttribute="leading" constant="23" id="3xd-H3-hOi"/>
                                             <constraint firstAttribute="trailing" secondItem="qgD-XL-g8l" secondAttribute="trailing" constant="24" id="DID-p0-eQ1"/>
+                                            <constraint firstItem="gA1-er-eyc" firstAttribute="leading" secondItem="gmv-xw-4eM" secondAttribute="leading" constant="23" id="EiU-8z-Y6t"/>
+                                            <constraint firstAttribute="trailing" secondItem="gA1-er-eyc" secondAttribute="trailing" constant="24" id="StJ-U8-WTl"/>
                                             <constraint firstItem="hnA-o8-9mg" firstAttribute="leading" secondItem="gmv-xw-4eM" secondAttribute="leading" constant="23" id="U2f-Yd-y5h"/>
                                             <constraint firstItem="qgD-XL-g8l" firstAttribute="top" secondItem="8hg-wx-Ngn" secondAttribute="bottom" constant="59" id="UJ7-bz-WAW"/>
                                             <constraint firstItem="hnA-o8-9mg" firstAttribute="top" secondItem="gmv-xw-4eM" secondAttribute="top" constant="29" id="Wjm-eM-pM0"/>
@@ -103,6 +115,7 @@
                                             <constraint firstItem="oxw-go-Wg4" firstAttribute="leading" secondItem="gmv-xw-4eM" secondAttribute="leading" constant="23" id="fex-mY-nF6"/>
                                             <constraint firstAttribute="trailing" secondItem="7RI-gP-cHE" secondAttribute="trailing" constant="24" id="gLr-Se-S9t"/>
                                             <constraint firstAttribute="trailing" secondItem="oxw-go-Wg4" secondAttribute="trailing" constant="24" id="i2D-9d-lU1"/>
+                                            <constraint firstAttribute="bottom" secondItem="gA1-er-eyc" secondAttribute="bottom" constant="20" id="j5h-Rj-NSu"/>
                                             <constraint firstAttribute="trailing" secondItem="hnA-o8-9mg" secondAttribute="trailing" constant="24" id="qag-R5-OYL"/>
                                             <constraint firstItem="oxw-go-Wg4" firstAttribute="top" secondItem="7RI-gP-cHE" secondAttribute="bottom" constant="85" id="rkf-qu-Qxg"/>
                                             <constraint firstItem="nNa-aP-XeF" firstAttribute="top" secondItem="oxw-go-Wg4" secondAttribute="bottom" constant="81" id="sg6-wE-J6g"/>
@@ -131,6 +144,7 @@
                     </view>
                     <connections>
                         <outlet property="scrollView" destination="LUe-c6-lG7" id="iUh-8R-SG1"/>
+                        <outlet property="tvTest" destination="gA1-er-eyc" id="ZBN-f3-Ioz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
