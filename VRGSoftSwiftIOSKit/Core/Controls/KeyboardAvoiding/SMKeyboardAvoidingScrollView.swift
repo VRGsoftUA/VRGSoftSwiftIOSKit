@@ -175,7 +175,7 @@ open class SMKeyboardAvoidingScrollView: UIScrollView, SMKeyboardAvoidingProtoco
         
         for childView: UIView in aView.subviews
         {
-            if childView.responds(to: #selector(getter: UIResponder.isFirstResponder))
+            if childView.responds(to: #selector(getter: UIResponder.isFirstResponder)) && childView.isFirstResponder
             {
                 result = childView
                 
@@ -468,10 +468,10 @@ open class SMKeyboardAvoidingScrollView: UIScrollView, SMKeyboardAvoidingProtoco
                     let idealOffset: CGPoint = CGPoint(x: 0, y: self.idealOffsetFor(view: inputField as? UIView, withSpace: visibleSpace))
                     self.setContentOffset(idealOffset, animated: true)
                 }
-            } else
-            {
-                self.hideKeyBoard()
             }
+        } else
+        {
+            self.hideKeyBoard()
         }
     }
     

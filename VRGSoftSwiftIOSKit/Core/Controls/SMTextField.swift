@@ -8,7 +8,7 @@
 
 import UIKit
 
-open class SMTextField: UITextField, SMValidationProtocol, SMFormatterProtocol, SMFilterProtocol
+open class SMTextField: UITextField, SMKeyboardAvoiderProtocol, SMValidationProtocol, SMFormatterProtocol, SMFilterProtocol
 {
     // MARK: - SMFilterProtocol
     
@@ -119,6 +119,11 @@ open class SMTextField: UITextField, SMValidationProtocol, SMFormatterProtocol, 
             self.text = newValue
         }
     }
+    
+    
+    // MARK: - SMKeyboardAvoiderProtocol
+    
+    public weak var keyboardAvoiding: SMKeyboardAvoidingProtocol?
 }
 
 open class SMTextFieldDelegateHolder: NSObject, UITextFieldDelegate
@@ -145,6 +150,11 @@ open class SMTextFieldDelegateHolder: NSObject, UITextFieldDelegate
     
     public func textFieldDidBeginEditing(_ textField: UITextField)
     {
+        if self.holdedTextField != nil && self.holdedTextField!.keyboardAvoiding != nil
+        {
+            self.holdedTextField!.keyboardAvoiding!.adjustOffset()
+        }
+
         if self.holdedTextField != nil && self.holdedTextField!.smdelegate != nil && self.holdedTextField!.smdelegate!.textFieldDidBeginEditing(_:) != nil
         {
             self.holdedTextField!.smdelegate!.textFieldDidBeginEditing!(textField)
@@ -214,9 +224,16 @@ open class SMTextFieldDelegateHolder: NSObject, UITextFieldDelegate
     
     public func textFieldShouldReturn(_ textField: UITextField) -> Bool
     {
+        var result: Bool = true
+        
         if self.holdedTextField != nil && self.holdedTextField!.smdelegate != nil && self.holdedTextField!.smdelegate!.textFieldShouldReturn(_:) != nil
         {
-            return self.holdedTextField!.smdelegate!.textFieldShouldReturn!(textField)
+            result = self.holdedTextField!.smdelegate!.textFieldShouldReturn!(textField)
+        }
+        
+        if result && self.holdedTextField!.keyboardAvoiding != nil
+        {
+            self.holdedTextField!.keyboardAvoiding!.responderShouldReturn(textField)
         }
         
         return true

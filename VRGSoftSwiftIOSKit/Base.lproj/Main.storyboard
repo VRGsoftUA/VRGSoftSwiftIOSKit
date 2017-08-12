@@ -1,14 +1,18 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11106"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="VRGSoftSwiftIOSKit" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -16,11 +20,122 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LUe-c6-lG7" customClass="SMKeyboardAvoidingScrollView" customModule="VRGSoftSwiftIOSKit" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gmv-xw-4eM">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                        <subviews>
+                                            <textField opaque="NO" clipsSubviews="YES" tag="10" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hnA-o8-9mg" customClass="SMTextField" customModule="VRGSoftSwiftIOSKit" customModuleProvider="target">
+                                                <rect key="frame" x="23" y="29" width="328" height="30"/>
+                                                <color key="backgroundColor" red="0.14481315019999999" green="0.82821244000000005" blue="0.30260330439999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="30" id="YGm-xG-AlD"/>
+                                                </constraints>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <textField opaque="NO" clipsSubviews="YES" tag="11" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7RI-gP-cHE" customClass="SMTextField" customModule="VRGSoftSwiftIOSKit" customModuleProvider="target">
+                                                <rect key="frame" x="23" y="128" width="328" height="30"/>
+                                                <color key="backgroundColor" red="0.14481315019999999" green="0.82821244000000005" blue="0.30260330439999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="30" id="59g-kc-uR5"/>
+                                                </constraints>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" keyboardAppearance="alert"/>
+                                            </textField>
+                                            <textField opaque="NO" clipsSubviews="YES" tag="12" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oxw-go-Wg4" customClass="SMTextField" customModule="VRGSoftSwiftIOSKit" customModuleProvider="target">
+                                                <rect key="frame" x="23" y="243" width="328" height="30"/>
+                                                <color key="backgroundColor" red="0.14481315019999999" green="0.82821244000000005" blue="0.30260330439999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="30" id="Egf-Zl-wDj"/>
+                                                </constraints>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <textField opaque="NO" clipsSubviews="YES" tag="13" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nNa-aP-XeF" customClass="SMTextField" customModule="VRGSoftSwiftIOSKit" customModuleProvider="target">
+                                                <rect key="frame" x="23" y="354" width="328" height="30"/>
+                                                <color key="backgroundColor" red="0.14481315019999999" green="0.82821244000000005" blue="0.30260330439999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="30" id="osv-jc-mIt"/>
+                                                </constraints>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" keyboardAppearance="alert"/>
+                                            </textField>
+                                            <textField opaque="NO" clipsSubviews="YES" tag="14" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8hg-wx-Ngn" customClass="SMTextField" customModule="VRGSoftSwiftIOSKit" customModuleProvider="target">
+                                                <rect key="frame" x="23" y="467" width="328" height="30"/>
+                                                <color key="backgroundColor" red="0.14481315019999999" green="0.82821244000000005" blue="0.30260330439999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="30" id="B6M-3g-niz"/>
+                                                </constraints>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <textField opaque="NO" clipsSubviews="YES" tag="15" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qgD-XL-g8l" customClass="SMTextField" customModule="VRGSoftSwiftIOSKit" customModuleProvider="target">
+                                                <rect key="frame" x="23" y="556" width="328" height="30"/>
+                                                <color key="backgroundColor" red="0.14481315019999999" green="0.82821244000000005" blue="0.30260330439999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="30" id="WQB-S7-JgP"/>
+                                                </constraints>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="nNa-aP-XeF" secondAttribute="trailing" constant="24" id="3gD-p9-WiF"/>
+                                            <constraint firstItem="nNa-aP-XeF" firstAttribute="leading" secondItem="gmv-xw-4eM" secondAttribute="leading" constant="23" id="3xd-H3-hOi"/>
+                                            <constraint firstAttribute="trailing" secondItem="qgD-XL-g8l" secondAttribute="trailing" constant="24" id="DID-p0-eQ1"/>
+                                            <constraint firstItem="hnA-o8-9mg" firstAttribute="leading" secondItem="gmv-xw-4eM" secondAttribute="leading" constant="23" id="U2f-Yd-y5h"/>
+                                            <constraint firstItem="qgD-XL-g8l" firstAttribute="top" secondItem="8hg-wx-Ngn" secondAttribute="bottom" constant="59" id="UJ7-bz-WAW"/>
+                                            <constraint firstItem="hnA-o8-9mg" firstAttribute="top" secondItem="gmv-xw-4eM" secondAttribute="top" constant="29" id="Wjm-eM-pM0"/>
+                                            <constraint firstItem="7RI-gP-cHE" firstAttribute="top" secondItem="hnA-o8-9mg" secondAttribute="bottom" constant="69" id="XKE-iz-OX0"/>
+                                            <constraint firstItem="qgD-XL-g8l" firstAttribute="leading" secondItem="gmv-xw-4eM" secondAttribute="leading" constant="23" id="Yjr-3p-LG6"/>
+                                            <constraint firstAttribute="trailing" secondItem="8hg-wx-Ngn" secondAttribute="trailing" constant="24" id="cS1-6s-oH5"/>
+                                            <constraint firstItem="8hg-wx-Ngn" firstAttribute="leading" secondItem="gmv-xw-4eM" secondAttribute="leading" constant="23" id="d8v-2P-K99"/>
+                                            <constraint firstItem="oxw-go-Wg4" firstAttribute="leading" secondItem="gmv-xw-4eM" secondAttribute="leading" constant="23" id="fex-mY-nF6"/>
+                                            <constraint firstAttribute="trailing" secondItem="7RI-gP-cHE" secondAttribute="trailing" constant="24" id="gLr-Se-S9t"/>
+                                            <constraint firstAttribute="trailing" secondItem="oxw-go-Wg4" secondAttribute="trailing" constant="24" id="i2D-9d-lU1"/>
+                                            <constraint firstAttribute="trailing" secondItem="hnA-o8-9mg" secondAttribute="trailing" constant="24" id="qag-R5-OYL"/>
+                                            <constraint firstItem="oxw-go-Wg4" firstAttribute="top" secondItem="7RI-gP-cHE" secondAttribute="bottom" constant="85" id="rkf-qu-Qxg"/>
+                                            <constraint firstItem="nNa-aP-XeF" firstAttribute="top" secondItem="oxw-go-Wg4" secondAttribute="bottom" constant="81" id="sg6-wE-J6g"/>
+                                            <constraint firstItem="7RI-gP-cHE" firstAttribute="leading" secondItem="gmv-xw-4eM" secondAttribute="leading" constant="23" id="vKO-lo-TiD"/>
+                                            <constraint firstItem="8hg-wx-Ngn" firstAttribute="top" secondItem="nNa-aP-XeF" secondAttribute="bottom" constant="83" id="ytn-Wg-4EX"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="gmv-xw-4eM" firstAttribute="height" secondItem="LUe-c6-lG7" secondAttribute="height" id="My6-Nt-cER"/>
+                                    <constraint firstItem="gmv-xw-4eM" firstAttribute="leading" secondItem="LUe-c6-lG7" secondAttribute="leading" id="Sdy-Nq-f6C"/>
+                                    <constraint firstItem="gmv-xw-4eM" firstAttribute="top" secondItem="LUe-c6-lG7" secondAttribute="top" id="TLa-vT-6su"/>
+                                    <constraint firstAttribute="bottom" secondItem="gmv-xw-4eM" secondAttribute="bottom" id="bBC-Qf-5Ec"/>
+                                    <constraint firstAttribute="trailing" secondItem="gmv-xw-4eM" secondAttribute="trailing" id="cvp-SA-EKm"/>
+                                    <constraint firstItem="gmv-xw-4eM" firstAttribute="width" secondItem="LUe-c6-lG7" secondAttribute="width" id="wgM-1e-Brq"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="LUe-c6-lG7" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="mEA-Ry-6kU"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="LUe-c6-lG7" secondAttribute="bottom" id="p6A-KV-wyd"/>
+                            <constraint firstAttribute="trailing" secondItem="LUe-c6-lG7" secondAttribute="trailing" id="pgE-iz-CmE"/>
+                            <constraint firstItem="LUe-c6-lG7" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="sBH-B0-pB2"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="scrollView" destination="LUe-c6-lG7" id="iUh-8R-SG1"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="136.80000000000001" y="138.98050974512745"/>
         </scene>
     </scenes>
 </document>

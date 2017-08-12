@@ -29,5 +29,5 @@ public protocol SMKeyboardAvoidingProtocol: NSObjectProtocol
 
 public protocol SMKeyboardAvoiderProtocol: NSObjectProtocol
 {
-    var keyboardAvoiding: SMKeyboardAvoidingProtocol {get set}
+    weak var keyboardAvoiding: SMKeyboardAvoidingProtocol? {get set}
 }

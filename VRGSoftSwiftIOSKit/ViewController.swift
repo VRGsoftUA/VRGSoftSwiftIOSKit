@@ -8,11 +8,22 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController
+{
+    @IBOutlet weak var scrollView: SMKeyboardAvoidingScrollView!
 
-    override func viewDidLoad() {
+    override func viewDidLoad()
+    {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+    
+        for i in 10...15
+        {
+            let tf: SMTextField = self.view.viewWithTag(i) as! SMTextField
+            
+            self.scrollView.addObjectForKeyboard(tf)
+        }
+        
+        self.scrollView.isShowsKeyboardToolbar = true
     }
 
     override func didReceiveMemoryWarning() {

@@ -10,4 +10,22 @@ import UIKit
 
 open class SMToolbar: UIToolbar
 {
+    public override init(frame: CGRect)
+    {
+        super.init(frame: frame)
+        
+        self.setup()
+    }
+    
+    required public init?(coder aDecoder: NSCoder)
+    {
+        super.init(coder: aDecoder)
+        
+        self.setup()
+    }
+
+    open func setup() -> Void
+    {
+        
+    }
 }

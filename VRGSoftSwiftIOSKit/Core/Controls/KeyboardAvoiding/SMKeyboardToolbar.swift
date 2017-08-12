@@ -24,28 +24,25 @@ open class SMKeyboardToolbar: SMToolbar
     open var bbiBack: UIBarButtonItem = UIBarButtonItem()
     open var bbiNext: UIBarButtonItem = UIBarButtonItem()
     
-    public override init(frame: CGRect)
-    {
-        super.init(frame: frame)
-        
-        self.setup()
-    }
-    
-    required public init?(coder aDecoder: NSCoder)
-    {
-        super.init(coder: aDecoder)
-        
-        self.setup()
-    }
-    
-    open func setup() -> Void
+    open override func setup() -> Void
     {
         self.autoresizingMask = UIViewAutoresizing.flexibleWidth
+        self.barStyle = UIBarStyle.default
+        self.isTranslucent = true
+
+        self.createButtons()
         
+        let vLine: UIView = UIView(frame: CGRect(x: 0, y: self.frame.size.height - 0.5, width: self.frame.size.width, height: 0.5))
+        vLine.backgroundColor = UIColor.black
+        vLine.autoresizingMask = [UIViewAutoresizing.flexibleWidth, UIViewAutoresizing.flexibleTopMargin]
+        self.addSubview(vLine)
+    }
+    
+    func createButtons() -> Void
+    {
         let mainBundle: Bundle = Bundle.main
         
         let resourcesBundle: Bundle = Bundle(path: mainBundle.path(forResource: "VRGSoftSwiftIOSKit", ofType: "bundle")!)!
-        
         
         let btBack: UIButton = UIButton(type: UIButtonType.system)
         let imageLeft: UIImage = UIImage(named: "SMKeyboardAvoideBarArrowLeft", in: resourcesBundle, compatibleWith: nil)!
@@ -53,7 +50,7 @@ open class SMKeyboardToolbar: SMToolbar
         btBack.frame = CGRect(x: 0, y: 0, width: 40, height: 40)
         btBack.addTarget(self, action: #selector(SMKeyboardToolbar.didBtBackClicked(_:)), for: UIControlEvents.touchUpInside)
         bbiBack.customView = btBack
-
+        
         
         let btNext: UIButton = UIButton(type: UIButtonType.system)
         let imageRight: UIImage = UIImage(named: "SMKeyboardAvoideBarArrowRight", in: resourcesBundle, compatibleWith: nil)!
@@ -62,20 +59,12 @@ open class SMKeyboardToolbar: SMToolbar
         btNext.addTarget(self, action: #selector(SMKeyboardToolbar.didBtNextClicked(_:)), for: UIControlEvents.touchUpInside)
         bbiNext.customView = btNext
         
-        
         let bbiFlex: UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil)
-
+        
         let bbiFixed: UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.fixedSpace, target: nil, action: nil)
         bbiFixed.width = 10
         
         self.items = [bbiBack,bbiNext, bbiFlex, bbiDone,bbiFixed]
-
-        
-        let vLine: UIView = UIView(frame: CGRect(x: 0, y: self.frame.size.height - 0.5, width: self.frame.size.width, height: 0.5))
-        vLine.backgroundColor = UIColor.black
-        vLine.autoresizingMask = [UIViewAutoresizing.flexibleWidth, UIViewAutoresizing.flexibleTopMargin]
-        self.addSubview(vLine)
-        self.tintColor = UIColor.black
     }
     
     func setKeyboardAppearance(_ aKeyboardAppearance: UIKeyboardAppearance)
@@ -83,13 +72,14 @@ open class SMKeyboardToolbar: SMToolbar
         switch aKeyboardAppearance
         {
         case .default:
-            self.backgroundColor = UIColor(red: 210.0/255.0, green: 213.0/255.0, blue: 219.0/255.0, alpha: 1.0)
+            self.barTintColor = UIColor(red: 210.0/255.0, green: 213.0/255.0, blue: 219.0/255.0, alpha: 1.0)
             self.tintColor = UIColor.black
         case .light:
-            self.backgroundColor = UIColor(red: 210.0/255.0, green: 213.0/255.0, blue: 219.0/255.0, alpha: 1.0)
+            self.barTintColor = UIColor(red: 210.0/255.0, green: 213.0/255.0, blue: 219.0/255.0, alpha: 1.0)
             self.tintColor = UIColor.black
+
         case .dark:
-            self.backgroundColor = UIColor(red: 80.0/255.0, green: 80.0/255.0, blue: 80.0/255.0, alpha: 1.0)
+            self.barTintColor = UIColor(red: 80.0/255.0, green: 80.0/255.0, blue: 80.0/255.0, alpha: 0.97)
             self.tintColor = UIColor.white
         }
     }
