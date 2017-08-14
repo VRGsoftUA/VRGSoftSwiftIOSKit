@@ -23,7 +23,7 @@ class SMCell: UITableViewCell, SMCellProtocol
         self.backgroundColor = UIColor.clear
     }
     
-    func inputTraits() -> Array <AnyObject>?
+    func inputTraits() -> [UIResponder]?
     {
         return nil
     }

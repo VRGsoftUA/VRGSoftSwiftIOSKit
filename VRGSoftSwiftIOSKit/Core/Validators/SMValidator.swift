@@ -55,10 +55,10 @@ open class SMValidator: AnyObject
 
 open class SMCompoundValidator: SMValidator
 {
-    open let validators: Array<SMValidator>!
+    open let validators: [SMValidator]
     open var successIfAtLeastOne: Bool = false
     
-    public init(validators aValidators: Array<SMValidator>)
+    public init(validators aValidators: [SMValidator])
     {
         validators = aValidators
     }

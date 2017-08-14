@@ -44,7 +44,7 @@ class SMTableDisposer: NSObject, UITableViewDelegate, UITableViewDataSource
         }
     }
     
-    var sections: Array <SMSectionReadonly>! = Array()
+    var sections: [SMSectionReadonly]! = []
 
     func addSection(_ aSection: SMSectionReadonly) -> Void
     {

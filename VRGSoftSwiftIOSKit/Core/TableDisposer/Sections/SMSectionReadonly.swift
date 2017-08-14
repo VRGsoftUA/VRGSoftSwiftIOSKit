@@ -10,8 +10,8 @@ import UIKit
 
 class SMSectionReadonly: NSObject
 {
-    open var cellDataSource: Array <SMCellData>! = Array()
-    open var visibleCellDataSource: Array <SMCellData>! = Array()
+    open var cellDataSource: [SMCellData]! = []
+    open var visibleCellDataSource: [SMCellData]! = []
     open weak var tableDisposer: SMTableDisposer?
     
     open var headerTitle: String?
@@ -27,7 +27,7 @@ class SMSectionReadonly: NSObject
         cellDataSource.append(aCellData)
     }
     
-    func addCellDataFromArray(_ aCellDatas: Array <SMCellData>) -> Void
+    func addCellDataFromArray(_ aCellDatas: [SMCellData]) -> Void
     {
         cellDataSource.append(contentsOf: aCellDatas)
     }
@@ -153,9 +153,9 @@ class SMSectionReadonly: NSObject
         tableDisposer!.tableView!.reloadSections(IndexSet(integer:tableDisposer!.index(by: self)), with: anAnimation)
     }
     
-    func reloadRows(at aIndexes: Array<Int>, withRowAnimation aRowAnimation: UITableViewRowAnimation) -> Void
+    func reloadRows(at aIndexes: [Int], withRowAnimation aRowAnimation: UITableViewRowAnimation) -> Void
     {
-        var indexPaths: Array<IndexPath> = Array()
+        var indexPaths: [IndexPath] = []
         var indexPath: IndexPath
         
         let sectionIndex: Int = tableDisposer!.index(by: self)
@@ -169,9 +169,9 @@ class SMSectionReadonly: NSObject
         tableDisposer!.tableView!.reloadRows(at: indexPaths, with: aRowAnimation)
     }
     
-    func deleteRows(at aIndexes: Array<Int>, withRowAnimation aRowAnimation: UITableViewRowAnimation) -> Void
+    func deleteRows(at aIndexes: [Int], withRowAnimation aRowAnimation: UITableViewRowAnimation) -> Void
     {
-        var toDelete: Array <SMCellData> = Array()
+        var toDelete: [SMCellData] = []
         
         var cellData: SMCellData?
         
@@ -188,7 +188,7 @@ class SMSectionReadonly: NSObject
         
         self.updateCellDataVisibility()
         
-        var indexPaths: Array<IndexPath> = Array()
+        var indexPaths: [IndexPath] = []
         var indexPath: IndexPath
         
         let sectionIndex: Int = tableDisposer!.index(by: self)

@@ -10,7 +10,7 @@ import UIKit
 
 class SMSectionWritable: SMSectionReadonly
 {
-    var cells: Array <UITableViewCell>! = Array()
+    var cells: [UITableViewCell]! = []
     
     func mapToObject() -> Void
     {
@@ -39,15 +39,24 @@ class SMSectionWritable: SMSectionReadonly
     {
         let cellData = self.visibleCellData(at: anIndex)
         let cell = cellData.createCell()
-        (cell as! SMCellProtocol).cellData = cellData
         
-        // if ([disposer.tableView conformsToProtocol:@protocol(SMKeyboardAvoidingProtocol)])
-        // {
-        //     [((id<SMKeyboardAvoidingProtocol>)disposer.tableView) addObjectsForKeyboard:[cell inputTraits]];
-        //     [((SMKeyboardAvoidingTableView*)disposer.tableView) sordetInputTraits:[cell inputTraits] byIndexPath:[NSIndexPath indexPathForRow:anIndex inSection:[disposer indexBySection:self]]];
-        // }
-        
-        //        disposer.didCreateCell(cell)
+        if cell is SMCellProtocol
+        {
+            (cell as! SMCellProtocol).cellData = cellData
+        }
+    
+        if tableDisposer!.tableView is SMKeyboardAvoidingProtocol && cell is SMCell
+        {
+            if let inputTraits = (cell as! SMCell).inputTraits()
+            {
+                (tableDisposer!.tableView as! SMKeyboardAvoidingProtocol).addObjectsForKeyboard(inputTraits)
+                if tableDisposer!.tableView is SMKeyboardAvoidingTableView
+                {
+                    (tableDisposer!.tableView as! SMKeyboardAvoidingTableView).sortedResponders(inputTraits, byIndexPath: IndexPath(row: anIndex, section: tableDisposer!.index(by: self)))
+                }
+            }
+        }
+
         return cell
     }
 
@@ -73,23 +82,26 @@ class SMSectionWritable: SMSectionReadonly
     //TODO:
     override func reload(with anAnimation: UITableViewRowAnimation)
     {
-//        if ([disposer.tableView conformsToProtocol:@protocol(SMKeyboardAvoidingProtocol)])
-//        {
-//            for (SMCell *cell in cells)
-//            {
-//                [(id<SMKeyboardAvoidingProtocol>)disposer.tableView removeObjectsForKeyboard:[cell inputTraits]];
-//            }
-//        }
-
+        if tableDisposer!.tableView is SMKeyboardAvoidingProtocol
+        {
+            for cell in self.cells
+            {
+                if cell is SMCell, let inputTrails = (cell as! SMCell).inputTraits()
+                {
+                    (tableDisposer!.tableView as! SMKeyboardAvoidingProtocol).removeObjectsForKeyboard(inputTrails)
+                }
+            }
+        }
+        
         self.mapToObject()
         
         super.reload(with: anAnimation)
     }
 
     //TODO:
-    override func reloadRows(at aIndexes: Array<Int>, withRowAnimation aRowAnimation: UITableViewRowAnimation)
+    override func reloadRows(at aIndexes: [Int], withRowAnimation aRowAnimation: UITableViewRowAnimation)
     {
-        var indexPaths : Array<IndexPath> = Array()
+        var indexPaths : [IndexPath] = []
         var indexPath : IndexPath
         let sectionIndex : Int = tableDisposer!.index(by: self)
         
@@ -152,12 +164,15 @@ class SMSectionWritable: SMSectionReadonly
         
         let index : Int = self.index(byVisible: cellData)
         
-//        let cell : UITableViewCell = self.cell(for: index)
+        let cell : UITableViewCell = self.cell(forIndex: index)
         
-//        if ([disposer.tableView conformsToProtocol:@protocol(SMKeyboardAvoidingProtocol)])
-//        {
-//            [((id<SMKeyboardAvoidingProtocol>)disposer.tableView) removeObjectsForKeyboard:[cell inputTraits]];
-//        }
+        if tableDisposer!.tableView is SMKeyboardAvoidingProtocol && cell is SMCell
+        {
+            if let inputTraits = (cell as! SMCell).inputTraits()
+            {
+                (tableDisposer!.tableView as! SMKeyboardAvoidingProtocol).addObjectsForKeyboard(inputTraits)
+            }
+        }
 
         visibleCellDataSource.remove(at: index)
         cells.remove(at: index)
@@ -170,7 +185,7 @@ class SMSectionWritable: SMSectionReadonly
         }
     }
     
-    override func deleteRows(at aIndexes: Array<Int>, withRowAnimation aRowAnimation: UITableViewRowAnimation)
+    override func deleteRows(at aIndexes: [Int], withRowAnimation aRowAnimation: UITableViewRowAnimation)
     {
         super.deleteRows(at: aIndexes, withRowAnimation: aRowAnimation)
         

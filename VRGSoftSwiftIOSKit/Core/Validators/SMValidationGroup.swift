@@ -11,14 +11,14 @@ import UIKit
 
 class SMValidationGroup: AnyObject
 {
-    var validators: Array<SMValidator> = Array<SMValidator>()
+    var validators: [SMValidator] = []
 
     open func add(validator aValidator: SMValidator) -> Void
     {
         validators.append(aValidator)
     }
 
-    open func add(validators aValidators: Array<SMValidator>) -> Void
+    open func add(validators aValidators: [SMValidator]) -> Void
     {
         validators.append(contentsOf: aValidators)
     }
@@ -28,9 +28,9 @@ class SMValidationGroup: AnyObject
         validators.removeAll()
     }
     
-    open func validate() -> Array<SMValidationProtocol>
+    open func validate() -> [SMValidationProtocol]
     {
-        var result: Array<SMValidationProtocol> = Array<SMValidationProtocol>()
+        var result: [SMValidationProtocol] = []
         
         for validator: SMValidator in validators
         {

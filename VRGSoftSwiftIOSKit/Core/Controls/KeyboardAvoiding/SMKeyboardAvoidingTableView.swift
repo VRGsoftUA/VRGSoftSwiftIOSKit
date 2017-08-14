@@ -55,7 +55,7 @@ class SMKeyboardAvoidingTableView: UITableView, SMKeyboardAvoidingProtocol, SMKe
     }
     
     open override var frame: CGRect
-        {
+    {
         didSet
         {
             if originalContentSize != nil

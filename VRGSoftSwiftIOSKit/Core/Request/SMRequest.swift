@@ -27,14 +27,9 @@ class SMRequest: NSObject
 {
     let defaultResponseQueue: DispatchQueue = DispatchQueue.main
 
-    var responseBlocks: [SMResponseNode]
+    var responseBlocks: [SMResponseNode] = []
     var executeAllResponseBlocksSync: Bool = false
-    
-    public override init()
-    {
-        responseBlocks = Array()
-    }
-    
+        
     func canExecute() -> Bool
     {
         return false
