@@ -130,11 +130,11 @@ class SMKeyboardAvoidingTableView: UITableView, SMKeyboardAvoidingProtocol, SMKe
         
         if aView != nil
         {
-            if aView is UITextInputTraits
+            if self.objectsInKeyboard.contains(aView!)
             {
                 selectIndexInputField = self.objectsInKeyboard.index(of:aView!)!
                 
-                if self.keyboardToolbar != nil && selectIndexInputField != NSNotFound
+                if self.keyboardToolbar != nil
                 {
                     self.keyboardToolbar!.selectedInputField(index: selectIndexInputField, allCount: objectsInKeyboard.count)
                 }
@@ -227,7 +227,10 @@ class SMKeyboardAvoidingTableView: UITableView, SMKeyboardAvoidingProtocol, SMKe
                 
                 if let firstResponder = self.findFirstResponderBeneath(view: self)
                 {
-                    selectIndexInputField = objectsInKeyboard.index(of: firstResponder)!
+                    if objectsInKeyboard.contains(firstResponder)
+                    {
+                        selectIndexInputField = objectsInKeyboard.index(of: firstResponder)!
+                    }
                     
                     priorInset = self.contentInset
                     
@@ -348,26 +351,27 @@ class SMKeyboardAvoidingTableView: UITableView, SMKeyboardAvoidingProtocol, SMKe
     
     public func removeObjectForKeyboard(_ aObjectForKeyboard: UIResponder) -> Void
     {
-        let index = self.objectsInKeyboard.index(of: aObjectForKeyboard)
-        
-        if index != NSNotFound
+        if self.objectsInKeyboard.contains(aObjectForKeyboard)
         {
+            let index = self.objectsInKeyboard.index(of: aObjectForKeyboard)
+            
             objectsInKeyboard.remove(at: index!)
-        }
-        
-        if objectsInKeyboard.count > 0
-        {
-            if objectsInKeyboard.last is UITextField
+            
+            if objectsInKeyboard.count > 0
             {
-                (objectsInKeyboard.last as! UITextField).returnKeyType = UIReturnKeyType.done
-            } else if objectsInKeyboard.last is UITextView
-            {
-                (objectsInKeyboard.last as! UITextView).returnKeyType = UIReturnKeyType.done
-            } else if objectsInKeyboard.last is UISearchBar
-            {
-                (objectsInKeyboard.last as! UISearchBar).returnKeyType = UIReturnKeyType.done
+                if objectsInKeyboard.last is UITextField
+                {
+                    (objectsInKeyboard.last as! UITextField).returnKeyType = UIReturnKeyType.done
+                } else if objectsInKeyboard.last is UITextView
+                {
+                    (objectsInKeyboard.last as! UITextView).returnKeyType = UIReturnKeyType.done
+                } else if objectsInKeyboard.last is UISearchBar
+                {
+                    (objectsInKeyboard.last as! UISearchBar).returnKeyType = UIReturnKeyType.done
+                }
             }
         }
+        
 
         var deleteIndexPath: IndexPath? = nil
         
