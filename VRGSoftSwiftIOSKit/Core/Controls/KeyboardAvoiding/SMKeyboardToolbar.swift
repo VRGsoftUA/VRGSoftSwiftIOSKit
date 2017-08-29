@@ -40,7 +40,7 @@ open class SMKeyboardToolbar: SMToolbar
     
     func createButtons() -> Void
     {
-        let mainBundle: Bundle = Bundle.main
+        let mainBundle: Bundle = Bundle(for: type(of: self))
         
         let resourcesBundle: Bundle = Bundle(path: mainBundle.path(forResource: "VRGSoftSwiftIOSKit", ofType: "bundle")!)!
         
