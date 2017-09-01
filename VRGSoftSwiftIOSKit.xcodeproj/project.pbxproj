@@ -19,6 +19,18 @@
 		B74DF3A41F34955500405847 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B74DF3A21F34955500405847 /* LaunchScreen.storyboard */; };
 		B74DF3AC1F34A3FC00405847 /* VRGSoftSwiftIOSKit.podspec in Resources */ = {isa = PBXBuildFile; fileRef = B74DF3AB1F34A3FC00405847 /* VRGSoftSwiftIOSKit.podspec */; };
 		B750D16A1F3DD9D60086FEB7 /* SMToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B750D1691F3DD9D60086FEB7 /* SMToolbar.swift */; };
+		B76326D11F4AC804000E3031 /* SMPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B76326D01F4AC804000E3031 /* SMPopupViewController.swift */; };
+		B76326D41F4B1FB8000E3031 /* SMPopupPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B76326D31F4B1FB8000E3031 /* SMPopupPicker.swift */; };
+		B76326D61F4B23DD000E3031 /* SMHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B76326D51F4B23DD000E3031 /* SMHelper.swift */; };
+		B775AA581F4C1AF6003714F8 /* SMPopupSimplePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B775AA571F4C1AF6003714F8 /* SMPopupSimplePicker.swift */; };
+		B775AA5A1F4C4136003714F8 /* SMPopupPickerItemTitled.swift in Sources */ = {isa = PBXBuildFile; fileRef = B775AA591F4C4136003714F8 /* SMPopupPickerItemTitled.swift */; };
+		B775AA5C1F4C51DF003714F8 /* SMPopupDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B775AA5B1F4C51DF003714F8 /* SMPopupDatePicker.swift */; };
+		B775AA5E1F4C5A93003714F8 /* SMPopupDateTimePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B775AA5D1F4C5A93003714F8 /* SMPopupDateTimePicker.swift */; };
+		B775AA601F4C5BB1003714F8 /* SMPopupHoursMinutesPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B775AA5F1F4C5BB1003714F8 /* SMPopupHoursMinutesPicker.swift */; };
+		B775AA621F4C61E3003714F8 /* SMPopupTimePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B775AA611F4C61E3003714F8 /* SMPopupTimePicker.swift */; };
+		B775AA641F4C6318003714F8 /* SMPopupCustomSimplePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B775AA631F4C6318003714F8 /* SMPopupCustomSimplePicker.swift */; };
+		B7C2F9BE1F46EE740066FA3D /* SMPopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7C2F9BD1F46EE740066FA3D /* SMPopoverViewController.swift */; };
+		B7C2F9C01F46EE8E0066FA3D /* SMPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7C2F9BF1F46EE8E0066FA3D /* SMPopupView.swift */; };
 		B7ED41F91F34B271006C24DC /* VRGSoftSwiftIOSKit.bundle in Resources */ = {isa = PBXBuildFile; fileRef = B7ED41F81F34B271006C24DC /* VRGSoftSwiftIOSKit.bundle */; };
 		B7F833CF1F39FC2200B0BC67 /* SMActivityAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F833861F39FC2200B0BC67 /* SMActivityAdapter.swift */; };
 		B7F833D01F39FC2200B0BC67 /* SMActivityPKHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F833871F39FC2200B0BC67 /* SMActivityPKHUD.swift */; };
@@ -88,6 +100,18 @@
 		B74DF3A51F34955500405847 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B74DF3AB1F34A3FC00405847 /* VRGSoftSwiftIOSKit.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = VRGSoftSwiftIOSKit.podspec; sourceTree = "<group>"; };
 		B750D1691F3DD9D60086FEB7 /* SMToolbar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMToolbar.swift; sourceTree = "<group>"; };
+		B76326D01F4AC804000E3031 /* SMPopupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMPopupViewController.swift; sourceTree = "<group>"; };
+		B76326D31F4B1FB8000E3031 /* SMPopupPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMPopupPicker.swift; sourceTree = "<group>"; };
+		B76326D51F4B23DD000E3031 /* SMHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMHelper.swift; sourceTree = "<group>"; };
+		B775AA571F4C1AF6003714F8 /* SMPopupSimplePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMPopupSimplePicker.swift; sourceTree = "<group>"; };
+		B775AA591F4C4136003714F8 /* SMPopupPickerItemTitled.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMPopupPickerItemTitled.swift; sourceTree = "<group>"; };
+		B775AA5B1F4C51DF003714F8 /* SMPopupDatePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMPopupDatePicker.swift; sourceTree = "<group>"; };
+		B775AA5D1F4C5A93003714F8 /* SMPopupDateTimePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMPopupDateTimePicker.swift; sourceTree = "<group>"; };
+		B775AA5F1F4C5BB1003714F8 /* SMPopupHoursMinutesPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMPopupHoursMinutesPicker.swift; sourceTree = "<group>"; };
+		B775AA611F4C61E3003714F8 /* SMPopupTimePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMPopupTimePicker.swift; sourceTree = "<group>"; };
+		B775AA631F4C6318003714F8 /* SMPopupCustomSimplePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMPopupCustomSimplePicker.swift; sourceTree = "<group>"; };
+		B7C2F9BD1F46EE740066FA3D /* SMPopoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMPopoverViewController.swift; sourceTree = "<group>"; };
+		B7C2F9BF1F46EE8E0066FA3D /* SMPopupView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMPopupView.swift; sourceTree = "<group>"; };
 		B7ED41F81F34B271006C24DC /* VRGSoftSwiftIOSKit.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = VRGSoftSwiftIOSKit.bundle; sourceTree = "<group>"; };
 		B7F833861F39FC2200B0BC67 /* SMActivityAdapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMActivityAdapter.swift; sourceTree = "<group>"; };
 		B7F833871F39FC2200B0BC67 /* SMActivityPKHUD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMActivityPKHUD.swift; sourceTree = "<group>"; };
@@ -208,6 +232,24 @@
 			path = VRGSoftSwiftIOSKit;
 			sourceTree = "<group>";
 		};
+		B7C2F9BC1F46EE580066FA3D /* Popup */ = {
+			isa = PBXGroup;
+			children = (
+				B7C2F9BF1F46EE8E0066FA3D /* SMPopupView.swift */,
+				B76326D31F4B1FB8000E3031 /* SMPopupPicker.swift */,
+				B775AA591F4C4136003714F8 /* SMPopupPickerItemTitled.swift */,
+				B775AA5B1F4C51DF003714F8 /* SMPopupDatePicker.swift */,
+				B775AA611F4C61E3003714F8 /* SMPopupTimePicker.swift */,
+				B775AA5D1F4C5A93003714F8 /* SMPopupDateTimePicker.swift */,
+				B775AA5F1F4C5BB1003714F8 /* SMPopupHoursMinutesPicker.swift */,
+				B775AA571F4C1AF6003714F8 /* SMPopupSimplePicker.swift */,
+				B775AA631F4C6318003714F8 /* SMPopupCustomSimplePicker.swift */,
+				B76326D01F4AC804000E3031 /* SMPopupViewController.swift */,
+				B7C2F9BD1F46EE740066FA3D /* SMPopoverViewController.swift */,
+			);
+			path = Popup;
+			sourceTree = "<group>";
+		};
 		B7ED41F71F34B1B6006C24DC /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -272,6 +314,7 @@
 		B7F833911F39FC2200B0BC67 /* Controls */ = {
 			isa = PBXGroup;
 			children = (
+				B7C2F9BC1F46EE580066FA3D /* Popup */,
 				B71D37D41F3CA065007DD6EE /* KeyboardAvoiding */,
 				B7F833921F39FC2200B0BC67 /* SMLabel.swift */,
 				B7F833931F39FC2200B0BC67 /* SMTextField.swift */,
@@ -338,6 +381,7 @@
 				B7F833AB1F39FC2200B0BC67 /* UIView+Animation.swift */,
 				B7F833AC1F39FC2200B0BC67 /* UIView+Help.swift */,
 				B7F833AD1F39FC2200B0BC67 /* UIView+PSSizes.swift */,
+				B76326D51F4B23DD000E3031 /* SMHelper.swift */,
 			);
 			path = Help;
 			sourceTree = "<group>";
@@ -592,8 +636,11 @@
 				B7F833E01F39FC2200B0BC67 /* SMFetcherWithRequest.swift in Sources */,
 				B7F833DC1F39FC2200B0BC67 /* SMDataFetcherProtocol.swift in Sources */,
 				B7F833D21F39FC2200B0BC67 /* SMNativePullToRefreshAdapter.swift in Sources */,
+				B775AA5C1F4C51DF003714F8 /* SMPopupDatePicker.swift in Sources */,
+				B7C2F9BE1F46EE740066FA3D /* SMPopoverViewController.swift in Sources */,
 				B7F833F91F39FC2200B0BC67 /* SMCell.swift in Sources */,
 				B7F833EF1F39FC2200B0BC67 /* SMModuleListPaging.swift in Sources */,
+				B76326D61F4B23DD000E3031 /* SMHelper.swift in Sources */,
 				B71D37D81F3CA2D1007DD6EE /* SMKeyboardToolbar.swift in Sources */,
 				B7F833FE1F39FC2200B0BC67 /* SMValidationGroup.swift in Sources */,
 				B74DF39A1F34955500405847 /* AppDelegate.swift in Sources */,
@@ -613,25 +660,33 @@
 				B7F833F21F39FC2200B0BC67 /* SMRequest.swift in Sources */,
 				B71552411F3FAABB0073653B /* SMKeyboardAvoidingTableView.swift in Sources */,
 				B7F833FC1F39FC2200B0BC67 /* SMTableDisposer.swift in Sources */,
+				B775AA601F4C5BB1003714F8 /* SMPopupHoursMinutesPicker.swift in Sources */,
 				B7F833E61F39FC2200B0BC67 /* SMColor.swift in Sources */,
+				B76326D41F4B1FB8000E3031 /* SMPopupPicker.swift in Sources */,
+				B775AA621F4C61E3003714F8 /* SMPopupTimePicker.swift in Sources */,
 				B7F833E11F39FC2200B0BC67 /* SMFilter.swift in Sources */,
 				B7F833E21F39FC2200B0BC67 /* SMFormatter.swift in Sources */,
 				B7F833D71F39FC2200B0BC67 /* SMTitledID.swift in Sources */,
 				B71D37D61F3CA07F007DD6EE /* SMKeyboardAvoiding.swift in Sources */,
 				B7F833D61F39FC2200B0BC67 /* SMTargetAction.swift in Sources */,
 				B7F834011F39FC2200B0BC67 /* UIViewController+Help.swift in Sources */,
+				B775AA581F4C1AF6003714F8 /* SMPopupSimplePicker.swift in Sources */,
 				B7F833D51F39FC2200B0BC67 /* SMPair.swift in Sources */,
 				B7F833F61F39FC2200B0BC67 /* SMCellDataMaped.swift in Sources */,
 				B7F833F81F39FC2200B0BC67 /* SMCellProtocol.swift in Sources */,
 				B7F833E51F39FC2200B0BC67 /* SMGatewayRequest.swift in Sources */,
+				B76326D11F4AC804000E3031 /* SMPopupViewController.swift in Sources */,
+				B7C2F9C01F46EE8E0066FA3D /* SMPopupView.swift in Sources */,
 				B7F833DD1F39FC2200B0BC67 /* SMFetcherIntoStorage.swift in Sources */,
 				B7F833D91F39FC2200B0BC67 /* SMTextField.swift in Sources */,
 				B7F833F41F39FC2200B0BC67 /* SMResponse.swift in Sources */,
 				B7F833E91F39FC2200B0BC67 /* UIImageView+Help.swift in Sources */,
+				B775AA5E1F4C5A93003714F8 /* SMPopupDateTimePicker.swift in Sources */,
 				B7F833FB1F39FC2200B0BC67 /* SMSectionWritable.swift in Sources */,
 				B7F833EC1F39FC2200B0BC67 /* UIView+Help.swift in Sources */,
 				B71D37DA1F3CA585007DD6EE /* SMKeyboardAvoidingScrollView.swift in Sources */,
 				B7F833F11F39FC2200B0BC67 /* SMDataBaseRequest.swift in Sources */,
+				B775AA641F4C6318003714F8 /* SMPopupCustomSimplePicker.swift in Sources */,
 				B7F833EE1F39FC2200B0BC67 /* SMModuleList.swift in Sources */,
 				B7F833DB1F39FC2200B0BC67 /* SMStorage.swift in Sources */,
 				B7F833EB1F39FC2200B0BC67 /* UIView+Animation.swift in Sources */,
@@ -641,6 +696,7 @@
 				B7F834001F39FC2200B0BC67 /* SMViewController.swift in Sources */,
 				B7F833EA1F39FC2200B0BC67 /* UILabel+Help.swift in Sources */,
 				B7F833F01F39FC2200B0BC67 /* SMModuleRemotePushes.swift in Sources */,
+				B775AA5A1F4C4136003714F8 /* SMPopupPickerItemTitled.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
