@@ -31,3 +31,11 @@ open class SMTitledID : AnyObject
         return "\(String(describing: ID)) \(String(describing: title))"
     }
 }
+
+extension SMTitledID: Equatable
+{
+    public static func == (lhs: SMTitledID, rhs: SMTitledID) -> Bool
+    {
+        return lhs.ID === rhs.ID && lhs.title == rhs.title
+    }
+}
