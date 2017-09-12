@@ -10,9 +10,9 @@ import UIKit
 
 extension UIView
 {
-    open class func loadFromNib() -> UIView
+    open class func loadFromNib<T>() -> T
     {
-        let result: UIView = Bundle.main.loadNibNamed(String(describing: self), owner: self, options: nil)?.last as! UIView
+        let result: T = Bundle.main.loadNibNamed(String(describing: self), owner: self, options: nil)?.last as! T
         
         return result
     }
