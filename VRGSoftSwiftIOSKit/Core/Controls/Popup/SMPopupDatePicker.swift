@@ -37,7 +37,7 @@ class SMPopupDatePicker: SMPopupPicker
         }
         set
         {
-            self.selectedItem = newValue
+            self.popupedPicker.date = newValue
         }
     }
     
