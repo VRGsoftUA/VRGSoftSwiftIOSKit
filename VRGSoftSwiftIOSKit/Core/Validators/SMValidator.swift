@@ -231,10 +231,11 @@ open class SMValidatorEmail: SMValidator
         
         var count: Int = 0
         
-        if self.validatableObject != nil && self.validatableObject?.validatableText != nil
+        if let validatableText = validatableObject?.validatableText
         {
-            count = regExp.numberOfMatches(in: (self.validatableObject?.validatableText)!, options: NSRegularExpression.MatchingOptions(rawValue: 0), range: NSMakeRange(0, (self.validatableObject?.validatableText)!.count))
+            count = regExp.numberOfMatches(in: validatableText, options: NSRegularExpression.MatchingOptions(rawValue: 0), range: NSMakeRange(0, validatableText.count))
         }
+
         
         return count == 1
     }
@@ -302,9 +303,9 @@ open class SMValidatorRegExp: SMValidator
         
         var count: Int = 0
 
-        if self.validatableObject?.validatableText != nil
+        if let validatableText = validatableObject?.validatableText
         {
-            count = regularExpression.numberOfMatches(in: (self.validatableObject?.validatableText)!, options: NSRegularExpression.MatchingOptions(rawValue: 0), range: NSMakeRange(0, (self.validatableObject?.validatableText)!.count))
+            count = regularExpression.numberOfMatches(in: validatableText, options: NSRegularExpression.MatchingOptions(rawValue: 0), range: NSMakeRange(0, validatableText.count))
         }
         
         return count == 1
@@ -324,9 +325,9 @@ open class SMValidatorUSAZipCode: SMValidator
         
         var count: Int = 0
         
-        if self.validatableObject != nil && self.validatableObject?.validatableText != nil && self.validatableObject?.validatableText?.count == 5
+        if let validatableText = validatableObject?.validatableText && validatableText.count == 5
         {
-            count = regExp.numberOfMatches(in: (self.validatableObject?.validatableText)!, options: NSRegularExpression.MatchingOptions(rawValue: 0), range: NSMakeRange(0, (self.validatableObject?.validatableText)!.count))
+            count = regExp.numberOfMatches(in: validatableText, options: NSRegularExpression.MatchingOptions(rawValue: 0), range: NSMakeRange(0, validatableText.count))
         }
         
         return count == 1
