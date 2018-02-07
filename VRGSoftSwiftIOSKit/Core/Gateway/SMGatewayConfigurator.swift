@@ -9,7 +9,7 @@
 import Foundation
 import Alamofire
 
-class SMGatewayConfigurator
+open class SMGatewayConfigurator
 {
     static var shared: SMGatewayConfigurator = SMGatewayConfigurator()
 

@@ -21,7 +21,7 @@ import MulticastDelegateSwift
     @objc optional func tableDisposer(_ aTableDisposer: SMTableDisposer, cellDataClassForUnregisteredModel aModel: AnyObject) -> AnyClass
 }
 
-class SMTableDisposerModeled: SMTableDisposer
+open class SMTableDisposerModeled: SMTableDisposer
 {
     let modeledMulticastDelegate: MulticastDelegate<SMTableDisposerModeledMulticastDelegate> = MulticastDelegate(strongReferences: false)
 

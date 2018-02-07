@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SMPopupDateTimePicker: SMPopupDatePicker
+open class SMPopupDateTimePicker: SMPopupDatePicker
 {
     //MARK: override next methods to customize:
     

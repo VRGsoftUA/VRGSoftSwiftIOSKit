@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SMNativeMoreTableViewCellData: SMCellData, SMPagingMoreCellDataProtocol
+open class SMNativeMoreTableViewCellData: SMCellData, SMPagingMoreCellDataProtocol
 {
     override init()
     {
@@ -20,7 +20,7 @@ class SMNativeMoreTableViewCellData: SMCellData, SMPagingMoreCellDataProtocol
     }
 }
 
-class SMNativeMoreTableViewCell: UITableViewCell, SMPagingMoreCellProtocol
+open class SMNativeMoreTableViewCell: UITableViewCell, SMPagingMoreCellProtocol
 {
 
     let activity: UIActivityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.gray)

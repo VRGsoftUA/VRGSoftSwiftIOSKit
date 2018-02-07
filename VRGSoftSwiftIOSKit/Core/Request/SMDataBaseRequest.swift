@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class SMDataBaseRequest: SMRequest
+open class SMDataBaseRequest: SMRequest
 {
     var storage: SMStorage?
     var cancelled: Bool

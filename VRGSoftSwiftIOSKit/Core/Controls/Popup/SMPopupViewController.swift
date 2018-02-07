@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SMPopupViewController: UIViewController
+open class SMPopupViewController: UIViewController
 {
     static let motionDuration = 0.4
     

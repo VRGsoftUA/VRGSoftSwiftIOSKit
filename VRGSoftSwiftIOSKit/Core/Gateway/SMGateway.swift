@@ -9,7 +9,7 @@
 import Foundation
 import Alamofire
 
-class SMGateway
+open class SMGateway
 {
     var defaultParameters: [String: AnyObject] = [:]
     var defaultHeaders: [String: String] = [:]

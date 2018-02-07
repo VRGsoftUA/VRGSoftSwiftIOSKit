@@ -8,7 +8,7 @@
 
 import Foundation
 
-class SMPair <FirstType, SecondType>
+open class SMPair <FirstType, SecondType>
 {
     var first : FirstType?
     var second : SecondType?

@@ -8,7 +8,7 @@
 
 import Foundation
 
-class SMResponse: NSObject
+open class SMResponse: NSObject
 {
 
     var success: Bool = false

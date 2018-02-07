@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SMSectionReadonly: NSObject
+open class SMSectionReadonly: NSObject
 {
     open var cellDataSource: [SMCellData]! = []
     open var visibleCellDataSource: [SMCellData]! = []

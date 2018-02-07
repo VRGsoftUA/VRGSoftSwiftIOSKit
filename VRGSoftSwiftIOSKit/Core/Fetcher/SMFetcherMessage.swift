@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SMFetcherMessage: NSObject
+open class SMFetcherMessage: NSObject
 {
     let defaultParameters: [String: AnyObject] = [:]
     
@@ -19,7 +19,7 @@ class SMFetcherMessage: NSObject
 }
 
 
-class SMFetcherMessagePaging: SMFetcherMessage
+open class SMFetcherMessagePaging: SMFetcherMessage
 {
     var pagingSize: Int = 0
     var pagingOffset: Int = 0

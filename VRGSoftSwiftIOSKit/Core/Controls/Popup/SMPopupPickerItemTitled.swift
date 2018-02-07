@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol SMPopupPickerItemTitled
+public protocol SMPopupPickerItemTitled
 {
     var itemTitled: String { get set }
 }

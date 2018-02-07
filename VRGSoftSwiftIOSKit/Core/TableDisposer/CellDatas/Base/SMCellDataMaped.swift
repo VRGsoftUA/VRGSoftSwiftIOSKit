@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SMCellDataMaped: SMCellData
+open class SMCellDataMaped: SMCellData
 {
     var key : String?
     var object : AnyObject?

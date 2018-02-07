@@ -10,7 +10,7 @@ import Foundation
 
 typealias SMRequestResponseBlock = (SMResponse) -> Void
 
-class SMResponseNode
+open class SMResponseNode
 {
     let responseQueue: DispatchQueue
     let responseBlock: SMRequestResponseBlock
@@ -23,7 +23,7 @@ class SMResponseNode
 }
 
 
-class SMRequest: NSObject
+open class SMRequest: NSObject
 {
     let defaultResponseQueue: DispatchQueue = DispatchQueue.main
 

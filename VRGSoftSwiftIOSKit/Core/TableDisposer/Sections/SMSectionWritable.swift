@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SMSectionWritable: SMSectionReadonly
+open class SMSectionWritable: SMSectionReadonly
 {
     var cells: [UITableViewCell]! = []
     

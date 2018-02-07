@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SMFetcherIntoStorage: SMFetcherWithRequest
+open class SMFetcherIntoStorage: SMFetcherWithRequest
 {
     var isFetchOnlyFromDataBase: Bool = false
     var isFetchFromDataBaseWhenGatewayRequestFailed: Bool = false

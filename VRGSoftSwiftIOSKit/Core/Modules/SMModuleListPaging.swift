@@ -26,7 +26,7 @@ import UIKit
 }
 
 
-class SMModuleListPaging: SMModuleList, SMTableDisposerMulticastDelegate
+open class SMModuleListPaging: SMModuleList, SMTableDisposerMulticastDelegate
 {
     var initialPageOffset : Int = 0
     var isItemsAsPage : Bool = false

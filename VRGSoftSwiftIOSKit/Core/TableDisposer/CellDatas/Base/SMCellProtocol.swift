@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol SMCellProtocol : NSObjectProtocol
+public protocol SMCellProtocol : NSObjectProtocol
 {
     var cellData: SMCellData? { get set }
     func setupCellData(_ aCellData: SMCellData!) -> Void

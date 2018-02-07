@@ -9,7 +9,7 @@
 import UIKit
 //import PKHUD
 
-class SMActivityPKHUD: SMActivityAdapter
+open class SMActivityPKHUD: SMActivityAdapter
 {
 //    weak var parrentView: UIView?
 //    override func configureWith(view aView: UIView) -> Void

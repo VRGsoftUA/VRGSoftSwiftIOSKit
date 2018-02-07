@@ -22,7 +22,7 @@ typealias SMModuleListFetcherCantFetch = (SMModuleList, SMFetcherMessage) -> Voi
     @objc optional func moduleList(_ aModule: SMModuleList, didReloadDataWithModels aModels: [AnyObject]) -> Void
 }
 
-class SMModuleList: NSObject
+open class SMModuleList: NSObject
 {
     var moduleQueue: DispatchQueue = DispatchQueue(label: "SMModuleList.Queue")
     var lastUpdateDate: Date?

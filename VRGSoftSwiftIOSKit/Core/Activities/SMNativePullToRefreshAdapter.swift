@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SMNativePullToRefreshAdapter: SMPullToRefreshAdapter
+open class SMNativePullToRefreshAdapter: SMPullToRefreshAdapter
 {
     let refreshControl: UIRefreshControl = UIRefreshControl()
     

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SMPopoverViewController: UIViewController
+open class SMPopoverViewController: UIViewController
 {
     var popupedView: SMPopupView
     var popoverOwner: UIViewController?

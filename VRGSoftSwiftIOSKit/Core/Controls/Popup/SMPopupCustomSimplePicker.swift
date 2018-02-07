@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SMPopupCustomSimplePicker: SMPopupSimplePicker
+open class SMPopupCustomSimplePicker: SMPopupSimplePicker
 {
     var font: UIFont?
     var textColor: UIColor?

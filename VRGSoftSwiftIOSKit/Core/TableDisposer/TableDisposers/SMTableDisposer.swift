@@ -33,7 +33,7 @@ import MulticastDelegateSwift
 }
 
 
-class SMTableDisposer: NSObject, UITableViewDelegate, UITableViewDataSource
+open class SMTableDisposer: NSObject, UITableViewDelegate, UITableViewDataSource
 {
     var tableView: UITableView?
     {

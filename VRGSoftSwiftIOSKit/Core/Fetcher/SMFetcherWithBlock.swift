@@ -11,7 +11,7 @@ import UIKit
 typealias SMDataFetchBlock = (SMFetcherMessage, @escaping SMDataFetchCallback) -> Void
 
 
-class SMFetcherWithBlock: SMDataFetcherProtocol
+open class SMFetcherWithBlock: SMDataFetcherProtocol
 {
     // MARK: SMDataFetcherProtocol
     

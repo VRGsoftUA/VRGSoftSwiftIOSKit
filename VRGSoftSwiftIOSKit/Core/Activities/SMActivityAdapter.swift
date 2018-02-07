@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SMActivityAdapter
+open class SMActivityAdapter
 {
     var activity: AnyObject?
     

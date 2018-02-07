@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SMTextView: UITextView, SMKeyboardAvoiderProtocol, SMValidationProtocol, SMFilterProtocol
+open class SMTextView: UITextView, SMKeyboardAvoiderProtocol, SMValidationProtocol, SMFilterProtocol
 {
     var smdelegate: UITextViewDelegate?
     
@@ -193,7 +193,7 @@ class SMTextView: UITextView, SMKeyboardAvoiderProtocol, SMValidationProtocol, S
     }
 }
 
-class SMTextViewDelegateHolder: NSObject, UITextViewDelegate
+open class SMTextViewDelegateHolder: NSObject, UITextViewDelegate
 {
     weak var holdedTextView: SMTextView?
     

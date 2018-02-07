@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SMKeyboardAvoidingTableView: UITableView, SMKeyboardAvoidingProtocol, SMKeyboardToolbarDelegate
+open class SMKeyboardAvoidingTableView: UITableView, SMKeyboardAvoidingProtocol, SMKeyboardToolbarDelegate
 {
     var priorInset: UIEdgeInsets = UIEdgeInsets()
     open var isKeyboardVisible: Bool = false

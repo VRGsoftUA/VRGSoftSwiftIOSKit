@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class SMValidationGroup
+open class SMValidationGroup
 {
     var validators: [SMValidator] = []
 

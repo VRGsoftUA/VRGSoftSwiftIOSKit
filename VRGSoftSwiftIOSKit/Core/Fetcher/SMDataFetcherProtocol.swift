@@ -11,7 +11,7 @@ import Foundation
 typealias SMDataFetchCallback = (SMResponse) -> Void
 
 
-protocol SMDataFetcherProtocol
+public protocol SMDataFetcherProtocol
 {
     var callbackQueue: DispatchQueue? {get set}
     

@@ -10,7 +10,7 @@ import UIKit
 
 typealias SMPullToRefreshAdapterRefreshCallback = (SMPullToRefreshAdapter) -> Void
 
-class SMPullToRefreshAdapter
+open class SMPullToRefreshAdapter
 {
     open var enabled: Bool?
     

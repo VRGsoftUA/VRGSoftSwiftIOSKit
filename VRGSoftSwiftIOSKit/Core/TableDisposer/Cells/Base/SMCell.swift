@@ -9,7 +9,7 @@
 import UIKit
 
 
-class SMCell: UITableViewCell, SMCellProtocol
+open class SMCell: UITableViewCell, SMCellProtocol
 {
     required override init(style: UITableViewCellStyle, reuseIdentifier: String?)
     {

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SMCellDataModeled: SMCellData
+open class SMCellDataModeled: SMCellData
 {
     let model : AnyObject
         

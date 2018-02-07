@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SMPopupHoursMinutesPicker: SMPopupPicker, UIPickerViewDelegate, UIPickerViewDataSource
+open class SMPopupHoursMinutesPicker: SMPopupPicker, UIPickerViewDelegate, UIPickerViewDataSource
 {
     //MARK: override next methods to customize:
     

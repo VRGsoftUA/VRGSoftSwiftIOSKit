@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SMModuleRemotePushes
+open class SMModuleRemotePushes
 {
     var deviceToken: String?
     

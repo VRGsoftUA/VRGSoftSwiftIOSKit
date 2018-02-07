@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SMCellData: NSObject
+open class SMCellData: NSObject
 {
     var cellSelectedHandlers: [SMBlockAction]! = []
     var cellDeselectedHandlers: [SMBlockAction]! = []

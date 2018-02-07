@@ -12,7 +12,7 @@ import Alamofire
 typealias SMGatewayRequestSuccessBlock = (DataRequest, DataResponse<Any>) -> SMResponse
 typealias SMGatewayRequestFailureBlock = (DataRequest, Error) -> SMResponse
 
-class SMGatewayRequest: SMRequest
+open class SMGatewayRequest: SMRequest
 {
     weak var gateway: SMGateway?
     var dataRequest: DataRequest?
