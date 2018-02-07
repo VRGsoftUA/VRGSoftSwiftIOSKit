@@ -325,9 +325,12 @@ open class SMValidatorUSAZipCode: SMValidator
         
         var count: Int = 0
         
-        if let validatableText = validatableObject?.validatableText && validatableText.count == 5
+        if let validatableText = validatableObject?.validatableText
         {
-            count = regExp.numberOfMatches(in: validatableText, options: NSRegularExpression.MatchingOptions(rawValue: 0), range: NSMakeRange(0, validatableText.count))
+            if validatableText.count == 5
+            {
+                count = regExp.numberOfMatches(in: validatableText, options: NSRegularExpression.MatchingOptions(rawValue: 0), range: NSMakeRange(0, validatableText.count))
+            }
         }
         
         return count == 1
