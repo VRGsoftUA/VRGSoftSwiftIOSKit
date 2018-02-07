@@ -16,7 +16,7 @@ public protocol SMValidationProtocol: AnyObject
 }
 
 
-open class SMValidator: AnyObject
+open class SMValidator
 {
     open var _errorMessage: String?
     open var errorMessage: String?
@@ -208,7 +208,7 @@ open class SMValidatorStringWithRange: SMValidator
         var result: Bool = false
         self.validatableObject?.validatableText = self.validatableObject?.validatableText?.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines)
 
-        let length: Int = (self.validatableObject?.validatableText?.characters.count)!
+        let length: Int = (self.validatableObject?.validatableText?.count)!
         
         if length >= range!.location && length <= range!.length
         {
@@ -233,7 +233,7 @@ open class SMValidatorEmail: SMValidator
         
         if self.validatableObject != nil && self.validatableObject?.validatableText != nil
         {
-            count = regExp.numberOfMatches(in: (self.validatableObject?.validatableText)!, options: NSRegularExpression.MatchingOptions(rawValue: 0), range: NSMakeRange(0, (self.validatableObject?.validatableText)!.characters.count))
+            count = regExp.numberOfMatches(in: (self.validatableObject?.validatableText)!, options: NSRegularExpression.MatchingOptions(rawValue: 0), range: NSMakeRange(0, (self.validatableObject?.validatableText)!.count))
         }
         
         return count == 1
@@ -247,7 +247,7 @@ open class SMValidatorNotEmpty: SMValidator
     {
         self.validatableObject?.validatableText = self.validatableObject?.validatableText?.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines)
         
-        return (self.validatableObject!.validatableText?.characters.count)! > 0
+        return (self.validatableObject!.validatableText?.count)! > 0
     }
 }
 
@@ -304,7 +304,7 @@ open class SMValidatorRegExp: SMValidator
 
         if self.validatableObject?.validatableText != nil
         {
-            count = regularExpression.numberOfMatches(in: (self.validatableObject?.validatableText)!, options: NSRegularExpression.MatchingOptions(rawValue: 0), range: NSMakeRange(0, (self.validatableObject?.validatableText)!.characters.count))
+            count = regularExpression.numberOfMatches(in: (self.validatableObject?.validatableText)!, options: NSRegularExpression.MatchingOptions(rawValue: 0), range: NSMakeRange(0, (self.validatableObject?.validatableText)!.count))
         }
         
         return count == 1
@@ -324,9 +324,9 @@ open class SMValidatorUSAZipCode: SMValidator
         
         var count: Int = 0
         
-        if self.validatableObject != nil && self.validatableObject?.validatableText != nil && self.validatableObject?.validatableText?.characters.count == 5
+        if self.validatableObject != nil && self.validatableObject?.validatableText != nil && self.validatableObject?.validatableText?.count == 5
         {
-            count = regExp.numberOfMatches(in: (self.validatableObject?.validatableText)!, options: NSRegularExpression.MatchingOptions(rawValue: 0), range: NSMakeRange(0, (self.validatableObject?.validatableText)!.characters.count))
+            count = regExp.numberOfMatches(in: (self.validatableObject?.validatableText)!, options: NSRegularExpression.MatchingOptions(rawValue: 0), range: NSMakeRange(0, (self.validatableObject?.validatableText)!.count))
         }
         
         return count == 1

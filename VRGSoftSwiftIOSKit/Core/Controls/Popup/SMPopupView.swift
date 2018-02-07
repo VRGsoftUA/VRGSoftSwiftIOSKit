@@ -53,7 +53,7 @@ open class SMPopupView: UIView
     
     //MARK: Notification
     
-    func notificationNeedHide(aNotification: Notification)
+    @objc func notificationNeedHide(aNotification: Notification)
     {
         self.hide(animated: true)
     }
@@ -62,15 +62,15 @@ open class SMPopupView: UIView
     {
         showStrategy = nil
         
-        if !SMHelper.isIPad
+        if SMHelper.isIPad
+        {
+            showStrategy = UIViewController()
+            showStrategy!.modalPresentationStyle = .popover
+        } else
         {
             let popupController: SMPopupViewController = SMPopupViewController()
             popupController.popupedView = self
             showStrategy = popupController
-        } else
-        {
-            showStrategy = UIViewController()
-            showStrategy!.modalPresentationStyle = .popover
         }
     }
     
@@ -110,7 +110,7 @@ open class SMPopupView: UIView
         }
     }
     
-    func show(animated: Bool, inView aView: UIView)
+    @objc func show(animated: Bool, inView aView: UIView)
     {
         if !SMHelper.isIPad
         {
@@ -124,7 +124,7 @@ open class SMPopupView: UIView
         }
     }
     
-    func showFrom(rect: CGRect, inView aView: UIView, permittedArrowDirections directions: UIPopoverArrowDirection)
+    @objc func showFrom(rect: CGRect, inView aView: UIView, permittedArrowDirections directions: UIPopoverArrowDirection)
     {
         if SMHelper.isIPad
         {
@@ -135,7 +135,7 @@ open class SMPopupView: UIView
             popover.sourceRect = rect
             popover.sourceView = aView
             popover.permittedArrowDirections = directions
-            aView.parentViewController?.present(vc, animated: true, completion: nil)
+            aView.sm_parentViewController?.present(vc, animated: true, completion: nil)
         } else
         {
             assert(false, String.init(format: "%@: use %@", NSStringFromClass(type(of: self)), NSStringFromSelector(#selector(SMPopupView.show(animated:inView:)))))

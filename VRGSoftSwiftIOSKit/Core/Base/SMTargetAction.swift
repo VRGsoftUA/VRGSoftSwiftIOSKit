@@ -8,7 +8,7 @@
 
 import Foundation
 
-open class SMTargetAction : AnyObject
+open class SMTargetAction
 {
     weak var target: AnyObject?
     var action: Selector?
@@ -36,7 +36,7 @@ open class SMTargetAction : AnyObject
 
 
 typealias SMBlockActionBlock = (Any) -> Void
-open class SMBlockAction : AnyObject
+open class SMBlockAction
 {
     var block: SMBlockActionBlock?
     

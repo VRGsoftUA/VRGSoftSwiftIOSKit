@@ -11,13 +11,13 @@ import UIKit
 typealias SMDataFetchBlock = (SMFetcherMessage, @escaping SMDataFetchCallback) -> Void
 
 
-class SMFetcherWithBlock: AnyObject, SMDataFetcherProtocol
+class SMFetcherWithBlock: SMDataFetcherProtocol
 {
     // MARK: SMDataFetcherProtocol
     
     var callbackQueue: DispatchQueue?
     
-    var fetchBlock: SMDataFetchBlock?
+    let fetchBlock: SMDataFetchBlock
     
     
     init(fetchBlock aFetchBlock: @escaping SMDataFetchBlock)
@@ -27,15 +27,14 @@ class SMFetcherWithBlock: AnyObject, SMDataFetcherProtocol
     
     func canFetchWith(message aMessage: SMFetcherMessage) -> Bool
     {
-        return fetchBlock != nil
+        return true
     }
     
     func fetchDataBy(message aMessage: SMFetcherMessage, withCallback aFetchCallback: @escaping SMDataFetchCallback) -> Void
     {
-        assert(self.fetchBlock != nil)
         self.callbackQueue?.async
-            {
-                self.fetchBlock!(aMessage, aFetchCallback)
+        {
+            self.fetchBlock(aMessage, aFetchCallback)
         }
     }
     

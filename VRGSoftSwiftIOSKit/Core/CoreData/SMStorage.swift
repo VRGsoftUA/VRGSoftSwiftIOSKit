@@ -16,7 +16,7 @@ public enum SMClonePolicy
 }
 
 @available(iOS 9.0, *)
-open class SMStorage: AnyObject
+open class SMStorage
 {
     let storageQueue: DispatchQueue?
     let queueKey = DispatchSpecificKey<Void>()
@@ -152,7 +152,7 @@ open class SMStorage: AnyObject
     
     open func save(isAsync aIsAsync: Bool) -> Void
     {
-        let block:(Void)->Void =
+        let block:()->Void =
         {
             if self.managedObjectContext.hasChanges
             {

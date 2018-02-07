@@ -63,7 +63,7 @@ extension UIView
         }
     }
     
-    var parentViewController: UIViewController? {
+    var sm_parentViewController: UIViewController? {
         var parentResponder: UIResponder? = self
         while parentResponder != nil {
             parentResponder = parentResponder!.next

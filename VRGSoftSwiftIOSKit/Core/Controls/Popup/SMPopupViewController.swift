@@ -172,7 +172,7 @@ class SMPopupViewController: UIViewController
         }
     }
     
-    func hidedButtonPressed(sender: AnyObject)
+    @objc func hidedButtonPressed(sender: AnyObject)
     {
         self.hide(animated: true)
     }

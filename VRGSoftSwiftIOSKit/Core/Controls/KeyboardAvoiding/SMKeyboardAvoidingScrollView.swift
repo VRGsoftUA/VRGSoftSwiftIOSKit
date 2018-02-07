@@ -202,7 +202,7 @@ open class SMKeyboardAvoidingScrollView: UIScrollView, SMKeyboardAvoidingProtoco
     
     // MARK: - NSNotification
     
-    open func keyboardWillShow(_ notification: Notification) -> Void
+    @objc open func keyboardWillShow(_ notification: Notification) -> Void
     {
         DispatchQueue.main.async {
             
@@ -241,7 +241,7 @@ open class SMKeyboardAvoidingScrollView: UIScrollView, SMKeyboardAvoidingProtoco
         }
     }
 
-    open func keyboardWillHide(_ notification: Notification) -> Void
+    @objc open func keyboardWillHide(_ notification: Notification) -> Void
     {
         _keyboardRect = CGRect.zero;
         isKeyboardVisible = false;
@@ -258,7 +258,7 @@ open class SMKeyboardAvoidingScrollView: UIScrollView, SMKeyboardAvoidingProtoco
         self.adjustOffset()
     }
 
-    open func keyboardDidHide(_ notification: Notification) -> Void
+    @objc open func keyboardDidHide(_ notification: Notification) -> Void
     {
         if self.contentOffset.y > 0 && self.frame.size.height > self.contentSize.height - 20
         {

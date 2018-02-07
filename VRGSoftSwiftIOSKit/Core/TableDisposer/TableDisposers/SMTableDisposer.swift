@@ -19,7 +19,7 @@ import MulticastDelegateSwift
     @objc optional func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath)
 }
 
-@objc protocol SMTableDisposerDelegate: NSObjectProtocol, UITableViewDelegate, SMTableViewDataSource
+@objc protocol SMTableDisposerDelegate: UITableViewDelegate, SMTableViewDataSource
 {
     @objc optional func tableDisposer(_ aTableDisposer: SMTableDisposer, didCreateCell aCell: UITableViewCell)
     @objc optional func tableDisposer(_ aTableDisposer: SMTableDisposer, didSetupCell aCell: UITableViewCell, at aIndexPath: IndexPath)
@@ -283,11 +283,10 @@ class SMTableDisposer: NSObject, UITableViewDelegate, UITableViewDataSource
     {
         var result: CGFloat = 0
         
-        if self.sections[section].headerView != nil
+        if let headerView = self.sections[section].headerView
         {
-            result = self.sections[section].headerView!.frame.size.height
-            /*[[self sectionByIndex:section].headerTitle length]*/
-        } else  if(self.sections[section].headerTitle != nil && (self.sections[section].headerTitle?.characters.count)! > 0)
+            result = headerView.frame.size.height
+        } else  if(self.sections[section].headerTitle != nil && (self.sections[section].headerTitle?.count)! > 0)
         {
             result = 20
         }
@@ -299,10 +298,10 @@ class SMTableDisposer: NSObject, UITableViewDelegate, UITableViewDataSource
     {
         var result: CGFloat = 0
         
-        if self.sections[section].footerView != nil
+        if let headerView = self.sections[section].headerView
         {
-            result = self.sections[section].footerView!.frame.size.height
-        } else  if(self.sections[section].footerTitle != nil && (self.sections[section].footerTitle?.characters.count)! > 0)
+            result = headerView.frame.size.height
+        } else  if(self.sections[section].footerTitle != nil && (self.sections[section].footerTitle?.count)! > 0)
         {
             result = 20
         }

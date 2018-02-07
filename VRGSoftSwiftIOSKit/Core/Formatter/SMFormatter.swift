@@ -14,7 +14,7 @@ protocol SMFormatterProtocol : AnyObject
     var formattingText: String? { get set }
 }
 
-class SMFormatter: AnyObject
+class SMFormatter
 {
     weak open var formattableObject: SMFormatterProtocol?
     

@@ -83,7 +83,7 @@ class SMCellData: NSObject
         }
         else
         {
-            let cellClass = self.cellClass.self as! UITableViewCell.Type
+            let cellClass = self.cellClass as! UITableViewCell.Type
             cell = cellClass.init(style: self.cellStyle, reuseIdentifier: self.cellIdentifier)
         }
         return cell!

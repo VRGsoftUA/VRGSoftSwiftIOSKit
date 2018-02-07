@@ -40,7 +40,7 @@ class ViewController: UIViewController, UITextFieldDelegate
         
     }
 
-    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool
+    /*func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool
     {
         
         //picker = SMPopupDatePicker()
@@ -68,7 +68,7 @@ class ViewController: UIViewController, UITextFieldDelegate
         }
         
         return false
-    }
+    }*/
     
     func createToolbar() -> SMToolbar
     {
@@ -80,7 +80,7 @@ class ViewController: UIViewController, UITextFieldDelegate
         return toolbar
     }
     
-    func hide()
+    @objc func hide()
     {
         picker?.hide(animated: true)
     }

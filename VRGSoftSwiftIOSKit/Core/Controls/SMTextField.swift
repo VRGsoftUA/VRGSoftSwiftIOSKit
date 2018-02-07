@@ -76,7 +76,7 @@ open class SMTextField: UITextField, SMKeyboardAvoiderProtocol, SMValidationProt
         {
             if self.placeholder != nil && placeholderColor != nil
             {
-                let atrPlaceholder: NSAttributedString = NSAttributedString(string: self.placeholder!, attributes: [NSForegroundColorAttributeName: placeholderColor as Any])
+                let atrPlaceholder: NSAttributedString = NSAttributedString(string: self.placeholder!, attributes: [NSAttributedStringKey.foregroundColor: placeholderColor as Any])
                 self.attributedPlaceholder = atrPlaceholder
             }
         }

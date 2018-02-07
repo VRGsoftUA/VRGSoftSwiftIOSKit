@@ -8,12 +8,12 @@
 
 import Foundation
 
-class SMPair: AnyObject
+class SMPair <FirstType, SecondType>
 {
-    var first : AnyObject?
-    var second : AnyObject?
+    var first : FirstType?
+    var second : SecondType?
     
-    init(first aFirst: AnyObject?, second aSecond: AnyObject?)
+    init(first aFirst: FirstType?, second aSecond: SecondType?)
     {
         first = aFirst
         second = aSecond

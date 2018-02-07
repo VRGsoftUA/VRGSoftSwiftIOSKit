@@ -10,7 +10,7 @@ import Foundation
 
 typealias SMRequestResponseBlock = (SMResponse) -> Void
 
-class SMResponseNode: AnyObject
+class SMResponseNode
 {
     let responseQueue: DispatchQueue
     let responseBlock: SMRequestResponseBlock

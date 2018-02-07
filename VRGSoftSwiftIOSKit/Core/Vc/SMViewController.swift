@@ -156,7 +156,7 @@ open class SMViewController: UIViewController
     
     // MARK: - Actions
     
-    open func didBtNavLeftClicked()
+    @objc open func didBtNavLeftClicked()
     {
         self.close()
     }
@@ -172,7 +172,7 @@ open class SMViewController: UIViewController
         }
     }
 
-    open func didBtNavRightClicked()
+    @objc open func didBtNavRightClicked()
     {
         
     }

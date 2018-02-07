@@ -52,7 +52,7 @@ class SMTextView: UITextView, SMKeyboardAvoiderProtocol, SMValidationProtocol, S
                 _placeholderTextView!.textColor = UIColor.gray
                 _placeholderTextView!.isEditable = false
                 _placeholderTextView!.isUserInteractionEnabled = false
-                _placeholderTextView!.isHidden = self.text.characters.count > 0
+                _placeholderTextView!.isHidden = self.text.count > 0
                 _placeholderTextView!.textContainerInset = self.textContainerInset
                 self.addSubview(_placeholderTextView!)
             }
@@ -66,7 +66,7 @@ class SMTextView: UITextView, SMKeyboardAvoiderProtocol, SMValidationProtocol, S
         set
         {
             self.placeholderTextView.text = newValue
-            self.placeholderTextView!.isHidden = self.text.characters.count > 0
+            self.placeholderTextView!.isHidden = self.text.count > 0
         }
         
         get { return self.placeholderTextView.text }
@@ -77,7 +77,7 @@ class SMTextView: UITextView, SMKeyboardAvoiderProtocol, SMValidationProtocol, S
         set
         {
             self.placeholderTextView.attributedText = newValue
-            self.placeholderTextView!.isHidden = self.text.characters.count > 0
+            self.placeholderTextView!.isHidden = self.text.count > 0
         }
         
         get { return self.attributedText }
@@ -133,7 +133,7 @@ class SMTextView: UITextView, SMKeyboardAvoiderProtocol, SMValidationProtocol, S
         set
         {
             super.text = newValue
-            self.placeholderTextView!.isHidden = self.text.characters.count > 0
+            self.placeholderTextView!.isHidden = self.text.count > 0
         }
         
         get { return super.text }
@@ -268,7 +268,7 @@ class SMTextViewDelegateHolder: NSObject, UITextViewDelegate
         {
             let newText: String = (textView.text! as NSString).replacingCharacters(in: range, with: text)
 
-            (textView as! SMTextView).isPlaceHolderHidden = newText.characters.count > 0
+            (textView as! SMTextView).isPlaceHolderHidden = newText.count > 0
         }
 
         return result

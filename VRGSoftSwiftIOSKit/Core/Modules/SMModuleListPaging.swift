@@ -151,7 +151,10 @@ class SMModuleListPaging: SMModuleList, SMTableDisposerMulticastDelegate
         return false
     }
     
-    func loadMoreDataPressed() -> Void
+    
+    // MARK: - Actions
+    
+    @objc func loadMoreDataPressed() -> Void
     {
         self.loadMoreData()
     }

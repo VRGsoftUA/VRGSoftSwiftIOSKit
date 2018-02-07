@@ -37,7 +37,7 @@ class SMPopupDatePicker: SMPopupPicker
         }
         set
         {
-            self.popupedPicker.date = newValue
+            self.popupedPicker.date = newValue as! Date
         }
     }
     
@@ -58,7 +58,10 @@ class SMPopupDatePicker: SMPopupPicker
         }
     }
     
-    func didPopupDatePickerChanged(sender: AnyObject)
+    
+    // MARK: - Actions
+    
+    @objc func didPopupDatePickerChanged(sender: AnyObject)
     {
         if self.selectHandler != nil
         {

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SMFetcherWithRequest: NSObject, SMDataFetcherProtocol
+class SMFetcherWithRequest: SMDataFetcherProtocol
 {
     deinit
     {

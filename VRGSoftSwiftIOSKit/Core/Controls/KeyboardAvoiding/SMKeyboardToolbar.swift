@@ -19,10 +19,10 @@ open class SMKeyboardToolbar: SMToolbar
 {
     open weak var smdelegate: SMKeyboardToolbarDelegate?
     
-    open var bbiDone: UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.done, target: self, action: #selector(SMKeyboardToolbar.didBtDoneClicked(_:)))
+    open let bbiDone: UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.done, target: self, action: #selector(SMKeyboardToolbar.didBtDoneClicked(_:)))
     
-    open var bbiBack: UIBarButtonItem = UIBarButtonItem()
-    open var bbiNext: UIBarButtonItem = UIBarButtonItem()
+    open let bbiBack: UIBarButtonItem = UIBarButtonItem()
+    open let bbiNext: UIBarButtonItem = UIBarButtonItem()
     
     open override func setup() -> Void
     {
@@ -106,7 +106,7 @@ open class SMKeyboardToolbar: SMToolbar
     
     // MARK: - Actions
 
-    func didBtBackClicked(_ sender: AnyObject) -> Void
+    @objc func didBtBackClicked(_ sender: AnyObject) -> Void
     {
         if smdelegate != nil
         {
@@ -114,7 +114,7 @@ open class SMKeyboardToolbar: SMToolbar
         }
     }
 
-    func didBtNextClicked(_ sender: AnyObject) -> Void
+    @objc func didBtNextClicked(_ sender: AnyObject) -> Void
     {
         if smdelegate != nil
         {
@@ -122,7 +122,7 @@ open class SMKeyboardToolbar: SMToolbar
         }
     }
 
-    func didBtDoneClicked(_ sender: AnyObject) -> Void
+    @objc func didBtDoneClicked(_ sender: AnyObject) -> Void
     {
         if smdelegate != nil
         {

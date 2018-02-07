@@ -23,7 +23,7 @@ open class SMAlertController: UIAlertController
         self.showFrom(vc: UIViewController.topViewController()!)
     }
     
-    open func hide() -> Void
+    @objc open func hide() -> Void
     {
         self.dismiss(animated: true, completion: nil)
     }
