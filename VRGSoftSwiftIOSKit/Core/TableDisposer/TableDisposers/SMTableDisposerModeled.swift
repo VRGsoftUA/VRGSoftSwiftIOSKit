@@ -10,12 +10,12 @@ import UIKit
 import MulticastDelegateSwift
 
 
-@objc protocol SMTableDisposerModeledMulticastDelegate: NSObjectProtocol
+@objc public protocol SMTableDisposerModeledMulticastDelegate: NSObjectProtocol
 {
     @objc optional func tableDisposer(_ aTableDisposer: SMTableDisposer, didCreateCellData aCellData: SMCellData) -> Void
 }
 
-@objc protocol SMTableDisposerModeledDelegate: NSObjectProtocol
+@objc public protocol SMTableDisposerModeledDelegate: NSObjectProtocol
 {
     @objc optional func tableDisposer(_ aTableDisposer: SMTableDisposer, didCreateCellData aCellData: SMCellData) -> Void
     @objc optional func tableDisposer(_ aTableDisposer: SMTableDisposer, cellDataClassForUnregisteredModel aModel: AnyObject) -> AnyClass

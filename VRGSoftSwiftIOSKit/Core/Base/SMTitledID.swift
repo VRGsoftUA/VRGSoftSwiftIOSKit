@@ -31,7 +31,7 @@ open class SMTitledID
     }
 }
 
-open extension SMTitledID: Equatable
+extension SMTitledID: Equatable
 {
     public static func == (lhs: SMTitledID, rhs: SMTitledID) -> Bool
     {

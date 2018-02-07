@@ -8,7 +8,7 @@
 
 import Foundation
 
-typealias SMRequestResponseBlock = (SMResponse) -> Void
+public typealias SMRequestResponseBlock = (SMResponse) -> Void
 
 open class SMResponseNode
 {

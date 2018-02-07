@@ -19,13 +19,13 @@ import MulticastDelegateSwift
     @objc optional func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath)
 }
 
-@objc protocol SMTableDisposerDelegate: UITableViewDelegate, SMTableViewDataSource
+@objc public protocol SMTableDisposerDelegate: UITableViewDelegate, SMTableViewDataSource
 {
     @objc optional func tableDisposer(_ aTableDisposer: SMTableDisposer, didCreateCell aCell: UITableViewCell)
     @objc optional func tableDisposer(_ aTableDisposer: SMTableDisposer, didSetupCell aCell: UITableViewCell, at aIndexPath: IndexPath)
 }
 
-@objc protocol SMTableDisposerMulticastDelegate: NSObjectProtocol
+@objc public protocol SMTableDisposerMulticastDelegate: NSObjectProtocol
 {
     @objc optional func tableDisposer(_ aTableDisposer: SMTableDisposer, didCreateCell aCell: UITableViewCell)
 
@@ -272,7 +272,7 @@ open class SMTableDisposer: NSObject, UITableViewDelegate, UITableViewDataSource
         }
     }
     
-    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat
+    public func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat
     {
         let cellData: SMCellData = self.sections[indexPath.section].visibleCellDataSource[indexPath.row]
         cellData.cellWidth = tableView.frame.size.width
@@ -606,7 +606,7 @@ open class SMTableDisposer: NSObject, UITableViewDelegate, UITableViewDataSource
     
     // MARK: UIScrollViewDelegate
     
-    func scrollViewDidScroll(_ scrollView: UIScrollView)
+    public func scrollViewDidScroll(_ scrollView: UIScrollView)
     {
         if self.delegate != nil && self.delegate!.scrollViewDidScroll(_:) != nil
         {

@@ -25,7 +25,7 @@ open class SMNativeMoreTableViewCell: UITableViewCell, SMPagingMoreCellProtocol
 
     let activity: UIActivityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.gray)
     
-    override func awakeFromNib()
+    override open func awakeFromNib()
     {
         super.awakeFromNib()
         
@@ -40,14 +40,14 @@ open class SMNativeMoreTableViewCell: UITableViewCell, SMPagingMoreCellProtocol
         self.contentView.addSubview(activity)
     }
     
-    override func prepareForReuse()
+    override open func prepareForReuse()
     {
         super.prepareForReuse()
         
         self.showActivityIndicator(show: false)
     }
     
-    func showActivityIndicator(show aIsShow: Bool) -> Void
+    open func showActivityIndicator(show aIsShow: Bool) -> Void
     {
         if aIsShow
         {
@@ -61,12 +61,12 @@ open class SMNativeMoreTableViewCell: UITableViewCell, SMPagingMoreCellProtocol
     
     // MARK: SMPagingMoreCellProtocol
 
-    func didBeginDataLoading()
+    public func didBeginDataLoading()
     {
         self.showActivityIndicator(show: true)
     }
     
-    func didEndDataLoading()
+    public func didEndDataLoading()
     {
         self.showActivityIndicator(show: false)
     }

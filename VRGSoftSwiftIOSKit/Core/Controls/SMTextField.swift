@@ -96,7 +96,7 @@ open class SMTextField: UITextField, SMKeyboardAvoiderProtocol, SMValidationProt
     
     // MARK: - SMFormatterProtocol
 
-    var formatter: SMFormatter?
+    public var formatter: SMFormatter?
     {
         didSet
         {
@@ -107,7 +107,7 @@ open class SMTextField: UITextField, SMKeyboardAvoiderProtocol, SMValidationProt
         }
     }
     
-    var formattingText: String?
+    public var formattingText: String?
     {
         get
         {

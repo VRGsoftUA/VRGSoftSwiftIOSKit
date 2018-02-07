@@ -8,7 +8,7 @@
 
 import Foundation
 
-typealias SMDataFetchCallback = (SMResponse) -> Void
+public typealias SMDataFetchCallback = (SMResponse) -> Void
 
 
 public protocol SMDataFetcherProtocol

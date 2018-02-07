@@ -21,11 +21,11 @@ open class SMPopoverViewController: UIViewController
         isModalInPopover = !(popupedView.isHideByTapOutside)
     }
     
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func viewDidLoad()
+    override open func viewDidLoad()
     {
         super.viewDidLoad()
 
@@ -35,35 +35,35 @@ open class SMPopoverViewController: UIViewController
         self.view.addSubview(popupedView)
     }
     
-    override func viewWillAppear(_ animated: Bool)
+    override open func viewWillAppear(_ animated: Bool)
     {
         super.viewWillAppear(animated)
         
         popupedView.popupWillAppear(animated: animated)
     }
     
-    override func viewDidAppear(_ animated: Bool)
+    override open func viewDidAppear(_ animated: Bool)
     {
         super.viewDidAppear(animated)
         
         popupedView.popupDidAppear(animated: animated)
     }
     
-    override func viewWillDisappear(_ animated: Bool)
+    override open func viewWillDisappear(_ animated: Bool)
     {
         super.viewWillDisappear(animated)
         
         popupedView.popupWillDisappear(animated: animated)
     }
     
-    override func viewDidDisappear(_ animated: Bool)
+    override open func viewDidDisappear(_ animated: Bool)
     {
         super.viewDidDisappear(animated)
         
         popupedView.popupDidDisappear(animated: animated)
     }
     
-    override var preferredContentSize: CGSize
+    override open var preferredContentSize: CGSize
     {
         get
         {

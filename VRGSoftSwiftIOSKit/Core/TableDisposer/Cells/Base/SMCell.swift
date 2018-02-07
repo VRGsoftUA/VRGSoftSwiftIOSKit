@@ -11,13 +11,13 @@ import UIKit
 
 open class SMCell: UITableViewCell, SMCellProtocol
 {
-    required override init(style: UITableViewCellStyle, reuseIdentifier: String?)
+    required override public init(style: UITableViewCellStyle, reuseIdentifier: String?)
     {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         self.backgroundColor = UIColor.clear
     }
     
-    required init(coder aDecoder: NSCoder)
+    required public init(coder aDecoder: NSCoder)
     {
         super.init(coder: aDecoder)!
         self.backgroundColor = UIColor.clear
@@ -28,12 +28,12 @@ open class SMCell: UITableViewCell, SMCellProtocol
         return nil
     }
     
-    override var reuseIdentifier: String
+    override open var reuseIdentifier: String
     {
         get { return self.cellData!.cellIdentifier }
     }
 
-    override func awakeFromNib()
+    override open func awakeFromNib()
     {
         super.awakeFromNib()
         self.backgroundColor = UIColor.clear
@@ -41,8 +41,8 @@ open class SMCell: UITableViewCell, SMCellProtocol
     
     // MARK: SMCellProtocol
     
-    var cellData: SMCellData? = nil
-    func setupCellData(_ aCellData: SMCellData!) -> Void
+    open var cellData: SMCellData? = nil
+    open func setupCellData(_ aCellData: SMCellData!) -> Void
     {
         if cellData != aCellData
         {

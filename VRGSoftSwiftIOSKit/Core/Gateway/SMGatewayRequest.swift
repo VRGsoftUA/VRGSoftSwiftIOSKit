@@ -25,7 +25,7 @@ open class SMGatewayRequest: SMRequest
     var successBlock: SMGatewayRequestSuccessBlock?
     var failureBlock: SMGatewayRequestFailureBlock?
     
-    required init(gateway aGateway: SMGateway)
+    required public init(gateway aGateway: SMGateway)
     {
         super.init()
 

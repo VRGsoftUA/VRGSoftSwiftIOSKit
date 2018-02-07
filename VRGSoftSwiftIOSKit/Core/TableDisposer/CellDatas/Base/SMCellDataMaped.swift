@@ -13,7 +13,7 @@ open class SMCellDataMaped: SMCellData
     var key : String?
     var object : AnyObject?
     
-    required init(object aObject:AnyObject?, key aKey:String?)
+    required public init(object aObject:AnyObject?, key aKey:String?)
     {
         super.init()
         object = aObject

@@ -8,18 +8,18 @@
 
 import UIKit
 
-@objc protocol SMPagingMoreCellDataProtocol: NSObjectProtocol
+@objc public protocol SMPagingMoreCellDataProtocol: NSObjectProtocol
 {
     @objc optional func addTarget(_ aTarget: Any, action aAction:Selector)
 }
 
-@objc protocol SMPagingMoreCellProtocol: NSObjectProtocol
+@objc public protocol SMPagingMoreCellProtocol: NSObjectProtocol
 {
     @objc optional func didBeginDataLoading()
     @objc optional func didEndDataLoading()
 }
 
-@objc protocol SMModuleListPagingDelegate: NSObjectProtocol
+@objc public protocol SMModuleListPagingDelegate: NSObjectProtocol
 {
     @objc optional func moreCellDataForPaging(moduleList aModuleList: SMModuleListPaging) -> SMPagingMoreCellDataProtocol
     @objc optional func willLoadMore(moduleList aModuleList: SMModuleListPaging)
@@ -41,7 +41,7 @@ open class SMModuleListPaging: SMModuleList, SMTableDisposerMulticastDelegate
     
     weak var pagingDelegate: SMModuleListPagingDelegate?
 
-    required init(tableDisposer aTableDisposer: SMTableDisposerModeled, initialPageOffset aInitialPageOffset: Int, isItemsAsPage aIsItemsAsPage: Bool)
+    required public init(tableDisposer aTableDisposer: SMTableDisposerModeled, initialPageOffset aInitialPageOffset: Int, isItemsAsPage aIsItemsAsPage: Bool)
     {
         super.init(tableDisposer: aTableDisposer)
         
@@ -51,14 +51,14 @@ open class SMModuleListPaging: SMModuleList, SMTableDisposerMulticastDelegate
         self.tableDisposer!.multicastDelegate.addDelegate(self)
     }
     
-    required init(tableDisposer aTableDisposer: SMTableDisposerModeled)
+    required public init(tableDisposer aTableDisposer: SMTableDisposerModeled)
     {
         super.init(tableDisposer: aTableDisposer)
         
         self.tableDisposer!.multicastDelegate.addDelegate(self)
     }
     
-    override func reloadData()
+    override open func reloadData()
     {
         if isReloading
         {
@@ -226,7 +226,7 @@ open class SMModuleListPaging: SMModuleList, SMTableDisposerMulticastDelegate
     
     // MARK: SMTableDisposerMulticastDelegate
     
-    func tableView(_ aTableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath)
+    public func tableView(_ aTableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath)
     {
         if cell is SMPagingMoreCellProtocol
         {

@@ -148,7 +148,7 @@ open class SMFetcherIntoStorage: SMFetcherWithRequest
     
     //MARK: Fetch
     
-    override func fetchDataBy(message aMessage: SMFetcherMessage, withCallback aFetchCallback: @escaping SMDataFetchCallback)
+    override public func fetchDataBy(message aMessage: SMFetcherMessage, withCallback aFetchCallback: @escaping SMDataFetchCallback)
     {
         fetchCallback = aFetchCallback
         

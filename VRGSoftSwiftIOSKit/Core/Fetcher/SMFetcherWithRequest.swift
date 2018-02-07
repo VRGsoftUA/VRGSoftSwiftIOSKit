@@ -20,11 +20,11 @@ open class SMFetcherWithRequest: SMDataFetcherProtocol
     
     // MARK: SMDataFetcherProtocol
     
-    var callbackQueue: DispatchQueue?
+    public var callbackQueue: DispatchQueue?
     
     var fetchCallback: SMDataFetchCallback?
     
-    func canFetchWith(message aMessage: SMFetcherMessage) -> Bool
+    public func canFetchWith(message aMessage: SMFetcherMessage) -> Bool
     {
         if preparedRequest == nil
         {
@@ -34,7 +34,7 @@ open class SMFetcherWithRequest: SMDataFetcherProtocol
         return (preparedRequest!.canExecute())
     }
     
-    func fetchDataBy(message aMessage: SMFetcherMessage, withCallback aFetchCallback: @escaping SMDataFetchCallback)
+    public func fetchDataBy(message aMessage: SMFetcherMessage, withCallback aFetchCallback: @escaping SMDataFetchCallback)
     {
         fetchCallback = aFetchCallback
         if preparedRequest == nil
@@ -47,7 +47,7 @@ open class SMFetcherWithRequest: SMDataFetcherProtocol
         _request?.start()
     }
     
-    func cancelFetching()
+    public func cancelFetching()
     {
         self.request?.cancel()
     }

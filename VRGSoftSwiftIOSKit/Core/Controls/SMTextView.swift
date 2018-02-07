@@ -21,7 +21,7 @@ open class SMTextView: UITextView, SMKeyboardAvoiderProtocol, SMValidationProtoc
         self.setup()
     }
     
-    required init?(coder aDecoder: NSCoder)
+    required public init?(coder aDecoder: NSCoder)
     {
         super.init(coder: aDecoder)
         
@@ -93,7 +93,7 @@ open class SMTextView: UITextView, SMKeyboardAvoiderProtocol, SMValidationProtoc
         get { return self.placeholderTextView.textColor }
     }
 
-    override var textContainerInset: UIEdgeInsets
+    override open var textContainerInset: UIEdgeInsets
     {
         set
         {
@@ -104,7 +104,7 @@ open class SMTextView: UITextView, SMKeyboardAvoiderProtocol, SMValidationProtoc
         get { return super.textContainerInset }
     }
 
-    override var textAlignment: NSTextAlignment
+    override open var textAlignment: NSTextAlignment
     {
         set
         {
@@ -128,7 +128,7 @@ open class SMTextView: UITextView, SMKeyboardAvoiderProtocol, SMValidationProtoc
         get { return placeholderTextView.isHidden }
     }
     
-    override var text: String!
+    override open var text: String!
     {
         set
         {
@@ -139,7 +139,7 @@ open class SMTextView: UITextView, SMKeyboardAvoiderProtocol, SMValidationProtoc
         get { return super.text }
     }
     
-    override var font: UIFont?
+    override open var font: UIFont?
     {
         set
         {
@@ -158,13 +158,13 @@ open class SMTextView: UITextView, SMKeyboardAvoiderProtocol, SMValidationProtoc
     
     // MARK: - SMFilterProtocol
     
-    var filteredText: String? {get {return self.text}}
+    public var filteredText: String? {get {return self.text}}
     
     var filter: SMFilter?
 
     
     // MARK: - SMValidationProtocol
-    var validatableText: String?
+    public var validatableText: String?
     {
         get
         {
@@ -176,7 +176,7 @@ open class SMTextView: UITextView, SMKeyboardAvoiderProtocol, SMValidationProtoc
         }
     }
     
-    var validator: SMValidator?
+    public var validator: SMValidator?
     {
         didSet
         {
@@ -187,7 +187,7 @@ open class SMTextView: UITextView, SMKeyboardAvoiderProtocol, SMValidationProtoc
         }
     }
     
-    func validate() -> Bool
+    public func validate() -> Bool
     {
         return ((validator) != nil) ? validator!.validate() : true
     }
@@ -197,7 +197,7 @@ open class SMTextViewDelegateHolder: NSObject, UITextViewDelegate
 {
     weak var holdedTextView: SMTextView?
     
-    required init(textView aTextView: SMTextView)
+    required public init(textView aTextView: SMTextView)
     {
         super.init()
         

@@ -34,22 +34,22 @@ open class SMPopupHoursMinutesPicker: SMPopupPicker, UIPickerViewDelegate, UIPic
         }
     }
     
-    func numberOfComponents(in pickerView: UIPickerView) -> Int
+    public func numberOfComponents(in pickerView: UIPickerView) -> Int
     {
         return 2
     }
     
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int
+    public func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int
     {
         return (component == 0) ? 24 : 60
     }
     
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String?
+    public func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String?
     {
         return "\(row)"
     }
     
-    override var selectedItem: AnyObject?
+    override open var selectedItem: AnyObject?
     {
         get
         {

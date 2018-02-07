@@ -55,7 +55,7 @@ open class SMPopupViewController: UIViewController
         popupedView.frame = frame
     }
     
-    override func viewDidLoad()
+    override open func viewDidLoad()
     {
         super.viewDidLoad()
         
@@ -97,7 +97,7 @@ open class SMPopupViewController: UIViewController
     
     //MARK: Rotations
     
-    override var shouldAutorotate: Bool
+    override open var shouldAutorotate: Bool
     {
         return true
     }
@@ -177,7 +177,7 @@ open class SMPopupViewController: UIViewController
         self.hide(animated: true)
     }
     
-    override var preferredContentSize: CGSize
+    override open var preferredContentSize: CGSize
     {
         get
         {

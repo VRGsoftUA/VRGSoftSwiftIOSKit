@@ -12,7 +12,7 @@ typealias SMModuleListFetcherFailedCallback = (SMModuleList, SMResponse) -> Void
 typealias SMModuleListFetcherCantFetch = (SMModuleList, SMFetcherMessage) -> Void
 
 
-@objc protocol SMModuleListDelegate: NSObjectProtocol
+@objc public protocol SMModuleListDelegate: NSObjectProtocol
 {
     @objc optional func fetcherMessageFor(moduleList aModule: SMModuleList) -> SMFetcherMessage
     @objc optional func willReload(moduleList aModule: SMModuleList) -> Void
@@ -69,7 +69,7 @@ open class SMModuleList: NSObject
         }
     }
     
-    required init(tableDisposer aTableDisposer: SMTableDisposerModeled)
+    required public init(tableDisposer aTableDisposer: SMTableDisposerModeled)
     {
         super.init()
         

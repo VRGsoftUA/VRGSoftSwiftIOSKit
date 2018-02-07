@@ -12,7 +12,7 @@ open class SMCellDataModeled: SMCellData
 {
     let model : AnyObject
         
-    required init(model aModel: AnyObject)
+    required public init(model aModel: AnyObject)
     {
         model = aModel
         super.init()

@@ -12,7 +12,7 @@ open class SMFetcherMessage: NSObject
 {
     let defaultParameters: [String: AnyObject] = [:]
     
-    required override init()
+    required override public init()
     {
         super.init()
     }

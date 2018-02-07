@@ -29,7 +29,7 @@ open class SMPopupDatePicker: SMPopupPicker
         }
     }
     
-    override var selectedItem: AnyObject?
+    override open var selectedItem: AnyObject?
     {
         get
         {
