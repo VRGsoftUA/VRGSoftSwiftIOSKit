@@ -8,9 +8,9 @@
 
 import UIKit
 
-typealias SMViewControllerCallback = (SMViewController, AnyObject) -> Void
+public typealias SMViewControllerCallback = (SMViewController, AnyObject) -> Void
 
-open class SMViewController: UIViewController
+@objc public class SMViewController: UIViewController
 {
     var callBack: SMViewControllerCallback?
     
