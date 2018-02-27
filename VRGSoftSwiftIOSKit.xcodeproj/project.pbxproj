@@ -8,89 +8,86 @@
 
 /* Begin PBXBuildFile section */
 		442C1DDCEB2B2B292945F835 /* Pods_VRGSoftSwiftIOSKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BC56EDC4EEA30A01FF18969 /* Pods_VRGSoftSwiftIOSKit.framework */; };
-		B71552411F3FAABB0073653B /* SMKeyboardAvoidingTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B71552401F3FAABB0073653B /* SMKeyboardAvoidingTableView.swift */; };
-		B71D37D61F3CA07F007DD6EE /* SMKeyboardAvoiding.swift in Sources */ = {isa = PBXBuildFile; fileRef = B71D37D51F3CA07F007DD6EE /* SMKeyboardAvoiding.swift */; };
-		B71D37D81F3CA2D1007DD6EE /* SMKeyboardToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B71D37D71F3CA2D1007DD6EE /* SMKeyboardToolbar.swift */; };
-		B71D37DA1F3CA585007DD6EE /* SMKeyboardAvoidingScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B71D37D91F3CA585007DD6EE /* SMKeyboardAvoidingScrollView.swift */; };
 		B74DF39A1F34955500405847 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B74DF3991F34955500405847 /* AppDelegate.swift */; };
 		B74DF39C1F34955500405847 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B74DF39B1F34955500405847 /* ViewController.swift */; };
 		B74DF39F1F34955500405847 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B74DF39D1F34955500405847 /* Main.storyboard */; };
 		B74DF3A11F34955500405847 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B74DF3A01F34955500405847 /* Assets.xcassets */; };
 		B74DF3A41F34955500405847 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B74DF3A21F34955500405847 /* LaunchScreen.storyboard */; };
 		B74DF3AC1F34A3FC00405847 /* VRGSoftSwiftIOSKit.podspec in Resources */ = {isa = PBXBuildFile; fileRef = B74DF3AB1F34A3FC00405847 /* VRGSoftSwiftIOSKit.podspec */; };
-		B750D16A1F3DD9D60086FEB7 /* SMToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B750D1691F3DD9D60086FEB7 /* SMToolbar.swift */; };
-		B76326D11F4AC804000E3031 /* SMPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B76326D01F4AC804000E3031 /* SMPopupViewController.swift */; };
-		B76326D41F4B1FB8000E3031 /* SMPopupPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B76326D31F4B1FB8000E3031 /* SMPopupPicker.swift */; };
-		B76326D61F4B23DD000E3031 /* SMHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B76326D51F4B23DD000E3031 /* SMHelper.swift */; };
-		B775AA581F4C1AF6003714F8 /* SMPopupSimplePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B775AA571F4C1AF6003714F8 /* SMPopupSimplePicker.swift */; };
-		B775AA5A1F4C4136003714F8 /* SMPopupPickerItemTitled.swift in Sources */ = {isa = PBXBuildFile; fileRef = B775AA591F4C4136003714F8 /* SMPopupPickerItemTitled.swift */; };
-		B775AA5C1F4C51DF003714F8 /* SMPopupDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B775AA5B1F4C51DF003714F8 /* SMPopupDatePicker.swift */; };
-		B775AA5E1F4C5A93003714F8 /* SMPopupDateTimePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B775AA5D1F4C5A93003714F8 /* SMPopupDateTimePicker.swift */; };
-		B775AA601F4C5BB1003714F8 /* SMPopupHoursMinutesPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B775AA5F1F4C5BB1003714F8 /* SMPopupHoursMinutesPicker.swift */; };
-		B775AA621F4C61E3003714F8 /* SMPopupTimePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B775AA611F4C61E3003714F8 /* SMPopupTimePicker.swift */; };
-		B775AA641F4C6318003714F8 /* SMPopupCustomSimplePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B775AA631F4C6318003714F8 /* SMPopupCustomSimplePicker.swift */; };
-		B7C2F9BE1F46EE740066FA3D /* SMPopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7C2F9BD1F46EE740066FA3D /* SMPopoverViewController.swift */; };
-		B7C2F9C01F46EE8E0066FA3D /* SMPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7C2F9BF1F46EE8E0066FA3D /* SMPopupView.swift */; };
+		B795858B20455FFB00F7BF6C /* SMAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B795852F20455FFA00F7BF6C /* SMAlertController.swift */; };
+		B795858C20455FFB00F7BF6C /* SMResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B795853120455FFA00F7BF6C /* SMResponse.swift */; };
+		B795858D20455FFB00F7BF6C /* SMDataFetcherProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B795853320455FFA00F7BF6C /* SMDataFetcherProtocol.swift */; };
+		B795858E20455FFB00F7BF6C /* SMFetcherWithBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = B795853420455FFA00F7BF6C /* SMFetcherWithBlock.swift */; };
+		B795858F20455FFB00F7BF6C /* SMFetcherIntoStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B795853520455FFA00F7BF6C /* SMFetcherIntoStorage.swift */; };
+		B795859020455FFB00F7BF6C /* SMFetcherMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B795853620455FFA00F7BF6C /* SMFetcherMessage.swift */; };
+		B795859120455FFB00F7BF6C /* SMFetcherWithRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B795853720455FFA00F7BF6C /* SMFetcherWithRequest.swift */; };
+		B795859220455FFB00F7BF6C /* SMCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B795853B20455FFA00F7BF6C /* SMCell.swift */; };
+		B795859320455FFB00F7BF6C /* SMSectionWritable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B795853D20455FFA00F7BF6C /* SMSectionWritable.swift */; };
+		B795859420455FFB00F7BF6C /* SMSectionReadonly.swift in Sources */ = {isa = PBXBuildFile; fileRef = B795853E20455FFA00F7BF6C /* SMSectionReadonly.swift */; };
+		B795859520455FFB00F7BF6C /* SMTableDisposerModeled.swift in Sources */ = {isa = PBXBuildFile; fileRef = B795854020455FFA00F7BF6C /* SMTableDisposerModeled.swift */; };
+		B795859620455FFB00F7BF6C /* SMTableDisposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B795854120455FFA00F7BF6C /* SMTableDisposer.swift */; };
+		B795859720455FFB00F7BF6C /* SMCellData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B795854420455FFA00F7BF6C /* SMCellData.swift */; };
+		B795859820455FFB00F7BF6C /* SMCellDataModeled.swift in Sources */ = {isa = PBXBuildFile; fileRef = B795854520455FFA00F7BF6C /* SMCellDataModeled.swift */; };
+		B795859920455FFB00F7BF6C /* SMCellDataMaped.swift in Sources */ = {isa = PBXBuildFile; fileRef = B795854620455FFA00F7BF6C /* SMCellDataMaped.swift */; };
+		B795859A20455FFB00F7BF6C /* SMCellProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B795854720455FFA00F7BF6C /* SMCellProtocol.swift */; };
+		B795859B20455FFB00F7BF6C /* SMStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B795854920455FFA00F7BF6C /* SMStorage.swift */; };
+		B795859C20455FFB00F7BF6C /* SMLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B795854B20455FFA00F7BF6C /* SMLabel.swift */; };
+		B795859D20455FFB00F7BF6C /* SMPopupTimePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B795854D20455FFA00F7BF6C /* SMPopupTimePicker.swift */; };
+		B795859E20455FFB00F7BF6C /* SMPopupDateTimePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B795854E20455FFA00F7BF6C /* SMPopupDateTimePicker.swift */; };
+		B795859F20455FFB00F7BF6C /* SMPopupPickerItemTitled.swift in Sources */ = {isa = PBXBuildFile; fileRef = B795854F20455FFA00F7BF6C /* SMPopupPickerItemTitled.swift */; };
+		B79585A020455FFB00F7BF6C /* SMPopupDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B795855020455FFA00F7BF6C /* SMPopupDatePicker.swift */; };
+		B79585A120455FFB00F7BF6C /* SMPopupCustomSimplePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B795855120455FFA00F7BF6C /* SMPopupCustomSimplePicker.swift */; };
+		B79585A220455FFB00F7BF6C /* SMPopupHoursMinutesPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B795855220455FFA00F7BF6C /* SMPopupHoursMinutesPicker.swift */; };
+		B79585A320455FFB00F7BF6C /* SMPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B795855320455FFA00F7BF6C /* SMPopupView.swift */; };
+		B79585A420455FFB00F7BF6C /* SMPopupSimplePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B795855420455FFA00F7BF6C /* SMPopupSimplePicker.swift */; };
+		B79585A520455FFB00F7BF6C /* SMPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B795855520455FFA00F7BF6C /* SMPopupViewController.swift */; };
+		B79585A620455FFB00F7BF6C /* SMPopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B795855620455FFA00F7BF6C /* SMPopoverViewController.swift */; };
+		B79585A720455FFB00F7BF6C /* SMPopupPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B795855720455FFA00F7BF6C /* SMPopupPicker.swift */; };
+		B79585A820455FFB00F7BF6C /* SMKeyboardAvoiding.swift in Sources */ = {isa = PBXBuildFile; fileRef = B795855920455FFA00F7BF6C /* SMKeyboardAvoiding.swift */; };
+		B79585A920455FFB00F7BF6C /* SMKeyboardAvoidingTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B795855A20455FFA00F7BF6C /* SMKeyboardAvoidingTableView.swift */; };
+		B79585AA20455FFB00F7BF6C /* SMKeyboardAvoidingScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B795855B20455FFA00F7BF6C /* SMKeyboardAvoidingScrollView.swift */; };
+		B79585AB20455FFB00F7BF6C /* SMKeyboardToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B795855C20455FFA00F7BF6C /* SMKeyboardToolbar.swift */; };
+		B79585AC20455FFB00F7BF6C /* SMTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B795855D20455FFA00F7BF6C /* SMTextField.swift */; };
+		B79585AD20455FFB00F7BF6C /* SMTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B795855E20455FFA00F7BF6C /* SMTextView.swift */; };
+		B79585AE20455FFB00F7BF6C /* SMToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B795855F20455FFA00F7BF6C /* SMToolbar.swift */; };
+		B79585AF20455FFB00F7BF6C /* SMFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B795856120455FFA00F7BF6C /* SMFormatter.swift */; };
+		B79585B020455FFB00F7BF6C /* SMViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B795856320455FFA00F7BF6C /* SMViewController.swift */; };
+		B79585B120455FFB00F7BF6C /* UIViewController+Help.swift in Sources */ = {isa = PBXBuildFile; fileRef = B795856420455FFA00F7BF6C /* UIViewController+Help.swift */; };
+		B79585B220455FFB00F7BF6C /* SMActivityAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B795856620455FFB00F7BF6C /* SMActivityAdapter.swift */; };
+		B79585B320455FFB00F7BF6C /* SMPullToRefreshAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B795856720455FFB00F7BF6C /* SMPullToRefreshAdapter.swift */; };
+		B79585B420455FFB00F7BF6C /* SMNativePullToRefreshAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B795856820455FFB00F7BF6C /* SMNativePullToRefreshAdapter.swift */; };
+		B79585B520455FFB00F7BF6C /* SMNativeActivityAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B795856920455FFB00F7BF6C /* SMNativeActivityAdapter.swift */; };
+		B79585B620455FFB00F7BF6C /* SMNativeMoreTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B795856A20455FFB00F7BF6C /* SMNativeMoreTableViewCell.swift */; };
+		B79585B720455FFB00F7BF6C /* SMRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B795856C20455FFB00F7BF6C /* SMRequest.swift */; };
+		B79585B820455FFB00F7BF6C /* SMDataBaseRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B795856D20455FFB00F7BF6C /* SMDataBaseRequest.swift */; };
+		B79585B920455FFB00F7BF6C /* SMValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B795856F20455FFB00F7BF6C /* SMValidator.swift */; };
+		B79585BA20455FFB00F7BF6C /* SMValidationGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = B795857020455FFB00F7BF6C /* SMValidationGroup.swift */; };
+		B79585BB20455FFB00F7BF6C /* SMFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B795857220455FFB00F7BF6C /* SMFilter.swift */; };
+		B79585BC20455FFB00F7BF6C /* SMModuleListPaging.swift in Sources */ = {isa = PBXBuildFile; fileRef = B795857420455FFB00F7BF6C /* SMModuleListPaging.swift */; };
+		B79585BD20455FFB00F7BF6C /* SMModuleList.swift in Sources */ = {isa = PBXBuildFile; fileRef = B795857520455FFB00F7BF6C /* SMModuleList.swift */; };
+		B79585BE20455FFB00F7BF6C /* SMModuleRemotePushes.swift in Sources */ = {isa = PBXBuildFile; fileRef = B795857620455FFB00F7BF6C /* SMModuleRemotePushes.swift */; };
+		B79585BF20455FFB00F7BF6C /* SMMulticastDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B795857820455FFB00F7BF6C /* SMMulticastDelegate.swift */; };
+		B79585C020455FFB00F7BF6C /* SMTargetAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = B795857A20455FFB00F7BF6C /* SMTargetAction.swift */; };
+		B79585C120455FFB00F7BF6C /* SMTitledID.swift in Sources */ = {isa = PBXBuildFile; fileRef = B795857B20455FFB00F7BF6C /* SMTitledID.swift */; };
+		B79585C220455FFB00F7BF6C /* SMPair.swift in Sources */ = {isa = PBXBuildFile; fileRef = B795857C20455FFB00F7BF6C /* SMPair.swift */; };
+		B79585C320455FFB00F7BF6C /* UILabel+Help.swift in Sources */ = {isa = PBXBuildFile; fileRef = B795857E20455FFB00F7BF6C /* UILabel+Help.swift */; };
+		B79585C420455FFB00F7BF6C /* UIView+Help.swift in Sources */ = {isa = PBXBuildFile; fileRef = B795857F20455FFB00F7BF6C /* UIView+Help.swift */; };
+		B79585C520455FFB00F7BF6C /* SMHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B795858020455FFB00F7BF6C /* SMHelper.swift */; };
+		B79585C620455FFB00F7BF6C /* UIButton+Help.swift in Sources */ = {isa = PBXBuildFile; fileRef = B795858120455FFB00F7BF6C /* UIButton+Help.swift */; };
+		B79585C720455FFB00F7BF6C /* UIImage+Help.swift in Sources */ = {isa = PBXBuildFile; fileRef = B795858220455FFB00F7BF6C /* UIImage+Help.swift */; };
+		B79585C820455FFB00F7BF6C /* UIImageView+Help.swift in Sources */ = {isa = PBXBuildFile; fileRef = B795858320455FFB00F7BF6C /* UIImageView+Help.swift */; };
+		B79585C920455FFB00F7BF6C /* UIView+PSSizes.swift in Sources */ = {isa = PBXBuildFile; fileRef = B795858420455FFB00F7BF6C /* UIView+PSSizes.swift */; };
+		B79585CA20455FFB00F7BF6C /* SMColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B795858520455FFB00F7BF6C /* SMColor.swift */; };
+		B79585CB20455FFB00F7BF6C /* UIView+Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B795858620455FFB00F7BF6C /* UIView+Animation.swift */; };
+		B79585CC20455FFB00F7BF6C /* SMGatewayRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B795858820455FFB00F7BF6C /* SMGatewayRequest.swift */; };
+		B79585CD20455FFB00F7BF6C /* SMGatewayConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B795858920455FFB00F7BF6C /* SMGatewayConfigurator.swift */; };
+		B79585CE20455FFB00F7BF6C /* SMGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = B795858A20455FFB00F7BF6C /* SMGateway.swift */; };
 		B7ED41F91F34B271006C24DC /* VRGSoftSwiftIOSKit.bundle in Resources */ = {isa = PBXBuildFile; fileRef = B7ED41F81F34B271006C24DC /* VRGSoftSwiftIOSKit.bundle */; };
-		B7F833CF1F39FC2200B0BC67 /* SMActivityAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F833861F39FC2200B0BC67 /* SMActivityAdapter.swift */; };
-		B7F833D01F39FC2200B0BC67 /* SMActivityPKHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F833871F39FC2200B0BC67 /* SMActivityPKHUD.swift */; };
-		B7F833D11F39FC2200B0BC67 /* SMNativeMoreTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F833881F39FC2200B0BC67 /* SMNativeMoreTableViewCell.swift */; };
-		B7F833D21F39FC2200B0BC67 /* SMNativePullToRefreshAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F833891F39FC2200B0BC67 /* SMNativePullToRefreshAdapter.swift */; };
-		B7F833D31F39FC2200B0BC67 /* SMPullToRefreshAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F8338A1F39FC2200B0BC67 /* SMPullToRefreshAdapter.swift */; };
-		B7F833D41F39FC2200B0BC67 /* SMAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F8338C1F39FC2200B0BC67 /* SMAlertController.swift */; };
-		B7F833D51F39FC2200B0BC67 /* SMPair.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F8338E1F39FC2200B0BC67 /* SMPair.swift */; };
-		B7F833D61F39FC2200B0BC67 /* SMTargetAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F8338F1F39FC2200B0BC67 /* SMTargetAction.swift */; };
-		B7F833D71F39FC2200B0BC67 /* SMTitledID.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F833901F39FC2200B0BC67 /* SMTitledID.swift */; };
-		B7F833D81F39FC2200B0BC67 /* SMLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F833921F39FC2200B0BC67 /* SMLabel.swift */; };
-		B7F833D91F39FC2200B0BC67 /* SMTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F833931F39FC2200B0BC67 /* SMTextField.swift */; };
-		B7F833DA1F39FC2200B0BC67 /* SMTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F833941F39FC2200B0BC67 /* SMTextView.swift */; };
-		B7F833DB1F39FC2200B0BC67 /* SMStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F833961F39FC2200B0BC67 /* SMStorage.swift */; };
-		B7F833DC1F39FC2200B0BC67 /* SMDataFetcherProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F833981F39FC2200B0BC67 /* SMDataFetcherProtocol.swift */; };
-		B7F833DD1F39FC2200B0BC67 /* SMFetcherIntoStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F833991F39FC2200B0BC67 /* SMFetcherIntoStorage.swift */; };
-		B7F833DE1F39FC2200B0BC67 /* SMFetcherMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F8339A1F39FC2200B0BC67 /* SMFetcherMessage.swift */; };
-		B7F833DF1F39FC2200B0BC67 /* SMFetcherWithBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F8339B1F39FC2200B0BC67 /* SMFetcherWithBlock.swift */; };
-		B7F833E01F39FC2200B0BC67 /* SMFetcherWithRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F8339C1F39FC2200B0BC67 /* SMFetcherWithRequest.swift */; };
-		B7F833E11F39FC2200B0BC67 /* SMFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F8339E1F39FC2200B0BC67 /* SMFilter.swift */; };
-		B7F833E21F39FC2200B0BC67 /* SMFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F833A01F39FC2200B0BC67 /* SMFormatter.swift */; };
-		B7F833E31F39FC2200B0BC67 /* SMGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F833A21F39FC2200B0BC67 /* SMGateway.swift */; };
-		B7F833E41F39FC2200B0BC67 /* SMGatewayConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F833A31F39FC2200B0BC67 /* SMGatewayConfigurator.swift */; };
-		B7F833E51F39FC2200B0BC67 /* SMGatewayRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F833A41F39FC2200B0BC67 /* SMGatewayRequest.swift */; };
-		B7F833E61F39FC2200B0BC67 /* SMColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F833A61F39FC2200B0BC67 /* SMColor.swift */; };
-		B7F833E71F39FC2200B0BC67 /* UIButton+Help.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F833A71F39FC2200B0BC67 /* UIButton+Help.swift */; };
-		B7F833E81F39FC2200B0BC67 /* UIImage+Help.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F833A81F39FC2200B0BC67 /* UIImage+Help.swift */; };
-		B7F833E91F39FC2200B0BC67 /* UIImageView+Help.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F833A91F39FC2200B0BC67 /* UIImageView+Help.swift */; };
-		B7F833EA1F39FC2200B0BC67 /* UILabel+Help.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F833AA1F39FC2200B0BC67 /* UILabel+Help.swift */; };
-		B7F833EB1F39FC2200B0BC67 /* UIView+Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F833AB1F39FC2200B0BC67 /* UIView+Animation.swift */; };
-		B7F833EC1F39FC2200B0BC67 /* UIView+Help.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F833AC1F39FC2200B0BC67 /* UIView+Help.swift */; };
-		B7F833ED1F39FC2200B0BC67 /* UIView+PSSizes.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F833AD1F39FC2200B0BC67 /* UIView+PSSizes.swift */; };
-		B7F833EE1F39FC2200B0BC67 /* SMModuleList.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F833AF1F39FC2200B0BC67 /* SMModuleList.swift */; };
-		B7F833EF1F39FC2200B0BC67 /* SMModuleListPaging.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F833B01F39FC2200B0BC67 /* SMModuleListPaging.swift */; };
-		B7F833F01F39FC2200B0BC67 /* SMModuleRemotePushes.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F833B11F39FC2200B0BC67 /* SMModuleRemotePushes.swift */; };
-		B7F833F11F39FC2200B0BC67 /* SMDataBaseRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F833B31F39FC2200B0BC67 /* SMDataBaseRequest.swift */; };
-		B7F833F21F39FC2200B0BC67 /* SMRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F833B41F39FC2200B0BC67 /* SMRequest.swift */; };
-		B7F833F41F39FC2200B0BC67 /* SMResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F833B81F39FC2200B0BC67 /* SMResponse.swift */; };
-		B7F833F51F39FC2200B0BC67 /* SMCellData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F833BC1F39FC2200B0BC67 /* SMCellData.swift */; };
-		B7F833F61F39FC2200B0BC67 /* SMCellDataMaped.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F833BD1F39FC2200B0BC67 /* SMCellDataMaped.swift */; };
-		B7F833F71F39FC2200B0BC67 /* SMCellDataModeled.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F833BE1F39FC2200B0BC67 /* SMCellDataModeled.swift */; };
-		B7F833F81F39FC2200B0BC67 /* SMCellProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F833BF1F39FC2200B0BC67 /* SMCellProtocol.swift */; };
-		B7F833F91F39FC2200B0BC67 /* SMCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F833C21F39FC2200B0BC67 /* SMCell.swift */; };
-		B7F833FA1F39FC2200B0BC67 /* SMSectionReadonly.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F833C41F39FC2200B0BC67 /* SMSectionReadonly.swift */; };
-		B7F833FB1F39FC2200B0BC67 /* SMSectionWritable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F833C51F39FC2200B0BC67 /* SMSectionWritable.swift */; };
-		B7F833FC1F39FC2200B0BC67 /* SMTableDisposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F833C71F39FC2200B0BC67 /* SMTableDisposer.swift */; };
-		B7F833FD1F39FC2200B0BC67 /* SMTableDisposerModeled.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F833C81F39FC2200B0BC67 /* SMTableDisposerModeled.swift */; };
-		B7F833FE1F39FC2200B0BC67 /* SMValidationGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F833CA1F39FC2200B0BC67 /* SMValidationGroup.swift */; };
-		B7F833FF1F39FC2200B0BC67 /* SMValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F833CB1F39FC2200B0BC67 /* SMValidator.swift */; };
-		B7F834001F39FC2200B0BC67 /* SMViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F833CD1F39FC2200B0BC67 /* SMViewController.swift */; };
-		B7F834011F39FC2200B0BC67 /* UIViewController+Help.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F833CE1F39FC2200B0BC67 /* UIViewController+Help.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		74D214329718139F3B918BE8 /* Pods-VRGSoftSwiftIOSKit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VRGSoftSwiftIOSKit.debug.xcconfig"; path = "Pods/Target Support Files/Pods-VRGSoftSwiftIOSKit/Pods-VRGSoftSwiftIOSKit.debug.xcconfig"; sourceTree = "<group>"; };
 		8BC56EDC4EEA30A01FF18969 /* Pods_VRGSoftSwiftIOSKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VRGSoftSwiftIOSKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		B71552401F3FAABB0073653B /* SMKeyboardAvoidingTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMKeyboardAvoidingTableView.swift; sourceTree = "<group>"; };
-		B71D37D51F3CA07F007DD6EE /* SMKeyboardAvoiding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMKeyboardAvoiding.swift; sourceTree = "<group>"; };
-		B71D37D71F3CA2D1007DD6EE /* SMKeyboardToolbar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMKeyboardToolbar.swift; sourceTree = "<group>"; };
-		B71D37D91F3CA585007DD6EE /* SMKeyboardAvoidingScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMKeyboardAvoidingScrollView.swift; sourceTree = "<group>"; };
 		B74DF3961F34955500405847 /* VRGSoftSwiftIOSKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VRGSoftSwiftIOSKit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B74DF3991F34955500405847 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B74DF39B1F34955500405847 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -99,70 +96,75 @@
 		B74DF3A31F34955500405847 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B74DF3A51F34955500405847 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B74DF3AB1F34A3FC00405847 /* VRGSoftSwiftIOSKit.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = VRGSoftSwiftIOSKit.podspec; sourceTree = "<group>"; };
-		B750D1691F3DD9D60086FEB7 /* SMToolbar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMToolbar.swift; sourceTree = "<group>"; };
-		B76326D01F4AC804000E3031 /* SMPopupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMPopupViewController.swift; sourceTree = "<group>"; };
-		B76326D31F4B1FB8000E3031 /* SMPopupPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMPopupPicker.swift; sourceTree = "<group>"; };
-		B76326D51F4B23DD000E3031 /* SMHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMHelper.swift; sourceTree = "<group>"; };
-		B775AA571F4C1AF6003714F8 /* SMPopupSimplePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMPopupSimplePicker.swift; sourceTree = "<group>"; };
-		B775AA591F4C4136003714F8 /* SMPopupPickerItemTitled.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMPopupPickerItemTitled.swift; sourceTree = "<group>"; };
-		B775AA5B1F4C51DF003714F8 /* SMPopupDatePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMPopupDatePicker.swift; sourceTree = "<group>"; };
-		B775AA5D1F4C5A93003714F8 /* SMPopupDateTimePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMPopupDateTimePicker.swift; sourceTree = "<group>"; };
-		B775AA5F1F4C5BB1003714F8 /* SMPopupHoursMinutesPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMPopupHoursMinutesPicker.swift; sourceTree = "<group>"; };
-		B775AA611F4C61E3003714F8 /* SMPopupTimePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMPopupTimePicker.swift; sourceTree = "<group>"; };
-		B775AA631F4C6318003714F8 /* SMPopupCustomSimplePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMPopupCustomSimplePicker.swift; sourceTree = "<group>"; };
-		B7C2F9BD1F46EE740066FA3D /* SMPopoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMPopoverViewController.swift; sourceTree = "<group>"; };
-		B7C2F9BF1F46EE8E0066FA3D /* SMPopupView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMPopupView.swift; sourceTree = "<group>"; };
+		B795852F20455FFA00F7BF6C /* SMAlertController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMAlertController.swift; sourceTree = "<group>"; };
+		B795853120455FFA00F7BF6C /* SMResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMResponse.swift; sourceTree = "<group>"; };
+		B795853320455FFA00F7BF6C /* SMDataFetcherProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMDataFetcherProtocol.swift; sourceTree = "<group>"; };
+		B795853420455FFA00F7BF6C /* SMFetcherWithBlock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMFetcherWithBlock.swift; sourceTree = "<group>"; };
+		B795853520455FFA00F7BF6C /* SMFetcherIntoStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMFetcherIntoStorage.swift; sourceTree = "<group>"; };
+		B795853620455FFA00F7BF6C /* SMFetcherMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMFetcherMessage.swift; sourceTree = "<group>"; };
+		B795853720455FFA00F7BF6C /* SMFetcherWithRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMFetcherWithRequest.swift; sourceTree = "<group>"; };
+		B795853B20455FFA00F7BF6C /* SMCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMCell.swift; sourceTree = "<group>"; };
+		B795853D20455FFA00F7BF6C /* SMSectionWritable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMSectionWritable.swift; sourceTree = "<group>"; };
+		B795853E20455FFA00F7BF6C /* SMSectionReadonly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMSectionReadonly.swift; sourceTree = "<group>"; };
+		B795854020455FFA00F7BF6C /* SMTableDisposerModeled.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMTableDisposerModeled.swift; sourceTree = "<group>"; };
+		B795854120455FFA00F7BF6C /* SMTableDisposer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMTableDisposer.swift; sourceTree = "<group>"; };
+		B795854420455FFA00F7BF6C /* SMCellData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMCellData.swift; sourceTree = "<group>"; };
+		B795854520455FFA00F7BF6C /* SMCellDataModeled.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMCellDataModeled.swift; sourceTree = "<group>"; };
+		B795854620455FFA00F7BF6C /* SMCellDataMaped.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMCellDataMaped.swift; sourceTree = "<group>"; };
+		B795854720455FFA00F7BF6C /* SMCellProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMCellProtocol.swift; sourceTree = "<group>"; };
+		B795854920455FFA00F7BF6C /* SMStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMStorage.swift; sourceTree = "<group>"; };
+		B795854B20455FFA00F7BF6C /* SMLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMLabel.swift; sourceTree = "<group>"; };
+		B795854D20455FFA00F7BF6C /* SMPopupTimePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMPopupTimePicker.swift; sourceTree = "<group>"; };
+		B795854E20455FFA00F7BF6C /* SMPopupDateTimePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMPopupDateTimePicker.swift; sourceTree = "<group>"; };
+		B795854F20455FFA00F7BF6C /* SMPopupPickerItemTitled.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMPopupPickerItemTitled.swift; sourceTree = "<group>"; };
+		B795855020455FFA00F7BF6C /* SMPopupDatePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMPopupDatePicker.swift; sourceTree = "<group>"; };
+		B795855120455FFA00F7BF6C /* SMPopupCustomSimplePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMPopupCustomSimplePicker.swift; sourceTree = "<group>"; };
+		B795855220455FFA00F7BF6C /* SMPopupHoursMinutesPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMPopupHoursMinutesPicker.swift; sourceTree = "<group>"; };
+		B795855320455FFA00F7BF6C /* SMPopupView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMPopupView.swift; sourceTree = "<group>"; };
+		B795855420455FFA00F7BF6C /* SMPopupSimplePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMPopupSimplePicker.swift; sourceTree = "<group>"; };
+		B795855520455FFA00F7BF6C /* SMPopupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMPopupViewController.swift; sourceTree = "<group>"; };
+		B795855620455FFA00F7BF6C /* SMPopoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMPopoverViewController.swift; sourceTree = "<group>"; };
+		B795855720455FFA00F7BF6C /* SMPopupPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMPopupPicker.swift; sourceTree = "<group>"; };
+		B795855920455FFA00F7BF6C /* SMKeyboardAvoiding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMKeyboardAvoiding.swift; sourceTree = "<group>"; };
+		B795855A20455FFA00F7BF6C /* SMKeyboardAvoidingTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMKeyboardAvoidingTableView.swift; sourceTree = "<group>"; };
+		B795855B20455FFA00F7BF6C /* SMKeyboardAvoidingScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMKeyboardAvoidingScrollView.swift; sourceTree = "<group>"; };
+		B795855C20455FFA00F7BF6C /* SMKeyboardToolbar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMKeyboardToolbar.swift; sourceTree = "<group>"; };
+		B795855D20455FFA00F7BF6C /* SMTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMTextField.swift; sourceTree = "<group>"; };
+		B795855E20455FFA00F7BF6C /* SMTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMTextView.swift; sourceTree = "<group>"; };
+		B795855F20455FFA00F7BF6C /* SMToolbar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMToolbar.swift; sourceTree = "<group>"; };
+		B795856120455FFA00F7BF6C /* SMFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMFormatter.swift; sourceTree = "<group>"; };
+		B795856320455FFA00F7BF6C /* SMViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMViewController.swift; sourceTree = "<group>"; };
+		B795856420455FFA00F7BF6C /* UIViewController+Help.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Help.swift"; sourceTree = "<group>"; };
+		B795856620455FFB00F7BF6C /* SMActivityAdapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMActivityAdapter.swift; sourceTree = "<group>"; };
+		B795856720455FFB00F7BF6C /* SMPullToRefreshAdapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMPullToRefreshAdapter.swift; sourceTree = "<group>"; };
+		B795856820455FFB00F7BF6C /* SMNativePullToRefreshAdapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMNativePullToRefreshAdapter.swift; sourceTree = "<group>"; };
+		B795856920455FFB00F7BF6C /* SMNativeActivityAdapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMNativeActivityAdapter.swift; sourceTree = "<group>"; };
+		B795856A20455FFB00F7BF6C /* SMNativeMoreTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMNativeMoreTableViewCell.swift; sourceTree = "<group>"; };
+		B795856C20455FFB00F7BF6C /* SMRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMRequest.swift; sourceTree = "<group>"; };
+		B795856D20455FFB00F7BF6C /* SMDataBaseRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMDataBaseRequest.swift; sourceTree = "<group>"; };
+		B795856F20455FFB00F7BF6C /* SMValidator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMValidator.swift; sourceTree = "<group>"; };
+		B795857020455FFB00F7BF6C /* SMValidationGroup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMValidationGroup.swift; sourceTree = "<group>"; };
+		B795857220455FFB00F7BF6C /* SMFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMFilter.swift; sourceTree = "<group>"; };
+		B795857420455FFB00F7BF6C /* SMModuleListPaging.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMModuleListPaging.swift; sourceTree = "<group>"; };
+		B795857520455FFB00F7BF6C /* SMModuleList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMModuleList.swift; sourceTree = "<group>"; };
+		B795857620455FFB00F7BF6C /* SMModuleRemotePushes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMModuleRemotePushes.swift; sourceTree = "<group>"; };
+		B795857820455FFB00F7BF6C /* SMMulticastDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMMulticastDelegate.swift; sourceTree = "<group>"; };
+		B795857A20455FFB00F7BF6C /* SMTargetAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMTargetAction.swift; sourceTree = "<group>"; };
+		B795857B20455FFB00F7BF6C /* SMTitledID.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMTitledID.swift; sourceTree = "<group>"; };
+		B795857C20455FFB00F7BF6C /* SMPair.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMPair.swift; sourceTree = "<group>"; };
+		B795857E20455FFB00F7BF6C /* UILabel+Help.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UILabel+Help.swift"; sourceTree = "<group>"; };
+		B795857F20455FFB00F7BF6C /* UIView+Help.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Help.swift"; sourceTree = "<group>"; };
+		B795858020455FFB00F7BF6C /* SMHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMHelper.swift; sourceTree = "<group>"; };
+		B795858120455FFB00F7BF6C /* UIButton+Help.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIButton+Help.swift"; sourceTree = "<group>"; };
+		B795858220455FFB00F7BF6C /* UIImage+Help.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Help.swift"; sourceTree = "<group>"; };
+		B795858320455FFB00F7BF6C /* UIImageView+Help.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+Help.swift"; sourceTree = "<group>"; };
+		B795858420455FFB00F7BF6C /* UIView+PSSizes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+PSSizes.swift"; sourceTree = "<group>"; };
+		B795858520455FFB00F7BF6C /* SMColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMColor.swift; sourceTree = "<group>"; };
+		B795858620455FFB00F7BF6C /* UIView+Animation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Animation.swift"; sourceTree = "<group>"; };
+		B795858820455FFB00F7BF6C /* SMGatewayRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMGatewayRequest.swift; sourceTree = "<group>"; };
+		B795858920455FFB00F7BF6C /* SMGatewayConfigurator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMGatewayConfigurator.swift; sourceTree = "<group>"; };
+		B795858A20455FFB00F7BF6C /* SMGateway.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMGateway.swift; sourceTree = "<group>"; };
 		B7ED41F81F34B271006C24DC /* VRGSoftSwiftIOSKit.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = VRGSoftSwiftIOSKit.bundle; sourceTree = "<group>"; };
-		B7F833861F39FC2200B0BC67 /* SMActivityAdapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMActivityAdapter.swift; sourceTree = "<group>"; };
-		B7F833871F39FC2200B0BC67 /* SMActivityPKHUD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMActivityPKHUD.swift; sourceTree = "<group>"; };
-		B7F833881F39FC2200B0BC67 /* SMNativeMoreTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMNativeMoreTableViewCell.swift; sourceTree = "<group>"; };
-		B7F833891F39FC2200B0BC67 /* SMNativePullToRefreshAdapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMNativePullToRefreshAdapter.swift; sourceTree = "<group>"; };
-		B7F8338A1F39FC2200B0BC67 /* SMPullToRefreshAdapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMPullToRefreshAdapter.swift; sourceTree = "<group>"; };
-		B7F8338C1F39FC2200B0BC67 /* SMAlertController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMAlertController.swift; sourceTree = "<group>"; };
-		B7F8338E1F39FC2200B0BC67 /* SMPair.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMPair.swift; sourceTree = "<group>"; };
-		B7F8338F1F39FC2200B0BC67 /* SMTargetAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMTargetAction.swift; sourceTree = "<group>"; };
-		B7F833901F39FC2200B0BC67 /* SMTitledID.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMTitledID.swift; sourceTree = "<group>"; };
-		B7F833921F39FC2200B0BC67 /* SMLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMLabel.swift; sourceTree = "<group>"; };
-		B7F833931F39FC2200B0BC67 /* SMTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMTextField.swift; sourceTree = "<group>"; };
-		B7F833941F39FC2200B0BC67 /* SMTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMTextView.swift; sourceTree = "<group>"; };
-		B7F833961F39FC2200B0BC67 /* SMStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMStorage.swift; sourceTree = "<group>"; };
-		B7F833981F39FC2200B0BC67 /* SMDataFetcherProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMDataFetcherProtocol.swift; sourceTree = "<group>"; };
-		B7F833991F39FC2200B0BC67 /* SMFetcherIntoStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMFetcherIntoStorage.swift; sourceTree = "<group>"; };
-		B7F8339A1F39FC2200B0BC67 /* SMFetcherMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMFetcherMessage.swift; sourceTree = "<group>"; };
-		B7F8339B1F39FC2200B0BC67 /* SMFetcherWithBlock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMFetcherWithBlock.swift; sourceTree = "<group>"; };
-		B7F8339C1F39FC2200B0BC67 /* SMFetcherWithRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMFetcherWithRequest.swift; sourceTree = "<group>"; };
-		B7F8339E1F39FC2200B0BC67 /* SMFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMFilter.swift; sourceTree = "<group>"; };
-		B7F833A01F39FC2200B0BC67 /* SMFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMFormatter.swift; sourceTree = "<group>"; };
-		B7F833A21F39FC2200B0BC67 /* SMGateway.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMGateway.swift; sourceTree = "<group>"; };
-		B7F833A31F39FC2200B0BC67 /* SMGatewayConfigurator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMGatewayConfigurator.swift; sourceTree = "<group>"; };
-		B7F833A41F39FC2200B0BC67 /* SMGatewayRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMGatewayRequest.swift; sourceTree = "<group>"; };
-		B7F833A61F39FC2200B0BC67 /* SMColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMColor.swift; sourceTree = "<group>"; };
-		B7F833A71F39FC2200B0BC67 /* UIButton+Help.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIButton+Help.swift"; sourceTree = "<group>"; };
-		B7F833A81F39FC2200B0BC67 /* UIImage+Help.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Help.swift"; sourceTree = "<group>"; };
-		B7F833A91F39FC2200B0BC67 /* UIImageView+Help.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+Help.swift"; sourceTree = "<group>"; };
-		B7F833AA1F39FC2200B0BC67 /* UILabel+Help.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UILabel+Help.swift"; sourceTree = "<group>"; };
-		B7F833AB1F39FC2200B0BC67 /* UIView+Animation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Animation.swift"; sourceTree = "<group>"; };
-		B7F833AC1F39FC2200B0BC67 /* UIView+Help.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Help.swift"; sourceTree = "<group>"; };
-		B7F833AD1F39FC2200B0BC67 /* UIView+PSSizes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+PSSizes.swift"; sourceTree = "<group>"; };
-		B7F833AF1F39FC2200B0BC67 /* SMModuleList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMModuleList.swift; sourceTree = "<group>"; };
-		B7F833B01F39FC2200B0BC67 /* SMModuleListPaging.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMModuleListPaging.swift; sourceTree = "<group>"; };
-		B7F833B11F39FC2200B0BC67 /* SMModuleRemotePushes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMModuleRemotePushes.swift; sourceTree = "<group>"; };
-		B7F833B31F39FC2200B0BC67 /* SMDataBaseRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMDataBaseRequest.swift; sourceTree = "<group>"; };
-		B7F833B41F39FC2200B0BC67 /* SMRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMRequest.swift; sourceTree = "<group>"; };
-		B7F833B81F39FC2200B0BC67 /* SMResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMResponse.swift; sourceTree = "<group>"; };
-		B7F833BC1F39FC2200B0BC67 /* SMCellData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMCellData.swift; sourceTree = "<group>"; };
-		B7F833BD1F39FC2200B0BC67 /* SMCellDataMaped.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMCellDataMaped.swift; sourceTree = "<group>"; };
-		B7F833BE1F39FC2200B0BC67 /* SMCellDataModeled.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMCellDataModeled.swift; sourceTree = "<group>"; };
-		B7F833BF1F39FC2200B0BC67 /* SMCellProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMCellProtocol.swift; sourceTree = "<group>"; };
-		B7F833C21F39FC2200B0BC67 /* SMCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMCell.swift; sourceTree = "<group>"; };
-		B7F833C41F39FC2200B0BC67 /* SMSectionReadonly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMSectionReadonly.swift; sourceTree = "<group>"; };
-		B7F833C51F39FC2200B0BC67 /* SMSectionWritable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMSectionWritable.swift; sourceTree = "<group>"; };
-		B7F833C71F39FC2200B0BC67 /* SMTableDisposer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMTableDisposer.swift; sourceTree = "<group>"; };
-		B7F833C81F39FC2200B0BC67 /* SMTableDisposerModeled.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMTableDisposerModeled.swift; sourceTree = "<group>"; };
-		B7F833CA1F39FC2200B0BC67 /* SMValidationGroup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMValidationGroup.swift; sourceTree = "<group>"; };
-		B7F833CB1F39FC2200B0BC67 /* SMValidator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMValidator.swift; sourceTree = "<group>"; };
-		B7F833CD1F39FC2200B0BC67 /* SMViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMViewController.swift; sourceTree = "<group>"; };
-		B7F833CE1F39FC2200B0BC67 /* UIViewController+Help.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Help.swift"; sourceTree = "<group>"; };
 		E744888B69F1358D3BD7E3F5 /* Pods-VRGSoftSwiftIOSKit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VRGSoftSwiftIOSKit.release.xcconfig"; path = "Pods/Target Support Files/Pods-VRGSoftSwiftIOSKit/Pods-VRGSoftSwiftIOSKit.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -187,17 +189,6 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		B71D37D41F3CA065007DD6EE /* KeyboardAvoiding */ = {
-			isa = PBXGroup;
-			children = (
-				B71D37D51F3CA07F007DD6EE /* SMKeyboardAvoiding.swift */,
-				B71D37D71F3CA2D1007DD6EE /* SMKeyboardToolbar.swift */,
-				B71D37D91F3CA585007DD6EE /* SMKeyboardAvoidingScrollView.swift */,
-				B71552401F3FAABB0073653B /* SMKeyboardAvoidingTableView.swift */,
-			);
-			path = KeyboardAvoiding;
-			sourceTree = "<group>";
-		};
 		B74DF38D1F34955500405847 = {
 			isa = PBXGroup;
 			children = (
@@ -220,7 +211,7 @@
 		B74DF3981F34955500405847 /* VRGSoftSwiftIOSKit */ = {
 			isa = PBXGroup;
 			children = (
-				B7F833841F39FBFC00B0BC67 /* Core */,
+				B795852D20455FFA00F7BF6C /* Core */,
 				B7ED41F71F34B1B6006C24DC /* Resources */,
 				B74DF3991F34955500405847 /* AppDelegate.swift */,
 				B74DF39B1F34955500405847 /* ViewController.swift */,
@@ -232,22 +223,279 @@
 			path = VRGSoftSwiftIOSKit;
 			sourceTree = "<group>";
 		};
-		B7C2F9BC1F46EE580066FA3D /* Popup */ = {
+		B795852D20455FFA00F7BF6C /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				B7C2F9BF1F46EE8E0066FA3D /* SMPopupView.swift */,
-				B76326D31F4B1FB8000E3031 /* SMPopupPicker.swift */,
-				B775AA591F4C4136003714F8 /* SMPopupPickerItemTitled.swift */,
-				B775AA5B1F4C51DF003714F8 /* SMPopupDatePicker.swift */,
-				B775AA611F4C61E3003714F8 /* SMPopupTimePicker.swift */,
-				B775AA5D1F4C5A93003714F8 /* SMPopupDateTimePicker.swift */,
-				B775AA5F1F4C5BB1003714F8 /* SMPopupHoursMinutesPicker.swift */,
-				B775AA571F4C1AF6003714F8 /* SMPopupSimplePicker.swift */,
-				B775AA631F4C6318003714F8 /* SMPopupCustomSimplePicker.swift */,
-				B76326D01F4AC804000E3031 /* SMPopupViewController.swift */,
-				B7C2F9BD1F46EE740066FA3D /* SMPopoverViewController.swift */,
+				B795852E20455FFA00F7BF6C /* AlertController */,
+				B795853020455FFA00F7BF6C /* Response */,
+				B795853220455FFA00F7BF6C /* Fetcher */,
+				B795853820455FFA00F7BF6C /* TableDisposer */,
+				B795854820455FFA00F7BF6C /* CoreData */,
+				B795854A20455FFA00F7BF6C /* Controls */,
+				B795856020455FFA00F7BF6C /* Formatter */,
+				B795856220455FFA00F7BF6C /* Vc */,
+				B795856520455FFA00F7BF6C /* Activities */,
+				B795856B20455FFB00F7BF6C /* Request */,
+				B795856E20455FFB00F7BF6C /* Validators */,
+				B795857120455FFB00F7BF6C /* Filter */,
+				B795857320455FFB00F7BF6C /* Modules */,
+				B795857720455FFB00F7BF6C /* MulticastDelegate */,
+				B795857920455FFB00F7BF6C /* Base */,
+				B795857D20455FFB00F7BF6C /* Help */,
+				B795858720455FFB00F7BF6C /* Gateway */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		B795852E20455FFA00F7BF6C /* AlertController */ = {
+			isa = PBXGroup;
+			children = (
+				B795852F20455FFA00F7BF6C /* SMAlertController.swift */,
+			);
+			path = AlertController;
+			sourceTree = "<group>";
+		};
+		B795853020455FFA00F7BF6C /* Response */ = {
+			isa = PBXGroup;
+			children = (
+				B795853120455FFA00F7BF6C /* SMResponse.swift */,
+			);
+			path = Response;
+			sourceTree = "<group>";
+		};
+		B795853220455FFA00F7BF6C /* Fetcher */ = {
+			isa = PBXGroup;
+			children = (
+				B795853320455FFA00F7BF6C /* SMDataFetcherProtocol.swift */,
+				B795853420455FFA00F7BF6C /* SMFetcherWithBlock.swift */,
+				B795853520455FFA00F7BF6C /* SMFetcherIntoStorage.swift */,
+				B795853620455FFA00F7BF6C /* SMFetcherMessage.swift */,
+				B795853720455FFA00F7BF6C /* SMFetcherWithRequest.swift */,
+			);
+			path = Fetcher;
+			sourceTree = "<group>";
+		};
+		B795853820455FFA00F7BF6C /* TableDisposer */ = {
+			isa = PBXGroup;
+			children = (
+				B795853920455FFA00F7BF6C /* Cells */,
+				B795853C20455FFA00F7BF6C /* Sections */,
+				B795853F20455FFA00F7BF6C /* TableDisposers */,
+				B795854220455FFA00F7BF6C /* CellDatas */,
+			);
+			path = TableDisposer;
+			sourceTree = "<group>";
+		};
+		B795853920455FFA00F7BF6C /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				B795853A20455FFA00F7BF6C /* Base */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		B795853A20455FFA00F7BF6C /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				B795853B20455FFA00F7BF6C /* SMCell.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		B795853C20455FFA00F7BF6C /* Sections */ = {
+			isa = PBXGroup;
+			children = (
+				B795853D20455FFA00F7BF6C /* SMSectionWritable.swift */,
+				B795853E20455FFA00F7BF6C /* SMSectionReadonly.swift */,
+			);
+			path = Sections;
+			sourceTree = "<group>";
+		};
+		B795853F20455FFA00F7BF6C /* TableDisposers */ = {
+			isa = PBXGroup;
+			children = (
+				B795854020455FFA00F7BF6C /* SMTableDisposerModeled.swift */,
+				B795854120455FFA00F7BF6C /* SMTableDisposer.swift */,
+			);
+			path = TableDisposers;
+			sourceTree = "<group>";
+		};
+		B795854220455FFA00F7BF6C /* CellDatas */ = {
+			isa = PBXGroup;
+			children = (
+				B795854320455FFA00F7BF6C /* Base */,
+			);
+			path = CellDatas;
+			sourceTree = "<group>";
+		};
+		B795854320455FFA00F7BF6C /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				B795854420455FFA00F7BF6C /* SMCellData.swift */,
+				B795854520455FFA00F7BF6C /* SMCellDataModeled.swift */,
+				B795854620455FFA00F7BF6C /* SMCellDataMaped.swift */,
+				B795854720455FFA00F7BF6C /* SMCellProtocol.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		B795854820455FFA00F7BF6C /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				B795854920455FFA00F7BF6C /* SMStorage.swift */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
+		B795854A20455FFA00F7BF6C /* Controls */ = {
+			isa = PBXGroup;
+			children = (
+				B795854B20455FFA00F7BF6C /* SMLabel.swift */,
+				B795854C20455FFA00F7BF6C /* Popup */,
+				B795855820455FFA00F7BF6C /* KeyboardAvoiding */,
+				B795855D20455FFA00F7BF6C /* SMTextField.swift */,
+				B795855E20455FFA00F7BF6C /* SMTextView.swift */,
+				B795855F20455FFA00F7BF6C /* SMToolbar.swift */,
+			);
+			path = Controls;
+			sourceTree = "<group>";
+		};
+		B795854C20455FFA00F7BF6C /* Popup */ = {
+			isa = PBXGroup;
+			children = (
+				B795854D20455FFA00F7BF6C /* SMPopupTimePicker.swift */,
+				B795854E20455FFA00F7BF6C /* SMPopupDateTimePicker.swift */,
+				B795854F20455FFA00F7BF6C /* SMPopupPickerItemTitled.swift */,
+				B795855020455FFA00F7BF6C /* SMPopupDatePicker.swift */,
+				B795855120455FFA00F7BF6C /* SMPopupCustomSimplePicker.swift */,
+				B795855220455FFA00F7BF6C /* SMPopupHoursMinutesPicker.swift */,
+				B795855320455FFA00F7BF6C /* SMPopupView.swift */,
+				B795855420455FFA00F7BF6C /* SMPopupSimplePicker.swift */,
+				B795855520455FFA00F7BF6C /* SMPopupViewController.swift */,
+				B795855620455FFA00F7BF6C /* SMPopoverViewController.swift */,
+				B795855720455FFA00F7BF6C /* SMPopupPicker.swift */,
 			);
 			path = Popup;
+			sourceTree = "<group>";
+		};
+		B795855820455FFA00F7BF6C /* KeyboardAvoiding */ = {
+			isa = PBXGroup;
+			children = (
+				B795855920455FFA00F7BF6C /* SMKeyboardAvoiding.swift */,
+				B795855A20455FFA00F7BF6C /* SMKeyboardAvoidingTableView.swift */,
+				B795855B20455FFA00F7BF6C /* SMKeyboardAvoidingScrollView.swift */,
+				B795855C20455FFA00F7BF6C /* SMKeyboardToolbar.swift */,
+			);
+			path = KeyboardAvoiding;
+			sourceTree = "<group>";
+		};
+		B795856020455FFA00F7BF6C /* Formatter */ = {
+			isa = PBXGroup;
+			children = (
+				B795856120455FFA00F7BF6C /* SMFormatter.swift */,
+			);
+			path = Formatter;
+			sourceTree = "<group>";
+		};
+		B795856220455FFA00F7BF6C /* Vc */ = {
+			isa = PBXGroup;
+			children = (
+				B795856320455FFA00F7BF6C /* SMViewController.swift */,
+				B795856420455FFA00F7BF6C /* UIViewController+Help.swift */,
+			);
+			path = Vc;
+			sourceTree = "<group>";
+		};
+		B795856520455FFA00F7BF6C /* Activities */ = {
+			isa = PBXGroup;
+			children = (
+				B795856620455FFB00F7BF6C /* SMActivityAdapter.swift */,
+				B795856720455FFB00F7BF6C /* SMPullToRefreshAdapter.swift */,
+				B795856820455FFB00F7BF6C /* SMNativePullToRefreshAdapter.swift */,
+				B795856920455FFB00F7BF6C /* SMNativeActivityAdapter.swift */,
+				B795856A20455FFB00F7BF6C /* SMNativeMoreTableViewCell.swift */,
+			);
+			path = Activities;
+			sourceTree = "<group>";
+		};
+		B795856B20455FFB00F7BF6C /* Request */ = {
+			isa = PBXGroup;
+			children = (
+				B795856C20455FFB00F7BF6C /* SMRequest.swift */,
+				B795856D20455FFB00F7BF6C /* SMDataBaseRequest.swift */,
+			);
+			path = Request;
+			sourceTree = "<group>";
+		};
+		B795856E20455FFB00F7BF6C /* Validators */ = {
+			isa = PBXGroup;
+			children = (
+				B795856F20455FFB00F7BF6C /* SMValidator.swift */,
+				B795857020455FFB00F7BF6C /* SMValidationGroup.swift */,
+			);
+			path = Validators;
+			sourceTree = "<group>";
+		};
+		B795857120455FFB00F7BF6C /* Filter */ = {
+			isa = PBXGroup;
+			children = (
+				B795857220455FFB00F7BF6C /* SMFilter.swift */,
+			);
+			path = Filter;
+			sourceTree = "<group>";
+		};
+		B795857320455FFB00F7BF6C /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				B795857420455FFB00F7BF6C /* SMModuleListPaging.swift */,
+				B795857520455FFB00F7BF6C /* SMModuleList.swift */,
+				B795857620455FFB00F7BF6C /* SMModuleRemotePushes.swift */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		B795857720455FFB00F7BF6C /* MulticastDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				B795857820455FFB00F7BF6C /* SMMulticastDelegate.swift */,
+			);
+			path = MulticastDelegate;
+			sourceTree = "<group>";
+		};
+		B795857920455FFB00F7BF6C /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				B795857A20455FFB00F7BF6C /* SMTargetAction.swift */,
+				B795857B20455FFB00F7BF6C /* SMTitledID.swift */,
+				B795857C20455FFB00F7BF6C /* SMPair.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		B795857D20455FFB00F7BF6C /* Help */ = {
+			isa = PBXGroup;
+			children = (
+				B795857E20455FFB00F7BF6C /* UILabel+Help.swift */,
+				B795857F20455FFB00F7BF6C /* UIView+Help.swift */,
+				B795858020455FFB00F7BF6C /* SMHelper.swift */,
+				B795858120455FFB00F7BF6C /* UIButton+Help.swift */,
+				B795858220455FFB00F7BF6C /* UIImage+Help.swift */,
+				B795858320455FFB00F7BF6C /* UIImageView+Help.swift */,
+				B795858420455FFB00F7BF6C /* UIView+PSSizes.swift */,
+				B795858520455FFB00F7BF6C /* SMColor.swift */,
+				B795858620455FFB00F7BF6C /* UIView+Animation.swift */,
+			);
+			path = Help;
+			sourceTree = "<group>";
+		};
+		B795858720455FFB00F7BF6C /* Gateway */ = {
+			isa = PBXGroup;
+			children = (
+				B795858820455FFB00F7BF6C /* SMGatewayRequest.swift */,
+				B795858920455FFB00F7BF6C /* SMGatewayConfigurator.swift */,
+				B795858A20455FFB00F7BF6C /* SMGateway.swift */,
+			);
+			path = Gateway;
 			sourceTree = "<group>";
 		};
 		B7ED41F71F34B1B6006C24DC /* Resources */ = {
@@ -256,243 +504,6 @@
 				B7ED41F81F34B271006C24DC /* VRGSoftSwiftIOSKit.bundle */,
 			);
 			path = Resources;
-			sourceTree = "<group>";
-		};
-		B7F833841F39FBFC00B0BC67 /* Core */ = {
-			isa = PBXGroup;
-			children = (
-				B7F833851F39FC2200B0BC67 /* Activities */,
-				B7F8338B1F39FC2200B0BC67 /* AlertController */,
-				B7F8338D1F39FC2200B0BC67 /* Base */,
-				B7F833911F39FC2200B0BC67 /* Controls */,
-				B7F833951F39FC2200B0BC67 /* CoreData */,
-				B7F833971F39FC2200B0BC67 /* Fetcher */,
-				B7F8339D1F39FC2200B0BC67 /* Filter */,
-				B7F8339F1F39FC2200B0BC67 /* Formatter */,
-				B7F833A11F39FC2200B0BC67 /* Gateway */,
-				B7F833A51F39FC2200B0BC67 /* Help */,
-				B7F833AE1F39FC2200B0BC67 /* Modules */,
-				B7F833B21F39FC2200B0BC67 /* Request */,
-				B7F833B71F39FC2200B0BC67 /* Response */,
-				B7F833B91F39FC2200B0BC67 /* TableDisposer */,
-				B7F833C91F39FC2200B0BC67 /* Validators */,
-				B7F833CC1F39FC2200B0BC67 /* Vc */,
-			);
-			path = Core;
-			sourceTree = "<group>";
-		};
-		B7F833851F39FC2200B0BC67 /* Activities */ = {
-			isa = PBXGroup;
-			children = (
-				B7F833861F39FC2200B0BC67 /* SMActivityAdapter.swift */,
-				B7F833871F39FC2200B0BC67 /* SMActivityPKHUD.swift */,
-				B7F833881F39FC2200B0BC67 /* SMNativeMoreTableViewCell.swift */,
-				B7F833891F39FC2200B0BC67 /* SMNativePullToRefreshAdapter.swift */,
-				B7F8338A1F39FC2200B0BC67 /* SMPullToRefreshAdapter.swift */,
-			);
-			path = Activities;
-			sourceTree = "<group>";
-		};
-		B7F8338B1F39FC2200B0BC67 /* AlertController */ = {
-			isa = PBXGroup;
-			children = (
-				B7F8338C1F39FC2200B0BC67 /* SMAlertController.swift */,
-			);
-			path = AlertController;
-			sourceTree = "<group>";
-		};
-		B7F8338D1F39FC2200B0BC67 /* Base */ = {
-			isa = PBXGroup;
-			children = (
-				B7F8338E1F39FC2200B0BC67 /* SMPair.swift */,
-				B7F8338F1F39FC2200B0BC67 /* SMTargetAction.swift */,
-				B7F833901F39FC2200B0BC67 /* SMTitledID.swift */,
-			);
-			path = Base;
-			sourceTree = "<group>";
-		};
-		B7F833911F39FC2200B0BC67 /* Controls */ = {
-			isa = PBXGroup;
-			children = (
-				B7C2F9BC1F46EE580066FA3D /* Popup */,
-				B71D37D41F3CA065007DD6EE /* KeyboardAvoiding */,
-				B7F833921F39FC2200B0BC67 /* SMLabel.swift */,
-				B7F833931F39FC2200B0BC67 /* SMTextField.swift */,
-				B7F833941F39FC2200B0BC67 /* SMTextView.swift */,
-				B750D1691F3DD9D60086FEB7 /* SMToolbar.swift */,
-			);
-			path = Controls;
-			sourceTree = "<group>";
-		};
-		B7F833951F39FC2200B0BC67 /* CoreData */ = {
-			isa = PBXGroup;
-			children = (
-				B7F833961F39FC2200B0BC67 /* SMStorage.swift */,
-			);
-			path = CoreData;
-			sourceTree = "<group>";
-		};
-		B7F833971F39FC2200B0BC67 /* Fetcher */ = {
-			isa = PBXGroup;
-			children = (
-				B7F833981F39FC2200B0BC67 /* SMDataFetcherProtocol.swift */,
-				B7F833991F39FC2200B0BC67 /* SMFetcherIntoStorage.swift */,
-				B7F8339A1F39FC2200B0BC67 /* SMFetcherMessage.swift */,
-				B7F8339B1F39FC2200B0BC67 /* SMFetcherWithBlock.swift */,
-				B7F8339C1F39FC2200B0BC67 /* SMFetcherWithRequest.swift */,
-			);
-			path = Fetcher;
-			sourceTree = "<group>";
-		};
-		B7F8339D1F39FC2200B0BC67 /* Filter */ = {
-			isa = PBXGroup;
-			children = (
-				B7F8339E1F39FC2200B0BC67 /* SMFilter.swift */,
-			);
-			path = Filter;
-			sourceTree = "<group>";
-		};
-		B7F8339F1F39FC2200B0BC67 /* Formatter */ = {
-			isa = PBXGroup;
-			children = (
-				B7F833A01F39FC2200B0BC67 /* SMFormatter.swift */,
-			);
-			path = Formatter;
-			sourceTree = "<group>";
-		};
-		B7F833A11F39FC2200B0BC67 /* Gateway */ = {
-			isa = PBXGroup;
-			children = (
-				B7F833A21F39FC2200B0BC67 /* SMGateway.swift */,
-				B7F833A31F39FC2200B0BC67 /* SMGatewayConfigurator.swift */,
-				B7F833A41F39FC2200B0BC67 /* SMGatewayRequest.swift */,
-			);
-			path = Gateway;
-			sourceTree = "<group>";
-		};
-		B7F833A51F39FC2200B0BC67 /* Help */ = {
-			isa = PBXGroup;
-			children = (
-				B7F833A61F39FC2200B0BC67 /* SMColor.swift */,
-				B7F833A71F39FC2200B0BC67 /* UIButton+Help.swift */,
-				B7F833A81F39FC2200B0BC67 /* UIImage+Help.swift */,
-				B7F833A91F39FC2200B0BC67 /* UIImageView+Help.swift */,
-				B7F833AA1F39FC2200B0BC67 /* UILabel+Help.swift */,
-				B7F833AB1F39FC2200B0BC67 /* UIView+Animation.swift */,
-				B7F833AC1F39FC2200B0BC67 /* UIView+Help.swift */,
-				B7F833AD1F39FC2200B0BC67 /* UIView+PSSizes.swift */,
-				B76326D51F4B23DD000E3031 /* SMHelper.swift */,
-			);
-			path = Help;
-			sourceTree = "<group>";
-		};
-		B7F833AE1F39FC2200B0BC67 /* Modules */ = {
-			isa = PBXGroup;
-			children = (
-				B7F833AF1F39FC2200B0BC67 /* SMModuleList.swift */,
-				B7F833B01F39FC2200B0BC67 /* SMModuleListPaging.swift */,
-				B7F833B11F39FC2200B0BC67 /* SMModuleRemotePushes.swift */,
-			);
-			path = Modules;
-			sourceTree = "<group>";
-		};
-		B7F833B21F39FC2200B0BC67 /* Request */ = {
-			isa = PBXGroup;
-			children = (
-				B7F833B31F39FC2200B0BC67 /* SMDataBaseRequest.swift */,
-				B7F833B41F39FC2200B0BC67 /* SMRequest.swift */,
-			);
-			path = Request;
-			sourceTree = "<group>";
-		};
-		B7F833B71F39FC2200B0BC67 /* Response */ = {
-			isa = PBXGroup;
-			children = (
-				B7F833B81F39FC2200B0BC67 /* SMResponse.swift */,
-			);
-			path = Response;
-			sourceTree = "<group>";
-		};
-		B7F833B91F39FC2200B0BC67 /* TableDisposer */ = {
-			isa = PBXGroup;
-			children = (
-				B7F833BA1F39FC2200B0BC67 /* CellDatas */,
-				B7F833C01F39FC2200B0BC67 /* Cells */,
-				B7F833C31F39FC2200B0BC67 /* Sections */,
-				B7F833C61F39FC2200B0BC67 /* TableDisposers */,
-			);
-			path = TableDisposer;
-			sourceTree = "<group>";
-		};
-		B7F833BA1F39FC2200B0BC67 /* CellDatas */ = {
-			isa = PBXGroup;
-			children = (
-				B7F833BB1F39FC2200B0BC67 /* Base */,
-			);
-			path = CellDatas;
-			sourceTree = "<group>";
-		};
-		B7F833BB1F39FC2200B0BC67 /* Base */ = {
-			isa = PBXGroup;
-			children = (
-				B7F833BC1F39FC2200B0BC67 /* SMCellData.swift */,
-				B7F833BD1F39FC2200B0BC67 /* SMCellDataMaped.swift */,
-				B7F833BE1F39FC2200B0BC67 /* SMCellDataModeled.swift */,
-				B7F833BF1F39FC2200B0BC67 /* SMCellProtocol.swift */,
-			);
-			path = Base;
-			sourceTree = "<group>";
-		};
-		B7F833C01F39FC2200B0BC67 /* Cells */ = {
-			isa = PBXGroup;
-			children = (
-				B7F833C11F39FC2200B0BC67 /* Base */,
-			);
-			path = Cells;
-			sourceTree = "<group>";
-		};
-		B7F833C11F39FC2200B0BC67 /* Base */ = {
-			isa = PBXGroup;
-			children = (
-				B7F833C21F39FC2200B0BC67 /* SMCell.swift */,
-			);
-			path = Base;
-			sourceTree = "<group>";
-		};
-		B7F833C31F39FC2200B0BC67 /* Sections */ = {
-			isa = PBXGroup;
-			children = (
-				B7F833C41F39FC2200B0BC67 /* SMSectionReadonly.swift */,
-				B7F833C51F39FC2200B0BC67 /* SMSectionWritable.swift */,
-			);
-			path = Sections;
-			sourceTree = "<group>";
-		};
-		B7F833C61F39FC2200B0BC67 /* TableDisposers */ = {
-			isa = PBXGroup;
-			children = (
-				B7F833C71F39FC2200B0BC67 /* SMTableDisposer.swift */,
-				B7F833C81F39FC2200B0BC67 /* SMTableDisposerModeled.swift */,
-			);
-			path = TableDisposers;
-			sourceTree = "<group>";
-		};
-		B7F833C91F39FC2200B0BC67 /* Validators */ = {
-			isa = PBXGroup;
-			children = (
-				B7F833CA1F39FC2200B0BC67 /* SMValidationGroup.swift */,
-				B7F833CB1F39FC2200B0BC67 /* SMValidator.swift */,
-			);
-			path = Validators;
-			sourceTree = "<group>";
-		};
-		B7F833CC1F39FC2200B0BC67 /* Vc */ = {
-			isa = PBXGroup;
-			children = (
-				B7F833CD1F39FC2200B0BC67 /* SMViewController.swift */,
-				B7F833CE1F39FC2200B0BC67 /* UIViewController+Help.swift */,
-			);
-			path = Vc;
 			sourceTree = "<group>";
 		};
 		E57EA640F164A220DF80EC71 /* Frameworks */ = {
@@ -634,75 +645,76 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B795859520455FFB00F7BF6C /* SMTableDisposerModeled.swift in Sources */,
+				B79585C820455FFB00F7BF6C /* UIImageView+Help.swift in Sources */,
+				B79585AC20455FFB00F7BF6C /* SMTextField.swift in Sources */,
+				B79585B220455FFB00F7BF6C /* SMActivityAdapter.swift in Sources */,
+				B79585AF20455FFB00F7BF6C /* SMFormatter.swift in Sources */,
+				B79585C920455FFB00F7BF6C /* UIView+PSSizes.swift in Sources */,
 				B74DF39C1F34955500405847 /* ViewController.swift in Sources */,
-				B7F833DA1F39FC2200B0BC67 /* SMTextView.swift in Sources */,
-				B7F833FD1F39FC2200B0BC67 /* SMTableDisposerModeled.swift in Sources */,
-				B7F833E81F39FC2200B0BC67 /* UIImage+Help.swift in Sources */,
-				B7F833D01F39FC2200B0BC67 /* SMActivityPKHUD.swift in Sources */,
-				B7F833E01F39FC2200B0BC67 /* SMFetcherWithRequest.swift in Sources */,
-				B7F833DC1F39FC2200B0BC67 /* SMDataFetcherProtocol.swift in Sources */,
-				B7F833D21F39FC2200B0BC67 /* SMNativePullToRefreshAdapter.swift in Sources */,
-				B775AA5C1F4C51DF003714F8 /* SMPopupDatePicker.swift in Sources */,
-				B7C2F9BE1F46EE740066FA3D /* SMPopoverViewController.swift in Sources */,
-				B7F833F91F39FC2200B0BC67 /* SMCell.swift in Sources */,
-				B7F833EF1F39FC2200B0BC67 /* SMModuleListPaging.swift in Sources */,
-				B76326D61F4B23DD000E3031 /* SMHelper.swift in Sources */,
-				B71D37D81F3CA2D1007DD6EE /* SMKeyboardToolbar.swift in Sources */,
-				B7F833FE1F39FC2200B0BC67 /* SMValidationGroup.swift in Sources */,
+				B79585C420455FFB00F7BF6C /* UIView+Help.swift in Sources */,
+				B79585C620455FFB00F7BF6C /* UIButton+Help.swift in Sources */,
+				B79585A020455FFB00F7BF6C /* SMPopupDatePicker.swift in Sources */,
+				B795858D20455FFB00F7BF6C /* SMDataFetcherProtocol.swift in Sources */,
+				B79585A420455FFB00F7BF6C /* SMPopupSimplePicker.swift in Sources */,
+				B79585C320455FFB00F7BF6C /* UILabel+Help.swift in Sources */,
+				B79585A220455FFB00F7BF6C /* SMPopupHoursMinutesPicker.swift in Sources */,
+				B79585B620455FFB00F7BF6C /* SMNativeMoreTableViewCell.swift in Sources */,
+				B79585AE20455FFB00F7BF6C /* SMToolbar.swift in Sources */,
+				B79585A620455FFB00F7BF6C /* SMPopoverViewController.swift in Sources */,
+				B79585CD20455FFB00F7BF6C /* SMGatewayConfigurator.swift in Sources */,
+				B79585C020455FFB00F7BF6C /* SMTargetAction.swift in Sources */,
+				B79585A720455FFB00F7BF6C /* SMPopupPicker.swift in Sources */,
+				B795859F20455FFB00F7BF6C /* SMPopupPickerItemTitled.swift in Sources */,
+				B79585A120455FFB00F7BF6C /* SMPopupCustomSimplePicker.swift in Sources */,
+				B79585B520455FFB00F7BF6C /* SMNativeActivityAdapter.swift in Sources */,
+				B79585C220455FFB00F7BF6C /* SMPair.swift in Sources */,
+				B79585CE20455FFB00F7BF6C /* SMGateway.swift in Sources */,
+				B79585B920455FFB00F7BF6C /* SMValidator.swift in Sources */,
+				B79585BE20455FFB00F7BF6C /* SMModuleRemotePushes.swift in Sources */,
+				B79585B820455FFB00F7BF6C /* SMDataBaseRequest.swift in Sources */,
+				B79585B720455FFB00F7BF6C /* SMRequest.swift in Sources */,
+				B79585A320455FFB00F7BF6C /* SMPopupView.swift in Sources */,
+				B79585BB20455FFB00F7BF6C /* SMFilter.swift in Sources */,
+				B79585BA20455FFB00F7BF6C /* SMValidationGroup.swift in Sources */,
+				B79585AA20455FFB00F7BF6C /* SMKeyboardAvoidingScrollView.swift in Sources */,
+				B79585BF20455FFB00F7BF6C /* SMMulticastDelegate.swift in Sources */,
+				B795859720455FFB00F7BF6C /* SMCellData.swift in Sources */,
+				B79585A920455FFB00F7BF6C /* SMKeyboardAvoidingTableView.swift in Sources */,
+				B79585BD20455FFB00F7BF6C /* SMModuleList.swift in Sources */,
+				B795858B20455FFB00F7BF6C /* SMAlertController.swift in Sources */,
+				B795858F20455FFB00F7BF6C /* SMFetcherIntoStorage.swift in Sources */,
+				B795859820455FFB00F7BF6C /* SMCellDataModeled.swift in Sources */,
+				B79585AD20455FFB00F7BF6C /* SMTextView.swift in Sources */,
+				B79585AB20455FFB00F7BF6C /* SMKeyboardToolbar.swift in Sources */,
+				B79585B320455FFB00F7BF6C /* SMPullToRefreshAdapter.swift in Sources */,
+				B79585CB20455FFB00F7BF6C /* UIView+Animation.swift in Sources */,
+				B795859E20455FFB00F7BF6C /* SMPopupDateTimePicker.swift in Sources */,
+				B795859A20455FFB00F7BF6C /* SMCellProtocol.swift in Sources */,
+				B795859C20455FFB00F7BF6C /* SMLabel.swift in Sources */,
+				B795858E20455FFB00F7BF6C /* SMFetcherWithBlock.swift in Sources */,
+				B79585B420455FFB00F7BF6C /* SMNativePullToRefreshAdapter.swift in Sources */,
+				B79585B120455FFB00F7BF6C /* UIViewController+Help.swift in Sources */,
+				B79585CC20455FFB00F7BF6C /* SMGatewayRequest.swift in Sources */,
+				B795859420455FFB00F7BF6C /* SMSectionReadonly.swift in Sources */,
+				B795858C20455FFB00F7BF6C /* SMResponse.swift in Sources */,
+				B79585A820455FFB00F7BF6C /* SMKeyboardAvoiding.swift in Sources */,
+				B795859B20455FFB00F7BF6C /* SMStorage.swift in Sources */,
 				B74DF39A1F34955500405847 /* AppDelegate.swift in Sources */,
-				B7F833D81F39FC2200B0BC67 /* SMLabel.swift in Sources */,
-				B7F833FA1F39FC2200B0BC67 /* SMSectionReadonly.swift in Sources */,
-				B7F833FF1F39FC2200B0BC67 /* SMValidator.swift in Sources */,
-				B7F833F71F39FC2200B0BC67 /* SMCellDataModeled.swift in Sources */,
-				B7F833ED1F39FC2200B0BC67 /* UIView+PSSizes.swift in Sources */,
-				B7F833E31F39FC2200B0BC67 /* SMGateway.swift in Sources */,
-				B7F833DF1F39FC2200B0BC67 /* SMFetcherWithBlock.swift in Sources */,
-				B7F833F51F39FC2200B0BC67 /* SMCellData.swift in Sources */,
-				B750D16A1F3DD9D60086FEB7 /* SMToolbar.swift in Sources */,
-				B7F833D11F39FC2200B0BC67 /* SMNativeMoreTableViewCell.swift in Sources */,
-				B7F833E41F39FC2200B0BC67 /* SMGatewayConfigurator.swift in Sources */,
-				B7F833E71F39FC2200B0BC67 /* UIButton+Help.swift in Sources */,
-				B7F833CF1F39FC2200B0BC67 /* SMActivityAdapter.swift in Sources */,
-				B7F833F21F39FC2200B0BC67 /* SMRequest.swift in Sources */,
-				B71552411F3FAABB0073653B /* SMKeyboardAvoidingTableView.swift in Sources */,
-				B7F833FC1F39FC2200B0BC67 /* SMTableDisposer.swift in Sources */,
-				B775AA601F4C5BB1003714F8 /* SMPopupHoursMinutesPicker.swift in Sources */,
-				B7F833E61F39FC2200B0BC67 /* SMColor.swift in Sources */,
-				B76326D41F4B1FB8000E3031 /* SMPopupPicker.swift in Sources */,
-				B775AA621F4C61E3003714F8 /* SMPopupTimePicker.swift in Sources */,
-				B7F833E11F39FC2200B0BC67 /* SMFilter.swift in Sources */,
-				B7F833E21F39FC2200B0BC67 /* SMFormatter.swift in Sources */,
-				B7F833D71F39FC2200B0BC67 /* SMTitledID.swift in Sources */,
-				B71D37D61F3CA07F007DD6EE /* SMKeyboardAvoiding.swift in Sources */,
-				B7F833D61F39FC2200B0BC67 /* SMTargetAction.swift in Sources */,
-				B7F834011F39FC2200B0BC67 /* UIViewController+Help.swift in Sources */,
-				B775AA581F4C1AF6003714F8 /* SMPopupSimplePicker.swift in Sources */,
-				B7F833D51F39FC2200B0BC67 /* SMPair.swift in Sources */,
-				B7F833F61F39FC2200B0BC67 /* SMCellDataMaped.swift in Sources */,
-				B7F833F81F39FC2200B0BC67 /* SMCellProtocol.swift in Sources */,
-				B7F833E51F39FC2200B0BC67 /* SMGatewayRequest.swift in Sources */,
-				B76326D11F4AC804000E3031 /* SMPopupViewController.swift in Sources */,
-				B7C2F9C01F46EE8E0066FA3D /* SMPopupView.swift in Sources */,
-				B7F833DD1F39FC2200B0BC67 /* SMFetcherIntoStorage.swift in Sources */,
-				B7F833D91F39FC2200B0BC67 /* SMTextField.swift in Sources */,
-				B7F833F41F39FC2200B0BC67 /* SMResponse.swift in Sources */,
-				B7F833E91F39FC2200B0BC67 /* UIImageView+Help.swift in Sources */,
-				B775AA5E1F4C5A93003714F8 /* SMPopupDateTimePicker.swift in Sources */,
-				B7F833FB1F39FC2200B0BC67 /* SMSectionWritable.swift in Sources */,
-				B7F833EC1F39FC2200B0BC67 /* UIView+Help.swift in Sources */,
-				B71D37DA1F3CA585007DD6EE /* SMKeyboardAvoidingScrollView.swift in Sources */,
-				B7F833F11F39FC2200B0BC67 /* SMDataBaseRequest.swift in Sources */,
-				B775AA641F4C6318003714F8 /* SMPopupCustomSimplePicker.swift in Sources */,
-				B7F833EE1F39FC2200B0BC67 /* SMModuleList.swift in Sources */,
-				B7F833DB1F39FC2200B0BC67 /* SMStorage.swift in Sources */,
-				B7F833EB1F39FC2200B0BC67 /* UIView+Animation.swift in Sources */,
-				B7F833D41F39FC2200B0BC67 /* SMAlertController.swift in Sources */,
-				B7F833D31F39FC2200B0BC67 /* SMPullToRefreshAdapter.swift in Sources */,
-				B7F833DE1F39FC2200B0BC67 /* SMFetcherMessage.swift in Sources */,
-				B7F834001F39FC2200B0BC67 /* SMViewController.swift in Sources */,
-				B7F833EA1F39FC2200B0BC67 /* UILabel+Help.swift in Sources */,
-				B7F833F01F39FC2200B0BC67 /* SMModuleRemotePushes.swift in Sources */,
-				B775AA5A1F4C4136003714F8 /* SMPopupPickerItemTitled.swift in Sources */,
+				B79585A520455FFB00F7BF6C /* SMPopupViewController.swift in Sources */,
+				B79585C720455FFB00F7BF6C /* UIImage+Help.swift in Sources */,
+				B79585B020455FFB00F7BF6C /* SMViewController.swift in Sources */,
+				B79585CA20455FFB00F7BF6C /* SMColor.swift in Sources */,
+				B795859620455FFB00F7BF6C /* SMTableDisposer.swift in Sources */,
+				B795859320455FFB00F7BF6C /* SMSectionWritable.swift in Sources */,
+				B79585C120455FFB00F7BF6C /* SMTitledID.swift in Sources */,
+				B79585C520455FFB00F7BF6C /* SMHelper.swift in Sources */,
+				B795859920455FFB00F7BF6C /* SMCellDataMaped.swift in Sources */,
+				B79585BC20455FFB00F7BF6C /* SMModuleListPaging.swift in Sources */,
+				B795859220455FFB00F7BF6C /* SMCell.swift in Sources */,
+				B795859120455FFB00F7BF6C /* SMFetcherWithRequest.swift in Sources */,
+				B795859D20455FFB00F7BF6C /* SMPopupTimePicker.swift in Sources */,
+				B795859020455FFB00F7BF6C /* SMFetcherMessage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
