@@ -46,5 +46,4 @@ Pod::Spec.new do |s|
         s.source_files = 'VRGSoftSwiftIOSKit/Core/**/*.swift'
 
         s.dependency 'Alamofire', '~> 4.5'
-        s.dependency 'MulticastDelegateSwift', '~> 2.0'
 end
