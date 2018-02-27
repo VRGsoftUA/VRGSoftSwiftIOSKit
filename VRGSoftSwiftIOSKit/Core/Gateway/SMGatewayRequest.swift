@@ -1,6 +1,6 @@
 //
 //  SMGatewayRequest.swift
-//  Contractors
+//  SwiftKit
 //
 //  Created by OLEKSANDR SEMENIUK on 1/4/17.
 //  Copyright © 2017 VRG Soft. All rights reserved.
@@ -14,38 +14,36 @@ typealias SMGatewayRequestFailureBlock = (DataRequest, Error) -> SMResponse
 
 open class SMGatewayRequest: SMRequest
 {
-    weak var gateway: SMGateway?
+    unowned var gateway: SMGateway
     var dataRequest: DataRequest?
     
     var path: String?
-    var type: HTTPMethod?
+    var type: HTTPMethod
     var parameters: [String: AnyObject] = [:]
     var headers: [String: String] = [:]
     
     var successBlock: SMGatewayRequestSuccessBlock?
     var failureBlock: SMGatewayRequestFailureBlock?
     
-    required public init(gateway aGateway: SMGateway)
+    required public init(gateway aGateway: SMGateway, type aType: HTTPMethod)
     {
-        super.init()
-
         gateway = aGateway
-        parameters = Dictionary()
+        type = aType
     }
     
     override func start() -> Void
     {
-        gateway!.start(request: self)
+        gateway.start(request: self)
     }
     
     override func cancel()
     {
-        dataRequest!.cancel()
+        dataRequest?.cancel()
     }
     
     override func canExecute() -> Bool
     {
-        return gateway!.isInternetReachable()
+        return gateway.isInternetReachable()
     }
     
     override func isCancelled() -> Bool
@@ -65,44 +63,42 @@ open class SMGatewayRequest: SMRequest
     
     func getDataRequest() -> DataRequest
     {
-        let fullPath: URL = gateway!.baseUrl!.appendingPathComponent(self.path!)
+        let fullPath: URL = path != nil ? gateway.baseUrl!.appendingPathComponent(path!) : gateway.baseUrl!
         
-        var allParams: Dictionary<String, Any> = Dictionary()
+        var allParams: [String: Any] = [:]
         
-        for (key, value) in (gateway?.defaultParameters)!
+        for (key, value) in (gateway.defaultParameters)
         {
             allParams.updateValue(value, forKey: key)
         }
 
-        for (key, value) in (self.parameters)
+        for (key, value) in (parameters)
         {
             allParams.updateValue(value, forKey: key)
         }
 
-        var allHeaders: Dictionary<String, String> = Dictionary()
+        var allHeaders: [String: String] = [:]
         
-        for (key, value) in (gateway?.defaultHeaders)!
+        for (key, value) in (gateway.defaultHeaders)
         {
             allHeaders.updateValue(value, forKey: key)
         }
         
-        for (key, value) in (self.headers)
+        for (key, value) in (headers)
         {
             allHeaders.updateValue(value, forKey: key)
         }
         
-        dataRequest = Alamofire.request(fullPath, method: self.type!, parameters: allParams, encoding: gateway!.parameterEncoding, headers: allHeaders)
+        dataRequest = Alamofire.request(fullPath, method: type, parameters: allParams, encoding: gateway.parameterEncoding, headers: allHeaders)
         
-        weak var __self = self
-                
-        dataRequest!.responseJSON(completionHandler: { responseObject in
+        dataRequest!.responseJSON(completionHandler: {[weak self] responseObject in
             switch responseObject.result {
             case .success(let data):
                 print("Request success with data: \(data)")
-                __self?.executeSuccessBlock(responseObject: responseObject)
+                self?.executeSuccessBlock(responseObject: responseObject)
             case .failure(let error):
                 print("Request failed with error: \(error)")
-                __self?.executeFailureBlock(responseObject: responseObject)
+                self?.executeFailureBlock(responseObject: responseObject)
             }
         })
         
@@ -111,39 +107,39 @@ open class SMGatewayRequest: SMRequest
     
     func executeSuccessBlock(responseObject aResponseObject: DataResponse<Any>) -> Void
     {
-        if successBlock != nil
+        if let successBlock = successBlock
         {
-            let response: SMResponse = successBlock!(self.dataRequest!,aResponseObject)
+            let response: SMResponse = successBlock(dataRequest!,aResponseObject)
             
-            if self.executeAllResponseBlocksSync
+            if executeAllResponseBlocksSync
             {
-                self.executeSynchronouslyAllResponseBlocks(response: response)
+                executeSynchronouslyAllResponseBlocks(response: response)
             } else
             {
-                self.executeAllResponseBlocks(response: response)
+                executeAllResponseBlocks(response: response)
             }
         }
     }
     
     func executeFailureBlock(responseObject aResponseObject: DataResponse<Any>) -> Void
     {
-        if failureBlock != nil
+        if let failureBlock = failureBlock
         {
-            let response: SMResponse = failureBlock!(self.dataRequest!,aResponseObject.error!)
+            let response: SMResponse = failureBlock(dataRequest!,aResponseObject.error!)
             
-            if self.executeAllResponseBlocksSync
+            if executeAllResponseBlocksSync
             {
-                self.executeSynchronouslyAllResponseBlocks(response: response)
+                executeSynchronouslyAllResponseBlocks(response: response)
             } else
             {
-                self.executeAllResponseBlocks(response: response)
+                executeAllResponseBlocks(response: response)
             }
         }
     }
 
     func setup(successBlock aSuccessBlock: @escaping SMGatewayRequestSuccessBlock,failureBlock aFailureBlock: @escaping SMGatewayRequestFailureBlock) -> Void
     {
-        self.successBlock = aSuccessBlock
-        self.failureBlock = aFailureBlock
+        successBlock = aSuccessBlock
+        failureBlock = aFailureBlock
     }
 }

@@ -1,6 +1,6 @@
 //
 //  SMTextView.swift
-//  Contractors
+//  SwiftKit
 //
 //  Created by OLEKSANDR SEMENIUK on 12/22/16.
 //  Copyright © 2016 VRG Soft. All rights reserved.
@@ -37,57 +37,49 @@ open class SMTextView: UITextView, SMKeyboardAvoiderProtocol, SMValidationProtoc
     
     // MARK: - PlaceHolder
     
-    var _placeholderTextView: UITextView?
-    var placeholderTextView: UITextView!
+    var placeholderTextView: UITextView = UITextView()
     {
-        get
+        didSet
         {
-            if _placeholderTextView == nil
-            {
-                _placeholderTextView = UITextView(frame: self.bounds)
-                
-                _placeholderTextView!.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-                _placeholderTextView!.backgroundColor = UIColor.clear
-                _placeholderTextView!.font = self.font
-                _placeholderTextView!.textColor = UIColor.gray
-                _placeholderTextView!.isEditable = false
-                _placeholderTextView!.isUserInteractionEnabled = false
-                _placeholderTextView!.isHidden = self.text.count > 0
-                _placeholderTextView!.textContainerInset = self.textContainerInset
-                self.addSubview(_placeholderTextView!)
-            }
-            
-            return _placeholderTextView
+            placeholderTextView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+            placeholderTextView.backgroundColor = UIColor.clear
+            placeholderTextView.font = self.font
+            placeholderTextView.textColor = UIColor.gray
+            placeholderTextView.isEditable = false
+            placeholderTextView.isUserInteractionEnabled = false
+            placeholderTextView.isHidden = self.text.count > 0
+            placeholderTextView.textContainerInset = self.textContainerInset
+            self.addSubview(placeholderTextView)
         }
     }
 
-    var placeholder: String!
+    open var placeholder: String?
     {
         set
         {
             self.placeholderTextView.text = newValue
-            self.placeholderTextView!.isHidden = self.text.count > 0
+            self.placeholderTextView.isHidden = self.text.count > 0
         }
         
         get { return self.placeholderTextView.text }
     }
     
-    var attributedPlaceholder: NSAttributedString!
+    open var attributedPlaceholder: NSAttributedString
     {
         set
         {
             self.placeholderTextView.attributedText = newValue
-            self.placeholderTextView!.isHidden = self.text.count > 0
+            self.placeholderTextView.isHidden = self.text.count > 0
         }
         
         get { return self.attributedText }
     }
     
-    var placeholderColor: UIColor?
+    open var placeholderColor: UIColor?
     {
         set
         {
-            self.placeholderTextView.textColor = newValue
+            placeholderTextView.textColor = newValue
         }
         
         get { return self.placeholderTextView.textColor }
@@ -98,7 +90,7 @@ open class SMTextView: UITextView, SMKeyboardAvoiderProtocol, SMValidationProtoc
         set
         {
             super.textContainerInset = newValue
-            self.placeholderTextView.textContainerInset = newValue
+            placeholderTextView.textContainerInset = newValue
         }
         
         get { return super.textContainerInset }
@@ -109,7 +101,7 @@ open class SMTextView: UITextView, SMKeyboardAvoiderProtocol, SMValidationProtoc
         set
         {
             super.textAlignment = newValue
-            self.placeholderTextView.textAlignment = newValue
+            placeholderTextView.textAlignment = newValue
         }
         
         get { return super.textAlignment }
@@ -119,10 +111,7 @@ open class SMTextView: UITextView, SMKeyboardAvoiderProtocol, SMValidationProtoc
     {
         set
         {
-            if _placeholderTextView != nil
-            {
-                self.placeholderTextView.isHidden = newValue
-            }
+            placeholderTextView.isHidden = newValue
         }
         
         get { return placeholderTextView.isHidden }
@@ -133,7 +122,7 @@ open class SMTextView: UITextView, SMKeyboardAvoiderProtocol, SMValidationProtoc
         set
         {
             super.text = newValue
-            self.placeholderTextView!.isHidden = self.text.count > 0
+            placeholderTextView.isHidden = self.text.count > 0
         }
         
         get { return super.text }
@@ -144,7 +133,7 @@ open class SMTextView: UITextView, SMKeyboardAvoiderProtocol, SMValidationProtoc
         set
         {
             super.font = newValue
-            self.placeholderTextView.font = newValue
+            placeholderTextView.font = newValue
         }
         
         get { return super.font }
@@ -180,10 +169,7 @@ open class SMTextView: UITextView, SMKeyboardAvoiderProtocol, SMValidationProtoc
     {
         didSet
         {
-            if validator != nil
-            {
-                validator!.validatableObject = self
-            }
+            validator?.validatableObject = self
         }
     }
     

@@ -1,6 +1,6 @@
 //
 //  SMSectionReadonly.swift
-//  Contractors
+//  SwiftKit
 //
 //  Created by OLEKSANDR SEMENIUK on 01/31/17.
 //  Copyright © 2016 VRG Soft. All rights reserved.
@@ -8,10 +8,10 @@
 
 import UIKit
 
-open class SMSectionReadonly: NSObject
+open class SMSectionReadonly
 {
-    open var cellDataSource: [SMCellData]! = []
-    open var visibleCellDataSource: [SMCellData]! = []
+    open var cellDataSource: [SMCellData] = []
+    open var visibleCellDataSource: [SMCellData] = []
     open weak var tableDisposer: SMTableDisposer?
     
     open var headerTitle: String?
@@ -44,7 +44,7 @@ open class SMSectionReadonly: NSObject
 
     func removeCellData(_ aCellData: SMCellData) -> Void
     {
-        if  let index = cellDataSource.index(of: aCellData)
+        if  let index = cellDataSource.index(where: {$0 === aCellData})
         {
             cellDataSource.remove(at: index)
         }
@@ -67,12 +67,22 @@ open class SMSectionReadonly: NSObject
     
     func index(by aCellData: SMCellData) -> Int
     {
-        return cellDataSource.index(of: aCellData)!
+        if  let index = cellDataSource.index(where: {$0 === aCellData})
+        {
+            return index
+        }
+
+        return NSNotFound
     }
 
     func index(byVisible aCellData: SMCellData) -> Int
     {
-        return visibleCellDataSource.index(of: aCellData)!
+        if  let index = visibleCellDataSource.index(where: {$0 === aCellData})
+        {
+            return index
+        }
+        
+        return NSNotFound
     }
     
     func cellData(byTag aTag: Int) -> SMCellData?
@@ -225,7 +235,7 @@ open class SMSectionReadonly: NSObject
         
         let index: Int = self.index(byVisible: cellData)
         
-        if  let i = cellDataSource.index(of: cellData)
+        if  let i = cellDataSource.index(where: {$0 === cellData})
         {
             cellDataSource.remove(at: i)
         }

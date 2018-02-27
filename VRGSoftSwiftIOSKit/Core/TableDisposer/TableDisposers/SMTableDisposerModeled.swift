@@ -1,35 +1,33 @@
 //
 //  SMTableDisposerModeled.swift
-//  Contractors
+//  SwiftKit
 //
 //  Created by OLEKSANDR SEMENIUK on 2/2/17.
 //  Copyright © 2017 VRG Soft. All rights reserved.
 //
 
 import UIKit
-import MulticastDelegateSwift
 
-
-@objc public protocol SMTableDisposerModeledMulticastDelegate: NSObjectProtocol
+public protocol SMTableDisposerModeledMulticastDelegate: class
 {
-    @objc optional func tableDisposer(_ aTableDisposer: SMTableDisposer, didCreateCellData aCellData: SMCellData) -> Void
+    func tableDisposer(_ aTableDisposer: SMTableDisposer, didCreateCellData aCellData: SMCellDataModeled) -> Void
 }
 
-@objc public protocol SMTableDisposerModeledDelegate: NSObjectProtocol
+public protocol SMTableDisposerModeledDelegate: class
 {
-    @objc optional func tableDisposer(_ aTableDisposer: SMTableDisposer, didCreateCellData aCellData: SMCellData) -> Void
-    @objc optional func tableDisposer(_ aTableDisposer: SMTableDisposer, cellDataClassForUnregisteredModel aModel: AnyObject) -> AnyClass
+    func tableDisposer(_ aTableDisposer: SMTableDisposer, didCreateCellData aCellData: SMCellDataModeled) -> Void
+    func tableDisposer(_ aTableDisposer: SMTableDisposer, cellDataClassForUnregisteredModel aModel: AnyObject) -> SMCellDataModeled.Type
 }
 
 open class SMTableDisposerModeled: SMTableDisposer
 {
-    let modeledMulticastDelegate: MulticastDelegate<SMTableDisposerModeledMulticastDelegate> = MulticastDelegate(strongReferences: false)
+    let modeledMulticastDelegate: SMMulticastDelegate<SMTableDisposerModeledMulticastDelegate> = SMMulticastDelegate(strongReferences: false)
 
-    var registeredClasses : [String: AnyClass] = [:]
+    var registeredClasses : [String: SMCellDataModeled.Type] = [:]
     
     weak var modeledDelegate: SMTableDisposerModeledDelegate?
     
-    func register(cellDataClass aCellDataClass: AnyClass, forModelClass aModelClass: AnyClass) -> Void
+    func register(cellDataClass aCellDataClass: SMCellDataModeled.Type, forModelClass aModelClass: AnyClass) -> Void
     {
         registeredClasses[String(describing: aModelClass)] = aCellDataClass
     }
@@ -59,32 +57,48 @@ open class SMTableDisposerModeled: SMTableDisposer
     {
         let modelClassName: String = String(describing: type(of: aModel))
 
-        var cellDataClass: AnyClass? = registeredClasses[modelClassName]!
-        
-        if cellDataClass == nil &&
-            self.modeledDelegate != nil &&
-            self.modeledDelegate!.tableDisposer(_:cellDataClassForUnregisteredModel:) != nil
+        var cellDataClass: SMCellDataModeled.Type? = registeredClasses[modelClassName]
+
+        if cellDataClass == nil
         {
-            cellDataClass = modeledDelegate!.tableDisposer!(self, cellDataClassForUnregisteredModel: aModel)
+            cellDataClass = modeledDelegate?.tableDisposer(self, cellDataClassForUnregisteredModel: aModel)
         }
         
         assert(cellDataClass != nil, String(format: "Model doesn't have registered cellData class %@", modelClassName))
         
-        let cellData: SMCellDataModeled = (cellDataClass.self as! SMCellDataModeled.Type).init(model: aModel)
+        let cellData: SMCellDataModeled = cellDataClass!.init(model: aModel)
         
         return cellData
     }
 
-    func didCreate(cellData aCellData: SMCellData) -> Void
+    func didCreate(cellData aCellData: SMCellDataModeled) -> Void
     {
-        if self.modeledDelegate != nil &&
-            self.modeledDelegate!.tableDisposer(_:didCreateCellData:) != nil
-        {
-            self.modeledDelegate!.tableDisposer!(self, didCreateCellData: aCellData)
-            
-            self.modeledMulticastDelegate.invokeDelegates { (delegate) in
-                delegate.tableDisposer!(self, didCreateCellData: aCellData)
-            }
+        self.modeledDelegate?.tableDisposer(self, didCreateCellData: aCellData)
+        self.modeledMulticastDelegate.invokeDelegates { (delegate) in
+            delegate.tableDisposer(self, didCreateCellData: aCellData)
         }
+    }
+}
+
+
+extension SMTableDisposerModeledMulticastDelegate
+{
+    func tableDisposer(_ aTableDisposer: SMTableDisposer, didCreateCellData aCellData: SMCellDataModeled) -> Void
+    {
+        
+    }
+}
+
+extension SMTableDisposerModeledDelegate
+{
+    func tableDisposer(_ aTableDisposer: SMTableDisposer, didCreateCellData aCellData: SMCellDataModeled) -> Void
+    {
+        
+    }
+    
+    func tableDisposer(_ aTableDisposer: SMTableDisposer, cellDataClassForUnregisteredModel aModel: AnyObject) -> SMCellDataModeled.Type?
+    {
+        assert(false)
+        return nil
     }
 }

@@ -1,6 +1,6 @@
 //
 //  SMDataBaseRequest.swift
-//  mygoal
+//  SwiftKit
 //
 //  Created by OLEKSANDR SEMENIUK on 7/5/17.
 //  Copyright © 2017 VRG Soft. All rights reserved.
@@ -55,7 +55,7 @@ open class SMDataBaseRequest: SMRequest
                 let response: SMResponse = SMResponse()
                 self.executing = false
                 response.requestCancelled = true
-                response.success = false
+                response.isSuccess = false
                 self.executeAllResponseBlocks(response: response)
                 return
             }
@@ -82,7 +82,7 @@ open class SMDataBaseRequest: SMRequest
         }
         response.error = aError
         response.requestCancelled = self.isCancelled()
-        response.success = response.error != nil && !response.requestCancelled
+        response.isSuccess = response.error != nil && !response.requestCancelled
         
         return response
     }

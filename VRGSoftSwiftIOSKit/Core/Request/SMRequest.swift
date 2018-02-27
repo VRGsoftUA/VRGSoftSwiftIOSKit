@@ -1,6 +1,6 @@
 //
 //  SMRequest.swift
-//  Contractors
+//  SwiftKit
 //
 //  Created by OLEKSANDR SEMENIUK on 1/3/17.
 //  Copyright © 2017 VRG Soft. All rights reserved.
@@ -23,7 +23,7 @@ open class SMResponseNode
 }
 
 
-open class SMRequest: NSObject
+open class SMRequest
 {
     let defaultResponseQueue: DispatchQueue = DispatchQueue.main
 

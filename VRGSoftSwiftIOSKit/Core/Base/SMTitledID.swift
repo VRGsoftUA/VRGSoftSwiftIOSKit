@@ -1,6 +1,6 @@
 //
 //  SMTitledID.swift
-//  Contractors
+//  SwiftKit
 //
 //  Created by OLEKSANDR SEMENIUK on 01/31/17.
 //  Copyright © 2016 VRG Soft. All rights reserved.

@@ -1,6 +1,6 @@
 //
 //  SMKeyboardAvoidingTableView.swift
-//  VRGSoftSwiftIOSKit
+//  SwiftKit
 //
 //  Created by OLEKSANDR SEMENIUK on 8/13/17.
 //  Copyright © 2017 OLEKSANDR SEMENIUK. All rights reserved.

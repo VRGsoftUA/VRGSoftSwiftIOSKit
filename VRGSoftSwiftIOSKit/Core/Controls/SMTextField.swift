@@ -1,6 +1,6 @@
 //
 //  SMTextField.swift
-//  Contractors
+//  SwiftKit
 //
 //  Created by OLEKSANDR SEMENIUK on 12/22/16.
 //  Copyright © 2016 VRG Soft. All rights reserved.
@@ -58,10 +58,7 @@ open class SMTextField: UITextField, SMKeyboardAvoiderProtocol, SMValidationProt
     {
         didSet
         {
-            if validator != nil
-            {
-                validator!.validatableObject = self
-            }
+            validator?.validatableObject = self
         }
     }
     
@@ -74,9 +71,9 @@ open class SMTextField: UITextField, SMKeyboardAvoiderProtocol, SMValidationProt
     {
         didSet
         {
-            if self.placeholder != nil && placeholderColor != nil
+            if let placeholder = placeholder, let placeholderColor = placeholderColor
             {
-                let atrPlaceholder: NSAttributedString = NSAttributedString(string: self.placeholder!, attributes: [NSAttributedStringKey.foregroundColor: placeholderColor as Any])
+                let atrPlaceholder: NSAttributedString = NSAttributedString(string: placeholder, attributes: [NSAttributedStringKey.foregroundColor: placeholderColor as Any])
                 self.attributedPlaceholder = atrPlaceholder
             }
         }
@@ -100,10 +97,7 @@ open class SMTextField: UITextField, SMKeyboardAvoiderProtocol, SMValidationProt
     {
         didSet
         {
-            if formatter != nil
-            {
-                formatter!.formattableObject = self
-            }
+            formatter?.formattableObject = self
         }
     }
     

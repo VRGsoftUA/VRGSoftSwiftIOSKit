@@ -1,6 +1,6 @@
 //
 //  SMViewController.swift
-//  Contractors
+//  SwiftKit
 //
 //  Created by OLEKSANDR SEMENIUK on 12/21/16.
 //  Copyright © 2016 VRG Soft. All rights reserved.
@@ -27,19 +27,7 @@ public typealias SMViewControllerCallback = (SMViewController, AnyObject) -> Voi
         }
     }
     
-    var _activity: SMActivityAdapter?
-    var activity: SMActivityAdapter
-    {
-        get
-        {
-            if _activity == nil
-            {
-                _activity = SMActivityPKHUD()
-            }
-            
-            return _activity!
-        }
-    }
+    var activity: SMNativeActivityAdapter = SMNativeActivityAdapter()
     
     open func showActivity() -> Void
     {

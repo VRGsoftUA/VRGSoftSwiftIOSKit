@@ -1,6 +1,6 @@
 //
 //  SMFetcherWithRequest.swift
-//  mygoal
+//  SwiftKit
 //
 //  Created by OLEKSANDR SEMENIUK on 7/5/17.
 //  Copyright © 2017 VRG Soft. All rights reserved.
@@ -68,7 +68,7 @@ open class SMFetcherWithRequest: SMDataFetcherProtocol
         {
             assert(self.callbackQueue != nil, "SMFetcherWithRequest: callbackQueue is nil! Setup callbackQueue before setup request.")
 
-            if _request != newValue
+            if _request !== newValue
             {
                 self.cancelFetching()
                 _request = newValue

@@ -1,6 +1,6 @@
 //
 //  SMCell.swift
-//  Contractors
+//  SwiftKit
 //
 //  Created by OLEKSANDR SEMENIUK on 01/31/17.
 //  Copyright © 2017 VRG Soft. All rights reserved.
@@ -44,23 +44,8 @@ open class SMCell: UITableViewCell, SMCellProtocol
     open var cellData: SMCellData? = nil
     open func setupCellData(_ aCellData: SMCellData!) -> Void
     {
-        if cellData != aCellData
-        {
-            cellData = aCellData
-        }
-        
-        if aCellData.cellWidth > 0
-        {
-            var frame = self.frame
-            frame.size.width = aCellData.cellWidth
-            self.frame = frame
-            
-            if self.superview == nil
-            {
-                self.contentView.frame = self.bounds
-            }
-        }
-        
+        cellData = aCellData
+
         self.selectionStyle = aCellData.cellSelectionStyle
         self.accessoryType = aCellData.cellAccessoryType
 

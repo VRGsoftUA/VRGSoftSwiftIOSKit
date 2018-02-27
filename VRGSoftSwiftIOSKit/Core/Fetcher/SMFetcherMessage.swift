@@ -1,6 +1,6 @@
 //
 //  SMFetcherMessage.swift
-//  Contractors
+//  SwiftKit
 //
 //  Created by OLEKSANDR SEMENIUK on 2/3/17.
 //  Copyright © 2017 VRG Soft. All rights reserved.
@@ -8,13 +8,12 @@
 
 import UIKit
 
-open class SMFetcherMessage: NSObject
+open class SMFetcherMessage
 {
     let defaultParameters: [String: AnyObject] = [:]
     
-    required override public init()
+    required public init()
     {
-        super.init()
     }
 }
 

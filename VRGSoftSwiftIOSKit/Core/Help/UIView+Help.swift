@@ -1,6 +1,6 @@
 //
 //  UIView+Help.swift
-//  Contractors
+//  SwiftKit
 //
 //  Created by OLEKSANDR SEMENIUK on 4/11/17.
 //  Copyright © 2017 Contractors.com. All rights reserved.
@@ -8,15 +8,22 @@
 
 import UIKit
 
-extension UIView
+public protocol UIViewLoading { }
+
+public extension UIViewLoading where Self : UIView
 {
-    open class func loadFromNib<T>() -> T
+    static func loadFromNib(nibNameOrNil: String? = nil) -> Self
     {
-        let result: T = Bundle.main.loadNibNamed(String(describing: self), owner: self, options: nil)?.last as! T
-        
+        let result = Bundle.main.loadNibNamed(String(describing: self), owner: self, options: nil)?.last as! Self
         return result
     }
+}
 
+extension UIView : UIViewLoading { }
+
+
+extension UIView
+{
     open func sm_roundBorder() -> Void
     {
         self.layer.cornerRadius = self.frame.size.height/2.0;

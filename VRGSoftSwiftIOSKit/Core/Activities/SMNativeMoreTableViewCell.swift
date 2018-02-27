@@ -1,6 +1,6 @@
 //
 //  SMNativeMoreTableViewCell.swift
-//  semenag01kit_Swift
+//  SwiftKit
 //
 //  Created by OLEKSANDR SEMENIUK on 8/3/17.
 //  Copyright © 2017 semenag01. All rights reserved.

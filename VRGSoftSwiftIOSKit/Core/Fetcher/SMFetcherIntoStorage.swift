@@ -1,6 +1,6 @@
 //
 //  SMFetcherIntoStorage.swift
-//  mygoal
+//  SwiftKit
 //
 //  Created by OLEKSANDR SEMENIUK on 7/12/17.
 //  Copyright © 2017 VRG Soft. All rights reserved.
@@ -25,7 +25,7 @@ open class SMFetcherIntoStorage: SMFetcherWithRequest
         {
             assert(self.callbackQueue != nil, "SMFetcherWithRequest: callbackQueue is nil! Setup callbackQueue before setup request.")
             
-            if _request != newValue
+            if _request !== newValue
             {
                 self.cancelFetching()
                 _request = newValue
@@ -33,7 +33,7 @@ open class SMFetcherIntoStorage: SMFetcherWithRequest
                 let _: SMRequest = _request!.addResponseBlock({[unowned self] (aResponse) in
                     if newValue is SMGatewayRequest
                     {
-                        let success: Bool = aResponse.success
+                        let success: Bool = aResponse.isSuccess
                         if success
                         {
                             let models = self.processFetchedModelsAfterGatewayInResponse(aResponse)
@@ -108,9 +108,12 @@ open class SMFetcherIntoStorage: SMFetcherWithRequest
     
     override func preparedRequestBy(message aMessage: SMFetcherMessage) -> SMRequest?
     {
-        if currentMessage == aMessage
+        if let currentMessage = currentMessage
         {
-            return preparedRequest!
+            if  currentMessage === aMessage
+            {
+                return preparedRequest!
+            }
         }
         
         currentMessage = aMessage

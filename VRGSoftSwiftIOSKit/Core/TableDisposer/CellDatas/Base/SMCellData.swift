@@ -1,6 +1,6 @@
 //
 //  SMCellData.swift
-//  Contractors
+//  SwiftKit
 //
 //  Created by OLEKSANDR SEMENIUK on 01/31/17.
 //  Copyright © 2017 VRG Soft. All rights reserved.
@@ -8,13 +8,13 @@
 
 import UIKit
 
-open class SMCellData: NSObject
+open class SMCellData
 {
-    var cellSelectedHandlers: [SMBlockAction]! = []
-    var cellDeselectedHandlers: [SMBlockAction]! = []
+    var cellSelectedHandlers: [SMBlockAction<SMCellData>] = []
+    var cellDeselectedHandlers: [SMBlockAction<SMCellData>] = []
     
     var cellNibName: String?
-    var cellClass: AnyClass?
+    var cellClass: UITableViewCell.Type = UITableViewCell.self
     var cellIdentifier: String
     {
         get {return String(describing: type(of: self))}
@@ -30,9 +30,9 @@ open class SMCellData: NSObject
     var isEnableEdit: Bool = true
     var isDisableInputTraits: Bool = false
     var tag: Int = 0
-    var userData: Dictionary <NSObject, String>! = Dictionary()
+    var userData: [String: Any] = [:]
     
-    var cellHeightAutomaticDimension = false
+    var isCellHeightAutomaticDimension = false
     
     var cellHeight: CGFloat = 44.0
     var cellWidth: CGFloat = 0.0
@@ -45,14 +45,14 @@ open class SMCellData: NSObject
     
     // MARK: Handlers
     
-    func addCellSelected(blockAction aBlockAction:@escaping SMBlockActionBlock) -> Void
+    func addCellSelected(blockAction aBlockAction:SMBlockAction<SMCellData>) -> Void
     {
-        cellSelectedHandlers.append(SMBlockAction(block: aBlockAction))
+        cellSelectedHandlers.append(aBlockAction)
     }
     
-    func addCellDeselected(blockAction aBlockAction:@escaping SMBlockActionBlock) -> Void
+    func addCellDeselected(blockAction aBlockAction:SMBlockAction<SMCellData>) -> Void
     {
-        cellDeselectedHandlers.append(SMBlockAction(block: aBlockAction))
+        cellDeselectedHandlers.append(aBlockAction)
     }
 
     func performSelectedHandlers() -> Void
@@ -77,14 +77,14 @@ open class SMCellData: NSObject
     func createCell() -> UITableViewCell
     {
         var cell: UITableViewCell? = nil
-        if cellNibName != nil
+        if let cellNibName = cellNibName
         {
-            cell = (Bundle.main.loadNibNamed(cellNibName!, owner: self, options: nil)?.last! as! SMCell)
+            cell = (Bundle.main.loadNibNamed(cellNibName, owner: self, options: nil)?.last! as! SMCell)
         }
         else
         {
-            let cellClass = self.cellClass as! UITableViewCell.Type
             cell = cellClass.init(style: self.cellStyle, reuseIdentifier: self.cellIdentifier)
         }
+        
         return cell!
     }}

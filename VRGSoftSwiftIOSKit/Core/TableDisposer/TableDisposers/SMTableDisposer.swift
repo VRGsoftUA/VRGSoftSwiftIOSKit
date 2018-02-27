@@ -1,15 +1,14 @@
 //
 //  SMTableDisposer.swift
-//  Contractors
+//  SwiftKit
 //
 //  Created by OLEKSANDR SEMENIUK on 01/31/17.
 //  Copyright © 2016 VRG Soft. All rights reserved.
 //
 
 import UIKit
-import MulticastDelegateSwift
 
-@objc public protocol SMTableViewDataSource : NSObjectProtocol
+@objc public protocol SMTableViewDataSource : class
 {
     @objc optional func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool
     @objc optional func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool
@@ -25,7 +24,7 @@ import MulticastDelegateSwift
     @objc optional func tableDisposer(_ aTableDisposer: SMTableDisposer, didSetupCell aCell: UITableViewCell, at aIndexPath: IndexPath)
 }
 
-@objc public protocol SMTableDisposerMulticastDelegate: NSObjectProtocol
+@objc public protocol SMTableDisposerMulticastDelegate: class
 {
     @objc optional func tableDisposer(_ aTableDisposer: SMTableDisposer, didCreateCell aCell: UITableViewCell)
 
@@ -55,14 +54,18 @@ open class SMTableDisposer: NSObject, UITableViewDelegate, UITableViewDataSource
     func removeSection(_ aSection: SMSectionReadonly) -> Void
     {
         aSection.tableDisposer = nil
-        sections.remove(at: sections.index(of: aSection)!)
+        
+        if let index = sections.index(where: {$0 === aSection})
+        {
+            sections.remove(at: index)
+        }
     }
     
-    var tableClass: AnyClass = UITableView.self
+    var tableClass: UITableView.Type = UITableView.self
     var tableStyle: UITableViewStyle! = UITableViewStyle.plain
     
     weak var delegate: SMTableDisposerDelegate?
-    let multicastDelegate: MulticastDelegate<SMTableDisposerMulticastDelegate> = MulticastDelegate(strongReferences: false)
+    let multicastDelegate: SMMulticastDelegate<SMTableDisposerMulticastDelegate> = SMMulticastDelegate(strongReferences: false)
     
     func didCreate(cell aCell: UITableViewCell)
     {
@@ -86,16 +89,21 @@ open class SMTableDisposer: NSObject, UITableViewDelegate, UITableViewDataSource
 
     func index(by aSection: SMSectionReadonly) -> Int
     {
-        return sections.index(of: aSection)!
+        if let index = sections.index(where: {$0 === aSection})
+        {
+            return index
+        }
+        
+        return NSNotFound
     }
 
     func reloadData() -> Void
     {
-        //    if([tableView isKindOfClass:[SMKeyboardAvoidingTableView class]])
-        //    {
-        //    [((SMKeyboardAvoidingTableView*)tableView) removeAllObjectsForKeyboard];
-        //    }
-
+        if let tableView = tableView as? SMKeyboardAvoidingTableView
+        {
+            tableView.removeAllObjectsForKeyboard()
+        }
+        
         for section in sections
         {
             section.updateCellDataVisibility()
@@ -262,7 +270,7 @@ open class SMTableDisposer: NSObject, UITableViewDelegate, UITableViewDataSource
     {
         let cellData: SMCellData = self.sections[indexPath.section].visibleCellDataSource[indexPath.row]
         
-        if cellData.cellHeightAutomaticDimension
+        if cellData.isCellHeightAutomaticDimension
         {
             return UITableViewAutomaticDimension
         } else
@@ -678,7 +686,7 @@ open class SMTableDisposer: NSObject, UITableViewDelegate, UITableViewDataSource
         
         if self.delegate != nil && self.delegate!.viewForZooming(in:) != nil
         {
-            result = self.delegate!.viewForZooming!(in: scrollView)
+            result = self.delegate!.viewForZooming?(in: scrollView)
         }
         
         return result

@@ -1,6 +1,6 @@
 //
 //  SMModuleListPaging.swift
-//  semenag01kit_Swift
+//  SwiftKit
 //
 //  Created by OLEKSANDR SEMENIUK on 7/6/17.
 //  Copyright © 2017 semenag01. All rights reserved.
@@ -8,21 +8,21 @@
 
 import UIKit
 
-@objc public protocol SMPagingMoreCellDataProtocol: NSObjectProtocol
+public protocol SMPagingMoreCellDataProtocol: class
 {
-    @objc optional func addTarget(_ aTarget: Any, action aAction:Selector)
+    func addTarget(_ aTarget: Any, action aAction:Selector) -> Void
 }
 
-@objc public protocol SMPagingMoreCellProtocol: NSObjectProtocol
+public protocol SMPagingMoreCellProtocol: class
 {
-    @objc optional func didBeginDataLoading()
-    @objc optional func didEndDataLoading()
+    func didBeginDataLoading() -> Void
+    func didEndDataLoading() -> Void
 }
 
-@objc public protocol SMModuleListPagingDelegate: NSObjectProtocol
+public protocol SMModuleListPagingDelegate: class
 {
-    @objc optional func moreCellDataForPaging(moduleList aModuleList: SMModuleListPaging) -> SMPagingMoreCellDataProtocol
-    @objc optional func willLoadMore(moduleList aModuleList: SMModuleListPaging)
+    func moreCellDataForPaging(moduleList aModuleList: SMModuleListPaging) -> SMPagingMoreCellDataProtocol
+    func willLoadMore(moduleList aModuleList: SMModuleListPaging) -> Void
 }
 
 
@@ -37,7 +37,7 @@ open class SMModuleListPaging: SMModuleList, SMTableDisposerMulticastDelegate
     
     var moreCell: SMPagingMoreCellProtocol?
     
-    override var fetcherMessageClass: AnyClass? { get {return SMFetcherMessagePaging.self} }
+    override var fetcherMessageClass: SMFetcherMessage.Type {get {return SMFetcherMessagePaging.self}}
     
     weak var pagingDelegate: SMModuleListPagingDelegate?
 
@@ -71,18 +71,15 @@ open class SMModuleListPaging: SMModuleList, SMTableDisposerMulticastDelegate
         nextMessage.isReloading = true
         nextMessage.isLoadingMore = false
         
-        if self.dataFetcher!.canFetchWith(message: nextMessage)
+        if let canFetch = self.dataFetcher?.canFetchWith(message: nextMessage), canFetch
         {
             pageOffset = nextMessage.pagingOffset
             isReloading = nextMessage.isReloading
             isLoadingMore = nextMessage.isLoadingMore
         }
         
-        if self.delegate != nil && self.delegate!.willReload(moduleList:) != nil
-        {
-            self.delegate!.willReload!(moduleList: self)
-        }
-
+        self.delegate?.willReload(moduleList: self)
+        
         self.fetchDataWith(message: nextMessage)
     }
     
@@ -93,10 +90,7 @@ open class SMModuleListPaging: SMModuleList, SMTableDisposerMulticastDelegate
             return
         }
 
-        if self.pagingDelegate != nil && self.pagingDelegate!.willLoadMore(moduleList:) != nil
-        {
-            self.pagingDelegate!.willLoadMore!(moduleList: self)
-        }
+        self.pagingDelegate?.willLoadMore(moduleList: self)
         
         if isItemsAsPage
         {
@@ -127,25 +121,13 @@ open class SMModuleListPaging: SMModuleList, SMTableDisposerMulticastDelegate
     {
         moreCell = nil
         
-        if (aPagedModelsCount == self.pageSize && self.pageSize != 0) && (self.pagingDelegate != nil && self.pagingDelegate!.moreCellDataForPaging(moduleList:) != nil)
+        if let pagingDelegate = pagingDelegate, (aPagedModelsCount == self.pageSize && self.pageSize != 0)
         {
-            let moreCellData: SMPagingMoreCellDataProtocol?
+            let moreCellData: SMPagingMoreCellDataProtocol = pagingDelegate.moreCellDataForPaging(moduleList: self)
+            moreCellData.addTarget(self, action: #selector(SMModuleListPaging.loadMoreDataPressed))
+            aSection.addCellData(moreCellData as! SMCellData)
             
-            if self.pagingDelegate != nil && self.pagingDelegate!.moreCellDataForPaging(moduleList:) != nil
-            {
-                moreCellData = self.pagingDelegate!.moreCellDataForPaging!(moduleList: self)
-            } else
-            {
-                moreCellData = SMNativeMoreTableViewCellData()
-            }
-            
-            if moreCellData!.addTarget(_:action:) != nil
-            {
-                moreCellData!.addTarget!(self, action: #selector(SMModuleListPaging.loadMoreDataPressed))
-                aSection.addCellData(moreCellData as! SMCellData)
-                
-                return true
-            }
+            return true
         }
         
         return false
@@ -186,12 +168,8 @@ open class SMModuleListPaging: SMModuleList, SMTableDisposerMulticastDelegate
 
         } else if self.isLoadingMore
         {
-            if self.moreCell != nil && self.moreCell!.didBeginDataLoading != nil
-            {
-                self.moreCell!.didBeginDataLoading!()
-            }
+            self.moreCell?.didBeginDataLoading()
         }
-        
     }
 
     override func didFetchDataWith(message aMessage: SMFetcherMessage, response aResponse: SMResponse)
@@ -200,17 +178,14 @@ open class SMModuleListPaging: SMModuleList, SMTableDisposerMulticastDelegate
         
         let message: SMFetcherMessagePaging = aMessage as! SMFetcherMessagePaging
         
-        if aResponse.success
+        if aResponse.isSuccess
         {
             if message.isReloading
             {
                 models .removeAll()
             } else if message.isLoadingMore
             {
-                if self.moreCell != nil && self.moreCell!.didEndDataLoading != nil
-                {
-                    self.moreCell!.didEndDataLoading!()
-                }
+                self.moreCell?.didEndDataLoading()
             }
         }
         
@@ -239,3 +214,39 @@ open class SMModuleListPaging: SMModuleList, SMTableDisposerMulticastDelegate
         }
     }
 }
+
+
+extension SMPagingMoreCellDataProtocol
+{
+    public func addTarget(_ aTarget: Any, action aAction:Selector) -> Void
+    {
+        
+    }
+}
+
+extension SMPagingMoreCellProtocol
+{
+    public func didBeginDataLoading() -> Void
+    {
+        
+    }
+    
+    public func didEndDataLoading() -> Void
+    {
+        
+    }
+}
+
+extension SMModuleListPagingDelegate
+{
+    public func moreCellDataForPaging(moduleList aModuleList: SMModuleListPaging) -> SMPagingMoreCellDataProtocol
+    {
+        return SMNativeMoreTableViewCellData()
+    }
+    
+    public func willLoadMore(moduleList aModuleList: SMModuleListPaging) -> Void
+    {
+        
+    }
+}
+

@@ -1,6 +1,6 @@
 //
 //  SMModuleRemotePushes.swift
-//  Contractors
+//  SwiftKit
 //
 //  Created by OLEKSANDR SEMENIUK on 1/30/17.
 //  Copyright © 2017 VRG Soft. All rights reserved.

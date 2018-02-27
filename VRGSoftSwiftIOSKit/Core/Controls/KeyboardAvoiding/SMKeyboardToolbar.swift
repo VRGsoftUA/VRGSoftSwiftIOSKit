@@ -1,6 +1,6 @@
 //
 //  SMKeyboardToolbar.swift
-//  VRGSoftSwiftIOSKit
+//  SwiftKit
 //
 //  Created by OLEKSANDR SEMENIUK on 8/10/17.
 //  Copyright © 2017 OLEKSANDR SEMENIUK. All rights reserved.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-public protocol SMKeyboardToolbarDelegate: NSObjectProtocol
+public protocol SMKeyboardToolbarDelegate : class
 {
     func keyboardToolbar(_ aKeyboardToolbar: SMKeyboardToolbar, didBtNextClicked aSender: AnyObject) -> Void
     func keyboardToolbar(_ aKeyboardToolbar: SMKeyboardToolbar, didBtBackClicked aSender: AnyObject) -> Void

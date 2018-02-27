@@ -1,6 +1,6 @@
 //
 //  SMStorage.swift
-//  Contractors
+//  SwiftKit
 //
 //  Created by OLEKSANDR SEMENIUK on 12/26/16.
 //  Copyright © 2016 VRG Soft. All rights reserved.

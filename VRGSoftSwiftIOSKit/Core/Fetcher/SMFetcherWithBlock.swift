@@ -1,6 +1,6 @@
 //
 //  SMFetcherWithBlock.swift
-//  Contractors
+//  SwiftKit
 //
 //  Created by OLEKSANDR SEMENIUK on 3/23/17.
 //  Copyright © 2017 Contractors.com. All rights reserved.

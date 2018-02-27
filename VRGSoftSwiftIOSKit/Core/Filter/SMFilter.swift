@@ -1,6 +1,6 @@
 //
 //  SMFilter.swift
-//  semenag01kit_Swift
+//  SwiftKit
 //
 //  Created by OLEKSANDR SEMENIUK on 7/17/17.
 //  Copyright © 2017 semenag01. All rights reserved.

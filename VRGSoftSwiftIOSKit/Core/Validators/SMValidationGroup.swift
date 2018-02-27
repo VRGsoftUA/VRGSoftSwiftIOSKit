@@ -1,6 +1,6 @@
 //
 //  SMValidationGroup.swift
-//  Contractors
+//  SwiftKit
 //
 //  Created by OLEKSANDR SEMENIUK on 12/23/16.
 //  Copyright © 2016 VRG Soft. All rights reserved.
@@ -47,12 +47,12 @@ open class SMValidationGroup
     {
         for obj: SMValidationProtocol in self.validate()
         {
-            if obj is UIView
+            if let view: UIView = obj as? UIView
             {
-                (obj as! UIView).transform = CGAffineTransform(translationX: 15, y: 0)
+                view.transform = CGAffineTransform(translationX: 15, y: 0)
                 UIView.animate(withDuration: 0.6, delay: 0.0, usingSpringWithDamping: 0.2, initialSpringVelocity: 0.2, options: UIViewAnimationOptions.curveEaseInOut, animations:
                 {
-                    (obj as! UIView).transform = CGAffineTransform.identity
+                    view.transform = CGAffineTransform.identity
                 }, completion: nil)
             }
         }

@@ -1,6 +1,6 @@
 //
 //  SMGateway.swift
-//  Contractors
+//  SwiftKit
 //
 //  Created by OLEKSANDR SEMENIUK on 1/4/17.
 //  Copyright © 2017 VRG Soft. All rights reserved.
@@ -32,8 +32,6 @@ open class SMGateway
     func start(request aRequest: SMGatewayRequest) -> Void
     {
         aRequest.getDataRequest().resume()
-        
-        self.retainRequest(aRequest)
     }
     
     func defaultFailureBlockFor(request aRequest: SMGatewayRequest) -> SMGatewayRequestFailureBlock
@@ -41,7 +39,7 @@ open class SMGateway
         func result(data: DataRequest,error: Error) -> SMResponse
         {
             let response: SMResponse = SMResponse()
-            response.success = false
+            response.isSuccess = false
             response.textMessage = error.localizedDescription
             
             return response
@@ -53,12 +51,11 @@ open class SMGateway
     
     // MARK: Request Fabric
     
-    func request(type aType: HTTPMethod, path aPath: String,parameters aParameters: Dictionary<String, AnyObject>, successBlock aSuccessBlock: @escaping SMGatewayRequestSuccessBlock) -> SMGatewayRequest
+    func request(type aType: HTTPMethod, path aPath: String,parameters aParameters: [String: AnyObject], successBlock aSuccessBlock: @escaping SMGatewayRequestSuccessBlock) -> SMGatewayRequest
     {
-        let result: SMGatewayRequest = SMGatewayRequest(gateway: self)
+        let result: SMGatewayRequest = SMGatewayRequest(gateway: self, type: aType)
         
         result.path = aPath
-        result.type = aType
         result.parameters = aParameters
         
         let failureBlock: SMGatewayRequestFailureBlock = self.defaultFailureBlockFor(request: result)
@@ -66,17 +63,5 @@ open class SMGateway
         result.setup(successBlock: aSuccessBlock, failureBlock: failureBlock)
         
         return result
-    }
-    
-    // MARK: - Retain-Release Requests
-    
-    func retainRequest(_ aRequest: SMGatewayRequest) -> Void
-    {
-        requests.append(aRequest)
-    }
-    
-    func releaseRequest(_ aRequest: SMGatewayRequest) -> Void
-    {
-        requests.remove(at: requests.index(of: aRequest)!)
     }
 }

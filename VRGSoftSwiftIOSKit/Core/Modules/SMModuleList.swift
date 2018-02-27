@@ -1,6 +1,6 @@
 //
 //  SMModuleList.swift
-//  Contractors
+//  SwiftKit
 //
 //  Created by OLEKSANDR SEMENIUK on 2/2/17.
 //  Copyright © 2017 VRG Soft. All rights reserved.
@@ -12,17 +12,17 @@ typealias SMModuleListFetcherFailedCallback = (SMModuleList, SMResponse) -> Void
 typealias SMModuleListFetcherCantFetch = (SMModuleList, SMFetcherMessage) -> Void
 
 
-@objc public protocol SMModuleListDelegate: NSObjectProtocol
+public protocol SMModuleListDelegate: class
 {
-    @objc optional func fetcherMessageFor(moduleList aModule: SMModuleList) -> SMFetcherMessage
-    @objc optional func willReload(moduleList aModule: SMModuleList) -> Void
-    @objc optional func moduleList(_ aModule: SMModuleList, processFetchedModelsInResponse aResponse: SMResponse) -> [AnyObject]
-    @objc optional func prepareSectionsFor(moduleList aModule: SMModuleList) -> Void
-    @objc optional func moduleList(_ aModule: SMModuleList, sectionForModels aModels: [AnyObject], indexOfSection aIndex: Int) -> SMSectionReadonly
-    @objc optional func moduleList(_ aModule: SMModuleList, didReloadDataWithModels aModels: [AnyObject]) -> Void
+    func fetcherMessageFor(moduleList aModule: SMModuleList) -> SMFetcherMessage
+    func willReload(moduleList aModule: SMModuleList) -> Void
+    func moduleList(_ aModule: SMModuleList, processFetchedModelsInResponse aResponse: SMResponse) -> [AnyObject]
+    func prepareSectionsFor(moduleList aModule: SMModuleList) -> Void
+    func moduleList(_ aModule: SMModuleList, sectionForModels aModels: [AnyObject], indexOfSection aIndex: Int) -> SMSectionReadonly?
+    func moduleList(_ aModule: SMModuleList, didReloadDataWithModels aModels: [AnyObject]) -> Void
 }
 
-open class SMModuleList: NSObject
+open class SMModuleList
 {
     var moduleQueue: DispatchQueue = DispatchQueue(label: "SMModuleList.Queue")
     var lastUpdateDate: Date?
@@ -36,17 +36,16 @@ open class SMModuleList: NSObject
     {
         didSet
         {
-            weak var __self = self
-            pullToRefreshAdapter?.refreshCallback = { (aPullToRefreshAdapter: SMPullToRefreshAdapter) in
+            pullToRefreshAdapter?.refreshCallback = { [weak self] (aPullToRefreshAdapter: SMPullToRefreshAdapter) in
                 
-                if __self != nil
+                if let __self = self
                 {
-                    if !__self!.isUseActivityAdapterWithPullToRefreshAdapter
+                    if !__self.isUseActivityAdapterWithPullToRefreshAdapter
                     {
-                        __self!.isHideActivityAdapterForOneFetch = true
+                        __self.isHideActivityAdapterForOneFetch = true
                     }
                     
-                    __self!.reloadData()
+                    __self.reloadData()
                 }
             }
         }
@@ -54,7 +53,7 @@ open class SMModuleList: NSObject
     var activityAdapter: SMActivityAdapter?
     var isUseActivityAdapterWithPullToRefreshAdapter: Bool = false
     var isHideActivityAdapterForOneFetch: Bool = false
-    var fetcherMessageClass: AnyClass? { get {return SMFetcherMessage.self} }
+    var fetcherMessageClass: SMFetcherMessage.Type {get {return SMFetcherMessage.self}}
     var fetcherFailedCallback: SMModuleListFetcherFailedCallback?
     var fetcherCantFetchCallback: SMModuleListFetcherCantFetch?
     
@@ -71,8 +70,6 @@ open class SMModuleList: NSObject
     
     required public init(tableDisposer aTableDisposer: SMTableDisposerModeled)
     {
-        super.init()
-        
         self.tableDisposer = aTableDisposer
     }
     
@@ -86,10 +83,7 @@ open class SMModuleList: NSObject
         isReloading = true
         self.models.removeAll()
         
-        if self.delegate != nil && self.delegate!.willReload(moduleList:) != nil
-        {
-            self.delegate!.willReload!(moduleList: self)
-        }
+        self.delegate?.willReload(moduleList: self)
         
         self.fetchDataWith(message: self.createFetcherMessage())
     }
@@ -102,41 +96,26 @@ open class SMModuleList: NSObject
 
     func processFetchedModelsIn(response aResponse: SMResponse) -> [AnyObject]
     {
-        var result: [AnyObject]? = nil
-        
-        if self.delegate != nil && self.delegate!.moduleList(_:processFetchedModelsInResponse:) != nil
-        {
-            result = self.delegate!.moduleList!(self, processFetchedModelsInResponse: aResponse)
-        } else
-        {
-            result = aResponse.boArray
-        }
-
-        return result!
+        let result: [AnyObject] = self.delegate?.moduleList(self, processFetchedModelsInResponse: aResponse) ?? []
+        return result
     }
 
     func prepareSections() -> Void
     {
-        if self.delegate != nil
+        guard let delegate = delegate else
         {
-            if self.delegate!.prepareSectionsFor(moduleList:) != nil
-            {
-                self.delegate!.prepareSectionsFor!(moduleList: self)
-            } else if self.delegate!.moduleList(_:sectionForModels:indexOfSection:) != nil
-            {
-                self.tableDisposer!.sections.removeAll()
-            }
-        } else
-        {
-            self.tableDisposer!.sections.removeAll()
+            self.tableDisposer?.sections.removeAll()
             let section = SMSectionReadonly()
-            self.tableDisposer!.addSection(section)
+            self.tableDisposer?.addSection(section)
+            
+            return
         }
+        
+        delegate.prepareSectionsFor(moduleList: self)
     }
     
     func fetchDataWith(message aMessage: SMFetcherMessage) -> Void
     {
-        
         if self.dataFetcher != nil && self.dataFetcher!.canFetchWith(message: aMessage)
         {
             self.dataFetcher?.cancelFetching()
@@ -148,7 +127,7 @@ open class SMModuleList: NSObject
                     
                     __self?.didFetchDataWith(message: aMessage, response: aResponse)
                     
-                    if aResponse.success
+                    if aResponse.isSuccess
                     {
                         let aModels: [AnyObject] = (__self?.processFetchedModelsIn(response: aResponse))!
                         
@@ -196,11 +175,7 @@ open class SMModuleList: NSObject
                         }
                         
                         __self?.tableDisposer!.reloadData()
-                        
-                        if __self?.delegate != nil && __self!.delegate!.moduleList(_:didReloadDataWithModels:) != nil
-                        {
-                            __self!.delegate?.moduleList!(__self!, didReloadDataWithModels: aModels)
-                        }
+                        __self?.delegate?.moduleList(__self!, didReloadDataWithModels: aModels)
                     } else
                     {
                         if !aResponse.requestCancelled && __self?.fetcherFailedCallback != nil
@@ -223,41 +198,28 @@ open class SMModuleList: NSObject
     
     func createFetcherMessage() -> SMFetcherMessage
     {
-        var message: SMFetcherMessage?
-        
-        if self.delegate != nil && self.delegate!.fetcherMessageFor(moduleList:) != nil
+        guard let message: SMFetcherMessage = self.delegate?.fetcherMessageFor(moduleList: self) else
         {
-            message = self.delegate!.fetcherMessageFor!(moduleList: self)
-            print(type(of: message))
-            print(type(of: self.fetcherMessageClass))
-            
-            if !(message?.isMember(of: self.fetcherMessageClass!))!
-            {
-                assert(false, "Wrong fetcher message class!")
-            }
-        } else
-        {
-            message = (self.fetcherMessageClass as! SMFetcherMessage.Type).init()
+            return fetcherMessageClass.init()
         }
 
-        return message!
+        return message
     }
     
     func updateSectionWith(models aModels: [AnyObject], sectionIndex aSectionIndex: Int) -> Void
     {
-        var sectionForModels: SMSectionReadonly? = nil
-        
-        if self.delegate != nil && self.delegate!.moduleList(_:sectionForModels:indexOfSection:) != nil
+        guard let sectionForModels: SMSectionReadonly = self.delegate?.moduleList(self, sectionForModels: aModels, indexOfSection: aSectionIndex) else
         {
-            sectionForModels = self.delegate!.moduleList!(self, sectionForModels: aModels, indexOfSection: aSectionIndex)
-        }
-        
-        if sectionForModels == nil
-        {
-            sectionForModels = self.tableDisposer?.sections.last
+            guard let sectionForModels: SMSectionReadonly = self.tableDisposer?.sections.last else
+            {
+                return
+            }
+            
+            self.setupModels(aModels, forSection: sectionForModels)
+            return
         }
 
-        self.setupModels(aModels, forSection: sectionForModels!)
+        self.setupModels(aModels, forSection: sectionForModels)
     }
     
     func setupModels(_ aModels: [AnyObject], forSection aSection: SMSectionReadonly) -> Void
@@ -283,5 +245,40 @@ open class SMModuleList: NSObject
         self.isReloading = false
         self.activityAdapter?.hide()
         self.pullToRefreshAdapter?.endPullToRefresh()
+    }
+}
+
+
+extension SMModuleListDelegate
+{
+    func fetcherMessageFor(moduleList aModule: SMModuleList) -> SMFetcherMessage
+    {
+        return SMFetcherMessage()
+    }
+    
+    func willReload(moduleList aModule: SMModuleList) -> Void
+    {
+        
+    }
+    
+    func moduleList(_ aModule: SMModuleList, processFetchedModelsInResponse aResponse: SMResponse) -> [AnyObject]
+    {
+        return aResponse.boArray
+    }
+    
+    func prepareSectionsFor(moduleList aModule: SMModuleList) -> Void
+    {
+        aModule.tableDisposer?.sections.removeAll()
+        aModule.tableDisposer?.addSection(SMSectionReadonly())
+    }
+    
+    func moduleList(_ aModule: SMModuleList, sectionForModels aModels: [AnyObject], indexOfSection aIndex: Int) -> SMSectionReadonly?
+    {
+        return nil
+    }
+    
+    func moduleList(_ aModule: SMModuleList, didReloadDataWithModels aModels: [AnyObject]) -> Void
+    {
+        
     }
 }

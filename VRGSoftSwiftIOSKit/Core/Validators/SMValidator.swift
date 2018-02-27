@@ -1,6 +1,6 @@
 //
 //  SMValidator.swift
-//  Contractors
+//  SwiftKit
 //
 //  Created by OLEKSANDR SEMENIUK on 12/22/16.
 //  Copyright © 2016 VRG Soft. All rights reserved.
@@ -18,31 +18,8 @@ public protocol SMValidationProtocol: AnyObject
 
 open class SMValidator
 {
-    open var _errorMessage: String?
     open var errorMessage: String?
-    {
-        get
-        {
-            return _errorMessage
-        }
-        set
-        {
-            _errorMessage = newValue
-        }
-    }
-    
-    open var _titleMessage: String?
     open var titleMessage: String?
-    {
-        get
-        {
-            return _titleMessage
-        }
-        set
-        {
-            _titleMessage = newValue
-        }
-    }
 
     open weak var validatableObject: SMValidationProtocol?
     
@@ -91,9 +68,9 @@ open class SMCompoundValidator: SMValidator
     {
         get
         {
-            if _titleMessage != nil
+            if super.titleMessage != nil
             {
-                return _titleMessage
+                return super.titleMessage
             } else
             {
                 return self.firstNotValideValidator?.titleMessage
@@ -110,9 +87,9 @@ open class SMCompoundValidator: SMValidator
     {
         get
         {
-            if _errorMessage != nil
+            if super.errorMessage != nil
             {
-                return _errorMessage
+                return super.errorMessage
             } else
             {
                 return self.firstNotValideValidator?.errorMessage
@@ -143,6 +120,7 @@ open class SMCompoundValidator: SMValidator
                     break
                 }
             }
+            
             return result
         }
     }
@@ -158,10 +136,9 @@ open class SMValidatorAny: SMValidator
 
 open class SMValidatorIntWithRange: SMValidator
 {
-    var range: NSRange?
+    let range: NSRange
     public init(range aRange: NSRange)
     {
-        super.init()
         range = aRange
     }
     
@@ -171,7 +148,7 @@ open class SMValidatorIntWithRange: SMValidator
         self.validatableObject?.validatableText = self.validatableObject?.validatableText?.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines)
         let intValue: Int = Int(self.validatableObject!.validatableText!)!
         
-        result = intValue >= range!.location && intValue <= range!.location + range!.length
+        result = intValue >= range.location && intValue <= range.location + range.length
         
         return result
     }
@@ -179,10 +156,9 @@ open class SMValidatorIntWithRange: SMValidator
 
 open class SMValidatorCountNumberInTextWithRange: SMValidator
 {
-    var range: NSRange?
+    var range: NSRange
     public init(range aRange: NSRange)
     {
-        super.init()
         range = aRange
     }
     
@@ -196,10 +172,9 @@ open class SMValidatorCountNumberInTextWithRange: SMValidator
 
 open class SMValidatorStringWithRange: SMValidator
 {
-    var range: NSRange?
+    var range: NSRange
     public init(range aRange: NSRange)
     {
-        super.init()
         range = aRange
     }
 
@@ -210,7 +185,7 @@ open class SMValidatorStringWithRange: SMValidator
 
         let length: Int = (self.validatableObject?.validatableText?.count)!
         
-        if length >= range!.location && length <= range!.length
+        if length >= range.location && length <= range.length
         {
             result = true
         }
@@ -225,7 +200,7 @@ open class SMValidatorEmail: SMValidator
     {
         self.validatableObject?.validatableText = self.validatableObject?.validatableText?.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines)
         
-        let mailRegExp: String! = "^[A-Z0-9._%+-]+@(?:[A-Z0-9-]+\\.)+(?:[A-Z]{2}|com|org|net|edu|gov|mil|biz|info|mobi|name|aero|asia|jobs|museum)$"
+        let mailRegExp: String = "^[A-Z0-9._%+-]+@(?:[A-Z0-9-]+\\.)+(?:[A-Z]{2}|com|org|net|edu|gov|mil|biz|info|mobi|name|aero|asia|jobs|museum)$"
         
         let regExp: NSRegularExpression = try! NSRegularExpression(pattern: mailRegExp, options: NSRegularExpression.Options.caseInsensitive)
         
@@ -256,19 +231,11 @@ open class SMValidatorNotEmpty: SMValidator
 open class SMValidatorEqual: SMValidator
 {
     let testedValidator: SMValidator
-    var isIgnoreCase: Bool
+    var isIgnoreCase: Bool = false
     
-    
-    public init(testedFieldValidator aTestedObject: SMValidationProtocol)
-    {
-        testedValidator = aTestedObject.validator!
-        isIgnoreCase = false
-    }
-
     public init(testedValidator aTestedValidator: SMValidator)
     {
         testedValidator = aTestedValidator
-        isIgnoreCase = false
     }
 
     override open func validate() -> Bool
@@ -290,7 +257,7 @@ open class SMValidatorEqual: SMValidator
 
 open class SMValidatorRegExp: SMValidator
 {
-    let regularExpression: NSRegularExpression!
+    let regularExpression: NSRegularExpression
 
     public init(regExp aRegExp: NSRegularExpression)
     {
@@ -319,7 +286,7 @@ open class SMValidatorUSAZipCode: SMValidator
     {
         self.validatableObject?.validatableText = self.validatableObject?.validatableText?.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines)
         
-        let patern: String! = "^[0-9]+$"
+        let patern: String = "^[0-9]+$"
         
         let regExp: NSRegularExpression = try! NSRegularExpression(pattern: patern, options: NSRegularExpression.Options.caseInsensitive)
         
