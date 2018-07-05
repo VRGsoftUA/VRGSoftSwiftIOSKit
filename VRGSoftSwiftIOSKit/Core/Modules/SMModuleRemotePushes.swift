@@ -23,7 +23,7 @@ open class SMModuleRemotePushes
 //        UIApplication.shared.registerUserNotificationSettings(notificationSettings)
 //    }
 
-    open func didRegisterForRemoteNotificationsWith(deviceTokenData aDeviceTokenData: Data) -> Void
+    open func didRegisterForRemoteNotificationsWith(deviceTokenData aDeviceTokenData: Data)
     {
         var token: String = ""
         for i in 0..<aDeviceTokenData.count
@@ -35,23 +35,23 @@ open class SMModuleRemotePushes
         
         if deviceToken != nil
         {
-            self.registerForPushNotifications()
+            registerForPushNotifications()
         }
     }
     
-    open func registerForPushNotifications() -> Void
+    open func registerForPushNotifications()
     {
-        if self.deviceToken != nil && self.canRegisterDeviceToken()
+        if deviceToken != nil && canRegisterDeviceToken()
         {
-            self.registerDeviceTokenRequest()?.start()
+            registerDeviceTokenRequest()?.start()
         }
     }
 
-    open func unregisterForPushNotifications() -> Void
+    open func unregisterForPushNotifications()
     {
-        if self.deviceToken != nil && self.canUnregisterDeviceToken()
+        if deviceToken != nil && canUnregisterDeviceToken()
         {
-            self.unregisterDeviceTokenRequest()?.start()
+            unregisterDeviceTokenRequest()?.start()
         }
     }
 

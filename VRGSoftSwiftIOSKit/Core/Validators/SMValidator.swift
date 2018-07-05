@@ -102,27 +102,24 @@ open class SMCompoundValidator: SMValidator
         }
     }
 
-    open var firstNotValideValidator:SMValidator?
+    open var firstNotValideValidator: SMValidator?
     {
-        get
+        var result: SMValidator?
+            
+        for validator: SMValidator in self.validators
         {
-            var result: SMValidator?
+            validator.validatableObject = self.validatableObject
             
-            for validator: SMValidator in self.validators
+            let valid: Bool = validator.validate()
+            
+            if !valid
             {
-                validator.validatableObject = self.validatableObject
-                
-                let valid: Bool = validator.validate()
-                
-                if !valid
-                {
-                    result = validator
-                    break
-                }
+                result = validator
+                break
             }
-            
-            return result
         }
+        
+        return result
     }
 }
  
@@ -146,16 +143,19 @@ open class SMValidatorIntWithRange: SMValidator
     {
         var result: Bool = false
         self.validatableObject?.validatableText = self.validatableObject?.validatableText?.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines)
-        let intValue: Int = Int(self.validatableObject!.validatableText!)!
         
-        result = intValue >= range.location && intValue <= range.location + range.length
-        
+        if let validatableText = validatableObject?.validatableText,
+            let intValue: Int = Int(validatableText)
+        {
+            result = intValue >= range.location && intValue <= range.location + range.length
+        }
         return result
     }
 }
 
 open class SMValidatorCountNumberInTextWithRange: SMValidator
 {
+    // range.location=startPoint and range.length=endPoint-range.location+1
     var range: NSRange
     public init(range aRange: NSRange)
     {
@@ -164,8 +164,13 @@ open class SMValidatorCountNumberInTextWithRange: SMValidator
     
     override open func validate() -> Bool
     {
-        let result: Bool = false
-        assert(result)
+        var result: Bool = false
+        
+        if let count = validatableObject?.validatableText?.trimmingCharacters(in: NSCharacterSet.whitespaces).count
+        {
+            result = NSLocationInRange(count, range)
+        }
+        
         return result
     }
 }
@@ -183,9 +188,9 @@ open class SMValidatorStringWithRange: SMValidator
         var result: Bool = false
         self.validatableObject?.validatableText = self.validatableObject?.validatableText?.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines)
 
-        let length: Int = (self.validatableObject?.validatableText?.count)!
-        
-        if length >= range.location && length <= range.length
+        if let length: Int = self.validatableObject?.validatableText?.count,
+            length >= range.location,
+            length <= range.length
         {
             result = true
         }
@@ -196,22 +201,21 @@ open class SMValidatorStringWithRange: SMValidator
 
 open class SMValidatorEmail: SMValidator
 {
-    override open func validate() -> Bool
-    {
+    override open func validate() -> Bool {
         self.validatableObject?.validatableText = self.validatableObject?.validatableText?.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines)
         
         let mailRegExp: String = "^[A-Z0-9._%+-]+@(?:[A-Z0-9-]+\\.)+(?:[A-Z]{2}|com|org|net|edu|gov|mil|biz|info|mobi|name|aero|asia|jobs|museum)$"
         
-        let regExp: NSRegularExpression = try! NSRegularExpression(pattern: mailRegExp, options: NSRegularExpression.Options.caseInsensitive)
+        let regExp: NSRegularExpression? = try? NSRegularExpression(pattern: mailRegExp, options: NSRegularExpression.Options.caseInsensitive)
         
         var count: Int = 0
         
-        if let validatableText = validatableObject?.validatableText
+        if let validatableText = validatableObject?.validatableText,
+            let numberOfMatches = regExp?.numberOfMatches(in: validatableText, options: NSRegularExpression.MatchingOptions(rawValue: 0), range: NSRange(location: 0, length: validatableText.count))
         {
-            count = regExp.numberOfMatches(in: validatableText, options: NSRegularExpression.MatchingOptions(rawValue: 0), range: NSMakeRange(0, validatableText.count))
+            count = numberOfMatches
         }
 
-        
         return count == 1
     }
 }
@@ -223,7 +227,7 @@ open class SMValidatorNotEmpty: SMValidator
     {
         self.validatableObject?.validatableText = self.validatableObject?.validatableText?.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines)
         
-        return (self.validatableObject!.validatableText?.count)! > 0
+        return self.validatableObject?.validatableText?.count ?? 0 > 0
     }
 }
 
@@ -242,14 +246,20 @@ open class SMValidatorEqual: SMValidator
     {
         self.validatableObject?.validatableText = self.validatableObject?.validatableText?.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines)
 
-        if self.isIgnoreCase
+        if testedValidator.validate()
         {
-            let result: ComparisonResult! = (self.validatableObject?.validatableText?.compare(testedValidator.validatableObject!.validatableText!, options: String.CompareOptions.caseInsensitive, range: nil, locale: nil))
-            
-            return result == ComparisonResult.orderedSame
+            if self.isIgnoreCase,
+                let validatableText = testedValidator.validatableObject?.validatableText,
+                let result: ComparisonResult = (self.validatableObject?.validatableText?.compare(validatableText, options: String.CompareOptions.caseInsensitive, range: nil, locale: nil))
+            {
+                return result == ComparisonResult.orderedSame
+            } else
+            {
+                return self.validatableObject?.validatableText == testedValidator.validatableObject?.validatableText
+            }
         } else
         {
-            return self.validatableObject?.validatableText == testedValidator.validatableObject?.validatableText
+            return false
         }
     }
 }
@@ -272,7 +282,7 @@ open class SMValidatorRegExp: SMValidator
 
         if let validatableText = validatableObject?.validatableText
         {
-            count = regularExpression.numberOfMatches(in: validatableText, options: NSRegularExpression.MatchingOptions(rawValue: 0), range: NSMakeRange(0, validatableText.count))
+            count = regularExpression.numberOfMatches(in: validatableText, options: NSRegularExpression.MatchingOptions(rawValue: 0), range: NSRange(location: 0, length: validatableText.count))
         }
         
         return count == 1
@@ -288,18 +298,77 @@ open class SMValidatorUSAZipCode: SMValidator
         
         let patern: String = "^[0-9]+$"
         
-        let regExp: NSRegularExpression = try! NSRegularExpression(pattern: patern, options: NSRegularExpression.Options.caseInsensitive)
+        let regExp: NSRegularExpression? = try? NSRegularExpression(pattern: patern, options: NSRegularExpression.Options.caseInsensitive)
         
         var count: Int = 0
         
         if let validatableText = validatableObject?.validatableText
         {
-            if validatableText.count == 5
+            if validatableText.count == 5,
+                let numberOfMatches = regExp?.numberOfMatches(in: validatableText, options: NSRegularExpression.MatchingOptions(rawValue: 0), range: NSRange(location: 0, length: validatableText.count))
             {
-                count = regExp.numberOfMatches(in: validatableText, options: NSRegularExpression.MatchingOptions(rawValue: 0), range: NSMakeRange(0, validatableText.count))
+                count = numberOfMatches
             }
         }
         
         return count == 1
+    }
+}
+
+open class SMValidatorLatinicOnly: SMValidator
+{
+    override open func validate() -> Bool
+    {
+        self.validatableObject?.validatableText = self.validatableObject?.validatableText?.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines)
+        
+        if let validetableText = validatableObject?.validatableText
+        {
+            return validetableText.range(of: "\\P{Latin}", options: .regularExpression) == nil
+        }
+        
+        return false
+    }
+}
+
+open class SMValidatorLenghtMoreOrEqualThan: SMValidator
+{
+    let number: Int
+    
+    init(aNumber: Int)
+    {
+        number = aNumber
+        
+        super.init()
+    }
+    
+    override open func validate() -> Bool
+    {
+        self.validatableObject?.validatableText = self.validatableObject?.validatableText?.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines)
+        
+        if let validetableText = validatableObject?.validatableText
+        {
+            return validetableText.count >= number
+        }
+        
+        return false
+    }
+}
+
+open class SMValidatorHasDigit: SMValidator
+{
+    override open func validate() -> Bool
+    {
+        self.validatableObject?.validatableText = self.validatableObject?.validatableText?.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines)
+        
+        if let validetableText = validatableObject?.validatableText
+        {
+            let decimalCharacters = CharacterSet.decimalDigits
+            
+            let decimalRange = validetableText.rangeOfCharacter(from: decimalCharacters)
+            
+            return decimalRange != nil ? true : false
+        }
+        
+        return false
     }
 }

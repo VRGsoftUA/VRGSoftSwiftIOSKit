@@ -3,7 +3,7 @@
 //  SwiftKit
 //
 //  Created by OLEKSANDR SEMENIUK on 2/8/18.
-//  Copyright © 2018 developer. All rights reserved.
+//  Copyright © 2018 OLEKSANDR SEMENIUK. All rights reserved.
 //
 
 import UIKit
@@ -13,14 +13,14 @@ class SMNativeActivityAdapter: SMActivityAdapter
     let backgroundView: UIView = UIView()
     let activity: UIActivityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: .gray)
     
-    override func configureWith(view aView: UIView) -> Void
+    override func configureWith(view aView: UIView)
     {
         backgroundView.removeFromSuperview()
         activity.removeFromSuperview()
         aView.addSubview(backgroundView)
         
         activity.hidesWhenStopped = true
-        backgroundView.backgroundColor = UIColor.black.withAlphaComponent(0.1)
+        backgroundView.backgroundColor = UIColor.black.withAlphaComponent(0.03)
         backgroundView.frame = aView.bounds
         backgroundView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         backgroundView.addSubview(activity)
@@ -32,13 +32,13 @@ class SMNativeActivityAdapter: SMActivityAdapter
     override func show()
     {
         backgroundView.superview?.bringSubview(toFront: backgroundView)
-        backgroundView.sm_showAnimate(true)
+        backgroundView.sm_showAnimate(false)
         activity.startAnimating()
     }
     
     override func hide()
     {
-        backgroundView.sm_hideAnimate(true)
+        backgroundView.sm_hideAnimate(false)
         activity.stopAnimating()
     }
 }

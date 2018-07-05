@@ -24,7 +24,7 @@ open class SMToolbar: UIToolbar
         self.setup()
     }
 
-    open func setup() -> Void
+    open func setup()
     {
         
     }

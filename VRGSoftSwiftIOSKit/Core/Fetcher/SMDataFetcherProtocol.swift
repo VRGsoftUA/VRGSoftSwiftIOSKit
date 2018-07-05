@@ -13,9 +13,9 @@ public typealias SMDataFetchCallback = (SMResponse) -> Void
 
 public protocol SMDataFetcherProtocol
 {
-    var callbackQueue: DispatchQueue? {get set}
+    var callbackQueue: DispatchQueue {get set}
     
     func canFetchWith(message aMessage: SMFetcherMessage) -> Bool
-    func fetchDataBy(message aMessage: SMFetcherMessage, withCallback aFetchCallback: @escaping SMDataFetchCallback) -> Void
-    func cancelFetching() -> Void;
+    func fetchDataBy(message aMessage: SMFetcherMessage, withCallback aFetchCallback: @escaping SMDataFetchCallback)
+    func cancelFetching()
 }

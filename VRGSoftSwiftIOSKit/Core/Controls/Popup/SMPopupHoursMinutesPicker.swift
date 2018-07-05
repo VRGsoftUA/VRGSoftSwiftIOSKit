@@ -10,7 +10,7 @@ import UIKit
 
 open class SMPopupHoursMinutesPicker: SMPopupPicker, UIPickerViewDelegate, UIPickerViewDataSource
 {
-    //MARK: override next methods to customize:
+    // MARK: override next methods to customize:
     
     override func createPicker() -> UIView?
     {
@@ -22,11 +22,11 @@ open class SMPopupHoursMinutesPicker: SMPopupPicker, UIPickerViewDelegate, UIPic
         return pv
     }
     
-    var popupedPicker: UIPickerView
+    var popupedPicker: UIPickerView?
     {
         get
         {
-            return picker as! UIPickerView
+            return picker as? UIPickerView
         }
         set
         {
@@ -53,8 +53,11 @@ open class SMPopupHoursMinutesPicker: SMPopupPicker, UIPickerViewDelegate, UIPic
     {
         get
         {
-            let hours = self.popupedPicker.selectedRow(inComponent: 0)
-            let minutes = self.popupedPicker.selectedRow(inComponent: 1)
+            guard let hours = popupedPicker?.selectedRow(inComponent: 0),
+                 let minutes = popupedPicker?.selectedRow(inComponent: 1) else
+            {
+                return nil
+            }
             return NSNumber(value: 60 * hours + minutes)
         }
         set
@@ -101,9 +104,12 @@ open class SMPopupHoursMinutesPicker: SMPopupPicker, UIPickerViewDelegate, UIPic
         //setup current view
         if selectedItem != nil
         {
-            let selNumber: NSNumber = selectedItem as! NSNumber
-            popupedPicker.selectRow(selNumber.intValue/60, inComponent: 0, animated: false)
-            popupedPicker.selectRow(selNumber.intValue%60, inComponent: 1, animated: false)
+            guard let selNumber = selectedItem as? NSNumber else
+            {
+                return
+            }
+            popupedPicker?.selectRow(selNumber.intValue/60, inComponent: 0, animated: false)
+            popupedPicker?.selectRow(selNumber.intValue%60, inComponent: 1, animated: false)
         }
     }
 }

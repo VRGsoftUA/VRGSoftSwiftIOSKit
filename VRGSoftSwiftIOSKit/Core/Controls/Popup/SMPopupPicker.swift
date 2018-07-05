@@ -8,7 +8,7 @@
 
 import UIKit
 
-typealias SMPickeSelectHendlerBlock = (SMPopupPicker, AnyObject) -> ()
+typealias SMPickeSelectHendlerBlock = (SMPopupPicker, AnyObject) -> Void
 
 open class SMPopupPicker: SMPopupView
 {
@@ -34,14 +34,14 @@ open class SMPopupPicker: SMPopupView
         self.autoresizingMask = [.flexibleWidth, .flexibleTopMargin]
         picker.autoresizingMask = [.flexibleWidth, .flexibleBottomMargin]
         
-        if _toolbar != nil
+        if let toolbar = _toolbar
         {
             var newFrame = picker.frame
-            newFrame.origin.y = _toolbar!.bounds.size.height
+            newFrame.origin.y = toolbar.bounds.size.height
             picker.frame = newFrame
             
             newFrame.origin.y = 0
-            newFrame.size.height += _toolbar!.bounds.size.height
+            newFrame.size.height += toolbar.bounds.size.height
             self.frame = newFrame
         }
         
@@ -55,12 +55,12 @@ open class SMPopupPicker: SMPopupView
         {
             if _toolbar == newValue { return }
             
-            if newValue != nil
+            _toolbar = newValue
+            if let toolbar = _toolbar
             {
-                _toolbar = newValue
-                self.addSubview(_toolbar!)
-                _toolbar?.sizeToFit()
-                _toolbar?.autoresizingMask = .flexibleWidth
+                addSubview(toolbar)
+                toolbar.sizeToFit()
+                toolbar.autoresizingMask = .flexibleWidth
                 
                 self.configureFrames()
             } else

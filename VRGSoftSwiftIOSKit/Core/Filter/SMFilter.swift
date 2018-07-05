@@ -16,7 +16,7 @@ public protocol SMFilterProtocol
 
 open class SMFilter
 {
-    open var maxLengthText:Int = Int.max
+    open var maxLengthText: Int = Int.max
     
     init(maxLengthText aMaxLengthText: Int)
     {
@@ -29,14 +29,14 @@ open class SMFilter
         
         if text.count > 0
         {
-            var charactersCount = 0;
+            var charactersCount = 0
             
-            if inputField.filteredText != nil
+            if let filteredText = inputField.filteredText
             {
-                charactersCount = (inputField.filteredText! as NSString).replacingCharacters(in: range, with: text).count
+                charactersCount = (filteredText as NSString).replacingCharacters(in: range, with: text).count
             }
             
-            result =  charactersCount <= maxLengthText;
+            result =  charactersCount <= maxLengthText
         }
         
         return result

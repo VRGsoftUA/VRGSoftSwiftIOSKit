@@ -10,28 +10,30 @@ import UIKit
 
 open class SMNativeMoreTableViewCellData: SMCellData, SMPagingMoreCellDataProtocol
 {
-    override init()
+    public var needLoadMore: SMBlockAction<Any>?
+    
+    convenience init()
     {
-        super.init()
-        
+        self.init(model: nil)
+    
         self.cellClass = SMNativeMoreTableViewCell.self
         self.cellSelectionStyle = UITableViewCellSelectionStyle.none
         self.cellHeight = 45
     }
 }
 
-open class SMNativeMoreTableViewCell: UITableViewCell, SMPagingMoreCellProtocol
+open class SMNativeMoreTableViewCell: SMCell, SMPagingMoreCellProtocol
 {
 
     let activity: UIActivityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.gray)
     
-    override open func awakeFromNib()
+    override func setup()
     {
-        super.awakeFromNib()
+        super.setup()
         
         self.backgroundColor = UIColor.clear
         self.contentView.backgroundColor = UIColor.clear
-        self.separatorInset = UIEdgeInsetsMake(0, 0, 0, self.width)
+        self.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: self.width)
         
         activity.hidesWhenStopped = true
         activity.center = CGPoint(x: self.contentView.width/2, y: self.contentView.height/2)
@@ -47,7 +49,7 @@ open class SMNativeMoreTableViewCell: UITableViewCell, SMPagingMoreCellProtocol
         self.showActivityIndicator(show: false)
     }
     
-    open func showActivityIndicator(show aIsShow: Bool) -> Void
+    open func showActivityIndicator(show aIsShow: Bool)
     {
         if aIsShow
         {

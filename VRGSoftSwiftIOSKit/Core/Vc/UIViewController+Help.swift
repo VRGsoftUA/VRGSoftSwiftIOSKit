@@ -44,19 +44,19 @@ extension UIViewController
     }
 
     open func sm_showAlertController(title aTitle: String?,
-                                   message aMessage: String?,
-                                   cancelButtonTitle aCancelButtonTitle: String? = NSLocalizedString("OK", comment: ""),
-                                   otherButtonTitles aOtherButtonTitles: [String]?,
-                                   handler aHandler: ((_ aVc: SMAlertController,_ aButtonIndex: Int)  -> Swift.Void)? = nil) -> Void
+                                     message aMessage: String?,
+                                     cancelButtonTitle aCancelButtonTitle: String? = NSLocalizedString("OK", comment: ""),
+                                     otherButtonTitles aOtherButtonTitles: [String]?,
+                                     handler aHandler: ((_ aVc: SMAlertController, _ aButtonIndex: Int)  -> Swift.Void)? = nil)
     {
         SMAlertController.showAlertController(style: UIAlertControllerStyle.alert, title: aTitle, message: aMessage, fromVC: self, otherButtonTitles: aOtherButtonTitles)
     }
     
     open func sm_showSheetController(title aTitle: String?,
-                                   message aMessage: String?,
-                                   cancelButtonTitle aCancelButtonTitle: String? = NSLocalizedString("OK", comment: ""),
-                                   otherButtonTitles aOtherButtonTitles: [String]?,
-                                   handler aHandler: ((_ aVc: SMAlertController,_ aButtonIndex: Int)  -> Swift.Void)? = nil) -> Void
+                                     message aMessage: String?,
+                                     cancelButtonTitle aCancelButtonTitle: String? = NSLocalizedString("OK", comment: ""),
+                                     otherButtonTitles aOtherButtonTitles: [String]?,
+                                     handler aHandler: ((_ aVc: SMAlertController, _ aButtonIndex: Int)  -> Swift.Void)? = nil)
     {
         SMAlertController.showAlertController(style: UIAlertControllerStyle.alert, title: aTitle, message: aMessage, fromVC: self, otherButtonTitles: aOtherButtonTitles)
     }

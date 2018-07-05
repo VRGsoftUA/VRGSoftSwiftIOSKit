@@ -18,23 +18,37 @@ open class SMGatewayConfigurator
     
     func isInternetReachable() -> Bool
     {
-        let result: Bool = networkReachabilityManager!.isReachable
+        let result: Bool = networkReachabilityManager?.isReachable ?? false
         return result
     }
     
-    func register(gateway aGateway: SMGateway) -> Void
+    func register(gateway aGateway: SMGateway)
     {
         gateways.append(aGateway)
     }
     
-    func configureGatewaysWithBase(url aUrl: URL) -> Void
+    func configureGatewaysWithBase(url aUrl: URL)
     {
-        networkReachabilityManager = NetworkReachabilityManager(host: aUrl.absoluteString)
-        networkReachabilityManager?.startListening()
+        if let host = aUrl.host
+        {
+            networkReachabilityManager = NetworkReachabilityManager(host: host)
+            networkReachabilityManager?.startListening()
+        } else
+        {
+            assert(false)
+        }
         
         for g in gateways
         {
             g.configureWithBase(url: aUrl)
+        }
+    }
+
+    func setHTTPHeader(value aValue: String?, key aKey: String)
+    {
+        for g in gateways
+        {
+            g.defaultHeaders[aKey] = aValue
         }
     }
 }

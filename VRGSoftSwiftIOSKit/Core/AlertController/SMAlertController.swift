@@ -18,17 +18,20 @@ open class SMAlertController: UIAlertController
         NotificationCenter.default.addObserver(self, selector: #selector(SMAlertController.hide), name: NSNotification.Name.UIApplicationDidEnterBackground, object: nil)
     }
     
-    open func show() -> Void
+    open func show()
     {
-        self.showFrom(vc: UIViewController.topViewController()!)
+        if let topViewController = UIViewController.topViewController()
+        {
+            self.showFrom(vc: topViewController)
+        }
     }
     
-    @objc open func hide() -> Void
+    @objc open func hide()
     {
         self.dismiss(animated: true, completion: nil)
     }
     
-    open func showFrom(vc aVc: UIViewController) ->Void
+    open func showFrom(vc aVc: UIViewController)
     {
         aVc.present(self, animated: true, completion: nil)
     }
@@ -39,31 +42,25 @@ open class SMAlertController: UIAlertController
                                         fromVC aVC: UIViewController,
                                         cancelButtonTitle aCancelButtonTitle: String? = NSLocalizedString("OK", comment: ""),
                                         otherButtonTitles aOtherButtonTitles: [String]?,
-                                        handler aHandler: ((_ aVc: SMAlertController,_ aButtonIndex: Int)  -> Swift.Void)? = nil) -> Void
+                                        handler aHandler: ((_ aVc: SMAlertController, _ aButtonIndex: Int)  -> Swift.Void)? = nil)
     {
         let alertController: SMAlertController = SMAlertController(title: aTitle, message: aMessage, preferredStyle: aStyle)
         
-        weak var __alertController = alertController
+        unowned let __alertController = alertController
         
         let cancelAction: UIAlertAction = UIAlertAction(title: aCancelButtonTitle, style: UIAlertActionStyle.cancel) { (_ action: UIAlertAction) in
-            if aHandler != nil
-            {
-                aHandler!(__alertController!,0)
-            }
+            aHandler?(__alertController, 0)
         }
         alertController.addAction(cancelAction)
         
-        if aOtherButtonTitles != nil
+        if let otherButtonTitles = aOtherButtonTitles
         {
             var i: Int = 0
-            for title in aOtherButtonTitles!
+            for title in otherButtonTitles
             {
                 let j = i
                 let action: UIAlertAction = UIAlertAction(title: title, style: UIAlertActionStyle.default) { (_ action: UIAlertAction) in
-                    if aHandler != nil
-                    {
-                        aHandler!(__alertController!,j+1)
-                    }
+                    aHandler?(__alertController, j+1)
                 }
                 i = i+1
                 alertController.addAction(action)
@@ -78,7 +75,7 @@ open class SMAlertController: UIAlertController
                                         fromVC aVC: UIViewController,
                                         cancelButtonTitle aCancelButtonTitle: String? = NSLocalizedString("OK", comment: ""),
                                         otherButtonTitles aOtherButtonTitles: [String]?,
-                                        handler aHandler: ((_ aVc: SMAlertController,_ aButtonIndex: Int)  -> Swift.Void)? = nil) -> Void
+                                        handler aHandler: ((_ aVc: SMAlertController, _ aButtonIndex: Int)  -> Swift.Void)? = nil)
     {
         showAlertController(style: .alert, title: aTitle, message: aMessage, fromVC: aVC, cancelButtonTitle: aCancelButtonTitle, otherButtonTitles: aOtherButtonTitles, handler: aHandler)
     }
@@ -86,9 +83,9 @@ open class SMAlertController: UIAlertController
     open class func showSheetController(title aTitle: String?,
                                         message aMessage: String?,
                                         fromVC aVC: UIViewController,
-                                        cancelButtonTitle aCancelButtonTitle: String? = NSLocalizedString("OK", comment: ""),
+                                        cancelButtonTitle aCancelButtonTitle: String? = NSLocalizedString("Ok", comment: ""),
                                         otherButtonTitles aOtherButtonTitles: [String]?,
-                                        handler aHandler: ((_ aVc: SMAlertController,_ aButtonIndex: Int)  -> Swift.Void)? = nil) -> Void
+                                        handler aHandler: ((_ aVc: SMAlertController, _ aButtonIndex: Int)  -> Swift.Void)? = nil)
     {
         showAlertController(style: .actionSheet, title: aTitle, message: aMessage, fromVC: aVC, cancelButtonTitle: aCancelButtonTitle, otherButtonTitles: aOtherButtonTitles, handler: aHandler)
     }

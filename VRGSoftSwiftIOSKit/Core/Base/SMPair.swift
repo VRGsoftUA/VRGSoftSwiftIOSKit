@@ -10,8 +10,8 @@ import Foundation
 
 open class SMPair <FirstType, SecondType>
 {
-    var first : FirstType?
-    var second : SecondType?
+    var first: FirstType?
+    var second: SecondType?
     
     init(first aFirst: FirstType?, second aSecond: SecondType?)
     {
@@ -29,5 +29,3 @@ open class SMPair <FirstType, SecondType>
         return "\(String(describing: first)) \(String(describing: second))"
     }
 }
-
-

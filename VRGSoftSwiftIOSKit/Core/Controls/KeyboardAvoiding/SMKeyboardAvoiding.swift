@@ -8,26 +8,26 @@
 
 import UIKit
 
-public protocol SMKeyboardAvoidingProtocol : class
+public protocol SMKeyboardAvoidingProtocol: class
 {
     var keyboardToolbar: SMKeyboardToolbar? {get set}
     var isShowsKeyboardToolbar: Bool {get set}
 
-    func adjustOffset() -> Void
-    func hideKeyBoard() -> Void
+    func adjustOffset()
+    func hideKeyBoard()
     
-    func addObjectForKeyboard(_ aObjectForKeyboard: UIResponder) -> Void
-    func removeObjectForKeyboard(_ aObjectForKeyboard: UIResponder) -> Void
+    func addObjectForKeyboard(_ aObjectForKeyboard: UIResponder)
+    func removeObjectForKeyboard(_ aObjectForKeyboard: UIResponder)
 
-    func addObjectsForKeyboard(_ aObjectsForKeyboard: [UIResponder]) -> Void
-    func removeObjectsForKeyboard(_ aObjectsForKeyboard: [UIResponder]) -> Void
+    func addObjectsForKeyboard(_ aObjectsForKeyboard: [UIResponder])
+    func removeObjectsForKeyboard(_ aObjectsForKeyboard: [UIResponder])
 
-    func removeAllObjectsForKeyboard() -> Void
+    func removeAllObjectsForKeyboard()
     
-    func responderShouldReturn(_ aResponder: UIResponder) -> Void
+    func responderShouldReturn(_ aResponder: UIResponder)
 }
 
-public protocol SMKeyboardAvoiderProtocol : class
+public protocol SMKeyboardAvoiderProtocol: class
 {
-    weak var keyboardAvoiding: SMKeyboardAvoidingProtocol? {get set}
+    var keyboardAvoiding: SMKeyboardAvoidingProtocol? {get set}
 }

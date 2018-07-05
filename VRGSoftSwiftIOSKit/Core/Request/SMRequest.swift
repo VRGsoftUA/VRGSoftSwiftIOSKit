@@ -25,6 +25,11 @@ open class SMResponseNode
 
 open class SMRequest
 {
+    deinit
+    {
+        print(#function + " - \(type(of: self))")
+    }
+    
     let defaultResponseQueue: DispatchQueue = DispatchQueue.main
 
     var responseBlocks: [SMResponseNode] = []
@@ -35,17 +40,27 @@ open class SMRequest
         return false
     }
     
-    func start() -> Void
+    func start()
     {
-        
+        retainSelf()
     }
     
+    func startWithResponseBlockInMainQueue(responseBlock aResponseBlock: @escaping SMRequestResponseBlock)
+    {
+        addResponseBlock(aResponseBlock, responseQueue: DispatchQueue.main).start()
+    }
+
+    func startWithResponseBlockInGlobalQueue(responseBlock aResponseBlock: @escaping SMRequestResponseBlock)
+    {
+        addResponseBlock(aResponseBlock, responseQueue: DispatchQueue.global()).start()
+    }
+
     func isExecuting() -> Bool
     {
         return false
     }
     
-    func cancel() -> Void
+    func cancel()
     {
         
     }
@@ -60,7 +75,7 @@ open class SMRequest
         return false
     }
     
-    func addResponseBlock(_ aResponseBlock: @escaping SMRequestResponseBlock, responseQueue aResponseQueue: DispatchQueue) -> SMRequest
+    @discardableResult func addResponseBlock(_ aResponseBlock: @escaping SMRequestResponseBlock, responseQueue aResponseQueue: DispatchQueue) -> SMRequest
     {
         responseBlocks.append(SMResponseNode(responseBlock: aResponseBlock, responseQueue: aResponseQueue))
         return self
@@ -68,15 +83,15 @@ open class SMRequest
 
     func addResponseBlockDefaultResponseQueue(_ aResponseBlock: @escaping SMRequestResponseBlock) -> SMRequest
     {
-        return self.addResponseBlock(aResponseBlock, responseQueue: self.defaultResponseQueue)
+        return addResponseBlock(aResponseBlock, responseQueue: defaultResponseQueue)
     }
 
-    func clearAllResponseBlocks() -> Void
+    func clearAllResponseBlocks()
     {
         responseBlocks.removeAll()
     }
     
-    func executeAllResponseBlocks(response aResponse: SMResponse) -> Void
+    func executeAllResponseBlocks(response aResponse: SMResponse)
     {
         for node in responseBlocks
         {
@@ -84,9 +99,11 @@ open class SMRequest
                 node.responseBlock(aResponse)
             }
         }
+        
+        releaseSelf()
     }
 
-    func executeSynchronouslyAllResponseBlocks(response aResponse: SMResponse) -> Void
+    func executeSynchronouslyAllResponseBlocks(response aResponse: SMResponse)
     {
         for node in responseBlocks
         {
@@ -94,5 +111,21 @@ open class SMRequest
                 node.responseBlock(aResponse)
             }
         }
+        
+        releaseSelf()
+    }
+    
+    
+    // MARK: - Retain
+    
+    fileprivate var _self: SMRequest?
+    func retainSelf()
+    {
+        _self = self
+    }
+    
+    func releaseSelf()
+    {
+        _self = nil
     }
 }

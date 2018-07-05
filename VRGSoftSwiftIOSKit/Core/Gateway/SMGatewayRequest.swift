@@ -10,7 +10,7 @@ import Foundation
 import Alamofire
 
 typealias SMGatewayRequestSuccessBlock = (DataRequest, DataResponse<Any>) -> SMResponse
-typealias SMGatewayRequestFailureBlock = (DataRequest, Error) -> SMResponse
+typealias SMGatewayRequestFailureBlock = (DataRequest, Error?) -> SMResponse
 
 open class SMGatewayRequest: SMRequest
 {
@@ -25,14 +25,16 @@ open class SMGatewayRequest: SMRequest
     var successBlock: SMGatewayRequestSuccessBlock?
     var failureBlock: SMGatewayRequestFailureBlock?
     
-    required public init(gateway aGateway: SMGateway, type aType: HTTPMethod)
+    public required init(gateway aGateway: SMGateway, type aType: HTTPMethod)
     {
         gateway = aGateway
         type = aType
     }
     
-    override func start() -> Void
+    override func start()
     {
+        super.start()
+        
         gateway.start(request: self)
     }
     
@@ -61,10 +63,17 @@ open class SMGatewayRequest: SMRequest
         return dataRequest?.task?.state == URLSessionTask.State.completed
     }
     
-    func getDataRequest() -> DataRequest
+    func getDataRequest(completion: @escaping (_ request: DataRequest) -> Void)
     {
-        let fullPath: URL = path != nil ? gateway.baseUrl!.appendingPathComponent(path!) : gateway.baseUrl!
+        guard let baseUrl = gateway.baseUrl else { return }
         
+        var fullPath: URL = baseUrl
+        
+        if let path = path
+        {
+            fullPath = fullPath.appendingPathComponent(path)
+        }
+                
         var allParams: [String: Any] = [:]
         
         for (key, value) in (gateway.defaultParameters)
@@ -89,12 +98,18 @@ open class SMGatewayRequest: SMRequest
             allHeaders.updateValue(value, forKey: key)
         }
         
-        dataRequest = Alamofire.request(fullPath, method: type, parameters: allParams, encoding: gateway.parameterEncoding, headers: allHeaders)
+        print("\n\nSTART", self)
+        print("URL - ", fullPath, "\n", "TYPE - ", type, "\n", "HEADERS - ", allHeaders, "\n", "PARAMS - ", allParams, "\n\n")
+
+        let dataRequest = Alamofire.request(fullPath, method: type, parameters: allParams, encoding: gateway.parameterEncoding, headers: allHeaders)
+        self.dataRequest = dataRequest
         
-        dataRequest!.responseJSON(completionHandler: {[weak self] responseObject in
-            switch responseObject.result {
-            case .success(let data):
-                print("Request success with data: \(data)")
+        dataRequest.responseJSON(completionHandler: {[weak self] responseObject in
+            
+            switch responseObject.result
+            {
+            case .success:
+//                    print("Request success with data: \(data)")
                 self?.executeSuccessBlock(responseObject: responseObject)
             case .failure(let error):
                 print("Request failed with error: \(error)")
@@ -102,14 +117,14 @@ open class SMGatewayRequest: SMRequest
             }
         })
         
-        return dataRequest!
+        return completion(dataRequest)
     }
     
-    func executeSuccessBlock(responseObject aResponseObject: DataResponse<Any>) -> Void
+    func executeSuccessBlock(responseObject aResponseObject: DataResponse<Any>)
     {
-        if let successBlock = successBlock
+        if let successBlock = successBlock, let dataRequest = dataRequest
         {
-            let response: SMResponse = successBlock(dataRequest!,aResponseObject)
+            let response: SMResponse = successBlock(dataRequest, aResponseObject)
             
             if executeAllResponseBlocksSync
             {
@@ -121,11 +136,11 @@ open class SMGatewayRequest: SMRequest
         }
     }
     
-    func executeFailureBlock(responseObject aResponseObject: DataResponse<Any>) -> Void
+    func executeFailureBlock(responseObject aResponseObject: DataResponse<Any>)
     {
-        if let failureBlock = failureBlock
+        if let failureBlock = failureBlock, let dataRequest = dataRequest
         {
-            let response: SMResponse = failureBlock(dataRequest!,aResponseObject.error!)
+            let response: SMResponse = failureBlock(dataRequest, aResponseObject.error)
             
             if executeAllResponseBlocksSync
             {
@@ -137,7 +152,7 @@ open class SMGatewayRequest: SMRequest
         }
     }
 
-    func setup(successBlock aSuccessBlock: @escaping SMGatewayRequestSuccessBlock,failureBlock aFailureBlock: @escaping SMGatewayRequestFailureBlock) -> Void
+    func setup(successBlock aSuccessBlock: @escaping SMGatewayRequestSuccessBlock, failureBlock aFailureBlock: @escaping SMGatewayRequestFailureBlock)
     {
         successBlock = aSuccessBlock
         failureBlock = aFailureBlock

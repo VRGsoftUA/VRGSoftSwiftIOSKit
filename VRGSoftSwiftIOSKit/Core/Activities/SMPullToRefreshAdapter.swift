@@ -14,19 +14,19 @@ open class SMPullToRefreshAdapter
 {
     open var enabled: Bool?
     
-    var refreshCallback: SMPullToRefreshAdapterRefreshCallback? = nil
+    var refreshCallback: SMPullToRefreshAdapterRefreshCallback?
     
-    open func configureWith(scrollView aScrollView: UIScrollView) -> Void
+    open func configureWith(scrollView aScrollView: UIScrollView)
     {
         
     }
     
-    open func beginPullToRefresh() -> Void
+    open func beginPullToRefresh()
     {
-        self.refreshCallback!(self)
+        self.refreshCallback?(self)
     }
 
-    open func endPullToRefresh() -> Void
+    open func endPullToRefresh()
     {
         
     }

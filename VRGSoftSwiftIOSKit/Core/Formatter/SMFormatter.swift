@@ -8,7 +8,7 @@
 
 import Foundation
 
-public protocol SMFormatterProtocol : AnyObject
+public protocol SMFormatterProtocol: AnyObject
 {
     var formatter: SMFormatter? { get set }
     var formattingText: String? { get set }

@@ -14,12 +14,9 @@ public typealias SMViewControllerCallback = (SMViewController, AnyObject) -> Voi
 {
     var callBack: SMViewControllerCallback?
     
-    open func performCallBackWith(sender aSender: AnyObject, goBack isGoBack: Bool) -> Void
+    open func performCallBackWith(sender aSender: AnyObject, goBack isGoBack: Bool)
     {
-        if self.callBack != nil
-        {
-            self.callBack!(self,aSender)
-        }
+        self.callBack?(self, aSender)
         
         if isGoBack
         {
@@ -27,15 +24,16 @@ public typealias SMViewControllerCallback = (SMViewController, AnyObject) -> Voi
         }
     }
     
+    open var isVisible: Bool = false
+    
     var activity: SMNativeActivityAdapter = SMNativeActivityAdapter()
     
-    open func showActivity() -> Void
+    open func showActivity()
     {
-        self.activity.configureWith(view: self.view)
         self.activity.show()
     }
 
-    open func hideActivity() -> Void
+    open func hideActivity()
     {
         self.activity.hide()
     }
@@ -47,71 +45,80 @@ public typealias SMViewControllerCallback = (SMViewController, AnyObject) -> Voi
         return (self.navigationController?.childViewControllers[0] == self || self.navigationController == nil)
     }
     
-    var _backgroundImageView: UIImageView?
-    open var backgroundImageView: UIImageView?
-    {
-        return _backgroundImageView
-    }
+    open lazy var backgroundImageView: UIImageView = UIImageView()
     
     override open func viewDidLoad()
     {
         super.viewDidLoad()
 
         // bg image
-        let bgImage:UIImage? = self.backgroundImage()
-        if bgImage != nil
+        
+        if let bgImage: UIImage = self.backgroundImage()
         {
-            let frame : CGRect = self.view.bounds
-            
-            _backgroundImageView = UIImageView(frame: frame)
-            _backgroundImageView?.autoresizingMask = [UIViewAutoresizing.flexibleWidth, UIViewAutoresizing.flexibleHeight]
-            _backgroundImageView?.contentMode = .center
-            _backgroundImageView?.image = bgImage
-            self.view.addSubview(_backgroundImageView!)
-            self.view.sendSubview(toBack: _backgroundImageView!)
+            backgroundImageView.frame = self.view.bounds
+            backgroundImageView.autoresizingMask = [UIViewAutoresizing.flexibleWidth, UIViewAutoresizing.flexibleHeight]
+            backgroundImageView.contentMode = .center
+            backgroundImageView.image = bgImage
+            self.view.addSubview(backgroundImageView)
+            self.view.sendSubview(toBack: backgroundImageView)
         }
 
         // left nav button
         if !self.navigationItem.hidesBackButton
         {
-            let leftNavigationButton: UIBarButtonItem? = self.createLeftNavButton()
-            if leftNavigationButton != nil
+            if let leftNavigationButton: UIBarButtonItem = self.createLeftNavButton()
             {
-                if leftNavigationButton?.customView is UIButton
+                if let leftNavigationButton: UIButton = leftNavigationButton.customView as? UIButton
                 {
-                    (leftNavigationButton?.customView as! UIButton).addTarget(self, action: #selector(self.didBtNavLeftClicked), for: UIControlEvents.touchUpInside)
+                    leftNavigationButton.addTarget(self, action: #selector(self.didBtNavLeftClicked), for: UIControlEvents.touchUpInside)
                 } else
                 {
-                    leftNavigationButton?.target = self
-                    leftNavigationButton?.action = #selector(self.didBtNavLeftClicked)
+                    leftNavigationButton.target = self
+                    leftNavigationButton.action = #selector(self.didBtNavLeftClicked)
                 }
                 
-                self.navigationItem.leftBarButtonItem = leftNavigationButton
+                if let leftBbis = self.createLeftNavButtonsAdditionals(), !leftBbis.isEmpty
+                {
+                    var fullLeftBbis: [UIBarButtonItem] = [leftNavigationButton]
+                    fullLeftBbis.append(contentsOf: leftBbis)
+                    self.navigationItem.leftBarButtonItems = fullLeftBbis
+                } else
+                {
+                    self.navigationItem.leftBarButtonItem = leftNavigationButton
+                }
             }
         }
         
         // right nav button
-        let rightNavigationButton: UIBarButtonItem? = self.createRightNavButton()
-        if rightNavigationButton != nil
+        if let rightNavigationButton: UIBarButtonItem = self.createRightNavButton()
         {
-            if rightNavigationButton?.customView is UIButton
+            if let rightNavigationButton: UIButton = rightNavigationButton.customView as? UIButton
             {
-                (rightNavigationButton?.customView as! UIButton).addTarget(self, action: #selector(self.didBtNavRightClicked), for: UIControlEvents.touchUpInside)
+                rightNavigationButton.addTarget(self, action: #selector(self.didBtNavRightClicked), for: UIControlEvents.touchUpInside)
             } else
             {
-                rightNavigationButton?.target = self
-                rightNavigationButton?.action = #selector(self.didBtNavRightClicked)
+                rightNavigationButton.target = self
+                rightNavigationButton.action = #selector(self.didBtNavRightClicked)
             }
             
-            self.navigationItem.rightBarButtonItem = rightNavigationButton
+            if let rightBbis = self.createRightNavButtonsAdditionals(), !rightBbis.isEmpty
+            {
+                var fullRightBbis: [UIBarButtonItem] = [rightNavigationButton]
+                fullRightBbis.append(contentsOf: rightBbis)
+                self.navigationItem.rightBarButtonItems = fullRightBbis
+            } else
+            {
+                self.navigationItem.rightBarButtonItem = rightNavigationButton
+            }
         }
         
         // custom title view for nav.item
-        let titleView:UIView? = self.createTitleViewNavItem()
-        if titleView != nil
+        if let titleView: UIView = self.createTitleViewNavItem()
         {
             self.navigationItem.titleView = titleView
         }
+        
+        self.activity.configureWith(view: self.view)
     }
 
     open func backgroundImage() -> UIImage?
@@ -123,8 +130,18 @@ public typealias SMViewControllerCallback = (SMViewController, AnyObject) -> Voi
     {
         return nil
     }
+    
+    open func createLeftNavButtonsAdditionals() -> [UIBarButtonItem]?
+    {
+        return nil
+    }
 
     open func createRightNavButton() -> UIBarButtonItem?
+    {
+        return nil
+    }
+    
+    open func createRightNavButtonsAdditionals() -> [UIBarButtonItem]?
     {
         return nil
     }
@@ -140,6 +157,19 @@ public typealias SMViewControllerCallback = (SMViewController, AnyObject) -> Voi
         
         self.isFirstAppear = false
     }
+    
+    override open func viewWillAppear(_ animated: Bool)
+    {
+        super.viewWillAppear(animated)
+        
+        isVisible = true
+    }
+    
+    override open func viewWillDisappear(_ animated: Bool)
+    {
+        super.viewWillDisappear(animated)
+        isVisible = false
+    }
 
     
     // MARK: - Actions
@@ -149,6 +179,11 @@ public typealias SMViewControllerCallback = (SMViewController, AnyObject) -> Voi
         self.close()
     }
 
+    @objc open func didBtNavRightClicked()
+    {
+        
+    }
+
     open func close()
     {
         if self.isModal
@@ -156,12 +191,7 @@ public typealias SMViewControllerCallback = (SMViewController, AnyObject) -> Voi
             self.dismiss(animated: true, completion: nil)
         } else
         {
-            self.navigationController!.popViewController(animated: true)
+            self.navigationController?.popViewController(animated: true)
         }
-    }
-
-    @objc open func didBtNavRightClicked()
-    {
-        
     }
 }

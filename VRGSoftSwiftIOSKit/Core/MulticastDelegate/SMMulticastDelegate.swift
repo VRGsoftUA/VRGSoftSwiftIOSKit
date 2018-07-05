@@ -78,10 +78,13 @@ open class SMMulticastDelegate<T> {
      *
      *  - parameter invocation: The closure to be invoked on each delegate.
      */
-	public func invokeDelegates(_ invocation: (T) -> ()) {
+	public func invokeDelegates(_ invocation: (T) -> Void) {
 		
 		for delegate in delegates.allObjects {
-			invocation(delegate as! T)
+            
+            if let delegate = delegate as? T {
+                invocation(delegate)
+            }
 		}
 	}
     
@@ -105,7 +108,7 @@ open class SMMulticastDelegate<T> {
  *  - parameter left:   The multicast delegate
  *  - parameter right:  The delegate to be added
  */
-public func +=<T>(left: SMMulticastDelegate<T>, right: T) {
+public func += <T>(left: SMMulticastDelegate<T>, right: T) {
 	
 	left.addDelegate(right)
 }
@@ -118,7 +121,7 @@ public func +=<T>(left: SMMulticastDelegate<T>, right: T) {
  *  - parameter left:   The multicast delegate
  *  - parameter right:  The delegate to be removed
  */
-public func -=<T>(left: SMMulticastDelegate<T>, right: T) {
+public func -= <T>(left: SMMulticastDelegate<T>, right: T) {
 	
 	left.removeDelegate(right)
 }
@@ -138,7 +141,7 @@ precedencegroup MulticastPrecedence {
 	higherThan: TernaryPrecedence
 }
 infix operator |> : MulticastPrecedence
-public func |><T>(left: SMMulticastDelegate<T>, right: (T) -> ()) {
+public func |> <T>(left: SMMulticastDelegate<T>, right: (T) -> Void) {
 	
 	left.invokeDelegates(right)
 }

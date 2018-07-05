@@ -126,15 +126,23 @@ extension UIView
     {
         get
         {
-            return self.superview!.width - self.frame.size.width - self.frame.origin.x
+            if let sWidth: CGFloat = superview?.width
+            {
+                return sWidth - frame.size.width - frame.origin.x
+            } else
+            {
+                return 0
+            }
+            
         }
         set(rightMargin)
         {
-            let sWidth: CGFloat = self.superview!.frame.size.width
-            
-            var frame: CGRect = self.frame
-            frame.origin.x = sWidth - rightMargin - frame.size.width
-            self.frame = frame
+            if let sWidth: CGFloat = superview?.frame.size.width
+            {
+                var frame: CGRect = self.frame
+                frame.origin.x = sWidth - rightMargin - frame.size.width
+                self.frame = frame
+            }
         }
     }
     
@@ -142,39 +150,40 @@ extension UIView
     {
         get
         {
-            return self.superview!.height - self.frame.size.height - self.frame.origin.y
+            if let sHeight: CGFloat = superview?.height
+            {
+                return sHeight - frame.size.height - frame.origin.y
+            } else
+            {
+                return 0
+            }
         }
         set(bottomMargin)
         {
-            let sHeight: CGFloat = self.superview!.frame.size.height
-            
-            var frame: CGRect = self.frame
-            frame.origin.y = sHeight - bottomMargin - frame.size.height
-            self.frame = frame
+            if let sHeight: CGFloat = superview?.frame.size.height
+            {
+                var frame: CGRect = self.frame
+                frame.origin.y = sHeight - bottomMargin - frame.size.height
+                self.frame = frame
+            }
         }
     }
     
-    func sm_updateConstrainIfExist(height aHeight: CGFloat) -> Void
+    func sm_updateConstrainIfExist(height aHeight: CGFloat)
     {
-        for constraint in self.constraints
+        for constraint in self.constraints where constraint.firstAttribute == NSLayoutAttribute.height
         {
-            if constraint.firstAttribute == NSLayoutAttribute.height
-            {
-                constraint.constant = aHeight
-                break
-            }
+            constraint.constant = aHeight
+            break
         }
     }
 
-    func sm_updateConstrainIfExist(width aWidth: CGFloat) -> Void
+    func sm_updateConstrainIfExist(width aWidth: CGFloat)
     {
-        for constraint in self.constraints
+        for constraint in self.constraints where constraint.firstAttribute == NSLayoutAttribute.width
         {
-            if constraint.firstAttribute == NSLayoutAttribute.width
-            {
-                constraint.constant = aWidth
-                break
-            }
+            constraint.constant = aWidth
+            break
         }
     }
 }

@@ -13,10 +13,7 @@ open class SMHelper: Any
     
     open static var isIPad: Bool
     {
-        get
-        {
-            return UIDevice.current.userInterfaceIdiom == .pad
-        }
+        return UIDevice.current.userInterfaceIdiom == .pad
     }
 
 }

@@ -15,7 +15,7 @@ open class SMFetcherWithBlock: SMDataFetcherProtocol
 {
     // MARK: SMDataFetcherProtocol
     
-    public var callbackQueue: DispatchQueue?
+    public var callbackQueue: DispatchQueue = DispatchQueue.global()
     
     let fetchBlock: SMDataFetchBlock
     
@@ -30,15 +30,15 @@ open class SMFetcherWithBlock: SMDataFetcherProtocol
         return true
     }
     
-    public func fetchDataBy(message aMessage: SMFetcherMessage, withCallback aFetchCallback: @escaping SMDataFetchCallback) -> Void
+    public func fetchDataBy(message aMessage: SMFetcherMessage, withCallback aFetchCallback: @escaping SMDataFetchCallback)
     {
-        self.callbackQueue?.async
+        self.callbackQueue.async
         {
             self.fetchBlock(aMessage, aFetchCallback)
         }
     }
     
-    public func cancelFetching() -> Void
+    public func cancelFetching()
     {
         
     }

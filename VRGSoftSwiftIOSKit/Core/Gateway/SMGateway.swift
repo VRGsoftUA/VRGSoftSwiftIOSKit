@@ -24,23 +24,25 @@ open class SMGateway
         return SMGatewayConfigurator.shared.isInternetReachable()
     }
     
-    func configureWithBase(url aUrl: URL) -> Void
+    func configureWithBase(url aUrl: URL)
     {
         baseUrl = aUrl
     }
     
-    func start(request aRequest: SMGatewayRequest) -> Void
+    func start(request aRequest: SMGatewayRequest)
     {
-        aRequest.getDataRequest().resume()
+        aRequest.getDataRequest { request in
+            request.resume()
+        }
     }
     
     func defaultFailureBlockFor(request aRequest: SMGatewayRequest) -> SMGatewayRequestFailureBlock
     {
-        func result(data: DataRequest,error: Error) -> SMResponse
+        func result(data: DataRequest, error: Error?) -> SMResponse
         {
             let response: SMResponse = SMResponse()
             response.isSuccess = false
-            response.textMessage = error.localizedDescription
+            response.textMessage = error?.localizedDescription
             
             return response
         }
@@ -51,12 +53,36 @@ open class SMGateway
     
     // MARK: Request Fabric
     
-    func request(type aType: HTTPMethod, path aPath: String,parameters aParameters: [String: AnyObject], successBlock aSuccessBlock: @escaping SMGatewayRequestSuccessBlock) -> SMGatewayRequest
+    func getRequestClass() -> SMGatewayRequest.Type
     {
-        let result: SMGatewayRequest = SMGatewayRequest(gateway: self, type: aType)
+        return SMGatewayRequest.self
+    }
+    
+    func request(type aType: HTTPMethod, path aPath: String, parameters aParameters: [String: AnyObject]? = [:], successBlock aSuccessBlock: @escaping SMGatewayRequestSuccessBlock) -> SMGatewayRequest
+    {
+        let result: SMGatewayRequest = getRequestClass().init(gateway: self, type: aType)
         
         result.path = aPath
-        result.parameters = aParameters
+        
+        if let parameters = aParameters
+        {
+            result.parameters = parameters
+        }
+        
+        let failureBlock: SMGatewayRequestFailureBlock = self.defaultFailureBlockFor(request: result)
+        
+        result.setup(successBlock: aSuccessBlock, failureBlock: failureBlock)
+        
+        return result
+    }
+    
+    func uploadRequest(type aType: HTTPMethod = .post,
+                       path aPath: String,
+                       constructingBlock: @escaping SMConstructingMultipartFormDataBlock,
+                       successBlock aSuccessBlock: @escaping SMGatewayRequestSuccessBlock) -> SMGatewayRequestMultipart
+    {
+        let result: SMGatewayRequestMultipart = SMGatewayRequestMultipart(gateway: self, type: aType, constructingBlock: constructingBlock)
+        result.path = aPath
         
         let failureBlock: SMGatewayRequestFailureBlock = self.defaultFailureBlockFor(request: result)
         

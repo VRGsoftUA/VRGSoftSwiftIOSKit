@@ -10,34 +10,48 @@ import UIKit
 
 public protocol UIViewLoading { }
 
-public extension UIViewLoading where Self : UIView
+public extension UIViewLoading where Self: UIView
 {
     static func loadFromNib(nibNameOrNil: String? = nil) -> Self
     {
-        let result = Bundle.main.loadNibNamed(String(describing: self), owner: self, options: nil)?.last as! Self
+        let result = Bundle.main.loadNibNamed(String(describing: self), owner: self, options: nil)?.last as! Self // swiftlint:disable:this force_cast
         return result
     }
 }
 
-extension UIView : UIViewLoading { }
+extension UIView: UIViewLoading { }
 
+
+@IBDesignable
+extension UIView
+{
+    @IBInspectable open var cornerRadius: CGFloat {
+        set { layer.cornerRadius = newValue }
+        get { return layer.cornerRadius }
+    }
+
+    @IBInspectable open var borderWidth: CGFloat {
+        set { layer.borderWidth = newValue }
+        get { return layer.borderWidth }
+    }
+}
 
 extension UIView
 {
-    open func sm_roundBorder() -> Void
+    open func sm_roundBorder()
     {
-        self.layer.cornerRadius = self.frame.size.height/2.0;
-        self.layer.masksToBounds = true;
+        self.layer.cornerRadius = self.frame.size.height/2.0
+        self.layer.masksToBounds = true
     }
     
-    open func sm_showAnimate(_ aAnimate: Bool) -> Void
+    open func sm_showAnimate(_ aAnimate: Bool)
     {
         if aAnimate
         {
             self.isHidden = false
             UIView.animate(withDuration: 0.2, animations: {
                 self.alpha = 1
-            }, completion: { (finished) in
+            }, completion: { finished in
                 if finished
                 {
                     self.alpha = 1
@@ -50,13 +64,13 @@ extension UIView
         }
     }
     
-    open func sm_hideAnimate(_ aAnimate: Bool) -> Void
+    open func sm_hideAnimate(_ aAnimate: Bool)
     {
         if aAnimate
         {
             UIView.animate(withDuration: 0.2, animations: { 
                 self.alpha = 0
-            }, completion: { (finished) in
+            }, completion: { finished in
                 if finished
                 {
                     self.alpha = 0
@@ -70,11 +84,14 @@ extension UIView
         }
     }
     
-    var sm_parentViewController: UIViewController? {
+    var sm_parentViewController: UIViewController?
+    {
         var parentResponder: UIResponder? = self
-        while parentResponder != nil {
-            parentResponder = parentResponder!.next
-            if let viewController = parentResponder as? UIViewController {
+        while parentResponder != nil
+        {
+            parentResponder = parentResponder?.next
+            if let viewController = parentResponder as? UIViewController
+            {
                 return viewController
             }
         }

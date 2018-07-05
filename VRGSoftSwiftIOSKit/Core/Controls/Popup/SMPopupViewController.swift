@@ -21,7 +21,7 @@ open class SMPopupViewController: UIViewController
     var isAnimatingNow: Bool = false
     
     
-    //MARK: View lifecycle
+    // MARK: View lifecycle
     func setupSubviews()
     {
         var frame = self.view.bounds
@@ -59,20 +59,20 @@ open class SMPopupViewController: UIViewController
     {
         super.viewDidLoad()
         
-        self.view.isHidden = true
-        self.view.autoresizesSubviews = true
-        self.view.autoresizingMask = [.flexibleHeight, .flexibleWidth]
-        self.view.backgroundColor = .clear
+        view.isHidden = true
+        view.autoresizesSubviews = true
+        view.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+        view.backgroundColor = .clear
     }
     
     func popupWillAppear(animated: Bool)
     {
-        if self.view.superview != nil
+        if let superview = view.superview
         {
-            self.view.frame = self.view.superview!.bounds
-            self.setupSubviews()
-            self.view.superview!.bringSubview(toFront: self.view)
-            self.view.isHidden = false
+            view.frame = superview.bounds
+            setupSubviews()
+            superview.bringSubview(toFront: view)
+            view.isHidden = false
             popupedView.popupWillAppear(animated: animated)
         }
     }
@@ -95,7 +95,7 @@ open class SMPopupViewController: UIViewController
     }
     
     
-    //MARK: Rotations
+    // MARK: Rotations
     
     override open var shouldAutorotate: Bool
     {
@@ -103,7 +103,7 @@ open class SMPopupViewController: UIViewController
     }
     
     
-    //MARK: Show/Hide
+    // MARK: Show/Hide
     
     func show(animated: Bool, inView aView: UIView)
     {
@@ -128,7 +128,7 @@ open class SMPopupViewController: UIViewController
                 
                 //change overlay alpha
                 self.overlayView.alpha = CGFloat(self.overlayViewAlpha)
-            }, completion: { (finished) in
+            }, completion: { _ in
                 self.isAnimatingNow = false
                 self.popupDidAppear(animated: animated)
             })
@@ -162,7 +162,7 @@ open class SMPopupViewController: UIViewController
                 
                 //change overlay alpha
                 self.overlayView.alpha = 0.0
-            }, completion: { (finished) in
+            }, completion: { _ in
                 self.isAnimatingNow = false
                 self.popupDidDisappear(animated: animated)
             })

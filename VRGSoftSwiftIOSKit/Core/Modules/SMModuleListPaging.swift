@@ -10,52 +10,49 @@ import UIKit
 
 public protocol SMPagingMoreCellDataProtocol: class
 {
-    func addTarget(_ aTarget: Any, action aAction:Selector) -> Void
+    var needLoadMore: SMBlockAction<Any>? { get set }
 }
 
 public protocol SMPagingMoreCellProtocol: class
 {
-    func didBeginDataLoading() -> Void
-    func didEndDataLoading() -> Void
+    func didBeginDataLoading()
+    func didEndDataLoading()
 }
 
 public protocol SMModuleListPagingDelegate: class
 {
-    func moreCellDataForPaging(moduleList aModuleList: SMModuleListPaging) -> SMPagingMoreCellDataProtocol
-    func willLoadMore(moduleList aModuleList: SMModuleListPaging) -> Void
+    func willLoadMore(moduleList aModuleList: SMModuleListPaging)
 }
 
 
-open class SMModuleListPaging: SMModuleList, SMTableDisposerMulticastDelegate
+open class SMModuleListPaging: SMModuleList, SMListAdapterMoreDelegate
 {
-    var initialPageOffset : Int = 0
-    var isItemsAsPage : Bool = false
-    var pageOffset : Int = 0
-    var pageSize : Int = 20
-    var isLoadMoreDataAuto : Bool = true
-    var isLoadingMore : Bool = false
-    
-    var moreCell: SMPagingMoreCellProtocol?
+    var initialPageOffset: Int = 0
+    var isItemsAsPage: Bool = true
+    var pageOffset: Int = 0
+    var pageSize: Int = 10
+    var isLoadMoreDataAuto: Bool = true
+    var isLoadingMore: Bool = false
     
     override var fetcherMessageClass: SMFetcherMessage.Type {get {return SMFetcherMessagePaging.self}}
     
     weak var pagingDelegate: SMModuleListPagingDelegate?
 
-    required public init(tableDisposer aTableDisposer: SMTableDisposerModeled, initialPageOffset aInitialPageOffset: Int, isItemsAsPage aIsItemsAsPage: Bool)
+    required public init(listAdapter aListAdapter: SMListAdapter, initialPageOffset aInitialPageOffset: Int, isItemsAsPage aIsItemsAsPage: Bool)
     {
-        super.init(tableDisposer: aTableDisposer)
+        super.init(listAdapter: aListAdapter)
         
-        self.initialPageOffset = aInitialPageOffset
-        self.isItemsAsPage = aIsItemsAsPage
+        initialPageOffset = aInitialPageOffset
+        isItemsAsPage = aIsItemsAsPage
         
-        self.tableDisposer!.multicastDelegate.addDelegate(self)
+        listAdapter.moreDelegate = self
     }
     
-    required public init(tableDisposer aTableDisposer: SMTableDisposerModeled)
+    required public init(listAdapter aListAdapter: SMListAdapter)
     {
-        super.init(tableDisposer: aTableDisposer)
+        super.init(listAdapter: aListAdapter)
         
-        self.tableDisposer!.multicastDelegate.addDelegate(self)
+        listAdapter.moreDelegate = self
     }
     
     override open func reloadData()
@@ -65,32 +62,33 @@ open class SMModuleListPaging: SMModuleList, SMTableDisposerMulticastDelegate
             return
         }
         
-        let nextMessage: SMFetcherMessagePaging = self.createFetcherMessage() as! SMFetcherMessagePaging
-        
-        nextMessage.pagingOffset = self.initialPageOffset
-        nextMessage.isReloading = true
-        nextMessage.isLoadingMore = false
-        
-        if let canFetch = self.dataFetcher?.canFetchWith(message: nextMessage), canFetch
+        if let nextMessage: SMFetcherMessagePaging = createFetcherMessage() as? SMFetcherMessagePaging
         {
-            pageOffset = nextMessage.pagingOffset
-            isReloading = nextMessage.isReloading
-            isLoadingMore = nextMessage.isLoadingMore
+            nextMessage.pagingOffset = initialPageOffset
+            nextMessage.isReloading = true
+            nextMessage.isLoadingMore = false
+            
+            if let canFetch = dataFetcher?.canFetchWith(message: nextMessage), canFetch
+            {
+                pageOffset = nextMessage.pagingOffset
+                isReloading = nextMessage.isReloading
+                isLoadingMore = nextMessage.isLoadingMore
+            }
+            
+            delegate?.willReload(moduleList: self)
+            
+            fetchDataWith(message: nextMessage)
         }
-        
-        self.delegate?.willReload(moduleList: self)
-        
-        self.fetchDataWith(message: nextMessage)
     }
     
-    func loadMoreData() -> Void
+    func loadMoreData()
     {
         if isReloading || isLoadingMore
         {
             return
         }
 
-        self.pagingDelegate?.willLoadMore(moduleList: self)
+        pagingDelegate?.willLoadMore(moduleList: self)
         
         if isItemsAsPage
         {
@@ -102,73 +100,65 @@ open class SMModuleListPaging: SMModuleList, SMTableDisposerMulticastDelegate
         
         isLoadingMore = true
         
-        self.fetchDataWith(message: self.createFetcherMessage())
+        fetchDataWith(message: createFetcherMessage())
     }
 
     override func createFetcherMessage() -> SMFetcherMessage
     {
-        let result: SMFetcherMessagePaging = super.createFetcherMessage() as! SMFetcherMessagePaging
+        let result: SMFetcherMessage = super.createFetcherMessage()
         
-        result.pagingOffset = pageOffset
-        result.pagingSize = pageSize
-        result.isReloading = isReloading
-        result.isLoadingMore = isLoadingMore
+        if let result = result as? SMFetcherMessagePaging
+        {
+            result.pagingOffset = pageOffset
+            result.pagingSize = pageSize
+            result.isReloading = isReloading
+            result.isLoadingMore = isLoadingMore
+        }
         
         return result
     }
-    
-    func setupMoreCellDataFor(section aSection: SMSectionReadonly, pagedModelsCount aPagedModelsCount: Int) -> Bool
-    {
-        moreCell = nil
-        
-        if let pagingDelegate = pagingDelegate, (aPagedModelsCount == self.pageSize && self.pageSize != 0)
-        {
-            let moreCellData: SMPagingMoreCellDataProtocol = pagingDelegate.moreCellDataForPaging(moduleList: self)
-            moreCellData.addTarget(self, action: #selector(SMModuleListPaging.loadMoreDataPressed))
-            aSection.addCellData(moreCellData as! SMCellData)
-            
-            return true
-        }
-        
-        return false
-    }
-    
+
     
     // MARK: - Actions
     
-    @objc func loadMoreDataPressed() -> Void
+    @objc func loadMoreDataPressed()
     {
-        self.loadMoreData()
-    }
-
-    override func setupModels(_ aModels: [AnyObject], forSection aSection: SMSectionReadonly)
-    {
-        models.append(contentsOf: aModels)
-        
-        self.tableDisposer?.setupModels(models, forSection: aSection)
-        
-        let _ = self.setupMoreCellDataFor(section: aSection, pagedModelsCount: aModels.count)
+        loadMoreData()
     }
     
+    override func updateSectionWith(models aModels: [AnyObject], sectionIndex aSectionIndex: Int)
+    {
+        listAdapter.updateSectionWith(models: aModels, sectionIndex: aSectionIndex) {[weak self] in
+            
+            var result: Bool = false
+            
+            if let strongSelf = self
+            {
+                result = (aModels.count >= strongSelf.pageSize && strongSelf.pageSize != 0)
+            }
+            
+            return result
+        }
+        
+        models += aModels
+    }
+
     override func willFetchDataWith(message aMessage: SMFetcherMessage)
     {
-        if self.isReloading
+        if isReloading
         {
-            if !self.isHideActivityAdapterForOneFetch
+            if !isHideActivityAdapterForOneFetch
             {
                 DispatchQueue.main.async {
-                    if self.activityAdapter != nil
-                    {
-                        self.activityAdapter!.show()
-                    }
+                    self.activityAdapter?.show()
                 }
             }
             
-            self.isHideActivityAdapterForOneFetch = false
+            isHideActivityAdapterForOneFetch = false
 
-        } else if self.isLoadingMore
+        } else if isLoadingMore
         {
-            self.moreCell?.didBeginDataLoading()
+            listAdapter.didBeginDataLoading()
         }
     }
 
@@ -176,66 +166,70 @@ open class SMModuleListPaging: SMModuleList, SMTableDisposerMulticastDelegate
     {
         super.didFetchDataWith(message: aMessage, response: aResponse)
         
-        let message: SMFetcherMessagePaging = aMessage as! SMFetcherMessagePaging
-        
-        if aResponse.isSuccess
+        if let message: SMFetcherMessagePaging = aMessage as? SMFetcherMessagePaging
         {
+            if aResponse.isSuccess
+            {
+                if message.isReloading
+                {
+                    models.removeAll()
+                } else if message.isLoadingMore
+                {
+                    listAdapter.didEndDataLoading()
+                }
+            }
+            
             if message.isReloading
             {
-                models .removeAll()
+                isReloading = false
             } else if message.isLoadingMore
             {
-                self.moreCell?.didEndDataLoading()
+                isLoadingMore = false
             }
-        }
-        
-        if message.isReloading
-        {
-            self.isReloading = false
-        } else if message.isLoadingMore
-        {
-            isLoadingMore = false
         }
     }
     
-    
-    // MARK: SMTableDisposerMulticastDelegate
-    
-    public func tableView(_ aTableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath)
+    override func prepareSections()
     {
-        if cell is SMPagingMoreCellProtocol
+        if isLoadingMore
         {
-            moreCell = (cell as! SMPagingMoreCellProtocol)
-            
-            if self.isLoadMoreDataAuto
-            {
-                self.loadMoreData()
-            }
+            listAdapter.cleanMoreCellData()
+        } else
+        {
+            listAdapter.prepareSections()
+        }
+    }
+
+
+    // MARK: SMListAdapterDelegate
+
+    public func needLoadMore(listAdapter aListAdapter: SMListAdapter)
+    {
+        if isLoadMoreDataAuto
+        {
+            loadMoreData()
         }
     }
 }
 
 
-extension SMPagingMoreCellDataProtocol
-{
-    public func addTarget(_ aTarget: Any, action aAction:Selector) -> Void
-    {
-        
-    }
-}
+// MARK: - SMPagingMoreCellProtocol
 
 extension SMPagingMoreCellProtocol
 {
-    public func didBeginDataLoading() -> Void
+    public func didBeginDataLoading()
     {
         
     }
     
-    public func didEndDataLoading() -> Void
+    public func didEndDataLoading()
     {
         
     }
 }
+
+
+// MARK: - SMModuleListPagingDelegate
 
 extension SMModuleListPagingDelegate
 {
@@ -244,9 +238,8 @@ extension SMModuleListPagingDelegate
         return SMNativeMoreTableViewCellData()
     }
     
-    public func willLoadMore(moduleList aModuleList: SMModuleListPaging) -> Void
+    public func willLoadMore(moduleList aModuleList: SMModuleListPaging)
     {
         
     }
 }
-

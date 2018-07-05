@@ -13,7 +13,7 @@ open class SMPopupSimplePicker: SMPopupPicker, UIPickerViewDelegate, UIPickerVie
     static let kSMPopupPickerValueDidChange = "kSMPopupPickerValueDidChange"
     
     
-    //MARK: override next methods to customize:
+    // MARK: override next methods to customize:
     
     override func createPicker() -> UIView?
     {
@@ -31,7 +31,7 @@ open class SMPopupSimplePicker: SMPopupPicker, UIPickerViewDelegate, UIPickerVie
         set
         {
             _dataSource = newValue
-            popupedPicker.reloadAllComponents()
+            popupedPicker?.reloadAllComponents()
         }
         get
         {
@@ -39,16 +39,13 @@ open class SMPopupSimplePicker: SMPopupPicker, UIPickerViewDelegate, UIPickerVie
         }
     }
     
-    open var popupedPicker: UIPickerView
+    open var popupedPicker: UIPickerView?
     {
-        get
-        {
-            return picker as! UIPickerView
-        }
+        return picker as? UIPickerView
     }
     
     
-    //MARK: override next methods to change default behaviours
+    // MARK: override next methods to change default behaviours
     
     public func numberOfComponents(in pickerView: UIPickerView) -> Int
     {
@@ -70,7 +67,7 @@ open class SMPopupSimplePicker: SMPopupPicker, UIPickerViewDelegate, UIPickerVie
             
             if item is SMTitledID
             {
-                result = (item as! SMTitledID).title
+                result = (item as? SMTitledID)?.title
             } else if item is String
             {
                 result = item as? String
@@ -89,9 +86,9 @@ open class SMPopupSimplePicker: SMPopupPicker, UIPickerViewDelegate, UIPickerVie
     public func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int)
     {
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: SMPopupSimplePicker.kSMPopupPickerValueDidChange), object: self)
-        if selectHandler != nil
+        if let selectedItem = selectedItem
         {
-            selectHandler!(self, self.selectedItem!)
+            selectHandler?(self, selectedItem)
         }
     }
     
@@ -99,19 +96,22 @@ open class SMPopupSimplePicker: SMPopupPicker, UIPickerViewDelegate, UIPickerVie
     {
         get
         {
-            let index = popupedPicker.selectedRow(inComponent: 0)
+            guard let index = popupedPicker?.selectedRow(inComponent: 0) else
+            {
+                return nil
+            }
             return index < _dataSource.count ? _dataSource[index] : nil
         }
         set
         {
             if newValue != nil
             {
-                let index = _dataSource.index(where: { (item) -> Bool in
+                let index = _dataSource.index(where: { item -> Bool in
                     item.isEqual(newValue)
                 })
-                if index != nil
+                if let index = index
                 {
-                    popupedPicker.selectRow(index!, inComponent: 0, animated: false)
+                    popupedPicker?.selectRow(index, inComponent: 0, animated: false)
                 }
             }
         }

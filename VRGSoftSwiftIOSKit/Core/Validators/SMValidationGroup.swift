@@ -9,21 +9,27 @@
 import Foundation
 import UIKit
 
+public protocol SMValidationGroupProtocol
+{
+    func applyValideState(group aGroup: SMValidationGroup)
+    func applyInvalideState(group aGroup: SMValidationGroup)
+}
+
 open class SMValidationGroup
 {
     var validators: [SMValidator] = []
 
-    open func add(validator aValidator: SMValidator) -> Void
+    open func add(validator aValidator: SMValidator)
     {
         validators.append(aValidator)
     }
 
-    open func add(validators aValidators: [SMValidator]) -> Void
+    open func add(validators aValidators: [SMValidator])
     {
         validators.append(contentsOf: aValidators)
     }
     
-    open func removeAllValidators() -> Void
+    open func removeAllValidators()
     {
         validators.removeAll()
     }
@@ -34,16 +40,17 @@ open class SMValidationGroup
         
         for validator: SMValidator in validators
         {
-            if !validator.validate()
+            if !validator.validate(),
+                let validatableObject = validator.validatableObject
             {
-                result.append(validator.validatableObject!)
+                result.append(validatableObject)
             }
         }
         
         return result
     }
     
-    open func applyShakeForWrongFieldsIfCan() -> Void
+    open func applyShakeForWrongFieldsIfCan()
     {
         for obj: SMValidationProtocol in self.validate()
         {
@@ -54,6 +61,23 @@ open class SMValidationGroup
                 {
                     view.transform = CGAffineTransform.identity
                 }, completion: nil)
+            }
+        }
+    }
+    
+    open func refreshStatesInFields()
+    {
+        for v: SMValidator in validators
+        {
+            if let filed = v.validatableObject as? SMValidationGroupProtocol
+            {
+                if v.validate()
+                {
+                    filed.applyValideState(group: self)
+                } else
+                {
+                    filed.applyInvalideState(group: self)
+                }
             }
         }
     }

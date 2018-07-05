@@ -10,8 +10,8 @@ import Foundation
 
 open class SMTitledID
 {
-    var ID : AnyObject
-    var title : String
+    var ID: AnyObject
+    var title: String
 
     init(ID aID: AnyObject, title aTitle: String)
     {

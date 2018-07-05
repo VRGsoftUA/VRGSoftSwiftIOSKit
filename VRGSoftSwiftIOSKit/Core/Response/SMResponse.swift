@@ -17,5 +17,5 @@ open class SMResponse
     var dataDictionary: [String: AnyObject] = [:]
     var boArray: [AnyObject] = []
     var error: Error?
-    var requestCancelled: Bool = false
+    var isCancelled: Bool = false
 }

@@ -10,7 +10,7 @@ import UIKit
 
 open class SMPopupDatePicker: SMPopupPicker
 {
-    //MARK: override next methods to customize:
+    // MARK: override next methods to customize:
     
     override func createPicker() -> UIView?
     {
@@ -21,23 +21,24 @@ open class SMPopupDatePicker: SMPopupPicker
         return pv
     }
     
-    var popupedPicker: UIDatePicker
+    var popupedPicker: UIDatePicker?
     {
-        get
-        {
-            return self.picker as! UIDatePicker
-        }
+        return self.picker as? UIDatePicker
     }
     
     override open var selectedItem: AnyObject?
     {
         get
         {
-            return self.popupedPicker.date as AnyObject
+            return self.popupedPicker?.date as AnyObject
         }
         set
         {
-            self.popupedPicker.date = newValue as! Date
+            guard let date = newValue as? Date else
+            {
+                return
+            }
+            self.popupedPicker?.date = date
         }
     }
     
@@ -46,15 +47,12 @@ open class SMPopupDatePicker: SMPopupPicker
         super.popupWillAppear(animated: animated)
         
         //setup current value
-        if self.selectedItem != nil
+        if let selectedItem = selectedItem as? Date
         {
-            if self.selectedItem is NSDate
-            {
-                self.popupedPicker.date = self.selectedItem as! Date
-            } else
-            {
-                assert(false, "Wrong class type !!!")
-            }
+            self.popupedPicker?.date = selectedItem
+        } else
+        {
+            assert(false, "Wrong class type !!!")
         }
     }
     
@@ -63,9 +61,9 @@ open class SMPopupDatePicker: SMPopupPicker
     
     @objc func didPopupDatePickerChanged(sender: AnyObject)
     {
-        if self.selectHandler != nil
+        if let selectedItem = selectedItem
         {
-            self.selectHandler!(self, self.selectedItem!)
+            self.selectHandler?(self, selectedItem)
         }
     }
 }

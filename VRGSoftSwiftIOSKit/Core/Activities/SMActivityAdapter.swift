@@ -10,7 +10,7 @@ import UIKit
 
 open class SMActivityAdapter
 {
-    func configureWith(view aView: UIView) -> Void
+    func configureWith(view aView: UIView)
     {
         assert(false)
     }

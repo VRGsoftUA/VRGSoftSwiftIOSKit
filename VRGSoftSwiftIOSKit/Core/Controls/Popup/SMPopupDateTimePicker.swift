@@ -10,7 +10,7 @@ import UIKit
 
 open class SMPopupDateTimePicker: SMPopupDatePicker
 {
-    //MARK: override next methods to customize:
+    // MARK: override next methods to customize:
     
     override func createPicker() -> UIView?
     {

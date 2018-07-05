@@ -8,11 +8,11 @@
 
 import UIKit
 
-public protocol SMKeyboardToolbarDelegate : class
+public protocol SMKeyboardToolbarDelegate: class
 {
-    func keyboardToolbar(_ aKeyboardToolbar: SMKeyboardToolbar, didBtNextClicked aSender: AnyObject) -> Void
-    func keyboardToolbar(_ aKeyboardToolbar: SMKeyboardToolbar, didBtBackClicked aSender: AnyObject) -> Void
-    func keyboardToolbar(_ aKeyboardToolbar: SMKeyboardToolbar, didBtDoneClicked aSender: AnyObject) -> Void
+    func keyboardToolbar(_ aKeyboardToolbar: SMKeyboardToolbar, didBtNextClicked aSender: AnyObject)
+    func keyboardToolbar(_ aKeyboardToolbar: SMKeyboardToolbar, didBtBackClicked aSender: AnyObject)
+    func keyboardToolbar(_ aKeyboardToolbar: SMKeyboardToolbar, didBtDoneClicked aSender: AnyObject)
 }
 
 open class SMKeyboardToolbar: SMToolbar
@@ -24,7 +24,7 @@ open class SMKeyboardToolbar: SMToolbar
     open let bbiBack: UIBarButtonItem = UIBarButtonItem()
     open let bbiNext: UIBarButtonItem = UIBarButtonItem()
     
-    open override func setup() -> Void
+    open override func setup()
     {
         self.autoresizingMask = UIViewAutoresizing.flexibleWidth
         self.barStyle = UIBarStyle.default
@@ -38,33 +38,34 @@ open class SMKeyboardToolbar: SMToolbar
         self.addSubview(vLine)
     }
     
-    func createButtons() -> Void
+    func createButtons()
     {
         let mainBundle: Bundle = Bundle(for: type(of: self))
         
-        let resourcesBundle: Bundle = Bundle(path: mainBundle.path(forResource: "VRGSoftSwiftIOSKit", ofType: "bundle")!)!
-        
-        let btBack: UIButton = UIButton(type: UIButtonType.system)
-        let imageLeft: UIImage = UIImage(named: "SMKeyboardAvoideBarArrowLeft", in: resourcesBundle, compatibleWith: nil)!
-        btBack.setImage(imageLeft, for: UIControlState.normal)
-        btBack.frame = CGRect(x: 0, y: 0, width: 40, height: 40)
-        btBack.addTarget(self, action: #selector(SMKeyboardToolbar.didBtBackClicked(_:)), for: UIControlEvents.touchUpInside)
-        bbiBack.customView = btBack
-        
-        
-        let btNext: UIButton = UIButton(type: UIButtonType.system)
-        let imageRight: UIImage = UIImage(named: "SMKeyboardAvoideBarArrowRight", in: resourcesBundle, compatibleWith: nil)!
-        btNext.setImage(imageRight, for: UIControlState.normal)
-        btNext.frame = CGRect(x: 0, y: 0, width: 40, height: 40)
-        btNext.addTarget(self, action: #selector(SMKeyboardToolbar.didBtNextClicked(_:)), for: UIControlEvents.touchUpInside)
-        bbiNext.customView = btNext
-        
+        if let path: String = mainBundle.path(forResource: "VRGSoftSwiftIOSKit", ofType: "bundle"),
+            let resourcesBundle: Bundle = Bundle(path: path)
+        {
+            let imageLeft: UIImage? = UIImage(named: "SMKeyboardAvoideBarArrowLeft", in: resourcesBundle, compatibleWith: nil)
+            let btBack: UIButton = UIButton(type: UIButtonType.system)
+            btBack.setImage(imageLeft, for: UIControlState.normal)
+            btBack.frame = CGRect(x: 0, y: 0, width: 40, height: 40)
+            btBack.addTarget(self, action: #selector(SMKeyboardToolbar.didBtBackClicked(_:)), for: UIControlEvents.touchUpInside)
+            bbiBack.customView = btBack
+            
+            let btNext: UIButton = UIButton(type: UIButtonType.system)
+            let imageRight: UIImage? = UIImage(named: "SMKeyboardAvoideBarArrowRight", in: resourcesBundle, compatibleWith: nil)
+            btNext.setImage(imageRight, for: UIControlState.normal)
+            btNext.frame = CGRect(x: 0, y: 0, width: 40, height: 40)
+            btNext.addTarget(self, action: #selector(SMKeyboardToolbar.didBtNextClicked(_:)), for: UIControlEvents.touchUpInside)
+            bbiNext.customView = btNext
+        }
+
         let bbiFlex: UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil)
         
         let bbiFixed: UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.fixedSpace, target: nil, action: nil)
         bbiFixed.width = 10
         
-        self.items = [bbiBack,bbiNext, bbiFlex, bbiDone,bbiFixed]
+        self.items = [bbiBack, bbiNext, bbiFlex, bbiDone, bbiFixed]
     }
     
     func setKeyboardAppearance(_ aKeyboardAppearance: UIKeyboardAppearance)
@@ -84,7 +85,7 @@ open class SMKeyboardToolbar: SMToolbar
         }
     }
     
-    func selectedInputField(index aIndex: Int, allCount aAllCountInputFields: Int) -> Void
+    func selectedInputField(index aIndex: Int, allCount aAllCountInputFields: Int)
     {
         if aIndex > 0
         {
@@ -106,27 +107,18 @@ open class SMKeyboardToolbar: SMToolbar
     
     // MARK: - Actions
 
-    @objc func didBtBackClicked(_ sender: AnyObject) -> Void
+    @objc func didBtBackClicked(_ sender: AnyObject)
     {
-        if smdelegate != nil
-        {
-            smdelegate!.keyboardToolbar(self, didBtBackClicked: sender)
-        }
+        smdelegate?.keyboardToolbar(self, didBtBackClicked: sender)
     }
 
-    @objc func didBtNextClicked(_ sender: AnyObject) -> Void
+    @objc func didBtNextClicked(_ sender: AnyObject)
     {
-        if smdelegate != nil
-        {
-            smdelegate!.keyboardToolbar(self, didBtNextClicked: sender)
-        }
+        smdelegate?.keyboardToolbar(self, didBtNextClicked: sender)
     }
 
-    @objc func didBtDoneClicked(_ sender: AnyObject) -> Void
+    @objc func didBtDoneClicked(_ sender: AnyObject)
     {
-        if smdelegate != nil
-        {
-            smdelegate!.keyboardToolbar(self, didBtDoneClicked: sender)
-        }
+        smdelegate?.keyboardToolbar(self, didBtDoneClicked: sender)
     }
 }

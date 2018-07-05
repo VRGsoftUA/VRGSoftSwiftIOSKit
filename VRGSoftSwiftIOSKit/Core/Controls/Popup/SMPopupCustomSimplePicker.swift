@@ -18,12 +18,11 @@ open class SMPopupCustomSimplePicker: SMPopupSimplePicker
     
     func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView
     {
-        var result: UILabel
+        let result: UILabel = view as? UILabel ?? UILabel(frame: CGRect(x: 20, y: 0, width: 270, height: 44))
         
         //configure label
         if view == nil
         {
-            result = UILabel(frame: CGRect(x: 20, y: 0, width: 270, height: 44))
             result.backgroundColor = .clear
             
             if font != nil
@@ -38,18 +37,16 @@ open class SMPopupCustomSimplePicker: SMPopupSimplePicker
             {
                 result.shadowColor = shadowColor
             }
-            if shadowOffset != nil
+            if let shadowOffset = shadowOffset
             {
-                result.shadowOffset = shadowOffset!
+                result.shadowOffset = shadowOffset
             }
-            if textAlignment != nil
+            if let textAlignment = textAlignment
             {
-                result.textAlignment = textAlignment!
+                result.textAlignment = textAlignment
             }
-        } else
-        {
-            result = view as! UILabel
         }
+        
         
         //setup text
         if row < dataSource.count
@@ -57,7 +54,7 @@ open class SMPopupCustomSimplePicker: SMPopupSimplePicker
             let item = dataSource[row]
             if item is SMTitledID
             {
-                result.text = (item as! SMTitledID).title
+                result.text = (item as? SMTitledID)?.title
             } else if item is String
             {
                 result.text = item.string

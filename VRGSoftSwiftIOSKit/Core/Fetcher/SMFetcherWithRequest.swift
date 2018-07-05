@@ -12,7 +12,7 @@ open class SMFetcherWithRequest: SMDataFetcherProtocol
 {
     deinit
     {
-        self.callbackQueue = nil
+        
     }
     
     var preparedRequest: SMRequest?
@@ -20,7 +20,7 @@ open class SMFetcherWithRequest: SMDataFetcherProtocol
     
     // MARK: SMDataFetcherProtocol
     
-    public var callbackQueue: DispatchQueue?
+    public var callbackQueue: DispatchQueue = DispatchQueue.global()
     
     var fetchCallback: SMDataFetchCallback?
     
@@ -31,7 +31,7 @@ open class SMFetcherWithRequest: SMDataFetcherProtocol
             preparedRequest = self.preparedRequestBy(message: aMessage)
         }
         
-        return (preparedRequest!.canExecute())
+        return preparedRequest?.canExecute() ?? false
     }
     
     public func fetchDataBy(message aMessage: SMFetcherMessage, withCallback aFetchCallback: @escaping SMDataFetchCallback)
@@ -41,10 +41,10 @@ open class SMFetcherWithRequest: SMDataFetcherProtocol
         {
             preparedRequest = self.preparedRequestBy(message: aMessage)
         }
-        _request = preparedRequest
+        request = preparedRequest
         preparedRequest = nil
         
-        _request?.start()
+        request?.start()
     }
     
     public func cancelFetching()
@@ -53,7 +53,7 @@ open class SMFetcherWithRequest: SMDataFetcherProtocol
     }
     
     
-    //MARK: Requests
+    // MARK: Requests
     
     func preparedRequestBy(message aMessage: SMFetcherMessage) -> SMRequest?
     {
@@ -66,22 +66,18 @@ open class SMFetcherWithRequest: SMDataFetcherProtocol
     {
         set
         {
-            assert(self.callbackQueue != nil, "SMFetcherWithRequest: callbackQueue is nil! Setup callbackQueue before setup request.")
-
             if _request !== newValue
             {
                 self.cancelFetching()
                 _request = newValue
                 
-                let _ = request!.addResponseBlock({[unowned self] (aResponse) in
-                    aResponse.boArray = self.processFetchedModelsIn(response: aResponse)
+                request?.addResponseBlock({[weak self] aResponse in
+                    guard let strongSelf = self else { return }
+                    aResponse.boArray = strongSelf.processFetchedModelsIn(response: aResponse)
                     
-                    if self.fetchCallback != nil
-                    {
-                        self.fetchCallback!(aResponse)
-                    }
+                    strongSelf.fetchCallback?(aResponse)
                     
-                    }, responseQueue: self.callbackQueue!)
+                    }, responseQueue: self.callbackQueue)
             }
         }
         
@@ -93,5 +89,3 @@ open class SMFetcherWithRequest: SMDataFetcherProtocol
         return aResponse.boArray
     }
 }
-
-

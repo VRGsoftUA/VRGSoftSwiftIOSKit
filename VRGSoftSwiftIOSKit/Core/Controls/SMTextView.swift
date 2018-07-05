@@ -10,7 +10,20 @@ import UIKit
 
 open class SMTextView: UITextView, SMKeyboardAvoiderProtocol, SMValidationProtocol, SMFilterProtocol
 {
-    var smdelegate: UITextViewDelegate?
+    weak var smdelegate: UITextViewDelegate?
+    
+    open override var delegate: UITextViewDelegate?
+    {
+        set
+        {
+            smdelegate = newValue
+        }
+        
+        get
+        {
+            return smdelegate
+        }
+    }
     
     var delegateHolder: SMTextViewDelegateHolder?
     
@@ -18,20 +31,20 @@ open class SMTextView: UITextView, SMKeyboardAvoiderProtocol, SMValidationProtoc
     {
         super.init(frame: frame, textContainer: textContainer)
         
-        self.setup()
+        setup()
     }
     
     required public init?(coder aDecoder: NSCoder)
     {
         super.init(coder: aDecoder)
         
-        self.setup()
+        setup()
     }
     
-    open func setup() -> Void
+    open func setup()
     {
         delegateHolder = SMTextViewDelegateHolder(textView: self)
-        self.delegate = delegateHolder
+        super.delegate = delegateHolder
     }
 
     
@@ -57,19 +70,19 @@ open class SMTextView: UITextView, SMKeyboardAvoiderProtocol, SMValidationProtoc
     {
         set
         {
-            self.placeholderTextView.text = newValue
-            self.placeholderTextView.isHidden = self.text.count > 0
+            placeholderTextView.text = newValue
+            placeholderTextView.isHidden = self.text.count > 0
         }
         
-        get { return self.placeholderTextView.text }
+        get { return placeholderTextView.text }
     }
     
     open var attributedPlaceholder: NSAttributedString
     {
         set
         {
-            self.placeholderTextView.attributedText = newValue
-            self.placeholderTextView.isHidden = self.text.count > 0
+            placeholderTextView.attributedText = newValue
+            placeholderTextView.isHidden = self.text.count > 0
         }
         
         get { return self.attributedText }
@@ -147,7 +160,7 @@ open class SMTextView: UITextView, SMKeyboardAvoiderProtocol, SMValidationProtoc
     
     // MARK: - SMFilterProtocol
     
-    public var filteredText: String? {get {return self.text}}
+    public var filteredText: String? { return self.text }
     
     var filter: SMFilter?
 
@@ -175,7 +188,7 @@ open class SMTextView: UITextView, SMKeyboardAvoiderProtocol, SMValidationProtoc
     
     public func validate() -> Bool
     {
-        return ((validator) != nil) ? validator!.validate() : true
+        return validator?.validate() ?? true
     }
 }
 
@@ -195,66 +208,45 @@ open class SMTextViewDelegateHolder: NSObject, UITextViewDelegate
     
     public func textViewShouldBeginEditing(_ textView: UITextView) -> Bool
     {
-        if self.holdedTextView != nil && self.holdedTextView!.smdelegate != nil && self.holdedTextView!.smdelegate!.textViewShouldBeginEditing(_:) != nil
-        {
-            return self.holdedTextView!.smdelegate!.textViewShouldBeginEditing!(_:textView)
-        }
-        
-        return true
+        return holdedTextView?.smdelegate?.textViewShouldBeginEditing?(_:textView) ?? true
     }
     
     public func textViewShouldEndEditing(_ textView: UITextView) -> Bool
     {
-        if self.holdedTextView != nil && self.holdedTextView!.smdelegate != nil && self.holdedTextView!.smdelegate!.textViewShouldEndEditing(_:) != nil
-        {
-            return self.holdedTextView!.smdelegate!.textViewShouldEndEditing!(_:textView)
-        }
-        
-        return true
+        return holdedTextView?.smdelegate?.textViewShouldEndEditing?(_:textView) ?? true
     }
     
     public func textViewDidBeginEditing(_ textView: UITextView)
     {
-        if self.holdedTextView != nil && self.holdedTextView!.keyboardAvoiding != nil
-        {
-            self.holdedTextView!.keyboardAvoiding!.adjustOffset()
-        }
+        holdedTextView?.keyboardAvoiding?.adjustOffset()
 
-        if self.holdedTextView != nil && self.holdedTextView!.smdelegate != nil && self.holdedTextView!.smdelegate!.textViewDidBeginEditing(_:) != nil
-        {
-            self.holdedTextView!.smdelegate!.textViewDidBeginEditing!(_:textView)
-        }
+        holdedTextView?.smdelegate?.textViewDidBeginEditing?(_:textView)
     }
     
     public func textViewDidEndEditing(_ textView: UITextView)
     {
-        if self.holdedTextView != nil && self.holdedTextView!.smdelegate != nil && self.holdedTextView!.smdelegate!.textViewDidEndEditing(_:) != nil
-        {
-            self.holdedTextView!.smdelegate!.textViewDidEndEditing!(_:textView)
-        }
+        holdedTextView?.smdelegate?.textViewDidEndEditing?(_:textView)
     }
     
     public func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool
     {
         var result = true
         
-        let inputField = textView as! SMTextView
-        
-        if inputField.filter != nil
+        if let inputField = textView as? SMTextView
         {
-            result = inputField.filter!.inputField(inputField, shouldChangeTextIn: range, replacementText: text)
+            result = inputField.filter?.inputField(inputField, shouldChangeTextIn: range, replacementText: text) ?? result
         }
         
-        if self.holdedTextView != nil && self.holdedTextView!.smdelegate != nil && self.holdedTextView!.smdelegate!.textView(_:shouldChangeTextIn:replacementText:) != nil
+        if holdedTextView != nil && holdedTextView?.smdelegate != nil && holdedTextView?.smdelegate?.textView(_:shouldChangeTextIn:replacementText:) != nil
         {
-            return self.holdedTextView!.smdelegate!.textView!(_: textView,shouldChangeTextIn: range, replacementText:text)
+            return holdedTextView?.smdelegate?.textView?(_: textView, shouldChangeTextIn: range, replacementText: text) ?? result
         }
         
         if result
         {
-            let newText: String = (textView.text! as NSString).replacingCharacters(in: range, with: text)
+            let newText: String = (textView.text as NSString?)?.replacingCharacters(in: range, with: text) ?? ""
 
-            (textView as! SMTextView).isPlaceHolderHidden = newText.count > 0
+            (textView as? SMTextView)?.isPlaceHolderHidden = newText.count > 0
         }
 
         return result
@@ -262,18 +254,12 @@ open class SMTextViewDelegateHolder: NSObject, UITextViewDelegate
     
     public func textViewDidChange(_ textView: UITextView)
     {
-        if self.holdedTextView != nil && self.holdedTextView!.smdelegate != nil && self.holdedTextView!.smdelegate!.textViewDidChange(_:) != nil
-        {
-            self.holdedTextView!.smdelegate!.textViewDidChange!(_:textView)
-        }
+        holdedTextView?.smdelegate?.textViewDidChange?(_:textView)
     }
     
     public func textViewDidChangeSelection(_ textView: UITextView)
     {
-        if self.holdedTextView != nil && self.holdedTextView!.smdelegate != nil && self.holdedTextView!.smdelegate!.textViewDidChangeSelection(_:) != nil
-        {
-            self.holdedTextView!.smdelegate!.textViewDidChangeSelection!(_:textView)
-        }
+        holdedTextView?.smdelegate?.textViewDidChangeSelection?(_:textView)
     }
     
 //    public func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool
@@ -302,4 +288,3 @@ open class SMTextViewDelegateHolder: NSObject, UITextViewDelegate
 //        
 //    }
 }
-

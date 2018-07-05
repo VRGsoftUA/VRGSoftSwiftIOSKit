@@ -19,7 +19,7 @@ open class SMBlockAction <SenderType>
         self.block = aBlock
     }
     
-    open func performBlockFrom(sender aSender: SenderType) -> Void
+    open func performBlockFrom(sender aSender: SenderType)
     {
         self.block(aSender)
     }

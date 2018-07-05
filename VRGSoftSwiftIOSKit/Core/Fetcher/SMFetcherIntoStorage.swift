@@ -17,89 +17,96 @@ open class SMFetcherIntoStorage: SMFetcherWithRequest
     var currentMessage: SMFetcherMessage?
     
     
-    //MARK: Request
+    // MARK: Request
     
     override var request: SMRequest?
     {
         set
         {
-            assert(self.callbackQueue != nil, "SMFetcherWithRequest: callbackQueue is nil! Setup callbackQueue before setup request.")
-            
             if _request !== newValue
             {
                 self.cancelFetching()
                 _request = newValue
                 
-                let _: SMRequest = _request!.addResponseBlock({[unowned self] (aResponse) in
+                _request?.addResponseBlock({[weak self] aResponse in
+                    
+                    guard let strongSelf = self else { return }
+                    
                     if newValue is SMGatewayRequest
                     {
                         let success: Bool = aResponse.isSuccess
                         if success
                         {
-                            let models = self.processFetchedModelsAfterGatewayInResponse(aResponse)
+                            let models = strongSelf.processFetchedModelsAfterGatewayInResponse(aResponse)
                             aResponse.boArray = models
                             
-                            if self.isFetchFromDataBaseWhenGatewayRequestSuccess && self.canFetchFromDatabaseForFailedResponse(aResponse)
+                            if strongSelf.isFetchFromDataBaseWhenGatewayRequestSuccess && strongSelf.canFetchFromDatabaseForFailedResponse(aResponse)
                             {
-                                self.request = self.dataBaseRequestBy(message: self.currentMessage!)
-                                
-                                if self.request != nil
+                                if let currentMessage: SMFetcherMessage = strongSelf.currentMessage
                                 {
-                                    self.request!.start()
+                                    strongSelf.request = strongSelf.dataBaseRequestBy(message: currentMessage)
+                                }
+                                
+                                if strongSelf.request != nil
+                                {
+                                    strongSelf.request?.start()
                                 } else
                                 {
-                                    aResponse.boArray = self.processFetchedModelsIn(response: aResponse)
+                                    aResponse.boArray = strongSelf.processFetchedModelsIn(response: aResponse)
                                     
-                                    if self.fetchCallback != nil
+                                    if let fetchCallback = strongSelf.fetchCallback
                                     {
-                                        self.fetchCallback!(aResponse)
+                                        fetchCallback(aResponse)
                                     }
                                 }
                             } else
                             {
-                                aResponse.boArray = self.processFetchedModelsIn(response: aResponse)
+                                aResponse.boArray = strongSelf.processFetchedModelsIn(response: aResponse)
                                 
-                                if self.fetchCallback != nil
+                                if let fetchCallback = strongSelf.fetchCallback
                                 {
-                                    self.fetchCallback!(aResponse)
+                                    fetchCallback(aResponse)
                                 }
                             }
-                        } else if self.isFetchFromDataBaseWhenGatewayRequestFailed && !aResponse.requestCancelled && self.canFetchFromDatabaseForFailedResponse(aResponse)
+                        } else if strongSelf.isFetchFromDataBaseWhenGatewayRequestFailed && !aResponse.isCancelled && strongSelf.canFetchFromDatabaseForFailedResponse(aResponse)
                         {
-                            self.request = self.dataBaseRequestBy(message: self.currentMessage!)
-                            
-                            if self.request != nil
+                            if let currentMessage: SMFetcherMessage = strongSelf.currentMessage
                             {
-                                self.request!.start()
+                                strongSelf.request = strongSelf.dataBaseRequestBy(message: currentMessage)
+                            }
+                            
+                            if strongSelf.request != nil
+                            {
+                                strongSelf.request?.start()
                             } else
                             {
-                                aResponse.boArray = self.processFetchedModelsIn(response: aResponse)
+                                aResponse.boArray = strongSelf.processFetchedModelsIn(response: aResponse)
                                 
-                                if self.fetchCallback != nil
+                                if let fetchCallback = strongSelf.fetchCallback
                                 {
-                                    self.fetchCallback!(aResponse)
+                                    fetchCallback(aResponse)
                                 }
                             }
                         } else
                         {
-                            aResponse.boArray = self.processFetchedModelsIn(response: aResponse)
+                            aResponse.boArray = strongSelf.processFetchedModelsIn(response: aResponse)
                             
-                            if self.fetchCallback != nil
+                            if let fetchCallback = strongSelf.fetchCallback
                             {
-                                self.fetchCallback!(aResponse)
+                                fetchCallback(aResponse)
                             }
                         }
                         
                     } else
                     {
-                        aResponse.boArray = self.processFetchedModelsIn(response: aResponse)
+                        aResponse.boArray = strongSelf.processFetchedModelsIn(response: aResponse)
                         
-                        if self.fetchCallback != nil
+                        if let fetchCallback = strongSelf.fetchCallback
                         {
-                            self.fetchCallback!(aResponse)
+                            fetchCallback(aResponse)
                         }
                     }
-                    }, responseQueue: self.callbackQueue!)
+                    }, responseQueue: self.callbackQueue)
             }
         }
         
@@ -112,25 +119,25 @@ open class SMFetcherIntoStorage: SMFetcherWithRequest
         {
             if  currentMessage === aMessage
             {
-                return preparedRequest!
+                return preparedRequest
             }
         }
         
         currentMessage = aMessage
         
-        var newRequest: SMRequest
+        var newRequest: SMRequest?
         if !self.isFetchOnlyFromDataBase
         {
             if SMGatewayConfigurator.shared.isInternetReachable()
             {
-                newRequest = self.gatewayRequestBy(message: aMessage)!
+                newRequest = self.gatewayRequestBy(message: aMessage)
             } else
             {
-                newRequest = self.dataBaseRequestBy(message: aMessage)!
+                newRequest = self.dataBaseRequestBy(message: aMessage)
             }
         } else
         {
-            newRequest = self.dataBaseRequestBy(message: aMessage)!
+            newRequest = self.dataBaseRequestBy(message: aMessage)
         }
         
         return newRequest
@@ -142,14 +149,14 @@ open class SMFetcherIntoStorage: SMFetcherWithRequest
         return nil
     }
     
-    func dataBaseRequestBy(message aMessage: SMFetcherMessage) -> SMDataBaseRequest?
+    func dataBaseRequestBy(message aMessage: SMFetcherMessage) -> SMDBRequest?
     {
         //override it
         return nil
     }
     
     
-    //MARK: Fetch
+    // MARK: Fetch
     
     override public func fetchDataBy(message aMessage: SMFetcherMessage, withCallback aFetchCallback: @escaping SMDataFetchCallback)
     {
@@ -163,7 +170,7 @@ open class SMFetcherIntoStorage: SMFetcherWithRequest
         request = preparedRequest
         preparedRequest = nil
         
-        request!.start()
+        request?.start()
     }
     
     func processFetchedModelsAfterGatewayInResponse(_ aResponse: SMResponse) -> [AnyObject]
@@ -181,4 +188,3 @@ open class SMFetcherIntoStorage: SMFetcherWithRequest
         return true
     }
 }
-
