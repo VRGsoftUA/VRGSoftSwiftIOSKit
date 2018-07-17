@@ -11,13 +11,13 @@ import CoreData
 
 open class SMDBRequest: SMRequest
 {
-    var storage: SMDBStorage
-    var cancelled: Bool = false
-    var executing: Bool = false
+    open var storage: SMDBStorage
+    open var cancelled: Bool = false
+    open var executing: Bool = false
     
-    let fetchRequest: NSFetchRequest<NSFetchRequestResult>
+    open let fetchRequest: NSFetchRequest<NSFetchRequestResult>
     
-    init(storage aStorage: SMDBStorage, fetchRequest aFetchRequest: NSFetchRequest<NSFetchRequestResult>)
+    public init(storage aStorage: SMDBStorage, fetchRequest aFetchRequest: NSFetchRequest<NSFetchRequestResult>)
     {
         storage = aStorage
         fetchRequest = aFetchRequest
@@ -26,12 +26,12 @@ open class SMDBRequest: SMRequest
     
     // MARK: Request execute
     
-    override func canExecute() -> Bool
+    override open func canExecute() -> Bool
     {
         return true
     }
     
-    override func start()
+    override open func start()
     {
         self.cancelled = false
         self.executing = true
@@ -72,7 +72,7 @@ open class SMDBRequest: SMRequest
     
     // MARK: 
 
-    private func executeRequest(request aRequest: NSFetchRequest<NSFetchRequestResult>, inContext aContext: NSManagedObjectContext) -> SMResponse
+    open func executeRequest(request aRequest: NSFetchRequest<NSFetchRequestResult>, inContext aContext: NSManagedObjectContext) -> SMResponse
     {
         var aError: Error? = nil
         var results = [AnyObject]()
@@ -94,17 +94,17 @@ open class SMDBRequest: SMRequest
         return response
     }
     
-    override func cancel()
+    override open func cancel()
     {
         cancelled = true
     }
     
-    override func isExecuting() -> Bool
+    override open func isExecuting() -> Bool
     {
         return executing
     }
     
-    override func isCancelled() -> Bool
+    override open func isCancelled() -> Bool
     {
         return cancelled
     }
