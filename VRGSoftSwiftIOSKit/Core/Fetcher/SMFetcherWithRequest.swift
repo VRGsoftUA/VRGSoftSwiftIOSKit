@@ -29,7 +29,7 @@ open class SMFetcherWithRequest: SMDataFetcherProtocol
     
     open var fetchCallback: SMDataFetchCallback?
     
-    public func canFetchWith(message aMessage: SMFetcherMessage) -> Bool
+    open func canFetchWith(message aMessage: SMFetcherMessage) -> Bool
     {
         if preparedRequest == nil
         {

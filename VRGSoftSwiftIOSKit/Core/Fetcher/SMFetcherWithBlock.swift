@@ -25,7 +25,7 @@ open class SMFetcherWithBlock: SMDataFetcherProtocol
         self.fetchBlock = aFetchBlock
     }
     
-    public func canFetchWith(message aMessage: SMFetcherMessage) -> Bool
+    open func canFetchWith(message aMessage: SMFetcherMessage) -> Bool
     {
         return true
     }
