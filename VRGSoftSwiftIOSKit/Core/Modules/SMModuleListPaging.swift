@@ -27,14 +27,14 @@ public protocol SMModuleListPagingDelegate: class
 
 open class SMModuleListPaging: SMModuleList, SMListAdapterMoreDelegate
 {
-    var initialPageOffset: Int = 0
-    var isItemsAsPage: Bool = true
-    var pageOffset: Int = 0
-    var pageSize: Int = 10
-    var isLoadMoreDataAuto: Bool = true
-    var isLoadingMore: Bool = false
+    open var initialPageOffset: Int = 0
+    open var isItemsAsPage: Bool = true
+    open var pageOffset: Int = 0
+    open var pageSize: Int = 10
+    open var isLoadMoreDataAuto: Bool = true
+    open var isLoadingMore: Bool = false
     
-    override var fetcherMessageClass: SMFetcherMessage.Type {get {return SMFetcherMessagePaging.self}}
+    override open var fetcherMessageClass: SMFetcherMessage.Type {get {return SMFetcherMessagePaging.self}}
     
     weak var pagingDelegate: SMModuleListPagingDelegate?
 
@@ -81,7 +81,7 @@ open class SMModuleListPaging: SMModuleList, SMListAdapterMoreDelegate
         }
     }
     
-    func loadMoreData()
+    open func loadMoreData()
     {
         if isReloading || isLoadingMore
         {
@@ -103,7 +103,7 @@ open class SMModuleListPaging: SMModuleList, SMListAdapterMoreDelegate
         fetchDataWith(message: createFetcherMessage())
     }
 
-    override func createFetcherMessage() -> SMFetcherMessage
+    override open func createFetcherMessage() -> SMFetcherMessage
     {
         let result: SMFetcherMessage = super.createFetcherMessage()
         
@@ -126,7 +126,7 @@ open class SMModuleListPaging: SMModuleList, SMListAdapterMoreDelegate
         loadMoreData()
     }
     
-    override func updateSectionWith(models aModels: [AnyObject], sectionIndex aSectionIndex: Int)
+    override open func updateSectionWith(models aModels: [AnyObject], sectionIndex aSectionIndex: Int)
     {
         listAdapter.updateSectionWith(models: aModels, sectionIndex: aSectionIndex) {[weak self] in
             
@@ -143,7 +143,7 @@ open class SMModuleListPaging: SMModuleList, SMListAdapterMoreDelegate
         models += aModels
     }
 
-    override func willFetchDataWith(message aMessage: SMFetcherMessage)
+    override open func willFetchDataWith(message aMessage: SMFetcherMessage)
     {
         if isReloading
         {
@@ -162,7 +162,7 @@ open class SMModuleListPaging: SMModuleList, SMListAdapterMoreDelegate
         }
     }
 
-    override func didFetchDataWith(message aMessage: SMFetcherMessage, response aResponse: SMResponse)
+    override open func didFetchDataWith(message aMessage: SMFetcherMessage, response aResponse: SMResponse)
     {
         super.didFetchDataWith(message: aMessage, response: aResponse)
         
@@ -189,7 +189,7 @@ open class SMModuleListPaging: SMModuleList, SMListAdapterMoreDelegate
         }
     }
     
-    override func prepareSections()
+    override open func prepareSections()
     {
         if isLoadingMore
         {

@@ -8,8 +8,8 @@
 
 import UIKit
 
-typealias SMModuleListFetcherFailedCallback = (SMModuleList, SMResponse) -> Void
-typealias SMModuleListFetcherCantFetch = (SMModuleList, SMFetcherMessage) -> Void
+public typealias SMModuleListFetcherFailedCallback = (SMModuleList, SMResponse) -> Void
+public typealias SMModuleListFetcherCantFetch = (SMModuleList, SMFetcherMessage) -> Void
 
 
 public protocol SMModuleListDelegate: class
@@ -22,13 +22,13 @@ public protocol SMModuleListDelegate: class
 
 open class SMModuleList
 {
-    var moduleQueue: DispatchQueue = DispatchQueue(label: "SMModuleList.Queue")
-    var lastUpdateDate: Date?
-    var models: [AnyObject] = []
+    open var moduleQueue: DispatchQueue = DispatchQueue(label: "SMModuleList.Queue")
+    open var lastUpdateDate: Date?
+    open var models: [AnyObject] = []
     
-    var listAdapter: SMListAdapter
+    open var listAdapter: SMListAdapter
     
-    var isReloading: Bool = false
+    open var isReloading: Bool = false
     {
         didSet
         {
@@ -36,7 +36,7 @@ open class SMModuleList
         }
     }
     
-    var pullToRefreshAdapter: SMPullToRefreshAdapter?
+    open var pullToRefreshAdapter: SMPullToRefreshAdapter?
     {
         didSet
         {
@@ -54,17 +54,17 @@ open class SMModuleList
             }
         }
     }
-    var activityAdapter: SMActivityAdapter?
-    var isUseActivityAdapterWithPullToRefreshAdapter: Bool = false
-    var isHideActivityAdapterForOneFetch: Bool = false
-    var fetcherMessageClass: SMFetcherMessage.Type {get {return SMFetcherMessage.self}}
-    var fetcherFailedCallback: SMModuleListFetcherFailedCallback?
-    var fetcherCantFetchCallback: SMModuleListFetcherCantFetch?
+    open var activityAdapter: SMActivityAdapter?
+    open var isUseActivityAdapterWithPullToRefreshAdapter: Bool = false
+    open var isHideActivityAdapterForOneFetch: Bool = false
+    open var fetcherMessageClass: SMFetcherMessage.Type {get {return SMFetcherMessage.self}}
+    open var fetcherFailedCallback: SMModuleListFetcherFailedCallback?
+    open var fetcherCantFetchCallback: SMModuleListFetcherCantFetch?
     
     
-    weak var delegate: SMModuleListDelegate?
+    open weak var delegate: SMModuleListDelegate?
     
-    var dataFetcher: SMDataFetcherProtocol?
+    open var dataFetcher: SMDataFetcherProtocol?
     {
         didSet
         {
@@ -98,13 +98,13 @@ open class SMModuleList
 //        activityAdapter?.configureWith(view: aScrollView)
     }
 
-    func processFetchedModelsIn(response aResponse: SMResponse) -> [AnyObject]
+    open func processFetchedModelsIn(response aResponse: SMResponse) -> [AnyObject]
     {
         let result: [AnyObject] = delegate?.moduleList(self, processFetchedModelsInResponse: aResponse) ?? []
         return result
     }
     
-    func fetchDataWith(message aMessage: SMFetcherMessage)
+    open func fetchDataWith(message aMessage: SMFetcherMessage)
     {
         if dataFetcher?.canFetchWith(message: aMessage) ?? false
         {
@@ -199,7 +199,7 @@ open class SMModuleList
         }
     }
     
-    func createFetcherMessage() -> SMFetcherMessage
+    open func createFetcherMessage() -> SMFetcherMessage
     {
         guard let message: SMFetcherMessage = delegate?.fetcherMessageFor(moduleList: self) else
         {
@@ -209,18 +209,18 @@ open class SMModuleList
         return message
     }
     
-    func updateSectionWith(models aModels: [AnyObject], sectionIndex aSectionIndex: Int)
+    open func updateSectionWith(models aModels: [AnyObject], sectionIndex aSectionIndex: Int)
     {
         listAdapter.updateSectionWith(models: aModels, sectionIndex: aSectionIndex, needLoadMore: nil)
         models += aModels
     }
     
-    func prepareSections()
+    open func prepareSections()
     {
         listAdapter.prepareSections()
     }
 
-    func willFetchDataWith(message aMessage: SMFetcherMessage)
+    open func willFetchDataWith(message aMessage: SMFetcherMessage)
     {
         if !isHideActivityAdapterForOneFetch
         {
@@ -231,7 +231,7 @@ open class SMModuleList
         }
     }
     
-    func didFetchDataWith(message aMessage: SMFetcherMessage, response aResponse: SMResponse)
+    open func didFetchDataWith(message aMessage: SMFetcherMessage, response aResponse: SMResponse)
     {
         isReloading = false
         activityAdapter?.hide()

@@ -10,7 +10,7 @@ import UIKit
 
 open class SMFetcherMessage
 {
-    var defaultParameters: [String: Any] = [:]
+    open var defaultParameters: [String: Any] = [:]
     
     required public init()
     {

@@ -10,7 +10,7 @@ import UIKit
 
 extension UILabel
 {
-    func setAtr(interval aInterval: CGFloat)
+    open func setAtr(interval aInterval: CGFloat)
     {
         guard let text = self.text else { return }
         
@@ -24,7 +24,7 @@ extension UILabel
         self.textAlignment = textAlignment
     }
     
-    func setAttributedText(markString: String, markFont: UIFont)
+    open func setAttributedText(markString: String, markFont: UIFont)
     {
         guard let text = self.text else { return }
         
@@ -38,7 +38,7 @@ extension UILabel
         self.attributedText = attributedString
     }
     
-    func setAttributedText(markString: String, markTextColor: UIColor)
+    open func setAttributedText(markString: String, markTextColor: UIColor)
     {
         guard let text = self.text else { return }
 
@@ -50,7 +50,7 @@ extension UILabel
         self.attributedText = attributedString
     }
     
-    func setAttributedText(markString: String, markTextColor: UIColor, markFont: UIFont)
+    open func setAttributedText(markString: String, markTextColor: UIColor, markFont: UIFont)
     {
         guard let text = self.text else { return }
         
