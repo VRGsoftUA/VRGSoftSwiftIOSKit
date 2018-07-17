@@ -9,11 +9,11 @@
 import UIKit
 import Alamofire
 
-typealias SMConstructingMultipartFormDataBlock = (MultipartFormData) -> Void
+public typealias SMConstructingMultipartFormDataBlock = (MultipartFormData) -> Void
 
-class SMGatewayRequestMultipart: SMGatewayRequest
+open class SMGatewayRequestMultipart: SMGatewayRequest
 {
-    var constructingBlock: SMConstructingMultipartFormDataBlock
+    open var constructingBlock: SMConstructingMultipartFormDataBlock
     
     public init(gateway aGateway: SMGateway, type aType: HTTPMethod, constructingBlock: @escaping SMConstructingMultipartFormDataBlock)
     {
@@ -25,7 +25,7 @@ class SMGatewayRequestMultipart: SMGatewayRequest
         fatalError("init(gateway:type:) has not been implemented")
     }
     
-    override func getDataRequest(completion: @escaping (_ request: UploadRequest) -> Void)
+    override open func getDataRequest(completion: @escaping (_ request: UploadRequest) -> Void)
     {
         guard let baseUrl = gateway.baseUrl else { return }
         

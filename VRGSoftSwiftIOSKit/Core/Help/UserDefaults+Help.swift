@@ -9,15 +9,15 @@
 import Foundation
 
 //aCoding have to inherit from NSObject
-extension UserDefaults
+public extension UserDefaults
 {
-    func setCoding(_ aCoding: NSCoding, forKey aKey: String)
+    public func setCoding(_ aCoding: NSCoding, forKey aKey: String)
     {
         let data = NSKeyedArchiver.archivedData(withRootObject: aCoding)
         self.set(data, forKey: aKey)
     }
     
-    func coding<T: NSCoding>(forKey aKey: String) -> T?
+    public func coding<T: NSCoding>(forKey aKey: String) -> T?
     {
         var result: T? = nil
         

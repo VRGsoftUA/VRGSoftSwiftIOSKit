@@ -11,32 +11,32 @@ import Alamofire
 
 open class SMGateway
 {
-    var defaultParameters: [String: AnyObject] = [:]
-    var defaultHeaders: [String: String] = [:]
+    open var defaultParameters: [String: AnyObject] = [:]
+    open var defaultHeaders: [String: String] = [:]
 
-    var baseUrl: URL?
-    var parameterEncoding: ParameterEncoding = JSONEncoding.default
+    open var baseUrl: URL?
+    open var parameterEncoding: ParameterEncoding = JSONEncoding.default
     
-    var requests: [SMGatewayRequest] = []
+    open var requests: [SMGatewayRequest] = []
     
-    func isInternetReachable() -> Bool
+    open func isInternetReachable() -> Bool
     {
         return SMGatewayConfigurator.shared.isInternetReachable()
     }
     
-    func configureWithBase(url aUrl: URL)
+    open func configureWithBase(url aUrl: URL)
     {
         baseUrl = aUrl
     }
     
-    func start(request aRequest: SMGatewayRequest)
+    open func start(request aRequest: SMGatewayRequest)
     {
         aRequest.getDataRequest { request in
             request.resume()
         }
     }
     
-    func defaultFailureBlockFor(request aRequest: SMGatewayRequest) -> SMGatewayRequestFailureBlock
+    open func defaultFailureBlockFor(request aRequest: SMGatewayRequest) -> SMGatewayRequestFailureBlock
     {
         func result(data: DataRequest, error: Error?) -> SMResponse
         {
@@ -53,12 +53,12 @@ open class SMGateway
     
     // MARK: Request Fabric
     
-    func getRequestClass() -> SMGatewayRequest.Type
+    open func getRequestClass() -> SMGatewayRequest.Type
     {
         return SMGatewayRequest.self
     }
     
-    func request(type aType: HTTPMethod, path aPath: String, parameters aParameters: [String: AnyObject]? = [:], successBlock aSuccessBlock: @escaping SMGatewayRequestSuccessBlock) -> SMGatewayRequest
+    open func request(type aType: HTTPMethod, path aPath: String, parameters aParameters: [String: AnyObject]? = [:], successBlock aSuccessBlock: @escaping SMGatewayRequestSuccessBlock) -> SMGatewayRequest
     {
         let result: SMGatewayRequest = getRequestClass().init(gateway: self, type: aType)
         
@@ -76,7 +76,7 @@ open class SMGateway
         return result
     }
     
-    func uploadRequest(type aType: HTTPMethod = .post,
+    open func uploadRequest(type aType: HTTPMethod = .post,
                        path aPath: String,
                        constructingBlock: @escaping SMConstructingMultipartFormDataBlock,
                        successBlock aSuccessBlock: @escaping SMGatewayRequestSuccessBlock) -> SMGatewayRequestMultipart
