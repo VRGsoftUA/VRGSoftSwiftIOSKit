@@ -26,7 +26,7 @@ open class SMKeyboardAvoider: SMKeyboardAvoidingProtocol, SMKeyboardToolbarDeleg
         NotificationCenter.default.removeObserver(self)
     }
     
-    open init(scrollView aScrollView: UIScrollView)
+    public init(scrollView aScrollView: UIScrollView)
     {
         scrollView = aScrollView
         setup()
