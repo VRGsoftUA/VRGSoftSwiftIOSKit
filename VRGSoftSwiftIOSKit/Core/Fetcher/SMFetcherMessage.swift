@@ -20,9 +20,9 @@ open class SMFetcherMessage
 
 open class SMFetcherMessagePaging: SMFetcherMessage
 {
-    var pagingSize: Int = 0
-    var pagingOffset: Int = 0
+    open var pagingSize: Int = 0
+    open var pagingOffset: Int = 0
     
-    var isReloading: Bool = false
-    var isLoadingMore: Bool = false
+    open var isReloading: Bool = false
+    open var isLoadingMore: Bool = false
 }
