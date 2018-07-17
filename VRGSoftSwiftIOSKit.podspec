@@ -22,9 +22,9 @@ Pod::Spec.new do |s|
         s.name      = 'VRGSoftSwiftIOSKit'
         s.version   = '1.0.0'
         s.summary   = 'VRGSoftSwiftIOSKit descriptions'
-        s.license   = { :type => 'Apache', :file => 'LICENSE.txt' }
+        s.license  = 'MIT'
 
-        s.homepage  = 'https://github.com/VRGsoftUA'
+        s.homepage  = 'https://vrgsoft.net/'
         s.authors   = {'semenag01' => 'semenag01@meta.ua'}
 
         s.source    = { :git => 'https://github.com/VRGsoftUA/VRGSoftSwiftIOSKit.git', :branch => 'development', :tag => '1.0.0' }
