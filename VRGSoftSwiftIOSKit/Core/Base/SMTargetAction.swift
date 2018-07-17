@@ -10,11 +10,11 @@ import Foundation
 
 open class SMBlockAction <SenderType>
 {
-    typealias SMBlockActionBlock = (_ sender: SenderType) -> Void
+    public typealias SMBlockActionBlock = (_ sender: SenderType) -> Void
    
-    var block: SMBlockActionBlock
+    open var block: SMBlockActionBlock
     
-    init(block aBlock: @escaping SMBlockActionBlock)
+    public init(block aBlock: @escaping SMBlockActionBlock)
     {
         self.block = aBlock
     }

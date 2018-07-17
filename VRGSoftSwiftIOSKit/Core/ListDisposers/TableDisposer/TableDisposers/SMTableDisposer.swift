@@ -33,7 +33,7 @@ public protocol SMTableDisposerMulticastDelegate: class
 
 open class SMTableDisposer: SMListDisposer, UITableViewDelegate, UITableViewDataSource
 {
-    var tableView: UITableView?
+    open var tableView: UITableView?
     {
         didSet
         {

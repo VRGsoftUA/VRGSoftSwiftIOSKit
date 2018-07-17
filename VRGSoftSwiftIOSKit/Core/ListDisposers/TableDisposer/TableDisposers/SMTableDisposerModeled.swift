@@ -21,29 +21,29 @@ public protocol SMTableDisposerModeledDelegate: class
 
 open class SMTableDisposerModeled: SMTableDisposer
 {
-    let modeledMulticastDelegate: SMMulticastDelegate<SMTableDisposerModeledMulticastDelegate> = SMMulticastDelegate(options: NSPointerFunctions.Options.weakMemory) // swiftlint:disable:this weak_delegate
+    open let modeledMulticastDelegate: SMMulticastDelegate<SMTableDisposerModeledMulticastDelegate> = SMMulticastDelegate(options: NSPointerFunctions.Options.weakMemory) // swiftlint:disable:this weak_delegate
 
-    var registeredClasses: [String: SMCellData.Type] = [:]
+    open var registeredClasses: [String: SMCellData.Type] = [:]
     
-    weak var modeledDelegate: SMTableDisposerModeledDelegate?
+    open weak var modeledDelegate: SMTableDisposerModeledDelegate?
     
-    func register(cellDataClass aCellDataClass: SMCellData.Type, forModelClass aModelClass: AnyClass)
+    open func register(cellDataClass aCellDataClass: SMCellData.Type, forModelClass aModelClass: AnyClass)
     {
         registeredClasses[String(describing: aModelClass)] = aCellDataClass
     }
 
-    func unregisterCellDataFor(modelClass aModelClass: AnyClass)
+    open func unregisterCellDataFor(modelClass aModelClass: AnyClass)
     {
         registeredClasses[String(describing: aModelClass)] = nil
     }
 
-    func setupModels(_ aModels: [AnyObject], forSectionAtIndex aSectionIndex: Int)
+    open func setupModels(_ aModels: [AnyObject], forSectionAtIndex aSectionIndex: Int)
     {
         let section: SMSectionReadonly = sections[aSectionIndex]
         setupModels(aModels, forSection: section)
     }
 
-    func setupModels(_ aModels: [AnyObject], forSection aSection: SMSectionReadonly)
+    open func setupModels(_ aModels: [AnyObject], forSection aSection: SMSectionReadonly)
     {
         for model in aModels
         {
@@ -58,7 +58,7 @@ open class SMTableDisposerModeled: SMTableDisposer
         }
     }
 
-    func cellDataFrom(model aModel: AnyObject) -> SMCellData?
+    open func cellDataFrom(model aModel: AnyObject) -> SMCellData?
     {
         let modelClassName: String = String(describing: type(of: aModel))
 
@@ -71,7 +71,7 @@ open class SMTableDisposerModeled: SMTableDisposer
         return nil
     }
 
-    func didCreate(cellData aCellData: SMCellData)
+    open func didCreate(cellData aCellData: SMCellData)
     {
         modeledDelegate?.tableDisposer(self, didCreateCellData: aCellData)
         modeledMulticastDelegate.invokeDelegates { [weak self] delegate in

@@ -9,21 +9,21 @@
 import Foundation
 import Alamofire
 
-typealias SMGatewayRequestSuccessBlock = (DataRequest, DataResponse<Any>) -> SMResponse
-typealias SMGatewayRequestFailureBlock = (DataRequest, Error?) -> SMResponse
+public typealias SMGatewayRequestSuccessBlock = (DataRequest, DataResponse<Any>) -> SMResponse
+public typealias SMGatewayRequestFailureBlock = (DataRequest, Error?) -> SMResponse
 
 open class SMGatewayRequest: SMRequest
 {
-    unowned var gateway: SMGateway
-    var dataRequest: DataRequest?
+    open unowned var gateway: SMGateway
+    open var dataRequest: DataRequest?
     
-    var path: String?
-    var type: HTTPMethod
-    var parameters: [String: AnyObject] = [:]
-    var headers: [String: String] = [:]
+    open var path: String?
+    open var type: HTTPMethod
+    open var parameters: [String: AnyObject] = [:]
+    open var headers: [String: String] = [:]
     
-    var successBlock: SMGatewayRequestSuccessBlock?
-    var failureBlock: SMGatewayRequestFailureBlock?
+    open var successBlock: SMGatewayRequestSuccessBlock?
+    open var failureBlock: SMGatewayRequestFailureBlock?
     
     public required init(gateway aGateway: SMGateway, type aType: HTTPMethod)
     {
@@ -31,39 +31,39 @@ open class SMGatewayRequest: SMRequest
         type = aType
     }
     
-    override func start()
+    open override func start()
     {
         super.start()
         
         gateway.start(request: self)
     }
     
-    override func cancel()
+    open override func cancel()
     {
         dataRequest?.cancel()
     }
     
-    override func canExecute() -> Bool
+    open override func canExecute() -> Bool
     {
         return gateway.isInternetReachable()
     }
     
-    override func isCancelled() -> Bool
+    open override func isCancelled() -> Bool
     {
         return dataRequest?.task?.state == URLSessionTask.State.completed
     }
     
-    override func isExecuting() -> Bool
+    open override func isExecuting() -> Bool
     {
         return dataRequest?.task?.state == URLSessionTask.State.running
     }
     
-    override func isFinished() -> Bool
+    open override func isFinished() -> Bool
     {
         return dataRequest?.task?.state == URLSessionTask.State.completed
     }
     
-    func getDataRequest(completion: @escaping (_ request: DataRequest) -> Void)
+    open func getDataRequest(completion: @escaping (_ request: DataRequest) -> Void)
     {
         guard let baseUrl = gateway.baseUrl else { return }
         
@@ -120,7 +120,7 @@ open class SMGatewayRequest: SMRequest
         return completion(dataRequest)
     }
     
-    func executeSuccessBlock(responseObject aResponseObject: DataResponse<Any>)
+    open func executeSuccessBlock(responseObject aResponseObject: DataResponse<Any>)
     {
         if let successBlock = successBlock, let dataRequest = dataRequest
         {
@@ -136,7 +136,7 @@ open class SMGatewayRequest: SMRequest
         }
     }
     
-    func executeFailureBlock(responseObject aResponseObject: DataResponse<Any>)
+    open func executeFailureBlock(responseObject aResponseObject: DataResponse<Any>)
     {
         if let failureBlock = failureBlock, let dataRequest = dataRequest
         {
@@ -152,7 +152,7 @@ open class SMGatewayRequest: SMRequest
         }
     }
 
-    func setup(successBlock aSuccessBlock: @escaping SMGatewayRequestSuccessBlock, failureBlock aFailureBlock: @escaping SMGatewayRequestFailureBlock)
+    open func setup(successBlock aSuccessBlock: @escaping SMGatewayRequestSuccessBlock, failureBlock aFailureBlock: @escaping SMGatewayRequestFailureBlock)
     {
         successBlock = aSuccessBlock
         failureBlock = aFailureBlock
