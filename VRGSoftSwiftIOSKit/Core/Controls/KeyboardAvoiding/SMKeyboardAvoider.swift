@@ -8,25 +8,25 @@
 
 import UIKit
 
-class SMKeyboardAvoider: SMKeyboardAvoidingProtocol, SMKeyboardToolbarDelegate
+open class SMKeyboardAvoider: SMKeyboardAvoidingProtocol, SMKeyboardToolbarDelegate
 {
-    var priorInset: UIEdgeInsets = UIEdgeInsets()
+    open var priorInset: UIEdgeInsets = UIEdgeInsets()
     open var isKeyboardVisible: Bool = false
-    var _keyboardRect: CGRect = CGRect.zero
-    var originalContentSize: CGSize = CGSize.zero
-    var objectsInKeyboard: [UIResponder] = []
-    var indexPathseObjectsInKeyboard: [IndexPath: [UIResponder]] = [:]
-    var lastReturnKeyType: UIReturnKeyType = UIReturnKeyType.go
-    var selectIndexInputField: Int = 0
+    open var _keyboardRect: CGRect = CGRect.zero
+    open var originalContentSize: CGSize = CGSize.zero
+    open var objectsInKeyboard: [UIResponder] = []
+    open var indexPathseObjectsInKeyboard: [IndexPath: [UIResponder]] = [:]
+    open var lastReturnKeyType: UIReturnKeyType = UIReturnKeyType.go
+    open var selectIndexInputField: Int = 0
     
-    let scrollView: UIScrollView
+    open let scrollView: UIScrollView
     
     deinit
     {
         NotificationCenter.default.removeObserver(self)
     }
     
-    init(scrollView aScrollView: UIScrollView)
+    open init(scrollView aScrollView: UIScrollView)
     {
         scrollView = aScrollView
         setup()

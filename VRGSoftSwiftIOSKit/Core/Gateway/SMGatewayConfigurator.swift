@@ -11,23 +11,23 @@ import Alamofire
 
 open class SMGatewayConfigurator
 {
-    static var shared: SMGatewayConfigurator = SMGatewayConfigurator()
+    open static var shared: SMGatewayConfigurator = SMGatewayConfigurator()
 
-    var gateways: [SMGateway] = []
-    var networkReachabilityManager: NetworkReachabilityManager?
+    open var gateways: [SMGateway] = []
+    open var networkReachabilityManager: NetworkReachabilityManager?
     
-    func isInternetReachable() -> Bool
+    open func isInternetReachable() -> Bool
     {
         let result: Bool = networkReachabilityManager?.isReachable ?? false
         return result
     }
     
-    func register(gateway aGateway: SMGateway)
+    open func register(gateway aGateway: SMGateway)
     {
         gateways.append(aGateway)
     }
     
-    func configureGatewaysWithBase(url aUrl: URL)
+    open func configureGatewaysWithBase(url aUrl: URL)
     {
         if let host = aUrl.host
         {
@@ -44,7 +44,7 @@ open class SMGatewayConfigurator
         }
     }
 
-    func setHTTPHeader(value aValue: String?, key aKey: String)
+    open func setHTTPHeader(value aValue: String?, key aKey: String)
     {
         for g in gateways
         {

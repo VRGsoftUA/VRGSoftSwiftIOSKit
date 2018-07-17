@@ -27,14 +27,14 @@ public protocol SMListAdapterMoreDelegate: class
 
 open class SMListAdapter: Any
 {
-    var listDisposer: SMListDisposer?
+    open var listDisposer: SMListDisposer?
     {
         return nil
     }
-    var moreCell: SMPagingMoreCellProtocol?
+    open var moreCell: SMPagingMoreCellProtocol?
 
-    weak var moreDelegate: SMListAdapterMoreDelegate?
-    weak var delegate: SMListAdapterDelegate?
+    open weak var moreDelegate: SMListAdapterMoreDelegate?
+    open weak var delegate: SMListAdapterDelegate?
     
     open func reloadData()
     {

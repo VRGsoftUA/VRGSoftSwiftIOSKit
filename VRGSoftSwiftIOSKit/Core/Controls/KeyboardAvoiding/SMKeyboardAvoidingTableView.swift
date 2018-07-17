@@ -26,7 +26,7 @@ open class SMKeyboardAvoidingTableView: UITableView, SMKeyboardAvoidingProtocol
         }
     }
 
-    override init(frame: CGRect, style: UITableViewStyle)
+    override public init(frame: CGRect, style: UITableViewStyle)
     {
         super.init(frame: frame, style: style)
     

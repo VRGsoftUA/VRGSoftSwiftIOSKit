@@ -18,4 +18,9 @@ open class SMResponse
     open var boArray: [AnyObject] = []
     open var error: Error?
     open var isCancelled: Bool = false
+    
+    public init()
+    {
+        
+    }
 }
