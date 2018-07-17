@@ -15,14 +15,19 @@ open class SMFetcherWithRequest: SMDataFetcherProtocol
         
     }
     
-    var preparedRequest: SMRequest?
+    public init()
+    {
+        
+    }
+    
+    open var preparedRequest: SMRequest?
 
     
     // MARK: SMDataFetcherProtocol
     
     public var callbackQueue: DispatchQueue = DispatchQueue.global()
     
-    var fetchCallback: SMDataFetchCallback?
+    open var fetchCallback: SMDataFetchCallback?
     
     public func canFetchWith(message aMessage: SMFetcherMessage) -> Bool
     {
@@ -55,14 +60,14 @@ open class SMFetcherWithRequest: SMDataFetcherProtocol
     
     // MARK: Requests
     
-    func preparedRequestBy(message aMessage: SMFetcherMessage) -> SMRequest?
+    public func preparedRequestBy(message aMessage: SMFetcherMessage) -> SMRequest?
     {
         assert(false, "Override this method!")
         return nil
     }
     
-    var _request: SMRequest?
-    var request: SMRequest?
+    open var _request: SMRequest?
+    open var request: SMRequest?
     {
         set
         {
@@ -84,7 +89,7 @@ open class SMFetcherWithRequest: SMDataFetcherProtocol
         get { return _request }
     }
     
-    func processFetchedModelsIn(response aResponse: SMResponse) -> [AnyObject]
+    open func processFetchedModelsIn(response aResponse: SMResponse) -> [AnyObject]
     {
         return aResponse.boArray
     }

@@ -30,6 +30,11 @@ open class SMRequest
         print(#function + " - \(type(of: self))")
     }
     
+    public init()
+    {
+        
+    }
+    
     open let defaultResponseQueue: DispatchQueue = DispatchQueue.main
 
     open var responseBlocks: [SMResponseNode] = []

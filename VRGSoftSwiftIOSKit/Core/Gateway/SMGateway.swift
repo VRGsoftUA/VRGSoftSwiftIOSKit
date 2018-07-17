@@ -19,6 +19,11 @@ open class SMGateway
     
     open var requests: [SMGatewayRequest] = []
     
+    public init()
+    {
+        
+    }
+    
     open func isInternetReachable() -> Bool
     {
         return SMGatewayConfigurator.shared.isInternetReachable()
