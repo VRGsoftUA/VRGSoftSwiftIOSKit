@@ -50,7 +50,7 @@ open class SMKeyboardAvoidingTableView: UITableView, SMKeyboardAvoidingProtocol
         keyboardAvoider.originalContentSize = self.contentSize
     }
     
-    open override var frame: CGRect
+    override open var frame: CGRect
     {
         didSet
         {
@@ -67,7 +67,7 @@ open class SMKeyboardAvoidingTableView: UITableView, SMKeyboardAvoidingProtocol
         }
     }
     
-    open override var contentSize: CGSize
+    override open var contentSize: CGSize
     {
         set
         {
@@ -88,7 +88,7 @@ open class SMKeyboardAvoidingTableView: UITableView, SMKeyboardAvoidingProtocol
         get { return super.contentSize }
     }
     
-    open override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?)
+    override open func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?)
     {
         super.touchesEnded(touches, with: event)
         

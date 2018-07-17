@@ -96,12 +96,12 @@ open class SMTableDisposer: SMListDisposer, UITableViewDelegate, UITableViewData
         return NSNotFound
     }
 
-    open override var listView: UIScrollView?
+    override open var listView: UIScrollView?
     {
         return tableView
     }
 
-    open override func reloadData()
+    override open func reloadData()
     {
         if let tableView = tableView as? SMKeyboardAvoidingTableView
         {

@@ -12,7 +12,7 @@ open class SMTextField: UITextField, SMKeyboardAvoiderProtocol, SMValidationProt
 {
     open weak var smdelegate: UITextFieldDelegate?
 
-    open override var delegate: UITextFieldDelegate?
+    override open var delegate: UITextFieldDelegate?
     {
         set
         {
@@ -33,7 +33,7 @@ open class SMTextField: UITextField, SMKeyboardAvoiderProtocol, SMValidationProt
 
     // MARK: - Override
     
-    open override func textRect(forBounds bounds: CGRect) -> CGRect
+    override open func textRect(forBounds bounds: CGRect) -> CGRect
     {
         let rect: CGRect = super.textRect(forBounds: bounds)
         
@@ -42,7 +42,7 @@ open class SMTextField: UITextField, SMKeyboardAvoiderProtocol, SMValidationProt
         return result
     }
     
-    open override func editingRect(forBounds bounds: CGRect) -> CGRect
+    override open func editingRect(forBounds bounds: CGRect) -> CGRect
     {
         let rect: CGRect =  super.editingRect(forBounds: bounds)
         
@@ -51,7 +51,7 @@ open class SMTextField: UITextField, SMKeyboardAvoiderProtocol, SMValidationProt
         return result
     }
     
-//    open override func placeholderRect(forBounds bounds: CGRect) -> CGRect
+//    override open func placeholderRect(forBounds bounds: CGRect) -> CGRect
 //    {
 //        let rect: CGRect =  super.placeholderRect(forBounds: bounds)
 //        

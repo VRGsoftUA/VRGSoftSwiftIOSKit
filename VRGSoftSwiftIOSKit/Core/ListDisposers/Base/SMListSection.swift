@@ -14,6 +14,11 @@ open class SMListSection<CellDataType: SMListCellData>
     open var visibleCellDataSource: [CellDataType] = []
     
     
+    public init()
+    {
+        
+    }
+    
     // MARK: CellDatas
     
     open func addCellData(_ aCellData: CellDataType)

@@ -12,7 +12,7 @@ open class SMTextView: UITextView, SMKeyboardAvoiderProtocol, SMValidationProtoc
 {
     weak var smdelegate: UITextViewDelegate?
     
-    open override var delegate: UITextViewDelegate?
+    override open var delegate: UITextViewDelegate?
     {
         set
         {

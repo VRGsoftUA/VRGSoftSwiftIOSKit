@@ -32,7 +32,7 @@ open class SMNativeMoreCollectionViewCell: SMCollectionCell, SMPagingMoreCellPro
 {
     open let activity: UIActivityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.gray)
         
-    open override func setup()
+    override open func setup()
     {
         super.setup()
         

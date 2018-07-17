@@ -31,34 +31,34 @@ open class SMGatewayRequest: SMRequest
         type = aType
     }
     
-    open override func start()
+    override open func start()
     {
         super.start()
         
         gateway.start(request: self)
     }
     
-    open override func cancel()
+    override open func cancel()
     {
         dataRequest?.cancel()
     }
     
-    open override func canExecute() -> Bool
+    override open func canExecute() -> Bool
     {
         return gateway.isInternetReachable()
     }
     
-    open override func isCancelled() -> Bool
+    override open func isCancelled() -> Bool
     {
         return dataRequest?.task?.state == URLSessionTask.State.completed
     }
     
-    open override func isExecuting() -> Bool
+    override open func isExecuting() -> Bool
     {
         return dataRequest?.task?.state == URLSessionTask.State.running
     }
     
-    open override func isFinished() -> Bool
+    override open func isFinished() -> Bool
     {
         return dataRequest?.task?.state == URLSessionTask.State.completed
     }

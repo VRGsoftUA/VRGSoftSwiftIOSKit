@@ -92,7 +92,7 @@ open class SMPopupSimplePicker: SMPopupPicker, UIPickerViewDelegate, UIPickerVie
         }
     }
     
-    open override var selectedItem: AnyObject?
+    override open var selectedItem: AnyObject?
     {
         get
         {

@@ -48,7 +48,7 @@ open class SMKeyboardAvoidingScrollView: UIScrollView, SMKeyboardAvoidingProtoco
         keyboardAvoider.originalContentSize = self.contentSize
     }
     
-    open override var frame: CGRect
+    override open var frame: CGRect
     {
         didSet
         {
@@ -65,7 +65,7 @@ open class SMKeyboardAvoidingScrollView: UIScrollView, SMKeyboardAvoidingProtoco
         }
     }
     
-    open override var contentSize: CGSize
+    override open var contentSize: CGSize
     {
         set
         {
@@ -86,7 +86,7 @@ open class SMKeyboardAvoidingScrollView: UIScrollView, SMKeyboardAvoidingProtoco
         get { return super.contentSize }
     }
 
-    open override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?)
+    override open func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?)
     {
         super.touchesEnded(touches, with: event)
      

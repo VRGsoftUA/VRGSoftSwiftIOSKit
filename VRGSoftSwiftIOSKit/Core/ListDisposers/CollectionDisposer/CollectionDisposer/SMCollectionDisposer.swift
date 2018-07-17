@@ -99,12 +99,12 @@ open class SMCollectionDisposer: SMListDisposer, UICollectionViewDelegateFlowLay
         return nil
     }
     
-    open override var listView: UIScrollView?
+    override open var listView: UIScrollView?
     {
         return collectionView
     }
     
-    open override func reloadData()
+    override open func reloadData()
     {
         for section: SMCollectonSection in sections
         {

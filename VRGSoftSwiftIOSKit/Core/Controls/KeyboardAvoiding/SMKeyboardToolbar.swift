@@ -24,7 +24,7 @@ open class SMKeyboardToolbar: SMToolbar
     open let bbiBack: UIBarButtonItem = UIBarButtonItem()
     open let bbiNext: UIBarButtonItem = UIBarButtonItem()
     
-    open override func setup()
+    override open func setup()
     {
         self.autoresizingMask = UIViewAutoresizing.flexibleWidth
         self.barStyle = UIBarStyle.default

@@ -73,13 +73,13 @@ open class SMSectionWritable: SMSectionReadonly
         }
     }
     
-    open override func cell(forIndex aIndex: Int) -> UITableViewCell
+    override open func cell(forIndex aIndex: Int) -> UITableViewCell
     {
         return cells[aIndex]
     }
     
     //TODO:
-    open override func reload(with anAnimation: UITableViewRowAnimation)
+    override open func reload(with anAnimation: UITableViewRowAnimation)
     {
         if let keyboardAvoiding: SMKeyboardAvoidingProtocol = tableDisposer?.tableView as? SMKeyboardAvoidingProtocol
         {
@@ -98,7 +98,7 @@ open class SMSectionWritable: SMSectionReadonly
     }
 
     //TODO:
-    open override func reloadRows(at aIndexes: [Int], withRowAnimation aRowAnimation: UITableViewRowAnimation)
+    override open func reloadRows(at aIndexes: [Int], withRowAnimation aRowAnimation: UITableViewRowAnimation)
     {
         var indexPaths: [IndexPath] = []
         var indexPath: IndexPath
@@ -125,7 +125,7 @@ open class SMSectionWritable: SMSectionReadonly
     }
 
     //TODO:
-    open override func showCell(by aIndex: Int, needUpdateTable aNeedUpdateTable: Bool, withRowAnimation aRowAnimation: UITableViewRowAnimation)
+    override open func showCell(by aIndex: Int, needUpdateTable aNeedUpdateTable: Bool, withRowAnimation aRowAnimation: UITableViewRowAnimation)
     {
         let cellData: SMCellData = self.cellData(at: aIndex)
         
@@ -149,7 +149,7 @@ open class SMSectionWritable: SMSectionReadonly
     }
     
     //TODO:
-    open override func hideCell(by aIndex: Int, needUpdateTable aNeedUpdateTable: Bool, withRowAnimation aRowAnimation: UITableViewRowAnimation)
+    override open func hideCell(by aIndex: Int, needUpdateTable aNeedUpdateTable: Bool, withRowAnimation aRowAnimation: UITableViewRowAnimation)
     {
         let cellData: SMCellData = self.cellData(at: aIndex)
         
@@ -181,7 +181,7 @@ open class SMSectionWritable: SMSectionReadonly
         }
     }
     
-    open override func deleteRows(at aIndexes: [Int], withRowAnimation aRowAnimation: UITableViewRowAnimation)
+    override open func deleteRows(at aIndexes: [Int], withRowAnimation aRowAnimation: UITableViewRowAnimation)
     {
         super.deleteRows(at: aIndexes, withRowAnimation: aRowAnimation)
         
