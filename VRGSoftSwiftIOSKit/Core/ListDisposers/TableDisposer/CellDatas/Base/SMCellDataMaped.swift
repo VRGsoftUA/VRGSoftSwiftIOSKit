@@ -10,9 +10,9 @@ import UIKit
 
 open class SMCellDataMaped: SMCellData, SMCellDataMapedProtocol
 {
-    var key: String?
+    open var key: String?
     
-    convenience init(model aModel: AnyObject?, key aKey: String?)
+    public convenience init(model aModel: AnyObject?, key aKey: String?)
     {
         self.init(model: aModel)
         
@@ -22,12 +22,12 @@ open class SMCellDataMaped: SMCellData, SMCellDataMapedProtocol
     
     // MARK: SMCellDataMapedProtocol
     
-    func mapFromObject()
+    open func mapFromObject()
     {
         assert(false, "Override this method in subclasses!")
     }
 
-    func mapToObject()
+    open func mapToObject()
     {
         assert(false, "Override this method in subclasses!")
     }

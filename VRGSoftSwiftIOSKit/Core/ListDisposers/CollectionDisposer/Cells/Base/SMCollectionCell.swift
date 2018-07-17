@@ -17,19 +17,19 @@ open class SMCollectionCell: UICollectionViewCell, SMCollectionCellProtocol
         setup()
     }
     
-    required public init?(coder aDecoder: NSCoder)
+    public required init?(coder aDecoder: NSCoder)
     {
         super.init(coder: aDecoder)
         
         setup()
     }
     
-    func setup()
+    open func setup()
     {
         backgroundColor = UIColor.clear
     }
     
-    func inputTraits() -> [UIResponder]?
+    open func inputTraits() -> [UIResponder]?
     {
         return nil
     }
@@ -37,9 +37,9 @@ open class SMCollectionCell: UICollectionViewCell, SMCollectionCellProtocol
     
     // MARK: SMCollectionCellProtocol
     
-    public var cellData: SMCollectionCellData?
+    open var cellData: SMCollectionCellData?
     
-    public func setupCellData(_ aCellData: SMCollectionCellData)
+    open func setupCellData(_ aCellData: SMCollectionCellData)
     {
         cellData = aCellData
         

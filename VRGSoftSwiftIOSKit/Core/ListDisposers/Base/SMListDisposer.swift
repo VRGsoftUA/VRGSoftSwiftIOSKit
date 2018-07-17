@@ -10,12 +10,12 @@ import UIKit
 
 open class SMListDisposer: NSObject
 {
-    var listView: UIScrollView?
+    open var listView: UIScrollView?
     {
         return nil
     }
     
-    func reloadData()
+    open func reloadData()
     {
         assert(false)
     }

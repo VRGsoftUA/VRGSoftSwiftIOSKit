@@ -70,7 +70,7 @@ open class SMCollectonSection: SMListSection<SMCollectionCellData>
     open var headerReferenceSize: CGSize?
     open var footerReferenceSize: CGSize?
     
-    func index(byVisible aCellData: SMCellData) -> Int
+    open func index(byVisible aCellData: SMCellData) -> Int
     {
         if  let index = visibleCellDataSource.index(where: {$0 === aCellData})
         {
@@ -80,7 +80,7 @@ open class SMCollectonSection: SMListSection<SMCollectionCellData>
         return NSNotFound
     }
     
-    func registerHeaderFooterViews()
+    open func registerHeaderFooterViews()
     {
         if let nibName = headerViewNibName
         {
@@ -102,7 +102,7 @@ open class SMCollectonSection: SMListSection<SMCollectionCellData>
 
     // MARK: Cells
 
-    func cell(forIndexPath aIndexPath: IndexPath) -> UICollectionViewCell
+    open func cell(forIndexPath aIndexPath: IndexPath) -> UICollectionViewCell
     {
         let cellData: SMCollectionCellData = visibleCellData(at: aIndexPath.row)
         

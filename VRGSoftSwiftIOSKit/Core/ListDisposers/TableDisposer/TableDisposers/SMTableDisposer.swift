@@ -42,7 +42,7 @@ open class SMTableDisposer: SMListDisposer, UITableViewDelegate, UITableViewData
         }
     }
     
-    var sections: [SMSectionReadonly] = []
+    open var sections: [SMSectionReadonly] = []
     {
         didSet
         {
@@ -53,12 +53,12 @@ open class SMTableDisposer: SMListDisposer, UITableViewDelegate, UITableViewData
         }
     }
 
-    func addSection(_ aSection: SMSectionReadonly)
+    open func addSection(_ aSection: SMSectionReadonly)
     {
         sections.append(aSection)
     }
     
-    func removeSection(_ aSection: SMSectionReadonly)
+    open func removeSection(_ aSection: SMSectionReadonly)
     {
         aSection.tableDisposer = nil
         
@@ -68,11 +68,11 @@ open class SMTableDisposer: SMListDisposer, UITableViewDelegate, UITableViewData
         }
     }
     
-    weak var delegate: SMTableDisposerDelegate?
+    open weak var delegate: SMTableDisposerDelegate?
     
-    let multicastDelegate: SMMulticastDelegate<SMTableDisposerMulticastDelegate> = SMMulticastDelegate(options: NSPointerFunctions.Options.weakMemory) // swiftlint:disable:this weak_delegate
+    open let multicastDelegate: SMMulticastDelegate<SMTableDisposerMulticastDelegate> = SMMulticastDelegate(options: NSPointerFunctions.Options.weakMemory) // swiftlint:disable:this weak_delegate
     
-    func didCreate(cell aCell: UITableViewCell)
+    open func didCreate(cell aCell: UITableViewCell)
     {
         delegate?.tableDisposer(self, didCreateCell: aCell)
         
@@ -81,12 +81,12 @@ open class SMTableDisposer: SMListDisposer, UITableViewDelegate, UITableViewData
         }
     }
 
-    func didSetup(cell aCell: UITableViewCell, at aIndexPath: IndexPath)
+    open func didSetup(cell aCell: UITableViewCell, at aIndexPath: IndexPath)
     {
         delegate?.tableDisposer(self, didSetupCell: aCell, at: aIndexPath)
     }
 
-    func index(by aSection: SMSectionReadonly) -> Int
+    open func index(by aSection: SMSectionReadonly) -> Int
     {
         if let index = sections.index(where: {$0 === aSection})
         {
@@ -96,12 +96,12 @@ open class SMTableDisposer: SMListDisposer, UITableViewDelegate, UITableViewData
         return NSNotFound
     }
 
-    override var listView: UIScrollView?
+    open override var listView: UIScrollView?
     {
         return tableView
     }
 
-    override func reloadData()
+    open override func reloadData()
     {
         if let tableView = tableView as? SMKeyboardAvoidingTableView
         {
@@ -116,12 +116,12 @@ open class SMTableDisposer: SMListDisposer, UITableViewDelegate, UITableViewData
         tableView?.reloadData()
     }
     
-    func cellData(by aIndexPath: IndexPath) -> SMCellData
+    open func cellData(by aIndexPath: IndexPath) -> SMCellData
     {
         return sections[aIndexPath.section].cellData(at: aIndexPath.row)
     }
     
-    func indexPath(by aCellData: SMCellData) -> IndexPath?
+    open func indexPath(by aCellData: SMCellData) -> IndexPath?
     {
         for (index, section) in sections.enumerated()
         {

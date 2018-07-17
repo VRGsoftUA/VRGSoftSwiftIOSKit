@@ -23,12 +23,12 @@ open class SMCell: UITableViewCell, SMCellProtocol
         setup()
     }
     
-    func setup()
+    open func setup()
     {
         backgroundColor = UIColor.clear
     }
     
-    func inputTraits() -> [UIResponder]?
+    open func inputTraits() -> [UIResponder]?
     {
         return nil
     }

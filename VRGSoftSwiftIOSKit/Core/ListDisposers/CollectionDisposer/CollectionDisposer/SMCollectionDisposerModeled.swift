@@ -21,15 +21,15 @@ public protocol SMCollectionDisposerModeledDelegate: class
 }
 
 
-class SMCollectionDisposerModeled: SMCollectionDisposer
+open class SMCollectionDisposerModeled: SMCollectionDisposer
 {
-    let modeledMulticastDelegate: SMMulticastDelegate<SMCollectionDisposerModeledMulticastDelegate> = SMMulticastDelegate(options: NSPointerFunctions.Options.weakMemory) // swiftlint:disable:this weak_delegate
+    open let modeledMulticastDelegate: SMMulticastDelegate<SMCollectionDisposerModeledMulticastDelegate> = SMMulticastDelegate(options: NSPointerFunctions.Options.weakMemory) // swiftlint:disable:this weak_delegate
     
-    var registeredClasses: [String: SMCollectionCellData.Type] = [:]
+    open var registeredClasses: [String: SMCollectionCellData.Type] = [:]
     
-    weak var modeledDelegate: SMCollectionDisposerModeledDelegate?
+    open weak var modeledDelegate: SMCollectionDisposerModeledDelegate?
     
-    func register(cellDataClass aCellDataClass: SMCollectionCellData.Type, forModelClass aModelClass: AnyClass? = nil)
+    open func register(cellDataClass aCellDataClass: SMCollectionCellData.Type, forModelClass aModelClass: AnyClass? = nil)
     {
         if let nibName = aCellDataClass.cellNibName_
         {
@@ -44,18 +44,18 @@ class SMCollectionDisposerModeled: SMCollectionDisposer
         }
     }
 
-    func unregisterCellDataFor(modelClass aModelClass: AnyClass)
+    open func unregisterCellDataFor(modelClass aModelClass: AnyClass)
     {
         registeredClasses[String(describing: aModelClass)] = nil
     }
     
-    func setupModels(_ aModels: [AnyObject], forSectionAtIndex aSectionIndex: Int)
+    open func setupModels(_ aModels: [AnyObject], forSectionAtIndex aSectionIndex: Int)
     {
         let section: SMCollectonSection = sections[aSectionIndex]
         setupModels(aModels, forSection: section)
     }
     
-    func setupModels(_ aModels: [AnyObject], forSection aSection: SMCollectonSection)
+    open func setupModels(_ aModels: [AnyObject], forSection aSection: SMCollectonSection)
     {
         for model in aModels
         {
@@ -70,7 +70,7 @@ class SMCollectionDisposerModeled: SMCollectionDisposer
         }
     }
     
-    func cellDataFrom(model aModel: AnyObject) -> SMCollectionCellData?
+    open func cellDataFrom(model aModel: AnyObject) -> SMCollectionCellData?
     {
         let modelClassName: String = String(describing: type(of: aModel))
         
@@ -84,7 +84,7 @@ class SMCollectionDisposerModeled: SMCollectionDisposer
         return nil
     }
     
-    func didCreate(cellData aCellData: SMCollectionCellData)
+    open func didCreate(cellData aCellData: SMCollectionCellData)
     {
         modeledDelegate?.collectionDisposer(self, didCreateCellData: aCellData)
         modeledMulticastDelegate.invokeDelegates { [weak self] delegate in
@@ -99,7 +99,7 @@ class SMCollectionDisposerModeled: SMCollectionDisposer
 
 extension SMCollectionDisposerModeledMulticastDelegate
 {
-    func collectionDisposer(_ aCollectionDisposer: SMCollectionDisposer, didCreateCellData aCellData: SMCollectionCellData)
+    public func collectionDisposer(_ aCollectionDisposer: SMCollectionDisposer, didCreateCellData aCellData: SMCollectionCellData)
     {
         
     }
@@ -107,12 +107,12 @@ extension SMCollectionDisposerModeledMulticastDelegate
 
 extension SMCollectionDisposerModeledDelegate
 {
-    func collectionDisposer(_ aCollectionDisposer: SMCollectionDisposer, didCreateCellData aCellData: SMCollectionCellData)
+    public func collectionDisposer(_ aCollectionDisposer: SMCollectionDisposer, didCreateCellData aCellData: SMCollectionCellData)
     {
         
     }
     
-    func collectionDisposer(_ aCollectionDisposer: SMCollectionDisposer, cellDataClassForUnregisteredModel aModel: AnyObject) -> SMCollectionCellData.Type?
+    public func collectionDisposer(_ aCollectionDisposer: SMCollectionDisposer, cellDataClassForUnregisteredModel aModel: AnyObject) -> SMCollectionCellData.Type?
     {
         assert(false)
         return nil

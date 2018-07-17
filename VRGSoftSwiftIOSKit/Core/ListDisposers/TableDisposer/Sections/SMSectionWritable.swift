@@ -10,9 +10,9 @@ import UIKit
 
 open class SMSectionWritable: SMSectionReadonly
 {
-    var cells: [UITableViewCell] = []
+    open var cells: [UITableViewCell] = []
     
-    func mapToObject()
+    open func mapToObject()
     {
         for cellData: SMCellData in cellDataSource where cellData is SMCellDataMapedProtocol
         {
@@ -20,7 +20,7 @@ open class SMSectionWritable: SMSectionReadonly
         }
     }
 
-    func mapFromObject()
+    open func mapFromObject()
     {
         for cellData: SMCellData in cellDataSource where cellData is SMCellDataMapedProtocol
         {
@@ -31,7 +31,7 @@ open class SMSectionWritable: SMSectionReadonly
     }
     
     //TODO:
-    func createCell(at anIndex: Int) -> UITableViewCell
+    open func createCell(at anIndex: Int) -> UITableViewCell
     {
         let cellData = visibleCellData(at: anIndex)
         
@@ -59,7 +59,7 @@ open class SMSectionWritable: SMSectionReadonly
         return cell
     }
 
-   func createCells()
+   open func createCells()
    {
         // remove old cells
         cells.removeAll()
@@ -73,13 +73,13 @@ open class SMSectionWritable: SMSectionReadonly
         }
     }
     
-    override func cell(forIndex aIndex: Int) -> UITableViewCell
+    open override func cell(forIndex aIndex: Int) -> UITableViewCell
     {
         return cells[aIndex]
     }
     
     //TODO:
-    override func reload(with anAnimation: UITableViewRowAnimation)
+    open override func reload(with anAnimation: UITableViewRowAnimation)
     {
         if let keyboardAvoiding: SMKeyboardAvoidingProtocol = tableDisposer?.tableView as? SMKeyboardAvoidingProtocol
         {
@@ -98,7 +98,7 @@ open class SMSectionWritable: SMSectionReadonly
     }
 
     //TODO:
-    override func reloadRows(at aIndexes: [Int], withRowAnimation aRowAnimation: UITableViewRowAnimation)
+    open override func reloadRows(at aIndexes: [Int], withRowAnimation aRowAnimation: UITableViewRowAnimation)
     {
         var indexPaths: [IndexPath] = []
         var indexPath: IndexPath
@@ -125,7 +125,7 @@ open class SMSectionWritable: SMSectionReadonly
     }
 
     //TODO:
-    override func showCell(by aIndex: Int, needUpdateTable aNeedUpdateTable: Bool, withRowAnimation aRowAnimation: UITableViewRowAnimation)
+    open override func showCell(by aIndex: Int, needUpdateTable aNeedUpdateTable: Bool, withRowAnimation aRowAnimation: UITableViewRowAnimation)
     {
         let cellData: SMCellData = self.cellData(at: aIndex)
         
@@ -149,7 +149,7 @@ open class SMSectionWritable: SMSectionReadonly
     }
     
     //TODO:
-    override func hideCell(by aIndex: Int, needUpdateTable aNeedUpdateTable: Bool, withRowAnimation aRowAnimation: UITableViewRowAnimation)
+    open override func hideCell(by aIndex: Int, needUpdateTable aNeedUpdateTable: Bool, withRowAnimation aRowAnimation: UITableViewRowAnimation)
     {
         let cellData: SMCellData = self.cellData(at: aIndex)
         
@@ -181,7 +181,7 @@ open class SMSectionWritable: SMSectionReadonly
         }
     }
     
-    override func deleteRows(at aIndexes: [Int], withRowAnimation aRowAnimation: UITableViewRowAnimation)
+    open override func deleteRows(at aIndexes: [Int], withRowAnimation aRowAnimation: UITableViewRowAnimation)
     {
         super.deleteRows(at: aIndexes, withRowAnimation: aRowAnimation)
         

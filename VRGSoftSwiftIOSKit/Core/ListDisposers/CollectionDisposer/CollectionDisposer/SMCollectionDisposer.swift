@@ -50,12 +50,12 @@ open class SMCollectionDisposer: SMListDisposer, UICollectionViewDelegateFlowLay
         }
     }
     
-    func addSection(_ aSection: SMCollectonSection)
+    open func addSection(_ aSection: SMCollectonSection)
     {
         sections.append(aSection)
     }
     
-    func removeSection(_ aSection: SMCollectonSection)
+    open func removeSection(_ aSection: SMCollectonSection)
     {
         aSection.collectionDisposer = nil
         
@@ -65,18 +65,18 @@ open class SMCollectionDisposer: SMListDisposer, UICollectionViewDelegateFlowLay
         }
     }
     
-    var collectionClass: UICollectionView.Type = UICollectionView.self
+    open var collectionClass: UICollectionView.Type = UICollectionView.self
 
-    weak var delegate: SMCollectionDisposerDelegate?
+    open weak var delegate: SMCollectionDisposerDelegate?
     
-    let multicastDelegate: SMMulticastDelegate<SMCollectionDisposerMulticastDelegate> = SMMulticastDelegate(options: NSPointerFunctions.Options.weakMemory) // swiftlint:disable:this weak_delegate
+    open let multicastDelegate: SMMulticastDelegate<SMCollectionDisposerMulticastDelegate> = SMMulticastDelegate(options: NSPointerFunctions.Options.weakMemory) // swiftlint:disable:this weak_delegate
     
     open func didSetup(cell aCell: UICollectionViewCell, at aIndexPath: IndexPath)
     {
         delegate?.collectionDisposer(self, didSetupCell: aCell, at: aIndexPath)
     }
     
-    func index(by aSection: SMSectionReadonly) -> Int
+    open func index(by aSection: SMSectionReadonly) -> Int
     {
         if let index = sections.index(where: {$0 === aSection})
         {
@@ -86,7 +86,7 @@ open class SMCollectionDisposer: SMListDisposer, UICollectionViewDelegateFlowLay
         return NSNotFound
     }
     
-    func indexPath(by aCellData: SMCollectionCellData) -> IndexPath?
+    open func indexPath(by aCellData: SMCollectionCellData) -> IndexPath?
     {
         for (index, section) in sections.enumerated()
         {
@@ -99,12 +99,12 @@ open class SMCollectionDisposer: SMListDisposer, UICollectionViewDelegateFlowLay
         return nil
     }
     
-    override var listView: UIScrollView?
+    open override var listView: UIScrollView?
     {
         return collectionView
     }
     
-    override func reloadData()
+    open override func reloadData()
     {
         for section: SMCollectonSection in sections
         {
@@ -114,7 +114,7 @@ open class SMCollectionDisposer: SMListDisposer, UICollectionViewDelegateFlowLay
         collectionView?.reloadData()
     }
     
-    func cellData(by aIndexPath: IndexPath) -> SMCollectionCellData
+    open func cellData(by aIndexPath: IndexPath) -> SMCollectionCellData
     {
         return sections[aIndexPath.section].cellData(at: aIndexPath.row)
     }

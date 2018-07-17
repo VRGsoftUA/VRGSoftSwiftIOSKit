@@ -12,25 +12,25 @@ open class SMNativeMoreCollectionViewCellData: SMCollectionCellData, SMPagingMor
 {
     public var needLoadMore: SMBlockAction<Any>?
     
-    convenience init()
+    public convenience init()
     {
         self.init(model: nil)
     }
     
-    override class var cellClass_: UICollectionViewCell.Type
+    override open class var cellClass_: UICollectionViewCell.Type
     {
         return SMNativeMoreCollectionViewCell.self
     }
     
-    override func cellSizeFor(size aSize: CGSize) -> CGSize?
+    override open func cellSizeFor(size aSize: CGSize) -> CGSize?
     {
         return CGSize(width: 45.0, height: 45.0)
     }
 }
 
-class SMNativeMoreCollectionViewCell: SMCollectionCell, SMPagingMoreCellProtocol
+open class SMNativeMoreCollectionViewCell: SMCollectionCell, SMPagingMoreCellProtocol
 {
-    let activity: UIActivityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.gray)
+    open let activity: UIActivityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.gray)
         
     open override func setup()
     {

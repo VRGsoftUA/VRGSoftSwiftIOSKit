@@ -10,33 +10,33 @@ import UIKit
 
 open class SMCollectionCellData: SMListCellData
 {
-    var cellNibName: String?
-    var cellClass: UICollectionViewCell.Type = UICollectionViewCell.self
-    var cellIdentifier: String
+    open var cellNibName: String?
+    open var cellClass: UICollectionViewCell.Type = UICollectionViewCell.self
+    open var cellIdentifier: String
     {
         return String(describing: type(of: self))
     }
     
-    class var cellClass_: UICollectionViewCell.Type
+    open class var cellClass_: UICollectionViewCell.Type
     {
         return UICollectionViewCell.self
     }
     
-    class var cellNibName_: String?
+    open class var cellNibName_: String?
     {
         return nil
     }
     
-    class var cellIdentifier_: String
+    open class var cellIdentifier_: String
     {
         return String(describing: self)
     }
     
-    var isAutoDeselect: Bool = true
+    open var isAutoDeselect: Bool = true
 
-    var cellSize: CGSize?
+    open var cellSize: CGSize?
 
-    func cellSizeFor(size aSize: CGSize) -> CGSize?
+    open func cellSizeFor(size aSize: CGSize) -> CGSize?
     {
         return cellSize
     }

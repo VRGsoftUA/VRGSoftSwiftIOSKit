@@ -27,7 +27,7 @@ open class SMNativeMoreTableViewCell: SMCell, SMPagingMoreCellProtocol
 
     let activity: UIActivityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.gray)
     
-    override func setup()
+    open override func setup()
     {
         super.setup()
         

@@ -10,32 +10,32 @@ import UIKit
 
 open class SMCellData: SMListCellData
 {
-    var cellSelectedHandlers: [SMBlockAction<SMCellData>] = []
-    var cellDeselectedHandlers: [SMBlockAction<SMCellData>] = []
+    open var cellSelectedHandlers: [SMBlockAction<SMCellData>] = []
+    open var cellDeselectedHandlers: [SMBlockAction<SMCellData>] = []
     
-    var cellNibName: String?
-    var cellClass: UITableViewCell.Type = UITableViewCell.self
-    var cellIdentifier: String
+    open var cellNibName: String?
+    open var cellClass: UITableViewCell.Type = UITableViewCell.self
+    open var cellIdentifier: String
     {
         return String(describing: type(of: self))
     }
     
-    var cellStyle: UITableViewCellStyle = UITableViewCellStyle.default
+    open var cellStyle: UITableViewCellStyle = UITableViewCellStyle.default
 
-    var cellSelectionStyle: UITableViewCellSelectionStyle = UITableViewCellSelectionStyle.default
-    var cellAccessoryType: UITableViewCellAccessoryType = UITableViewCellAccessoryType.none
-    var cellSeparatorInset: UIEdgeInsets?
+    open var cellSelectionStyle: UITableViewCellSelectionStyle = UITableViewCellSelectionStyle.default
+    open var cellAccessoryType: UITableViewCellAccessoryType = UITableViewCellAccessoryType.none
+    open var cellSeparatorInset: UIEdgeInsets?
     
-    var isAutoDeselect: Bool = true
-    var isEnableEdit: Bool = true
-    var isDisableInputTraits: Bool = false
+    open var isAutoDeselect: Bool = true
+    open var isEnableEdit: Bool = true
+    open var isDisableInputTraits: Bool = false
     
-    var isCellHeightAutomaticDimension = false
+    open var isCellHeightAutomaticDimension = false
     
-    var cellHeight: CGFloat = 44.0
-    var cellWidth: CGFloat = 0.0
+    open var cellHeight: CGFloat = 44.0
+    open var cellWidth: CGFloat = 0.0
 
-    func cellHeightFor(width aWidth: CGFloat) -> CGFloat
+    open func cellHeightFor(width aWidth: CGFloat) -> CGFloat
     {
         return cellHeight
     }
@@ -43,17 +43,17 @@ open class SMCellData: SMListCellData
     
     // MARK: Handlers
     
-    func addCellSelected(blockAction aBlockAction: SMBlockAction<SMCellData>)
+    open func addCellSelected(blockAction aBlockAction: SMBlockAction<SMCellData>)
     {
         cellSelectedHandlers.append(aBlockAction)
     }
     
-    func addCellDeselected(blockAction aBlockAction: SMBlockAction<SMCellData>)
+    open func addCellDeselected(blockAction aBlockAction: SMBlockAction<SMCellData>)
     {
         cellDeselectedHandlers.append(aBlockAction)
     }
 
-    func performSelectedHandlers()
+    open func performSelectedHandlers()
     {
         for handler in cellSelectedHandlers
         {
@@ -61,7 +61,7 @@ open class SMCellData: SMListCellData
         }
     }
 
-    func performDeselectedHandlers()
+    open func performDeselectedHandlers()
     {
         for handler in cellDeselectedHandlers
         {
@@ -72,7 +72,7 @@ open class SMCellData: SMListCellData
 
     // MARK: Create cell
     
-    func createCell() -> UITableViewCell
+    open func createCell() -> UITableViewCell
     {
         if let cellNibName = cellNibName
         {

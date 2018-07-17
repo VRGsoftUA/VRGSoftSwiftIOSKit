@@ -8,17 +8,17 @@
 
 import UIKit
 
-typealias SMListCellDataDidSelectClosureType = (_ cellData: SMListCellData) -> Void
+public typealias SMListCellDataDidSelectClosureType = (_ cellData: SMListCellData) -> Void
 
 open class SMListCellData
 {
-    let model: AnyObject?
+    open let model: AnyObject?
     
-    var didSelectClosure: SMListCellDataDidSelectClosureType?
+    open var didSelectClosure: SMListCellDataDidSelectClosureType?
     
-    var isVisible: Bool = true
-    var tag: Int = 0
-    var userData: [String: Any] = [:]
+    open var isVisible: Bool = true
+    open var tag: Int = 0
+    open var userData: [String: Any] = [:]
     
     public convenience init()
     {
