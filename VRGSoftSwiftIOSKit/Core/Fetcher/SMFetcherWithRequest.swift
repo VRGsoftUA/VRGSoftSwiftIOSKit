@@ -60,7 +60,7 @@ open class SMFetcherWithRequest: SMDataFetcherProtocol
     
     // MARK: Requests
     
-    public func preparedRequestBy(message aMessage: SMFetcherMessage) -> SMRequest?
+    open func preparedRequestBy(message aMessage: SMFetcherMessage) -> SMRequest?
     {
         assert(false, "Override this method!")
         return nil

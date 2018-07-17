@@ -204,14 +204,14 @@ open class SMDBStorage
         return contextWithParent(defaultContext)
     }
     
-    func contextWithParent(_ aParentContext: NSManagedObjectContext) -> NSManagedObjectContext
+    open func contextWithParent(_ aParentContext: NSManagedObjectContext) -> NSManagedObjectContext
     {
         let result: NSManagedObjectContext = createPrivateQueueContext
         result.parent = aParentContext
         return result
     }
     
-    var createPrivateQueueContext: NSManagedObjectContext
+    open var createPrivateQueueContext: NSManagedObjectContext
     {
         let result: NSManagedObjectContext = NSManagedObjectContext(concurrencyType: .privateQueueConcurrencyType)
         return result

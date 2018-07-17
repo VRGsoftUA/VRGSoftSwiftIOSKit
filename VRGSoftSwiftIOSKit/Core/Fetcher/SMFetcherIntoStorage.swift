@@ -113,7 +113,7 @@ open class SMFetcherIntoStorage: SMFetcherWithRequest
         get { return _request }
     }
     
-    override public func preparedRequestBy(message aMessage: SMFetcherMessage) -> SMRequest?
+    override open func preparedRequestBy(message aMessage: SMFetcherMessage) -> SMRequest?
     {
         if let currentMessage = currentMessage
         {

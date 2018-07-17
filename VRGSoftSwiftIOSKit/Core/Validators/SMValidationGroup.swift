@@ -19,6 +19,11 @@ open class SMValidationGroup
 {
     var validators: [SMValidator] = []
 
+    public init()
+    {
+        
+    }
+    
     open func add(validator aValidator: SMValidator)
     {
         validators.append(aValidator)
