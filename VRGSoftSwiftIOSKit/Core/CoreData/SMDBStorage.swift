@@ -301,7 +301,7 @@ open class SMDBStorage
             var entities: [AnyObject]
             do
             {
-                entities = [try context.execute(entitiesRequest)]
+                entities = try context.fetch(entitiesRequest)
                 for object in entities
                 {
                     if let object = object as? NSManagedObject

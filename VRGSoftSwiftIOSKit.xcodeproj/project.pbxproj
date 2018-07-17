@@ -102,6 +102,7 @@
 		B74DF3A11F34955500405847 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B74DF3A01F34955500405847 /* Assets.xcassets */; };
 		B74DF3A41F34955500405847 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B74DF3A21F34955500405847 /* LaunchScreen.storyboard */; };
 		B74DF3AC1F34A3FC00405847 /* VRGSoftSwiftIOSKit.podspec in Resources */ = {isa = PBXBuildFile; fileRef = B74DF3AB1F34A3FC00405847 /* VRGSoftSwiftIOSKit.podspec */; };
+		B774AE1C20FDD5940065C963 /* NSAttributedString + Help.swift in Sources */ = {isa = PBXBuildFile; fileRef = B774AE1B20FDD5940065C963 /* NSAttributedString + Help.swift */; };
 		B7ED41F91F34B271006C24DC /* VRGSoftSwiftIOSKit.bundle in Resources */ = {isa = PBXBuildFile; fileRef = B7ED41F81F34B271006C24DC /* VRGSoftSwiftIOSKit.bundle */; };
 /* End PBXBuildFile section */
 
@@ -204,6 +205,7 @@
 		B74DF3A31F34955500405847 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B74DF3A51F34955500405847 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B74DF3AB1F34A3FC00405847 /* VRGSoftSwiftIOSKit.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = VRGSoftSwiftIOSKit.podspec; sourceTree = "<group>"; };
+		B774AE1B20FDD5940065C963 /* NSAttributedString + Help.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSAttributedString + Help.swift"; sourceTree = "<group>"; };
 		B7ED41F81F34B271006C24DC /* VRGSoftSwiftIOSKit.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = VRGSoftSwiftIOSKit.bundle; sourceTree = "<group>"; };
 		E744888B69F1358D3BD7E3F5 /* Pods-VRGSoftSwiftIOSKit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VRGSoftSwiftIOSKit.release.xcconfig"; path = "Pods/Target Support Files/Pods-VRGSoftSwiftIOSKit/Pods-VRGSoftSwiftIOSKit.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -570,6 +572,7 @@
 		B7265EF120EDF69C003FBD5C /* Help */ = {
 			isa = PBXGroup;
 			children = (
+				B774AE1B20FDD5940065C963 /* NSAttributedString + Help.swift */,
 				B7265EF220EDF69C003FBD5C /* UILabel+Help.swift */,
 				B7265EF320EDF69C003FBD5C /* UIView+Help.swift */,
 				B7265EF420EDF69C003FBD5C /* SMHelper.swift */,
@@ -792,6 +795,7 @@
 				B7265F3A20EDF69C003FBD5C /* SMNativeMoreTableViewCell.swift in Sources */,
 				B7265F4A20EDF69C003FBD5C /* SMPair.swift in Sources */,
 				B7265F2E20EDF69C003FBD5C /* SMKeyboardAvoider.swift in Sources */,
+				B774AE1C20FDD5940065C963 /* NSAttributedString + Help.swift in Sources */,
 				B7265F0C20EDF69C003FBD5C /* SMCellDataMapedProtocol.swift in Sources */,
 				B7265F0920EDF69C003FBD5C /* SMCellData.swift in Sources */,
 				B7265F1020EDF69C003FBD5C /* SMCollectionCellProtocol.swift in Sources */,

@@ -121,7 +121,7 @@ open class SMTableDisposer: SMListDisposer, UITableViewDelegate, UITableViewData
         return sections[aIndexPath.section].cellData(at: aIndexPath.row)
     }
     
-    func indexPath(by aCellData: SMCollectionCellData) -> IndexPath?
+    func indexPath(by aCellData: SMCellData) -> IndexPath?
     {
         for (index, section) in sections.enumerated()
         {

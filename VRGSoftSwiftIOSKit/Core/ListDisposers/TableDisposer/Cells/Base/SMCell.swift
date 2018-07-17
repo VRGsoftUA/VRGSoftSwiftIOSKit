@@ -9,7 +9,7 @@
 import UIKit
 
 open class SMCell: UITableViewCell, SMCellProtocol
-{
+{    
     required override public init(style: UITableViewCellStyle, reuseIdentifier: String?)
     {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -44,6 +44,7 @@ open class SMCell: UITableViewCell, SMCellProtocol
         self.backgroundColor = UIColor.clear
     }
     
+    
     // MARK: SMCellProtocol
     
     open var cellData: SMCellData?
@@ -53,7 +54,12 @@ open class SMCell: UITableViewCell, SMCellProtocol
 
         selectionStyle = aCellData.cellSelectionStyle
         accessoryType = aCellData.cellAccessoryType
-
+        
+        if let inset = aCellData.cellSeparatorInset
+        {
+            separatorInset = inset
+        }
+        
         tag = aCellData.tag
     }
 }

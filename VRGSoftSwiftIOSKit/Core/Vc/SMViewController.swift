@@ -8,13 +8,13 @@
 
 import UIKit
 
-public typealias SMViewControllerCallback = (SMViewController, AnyObject) -> Void
+public typealias SMViewControllerCallback = (SMViewController, Any?) -> Void
 
 @objc public class SMViewController: UIViewController
 {
     var callBack: SMViewControllerCallback?
     
-    open func performCallBackWith(sender aSender: AnyObject, goBack isGoBack: Bool)
+    open func performCallBackWith(sender aSender: Any?, goBack isGoBack: Bool)
     {
         self.callBack?(self, aSender)
         

@@ -49,4 +49,16 @@ extension UILabel
         attributedString.addAttributes(markAttribute, range: range)
         self.attributedText = attributedString
     }
+    
+    func setAttributedText(markString: String, markTextColor: UIColor, markFont: UIFont)
+    {
+        guard let text = self.text else { return }
+        
+        let attributedString = NSMutableAttributedString(string: text, attributes: [NSAttributedStringKey.font: self.font])
+        
+        let markAttribute: [NSAttributedStringKey: Any] = [NSAttributedStringKey.foregroundColor: markTextColor, NSAttributedStringKey.font: markFont]
+        let range = (text as NSString).range(of: markString)
+        attributedString.addAttributes(markAttribute, range: range)
+        self.attributedText = attributedString
+    }
 }

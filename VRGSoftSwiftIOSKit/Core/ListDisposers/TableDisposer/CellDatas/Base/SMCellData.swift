@@ -24,6 +24,7 @@ open class SMCellData: SMListCellData
 
     var cellSelectionStyle: UITableViewCellSelectionStyle = UITableViewCellSelectionStyle.default
     var cellAccessoryType: UITableViewCellAccessoryType = UITableViewCellAccessoryType.none
+    var cellSeparatorInset: UIEdgeInsets?
     
     var isAutoDeselect: Bool = true
     var isEnableEdit: Bool = true

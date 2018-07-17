@@ -8,6 +8,11 @@
 
 import Foundation
 
+public enum SMValidationErrorStrategy: Int
+{
+    case alert, text
+}
+
 public protocol SMValidationProtocol: AnyObject
 {
     var validatableText: String? { get set }
@@ -20,6 +25,8 @@ open class SMValidator
 {
     open var errorMessage: String?
     open var titleMessage: String?
+    
+    var errorStrategy: SMValidationErrorStrategy = .text
 
     open weak var validatableObject: SMValidationProtocol?
     
