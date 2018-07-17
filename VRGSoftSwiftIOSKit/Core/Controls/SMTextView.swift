@@ -10,7 +10,7 @@ import UIKit
 
 open class SMTextView: UITextView, SMKeyboardAvoiderProtocol, SMValidationProtocol, SMFilterProtocol
 {
-    weak var smdelegate: UITextViewDelegate?
+    open weak var smdelegate: UITextViewDelegate?
     
     override open var delegate: UITextViewDelegate?
     {
@@ -25,9 +25,9 @@ open class SMTextView: UITextView, SMKeyboardAvoiderProtocol, SMValidationProtoc
         }
     }
     
-    var delegateHolder: SMTextViewDelegateHolder?
+    open var delegateHolder: SMTextViewDelegateHolder?
     
-    override init(frame: CGRect, textContainer: NSTextContainer?)
+    override public init(frame: CGRect, textContainer: NSTextContainer?)
     {
         super.init(frame: frame, textContainer: textContainer)
         
@@ -50,7 +50,7 @@ open class SMTextView: UITextView, SMKeyboardAvoiderProtocol, SMValidationProtoc
     
     // MARK: - PlaceHolder
     
-    var placeholderTextView: UITextView = UITextView()
+    open var placeholderTextView: UITextView = UITextView()
     {
         didSet
         {
@@ -120,7 +120,7 @@ open class SMTextView: UITextView, SMKeyboardAvoiderProtocol, SMValidationProtoc
         get { return super.textAlignment }
     }
 
-    var isPlaceHolderHidden: Bool
+    open var isPlaceHolderHidden: Bool
     {
         set
         {
@@ -162,7 +162,7 @@ open class SMTextView: UITextView, SMKeyboardAvoiderProtocol, SMValidationProtoc
     
     public var filteredText: String? { return self.text }
     
-    var filter: SMFilter?
+    open var filter: SMFilter?
 
     
     // MARK: - SMValidationProtocol

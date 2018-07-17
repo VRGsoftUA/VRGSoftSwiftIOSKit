@@ -94,7 +94,7 @@ extension UIImage
         return data
     }
     
-    func fixedOrientation() -> UIImage?
+    open func fixedOrientation() -> UIImage?
     {
         if imageOrientation == .up
         {
