@@ -70,7 +70,7 @@ open class SMTextField: UITextField, SMKeyboardAvoiderProtocol, SMValidationProt
     
     open var delegateHolder: SMTextFieldDelegateHolder?
     
-    override init(frame: CGRect)
+    override public init(frame: CGRect)
     {
         super.init(frame: frame)
         
