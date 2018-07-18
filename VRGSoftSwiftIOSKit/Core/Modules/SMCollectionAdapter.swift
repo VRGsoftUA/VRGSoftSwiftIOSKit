@@ -8,20 +8,20 @@
 
 import UIKit
 
-class SMCollectionAdapter: SMListAdapter, SMCollectionDisposerMulticastDelegate
+open class SMCollectionAdapter: SMListAdapter, SMCollectionDisposerMulticastDelegate
 {
-    override var listDisposer: SMListDisposer? { return collectionDisposer }
+    override open var listDisposer: SMListDisposer? { return collectionDisposer }
     
-    let collectionDisposer: SMCollectionDisposerModeled
+    open let collectionDisposer: SMCollectionDisposerModeled
     
-    init(collectionDisposer aCollectionDisposer: SMCollectionDisposerModeled)
+    public init(collectionDisposer aCollectionDisposer: SMCollectionDisposerModeled)
     {
         collectionDisposer = aCollectionDisposer
         super.init()
         collectionDisposer.multicastDelegate.addDelegate(self)
     }
     
-    override func prepareSections()
+    override open func prepareSections()
     {
         if delegate == nil
         {
@@ -34,7 +34,7 @@ class SMCollectionAdapter: SMListAdapter, SMCollectionDisposerMulticastDelegate
         }
     }
     
-    override func cleanMoreCellData()
+    override open func cleanMoreCellData()
     {
         for section: SMCollectonSection in collectionDisposer.sections
         {
@@ -52,12 +52,12 @@ class SMCollectionAdapter: SMListAdapter, SMCollectionDisposerMulticastDelegate
     }
 
     
-    override func reloadData()
+    override open func reloadData()
     {
         collectionDisposer.reloadData()
     }
     
-    override func updateSectionWith(models aModels: [AnyObject], sectionIndex aSectionIndex: Int, needLoadMore aNeedLoadMore: SMListAdapterClosureType?)
+    override open func updateSectionWith(models aModels: [AnyObject], sectionIndex aSectionIndex: Int, needLoadMore aNeedLoadMore: SMListAdapterClosureType?)
     {
         var section: SMCollectonSection?
         

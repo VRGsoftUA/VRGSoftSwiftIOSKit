@@ -10,9 +10,9 @@ import UIKit
 
 public typealias SMViewControllerCallback = (SMViewController, Any?) -> Void
 
-@objc public class SMViewController: UIViewController
+@objc open class SMViewController: UIViewController
 {
-    var callBack: SMViewControllerCallback?
+    open var callBack: SMViewControllerCallback?
     
     open func performCallBackWith(sender aSender: Any?, goBack isGoBack: Bool)
     {
@@ -26,7 +26,7 @@ public typealias SMViewControllerCallback = (SMViewController, Any?) -> Void
     
     open var isVisible: Bool = false
     
-    var activity: SMNativeActivityAdapter = SMNativeActivityAdapter()
+    open var activity: SMNativeActivityAdapter = SMNativeActivityAdapter()
     
     open func showActivity()
     {
