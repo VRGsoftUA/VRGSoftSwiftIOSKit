@@ -84,7 +84,7 @@ open class SMTableDisposerModeled: SMTableDisposer
 }
 
 
-extension SMTableDisposerModeledMulticastDelegate
+public extension SMTableDisposerModeledMulticastDelegate
 {
     func tableDisposer(_ aTableDisposer: SMTableDisposer, didCreateCellData aCellData: SMCellData)
     {
@@ -92,7 +92,7 @@ extension SMTableDisposerModeledMulticastDelegate
     }
 }
 
-extension SMTableDisposerModeledDelegate
+public extension SMTableDisposerModeledDelegate
 {
     func tableDisposer(_ aTableDisposer: SMTableDisposer, didCreateCellData aCellData: SMCellData)
     {

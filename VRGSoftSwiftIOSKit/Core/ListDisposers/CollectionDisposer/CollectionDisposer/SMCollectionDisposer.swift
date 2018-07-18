@@ -491,7 +491,7 @@ open class SMCollectionDisposer: SMListDisposer, UICollectionViewDelegateFlowLay
     }
 }
 
-extension SMCollectionViewDataSource
+public extension SMCollectionViewDataSource
 {
     func collectionView(_ collectionView: UICollectionView, canMoveItemAt indexPath: IndexPath) -> Bool { return false }
     func collectionView(_ collectionView: UICollectionView, moveItemAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) { }
@@ -504,12 +504,12 @@ extension SMCollectionViewDataSource
 }
 
 
-extension SMCollectionDisposerMulticastDelegate
+public extension SMCollectionDisposerMulticastDelegate
 {
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) { }
 }
 
-extension SMCollectionDisposerDelegate
+public extension SMCollectionDisposerDelegate
 {
     func collectionDisposer(_ aCollectionDisposer: SMCollectionDisposer, didSetupCell aCell: UICollectionViewCell, at aIndexPath: IndexPath) { }
 }

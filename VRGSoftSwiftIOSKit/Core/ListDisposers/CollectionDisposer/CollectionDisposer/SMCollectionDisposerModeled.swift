@@ -97,7 +97,7 @@ open class SMCollectionDisposerModeled: SMCollectionDisposer
 }
 
 
-extension SMCollectionDisposerModeledMulticastDelegate
+public extension SMCollectionDisposerModeledMulticastDelegate
 {
     public func collectionDisposer(_ aCollectionDisposer: SMCollectionDisposer, didCreateCellData aCellData: SMCollectionCellData)
     {
@@ -105,7 +105,7 @@ extension SMCollectionDisposerModeledMulticastDelegate
     }
 }
 
-extension SMCollectionDisposerModeledDelegate
+public extension SMCollectionDisposerModeledDelegate
 {
     public func collectionDisposer(_ aCollectionDisposer: SMCollectionDisposer, didCreateCellData aCellData: SMCollectionCellData)
     {

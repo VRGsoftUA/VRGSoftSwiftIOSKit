@@ -526,7 +526,7 @@ open class SMTableDisposer: SMListDisposer, UITableViewDelegate, UITableViewData
 }
 
 
-extension SMTableViewDataSource
+public extension SMTableViewDataSource
 {
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool { return false }
     
@@ -542,7 +542,7 @@ extension SMTableViewDataSource
 }
 
 
-extension SMTableDisposerDelegate
+public extension SMTableDisposerDelegate
 {
     func tableDisposer(_ aTableDisposer: SMTableDisposer, didCreateCell aCell: UITableViewCell) { }
     
@@ -550,7 +550,7 @@ extension SMTableDisposerDelegate
 }
 
 
-extension SMTableDisposerMulticastDelegate
+public extension SMTableDisposerMulticastDelegate
 {
     func tableDisposer(_ aTableDisposer: SMTableDisposer, didCreateCell aCell: UITableViewCell) { }
     
