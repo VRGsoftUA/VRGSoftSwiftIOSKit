@@ -9,20 +9,20 @@
 import UIKit
 
 
-class SMTableAdapter: SMListAdapter, SMTableDisposerMulticastDelegate
+open class SMTableAdapter: SMListAdapter, SMTableDisposerMulticastDelegate
 {
-    override var listDisposer: SMListDisposer? { return tableDisposer }
+    override open var listDisposer: SMListDisposer? { return tableDisposer }
     
-    let tableDisposer: SMTableDisposerModeled
+    open let tableDisposer: SMTableDisposerModeled
 
-    init(tableDisposer aTableDisposer: SMTableDisposerModeled)
+    public init(tableDisposer aTableDisposer: SMTableDisposerModeled)
     {
         tableDisposer = aTableDisposer
         super.init()
         tableDisposer.multicastDelegate.addDelegate(self)
     }
     
-    override func prepareSections()
+    override open func prepareSections()
     {
         if delegate == nil
         {
@@ -35,7 +35,7 @@ class SMTableAdapter: SMListAdapter, SMTableDisposerMulticastDelegate
         }
     }
     
-    override func cleanMoreCellData()
+    override open func cleanMoreCellData()
     {
         for section: SMSectionReadonly in tableDisposer.sections
         {
@@ -52,12 +52,12 @@ class SMTableAdapter: SMListAdapter, SMTableDisposerMulticastDelegate
         }
     }
     
-    override func reloadData()
+    override open func reloadData()
     {
         tableDisposer.reloadData()
     }
     
-    override func updateSectionWith(models aModels: [AnyObject], sectionIndex aSectionIndex: Int, needLoadMore aNeedLoadMore: SMListAdapterClosureType?)
+    override open func updateSectionWith(models aModels: [AnyObject], sectionIndex aSectionIndex: Int, needLoadMore aNeedLoadMore: SMListAdapterClosureType?)
     {
         var section: SMSectionReadonly?
         
@@ -114,7 +114,7 @@ class SMTableAdapter: SMListAdapter, SMTableDisposerMulticastDelegate
         }
     }
     
-    func setupModels(_ aModels: [AnyObject], forSection aSection: SMSectionReadonly)
+    open func setupModels(_ aModels: [AnyObject], forSection aSection: SMSectionReadonly)
     {
         self.tableDisposer.setupModels(aModels, forSection: aSection)
     }

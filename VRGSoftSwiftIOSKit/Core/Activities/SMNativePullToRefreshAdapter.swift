@@ -10,8 +10,8 @@ import UIKit
 
 open class SMNativePullToRefreshAdapter: SMPullToRefreshAdapter
 {
-    let refreshControl: UIRefreshControl = UIRefreshControl()
-    
+    open let refreshControl: UIRefreshControl = UIRefreshControl()
+        
     override open var enabled: Bool?
     {
         set {
@@ -24,7 +24,7 @@ open class SMNativePullToRefreshAdapter: SMPullToRefreshAdapter
         }
     }
     
-    override init()
+    override public init()
     {
         super.init()
         

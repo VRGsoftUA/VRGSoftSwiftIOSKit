@@ -26,8 +26,13 @@ open class SMValidator
     open var errorMessage: String?
     open var titleMessage: String?
     
-    var errorStrategy: SMValidationErrorStrategy = .text
+    open var errorStrategy: SMValidationErrorStrategy = .text
 
+    public init()
+    {
+        
+    }
+    
     open weak var validatableObject: SMValidationProtocol?
     
     open func validate() -> Bool
@@ -341,7 +346,7 @@ open class SMValidatorLenghtMoreOrEqualThan: SMValidator
 {
     let number: Int
     
-    init(aNumber: Int)
+    public init(aNumber: Int)
     {
         number = aNumber
         

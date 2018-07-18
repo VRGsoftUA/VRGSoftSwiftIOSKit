@@ -12,7 +12,7 @@ open class SMNativeMoreTableViewCellData: SMCellData, SMPagingMoreCellDataProtoc
 {
     public var needLoadMore: SMBlockAction<Any>?
     
-    convenience init()
+    convenience public init()
     {
         self.init(model: nil)
     
@@ -25,7 +25,7 @@ open class SMNativeMoreTableViewCellData: SMCellData, SMPagingMoreCellDataProtoc
 open class SMNativeMoreTableViewCell: SMCell, SMPagingMoreCellProtocol
 {
 
-    let activity: UIActivityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.gray)
+    open let activity: UIActivityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.gray)
     
     override open func setup()
     {

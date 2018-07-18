@@ -8,12 +8,12 @@
 
 import UIKit
 
-class SMNativeActivityAdapter: SMActivityAdapter
+open class SMNativeActivityAdapter: SMActivityAdapter
 {
-    let backgroundView: UIView = UIView()
-    let activity: UIActivityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+    open let backgroundView: UIView = UIView()
+    open let activity: UIActivityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: .gray)
     
-    override func configureWith(view aView: UIView)
+    override open func configureWith(view aView: UIView)
     {
         backgroundView.removeFromSuperview()
         activity.removeFromSuperview()
@@ -29,14 +29,14 @@ class SMNativeActivityAdapter: SMActivityAdapter
         self.hide()
     }
     
-    override func show()
+    override open func show()
     {
         backgroundView.superview?.bringSubview(toFront: backgroundView)
         backgroundView.sm_showAnimate(false)
         activity.startAnimating()
     }
     
-    override func hide()
+    override open func hide()
     {
         backgroundView.sm_hideAnimate(false)
         activity.stopAnimating()

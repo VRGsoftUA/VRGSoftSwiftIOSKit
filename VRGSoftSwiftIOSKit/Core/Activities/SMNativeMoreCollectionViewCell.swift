@@ -10,7 +10,7 @@ import UIKit
 
 open class SMNativeMoreCollectionViewCellData: SMCollectionCellData, SMPagingMoreCellDataProtocol
 {
-    public var needLoadMore: SMBlockAction<Any>?
+    open var needLoadMore: SMBlockAction<Any>?
     
     public convenience init()
     {

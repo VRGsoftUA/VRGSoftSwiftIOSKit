@@ -10,11 +10,11 @@ import UIKit
 
 open class SMFetcherIntoStorage: SMFetcherWithRequest
 {
-    var isFetchOnlyFromDataBase: Bool = false
-    var isFetchFromDataBaseWhenGatewayRequestFailed: Bool = false
-    var isFetchFromDataBaseWhenGatewayRequestSuccess: Bool = false
+    open var isFetchOnlyFromDataBase: Bool = false
+    open var isFetchFromDataBaseWhenGatewayRequestFailed: Bool = false
+    open var isFetchFromDataBaseWhenGatewayRequestSuccess: Bool = false
     
-    var currentMessage: SMFetcherMessage?
+    open var currentMessage: SMFetcherMessage?
     
     
     // MARK: Request
@@ -143,13 +143,13 @@ open class SMFetcherIntoStorage: SMFetcherWithRequest
         return newRequest
     }
     
-    func gatewayRequestBy(message aMessage: SMFetcherMessage) -> SMGatewayRequest?
+    open func gatewayRequestBy(message aMessage: SMFetcherMessage) -> SMGatewayRequest?
     {
         //override it
         return nil
     }
     
-    func dataBaseRequestBy(message aMessage: SMFetcherMessage) -> SMDBRequest?
+    open func dataBaseRequestBy(message aMessage: SMFetcherMessage) -> SMDBRequest?
     {
         //override it
         return nil
@@ -173,17 +173,17 @@ open class SMFetcherIntoStorage: SMFetcherWithRequest
         request?.start()
     }
     
-    func processFetchedModelsAfterGatewayInResponse(_ aResponse: SMResponse) -> [AnyObject]
+    open func processFetchedModelsAfterGatewayInResponse(_ aResponse: SMResponse) -> [AnyObject]
     {
         return aResponse.boArray
     }
     
-    func canFetchFromDatabaseForFailedResponse(_ aResponse: SMResponse) -> Bool
+    open func canFetchFromDatabaseForFailedResponse(_ aResponse: SMResponse) -> Bool
     {
         return true
     }
     
-    func canFetchFromDatabaseForSuccessResponse(_ aResponse: SMResponse) -> Bool
+    open func canFetchFromDatabaseForSuccessResponse(_ aResponse: SMResponse) -> Bool
     {
         return true
     }
