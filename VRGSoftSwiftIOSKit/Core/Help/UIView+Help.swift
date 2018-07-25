@@ -22,7 +22,7 @@ public extension UIViewLoading where Self: UIView
 extension UIView: UIViewLoading { }
 
 
-@IBDesignable
+
 extension UIView
 {
     @IBInspectable open var cornerRadius: CGFloat {

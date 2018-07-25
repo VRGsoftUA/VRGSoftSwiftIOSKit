@@ -8,7 +8,7 @@
 
 import UIKit
 
-@IBDesignable
+
 open class SMLabel: UILabel
 {
     @IBInspectable open var topT: CGFloat = 0.0
