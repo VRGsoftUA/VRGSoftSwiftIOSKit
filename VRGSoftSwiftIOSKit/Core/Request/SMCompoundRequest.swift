@@ -33,9 +33,18 @@ open class SMCompoundRequest: SMRequest
         super.init()
     }
     
-    open var canExecute: Bool
+    open override func canExecute() -> Bool
     {
-        let result: Bool = requests.filter { request in !request.canExecute()}.count > 0
+        var result: Bool = true
+        
+        for request in requests
+        {
+            if !request.canExecute()
+            {
+                result = false
+                break
+            }
+        }
         
         return result
     }
