@@ -32,7 +32,7 @@ open class SMFetcherIntoStorage: SMFetcherWithRequest
                     
                     guard let strongSelf = self else { return }
                     
-                    if newValue is SMGatewayRequest
+                    if newValue is SMGatewayRequest || newValue is SMCompoundRequest
                     {
                         let success: Bool = aResponse.isSuccess
                         if success
@@ -143,7 +143,7 @@ open class SMFetcherIntoStorage: SMFetcherWithRequest
         return newRequest
     }
     
-    open func gatewayRequestBy(message aMessage: SMFetcherMessage) -> SMGatewayRequest?
+    open func gatewayRequestBy(message aMessage: SMFetcherMessage) -> SMRequest?
     {
         //override it
         return nil
