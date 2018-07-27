@@ -12,19 +12,6 @@ open class SMTextView: UITextView, SMKeyboardAvoiderProtocol, SMValidationProtoc
 {
     open weak var smdelegate: UITextViewDelegate?
     
-    override open var delegate: UITextViewDelegate?
-    {
-        set
-        {
-            smdelegate = newValue
-        }
-        
-        get
-        {
-            return smdelegate
-        }
-    }
-    
     open var delegateHolder: SMTextViewDelegateHolder?
     
     override public init(frame: CGRect, textContainer: NSTextContainer?)
@@ -44,27 +31,24 @@ open class SMTextView: UITextView, SMKeyboardAvoiderProtocol, SMValidationProtoc
     open func setup()
     {
         delegateHolder = SMTextViewDelegateHolder(textView: self)
-        super.delegate = delegateHolder
+        self.delegate = delegateHolder
+        
+        placeholderTextView.frame = self.bounds
+        placeholderTextView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        placeholderTextView.backgroundColor = UIColor.clear
+        placeholderTextView.font = self.font
+        placeholderTextView.textColor = UIColor.gray
+        placeholderTextView.isEditable = false
+        placeholderTextView.isUserInteractionEnabled = false
+        placeholderTextView.isHidden = self.text.count > 0
+        placeholderTextView.textContainerInset = self.textContainerInset
+        self.addSubview(placeholderTextView)
     }
 
     
     // MARK: - PlaceHolder
     
     open var placeholderTextView: UITextView = UITextView()
-    {
-        didSet
-        {
-            placeholderTextView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-            placeholderTextView.backgroundColor = UIColor.clear
-            placeholderTextView.font = self.font
-            placeholderTextView.textColor = UIColor.gray
-            placeholderTextView.isEditable = false
-            placeholderTextView.isUserInteractionEnabled = false
-            placeholderTextView.isHidden = self.text.count > 0
-            placeholderTextView.textContainerInset = self.textContainerInset
-            self.addSubview(placeholderTextView)
-        }
-    }
 
     open var placeholder: String?
     {
@@ -166,6 +150,7 @@ open class SMTextView: UITextView, SMKeyboardAvoiderProtocol, SMValidationProtoc
 
     
     // MARK: - SMValidationProtocol
+    
     public var validatableText: String?
     {
         get
@@ -227,8 +212,8 @@ open class SMTextViewDelegateHolder: NSObject, UITextViewDelegate
     {
         holdedTextView?.smdelegate?.textViewDidEndEditing?(_:textView)
     }
-    
-    public func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool
+
+    public func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool 
     {
         var result = true
         
@@ -239,7 +224,7 @@ open class SMTextViewDelegateHolder: NSObject, UITextViewDelegate
         
         if holdedTextView != nil && holdedTextView?.smdelegate != nil && holdedTextView?.smdelegate?.textView(_:shouldChangeTextIn:replacementText:) != nil
         {
-            return holdedTextView?.smdelegate?.textView?(_: textView, shouldChangeTextIn: range, replacementText: text) ?? result
+            result = holdedTextView?.smdelegate?.textView?(_: textView, shouldChangeTextIn: range, replacementText: text) ?? result
         }
         
         if result
@@ -257,10 +242,10 @@ open class SMTextViewDelegateHolder: NSObject, UITextViewDelegate
         holdedTextView?.smdelegate?.textViewDidChange?(_:textView)
     }
     
-    public func textViewDidChangeSelection(_ textView: UITextView)
-    {
-        holdedTextView?.smdelegate?.textViewDidChangeSelection?(_:textView)
-    }
+//    public func textViewDidChangeSelection(_ textView: UITextView)
+//    {
+//        holdedTextView?.smdelegate?.textViewDidChangeSelection?(_:textView)
+//    }
     
 //    public func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool
 //    {

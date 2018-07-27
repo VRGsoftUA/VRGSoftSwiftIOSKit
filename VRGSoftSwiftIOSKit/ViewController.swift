@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITextFieldDelegate
+class ViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate
 {
     @IBOutlet weak var scrollView: SMKeyboardAvoidingScrollView!
 
@@ -22,6 +22,10 @@ class ViewController: UIViewController, UITextFieldDelegate
     {
         super.viewDidLoad()
     
+        tvTest.smdelegate = self
+        
+        tvTest.text = nil
+        tvTest.placeholder = "test test"
         for i in 10...13
         {
             let tf: SMTextField = self.view.viewWithTag(i) as! SMTextField
@@ -83,6 +87,11 @@ class ViewController: UIViewController, UITextFieldDelegate
     @objc func hide()
     {
         picker?.hide(animated: true)
+    }
+    
+    public func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool
+    {
+        return true
     }
     
 }

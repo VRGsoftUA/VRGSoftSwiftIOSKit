@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Nsp-H7-Ldn">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Nsp-H7-Ldn">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -25,7 +25,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gmv-xw-4eM">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="627"/>
+                                        <rect key="frame" x="0.0" y="64" width="375" height="627"/>
                                         <subviews>
                                             <textField opaque="NO" clipsSubviews="YES" tag="10" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hnA-o8-9mg" customClass="SMTextField" customModule="VRGSoftSwiftIOSKit" customModuleProvider="target">
                                                 <rect key="frame" x="23" y="29" width="328" height="30"/>
@@ -68,10 +68,10 @@
                                                 <textInputTraits key="textInputTraits" keyboardAppearance="alert"/>
                                             </textField>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="gA1-er-eyc" customClass="SMTextView" customModule="VRGSoftSwiftIOSKit" customModuleProvider="target">
-                                                <rect key="frame" x="23" y="568" width="328" height="39"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <rect key="frame" x="23" y="400" width="328" height="77"/>
+                                                <color key="backgroundColor" red="0.019607843140000001" green="0.46666666670000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="39" id="WG0-3D-3zS"/>
+                                                    <constraint firstAttribute="height" constant="77" id="WG0-3D-3zS"/>
                                                 </constraints>
                                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -90,7 +90,7 @@
                                             <constraint firstItem="oxw-go-Wg4" firstAttribute="leading" secondItem="gmv-xw-4eM" secondAttribute="leading" constant="23" id="fex-mY-nF6"/>
                                             <constraint firstAttribute="trailing" secondItem="7RI-gP-cHE" secondAttribute="trailing" constant="24" id="gLr-Se-S9t"/>
                                             <constraint firstAttribute="trailing" secondItem="oxw-go-Wg4" secondAttribute="trailing" constant="24" id="i2D-9d-lU1"/>
-                                            <constraint firstAttribute="bottom" secondItem="gA1-er-eyc" secondAttribute="bottom" constant="20" id="j5h-Rj-NSu"/>
+                                            <constraint firstAttribute="bottom" secondItem="gA1-er-eyc" secondAttribute="bottom" constant="150" id="j5h-Rj-NSu"/>
                                             <constraint firstAttribute="trailing" secondItem="hnA-o8-9mg" secondAttribute="trailing" constant="24" id="qag-R5-OYL"/>
                                             <constraint firstItem="oxw-go-Wg4" firstAttribute="top" secondItem="7RI-gP-cHE" secondAttribute="bottom" constant="85" id="rkf-qu-Qxg"/>
                                             <constraint firstItem="nNa-aP-XeF" firstAttribute="top" secondItem="oxw-go-Wg4" secondAttribute="bottom" constant="81" id="sg6-wE-J6g"/>
@@ -101,8 +101,8 @@
                                 <constraints>
                                     <constraint firstItem="gmv-xw-4eM" firstAttribute="height" secondItem="LUe-c6-lG7" secondAttribute="height" constant="-40" id="Poz-Jx-tRt"/>
                                     <constraint firstItem="gmv-xw-4eM" firstAttribute="leading" secondItem="LUe-c6-lG7" secondAttribute="leading" id="Sdy-Nq-f6C"/>
-                                    <constraint firstItem="gmv-xw-4eM" firstAttribute="top" secondItem="LUe-c6-lG7" secondAttribute="top" id="TLa-vT-6su"/>
-                                    <constraint firstAttribute="bottom" secondItem="gmv-xw-4eM" secondAttribute="bottom" constant="40" id="bBC-Qf-5Ec"/>
+                                    <constraint firstItem="gmv-xw-4eM" firstAttribute="top" secondItem="LUe-c6-lG7" secondAttribute="top" constant="64" id="TLa-vT-6su"/>
+                                    <constraint firstAttribute="bottom" secondItem="gmv-xw-4eM" secondAttribute="bottom" constant="-24" id="bBC-Qf-5Ec"/>
                                     <constraint firstAttribute="trailing" secondItem="gmv-xw-4eM" secondAttribute="trailing" id="cvp-SA-EKm"/>
                                     <constraint firstItem="gmv-xw-4eM" firstAttribute="width" secondItem="LUe-c6-lG7" secondAttribute="width" id="wgM-1e-Brq"/>
                                 </constraints>
@@ -139,7 +139,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Nsp-H7-Ldn" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="deL-Rc-mvS">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
