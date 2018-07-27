@@ -12,7 +12,7 @@ open class SMPopupDatePicker: SMPopupPicker
 {
     // MARK: override next methods to customize:
     
-    override func createPicker() -> UIView?
+    override open func createPicker() -> UIView?
     {
         let pv: UIDatePicker = UIDatePicker(frame: CGRect(origin: CGPoint.zero, size: SMPopupView.popupViewSize()))
         pv.datePickerMode = .date
@@ -21,7 +21,7 @@ open class SMPopupDatePicker: SMPopupPicker
         return pv
     }
     
-    var popupedPicker: UIDatePicker?
+    open var popupedPicker: UIDatePicker?
     {
         return self.picker as? UIDatePicker
     }
@@ -42,7 +42,7 @@ open class SMPopupDatePicker: SMPopupPicker
         }
     }
     
-    override func popupWillAppear(animated: Bool)
+    override open func popupWillAppear(animated: Bool)
     {
         super.popupWillAppear(animated: animated)
         
@@ -59,7 +59,7 @@ open class SMPopupDatePicker: SMPopupPicker
     
     // MARK: - Actions
     
-    @objc func didPopupDatePickerChanged(sender: AnyObject)
+    @objc open func didPopupDatePickerChanged(sender: AnyObject)
     {
         if let selectedItem = selectedItem
         {

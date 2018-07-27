@@ -11,7 +11,7 @@ import UIKit
 
 extension NSAttributedString
 {
-    func height(withConstrainedWidth width: CGFloat, font: UIFont) -> CGFloat
+    open func height(withConstrainedWidth width: CGFloat, font: UIFont) -> CGFloat
     {
         let constraintRect = CGSize(width: width, height: .greatestFiniteMagnitude)
         let boundingBox = self.boundingRect(with: constraintRect, options: .usesLineFragmentOrigin, context: nil)

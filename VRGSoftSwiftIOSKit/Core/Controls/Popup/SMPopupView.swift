@@ -16,7 +16,7 @@ open class SMPopupView: UIView
     static let kSMPopupViewDidHide = "kSMPopupViewDidHide"
     static let kSMPopupViewNeedHide = "kSMPopupViewNeedHide"
     
-    var showStrategy: UIViewController?
+    open var showStrategy: UIViewController?
     open var isShowOverlayView: Bool = false
     open var isHideByTapOutside: Bool = true
     open var isVisible: Bool = false
@@ -33,19 +33,19 @@ open class SMPopupView: UIView
         self.setup()
     }
     
-    override init(frame: CGRect)
+    override public init(frame: CGRect)
     {
         super.init(frame: frame)
         
         self.setup()
     }
     
-    static func popupViewSize() -> CGSize
+    open static func popupViewSize() -> CGSize
     {
         return CGSize(width: 320, height: 216)
     }
     
-    func setup()
+    open func setup()
     {
         NotificationCenter.default.addObserver(self, selector: #selector(notificationNeedHide(aNotification:)), name: NSNotification.Name(rawValue: SMPopupView.kSMPopupViewNeedHide), object: nil)
     }
@@ -53,12 +53,12 @@ open class SMPopupView: UIView
     
     // MARK: Notification
     
-    @objc func notificationNeedHide(aNotification: Notification)
+    @objc open func notificationNeedHide(aNotification: Notification)
     {
         self.hide(animated: true)
     }
     
-    func prepareToShow()
+    open func prepareToShow()
     {
         showStrategy = nil
         
@@ -74,24 +74,24 @@ open class SMPopupView: UIView
         }
     }
     
-    func popupWillAppear(animated: Bool)
+    open func popupWillAppear(animated: Bool)
     {
         self.isVisible = true
         
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: SMPopupView.kSMPopupViewDidShow), object: self)
     }
     
-    func popupDidAppear(animated: Bool)
+    open func popupDidAppear(animated: Bool)
     {
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: SMPopupView.kSMPopupViewDidShow), object: self)
     }
     
-    func popupWillDisappear(animated: Bool)
+    open func popupWillDisappear(animated: Bool)
     {
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: SMPopupView.kSMPopupViewWillHide), object: self)
     }
     
-    func popupDidDisappear(animated: Bool)
+    open func popupDidDisappear(animated: Bool)
     {
         showStrategy = nil
         
@@ -99,7 +99,7 @@ open class SMPopupView: UIView
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: SMPopupView.kSMPopupViewDidHide), object: self)
     }
     
-    func hide(animated: Bool)
+    open func hide(animated: Bool)
     {
         if SMHelper.isIPad
         {
@@ -110,7 +110,7 @@ open class SMPopupView: UIView
         }
     }
     
-    @objc func show(animated: Bool, inView aView: UIView)
+    @objc open func show(animated: Bool, inView aView: UIView)
     {
         if !SMHelper.isIPad
         {
@@ -124,7 +124,7 @@ open class SMPopupView: UIView
         }
     }
     
-    @objc func showFrom(rect: CGRect, inView aView: UIView, permittedArrowDirections directions: UIPopoverArrowDirection)
+    @objc open func showFrom(rect: CGRect, inView aView: UIView, permittedArrowDirections directions: UIPopoverArrowDirection)
     {
         if SMHelper.isIPad
         {

@@ -10,13 +10,13 @@ import UIKit
 
 open class SMPopupCustomSimplePicker: SMPopupSimplePicker
 {
-    var font: UIFont?
-    var textColor: UIColor?
-    var textAlignment: NSTextAlignment?
-    var shadowColor: UIColor?
-    var shadowOffset: CGSize?
+    open var font: UIFont?
+    open var textColor: UIColor?
+    open var textAlignment: NSTextAlignment?
+    open var shadowColor: UIColor?
+    open var shadowOffset: CGSize?
     
-    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView
+    open func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView
     {
         let result: UILabel = view as? UILabel ?? UILabel(frame: CGRect(x: 20, y: 0, width: 270, height: 44))
         

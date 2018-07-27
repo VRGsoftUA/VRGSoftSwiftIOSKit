@@ -18,7 +18,7 @@ open class SMFilter
 {
     open var maxLengthText: Int = Int.max
     
-    init(maxLengthText aMaxLengthText: Int)
+    public init(maxLengthText aMaxLengthText: Int)
     {
         maxLengthText = aMaxLengthText
     }

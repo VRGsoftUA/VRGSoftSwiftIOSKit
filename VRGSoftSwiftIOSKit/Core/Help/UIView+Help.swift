@@ -12,7 +12,7 @@ public protocol UIViewLoading { }
 
 public extension UIViewLoading where Self: UIView
 {
-    static func loadFromNib(nibNameOrNil: String? = nil) -> Self
+    public static func loadFromNib(nibNameOrNil: String? = nil) -> Self
     {
         let result = Bundle.main.loadNibNamed(String(describing: self), owner: self, options: nil)?.last as! Self // swiftlint:disable:this force_cast
         return result
@@ -84,7 +84,7 @@ extension UIView
         }
     }
     
-    var sm_parentViewController: UIViewController?
+    open var sm_parentViewController: UIViewController?
     {
         var parentResponder: UIResponder? = self
         while parentResponder != nil

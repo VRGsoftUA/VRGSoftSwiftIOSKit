@@ -10,12 +10,12 @@ import UIKit
 
 open class SMPopupSimplePicker: SMPopupPicker, UIPickerViewDelegate, UIPickerViewDataSource
 {
-    static let kSMPopupPickerValueDidChange = "kSMPopupPickerValueDidChange"
+    open static let kSMPopupPickerValueDidChange = "kSMPopupPickerValueDidChange"
     
     
     // MARK: override next methods to customize:
     
-    override func createPicker() -> UIView?
+    override open func createPicker() -> UIView?
     {
         let pv: UIPickerView = UIPickerView(frame: CGRect(origin: CGPoint.zero, size: SMPopupView.popupViewSize()))
         pv.delegate = self
@@ -117,7 +117,7 @@ open class SMPopupSimplePicker: SMPopupPicker, UIPickerViewDelegate, UIPickerVie
         }
     }
     
-    override func popupWillAppear(animated: Bool)
+    override open func popupWillAppear(animated: Bool)
     {
         super.popupWillAppear(animated: animated)
         

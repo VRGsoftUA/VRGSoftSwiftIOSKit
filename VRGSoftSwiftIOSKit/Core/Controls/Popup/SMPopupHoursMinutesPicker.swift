@@ -12,7 +12,7 @@ open class SMPopupHoursMinutesPicker: SMPopupPicker, UIPickerViewDelegate, UIPic
 {
     // MARK: override next methods to customize:
     
-    override func createPicker() -> UIView?
+    override open func createPicker() -> UIView?
     {
         let pv: UIPickerView = UIPickerView(frame: CGRect(origin: CGPoint.zero, size: SMPopupView.popupViewSize()))
         pv.delegate = self
@@ -22,7 +22,7 @@ open class SMPopupHoursMinutesPicker: SMPopupPicker, UIPickerViewDelegate, UIPic
         return pv
     }
     
-    var popupedPicker: UIPickerView?
+    open var popupedPicker: UIPickerView?
     {
         get
         {
@@ -66,7 +66,7 @@ open class SMPopupHoursMinutesPicker: SMPopupPicker, UIPickerViewDelegate, UIPic
         }
     }
     
-    override func popupWillAppear(animated: Bool)
+    override open func popupWillAppear(animated: Bool)
     {
         super.popupWillAppear(animated: animated)
         

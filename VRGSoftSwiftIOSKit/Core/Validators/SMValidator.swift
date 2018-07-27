@@ -145,7 +145,7 @@ open class SMValidatorAny: SMValidator
 
 open class SMValidatorIntWithRange: SMValidator
 {
-    let range: NSRange
+    open let range: NSRange
     public init(range aRange: NSRange)
     {
         range = aRange
@@ -168,7 +168,7 @@ open class SMValidatorIntWithRange: SMValidator
 open class SMValidatorCountNumberInTextWithRange: SMValidator
 {
     // range.location=startPoint and range.length=endPoint-range.location+1
-    var range: NSRange
+    open var range: NSRange
     public init(range aRange: NSRange)
     {
         range = aRange
@@ -189,7 +189,7 @@ open class SMValidatorCountNumberInTextWithRange: SMValidator
 
 open class SMValidatorStringWithRange: SMValidator
 {
-    var range: NSRange
+    open var range: NSRange
     public init(range aRange: NSRange)
     {
         range = aRange
@@ -213,7 +213,8 @@ open class SMValidatorStringWithRange: SMValidator
 
 open class SMValidatorEmail: SMValidator
 {
-    override open func validate() -> Bool {
+    override open func validate() -> Bool
+    {
         self.validatableObject?.validatableText = self.validatableObject?.validatableText?.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines)
         
         let mailRegExp: String = "^[A-Z0-9._%+-]+@(?:[A-Z0-9-]+\\.)+(?:[A-Z]{2}|com|org|net|edu|gov|mil|biz|info|mobi|name|aero|asia|jobs|museum)$"
@@ -246,8 +247,8 @@ open class SMValidatorNotEmpty: SMValidator
 
 open class SMValidatorEqual: SMValidator
 {
-    let testedValidator: SMValidator
-    var isIgnoreCase: Bool = false
+    open let testedValidator: SMValidator
+    open var isIgnoreCase: Bool = false
     
     public init(testedValidator aTestedValidator: SMValidator)
     {
@@ -279,7 +280,7 @@ open class SMValidatorEqual: SMValidator
 
 open class SMValidatorRegExp: SMValidator
 {
-    let regularExpression: NSRegularExpression
+    open let regularExpression: NSRegularExpression
 
     public init(regExp aRegExp: NSRegularExpression)
     {
@@ -344,7 +345,7 @@ open class SMValidatorLatinicOnly: SMValidator
 
 open class SMValidatorLenghtMoreOrEqualThan: SMValidator
 {
-    let number: Int
+    open let number: Int
     
     public init(aNumber: Int)
     {

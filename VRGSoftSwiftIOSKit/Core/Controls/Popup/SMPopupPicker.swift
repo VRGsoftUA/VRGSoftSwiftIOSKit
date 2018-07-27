@@ -8,18 +8,18 @@
 
 import UIKit
 
-typealias SMPickeSelectHendlerBlock = (SMPopupPicker, AnyObject) -> Void
+public typealias SMPickeSelectHendlerBlock = (SMPopupPicker, AnyObject) -> Void
 
 open class SMPopupPicker: SMPopupView
 {
-    var selectHandler: SMPickeSelectHendlerBlock?
+    public var selectHandler: SMPickeSelectHendlerBlock?
     
-    var picker: UIView! = UIView()
+    open var picker: UIView! = UIView()
     
     
     // Create, configure and return popupedView
     
-    override func setup()
+    override open func setup()
     {
         super.setup()
         self.frame = CGRect(origin: CGPoint.zero, size: SMPopupView.popupViewSize())

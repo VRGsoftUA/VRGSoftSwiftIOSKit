@@ -11,12 +11,12 @@ import UIKit
 
 extension String
 {
-    func localize() -> String
+    public func localize() -> String
     {
         return NSLocalizedString(self, comment: "")
     }
     
-    func height(withConstrainedWidth width: CGFloat, font: UIFont) -> CGFloat
+    public func height(withConstrainedWidth width: CGFloat, font: UIFont) -> CGFloat
     {
         let constraintRect = CGSize(width: width, height: .greatestFiniteMagnitude)
         let boundingBox = self.boundingRect(with: constraintRect, options: .usesLineFragmentOrigin, attributes: [.font: font], context: nil)
@@ -24,7 +24,7 @@ extension String
         return ceil(boundingBox.height)
     }
     
-    func attributedStringWithInterval(aInterval: CGFloat, aFont: UIFont) -> NSAttributedString
+    public func attributedStringWithInterval(aInterval: CGFloat, aFont: UIFont) -> NSAttributedString
     {
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.lineSpacing = aInterval

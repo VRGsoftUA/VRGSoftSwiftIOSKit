@@ -8,9 +8,9 @@
 
 import UIKit
 
-class SMTableDisposerMapped: SMTableDisposer
+open class SMTableDisposerMapped: SMTableDisposer
 {
-    func mapFromObject()
+    open func mapFromObject()
     {
         for section: SMSectionReadonly in sections
         {
@@ -21,7 +21,7 @@ class SMTableDisposerMapped: SMTableDisposer
         }
     }
 
-    func mapToObject()
+    open func mapToObject()
     {
         for section: SMSectionReadonly in sections
         {
@@ -32,7 +32,7 @@ class SMTableDisposerMapped: SMTableDisposer
         }
     }
 
-    override func reloadData()
+    override open func reloadData()
     {
         (tableView as? SMKeyboardAvoidingTableView)?.removeAllObjectsForKeyboard()
         

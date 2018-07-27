@@ -10,10 +10,10 @@ import Foundation
 
 open class SMPair <FirstType, SecondType>
 {
-    var first: FirstType?
-    var second: SecondType?
+    open var first: FirstType?
+    open var second: SecondType?
     
-    init(first aFirst: FirstType?, second aSecond: SecondType?)
+    public init(first aFirst: FirstType?, second aSecond: SecondType?)
     {
         first = aFirst
         second = aSecond
