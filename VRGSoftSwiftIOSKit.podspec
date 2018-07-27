@@ -31,7 +31,7 @@ Pod::Spec.new do |s|
 
     #platform
         s.platform = :ios
-        s.ios.deployment_target = '10.0'
+        s.ios.deployment_target = '9.0'
 
     #build settings
         s.requires_arc = true
