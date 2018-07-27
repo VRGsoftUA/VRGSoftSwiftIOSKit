@@ -10,11 +10,11 @@ import UIKit
 
 open class SMPopupView: UIView
 {
-    static let kSMPopupViewWillShow = "kSMPopupViewWillShow"
-    static let kSMPopupViewDidShow = "kSMPopupViewDidShow"
-    static let kSMPopupViewWillHide = "kSMPopupViewWillHide"
-    static let kSMPopupViewDidHide = "kSMPopupViewDidHide"
-    static let kSMPopupViewNeedHide = "kSMPopupViewNeedHide"
+    open static let kSMPopupViewWillShow = "kSMPopupViewWillShow"
+    open static let kSMPopupViewDidShow = "kSMPopupViewDidShow"
+    open static let kSMPopupViewWillHide = "kSMPopupViewWillHide"
+    open static let kSMPopupViewDidHide = "kSMPopupViewDidHide"
+    open static let kSMPopupViewNeedHide = "kSMPopupViewNeedHide"
     
     open var showStrategy: UIViewController?
     open var isShowOverlayView: Bool = false

@@ -29,7 +29,7 @@ open class SMPopupPicker: SMPopupView
         self.configureFrames()
     }
     
-    func configureFrames()
+    open func configureFrames()
     {
         self.autoresizingMask = [.flexibleWidth, .flexibleTopMargin]
         picker.autoresizingMask = [.flexibleWidth, .flexibleBottomMargin]
@@ -48,8 +48,8 @@ open class SMPopupPicker: SMPopupView
         picker.autoresizingMask = [.flexibleHeight, .flexibleWidth]
     }
     
-    var _toolbar: SMToolbar?
-    var toolbar: SMToolbar?
+    open var _toolbar: SMToolbar?
+    open var toolbar: SMToolbar?
     {
         set
         {
@@ -75,7 +75,7 @@ open class SMPopupPicker: SMPopupView
         }
     }
     
-    func createPicker() -> UIView?
+    open func createPicker() -> UIView?
     {
         // override it in subclasses
         return nil

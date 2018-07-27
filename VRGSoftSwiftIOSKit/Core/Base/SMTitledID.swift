@@ -19,9 +19,9 @@ open class SMTitledID
         title = aTitle
     }
 
-    open func copy() -> Any
+    open func copy() -> SMTitledID
     {
-        let theCopy = SMTitledID(ID: ID, title: title)
+        let theCopy: SMTitledID = SMTitledID(ID: ID, title: title)
         return theCopy
     }
     
