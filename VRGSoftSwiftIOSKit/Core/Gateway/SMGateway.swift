@@ -15,7 +15,6 @@ open class SMGateway
     open var defaultHeaders: [String: String] = [:]
 
     open var baseUrl: URL?
-    open var parameterEncoding: ParameterEncoding = JSONEncoding.default
     
     open var requests: [SMGatewayRequest] = []
     

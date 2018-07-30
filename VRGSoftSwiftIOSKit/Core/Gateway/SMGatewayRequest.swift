@@ -19,6 +19,8 @@ open class SMGatewayRequest: SMRequest
     
     open var path: String?
     open var type: HTTPMethod
+    open var parameterEncoding: ParameterEncoding = JSONEncoding.default
+
     open var parameters: [String: AnyObject] = [:]
     open var headers: [String: String] = [:]
     
@@ -101,7 +103,7 @@ open class SMGatewayRequest: SMRequest
         print("\n\nSTART", self)
         print("URL - ", fullPath, "\n", "TYPE - ", type, "\n", "HEADERS - ", allHeaders, "\n", "PARAMS - ", allParams, "\n\n")
 
-        let dataRequest = Alamofire.request(fullPath, method: type, parameters: allParams, encoding: gateway.parameterEncoding, headers: allHeaders)
+        let dataRequest = Alamofire.request(fullPath, method: type, parameters: allParams, encoding: parameterEncoding, headers: allHeaders)
         self.dataRequest = dataRequest
         
         dataRequest.responseJSON(completionHandler: {[weak self] responseObject in
