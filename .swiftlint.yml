@@ -1,0 +1,43 @@
+excluded:
+  - Pods
+disabled_rules:
+  - todo
+  - trailing_whitespace
+  - shorthand_operator
+  - identifier_name
+  - opening_brace
+  - type_name
+  - block_based_kvo
+
+opt_in_rules:
+  - explicit_type_interface
+  - force_unwrapping
+  - force_cast
+
+
+force_cast: warning
+force_unwrapping: warning
+
+cyclomatic_complexity:
+  warning: 15
+  error: 20
+vertical_whitespace:
+  max_empty_lines: 2
+large_tuple:
+  warning: 3
+  error: 4
+line_length:
+  warning: 250
+  error: 500
+function_body_length:
+  warning: 45
+  error: 75
+type_body_length:
+  warning: 300
+  error: 400
+file_length:
+  warning: 600
+  error: 700
+function_parameter_count:
+  warning: 10
+  error: 11

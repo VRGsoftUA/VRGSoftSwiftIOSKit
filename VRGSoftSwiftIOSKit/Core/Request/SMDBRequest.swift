@@ -37,33 +37,35 @@ open class SMDBRequest: SMRequest
         self.executing = true
         
         storage.defaultContext(block: { [weak self] aContext in
-            guard let strongSelf = self else { return }
-            if strongSelf.isCancelled()
+            if let strongSelf: SMDBRequest = self
             {
-                strongSelf.executing = false
-                let response = SMResponse()
-                response.isCancelled = true
-                response.isSuccess = true
-                
-                if strongSelf.executeAllResponseBlocksSync
+                if strongSelf.isCancelled()
                 {
-                    strongSelf.executeSynchronouslyAllResponseBlocks(response: response)
+                    strongSelf.executing = false
+                    let response: SMResponse = SMResponse()
+                    response.isCancelled = true
+                    response.isSuccess = true
+                    
+                    if strongSelf.executeAllResponseBlocksSync
+                    {
+                        strongSelf.executeSynchronouslyAllResponseBlocks(response: response)
+                    } else
+                    {
+                        strongSelf.executeAllResponseBlocks(response: response)
+                    }
                 } else
                 {
-                    strongSelf.executeAllResponseBlocks(response: response)
-                }
-            } else
-            {
-                let response = strongSelf.executeRequest(request: strongSelf.fetchRequest, inContext: aContext)
-                response.isSuccess = true
-                strongSelf.executing = false
-                
-                if strongSelf.executeAllResponseBlocksSync
-                {
-                    strongSelf.executeSynchronouslyAllResponseBlocks(response: response)
-                } else
-                {
-                    strongSelf.executeAllResponseBlocks(response: response)
+                    let response: SMResponse = strongSelf.executeRequest(request: strongSelf.fetchRequest, inContext: aContext)
+                    response.isSuccess = true
+                    strongSelf.executing = false
+                    
+                    if strongSelf.executeAllResponseBlocksSync
+                    {
+                        strongSelf.executeSynchronouslyAllResponseBlocks(response: response)
+                    } else
+                    {
+                        strongSelf.executeAllResponseBlocks(response: response)
+                    }
                 }
             }
         })
@@ -75,14 +77,14 @@ open class SMDBRequest: SMRequest
     open func executeRequest(request aRequest: NSFetchRequest<NSFetchRequestResult>, inContext aContext: NSManagedObjectContext) -> SMResponse
     {
         var aError: Error? = nil
-        var results = [AnyObject]()
+        var results: [AnyObject] = []
         
         do {
             results = try aContext.fetch(aRequest)
         } catch {
             aError = error
         }
-        let response = SMResponse()
+        let response: SMResponse = SMResponse()
         if results.count > 0
         {
             response.boArray.append(contentsOf: results)

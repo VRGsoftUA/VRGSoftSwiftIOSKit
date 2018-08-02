@@ -26,7 +26,7 @@ open class SMCollectionAdapter: SMListAdapter, SMCollectionDisposerMulticastDele
         if delegate == nil
         {
             collectionDisposer.sections.removeAll()
-            let section = SMCollectonSection()
+            let section: SMCollectonSection = SMCollectonSection()
             collectionDisposer.addSection(section)
         } else
         {
@@ -74,7 +74,7 @@ open class SMCollectionAdapter: SMListAdapter, SMCollectionDisposerMulticastDele
             collectionDisposer.addSection(value)
         }
         
-        guard let sectionForModels = section else
+        guard let sectionForModels: SMCollectonSection = section else
         {
             assert(false, "SMCollectionAdapter: section for collectionDisposer is nil!")
             return
@@ -86,17 +86,17 @@ open class SMCollectionAdapter: SMListAdapter, SMCollectionDisposerMulticastDele
         {
             if let moreCellData: SMPagingMoreCellDataProtocol = delegate?.moreCellDataForListAdapter(self)
             {
-                if let moreCellDataType = type(of: moreCellData) as? SMCollectionCellData.Type
+                if let moreCellDataType: SMCollectionCellData.Type = type(of: moreCellData) as? SMCollectionCellData.Type
                 {
                     collectionDisposer.register(cellDataClass: moreCellDataType)
                     moreCellData.needLoadMore = SMBlockAction(block: { [weak self] _ in
-                        if let strongSelf = self
+                        if let strongSelf: SMCollectionAdapter = self
                         {
                             strongSelf.moreDelegate?.needLoadMore(listAdapter: strongSelf)
                         }
                     })
                     
-                    if let moreCellData = moreCellData as? SMCollectionCellData
+                    if let moreCellData: SMCollectionCellData = moreCellData as? SMCollectionCellData
                     {
                         sectionForModels.addCellData(moreCellData)
                     }
@@ -115,7 +115,7 @@ open class SMCollectionAdapter: SMListAdapter, SMCollectionDisposerMulticastDele
     
     public func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath)
     {
-        if let cell = cell as? SMPagingMoreCellProtocol
+        if let cell: SMPagingMoreCellProtocol = cell as? SMPagingMoreCellProtocol
         {
             moreCell = cell
             moreDelegate?.needLoadMore(listAdapter: self)

@@ -29,9 +29,9 @@ open class SMFilter
         
         if text.count > 0
         {
-            var charactersCount = 0
+            var charactersCount: Int = 0
             
-            if let filteredText = inputField.filteredText
+            if let filteredText: String = inputField.filteredText
             {
                 charactersCount = (filteredText as NSString).replacingCharacters(in: range, with: text).count
             }

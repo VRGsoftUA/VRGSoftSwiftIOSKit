@@ -11,20 +11,7 @@ import UIKit
 open class SMTextField: UITextField, SMKeyboardAvoiderProtocol, SMValidationProtocol, SMFormatterProtocol, SMFilterProtocol
 {
     open weak var smdelegate: UITextFieldDelegate?
-
-    override open var delegate: UITextFieldDelegate?
-    {
-        set
-        {
-            smdelegate = newValue
-        }
-        
-        get
-        {
-            return smdelegate
-        }
-    }
-
+    
     open var topT: CGFloat = 0.0
     open var leftT: CGFloat = 0.0
     open var bottomT: CGFloat = 0.0
@@ -122,7 +109,7 @@ open class SMTextField: UITextField, SMKeyboardAvoiderProtocol, SMValidationProt
     {
         didSet
         {
-            if let placeholder = placeholder, let placeholderColor = placeholderColor
+            if let placeholder: String = placeholder, let placeholderColor: UIColor = placeholderColor
             {
                 let atrPlaceholder: NSAttributedString = NSAttributedString(string: placeholder, attributes: [NSAttributedStringKey.foregroundColor: placeholderColor as Any])
                 self.attributedPlaceholder = atrPlaceholder
@@ -134,7 +121,7 @@ open class SMTextField: UITextField, SMKeyboardAvoiderProtocol, SMValidationProt
     {
         didSet
         {
-            if let placeholderColor = self.placeholderColor
+            if let placeholderColor: UIColor = self.placeholderColor
             {
                 self.placeholderColor = placeholderColor
             }
@@ -218,7 +205,7 @@ open class SMTextFieldDelegateHolder: NSObject, UITextFieldDelegate
     {
         var result: Bool = true
         
-        if let inputField = textField as? SMTextField
+        if let inputField: SMTextField = textField as? SMTextField
         {
             result = inputField.filter?.inputField(inputField, shouldChangeTextIn: range, replacementText: string) ?? result
         }

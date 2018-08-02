@@ -10,13 +10,13 @@ import UIKit
 
 open class SMPopupViewController: UIViewController
 {
-    static let motionDuration = 0.4
+    static let motionDuration: Double = 0.4
     
-    let overlayViewAlpha = 0.3
-    var overlayView: UIView! = UIView()
-    var popupedViewOwner: UIView! = UIView()
+    let overlayViewAlpha: CGFloat = 0.3
+    var overlayView: UIView = UIView()
+    var popupedViewOwner: UIView = UIView()
     var popupedView: SMPopupView = SMPopupView()
-    var btHidden: UIButton! = UIButton(type: UIButtonType.custom)
+    var btHidden: UIButton = UIButton(type: UIButtonType.custom)
     var isShow: Bool = false
     var isAnimatingNow: Bool = false
     
@@ -24,7 +24,7 @@ open class SMPopupViewController: UIViewController
     // MARK: View lifecycle
     func setupSubviews()
     {
-        var frame = self.view.bounds
+        var frame: CGRect = self.view.bounds
         frame.origin.y = self.view.bounds.size.height
         popupedViewOwner.frame = frame
         self.view.addSubview(popupedViewOwner)
@@ -67,7 +67,7 @@ open class SMPopupViewController: UIViewController
     
     func popupWillAppear(animated: Bool)
     {
-        if let superview = view.superview
+        if let superview: UIView = view.superview
         {
             view.frame = superview.bounds
             setupSubviews()
@@ -122,7 +122,7 @@ open class SMPopupViewController: UIViewController
                 self.isAnimatingNow = true
                 
                 //motion
-                var frame = self.popupedViewOwner.frame
+                var frame: CGRect = self.popupedViewOwner.frame
                 frame.origin = CGPoint.zero
                 self.popupedViewOwner.frame = frame
                 
@@ -135,7 +135,7 @@ open class SMPopupViewController: UIViewController
         } else
         {
             //placed
-            var frame = popupedViewOwner.frame
+            var frame: CGRect = popupedViewOwner.frame
             frame.origin = CGPoint.zero
             popupedViewOwner.frame = frame
             
@@ -156,7 +156,7 @@ open class SMPopupViewController: UIViewController
             //animations
             UIView.animate(withDuration: SMPopupViewController.motionDuration, animations: { 
                 //motion
-                var frame = self.popupedViewOwner.frame
+                var frame: CGRect = self.popupedViewOwner.frame
                 frame.origin.y = self.view.bounds.size.height
                 self.popupedViewOwner.frame = frame
                 
@@ -194,5 +194,4 @@ open class SMPopupViewController: UIViewController
             super.preferredContentSize = newValue
         }
     }
-
 }

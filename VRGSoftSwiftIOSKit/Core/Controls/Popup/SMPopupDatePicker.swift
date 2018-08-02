@@ -34,7 +34,7 @@ open class SMPopupDatePicker: SMPopupPicker
         }
         set
         {
-            guard let date = newValue as? Date else
+            guard let date: Date = newValue as? Date else
             {
                 return
             }
@@ -47,7 +47,7 @@ open class SMPopupDatePicker: SMPopupPicker
         super.popupWillAppear(animated: animated)
         
         //setup current value
-        if let selectedItem = selectedItem as? Date
+        if let selectedItem: Date = selectedItem as? Date
         {
             self.popupedPicker?.date = selectedItem
         } else
@@ -61,7 +61,7 @@ open class SMPopupDatePicker: SMPopupPicker
     
     @objc open func didPopupDatePickerChanged(sender: AnyObject)
     {
-        if let selectedItem = selectedItem
+        if let selectedItem: AnyObject = selectedItem
         {
             self.selectHandler?(self, selectedItem)
         }

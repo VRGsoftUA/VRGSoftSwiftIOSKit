@@ -59,7 +59,7 @@ open class SMCollectionDisposer: SMListDisposer, UICollectionViewDelegateFlowLay
     {
         aSection.collectionDisposer = nil
         
-        if let index = sections.index(where: {$0 === aSection})
+        if let index: Int = sections.index(where: {$0 === aSection})
         {
             sections.remove(at: index)
         }
@@ -78,7 +78,7 @@ open class SMCollectionDisposer: SMListDisposer, UICollectionViewDelegateFlowLay
     
     open func index(by aSection: SMSectionReadonly) -> Int
     {
-        if let index = sections.index(where: {$0 === aSection})
+        if let index: Int = sections.index(where: {$0 === aSection})
         {
             return index
         }
@@ -88,9 +88,9 @@ open class SMCollectionDisposer: SMListDisposer, UICollectionViewDelegateFlowLay
     
     open func indexPath(by aCellData: SMCollectionCellData) -> IndexPath?
     {
-        for (index, section) in sections.enumerated()
+        for (index, section): (Int, SMCollectonSection) in sections.enumerated()
         {
-            if let cellDataIndex = section.cellDataSource.index(where: {$0 === aCellData})
+            if let cellDataIndex: Int = section.cellDataSource.index(where: {$0 === aCellData})
             {
                 return IndexPath(row: cellDataIndex, section: index)
             }
@@ -129,7 +129,7 @@ open class SMCollectionDisposer: SMListDisposer, UICollectionViewDelegateFlowLay
     
     open func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell
     {
-        let result = sections[indexPath.section].cell(forIndexPath: indexPath)
+        let result: UICollectionViewCell = sections[indexPath.section].cell(forIndexPath: indexPath)
         
         didSetup(cell: result, at: indexPath)
         
@@ -310,7 +310,7 @@ open class SMCollectionDisposer: SMListDisposer, UICollectionViewDelegateFlowLay
     {
         var result: CGSize?
 
-        let cd = sections[indexPath.section].cellData(at: indexPath.row)
+        let cd: SMCollectionCellData = sections[indexPath.section].cellData(at: indexPath.row)
         result = cd.cellSizeFor(size: collectionView.frame.size)
 
         if result == nil
@@ -318,12 +318,12 @@ open class SMCollectionDisposer: SMListDisposer, UICollectionViewDelegateFlowLay
             result = delegate?.collectionView?(collectionView, layout: collectionViewLayout, sizeForItemAt: indexPath)
         }
 
-        if result == nil, let collectionViewLayout = collectionViewLayout as? UICollectionViewFlowLayout
+        if result == nil, let collectionViewLayout: UICollectionViewFlowLayout = collectionViewLayout as? UICollectionViewFlowLayout
         {
             result = collectionViewLayout.itemSize
         }
 
-        return result ?? CGSize()
+        return result ?? CGSize.zero
     }
 
     open func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt aSection: Int) -> UIEdgeInsets
@@ -337,7 +337,7 @@ open class SMCollectionDisposer: SMListDisposer, UICollectionViewDelegateFlowLay
             result = delegate?.collectionView?(collectionView, layout: collectionViewLayout, insetForSectionAt: aSection)
         }
         
-        if result == nil, let collectionViewLayout = collectionViewLayout as? UICollectionViewFlowLayout
+        if result == nil, let collectionViewLayout: UICollectionViewFlowLayout = collectionViewLayout as? UICollectionViewFlowLayout
         {
             result = collectionViewLayout.sectionInset
         }
@@ -357,7 +357,7 @@ open class SMCollectionDisposer: SMListDisposer, UICollectionViewDelegateFlowLay
             result = delegate?.collectionView?(collectionView, layout: collectionViewLayout, minimumLineSpacingForSectionAt: aSection)
         }
         
-        if result == nil, let collectionViewLayout = collectionViewLayout as? UICollectionViewFlowLayout
+        if result == nil, let collectionViewLayout: UICollectionViewFlowLayout = collectionViewLayout as? UICollectionViewFlowLayout
         {
             result = collectionViewLayout.minimumLineSpacing
         }
@@ -376,7 +376,7 @@ open class SMCollectionDisposer: SMListDisposer, UICollectionViewDelegateFlowLay
             result = delegate?.collectionView?(collectionView, layout: collectionViewLayout, minimumInteritemSpacingForSectionAt: aSection)
         }
         
-        if result == nil, let collectionViewLayout = collectionViewLayout as? UICollectionViewFlowLayout
+        if result == nil, let collectionViewLayout: UICollectionViewFlowLayout = collectionViewLayout as? UICollectionViewFlowLayout
         {
             result = collectionViewLayout.minimumInteritemSpacing
         }
@@ -395,7 +395,7 @@ open class SMCollectionDisposer: SMListDisposer, UICollectionViewDelegateFlowLay
             result = delegate?.collectionView?(collectionView, layout: collectionViewLayout, referenceSizeForHeaderInSection: aSection)
         }
         
-        if result == nil, let collectionViewLayout = collectionViewLayout as? UICollectionViewFlowLayout
+        if result == nil, let collectionViewLayout: UICollectionViewFlowLayout = collectionViewLayout as? UICollectionViewFlowLayout
         {
             result = collectionViewLayout.headerReferenceSize
         }
@@ -414,7 +414,7 @@ open class SMCollectionDisposer: SMListDisposer, UICollectionViewDelegateFlowLay
             result = delegate?.collectionView?(collectionView, layout: collectionViewLayout, referenceSizeForFooterInSection: aSection)
         }
         
-        if result == nil, let collectionViewLayout = collectionViewLayout as? UICollectionViewFlowLayout
+        if result == nil, let collectionViewLayout: UICollectionViewFlowLayout = collectionViewLayout as? UICollectionViewFlowLayout
         {
             result = collectionViewLayout.footerReferenceSize
         }

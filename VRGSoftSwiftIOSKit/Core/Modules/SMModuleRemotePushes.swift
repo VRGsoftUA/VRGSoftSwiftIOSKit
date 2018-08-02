@@ -26,7 +26,7 @@ open class SMModuleRemotePushes
     open func didRegisterForRemoteNotificationsWith(deviceTokenData aDeviceTokenData: Data)
     {
         var token: String = ""
-        for i in 0..<aDeviceTokenData.count
+        for i: Int in 0..<aDeviceTokenData.count
         {
             token += String(format: "%02.2hhx", aDeviceTokenData[i] as CVarArg)
         }

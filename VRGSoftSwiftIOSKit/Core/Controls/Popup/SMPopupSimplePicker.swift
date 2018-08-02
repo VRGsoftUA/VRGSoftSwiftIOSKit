@@ -10,7 +10,7 @@ import UIKit
 
 open class SMPopupSimplePicker: SMPopupPicker, UIPickerViewDelegate, UIPickerViewDataSource
 {
-    open static let kSMPopupPickerValueDidChange = "kSMPopupPickerValueDidChange"
+    open static let kSMPopupPickerValueDidChange: String = "kSMPopupPickerValueDidChange"
     
     
     // MARK: override next methods to customize:
@@ -71,7 +71,7 @@ open class SMPopupSimplePicker: SMPopupPicker, UIPickerViewDelegate, UIPickerVie
             } else if item is String
             {
                 result = item as? String
-            } else if let itemConforms = item as? SMPopupPickerItemTitled
+            } else if let itemConforms: SMPopupPickerItemTitled = item as? SMPopupPickerItemTitled
             {
                 result = itemConforms.itemTitled
             } else
@@ -86,7 +86,7 @@ open class SMPopupSimplePicker: SMPopupPicker, UIPickerViewDelegate, UIPickerVie
     public func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int)
     {
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: SMPopupSimplePicker.kSMPopupPickerValueDidChange), object: self)
-        if let selectedItem = selectedItem
+        if let selectedItem: AnyObject = selectedItem
         {
             selectHandler?(self, selectedItem)
         }
@@ -96,7 +96,7 @@ open class SMPopupSimplePicker: SMPopupPicker, UIPickerViewDelegate, UIPickerVie
     {
         get
         {
-            guard let index = popupedPicker?.selectedRow(inComponent: 0) else
+            guard let index: Int = popupedPicker?.selectedRow(inComponent: 0) else
             {
                 return nil
             }
@@ -106,10 +106,10 @@ open class SMPopupSimplePicker: SMPopupPicker, UIPickerViewDelegate, UIPickerVie
         {
             if newValue != nil
             {
-                let index = _dataSource.index(where: { item -> Bool in
+                let index: Int! = _dataSource.index(where: { item -> Bool in
                     item.isEqual(newValue)
                 })
-                if let index = index
+                if let index: Int = index
                 {
                     popupedPicker?.selectRow(index, inComponent: 0, animated: false)
                 }

@@ -120,7 +120,7 @@ open class SMSectionReadonly: SMListSection<SMCellData>
         
         let index: Int = self.index(byVisible: cellData)
         
-        if  let i = cellDataSource.index(where: {$0 === cellData})
+        if  let i: Int = cellDataSource.index(where: {$0 === cellData})
         {
             cellDataSource.remove(at: i)
         }

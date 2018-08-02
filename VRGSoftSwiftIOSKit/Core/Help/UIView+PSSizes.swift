@@ -171,7 +171,7 @@ extension UIView
     
     open func sm_updateConstrainIfExist(height aHeight: CGFloat)
     {
-        for constraint in self.constraints where constraint.firstAttribute == NSLayoutAttribute.height
+        for constraint: NSLayoutConstraint in self.constraints where constraint.firstAttribute == NSLayoutAttribute.height
         {
             constraint.constant = aHeight
             break
@@ -180,7 +180,7 @@ extension UIView
 
     open func sm_updateConstrainIfExist(width aWidth: CGFloat)
     {
-        for constraint in self.constraints where constraint.firstAttribute == NSLayoutAttribute.width
+        for constraint: NSLayoutConstraint in self.constraints where constraint.firstAttribute == NSLayoutAttribute.width
         {
             constraint.constant = aWidth
             break

@@ -68,7 +68,7 @@ open class SMGateway
         
         result.path = aPath
         
-        if let parameters = aParameters
+        if let parameters: [String: AnyObject] = aParameters
         {
             result.parameters = parameters
         }
@@ -80,10 +80,7 @@ open class SMGateway
         return result
     }
     
-    open func uploadRequest(type aType: HTTPMethod = .post,
-                       path aPath: String,
-                       constructingBlock: @escaping SMConstructingMultipartFormDataBlock,
-                       successBlock aSuccessBlock: @escaping SMGatewayRequestSuccessBlock) -> SMGatewayRequestMultipart
+    open func uploadRequest(type aType: HTTPMethod = .post, path aPath: String, constructingBlock: @escaping SMConstructingMultipartFormDataBlock, successBlock aSuccessBlock: @escaping SMGatewayRequestSuccessBlock) -> SMGatewayRequestMultipart
     {
         let result: SMGatewayRequestMultipart = SMGatewayRequestMultipart(gateway: self, type: aType, constructingBlock: constructingBlock)
         result.path = aPath

@@ -26,11 +26,13 @@ class ViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate
         
         tvTest.text = nil
         tvTest.placeholder = "test test"
-        for i in 10...13
+        for i: Int in 10...13
         {
-            let tf: SMTextField = self.view.viewWithTag(i) as! SMTextField
-            tf.smdelegate = self
-            self.scrollView.addObjectForKeyboard(tf)
+            if let tf: SMTextField = self.view.viewWithTag(i) as? SMTextField
+            {
+                tf.smdelegate = self
+                self.scrollView.addObjectForKeyboard(tf)
+            }
         }
         
         self.scrollView.addObjectForKeyboard(self.tvTest)
@@ -76,7 +78,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate
     
     func createToolbar() -> SMToolbar
     {
-        let toolbar = SMToolbar()
+        let toolbar: SMToolbar = SMToolbar()
         
         let bbi: UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(ViewController.hide))
         toolbar.items = [bbi]
@@ -95,5 +97,3 @@ class ViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate
     }
     
 }
-
-

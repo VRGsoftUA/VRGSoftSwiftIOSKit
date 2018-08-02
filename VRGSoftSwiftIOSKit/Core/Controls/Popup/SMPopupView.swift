@@ -10,11 +10,11 @@ import UIKit
 
 open class SMPopupView: UIView
 {
-    open static let kSMPopupViewWillShow = "kSMPopupViewWillShow"
-    open static let kSMPopupViewDidShow = "kSMPopupViewDidShow"
-    open static let kSMPopupViewWillHide = "kSMPopupViewWillHide"
-    open static let kSMPopupViewDidHide = "kSMPopupViewDidHide"
-    open static let kSMPopupViewNeedHide = "kSMPopupViewNeedHide"
+    open static let kSMPopupViewWillShow: String = "kSMPopupViewWillShow"
+    open static let kSMPopupViewDidShow: String = "kSMPopupViewDidShow"
+    open static let kSMPopupViewWillHide: String = "kSMPopupViewWillHide"
+    open static let kSMPopupViewDidHide: String = "kSMPopupViewDidHide"
+    open static let kSMPopupViewNeedHide: String = "kSMPopupViewNeedHide"
     
     open var showStrategy: UIViewController?
     open var isShowOverlayView: Bool = false
@@ -114,7 +114,7 @@ open class SMPopupView: UIView
     {
         if !SMHelper.isIPad
         {
-            var newFrame = self.frame
+            var newFrame: CGRect = self.frame
             newFrame.size.width = aView.frame.size.width
             self.frame = newFrame
             (showStrategy as? SMPopupViewController)?.show(animated: animated, inView: aView)
@@ -129,7 +129,7 @@ open class SMPopupView: UIView
         if SMHelper.isIPad
         {
             if let vc: UIViewController = showStrategy,
-                let popover = vc.popoverPresentationController
+                let popover: UIPopoverPresentationController  = vc.popoverPresentationController
             {
                 vc.view = self
                 vc.preferredContentSize = self.size

@@ -55,7 +55,7 @@ open class SMCell: UITableViewCell, SMCellProtocol
         selectionStyle = aCellData.cellSelectionStyle
         accessoryType = aCellData.cellAccessoryType
         
-        if let inset = aCellData.cellSeparatorInset
+        if let inset: UIEdgeInsets = aCellData.cellSeparatorInset
         {
             separatorInset = inset
         }

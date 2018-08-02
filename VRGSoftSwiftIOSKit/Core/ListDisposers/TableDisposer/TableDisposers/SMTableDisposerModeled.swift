@@ -45,7 +45,7 @@ open class SMTableDisposerModeled: SMTableDisposer
 
     open func setupModels(_ aModels: [AnyObject], forSection aSection: SMSectionReadonly)
     {
-        for model in aModels
+        for model: AnyObject in aModels
         {
             if let cellData: SMCellData = cellDataFrom(model: model)
             {
@@ -75,7 +75,7 @@ open class SMTableDisposerModeled: SMTableDisposer
     {
         modeledDelegate?.tableDisposer(self, didCreateCellData: aCellData)
         modeledMulticastDelegate.invokeDelegates { [weak self] delegate in
-            if let strongSelf = self
+            if let strongSelf: SMTableDisposerModeled = self
             {
                 delegate.tableDisposer(strongSelf, didCreateCellData: aCellData)
             }

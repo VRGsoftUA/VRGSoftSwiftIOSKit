@@ -72,7 +72,7 @@ open class SMCollectonSection: SMListSection<SMCollectionCellData>
     
     open func index(byVisible aCellData: SMCellData) -> Int
     {
-        if  let index = visibleCellDataSource.index(where: {$0 === aCellData})
+        if  let index: Int = visibleCellDataSource.index(where: {$0 === aCellData})
         {
             return index
         }
@@ -82,18 +82,18 @@ open class SMCollectonSection: SMListSection<SMCollectionCellData>
     
     open func registerHeaderFooterViews()
     {
-        if let nibName = headerViewNibName
+        if let nibName: String = headerViewNibName
         {
             collectionDisposer?.collectionView?.register(UINib(nibName: nibName, bundle: nil), forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: headerViewIdentifier)
-        } else if let headerViewClass = headerViewClass
+        } else if let headerViewClass: UICollectionReusableView.Type = headerViewClass
         {
             collectionDisposer?.collectionView?.register(headerViewClass, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: headerViewIdentifier)
         }
         
-        if let nibName = footerViewNibName
+        if let nibName: String = footerViewNibName
         {
             collectionDisposer?.collectionView?.register(UINib(nibName: nibName, bundle: nil), forSupplementaryViewOfKind: UICollectionElementKindSectionFooter, withReuseIdentifier: footerViewIdentifier)
-        } else if let footerViewClass = headerViewClass
+        } else if let footerViewClass: UICollectionReusableView.Type = headerViewClass
         {
             collectionDisposer?.collectionView?.register(footerViewClass, forSupplementaryViewOfKind: UICollectionElementKindSectionFooter, withReuseIdentifier: footerViewIdentifier)
         }

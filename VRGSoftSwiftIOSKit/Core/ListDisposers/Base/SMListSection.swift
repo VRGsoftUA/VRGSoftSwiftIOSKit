@@ -43,7 +43,7 @@ open class SMListSection<CellDataType: SMListCellData>
     
     open func removeCellData(_ aCellData: CellDataType)
     {
-        if  let index = cellDataSource.index(where: {$0 === aCellData})
+        if  let index: Int = cellDataSource.index(where: {$0 === aCellData})
         {
             cellDataSource.remove(at: index)
         }
@@ -66,7 +66,7 @@ open class SMListSection<CellDataType: SMListCellData>
     
     open func index(by aCellData: CellDataType) -> Int
     {
-        if  let index = cellDataSource.index(where: {$0 === aCellData})
+        if  let index: Int = cellDataSource.index(where: {$0 === aCellData})
         {
             return index
         }
@@ -76,7 +76,7 @@ open class SMListSection<CellDataType: SMListCellData>
     
     open func index(byVisible aCellData: CellDataType) -> Int
     {
-        if  let index = visibleCellDataSource.index(where: {$0 === aCellData})
+        if  let index: Int = visibleCellDataSource.index(where: {$0 === aCellData})
         {
             return index
         }
@@ -87,10 +87,10 @@ open class SMListSection<CellDataType: SMListCellData>
     open func cellData(byTag aTag: Int) -> CellDataType?
     {
         var result: CellDataType? = nil
-        for cd in cellDataSource where cd.tag == aTag
+        for cd: CellDataType in cellDataSource where cd.tag == aTag
         {
-                result = cd
-                break
+            result = cd
+            break
         }
         
         return result
@@ -111,7 +111,7 @@ open class SMListSection<CellDataType: SMListCellData>
     {
         visibleCellDataSource.removeAll()
         
-        for cd in cellDataSource where cd.isVisible
+        for cd: CellDataType in cellDataSource where cd.isVisible
         {
             visibleCellDataSource.append(cd)
         }

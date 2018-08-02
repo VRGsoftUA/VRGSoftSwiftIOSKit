@@ -12,20 +12,20 @@ extension UIViewController
 {
     open class func topViewController(controller: UIViewController? = UIApplication.shared.keyWindow?.rootViewController) -> UIViewController?
     {
-        if let navigationController = controller as? UINavigationController
+        if let navigationController: UINavigationController = controller as? UINavigationController
         {
             return topViewController(controller: navigationController.visibleViewController)
         }
         
-        if let tabController = controller as? UITabBarController
+        if let tabController: UITabBarController = controller as? UITabBarController
         {
-            if let selected = tabController.selectedViewController
+            if let selected: UIViewController = tabController.selectedViewController
             {
                 return topViewController(controller: selected)
             }
         }
         
-        if let presented = controller?.presentedViewController
+        if let presented: UIViewController = controller?.presentedViewController
         {
             return topViewController(controller: presented)
         }

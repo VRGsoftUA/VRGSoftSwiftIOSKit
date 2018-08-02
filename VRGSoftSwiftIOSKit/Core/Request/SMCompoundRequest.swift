@@ -10,14 +10,14 @@ import UIKit
 
 open class SMCompoundRequest: SMRequest
 {
-    open var canceled = false
-    open var finished = false
-    open var executing = false
+    open var canceled: Bool = false
+    open var finished: Bool = false
+    open var executing: Bool = false
     open var currentExecutingIndex: Int = 0
     
-    open var executingRequestingParallel = false
-    open var putResponseToOneResult = false
-    open var continueRequestssIfAtLeastOneFail = false
+    open var executingRequestingParallel: Bool = false
+    open var putResponseToOneResult: Bool = false
+    open var continueRequestssIfAtLeastOneFail: Bool = false
     
     open var requests: [SMRequest] = [SMRequest]()
     
@@ -37,7 +37,7 @@ open class SMCompoundRequest: SMRequest
     {
         var result: Bool = true
         
-        for request in requests
+        for request: SMRequest in requests
         {
             if !request.canExecute()
             {
@@ -68,13 +68,13 @@ open class SMCompoundRequest: SMRequest
     
     private func startParallel()
     {
-        let requestGroup = DispatchGroup()
+        let requestGroup: DispatchGroup = DispatchGroup()
         
-        var responses = [SMResponse](repeating: SMResponse(), count: requests.count)
+        var responses: [SMResponse] = [SMResponse](repeating: SMResponse(), count: requests.count)
         
-        for index in 0...requests.count - 1
+        for index: Int in 0...requests.count - 1
         {
-            let request = requests[index]
+            let request: SMRequest = requests[index]
             
             requestGroup.enter()
             
@@ -93,13 +93,13 @@ open class SMCompoundRequest: SMRequest
     {
         startRequest(withIndex: 0)
         
-        var responses = [SMResponse](repeating: SMResponse(), count: requests.count)
+        var responses: [SMResponse] = [SMResponse](repeating: SMResponse(), count: requests.count)
         
-        for index in 0...responses.count-1
+        for index: Int in 0...responses.count-1
         {
             requests[index].addResponseBlock({ [weak self] (aResponse) in
                 
-                guard let strongSelf = self else { return }
+                guard let strongSelf: SMCompoundRequest = self else { return }
                 
                 responses[index] = aResponse
                 
@@ -143,7 +143,7 @@ open class SMCompoundRequest: SMRequest
             result.boArray = aResponses
         } else
         {
-            for response in aResponses
+            for response: SMResponse in aResponses
             {
                 if !response.isSuccess && result.isSuccess
                 {

@@ -77,7 +77,7 @@ open class SMFetcherWithRequest: SMDataFetcherProtocol
                 _request = newValue
                 
                 request?.addResponseBlock({[weak self] aResponse in
-                    guard let strongSelf = self else { return }
+                    guard let strongSelf: SMFetcherWithRequest = self else { return }
                     aResponse.boArray = strongSelf.processFetchedModelsIn(response: aResponse)
                     
                     strongSelf.fetchCallback?(aResponse)

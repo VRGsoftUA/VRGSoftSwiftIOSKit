@@ -46,7 +46,7 @@ open class SMValidationGroup
         for validator: SMValidator in validators
         {
             if !validator.validate(),
-                let validatableObject = validator.validatableObject
+                let validatableObject: SMValidationProtocol = validator.validatableObject
             {
                 result.append(validatableObject)
             }
@@ -74,14 +74,14 @@ open class SMValidationGroup
     {
         for v: SMValidator in validators
         {
-            if let filed = v.validatableObject as? SMValidationGroupProtocol
+            if let field: SMValidationGroupProtocol = v.validatableObject as? SMValidationGroupProtocol
             {
                 if v.validate()
                 {
-                    filed.applyValideState(group: self)
+                    field.applyValideState(group: self)
                 } else
                 {
-                    filed.applyInvalideState(group: self)
+                    field.applyInvalideState(group: self)
                 }
             }
         }

@@ -33,20 +33,20 @@ open class SMSectionWritable: SMSectionReadonly
     //TODO:
     open func createCell(at anIndex: Int) -> UITableViewCell
     {
-        let cellData = visibleCellData(at: anIndex)
+        let cellData: SMCellData = visibleCellData(at: anIndex)
         
-        let cell = cellData.createCell()
+        let cell: UITableViewCell = cellData.createCell()
         
-        if let cell = cell as? SMCellProtocol
+        if let cell: SMCellProtocol = cell as? SMCellProtocol
         {
             cell.setupCellData(cellData)
         }
     
-        if let keyboardAvoiding = tableDisposer?.tableView as? SMKeyboardAvoidingProtocol,
-            let cell = cell as? SMCell,
-            let tableDisposer = tableDisposer
+        if let keyboardAvoiding: SMKeyboardAvoidingProtocol = tableDisposer?.tableView as? SMKeyboardAvoidingProtocol,
+            let cell: SMCell = cell as? SMCell,
+            let tableDisposer: SMTableDisposer = tableDisposer
         {
-            if let inputTraits = cell.inputTraits()
+            if let inputTraits: [UIResponder] = cell.inputTraits()
             {
                 keyboardAvoiding.addObjectsForKeyboard(inputTraits)
                 if let tableView: SMKeyboardAvoidingTableView = tableDisposer.tableView as? SMKeyboardAvoidingTableView
@@ -66,7 +66,7 @@ open class SMSectionWritable: SMSectionReadonly
         updateCellDataVisibility()
     
         var cell: UITableViewCell
-        for index in 0..<visibleCellDataSource.count
+    for index: Int in 0..<visibleCellDataSource.count
         {
             cell = createCell(at: index)
             cells.append(cell)
@@ -83,9 +83,9 @@ open class SMSectionWritable: SMSectionReadonly
     {
         if let keyboardAvoiding: SMKeyboardAvoidingProtocol = tableDisposer?.tableView as? SMKeyboardAvoidingProtocol
         {
-            for cell in cells where cell is SMCell
+            for cell: UITableViewCell in cells where cell is SMCell
             {
-                if let inputTrails = (cell as? SMCell)?.inputTraits()
+                if let inputTrails: [UIResponder] = (cell as? SMCell)?.inputTraits()
                 {
                     keyboardAvoiding.removeObjectsForKeyboard(inputTrails)
                 }
@@ -107,7 +107,7 @@ open class SMSectionWritable: SMSectionReadonly
         var cellData: SMCellData
         var cell: UITableViewCell
         
-        for index in aIndexes
+        for index: Int in aIndexes
         {
             cellData = visibleCellData(at: index)
             
@@ -141,7 +141,7 @@ open class SMSectionWritable: SMSectionReadonly
         let cell: UITableViewCell = createCell(at: index)
         cells.insert(cell, at: index)
         
-        if aNeedUpdateTable, let tableDisposer = tableDisposer
+        if aNeedUpdateTable, let tableDisposer: SMTableDisposer = tableDisposer
         {
             let indexPath: IndexPath = IndexPath(row: index, section: tableDisposer.index(by: self))
             tableDisposer.tableView?.insertRows(at: [indexPath], with: aRowAnimation)
@@ -162,9 +162,9 @@ open class SMSectionWritable: SMSectionReadonly
         
         let cell: UITableViewCell = self.cell(forIndex: index)
         
-        if let keyboardAvoiding = tableDisposer?.tableView as? SMKeyboardAvoidingProtocol, let cell = cell as? SMCell
+        if let keyboardAvoiding: SMKeyboardAvoidingProtocol = tableDisposer?.tableView as? SMKeyboardAvoidingProtocol, let cell: SMCell = cell as? SMCell
         {
-            if let inputTraits = cell.inputTraits()
+            if let inputTraits: [UIResponder] = cell.inputTraits()
             {
                 keyboardAvoiding.addObjectsForKeyboard(inputTraits)
             }
@@ -174,7 +174,7 @@ open class SMSectionWritable: SMSectionReadonly
         cells.remove(at: index)
         cellData.isVisible = false
         
-        if aNeedUpdateTable, let tableDisposer = tableDisposer
+        if aNeedUpdateTable, let tableDisposer: SMTableDisposer = tableDisposer
         {
             let indexPath: IndexPath = IndexPath(row: index, section: tableDisposer.index(by: self))
             tableDisposer.tableView?.deleteRows(at: [indexPath], with: aRowAnimation)

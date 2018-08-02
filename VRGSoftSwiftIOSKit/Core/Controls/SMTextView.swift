@@ -215,9 +215,9 @@ open class SMTextViewDelegateHolder: NSObject, UITextViewDelegate
 
     public func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool 
     {
-        var result = true
+        var result: Bool = true
         
-        if let inputField = textView as? SMTextView
+        if let inputField: SMTextView = textView as? SMTextView
         {
             result = inputField.filter?.inputField(inputField, shouldChangeTextIn: range, replacementText: text) ?? result
         }

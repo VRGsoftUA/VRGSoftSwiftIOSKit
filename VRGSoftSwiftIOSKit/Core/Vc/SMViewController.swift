@@ -77,7 +77,7 @@ public typealias SMViewControllerCallback = (SMViewController, Any?) -> Void
                     leftNavigationButton.action = #selector(self.didBtNavLeftClicked)
                 }
                 
-                if let leftBbis = self.createLeftNavButtonsAdditionals(), !leftBbis.isEmpty
+                if let leftBbis: [UIBarButtonItem] = self.createLeftNavButtonsAdditionals(), !leftBbis.isEmpty
                 {
                     var fullLeftBbis: [UIBarButtonItem] = [leftNavigationButton]
                     fullLeftBbis.append(contentsOf: leftBbis)
@@ -101,7 +101,7 @@ public typealias SMViewControllerCallback = (SMViewController, Any?) -> Void
                 rightNavigationButton.action = #selector(self.didBtNavRightClicked)
             }
             
-            if let rightBbis = self.createRightNavButtonsAdditionals(), !rightBbis.isEmpty
+            if let rightBbis: [UIBarButtonItem] = self.createRightNavButtonsAdditionals(), !rightBbis.isEmpty
             {
                 var fullRightBbis: [UIBarButtonItem] = [rightNavigationButton]
                 fullRightBbis.append(contentsOf: rightBbis)

@@ -20,7 +20,7 @@ open class SMAlertController: UIAlertController
     
     open func show()
     {
-        if let topViewController = UIViewController.topViewController()
+        if let topViewController: UIViewController = UIViewController.topViewController()
         {
             self.showFrom(vc: topViewController)
         }
@@ -46,19 +46,19 @@ open class SMAlertController: UIAlertController
     {
         let alertController: SMAlertController = SMAlertController(title: aTitle, message: aMessage, preferredStyle: aStyle)
         
-        unowned let __alertController = alertController
+        unowned let __alertController: SMAlertController = alertController
         
         let cancelAction: UIAlertAction = UIAlertAction(title: aCancelButtonTitle, style: UIAlertActionStyle.cancel) { (_ action: UIAlertAction) in
             aHandler?(__alertController, 0)
         }
         alertController.addAction(cancelAction)
         
-        if let otherButtonTitles = aOtherButtonTitles
+        if let otherButtonTitles: [String] = aOtherButtonTitles
         {
             var i: Int = 0
-            for title in otherButtonTitles
+            for title: String in otherButtonTitles
             {
-                let j = i
+                let j: Int = i
                 let action: UIAlertAction = UIAlertAction(title: title, style: UIAlertActionStyle.default) { (_ action: UIAlertAction) in
                     aHandler?(__alertController, j+1)
                 }

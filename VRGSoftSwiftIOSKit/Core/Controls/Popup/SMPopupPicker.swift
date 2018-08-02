@@ -14,7 +14,7 @@ open class SMPopupPicker: SMPopupView
 {
     public var selectHandler: SMPickeSelectHendlerBlock?
     
-    open var picker: UIView! = UIView()
+    open var picker: UIView?
     
     
     // Create, configure and return popupedView
@@ -22,30 +22,39 @@ open class SMPopupPicker: SMPopupView
     override open func setup()
     {
         super.setup()
+        
         self.frame = CGRect(origin: CGPoint.zero, size: SMPopupView.popupViewSize())
         self.backgroundColor = .clear
+        
         picker = self.createPicker()
-        self.addSubview(picker)
+        
+        if let picker: UIView = picker
+        {
+            self.addSubview(picker)
+        }
+        
         self.configureFrames()
     }
     
     open func configureFrames()
     {
         self.autoresizingMask = [.flexibleWidth, .flexibleTopMargin]
-        picker.autoresizingMask = [.flexibleWidth, .flexibleBottomMargin]
+        picker?.autoresizingMask = [.flexibleWidth, .flexibleBottomMargin]
         
-        if let toolbar = _toolbar
+        if let toolbar: SMToolbar = _toolbar
         {
-            var newFrame = picker.frame
-            newFrame.origin.y = toolbar.bounds.size.height
-            picker.frame = newFrame
-            
-            newFrame.origin.y = 0
-            newFrame.size.height += toolbar.bounds.size.height
-            self.frame = newFrame
+            if var newFrame: CGRect = picker?.frame
+            {
+                newFrame.origin.y = toolbar.bounds.size.height
+                picker?.frame = newFrame
+                
+                newFrame.origin.y = 0
+                newFrame.size.height += toolbar.bounds.size.height
+                self.frame = newFrame
+            }
         }
         
-        picker.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+        picker?.autoresizingMask = [.flexibleHeight, .flexibleWidth]
     }
     
     open var _toolbar: SMToolbar?
@@ -56,7 +65,7 @@ open class SMPopupPicker: SMPopupView
             if _toolbar == newValue { return }
             
             _toolbar = newValue
-            if let toolbar = _toolbar
+            if let toolbar: SMToolbar = _toolbar
             {
                 addSubview(toolbar)
                 toolbar.sizeToFit()

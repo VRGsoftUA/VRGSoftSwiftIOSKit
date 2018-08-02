@@ -14,13 +14,12 @@ public extension UIViewLoading where Self: UIView
 {
     public static func loadFromNib(nibNameOrNil: String? = nil) -> Self
     {
-        let result = Bundle.main.loadNibNamed(String(describing: self), owner: self, options: nil)?.last as! Self // swiftlint:disable:this force_cast
+        let result: Self = Bundle.main.loadNibNamed(String(describing: self), owner: self, options: nil)?.last as! Self // swiftlint:disable:this force_cast
         return result
     }
 }
 
 extension UIView: UIViewLoading { }
-
 
 
 extension UIView
@@ -90,7 +89,7 @@ extension UIView
         while parentResponder != nil
         {
             parentResponder = parentResponder?.next
-            if let viewController = parentResponder as? UIViewController
+            if let viewController: UIViewController = parentResponder as? UIViewController
             {
                 return viewController
             }

@@ -36,9 +36,9 @@ open class SMFetcherWithRequestBlock: SMFetcherWithRequest
     
    open override func canFetchWith(message aMessage: SMFetcherMessage) -> Bool
     {
-        var result = false
+        var result: Bool = false
         
-        if let canFetchBlock = canFetchBlock
+        if let canFetchBlock: SMCanFetchBlock = canFetchBlock
         {
             result = canFetchBlock(aMessage)
         } else

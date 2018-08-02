@@ -30,7 +30,7 @@ open class SMCellData: SMListCellData
     open var isEnableEdit: Bool = true
     open var isDisableInputTraits: Bool = false
     
-    open var isCellHeightAutomaticDimension = false
+    open var isCellHeightAutomaticDimension: Bool = false
     
     open var cellHeight: CGFloat = 44.0
     open var cellWidth: CGFloat = 0.0
@@ -55,7 +55,7 @@ open class SMCellData: SMListCellData
 
     open func performSelectedHandlers()
     {
-        for handler in cellSelectedHandlers
+        for handler: SMBlockAction<SMCellData> in cellSelectedHandlers
         {
             handler.performBlockFrom(sender: self)
         }
@@ -63,7 +63,7 @@ open class SMCellData: SMListCellData
 
     open func performDeselectedHandlers()
     {
-        for handler in cellDeselectedHandlers
+        for handler: SMBlockAction<SMCellData> in cellDeselectedHandlers
         {
             handler.performBlockFrom(sender: self)
         }
@@ -74,13 +74,13 @@ open class SMCellData: SMListCellData
     
     open func createCell() -> UITableViewCell
     {
-        if let cellNibName = cellNibName
+        if let cellNibName: String = cellNibName
         {
-            let cell = Bundle.main.loadNibNamed(cellNibName, owner: nil, options: nil)?.last as! UITableViewCell // swiftlint:disable:this force_cast
+            let cell: UITableViewCell = Bundle.main.loadNibNamed(cellNibName, owner: nil, options: nil)?.last as! UITableViewCell // swiftlint:disable:this force_cast
             return cell
         } else
         {
-            let cell = cellClass.init(style: cellStyle, reuseIdentifier: cellIdentifier)
+            let cell: UITableViewCell = cellClass.init(style: cellStyle, reuseIdentifier: cellIdentifier)
             return cell
         }
     }}

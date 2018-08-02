@@ -13,7 +13,7 @@ public extension UserDefaults
 {
     public func setCoding(_ aCoding: NSCoding, forKey aKey: String)
     {
-        let data = NSKeyedArchiver.archivedData(withRootObject: aCoding)
+        let data: Data = NSKeyedArchiver.archivedData(withRootObject: aCoding)
         self.set(data, forKey: aKey)
     }
     
@@ -23,7 +23,7 @@ public extension UserDefaults
         
         let data: Any? = self.object(forKey: aKey)
         
-        if let data = data as? Data
+        if let data: Data = data as? Data
         {
             result = NSKeyedUnarchiver.unarchiveObject(with: data) as? T
         }

@@ -18,20 +18,20 @@ extension String
     
     public func height(withConstrainedWidth width: CGFloat, font: UIFont) -> CGFloat
     {
-        let constraintRect = CGSize(width: width, height: .greatestFiniteMagnitude)
-        let boundingBox = self.boundingRect(with: constraintRect, options: .usesLineFragmentOrigin, attributes: [.font: font], context: nil)
+        let constraintSize: CGSize = CGSize(width: width, height: .greatestFiniteMagnitude)
+        let boundingBox: CGRect = self.boundingRect(with: constraintSize, options: .usesLineFragmentOrigin, attributes: [.font: font], context: nil)
         
         return ceil(boundingBox.height)
     }
     
     public func attributedStringWithInterval(aInterval: CGFloat, aFont: UIFont) -> NSAttributedString
     {
-        let paragraphStyle = NSMutableParagraphStyle()
+        let paragraphStyle: NSMutableParagraphStyle = NSMutableParagraphStyle()
         paragraphStyle.lineSpacing = aInterval
         
-        let fontAttribute = [NSAttributedStringKey.font: aFont]
+        let fontAttribute: [NSAttributedStringKey: UIFont] = [NSAttributedStringKey.font: aFont]
         
-        let attributedString = NSMutableAttributedString(string: self)
+        let attributedString: NSMutableAttributedString = NSMutableAttributedString(string: self)
         attributedString.addAttribute(NSAttributedStringKey.paragraphStyle, value: paragraphStyle, range: NSRange(location: 0, length: attributedString.length))
         attributedString.addAttributes(fontAttribute, range: NSRange(location: 0, length: attributedString.length))
         

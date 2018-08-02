@@ -67,35 +67,35 @@ open class SMGatewayRequest: SMRequest
     
     open func getDataRequest(completion: @escaping (_ request: DataRequest) -> Void)
     {
-        guard let baseUrl = gateway.baseUrl else { return }
+        guard let baseUrl: URL = gateway.baseUrl else { return }
         
         var fullPath: URL = baseUrl
         
-        if let path = path
+        if let path: String = path
         {
             fullPath = fullPath.appendingPathComponent(path)
         }
                 
         var allParams: [String: Any] = [:]
         
-        for (key, value) in (gateway.defaultParameters)
+        for (key, value): (String, AnyObject) in (gateway.defaultParameters)
         {
             allParams.updateValue(value, forKey: key)
         }
 
-        for (key, value) in (parameters)
+        for (key, value): (String, AnyObject) in (parameters)
         {
             allParams.updateValue(value, forKey: key)
         }
 
         var allHeaders: [String: String] = [:]
         
-        for (key, value) in (gateway.defaultHeaders)
+        for (key, value): (String, String) in (gateway.defaultHeaders)
         {
             allHeaders.updateValue(value, forKey: key)
         }
         
-        for (key, value) in (headers)
+        for (key, value): (String, String) in (headers)
         {
             allHeaders.updateValue(value, forKey: key)
         }
@@ -103,7 +103,7 @@ open class SMGatewayRequest: SMRequest
         print("\n\nSTART", self)
         print("URL - ", fullPath, "\n", "TYPE - ", type, "\n", "HEADERS - ", allHeaders, "\n", "PARAMS - ", allParams, "\n\n")
 
-        let dataRequest = Alamofire.request(fullPath, method: type, parameters: allParams, encoding: parameterEncoding, headers: allHeaders)
+        let dataRequest: DataRequest = Alamofire.request(fullPath, method: type, parameters: allParams, encoding: parameterEncoding, headers: allHeaders)
         self.dataRequest = dataRequest
         
         dataRequest.responseJSON(completionHandler: {[weak self] responseObject in
@@ -124,7 +124,8 @@ open class SMGatewayRequest: SMRequest
     
     open func executeSuccessBlock(responseObject aResponseObject: DataResponse<Any>)
     {
-        if let successBlock = successBlock, let dataRequest = dataRequest
+        if let successBlock: SMGatewayRequestSuccessBlock = successBlock,
+            let dataRequest: DataRequest = dataRequest
         {
             let response: SMResponse = successBlock(dataRequest, aResponseObject)
             
@@ -140,7 +141,8 @@ open class SMGatewayRequest: SMRequest
     
     open func executeFailureBlock(responseObject aResponseObject: DataResponse<Any>)
     {
-        if let failureBlock = failureBlock, let dataRequest = dataRequest
+        if let failureBlock: SMGatewayRequestFailureBlock = failureBlock,
+            let dataRequest: DataRequest = dataRequest
         {
             let response: SMResponse = failureBlock(dataRequest, aResponseObject.error)
             

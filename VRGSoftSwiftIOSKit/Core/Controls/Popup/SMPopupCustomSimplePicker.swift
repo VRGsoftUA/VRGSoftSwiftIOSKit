@@ -37,11 +37,11 @@ open class SMPopupCustomSimplePicker: SMPopupSimplePicker
             {
                 result.shadowColor = shadowColor
             }
-            if let shadowOffset = shadowOffset
+            if let shadowOffset: CGSize = shadowOffset
             {
                 result.shadowOffset = shadowOffset
             }
-            if let textAlignment = textAlignment
+            if let textAlignment: NSTextAlignment = textAlignment
             {
                 result.textAlignment = textAlignment
             }
@@ -51,14 +51,14 @@ open class SMPopupCustomSimplePicker: SMPopupSimplePicker
         //setup text
         if row < dataSource.count
         {
-            let item = dataSource[row]
-            if item is SMTitledID
+            let item: AnyObject = dataSource[row]
+            if let item: SMTitledID = item as? SMTitledID
             {
-                result.text = (item as? SMTitledID)?.title
-            } else if item is String
+                result.text = item.title
+            } else if let item: String = item as? String
             {
-                result.text = item.string
-            } else if let itemConforms = item as? SMPopupPickerItemTitled
+                result.text = item
+            } else if let itemConforms: SMPopupPickerItemTitled = item as? SMPopupPickerItemTitled
             {
                 result.text = itemConforms.itemTitled
             } else

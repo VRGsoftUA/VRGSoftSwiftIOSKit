@@ -27,35 +27,35 @@ open class SMGatewayRequestMultipart: SMGatewayRequest
     
     override open func getDataRequest(completion: @escaping (_ request: UploadRequest) -> Void)
     {
-        guard let baseUrl = gateway.baseUrl else { return }
+        guard let baseUrl: URL = gateway.baseUrl else { return }
         
         var fullPath: URL = baseUrl
         
-        if let path = path
+        if let path: String = path
         {
             fullPath = fullPath.appendingPathComponent(path)
         }
         
         var allParams: [String: Any] = [:]
         
-        for (key, value) in (gateway.defaultParameters)
+        for (key, value): (String, AnyObject) in (gateway.defaultParameters)
         {
             allParams.updateValue(value, forKey: key)
         }
         
-        for (key, value) in (parameters)
+        for (key, value): (String, AnyObject) in (parameters)
         {
             allParams.updateValue(value, forKey: key)
         }
         
         var allHeaders: [String: String] = [:]
         
-        for (key, value) in (gateway.defaultHeaders)
+        for (key, value): (String, String) in (gateway.defaultHeaders)
         {
             allHeaders.updateValue(value, forKey: key)
         }
         
-        for (key, value) in (headers)
+        for (key, value): (String, String) in (headers)
         {
             allHeaders.updateValue(value, forKey: key)
         }

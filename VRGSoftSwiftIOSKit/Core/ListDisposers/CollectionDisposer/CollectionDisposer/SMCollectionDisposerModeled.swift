@@ -31,14 +31,14 @@ open class SMCollectionDisposerModeled: SMCollectionDisposer
     
     open func register(cellDataClass aCellDataClass: SMCollectionCellData.Type, forModelClass aModelClass: AnyClass? = nil)
     {
-        if let nibName = aCellDataClass.cellNibName_
+        if let nibName: String = aCellDataClass.cellNibName_
         {
             collectionView?.register(UINib(nibName: nibName, bundle: nil), forCellWithReuseIdentifier: aCellDataClass.cellIdentifier_)
         } else
         {
             collectionView?.register(aCellDataClass.cellClass_, forCellWithReuseIdentifier: aCellDataClass.cellIdentifier_)
         }
-        if let aModelClass = aModelClass
+        if let aModelClass: AnyClass = aModelClass
         {
             registeredClasses[String(describing: aModelClass)] = aCellDataClass
         }
@@ -57,7 +57,7 @@ open class SMCollectionDisposerModeled: SMCollectionDisposer
     
     open func setupModels(_ aModels: [AnyObject], forSection aSection: SMCollectonSection)
     {
-        for model in aModels
+        for model: AnyObject in aModels
         {
             if let cellData: SMCollectionCellData = cellDataFrom(model: model)
             {
@@ -88,7 +88,7 @@ open class SMCollectionDisposerModeled: SMCollectionDisposer
     {
         modeledDelegate?.collectionDisposer(self, didCreateCellData: aCellData)
         modeledMulticastDelegate.invokeDelegates { [weak self] delegate in
-            if let strongSelf = self
+            if let strongSelf: SMCollectionDisposerModeled = self
             {
                 delegate.collectionDisposer(strongSelf, didCreateCellData: aCellData)
             }

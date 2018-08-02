@@ -27,7 +27,7 @@ open class SMTableAdapter: SMListAdapter, SMTableDisposerMulticastDelegate
         if delegate == nil
         {
             tableDisposer.sections.removeAll()
-            let section = SMSectionReadonly()
+            let section: SMSectionReadonly = SMSectionReadonly()
             tableDisposer.addSection(section)
         } else
         {
@@ -74,7 +74,7 @@ open class SMTableAdapter: SMListAdapter, SMTableDisposerMulticastDelegate
             tableDisposer.addSection(value)
         }
         
-        guard let sectionForModels = section else
+        guard let sectionForModels: SMSectionReadonly = section else
         {
             assert(false, "SMCollectionAdapter: section for collectionDisposer is nil!")
             return
@@ -100,13 +100,13 @@ open class SMTableAdapter: SMListAdapter, SMTableDisposerMulticastDelegate
             if let moreCellData: SMPagingMoreCellDataProtocol = delegate?.moreCellDataForListAdapter(self)
             {
                 moreCellData.needLoadMore = SMBlockAction(block: { [weak self] _ in
-                    if let _self = self
+                    if let strongSelf: SMTableAdapter  = self
                     {
-                        _self.moreDelegate?.needLoadMore(listAdapter: _self)
+                        strongSelf.moreDelegate?.needLoadMore(listAdapter: strongSelf)
                     }
                 })
                 
-                if let moreCellData = moreCellData as? SMCellData
+                if let moreCellData: SMCellData = moreCellData as? SMCellData
                 {
                     sectionForModels.addCellData(moreCellData)
                 }
@@ -129,7 +129,7 @@ open class SMTableAdapter: SMListAdapter, SMTableDisposerMulticastDelegate
     
     public func tableView(_ aTableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath)
     {
-        if let cell = cell as? SMPagingMoreCellProtocol
+        if let cell: SMPagingMoreCellProtocol = cell as? SMPagingMoreCellProtocol
         {
             moreCell = cell
             moreDelegate?.needLoadMore(listAdapter: self)

@@ -13,7 +13,7 @@ open class SMKeyboardAvoidingScrollView: UIScrollView, SMKeyboardAvoidingProtoco
     var _keyboardAvoider: SMKeyboardAvoider?
     var keyboardAvoider: SMKeyboardAvoider
     {
-        if let keyboardAvoider = _keyboardAvoider
+        if let keyboardAvoider: SMKeyboardAvoider = _keyboardAvoider
         {
             return keyboardAvoider
         } else

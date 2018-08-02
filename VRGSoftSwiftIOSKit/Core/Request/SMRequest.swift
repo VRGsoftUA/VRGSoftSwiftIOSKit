@@ -98,7 +98,7 @@ open class SMRequest
     
     open func executeAllResponseBlocks(response aResponse: SMResponse)
     {
-        for node in responseBlocks
+        for node: SMResponseNode in responseBlocks
         {
             node.responseQueue.async {
                 node.responseBlock(aResponse)
@@ -110,7 +110,7 @@ open class SMRequest
 
     open func executeSynchronouslyAllResponseBlocks(response aResponse: SMResponse)
     {
-        for node in responseBlocks
+        for node: SMResponseNode in responseBlocks
         {
             node.responseQueue.sync {
                 node.responseBlock(aResponse)

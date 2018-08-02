@@ -68,7 +68,7 @@ open class SMModuleListPaging: SMModuleList, SMListAdapterMoreDelegate
             nextMessage.isReloading = true
             nextMessage.isLoadingMore = false
             
-            if let canFetch = dataFetcher?.canFetchWith(message: nextMessage), canFetch
+            if let canFetch: Bool = dataFetcher?.canFetchWith(message: nextMessage), canFetch
             {
                 pageOffset = nextMessage.pagingOffset
                 isReloading = nextMessage.isReloading
@@ -107,7 +107,7 @@ open class SMModuleListPaging: SMModuleList, SMListAdapterMoreDelegate
     {
         let result: SMFetcherMessage = super.createFetcherMessage()
         
-        if let result = result as? SMFetcherMessagePaging
+        if let result: SMFetcherMessagePaging = result as? SMFetcherMessagePaging
         {
             result.pagingOffset = pageOffset
             result.pagingSize = pageSize
@@ -132,7 +132,7 @@ open class SMModuleListPaging: SMModuleList, SMListAdapterMoreDelegate
             
             var result: Bool = false
             
-            if let strongSelf = self
+            if let strongSelf: SMModuleListPaging = self
             {
                 result = (aModels.count >= strongSelf.pageSize && strongSelf.pageSize != 0)
             }

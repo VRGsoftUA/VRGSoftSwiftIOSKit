@@ -42,7 +42,7 @@ open class SMModuleList
         {
             pullToRefreshAdapter?.refreshCallback = { [weak self] (aPullToRefreshAdapter: SMPullToRefreshAdapter) in
                 
-                if let strongSelf = self
+                if let strongSelf: SMModuleList = self
                 {
                     if !strongSelf.isUseActivityAdapterWithPullToRefreshAdapter
                     {
@@ -139,13 +139,13 @@ open class SMModuleList
                                 
                                 var ms: [AnyObject]
                                 
-                                if let obj = obj as? [AnyObject]
+                                if let obj: [AnyObject] = obj as? [AnyObject]
                                 {
                                     ms = obj
                                 } else
                                 {
                                     var mutMs: [AnyObject] = []
-                                    for j in (i..<aModels.count)
+                                    for j: Int in (i..<aModels.count)
                                     {
                                         i = j
                                         
@@ -174,7 +174,7 @@ open class SMModuleList
                         
                         self?.listAdapter.reloadData()
                         
-                        if let strongSelf = self
+                        if let strongSelf: SMModuleList = self
                         {
                             self?.delegate?.moduleList(strongSelf, didReloadDataWithModels: aModels)
                         }
@@ -182,7 +182,7 @@ open class SMModuleList
                     {
                         if !aResponse.isCancelled
                         {
-                            if let strongSelf = self
+                            if let strongSelf: SMModuleList = self
                             {
                                 self?.fetcherFailedCallback?(strongSelf, aResponse)
                             }

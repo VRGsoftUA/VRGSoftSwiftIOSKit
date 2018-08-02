@@ -43,7 +43,7 @@ extension UIImage
         let rect = CGRect(origin: CGPoint.zero, size: size)
         context?.setBlendMode(CGBlendMode.normal)
         
-        if let cgI = cgImage
+        if let cgI: CGImage = cgImage
         {
             context?.draw(cgI, in: rect)
         }
@@ -67,7 +67,7 @@ extension UIImage
     
     open var roundedImage: UIImage?
     {
-        let rect = CGRect(origin: CGPoint(x: 0, y: 0), size: self.size)
+        let rect: CGRect = CGRect(origin: CGPoint(x: 0, y: 0), size: self.size)
         UIGraphicsBeginImageContextWithOptions(self.size, false, self.scale)
         UIBezierPath(roundedRect: rect, cornerRadius: self.size.height).addClip()
         self.draw(in: rect)
@@ -83,7 +83,7 @@ extension UIImage
         
         var data: Data? = UIImageJPEGRepresentation(self, compression)
         
-        while let length = data?.count, length > maxFileSize, compression > maxCompression
+        while let length: Int = data?.count, length > maxFileSize, compression > maxCompression
         {
             compression -= 0.05
             data = UIImageJPEGRepresentation(self, compression)
@@ -131,13 +131,13 @@ extension UIImage
         }
         
         let colorSpace: CGColorSpace = CGColorSpaceCreateDeviceRGB()
-        let bitmapInfo = CGBitmapInfo(rawValue: CGImageAlphaInfo.premultipliedLast.rawValue)
-        guard let context = CGContext(data: nil, width: Int(UInt(size.width)), height: Int(UInt(
+        let bitmapInfo: CGBitmapInfo = CGBitmapInfo(rawValue: CGImageAlphaInfo.premultipliedLast.rawValue)
+        guard let context: CGContext = CGContext(data: nil, width: Int(UInt(size.width)), height: Int(UInt(
             size.height)), bitsPerComponent: 8, bytesPerRow: 0, space: colorSpace, bitmapInfo: bitmapInfo.rawValue) else { return nil }
         
         context.concatenate(transform)
         
-        if let cgI = cgImage
+        if let cgI: CGImage = cgImage
         {
             switch imageOrientation
             {
@@ -152,5 +152,4 @@ extension UIImage
         
         return UIImage(cgImage: cgImage)
     }
-
 }

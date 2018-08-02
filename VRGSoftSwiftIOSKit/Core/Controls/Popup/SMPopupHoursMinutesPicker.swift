@@ -53,8 +53,8 @@ open class SMPopupHoursMinutesPicker: SMPopupPicker, UIPickerViewDelegate, UIPic
     {
         get
         {
-            guard let hours = popupedPicker?.selectedRow(inComponent: 0),
-                 let minutes = popupedPicker?.selectedRow(inComponent: 1) else
+            guard let hours: Int = popupedPicker?.selectedRow(inComponent: 0),
+                 let minutes: Int = popupedPicker?.selectedRow(inComponent: 1) else
             {
                 return nil
             }
@@ -104,7 +104,7 @@ open class SMPopupHoursMinutesPicker: SMPopupPicker, UIPickerViewDelegate, UIPic
         //setup current view
         if selectedItem != nil
         {
-            guard let selNumber = selectedItem as? NSNumber else
+            guard let selNumber: NSNumber = selectedItem as? NSNumber else
             {
                 return
             }

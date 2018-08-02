@@ -14,7 +14,7 @@ open class SMTableDisposerMapped: SMTableDisposer
     {
         for section: SMSectionReadonly in sections
         {
-            if let section = section as? SMSectionWritable
+            if let section: SMSectionWritable = section as? SMSectionWritable
             {
                 section.mapFromObject()
             }
@@ -25,7 +25,7 @@ open class SMTableDisposerMapped: SMTableDisposer
     {
         for section: SMSectionReadonly in sections
         {
-            if let section = section as? SMSectionWritable
+            if let section: SMSectionWritable = section as? SMSectionWritable
             {
                 section.mapToObject()
             }

@@ -30,14 +30,14 @@ open class SMFetcherIntoStorage: SMFetcherWithRequest
                 
                 _request?.addResponseBlock({[weak self] aResponse in
                     
-                    guard let strongSelf = self else { return }
+                    guard let strongSelf: SMFetcherIntoStorage = self else { return }
                     
                     if newValue is SMGatewayRequest || newValue is SMCompoundRequest
                     {
                         let success: Bool = aResponse.isSuccess
                         if success
                         {
-                            let models = strongSelf.processFetchedModelsAfterGatewayInResponse(aResponse)
+                            let models: [AnyObject] = strongSelf.processFetchedModelsAfterGatewayInResponse(aResponse)
                             aResponse.boArray = models
                             
                             if strongSelf.isFetchFromDataBaseWhenGatewayRequestSuccess && strongSelf.canFetchFromDatabaseForFailedResponse(aResponse)
@@ -54,7 +54,7 @@ open class SMFetcherIntoStorage: SMFetcherWithRequest
                                 {
                                     aResponse.boArray = strongSelf.processFetchedModelsIn(response: aResponse)
                                     
-                                    if let fetchCallback = strongSelf.fetchCallback
+                                    if let fetchCallback: SMDataFetchCallback = strongSelf.fetchCallback
                                     {
                                         fetchCallback(aResponse)
                                     }
@@ -63,7 +63,7 @@ open class SMFetcherIntoStorage: SMFetcherWithRequest
                             {
                                 aResponse.boArray = strongSelf.processFetchedModelsIn(response: aResponse)
                                 
-                                if let fetchCallback = strongSelf.fetchCallback
+                                if let fetchCallback: SMDataFetchCallback = strongSelf.fetchCallback
                                 {
                                     fetchCallback(aResponse)
                                 }
@@ -82,7 +82,7 @@ open class SMFetcherIntoStorage: SMFetcherWithRequest
                             {
                                 aResponse.boArray = strongSelf.processFetchedModelsIn(response: aResponse)
                                 
-                                if let fetchCallback = strongSelf.fetchCallback
+                                if let fetchCallback: SMDataFetchCallback = strongSelf.fetchCallback
                                 {
                                     fetchCallback(aResponse)
                                 }
@@ -91,7 +91,7 @@ open class SMFetcherIntoStorage: SMFetcherWithRequest
                         {
                             aResponse.boArray = strongSelf.processFetchedModelsIn(response: aResponse)
                             
-                            if let fetchCallback = strongSelf.fetchCallback
+                            if let fetchCallback: SMDataFetchCallback = strongSelf.fetchCallback
                             {
                                 fetchCallback(aResponse)
                             }
@@ -101,7 +101,7 @@ open class SMFetcherIntoStorage: SMFetcherWithRequest
                     {
                         aResponse.boArray = strongSelf.processFetchedModelsIn(response: aResponse)
                         
-                        if let fetchCallback = strongSelf.fetchCallback
+                        if let fetchCallback: SMDataFetchCallback = strongSelf.fetchCallback
                         {
                             fetchCallback(aResponse)
                         }
@@ -115,7 +115,7 @@ open class SMFetcherIntoStorage: SMFetcherWithRequest
     
     override open func preparedRequestBy(message aMessage: SMFetcherMessage) -> SMRequest?
     {
-        if let currentMessage = currentMessage
+        if let currentMessage: SMFetcherMessage = currentMessage
         {
             if  currentMessage === aMessage
             {

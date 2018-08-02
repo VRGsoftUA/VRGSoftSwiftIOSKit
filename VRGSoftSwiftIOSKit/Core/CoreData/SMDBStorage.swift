@@ -57,7 +57,7 @@ open class SMDBStorage
 
     open var defaultContext: NSManagedObjectContext
     {
-        if let defaultContext = _defaultContext
+        if let defaultContext: NSManagedObjectContext = _defaultContext
         {
             return defaultContext
         } else
@@ -70,7 +70,7 @@ open class SMDBStorage
 
     open var persistentStoreCoordinator: NSPersistentStoreCoordinator
     {
-        if let persistentStoreCoordinator = _persistentStoreCoordinator
+        if let persistentStoreCoordinator: NSPersistentStoreCoordinator = _persistentStoreCoordinator
         {
             return persistentStoreCoordinator
         } else
@@ -83,7 +83,7 @@ open class SMDBStorage
 
     open var managedObjectModel: NSManagedObjectModel
     {
-        if let managedObjectModel = _managedObjectModel
+        if let managedObjectModel: NSManagedObjectModel = _managedObjectModel
         {
             return managedObjectModel
         } else
@@ -112,7 +112,7 @@ open class SMDBStorage
     {
         let fileManager: FileManager = FileManager.default
         guard let directoryURL: URL = fileManager.urls(for: FileManager.SearchPathDirectory.documentDirectory, in: FileManager.SearchPathDomainMask.userDomainMask).last,
-            let persistentStoreName = persistentStoreName() else
+            let persistentStoreName: String = persistentStoreName() else
         {
             assert(true, #function + " persistentStoreName " + String(describing: self))
             return NSPersistentStoreCoordinator()
@@ -141,7 +141,7 @@ open class SMDBStorage
         
         if self.mergeModels()
         {
-            if let mergedModel = NSManagedObjectModel.mergedModel(from: [Bundle.main])
+            if let mergedModel: NSManagedObjectModel = NSManagedObjectModel.mergedModel(from: [Bundle.main])
             {
                 result = mergedModel
             } else
@@ -155,7 +155,7 @@ open class SMDBStorage
                 let modelPath: String = Bundle.main.path(forResource: name, ofType: "momd")
             {
                 let modelURL: URL = URL(fileURLWithPath: modelPath)
-                if let managedObjectModel = NSManagedObjectModel(contentsOf: modelURL)
+                if let managedObjectModel: NSManagedObjectModel = NSManagedObjectModel(contentsOf: modelURL)
                 {
                     result = managedObjectModel
                 } else
@@ -227,7 +227,7 @@ open class SMDBStorage
             do
             {
                 try aContext.save()
-                if let parent = aContext.parent
+                if let parent: NSManagedObjectContext = aContext.parent
                 {
                     save(context: parent)
                 }
@@ -249,7 +249,7 @@ open class SMDBStorage
         savingContext.perform {
             aBlock(savingContext)
             self.save(context: savingContext)
-            if let completion = aCompletion
+            if let completion: SMStorageVoidBlock = aCompletion
             {
                 completion()
             }
@@ -263,7 +263,7 @@ open class SMDBStorage
         savingContext.performAndWait {
             aBlock(savingContext)
             self.save(context: savingContext)
-            if let completion = aCompletion
+            if let completion: SMStorageVoidBlock = aCompletion
             {
                 completion()
             }
@@ -293,7 +293,7 @@ open class SMDBStorage
     open func removeAllEntitiesWithName(_ anEntityName: String)
     {
         self.saveAndWait(block: { context in
-            let entitiesRequest = NSFetchRequest<NSFetchRequestResult>()
+            let entitiesRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest<NSFetchRequestResult>()
             entitiesRequest.entity = NSEntityDescription.entity(forEntityName: anEntityName, in: context)
             entitiesRequest.includesPropertyValues = false
             
@@ -302,9 +302,9 @@ open class SMDBStorage
             do
             {
                 entities = try context.fetch(entitiesRequest)
-                for object in entities
+                for object: AnyObject in entities
                 {
-                    if let object = object as? NSManagedObject
+                    if let object: NSManagedObject = object as? NSManagedObject
                     {
                         context.delete(object)
                     }
@@ -323,7 +323,7 @@ open class SMDBStorage
     open func remove(object aObject: NSManagedObject)
     {
         self.saveAndWait(block: { context in
-            if let obj = aObject.inContext(context)
+            if let obj: NSManagedObject = aObject.inContext(context)
             {
                 context.delete(obj)
             }
@@ -334,9 +334,9 @@ open class SMDBStorage
     {
         self.saveAndWait(block: { context in
             
-            for object in aObjects
+            for object: NSManagedObject in aObjects
             {
-                if let obj = object.inContext(context)
+                if let obj: NSManagedObject = object.inContext(context)
                 {
                     context.delete(obj)
                 }
@@ -365,7 +365,7 @@ open class SMDBStorage
     {
         let allEntities: [NSEntityDescription] = self.managedObjectModel.entities
 
-        for entityDescription in allEntities
+        for entityDescription: NSEntityDescription in allEntities
         {
             let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest()
             fetchRequest.entity = entityDescription
@@ -376,9 +376,9 @@ open class SMDBStorage
             {
                 let items: [Any] = try aContext.fetch(fetchRequest)
 
-                for managedObject in items
+                for managedObject: Any in items where managedObject is NSManagedObject
                 {
-                    if let managedObject = managedObject as? NSManagedObject
+                    if let managedObject: NSManagedObject = managedObject as? NSManagedObject
                     {
                         aContext.delete(managedObject)
                     }
@@ -395,7 +395,7 @@ open class SMDBStorage
     
     open func clone(object aObject: NSManagedObject, clonePolicy aClonePolicy: SMClonePolicy = SMClonePolicy.asTemp) -> NSManagedObject?
     {
-        guard let entityName = aObject.entity.name,
+        guard let entityName: String = aObject.entity.name,
             let entity: NSEntityDescription = NSEntityDescription.entity(forEntityName: entityName, in: self.defaultContext) else
         {
             return nil
@@ -415,7 +415,7 @@ open class SMDBStorage
         
         let attributes: [String: NSAttributeDescription] = entity.attributesByName
         
-        for attributeName in attributes
+        for attributeName: (key: String, value: NSAttributeDescription) in attributes
         {
             result.setValue(aObject.value(forKey: attributeName.key), forKey: attributeName.key)
         }

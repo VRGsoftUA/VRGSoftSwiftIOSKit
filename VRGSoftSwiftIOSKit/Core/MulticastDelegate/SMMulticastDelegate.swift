@@ -80,9 +80,9 @@ open class SMMulticastDelegate<T> {
      */
 	public func invokeDelegates(_ invocation: (T) -> Void) {
 		
-		for delegate in delegates.allObjects {
+        for delegate: AnyObject in delegates.allObjects {
             
-            if let delegate = delegate as? T {
+            if let delegate: T = delegate as? T {
                 invocation(delegate)
             }
 		}

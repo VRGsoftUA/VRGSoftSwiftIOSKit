@@ -62,7 +62,7 @@ open class SMTableDisposer: SMListDisposer, UITableViewDelegate, UITableViewData
     {
         aSection.tableDisposer = nil
         
-        if let index = sections.index(where: {$0 === aSection})
+        if let index: Int = sections.index(where: {$0 === aSection})
         {
             sections.remove(at: index)
         }
@@ -88,7 +88,7 @@ open class SMTableDisposer: SMListDisposer, UITableViewDelegate, UITableViewData
 
     open func index(by aSection: SMSectionReadonly) -> Int
     {
-        if let index = sections.index(where: {$0 === aSection})
+        if let index: Int = sections.index(where: {$0 === aSection})
         {
             return index
         }
@@ -103,7 +103,7 @@ open class SMTableDisposer: SMListDisposer, UITableViewDelegate, UITableViewData
 
     override open func reloadData()
     {
-        if let tableView = tableView as? SMKeyboardAvoidingTableView
+        if let tableView: SMKeyboardAvoidingTableView = tableView as? SMKeyboardAvoidingTableView
         {
             tableView.removeAllObjectsForKeyboard()
         }
@@ -123,9 +123,9 @@ open class SMTableDisposer: SMListDisposer, UITableViewDelegate, UITableViewData
     
     open func indexPath(by aCellData: SMCellData) -> IndexPath?
     {
-        for (index, section) in sections.enumerated()
+        for (index, section): (Int, SMSectionReadonly) in sections.enumerated()
         {
-            if let cellDataIndex = section.cellDataSource.index(where: {$0 === aCellData})
+            if let cellDataIndex: Int = section.cellDataSource.index(where: {$0 === aCellData})
             {
                 return IndexPath(row: cellDataIndex, section: index)
             }
@@ -144,7 +144,7 @@ open class SMTableDisposer: SMListDisposer, UITableViewDelegate, UITableViewData
 
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
-        let result = sections[indexPath.section].cell(forIndex: indexPath.row)
+        let result: UITableViewCell = sections[indexPath.section].cell(forIndex: indexPath.row)
         
         didSetup(cell: result, at: indexPath)
         
@@ -261,7 +261,7 @@ open class SMTableDisposer: SMListDisposer, UITableViewDelegate, UITableViewData
     {
         var result: CGFloat = 0
         
-        if let headerView = sections[section].headerView
+        if let headerView: UIView = sections[section].headerView
         {
             result = headerView.frame.size.height
         } else if sections[section].headerTitle?.count ?? 0 > 0
@@ -276,7 +276,7 @@ open class SMTableDisposer: SMListDisposer, UITableViewDelegate, UITableViewData
     {
         var result: CGFloat = 0
         
-        if let footerView = sections[section].footerView
+        if let footerView: UIView = sections[section].footerView
         {
             result = footerView.frame.size.height
         } else  if sections[section].footerTitle?.count ?? 0 > 0
