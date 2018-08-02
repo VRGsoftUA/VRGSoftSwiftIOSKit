@@ -14,7 +14,8 @@ open class SMCollectionCellData: SMListCellData
     open var cellClass: UICollectionViewCell.Type = UICollectionViewCell.self
     open var cellIdentifier: String
     {
-        return String(describing: type(of: self))
+        let result: String = type(of: self).cellIdentifier_
+        return result
     }
     
     open class var cellClass_: UICollectionViewCell.Type
@@ -29,13 +30,14 @@ open class SMCollectionCellData: SMListCellData
     
     open class var cellIdentifier_: String
     {
-        return String(describing: self)
+        let result: String = String(describing: self)
+        return result
     }
     
     open var isAutoDeselect: Bool = true
-
+    
     open var cellSize: CGSize?
-
+    
     open func cellSizeFor(size aSize: CGSize) -> CGSize?
     {
         return cellSize
