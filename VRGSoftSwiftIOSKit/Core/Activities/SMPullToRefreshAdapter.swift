@@ -8,13 +8,13 @@
 
 import UIKit
 
-typealias SMPullToRefreshAdapterRefreshCallback = (SMPullToRefreshAdapter) -> Void
+public typealias SMPullToRefreshAdapterRefreshCallback = (SMPullToRefreshAdapter) -> Void
 
 open class SMPullToRefreshAdapter
 {
     open var enabled: Bool?
     
-    open var refreshCallback: SMPullToRefreshAdapterRefreshCallback?
+    public var refreshCallback: SMPullToRefreshAdapterRefreshCallback?
     
     open func configureWith(scrollView aScrollView: UIScrollView)
     {
