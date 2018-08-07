@@ -1,9 +1,9 @@
 //
 //  SMCollectonSection.swift
-//  zirtue-ios
+//  SwiftKit
 //
 //  Created by OLEKSANDR SEMENIUK on 4/11/18.
-//  Copyright © 2018 zirtue. All rights reserved.
+//  Copyright © 2018 VRG Soft. All rights reserved.
 //
 
 import UIKit

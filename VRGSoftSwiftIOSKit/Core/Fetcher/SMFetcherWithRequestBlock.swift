@@ -2,8 +2,8 @@
 //  SMFetcherWithRequestBlock.swift
 //  SwiftKit
 //
-//  Created by developer on 7/25/18.
-//  Copyright © 2018 OLEKSANDR SEMENIUK. All rights reserved.
+//  Created by OLEKSANDR SEMENIUK on 7/25/18.
+//  Copyright © 2018 VRG Soft. All rights reserved.
 //
 
 import UIKit

@@ -1,9 +1,9 @@
 //
 //  String + Help.swift
-//  zirtue-ios
+//  SwiftKit
 //
 //  Created by OLEKSANDR SEMENIUK on 6/22/18.
-//  Copyright © 2018 zirtue. All rights reserved.
+//  Copyright © 2018 VRG Soft. All rights reserved.
 //
 
 import Foundation

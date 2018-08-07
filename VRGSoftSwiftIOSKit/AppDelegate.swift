@@ -3,7 +3,7 @@
 //  VRGSoftSwiftIOSKit
 //
 //  Created by OLEKSANDR SEMENIUK on 8/4/17.
-//  Copyright © 2017 OLEKSANDR SEMENIUK. All rights reserved.
+//  Copyright © 2017 VRG Soft. All rights reserved.
 //
 
 import UIKit

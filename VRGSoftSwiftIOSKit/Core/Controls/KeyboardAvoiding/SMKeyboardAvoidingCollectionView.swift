@@ -1,9 +1,9 @@
 //
 //  SMKeyboardAvoidingCollectionView.swift
-//  whaleslide-ios
+//  SwiftKit
 //
 //  Created by OLEKSANDR SEMENIUK on 5/18/18.
-//  Copyright © 2018 WhaleSlide. All rights reserved.
+//  Copyright © 2018 VRG Soft. All rights reserved.
 //
 
 import UIKit

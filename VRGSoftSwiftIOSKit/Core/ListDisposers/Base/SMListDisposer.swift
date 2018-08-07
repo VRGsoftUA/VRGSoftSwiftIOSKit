@@ -1,9 +1,9 @@
 //
 //  SMListDisposer.swift
-//  whaleslide-ios
+//  SwiftKit
 //
 //  Created by OLEKSANDR SEMENIUK on 4/24/18.
-//  Copyright © 2018 WhaleSlide. All rights reserved.
+//  Copyright © 2018 VRG Soft. All rights reserved.
 //
 
 import UIKit

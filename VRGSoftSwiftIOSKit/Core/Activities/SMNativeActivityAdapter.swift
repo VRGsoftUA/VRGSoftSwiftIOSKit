@@ -3,7 +3,7 @@
 //  SwiftKit
 //
 //  Created by OLEKSANDR SEMENIUK on 2/8/18.
-//  Copyright © 2018 OLEKSANDR SEMENIUK. All rights reserved.
+//  Copyright © 2018 VRG Soft. All rights reserved.
 //
 
 import UIKit
