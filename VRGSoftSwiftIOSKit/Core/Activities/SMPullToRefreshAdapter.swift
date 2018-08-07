@@ -14,7 +14,7 @@ open class SMPullToRefreshAdapter
 {
     open var enabled: Bool?
     
-    var refreshCallback: SMPullToRefreshAdapterRefreshCallback?
+    open var refreshCallback: SMPullToRefreshAdapterRefreshCallback?
     
     open func configureWith(scrollView aScrollView: UIScrollView)
     {

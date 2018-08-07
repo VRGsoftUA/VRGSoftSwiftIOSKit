@@ -98,7 +98,6 @@ open class SMListSection<CellDataType: SMListCellData>
     
     open var cellDataCount: Int
     {
-
         return cellDataSource.count
     }
     

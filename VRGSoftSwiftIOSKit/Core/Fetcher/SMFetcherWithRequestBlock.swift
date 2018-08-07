@@ -1,6 +1,6 @@
 //
 //  SMFetcherWithRequestBlock.swift
-//  time-capsule-ios
+//  SwiftKit
 //
 //  Created by developer on 7/25/18.
 //  Copyright © 2018 OLEKSANDR SEMENIUK. All rights reserved.

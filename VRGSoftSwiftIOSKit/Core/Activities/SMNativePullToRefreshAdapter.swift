@@ -48,7 +48,7 @@ open class SMNativePullToRefreshAdapter: SMPullToRefreshAdapter
         refreshControl.endRefreshing()
     }
     
-    @objc func refreshControlDidBeginRefreshing(sender aSender: UIRefreshControl)
+    @objc open func refreshControlDidBeginRefreshing(sender aSender: UIRefreshControl)
     {
         if refreshControl == aSender
         {
