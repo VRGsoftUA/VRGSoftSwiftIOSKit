@@ -10,7 +10,7 @@ import UIKit
 
 extension UIButton
 {
-    func setBackgroundColor(_ aColor: UIColor, for aState: UIControlState)
+    open func setBackgroundColor(_ aColor: UIColor, for aState: UIControlState)
     {
         self.setBackgroundImage(UIImage.resizableImageWith(color: aColor), for: aState)
     }
