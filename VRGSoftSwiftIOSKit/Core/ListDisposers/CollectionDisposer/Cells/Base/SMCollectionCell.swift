@@ -8,7 +8,7 @@
 
 import UIKit
 
-open class SMCollectionCell: UICollectionViewCell, SMCollectionCellProtocol
+open class SMCollectionCell: UICollectionViewCell, SMCellProtocol
 {
     public override init(frame: CGRect)
     {
@@ -37,9 +37,9 @@ open class SMCollectionCell: UICollectionViewCell, SMCollectionCellProtocol
     
     // MARK: SMCollectionCellProtocol
     
-    open var cellData: SMCollectionCellData?
+    open var cellData: SMListCellData?
     
-    open func setupCellData(_ aCellData: SMCollectionCellData)
+    open func setupCellData(_ aCellData: SMListCellData)
     {
         cellData = aCellData
         

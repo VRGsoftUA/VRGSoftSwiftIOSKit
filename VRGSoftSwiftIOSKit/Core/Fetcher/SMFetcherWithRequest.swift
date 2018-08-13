@@ -76,7 +76,7 @@ open class SMFetcherWithRequest: SMDataFetcherProtocol
                 self.cancelFetching()
                 _request = newValue
                 
-                request?.addResponseBlock({[weak self] aResponse in
+                request?.addResponseBlock({[weak self] aResponse in // swiftlint:disable:this explicit_type_interface
                     guard let strongSelf: SMFetcherWithRequest = self else { return }
                     aResponse.boArray = strongSelf.processFetchedModelsIn(response: aResponse)
                     

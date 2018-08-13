@@ -40,7 +40,7 @@ open class SMModuleList
     {
         didSet
         {
-            pullToRefreshAdapter?.refreshCallback = { [weak self] (aPullToRefreshAdapter: SMPullToRefreshAdapter) in
+            pullToRefreshAdapter?.refreshCallback = { [weak self] (aPullToRefreshAdapter: SMPullToRefreshAdapter) in // swiftlint:disable:this explicit_type_interface
                 
                 if let strongSelf: SMModuleList = self
                 {
@@ -111,7 +111,7 @@ open class SMModuleList
             dataFetcher?.cancelFetching()
             willFetchDataWith(message: aMessage)
 
-            dataFetcher?.fetchDataBy(message: aMessage, withCallback: { [weak self] (aResponse: SMResponse) in
+            dataFetcher?.fetchDataBy(message: aMessage, withCallback: { [weak self] (aResponse: SMResponse) in // swiftlint:disable:this explicit_type_interface
                 DispatchQueue.main.sync {
                     
                     if aResponse.isSuccess

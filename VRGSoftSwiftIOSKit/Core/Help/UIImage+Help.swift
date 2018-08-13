@@ -40,7 +40,7 @@ extension UIImage
         context?.translateBy(x: 0.0, y: size.height)
         context?.scaleBy(x: 1.0, y: -1.0)
         
-        let rect = CGRect(origin: CGPoint.zero, size: size)
+        let rect: CGRect = CGRect(origin: CGPoint.zero, size: size)
         context?.setBlendMode(CGBlendMode.normal)
         
         if let cgI: CGImage = cgImage

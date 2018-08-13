@@ -84,7 +84,7 @@ open class SMCompoundRequest: SMRequest
             }
         }
         
-        requestGroup.notify(queue: DispatchQueue.main) { [weak self] in
+        requestGroup.notify(queue: DispatchQueue.main) { [weak self] in // swiftlint:disable:this explicit_type_interface
             self?.finishedAllRequestsWithResponces(aResponses: responses)
         }
     }
@@ -97,7 +97,7 @@ open class SMCompoundRequest: SMRequest
         
         for index: Int in 0...responses.count-1
         {
-            requests[index].addResponseBlock({ [weak self] (aResponse) in
+            requests[index].addResponseBlock({ [weak self] (aResponse) in // swiftlint:disable:this explicit_type_interface
                 
                 guard let strongSelf: SMCompoundRequest = self else { return }
                 

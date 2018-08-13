@@ -89,7 +89,7 @@ open class SMCollectionAdapter: SMListAdapter, SMCollectionDisposerMulticastDele
                 if let moreCellDataType: SMCollectionCellData.Type = type(of: moreCellData) as? SMCollectionCellData.Type
                 {
                     collectionDisposer.register(cellDataClass: moreCellDataType)
-                    moreCellData.needLoadMore = SMBlockAction(block: { [weak self] _ in
+                    moreCellData.needLoadMore = SMBlockAction(block: { [weak self] _ in // swiftlint:disable:this explicit_type_interface
                         if let strongSelf: SMCollectionAdapter = self
                         {
                             strongSelf.moreDelegate?.needLoadMore(listAdapter: strongSelf)

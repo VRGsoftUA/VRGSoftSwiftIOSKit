@@ -35,7 +35,7 @@ open class SMCell: UITableViewCell, SMCellProtocol
     
     override open var reuseIdentifier: String?
     {
-        return cellData?.cellIdentifier
+        return (cellData as? SMCellData)?.cellIdentifier
     }
 
     override open func awakeFromNib()
@@ -47,17 +47,20 @@ open class SMCell: UITableViewCell, SMCellProtocol
     
     // MARK: SMCellProtocol
     
-    open var cellData: SMCellData?
-    open func setupCellData(_ aCellData: SMCellData)
+    open var cellData: SMListCellData?
+    open func setupCellData(_ aCellData: SMListCellData)
     {
         cellData = aCellData
 
-        selectionStyle = aCellData.cellSelectionStyle
-        accessoryType = aCellData.cellAccessoryType
-        
-        if let inset: UIEdgeInsets = aCellData.cellSeparatorInset
+        if let cellData: SMCellData = aCellData as? SMCellData
         {
-            separatorInset = inset
+            selectionStyle = cellData.cellSelectionStyle
+            accessoryType = cellData.cellAccessoryType
+            
+            if let inset: UIEdgeInsets = cellData.cellSeparatorInset
+            {
+                separatorInset = inset
+            }
         }
         
         tag = aCellData.tag

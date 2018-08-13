@@ -87,7 +87,7 @@ open class SMCollectionDisposerModeled: SMCollectionDisposer
     open func didCreate(cellData aCellData: SMCollectionCellData)
     {
         modeledDelegate?.collectionDisposer(self, didCreateCellData: aCellData)
-        modeledMulticastDelegate.invokeDelegates { [weak self] delegate in
+        modeledMulticastDelegate.invokeDelegates { [weak self] delegate in // swiftlint:disable:this explicit_type_interface
             if let strongSelf: SMCollectionDisposerModeled = self
             {
                 delegate.collectionDisposer(strongSelf, didCreateCellData: aCellData)

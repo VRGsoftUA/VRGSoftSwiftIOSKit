@@ -21,7 +21,6 @@
 		B7265F0D20EDF69C003FBD5C /* SMCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7265E9E20EDF69C003FBD5C /* SMCollectionCell.swift */; };
 		B7265F0E20EDF69C003FBD5C /* SMCollectonSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7265EA020EDF69C003FBD5C /* SMCollectonSection.swift */; };
 		B7265F0F20EDF69C003FBD5C /* SMCollectionCellData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7265EA320EDF69C003FBD5C /* SMCollectionCellData.swift */; };
-		B7265F1020EDF69C003FBD5C /* SMCollectionCellProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7265EA420EDF69C003FBD5C /* SMCollectionCellProtocol.swift */; };
 		B7265F1120EDF69C003FBD5C /* SMCollectionDisposerModeled.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7265EA620EDF69C003FBD5C /* SMCollectionDisposerModeled.swift */; };
 		B7265F1220EDF69C003FBD5C /* SMCollectionDisposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7265EA720EDF69C003FBD5C /* SMCollectionDisposer.swift */; };
 		B7265F1320EDF69C003FBD5C /* SMListDisposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7265EA920EDF69C003FBD5C /* SMListDisposer.swift */; };
@@ -123,7 +122,6 @@
 		B7265E9E20EDF69C003FBD5C /* SMCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMCollectionCell.swift; sourceTree = "<group>"; };
 		B7265EA020EDF69C003FBD5C /* SMCollectonSection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMCollectonSection.swift; sourceTree = "<group>"; };
 		B7265EA320EDF69C003FBD5C /* SMCollectionCellData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMCollectionCellData.swift; sourceTree = "<group>"; };
-		B7265EA420EDF69C003FBD5C /* SMCollectionCellProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMCollectionCellProtocol.swift; sourceTree = "<group>"; };
 		B7265EA620EDF69C003FBD5C /* SMCollectionDisposerModeled.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMCollectionDisposerModeled.swift; sourceTree = "<group>"; };
 		B7265EA720EDF69C003FBD5C /* SMCollectionDisposer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMCollectionDisposer.swift; sourceTree = "<group>"; };
 		B7265EA920EDF69C003FBD5C /* SMListDisposer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMListDisposer.swift; sourceTree = "<group>"; };
@@ -379,7 +377,6 @@
 			isa = PBXGroup;
 			children = (
 				B7265EA320EDF69C003FBD5C /* SMCollectionCellData.swift */,
-				B7265EA420EDF69C003FBD5C /* SMCollectionCellProtocol.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -814,7 +811,6 @@
 				B774AE1C20FDD5940065C963 /* NSAttributedString + Help.swift in Sources */,
 				B7265F0C20EDF69C003FBD5C /* SMCellDataMapedProtocol.swift in Sources */,
 				B7265F0920EDF69C003FBD5C /* SMCellData.swift in Sources */,
-				B7265F1020EDF69C003FBD5C /* SMCollectionCellProtocol.swift in Sources */,
 				B7265F1720EDF69C003FBD5C /* SMResponse.swift in Sources */,
 				B7265F5920EDF69C003FBD5C /* SMGateway.swift in Sources */,
 				B7265F4420EDF69C003FBD5C /* SMCollectionAdapter.swift in Sources */,

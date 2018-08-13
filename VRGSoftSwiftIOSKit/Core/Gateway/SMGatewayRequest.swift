@@ -106,14 +106,14 @@ open class SMGatewayRequest: SMRequest
         let dataRequest: DataRequest = Alamofire.request(fullPath, method: type, parameters: allParams, encoding: parameterEncoding, headers: allHeaders)
         self.dataRequest = dataRequest
         
-        dataRequest.responseJSON(completionHandler: {[weak self] responseObject in
+        dataRequest.responseJSON(completionHandler: {[weak self] responseObject in // swiftlint:disable:this explicit_type_interface
             
             switch responseObject.result
             {
             case .success:
 //                    print("Request success with data: \(data)")
                 self?.executeSuccessBlock(responseObject: responseObject)
-            case .failure(let error):
+            case .failure(let error): // swiftlint:disable:this explicit_type_interface
                 print("Request failed with error: \(error)")
                 self?.executeFailureBlock(responseObject: responseObject)
             }

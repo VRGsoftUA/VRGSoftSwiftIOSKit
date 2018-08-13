@@ -99,7 +99,7 @@ open class SMTableAdapter: SMListAdapter, SMTableDisposerMulticastDelegate
         {
             if let moreCellData: SMPagingMoreCellDataProtocol = delegate?.moreCellDataForListAdapter(self)
             {
-                moreCellData.needLoadMore = SMBlockAction(block: { [weak self] _ in
+                moreCellData.needLoadMore = SMBlockAction(block: { [weak self] _ in // swiftlint:disable:this explicit_type_interface
                     if let strongSelf: SMTableAdapter  = self
                     {
                         strongSelf.moreDelegate?.needLoadMore(listAdapter: strongSelf)

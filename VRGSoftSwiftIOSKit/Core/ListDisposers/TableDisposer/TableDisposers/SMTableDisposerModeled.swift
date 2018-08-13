@@ -74,7 +74,7 @@ open class SMTableDisposerModeled: SMTableDisposer
     open func didCreate(cellData aCellData: SMCellData)
     {
         modeledDelegate?.tableDisposer(self, didCreateCellData: aCellData)
-        modeledMulticastDelegate.invokeDelegates { [weak self] delegate in
+        modeledMulticastDelegate.invokeDelegates { [weak self] delegate in // swiftlint:disable:this explicit_type_interface
             if let strongSelf: SMTableDisposerModeled = self
             {
                 delegate.tableDisposer(strongSelf, didCreateCellData: aCellData)

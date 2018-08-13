@@ -36,7 +36,7 @@ open class SMDBRequest: SMRequest
         self.cancelled = false
         self.executing = true
         
-        storage.defaultContext(block: { [weak self] aContext in
+        storage.defaultContext(block: { [weak self] aContext in // swiftlint:disable:this explicit_type_interface
             if let strongSelf: SMDBRequest = self
             {
                 if strongSelf.isCancelled()

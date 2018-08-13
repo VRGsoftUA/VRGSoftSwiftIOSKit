@@ -10,10 +10,7 @@ import Foundation
 
 public protocol SMCellProtocol: class
 {
-    var cellData: SMCellData?
-    {
-        get set
-    }
+    var cellData: SMListCellData? { get set }
     
-    func setupCellData(_ aCellData: SMCellData)
+    func setupCellData(_ aCellData: SMListCellData)
 }

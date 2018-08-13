@@ -108,7 +108,7 @@ open class SMCollectonSection: SMListSection<SMCollectionCellData>
         
         let cell: UICollectionViewCell = collectionDisposer?.collectionView?.dequeueReusableCell(withReuseIdentifier: cellData.cellIdentifier, for: aIndexPath) ?? UICollectionViewCell(frame: CGRect.zero)
 
-        (cell as? SMCollectionCellProtocol)?.setupCellData(cellData)
+        (cell as? SMCellProtocol)?.setupCellData(cellData)
 
         return cell
     }
