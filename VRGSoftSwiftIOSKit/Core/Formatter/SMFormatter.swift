@@ -18,6 +18,11 @@ open class SMFormatter
 {
     weak open var formattableObject: SMFormatterProtocol?
     
+    public init()
+    {
+        
+    }
+    
     open func formattedTextFrom(originalString aOriginalString: String?) -> String?
     {
         return aOriginalString
