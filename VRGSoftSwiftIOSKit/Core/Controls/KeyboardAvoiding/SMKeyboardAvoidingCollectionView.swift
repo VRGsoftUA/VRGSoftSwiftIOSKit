@@ -8,12 +8,12 @@
 
 import UIKit
 
-class SMKeyboardAvoidingCollectionView: UICollectionView, SMKeyboardAvoidingProtocol
+open class SMKeyboardAvoidingCollectionView: UICollectionView, SMKeyboardAvoidingProtocol
 {
     public var keyboardToolbar: SMKeyboardToolbar?
     
-    var _keyboardAvoider: SMKeyboardAvoider?
-    var keyboardAvoider: SMKeyboardAvoider
+    open var _keyboardAvoider: SMKeyboardAvoider?
+    open var keyboardAvoider: SMKeyboardAvoider
     {
         if let keyboardAvoider: SMKeyboardAvoider = _keyboardAvoider
         {
@@ -25,8 +25,8 @@ class SMKeyboardAvoidingCollectionView: UICollectionView, SMKeyboardAvoidingProt
             return result
         }
     }
-
-    override init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout)
+    
+    override public init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout)
     {
         super.init(frame: frame, collectionViewLayout: layout)
     }
@@ -49,7 +49,7 @@ class SMKeyboardAvoidingCollectionView: UICollectionView, SMKeyboardAvoidingProt
     }
     
     override open var frame: CGRect
-    {
+        {
         didSet
         {
             var newContentSize: CGSize = keyboardAvoider.originalContentSize
@@ -66,7 +66,7 @@ class SMKeyboardAvoidingCollectionView: UICollectionView, SMKeyboardAvoidingProt
     }
     
     override open var contentSize: CGSize
-    {
+        {
         set
         {
             keyboardAvoider.originalContentSize = newValue
@@ -93,8 +93,8 @@ class SMKeyboardAvoidingCollectionView: UICollectionView, SMKeyboardAvoidingProt
         self.hideKeyBoard()
     }
     
-    public var isShowsKeyboardToolbar: Bool
-    {
+    open var isShowsKeyboardToolbar: Bool
+        {
         set
         {
             keyboardAvoider.isShowsKeyboardToolbar = newValue
@@ -106,42 +106,42 @@ class SMKeyboardAvoidingCollectionView: UICollectionView, SMKeyboardAvoidingProt
         }
     }
     
-    public func adjustOffset()
+    open func adjustOffset()
     {
         keyboardAvoider.adjustOffset()
     }
     
-    public func hideKeyBoard()
+    open func hideKeyBoard()
     {
         keyboardAvoider.hideKeyBoard()
     }
     
-    public func addObjectForKeyboard(_ aObjectForKeyboard: UIResponder)
+    open func addObjectForKeyboard(_ aObjectForKeyboard: UIResponder)
     {
         keyboardAvoider.addObjectForKeyboard(aObjectForKeyboard)
     }
     
-    public func removeObjectForKeyboard(_ aObjectForKeyboard: UIResponder)
+    open func removeObjectForKeyboard(_ aObjectForKeyboard: UIResponder)
     {
         keyboardAvoider.removeObjectForKeyboard(aObjectForKeyboard)
     }
     
-    public func addObjectsForKeyboard(_ aObjectsForKeyboard: [UIResponder])
+    open func addObjectsForKeyboard(_ aObjectsForKeyboard: [UIResponder])
     {
         keyboardAvoider.addObjectsForKeyboard(aObjectsForKeyboard)
     }
     
-    public func removeObjectsForKeyboard(_ aObjectsForKeyboard: [UIResponder])
+    open func removeObjectsForKeyboard(_ aObjectsForKeyboard: [UIResponder])
     {
         keyboardAvoider.removeObjectsForKeyboard(aObjectsForKeyboard)
     }
     
-    public func removeAllObjectsForKeyboard()
+    open func removeAllObjectsForKeyboard()
     {
         keyboardAvoider.removeAllObjectsForKeyboard()
     }
     
-    public func responderShouldReturn(_ aResponder: UIResponder)
+    open func responderShouldReturn(_ aResponder: UIResponder)
     {
         keyboardAvoider.responderShouldReturn(aResponder)
     }
