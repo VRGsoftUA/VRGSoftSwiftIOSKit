@@ -18,18 +18,23 @@ open class SMFormatter
 {
     weak open var formattableObject: SMFormatterProtocol?
     
-    func formattedTextFrom(originalString aOriginalString: String?) -> String?
+    open func formattedTextFrom(originalString aOriginalString: String?) -> String?
     {
         return aOriginalString
     }
     
-    func formatWithNewCharactersIn(range aRange: NSRange, replacementString aString: String) -> Bool
+    open func formatWithNewCharactersIn(range aRange: NSRange, replacementString aString: String) -> Bool
     {
         return true
     }
     
-    func rawText() -> String?
+    open var rawText: String?
     {
-        return nil
+        get {
+            return nil
+        }
+        set {
+            self.formattableObject?.formattingText = self.formattedTextFrom(originalString: newValue)
+        }
     }
 }
