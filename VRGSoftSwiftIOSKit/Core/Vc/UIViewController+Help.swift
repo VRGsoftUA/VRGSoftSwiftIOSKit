@@ -49,7 +49,7 @@ extension UIViewController
                                      otherButtonTitles aOtherButtonTitles: [String]?,
                                      handler aHandler: ((_ aVc: SMAlertController, _ aButtonIndex: Int)  -> Swift.Void)? = nil)
     {
-        SMAlertController.showAlertController(style: UIAlertControllerStyle.alert, title: aTitle, message: aMessage, fromVC: self, otherButtonTitles: aOtherButtonTitles, handler: aHandler)
+        SMAlertController.showAlertController(style: .alert, title: aTitle, message: aMessage, fromVC: self, cancelButtonTitle: aCancelButtonTitle, otherButtonTitles: aOtherButtonTitles, handler: aHandler)
     }
     
     open func sm_showSheetController(title aTitle: String?,
@@ -58,7 +58,6 @@ extension UIViewController
                                      otherButtonTitles aOtherButtonTitles: [String]?,
                                      handler aHandler: ((_ aVc: SMAlertController, _ aButtonIndex: Int)  -> Swift.Void)? = nil)
     {
-        SMAlertController.showAlertController(style: UIAlertControllerStyle.alert, title: aTitle, message: aMessage, fromVC: self, otherButtonTitles: aOtherButtonTitles, handler: aHandler)
+        SMAlertController.showAlertController(style: .actionSheet, title: aTitle, message: aMessage, fromVC: self, cancelButtonTitle: aCancelButtonTitle, otherButtonTitles: aOtherButtonTitles, handler: aHandler)
     }
-
 }
