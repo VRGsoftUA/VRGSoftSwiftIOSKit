@@ -33,7 +33,7 @@ open class SMTextField: UITextField, SMKeyboardAvoiderProtocol, SMValidationProt
     {
         let rect: CGRect =  super.editingRect(forBounds: bounds)
         
-        let result: CGRect = UIEdgeInsetsInsetRect(rect, UIEdgeInsets(top: topT, left: left, bottom: bottomT, right: rightT))
+        let result: CGRect = UIEdgeInsetsInsetRect(rect, UIEdgeInsets(top: topT, left: leftT, bottom: bottomT, right: rightT))
         
         return result
     }
