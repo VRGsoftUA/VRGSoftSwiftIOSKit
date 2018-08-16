@@ -343,8 +343,9 @@ open class SMTableDisposer: SMListDisposer, UITableViewDelegate, UITableViewData
     {
         let cellData: SMCellData = self.cellData(by: indexPath)
         cellData.didSelectClosure?(cellData)
+        cellData.baSelect?.performBlockFrom(sender: cellData)
         cellData.performSelectedHandlers()
-
+        
         delegate?.tableView?(tableView, didSelectRowAt: indexPath)
         
         if cellData.isAutoDeselect

@@ -8,14 +8,17 @@
 
 import UIKit
 
+@available(*, deprecated)
 public typealias SMListCellDataDidSelectClosureType = (_ cellData: SMListCellData) -> Void
 
 open class SMListCellData
 {
     open let model: AnyObject?
     
+    @available(*, deprecated)
     open var didSelectClosure: SMListCellDataDidSelectClosureType?
     
+    open var baSelect: SMBlockAction<SMListCellData>?
     open var isVisible: Bool = true
     open var tag: Int = 0
     open var userData: [String: Any] = [:]

@@ -210,12 +210,12 @@ open class SMCollectionDisposer: SMListDisposer, UICollectionViewDelegateFlowLay
     
     open func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath)
     {
-        let selectedCellData: SMCollectionCellData = cellData(by: indexPath)
-        selectedCellData.didSelectClosure?(selectedCellData)
-
+        let cellData: SMCollectionCellData = self.cellData(by: indexPath)
+        cellData.didSelectClosure?(cellData)
+        cellData.baSelect?.performBlockFrom(sender: cellData)
         delegate?.collectionView?(collectionView, didSelectItemAt: indexPath)
     }
-    
+
     open func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath)
     {
         delegate?.collectionView?(collectionView, didDeselectItemAt: indexPath)
