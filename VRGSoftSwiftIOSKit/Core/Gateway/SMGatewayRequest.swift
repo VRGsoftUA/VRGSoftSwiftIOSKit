@@ -9,8 +9,7 @@
 import Foundation
 import Alamofire
 
-public typealias SMGatewayRequestSuccessBlock = (DataRequest, DataResponse<Any>) -> SMResponse
-public typealias SMGatewayRequestFailureBlock = (DataRequest, Error?) -> SMResponse
+public typealias SMGatewayRequestResponseBlock = (DataRequest, DataResponse<Any>) -> SMResponse
 
 open class SMGatewayRequest: SMRequest
 {
@@ -20,12 +19,12 @@ open class SMGatewayRequest: SMRequest
     open var path: String?
     open var type: HTTPMethod
     open var parameterEncoding: ParameterEncoding = JSONEncoding.default
-
+    
     open var parameters: [String: AnyObject] = [:]
     open var headers: [String: String] = [:]
     
-    open var successBlock: SMGatewayRequestSuccessBlock?
-    open var failureBlock: SMGatewayRequestFailureBlock?
+    open var successBlock: SMGatewayRequestResponseBlock?
+    open var failureBlock: SMGatewayRequestResponseBlock?
     
     public required init(gateway aGateway: SMGateway, type aType: HTTPMethod)
     {
@@ -75,19 +74,19 @@ open class SMGatewayRequest: SMRequest
         {
             fullPath = fullPath.appendingPathComponent(path)
         }
-                
+        
         var allParams: [String: Any] = [:]
         
         for (key, value): (String, AnyObject) in (gateway.defaultParameters)
         {
             allParams.updateValue(value, forKey: key)
         }
-
+        
         for (key, value): (String, AnyObject) in (parameters)
         {
             allParams.updateValue(value, forKey: key)
         }
-
+        
         var allHeaders: [String: String] = [:]
         
         for (key, value): (String, String) in (gateway.defaultHeaders)
@@ -102,7 +101,7 @@ open class SMGatewayRequest: SMRequest
         
         print("\n\nSTART", self)
         print("URL - ", fullPath, "\n", "TYPE - ", type, "\n", "HEADERS - ", allHeaders, "\n", "PARAMS - ", allParams, "\n\n")
-
+        
         let dataRequest: DataRequest = Alamofire.request(fullPath, method: type, parameters: allParams, encoding: parameterEncoding, headers: allHeaders)
         self.dataRequest = dataRequest
         
@@ -111,7 +110,7 @@ open class SMGatewayRequest: SMRequest
             switch responseObject.result
             {
             case .success:
-//                    print("Request success with data: \(data)")
+                //                    print("Request success with data: \(data)")
                 self?.executeSuccessBlock(responseObject: responseObject)
             case .failure(let error): // swiftlint:disable:this explicit_type_interface
                 print("Request failed with error: \(error)")
@@ -124,7 +123,7 @@ open class SMGatewayRequest: SMRequest
     
     open func executeSuccessBlock(responseObject aResponseObject: DataResponse<Any>)
     {
-        if let successBlock: SMGatewayRequestSuccessBlock = successBlock,
+        if let successBlock: SMGatewayRequestResponseBlock = successBlock,
             let dataRequest: DataRequest = dataRequest
         {
             let response: SMResponse = successBlock(dataRequest, aResponseObject)
@@ -141,10 +140,10 @@ open class SMGatewayRequest: SMRequest
     
     open func executeFailureBlock(responseObject aResponseObject: DataResponse<Any>)
     {
-        if let failureBlock: SMGatewayRequestFailureBlock = failureBlock,
+        if let failureBlock: SMGatewayRequestResponseBlock = failureBlock,
             let dataRequest: DataRequest = dataRequest
         {
-            let response: SMResponse = failureBlock(dataRequest, aResponseObject.error)
+            let response: SMResponse = failureBlock(dataRequest, aResponseObject)
             
             if executeAllResponseBlocksSync
             {
@@ -155,8 +154,8 @@ open class SMGatewayRequest: SMRequest
             }
         }
     }
-
-    open func setup(successBlock aSuccessBlock: @escaping SMGatewayRequestSuccessBlock, failureBlock aFailureBlock: @escaping SMGatewayRequestFailureBlock)
+    
+    open func setup(successBlock aSuccessBlock: @escaping SMGatewayRequestResponseBlock, failureBlock aFailureBlock: @escaping SMGatewayRequestResponseBlock)
     {
         successBlock = aSuccessBlock
         failureBlock = aFailureBlock

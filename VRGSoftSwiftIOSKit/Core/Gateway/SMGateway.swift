@@ -13,7 +13,7 @@ open class SMGateway
 {
     open var defaultParameters: [String: AnyObject] = [:]
     open var defaultHeaders: [String: String] = [:]
-
+    
     open var baseUrl: URL?
     
     open var requests: [SMGatewayRequest] = []
@@ -40,17 +40,17 @@ open class SMGateway
         }
     }
     
-    open func defaultFailureBlockFor(request aRequest: SMGatewayRequest) -> SMGatewayRequestFailureBlock
+    open func defaultFailureBlockFor(request aRequest: SMGatewayRequest) -> SMGatewayRequestResponseBlock
     {
-        func result(data: DataRequest, error: Error?) -> SMResponse
+        func result(data: DataRequest, responseObject: DataResponse<Any>) -> SMResponse
         {
             let response: SMResponse = SMResponse()
             response.isSuccess = false
-            response.textMessage = error?.localizedDescription
+            response.textMessage = responseObject.error?.localizedDescription
             
             return response
         }
-
+        
         return result
     }
     
@@ -62,7 +62,7 @@ open class SMGateway
         return SMGatewayRequest.self
     }
     
-    open func request(type aType: HTTPMethod, path aPath: String, parameters aParameters: [String: AnyObject]? = [:], successBlock aSuccessBlock: @escaping SMGatewayRequestSuccessBlock) -> SMGatewayRequest
+    open func request(type aType: HTTPMethod, path aPath: String, parameters aParameters: [String: AnyObject]? = [:], successBlock aSuccessBlock: @escaping SMGatewayRequestResponseBlock) -> SMGatewayRequest
     {
         let result: SMGatewayRequest = getRequestClass().init(gateway: self, type: aType)
         
@@ -73,19 +73,19 @@ open class SMGateway
             result.parameters = parameters
         }
         
-        let failureBlock: SMGatewayRequestFailureBlock = self.defaultFailureBlockFor(request: result)
+        let failureBlock: SMGatewayRequestResponseBlock = self.defaultFailureBlockFor(request: result)
         
         result.setup(successBlock: aSuccessBlock, failureBlock: failureBlock)
         
         return result
     }
     
-    open func uploadRequest(type aType: HTTPMethod = .post, path aPath: String, constructingBlock: @escaping SMConstructingMultipartFormDataBlock, successBlock aSuccessBlock: @escaping SMGatewayRequestSuccessBlock) -> SMGatewayRequestMultipart
+    open func uploadRequest(type aType: HTTPMethod = .post, path aPath: String, constructingBlock: @escaping SMConstructingMultipartFormDataBlock, successBlock aSuccessBlock: @escaping SMGatewayRequestResponseBlock) -> SMGatewayRequestMultipart
     {
         let result: SMGatewayRequestMultipart = SMGatewayRequestMultipart(gateway: self, type: aType, constructingBlock: constructingBlock)
         result.path = aPath
         
-        let failureBlock: SMGatewayRequestFailureBlock = self.defaultFailureBlockFor(request: result)
+        let failureBlock: SMGatewayRequestResponseBlock = self.defaultFailureBlockFor(request: result)
         
         result.setup(successBlock: aSuccessBlock, failureBlock: failureBlock)
         
