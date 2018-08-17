@@ -12,7 +12,7 @@ import Alamofire
 public typealias SMGatewayRequestResponseBlock = (DataRequest, DataResponse<Any>) -> SMResponse
 
 public typealias SMRequestParserBlock = (SMResponse) -> Void
-public typealias SMGatewayRequestSuccessParserBlock = (DataRequest, DataResponse<Any>, SMRequestParserBlock) -> Void
+public typealias SMGatewayRequestSuccessParserBlock = (DataRequest, DataResponse<Any>, @escaping SMRequestParserBlock) -> Void
 
 open class SMGatewayRequest: SMRequest
 {
