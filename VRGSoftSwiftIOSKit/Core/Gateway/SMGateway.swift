@@ -79,7 +79,25 @@ open class SMGateway
         
         return result
     }
-    
+
+    open func request(type aType: HTTPMethod, path aPath: String, parameters aParameters: [String: AnyObject]? = [:], successBlock aSuccessParserBlock: @escaping SMGatewayRequestSuccessParserBlock) -> SMGatewayRequest
+    {
+        let result: SMGatewayRequest = getRequestClass().init(gateway: self, type: aType)
+        
+        result.path = aPath
+        
+        if let parameters: [String: AnyObject] = aParameters
+        {
+            result.parameters = parameters
+        }
+        
+        let failureBlock: SMGatewayRequestResponseBlock = self.defaultFailureBlockFor(request: result)
+        
+        result.setup(successParserBlock: aSuccessParserBlock, failureBlock: failureBlock)
+        
+        return result
+    }
+
     open func uploadRequest(type aType: HTTPMethod = .post, path aPath: String, constructingBlock: @escaping SMConstructingMultipartFormDataBlock, successBlock aSuccessBlock: @escaping SMGatewayRequestResponseBlock) -> SMGatewayRequestMultipart
     {
         let result: SMGatewayRequestMultipart = SMGatewayRequestMultipart(gateway: self, type: aType, constructingBlock: constructingBlock)

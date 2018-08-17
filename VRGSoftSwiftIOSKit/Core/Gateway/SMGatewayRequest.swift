@@ -11,6 +11,9 @@ import Alamofire
 
 public typealias SMGatewayRequestResponseBlock = (DataRequest, DataResponse<Any>) -> SMResponse
 
+public typealias SMRequestParserBlock = (SMResponse) -> Void
+public typealias SMGatewayRequestSuccessParserBlock = (DataRequest, DataResponse<Any>, SMRequestParserBlock) -> Void
+
 open class SMGatewayRequest: SMRequest
 {
     open unowned var gateway: SMGateway
@@ -24,6 +27,7 @@ open class SMGatewayRequest: SMRequest
     open var headers: [String: String] = [:]
     
     open var successBlock: SMGatewayRequestResponseBlock?
+    open var successParserBlock: SMGatewayRequestSuccessParserBlock?
     open var failureBlock: SMGatewayRequestResponseBlock?
     
     public required init(gateway aGateway: SMGateway, type aType: HTTPMethod)
@@ -111,7 +115,29 @@ open class SMGatewayRequest: SMRequest
             {
             case .success:
                 //                    print("Request success with data: \(data)")
-                self?.executeSuccessBlock(responseObject: responseObject)
+                let callBack: SMRequestParserBlock = { (aResponse: SMResponse) in
+                    if let strongSelf: SMGatewayRequest = self
+                    {
+                        if strongSelf.executeAllResponseBlocksSync
+                        {
+                            strongSelf.executeSynchronouslyAllResponseBlocks(response: aResponse)
+                        } else
+                        {
+                            strongSelf.executeAllResponseBlocks(response: aResponse)
+                        }
+                    }
+                }
+                
+                if let successParserBlock: SMGatewayRequestSuccessParserBlock = self?.successParserBlock
+                {
+                    successParserBlock(dataRequest, responseObject, callBack)
+                } else
+                {
+                    if let response: SMResponse = self?.successBlock?(dataRequest, responseObject)
+                    {
+                        callBack(response)
+                    }
+                }
             case .failure(let error): // swiftlint:disable:this explicit_type_interface
                 print("Request failed with error: \(error)")
                 self?.executeFailureBlock(responseObject: responseObject)
@@ -158,6 +184,12 @@ open class SMGatewayRequest: SMRequest
     open func setup(successBlock aSuccessBlock: @escaping SMGatewayRequestResponseBlock, failureBlock aFailureBlock: @escaping SMGatewayRequestResponseBlock)
     {
         successBlock = aSuccessBlock
+        failureBlock = aFailureBlock
+    }
+    
+    open func setup(successParserBlock aSuccessParserBlock: @escaping SMGatewayRequestSuccessParserBlock, failureBlock aFailureBlock: @escaping SMGatewayRequestResponseBlock)
+    {
+        successParserBlock = aSuccessParserBlock
         failureBlock = aFailureBlock
     }
 }
