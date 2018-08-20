@@ -8,7 +8,7 @@
 
 import UIKit
 
-typealias SMDataFetchBlock = (SMFetcherMessage, @escaping SMDataFetchCallback) -> Void
+public typealias SMDataFetchBlock = (SMFetcherMessage, @escaping SMDataFetchCallback) -> Void
 
 
 open class SMFetcherWithBlock: SMDataFetcherProtocol
@@ -17,10 +17,10 @@ open class SMFetcherWithBlock: SMDataFetcherProtocol
     
     public var callbackQueue: DispatchQueue = DispatchQueue.global()
     
-    let fetchBlock: SMDataFetchBlock
+    open let fetchBlock: SMDataFetchBlock
     
     
-    init(fetchBlock aFetchBlock: @escaping SMDataFetchBlock)
+    public init(fetchBlock aFetchBlock: @escaping SMDataFetchBlock)
     {
         self.fetchBlock = aFetchBlock
     }
