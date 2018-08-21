@@ -20,7 +20,18 @@ open class SMGatewayRequest: SMRequest
     open var dataRequest: DataRequest?
     
     open var path: String?
-    open var type: HTTPMethod
+    open var type: HTTPMethod {
+        didSet {
+            switch type
+            {
+            case .options, .head, .get, .delete:
+                parameterEncoding = URLEncoding.default
+            case .patch, .post, .put:
+                parameterEncoding = JSONEncoding.default
+            default: break
+            }
+        }
+    }
     open var parameterEncoding: ParameterEncoding = JSONEncoding.default
     
     open var parameters: [String: AnyObject] = [:]
