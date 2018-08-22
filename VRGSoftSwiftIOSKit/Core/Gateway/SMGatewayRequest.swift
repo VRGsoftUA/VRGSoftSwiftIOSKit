@@ -16,6 +16,18 @@ public typealias SMGatewayRequestSuccessParserBlock = (DataRequest, DataResponse
 
 open class SMGatewayRequest: SMRequest
 {
+    public var debugDescription: String
+    {
+        var array: [String] = []
+        
+        array.append("URL - " + (dataRequest?.request?.url?.absoluteString ?? (fullPath?.absoluteString) ?? ""))
+        array.append("TYPE - " + type.rawValue)
+        array.append("HEADERS - " + allHeaders.description)
+        array.append("PARAMS - " + allParams.description)
+        
+        return  array.joined(separator: "\n")
+    }
+    
     open unowned var gateway: SMGateway
     open var dataRequest: DataRequest?
     
@@ -29,6 +41,53 @@ open class SMGatewayRequest: SMRequest
     open var successBlock: SMGatewayRequestResponseBlock?
     open var successParserBlock: SMGatewayRequestSuccessParserBlock?
     open var failureBlock: SMGatewayRequestResponseBlock?
+    
+    var allParams: [String: Any]
+    {
+        var result: [String: Any] = [:]
+        
+        for (key, value): (String, AnyObject) in (gateway.defaultParameters)
+        {
+            result.updateValue(value, forKey: key)
+        }
+        
+        for (key, value): (String, AnyObject) in (parameters)
+        {
+            result.updateValue(value, forKey: key)
+        }
+        
+        return result
+    }
+    
+    var allHeaders: [String: String]
+    {
+        var result: [String: String] = [:]
+        
+        for (key, value): (String, String) in (gateway.defaultHeaders)
+        {
+            result.updateValue(value, forKey: key)
+        }
+        
+        for (key, value): (String, String) in (headers)
+        {
+            result.updateValue(value, forKey: key)
+        }
+        
+        return result
+    }
+    
+    var fullPath: URL?
+    {
+        var result: URL? = gateway.baseUrl
+        
+        if let path: String = path
+        {
+            result = result?.appendingPathComponent(path)
+        }
+        
+        return result
+    }
+    
     
     public required init(gateway aGateway: SMGateway, type aType: HTTPMethod)
     {
@@ -78,43 +137,7 @@ open class SMGatewayRequest: SMRequest
         {
             fullPath = fullPath.appendingPathComponent(path)
         }
-        
-        var allParams: [String: Any] = [:]
-        
-        for (key, value): (String, AnyObject) in (gateway.defaultParameters)
-        {
-            allParams.updateValue(value, forKey: key)
-        }
-        
-        for (key, value): (String, AnyObject) in (parameters)
-        {
-            allParams.updateValue(value, forKey: key)
-        }
-        
-        var allHeaders: [String: String] = [:]
-        
-        for (key, value): (String, String) in (gateway.defaultHeaders)
-        {
-            allHeaders.updateValue(value, forKey: key)
-        }
-        
-        for (key, value): (String, String) in (headers)
-        {
-            allHeaders.updateValue(value, forKey: key)
-        }
-        
-        switch type
-        {
-        case .options, .head, .get, .delete:
-            parameterEncoding = URLEncoding.default
-        case .patch, .post, .put:
-            parameterEncoding = JSONEncoding.default
-        default: break
-        }
-        
-        print("\n\nSTART", self)
-        print("URL - ", fullPath, "\n", "TYPE - ", type, "\n", "HEADERS - ", allHeaders, "\n", "PARAMS - ", allParams, "\n\n")
-        
+                
         if parameterEncoding == nil
         {
             switch type
@@ -131,6 +154,9 @@ open class SMGatewayRequest: SMRequest
         {
             let dataRequest: DataRequest = Alamofire.request(fullPath, method: type, parameters: allParams, encoding: parameterEncoding, headers: allHeaders)
             self.dataRequest = dataRequest
+            
+            print("\n\nSTART", self)
+            print(debugDescription)
             
             dataRequest.responseJSON(completionHandler: {[weak self] responseObject in // swiftlint:disable:this explicit_type_interface
                 
