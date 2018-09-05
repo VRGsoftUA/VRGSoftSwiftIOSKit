@@ -86,7 +86,7 @@ open class SMListSection<CellDataType: SMListCellData>
     
     open func cellData(byTag aTag: Int) -> CellDataType?
     {
-        var result: CellDataType? = nil
+        var result: CellDataType?
         for cd: CellDataType in cellDataSource where cd.tag == aTag
         {
             result = cd

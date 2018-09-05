@@ -76,7 +76,7 @@ open class SMDBRequest: SMRequest
 
     open func executeRequest(request aRequest: NSFetchRequest<NSFetchRequestResult>, inContext aContext: NSManagedObjectContext) -> SMResponse
     {
-        var aError: Error? = nil
+        var aError: Error?
         var results: [AnyObject] = []
         
         do {

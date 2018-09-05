@@ -59,7 +59,7 @@ open class SMPopupSimplePicker: SMPopupPicker, UIPickerViewDelegate, UIPickerVie
     
     public func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String?
     {
-        var result: String? = nil
+        var result: String?
         
         if row >= 0 && row < _dataSource.count
         {

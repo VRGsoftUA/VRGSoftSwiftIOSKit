@@ -116,7 +116,7 @@ open class SMKeyboardAvoider: SMKeyboardAvoidingProtocol, SMKeyboardToolbarDeleg
     
     open func findFirstResponderBeneath(view aView: UIView) -> UIResponder?
     {
-        var result: UIResponder? = nil
+        var result: UIResponder?
         
         for childView: UIView in aView.subviews
         {
@@ -292,7 +292,7 @@ open class SMKeyboardAvoider: SMKeyboardAvoidingProtocol, SMKeyboardToolbarDeleg
         }
         
         
-        var deleteIndexPath: IndexPath? = nil
+        var deleteIndexPath: IndexPath?
         
         for сortege: (key: IndexPath, value: [UIResponder]) in self.indexPathseObjectsInKeyboard
         {

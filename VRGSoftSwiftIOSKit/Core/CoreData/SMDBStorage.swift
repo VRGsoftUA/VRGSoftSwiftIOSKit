@@ -297,7 +297,7 @@ open class SMDBStorage
             entitiesRequest.entity = NSEntityDescription.entity(forEntityName: anEntityName, in: context)
             entitiesRequest.includesPropertyValues = false
             
-            var aError: Error? = nil
+            var aError: Error?
             var entities: [AnyObject]
             do
             {

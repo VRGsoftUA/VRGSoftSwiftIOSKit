@@ -19,7 +19,7 @@ public extension UserDefaults
     
     public func coding<T: NSCoding>(forKey aKey: String) -> T?
     {
-        var result: T? = nil
+        var result: T?
         
         let data: Any? = self.object(forKey: aKey)
         
