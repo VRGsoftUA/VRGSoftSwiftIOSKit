@@ -311,7 +311,7 @@ open class SMCollectionDisposer: SMListDisposer, UICollectionViewDelegateFlowLay
         var result: CGSize?
 
         let cd: SMCollectionCellData = sections[indexPath.section].cellData(at: indexPath.row)
-        result = cd.cellSizeFor(size: collectionView.frame.size)
+        result = cd.cellSize ?? cd.cellSizeFor(size: collectionView.frame.size)
 
         if result == nil
         {
