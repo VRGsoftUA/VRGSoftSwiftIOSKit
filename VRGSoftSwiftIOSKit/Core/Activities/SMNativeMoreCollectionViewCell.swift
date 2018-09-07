@@ -15,16 +15,13 @@ open class SMNativeMoreCollectionViewCellData: SMCollectionCellData, SMPagingMor
     public convenience init()
     {
         self.init(model: nil)
+        
+        self.cellSize = CGSize(width: 45.0, height: 45.0)
     }
     
     override open class var cellClass_: UICollectionViewCell.Type
     {
         return SMNativeMoreCollectionViewCell.self
-    }
-    
-    override open func cellSizeFor(size aSize: CGSize) -> CGSize?
-    {
-        return CGSize(width: 45.0, height: 45.0)
     }
 }
 
