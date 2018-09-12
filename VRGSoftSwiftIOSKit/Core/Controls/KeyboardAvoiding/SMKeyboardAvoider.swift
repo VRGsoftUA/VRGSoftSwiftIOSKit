@@ -455,7 +455,7 @@ open class SMKeyboardAvoider: SMKeyboardAvoidingProtocol, SMKeyboardToolbarDeleg
         
 
         let sordetIndexPath: [(key: IndexPath, value: [UIResponder])] = self.indexPathseObjectsInKeyboard.sorted { (aCortege1, aCortege2) -> Bool in
-            return aCortege1.key.section <= aCortege2.key.section && aCortege1.key.row <= aCortege2.key.row
+            return aCortege1.key <= aCortege2.key
         }
         
         for сortege: (key: IndexPath, value: [UIResponder]) in sordetIndexPath
