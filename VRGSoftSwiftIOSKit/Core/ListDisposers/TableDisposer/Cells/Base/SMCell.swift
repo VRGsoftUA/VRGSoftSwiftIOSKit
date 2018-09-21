@@ -10,7 +10,7 @@ import UIKit
 
 open class SMCell: UITableViewCell, SMCellProtocol
 {    
-    required override public init(style: UITableViewCellStyle, reuseIdentifier: String?)
+    required override public init(style: UITableViewCell.CellStyle, reuseIdentifier: String?)
     {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setup()

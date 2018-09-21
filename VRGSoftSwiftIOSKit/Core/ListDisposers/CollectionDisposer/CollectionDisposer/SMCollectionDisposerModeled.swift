@@ -23,7 +23,7 @@ public protocol SMCollectionDisposerModeledDelegate: class
 
 open class SMCollectionDisposerModeled: SMCollectionDisposer
 {
-    open let modeledMulticastDelegate: SMMulticastDelegate<SMCollectionDisposerModeledMulticastDelegate> = SMMulticastDelegate(options: NSPointerFunctions.Options.weakMemory) // swiftlint:disable:this weak_delegate
+    public let modeledMulticastDelegate: SMMulticastDelegate<SMCollectionDisposerModeledMulticastDelegate> = SMMulticastDelegate(options: NSPointerFunctions.Options.weakMemory) // swiftlint:disable:this weak_delegate
     
     open var registeredClasses: [String: SMCollectionCellData.Type] = [:]
     

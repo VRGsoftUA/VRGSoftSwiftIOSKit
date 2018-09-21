@@ -62,7 +62,7 @@ open class SMValidationGroup
             if let view: UIView = obj as? UIView
             {
                 view.transform = CGAffineTransform(translationX: 15, y: 0)
-                UIView.animate(withDuration: 0.6, delay: 0.0, usingSpringWithDamping: 0.2, initialSpringVelocity: 0.2, options: UIViewAnimationOptions.curveEaseInOut, animations:
+                UIView.animate(withDuration: 0.6, delay: 0.0, usingSpringWithDamping: 0.2, initialSpringVelocity: 0.2, options: UIView.AnimationOptions.curveEaseInOut, animations:
                 {
                     view.transform = CGAffineTransform.identity
                 }, completion: nil)

@@ -29,10 +29,10 @@ extension String
         let paragraphStyle: NSMutableParagraphStyle = NSMutableParagraphStyle()
         paragraphStyle.lineSpacing = aInterval
         
-        let fontAttribute: [NSAttributedStringKey: UIFont] = [NSAttributedStringKey.font: aFont]
+        let fontAttribute: [NSAttributedString.Key: UIFont] = [NSAttributedString.Key.font: aFont]
         
         let attributedString: NSMutableAttributedString = NSMutableAttributedString(string: self)
-        attributedString.addAttribute(NSAttributedStringKey.paragraphStyle, value: paragraphStyle, range: NSRange(location: 0, length: attributedString.length))
+        attributedString.addAttribute(NSAttributedString.Key.paragraphStyle, value: paragraphStyle, range: NSRange(location: 0, length: attributedString.length))
         attributedString.addAttributes(fontAttribute, range: NSRange(location: 0, length: attributedString.length))
         
         return attributedString

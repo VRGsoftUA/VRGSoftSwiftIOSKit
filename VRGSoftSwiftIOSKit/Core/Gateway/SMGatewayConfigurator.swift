@@ -11,7 +11,7 @@ import Alamofire
 
 open class SMGatewayConfigurator
 {
-    open static var shared: SMGatewayConfigurator = SMGatewayConfigurator()
+    public static var shared: SMGatewayConfigurator = SMGatewayConfigurator()
 
     open var gateways: [SMGateway] = []
     open var networkReachabilityManager: NetworkReachabilityManager?

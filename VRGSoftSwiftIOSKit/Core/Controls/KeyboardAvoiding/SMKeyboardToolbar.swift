@@ -19,14 +19,14 @@ open class SMKeyboardToolbar: SMToolbar
 {
     open weak var smdelegate: SMKeyboardToolbarDelegate?
     
-    open let bbiDone: UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.done, target: self, action: #selector(SMKeyboardToolbar.didBtDoneClicked(_:)))
+    public let bbiDone: UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.done, target: self, action: #selector(SMKeyboardToolbar.didBtDoneClicked(_:)))
     
-    open let bbiBack: UIBarButtonItem = UIBarButtonItem()
-    open let bbiNext: UIBarButtonItem = UIBarButtonItem()
+    public let bbiBack: UIBarButtonItem = UIBarButtonItem()
+    public let bbiNext: UIBarButtonItem = UIBarButtonItem()
     
     override open func setup()
     {
-        self.autoresizingMask = UIViewAutoresizing.flexibleWidth
+        self.autoresizingMask = UIView.AutoresizingMask.flexibleWidth
         self.barStyle = UIBarStyle.default
         self.isTranslucent = true
 
@@ -34,7 +34,7 @@ open class SMKeyboardToolbar: SMToolbar
         
         let vLine: UIView = UIView(frame: CGRect(x: 0, y: self.frame.size.height - 0.5, width: self.frame.size.width, height: 0.5))
         vLine.backgroundColor = UIColor.black
-        vLine.autoresizingMask = [UIViewAutoresizing.flexibleWidth, UIViewAutoresizing.flexibleTopMargin]
+        vLine.autoresizingMask = [UIView.AutoresizingMask.flexibleWidth, UIView.AutoresizingMask.flexibleTopMargin]
         self.addSubview(vLine)
     }
     
@@ -46,23 +46,23 @@ open class SMKeyboardToolbar: SMToolbar
             let resourcesBundle: Bundle = Bundle(path: path)
         {
             let imageLeft: UIImage? = UIImage(named: "SMKeyboardAvoideBarArrowLeft", in: resourcesBundle, compatibleWith: nil)
-            let btBack: UIButton = UIButton(type: UIButtonType.system)
-            btBack.setImage(imageLeft, for: UIControlState.normal)
+            let btBack: UIButton = UIButton(type: UIButton.ButtonType.system)
+            btBack.setImage(imageLeft, for: UIControl.State.normal)
             btBack.frame = CGRect(x: 0, y: 0, width: 40, height: 40)
-            btBack.addTarget(self, action: #selector(SMKeyboardToolbar.didBtBackClicked(_:)), for: UIControlEvents.touchUpInside)
+            btBack.addTarget(self, action: #selector(SMKeyboardToolbar.didBtBackClicked(_:)), for: UIControl.Event.touchUpInside)
             bbiBack.customView = btBack
             
-            let btNext: UIButton = UIButton(type: UIButtonType.system)
+            let btNext: UIButton = UIButton(type: UIButton.ButtonType.system)
             let imageRight: UIImage? = UIImage(named: "SMKeyboardAvoideBarArrowRight", in: resourcesBundle, compatibleWith: nil)
-            btNext.setImage(imageRight, for: UIControlState.normal)
+            btNext.setImage(imageRight, for: UIControl.State.normal)
             btNext.frame = CGRect(x: 0, y: 0, width: 40, height: 40)
-            btNext.addTarget(self, action: #selector(SMKeyboardToolbar.didBtNextClicked(_:)), for: UIControlEvents.touchUpInside)
+            btNext.addTarget(self, action: #selector(SMKeyboardToolbar.didBtNextClicked(_:)), for: UIControl.Event.touchUpInside)
             bbiNext.customView = btNext
         }
 
-        let bbiFlex: UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil)
+        let bbiFlex: UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
         
-        let bbiFixed: UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.fixedSpace, target: nil, action: nil)
+        let bbiFixed: UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.fixedSpace, target: nil, action: nil)
         bbiFixed.width = 10
         
         self.items = [bbiBack, bbiNext, bbiFlex, bbiDone, bbiFixed]

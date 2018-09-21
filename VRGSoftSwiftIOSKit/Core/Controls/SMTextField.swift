@@ -24,7 +24,7 @@ open class SMTextField: UITextField, SMKeyboardAvoiderProtocol, SMValidationProt
     {
         let rect: CGRect = super.textRect(forBounds: bounds)
         
-        let result: CGRect = UIEdgeInsetsInsetRect(rect, UIEdgeInsets(top: topT, left: leftT, bottom: bottomT, right: rightT))
+        let result: CGRect = rect.inset(by: UIEdgeInsets(top: topT, left: leftT, bottom: bottomT, right: rightT))
         
         return result
     }
@@ -33,7 +33,7 @@ open class SMTextField: UITextField, SMKeyboardAvoiderProtocol, SMValidationProt
     {
         let rect: CGRect =  super.editingRect(forBounds: bounds)
         
-        let result: CGRect = UIEdgeInsetsInsetRect(rect, UIEdgeInsets(top: topT, left: leftT, bottom: bottomT, right: rightT))
+        let result: CGRect = rect.inset(by: UIEdgeInsets(top: topT, left: leftT, bottom: bottomT, right: rightT))
         
         return result
     }
@@ -111,7 +111,7 @@ open class SMTextField: UITextField, SMKeyboardAvoiderProtocol, SMValidationProt
         {
             if let placeholder: String = placeholder, let placeholderColor: UIColor = placeholderColor
             {
-                let atrPlaceholder: NSAttributedString = NSAttributedString(string: placeholder, attributes: [NSAttributedStringKey.foregroundColor: placeholderColor as Any])
+                let atrPlaceholder: NSAttributedString = NSAttributedString(string: placeholder, attributes: [NSAttributedString.Key.foregroundColor: placeholderColor as Any])
                 self.attributedPlaceholder = atrPlaceholder
             }
         }
@@ -196,7 +196,7 @@ open class SMTextFieldDelegateHolder: NSObject, UITextFieldDelegate
     }
     
     @available(iOS 10.0, *)
-    public func textFieldDidEndEditing(_ textField: UITextField, reason: UITextFieldDidEndEditingReason)
+    public func textFieldDidEndEditing(_ textField: UITextField, reason: UITextField.DidEndEditingReason)
     {
         holdedTextField?.smdelegate?.textFieldDidEndEditing?(textField, reason: reason)
     }

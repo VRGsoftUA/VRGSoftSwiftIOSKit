@@ -10,8 +10,8 @@ import UIKit
 
 open class SMNativeActivityAdapter: SMActivityAdapter
 {
-    open let backgroundView: UIView = UIView()
-    open let activity: UIActivityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+    public let backgroundView: UIView = UIView()
+    public let activity: UIActivityIndicatorView = UIActivityIndicatorView(style: .gray)
     
     override open func configureWith(view aView: UIView)
     {
@@ -31,7 +31,7 @@ open class SMNativeActivityAdapter: SMActivityAdapter
     
     override open func show()
     {
-        backgroundView.superview?.bringSubview(toFront: backgroundView)
+        backgroundView.superview?.bringSubviewToFront(backgroundView)
         backgroundView.sm_showAnimate(false)
         activity.startAnimating()
     }

@@ -11,7 +11,16 @@ import UIKit
 open class SMKeyboardAvoidingCollectionView: UICollectionView, SMKeyboardAvoidingProtocol
 {
     public var keyboardToolbar: SMKeyboardToolbar?
-    
+    {
+        set {
+            keyboardAvoider.keyboardToolbar = newValue
+        }
+        
+        get {
+            return keyboardAvoider.keyboardToolbar
+        }
+    }
+
     open var _keyboardAvoider: SMKeyboardAvoider?
     open var keyboardAvoider: SMKeyboardAvoider
     {
@@ -66,7 +75,7 @@ open class SMKeyboardAvoidingCollectionView: UICollectionView, SMKeyboardAvoidin
     }
     
     override open var contentSize: CGSize
-        {
+    {
         set
         {
             keyboardAvoider.originalContentSize = newValue
@@ -94,7 +103,7 @@ open class SMKeyboardAvoidingCollectionView: UICollectionView, SMKeyboardAvoidin
     }
     
     open var isShowsKeyboardToolbar: Bool
-        {
+    {
         set
         {
             keyboardAvoider.isShowsKeyboardToolbar = newValue

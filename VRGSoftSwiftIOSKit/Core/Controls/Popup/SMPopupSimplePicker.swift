@@ -10,7 +10,7 @@ import UIKit
 
 open class SMPopupSimplePicker: SMPopupPicker, UIPickerViewDelegate, UIPickerViewDataSource
 {
-    open static let kSMPopupPickerValueDidChange: String = "kSMPopupPickerValueDidChange"
+    public static let kSMPopupPickerValueDidChange: String = "kSMPopupPickerValueDidChange"
     
     
     // MARK: override next methods to customize:

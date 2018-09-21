@@ -18,7 +18,7 @@ open class SMLabel: UILabel
 
     override open func draw(_ rect: CGRect)
     {
-        super.drawText(in: UIEdgeInsetsInsetRect(rect, UIEdgeInsets(top: topT, left: leftT, bottom: bottomT, right: rightT)))
+        super.drawText(in: rect.inset(by: UIEdgeInsets(top: topT, left: leftT, bottom: bottomT, right: rightT)))
     }
     
     override open func textRect(forBounds bounds: CGRect, limitedToNumberOfLines numberOfLines: Int) -> CGRect

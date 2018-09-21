@@ -10,11 +10,11 @@ import UIKit
 
 open class SMPopupView: UIView
 {
-    open static let kSMPopupViewWillShow: String = "kSMPopupViewWillShow"
-    open static let kSMPopupViewDidShow: String = "kSMPopupViewDidShow"
-    open static let kSMPopupViewWillHide: String = "kSMPopupViewWillHide"
-    open static let kSMPopupViewDidHide: String = "kSMPopupViewDidHide"
-    open static let kSMPopupViewNeedHide: String = "kSMPopupViewNeedHide"
+    public static let kSMPopupViewWillShow: String = "kSMPopupViewWillShow"
+    public static let kSMPopupViewDidShow: String = "kSMPopupViewDidShow"
+    public static let kSMPopupViewWillHide: String = "kSMPopupViewWillHide"
+    public static let kSMPopupViewDidHide: String = "kSMPopupViewDidHide"
+    public static let kSMPopupViewNeedHide: String = "kSMPopupViewNeedHide"
     
     open var showStrategy: UIViewController?
     open var isShowOverlayView: Bool = false
@@ -40,7 +40,7 @@ open class SMPopupView: UIView
         self.setup()
     }
     
-    open static func popupViewSize() -> CGSize
+    public static func popupViewSize() -> CGSize
     {
         return CGSize(width: 320, height: 216)
     }

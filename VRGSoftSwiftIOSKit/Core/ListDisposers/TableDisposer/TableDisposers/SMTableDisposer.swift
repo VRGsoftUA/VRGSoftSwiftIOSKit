@@ -14,7 +14,7 @@ public protocol SMTableViewDataSource: class
     func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool
     func sectionIndexTitles(for tableView: UITableView) -> [String]? // return list of section titles to display in section index view (e.g. "ABCD...Z#")
     func tableView(_ tableView: UITableView, sectionForSectionIndexTitle title: String, at index: Int) -> Int // tell table which section corresponds to section title/index (e.g. "B",1))
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath)
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath)
     func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath)
 }
 
@@ -70,7 +70,7 @@ open class SMTableDisposer: SMListDisposer, UITableViewDelegate, UITableViewData
     
     open weak var delegate: SMTableDisposerDelegate?
     
-    open let multicastDelegate: SMMulticastDelegate<SMTableDisposerMulticastDelegate> = SMMulticastDelegate(options: NSPointerFunctions.Options.weakMemory) // swiftlint:disable:this weak_delegate
+    public let multicastDelegate: SMMulticastDelegate<SMTableDisposerMulticastDelegate> = SMMulticastDelegate(options: NSPointerFunctions.Options.weakMemory) // swiftlint:disable:this weak_delegate
     
     open func didCreate(cell aCell: UITableViewCell)
     {
@@ -186,7 +186,7 @@ open class SMTableDisposer: SMListDisposer, UITableViewDelegate, UITableViewData
         return delegate?.tableView(tableView, sectionForSectionIndexTitle: title, at: index) ?? 0
     }
     
-    public func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath)
+    public func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath)
     {
         delegate?.tableView(tableView, commit: editingStyle, forRowAt: indexPath)
     }
@@ -242,7 +242,7 @@ open class SMTableDisposer: SMListDisposer, UITableViewDelegate, UITableViewData
         
         if cellData.isCellHeightAutomaticDimension
         {
-            return UITableViewAutomaticDimension
+            return UITableView.automaticDimension
         } else
         {
             cellData.cellWidth = tableView.frame.size.width
@@ -366,9 +366,9 @@ open class SMTableDisposer: SMListDisposer, UITableViewDelegate, UITableViewData
     
     // Editing
     
-    public func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle
+    public func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle
     {
-        return delegate?.tableView?(tableView, editingStyleForRowAt: indexPath) ?? UITableViewCellEditingStyle.delete
+        return delegate?.tableView?(tableView, editingStyleForRowAt: indexPath) ?? UITableViewCell.EditingStyle.delete
     }
     
     public func tableView(_ tableView: UITableView, titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String?
@@ -537,7 +537,7 @@ public extension SMTableViewDataSource
     
     func tableView(_ tableView: UITableView, sectionForSectionIndexTitle title: String, at index: Int) -> Int { return 0 }
     
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) { }
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) { }
     
     func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) { }
 }

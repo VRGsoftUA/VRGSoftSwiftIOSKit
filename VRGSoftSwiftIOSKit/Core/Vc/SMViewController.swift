@@ -42,7 +42,7 @@ public typealias SMViewControllerCallback = (SMViewController, Any?) -> Void
     
     open var isModal: Bool
     {
-        return (self.navigationController?.childViewControllers[0] == self || self.navigationController == nil)
+        return (self.navigationController?.children[0] == self || self.navigationController == nil)
     }
     
     open lazy var backgroundImageView: UIImageView = UIImageView()
@@ -56,11 +56,11 @@ public typealias SMViewControllerCallback = (SMViewController, Any?) -> Void
         if let bgImage: UIImage = self.backgroundImage()
         {
             backgroundImageView.frame = self.view.bounds
-            backgroundImageView.autoresizingMask = [UIViewAutoresizing.flexibleWidth, UIViewAutoresizing.flexibleHeight]
+            backgroundImageView.autoresizingMask = [UIView.AutoresizingMask.flexibleWidth, UIView.AutoresizingMask.flexibleHeight]
             backgroundImageView.contentMode = .center
             backgroundImageView.image = bgImage
             self.view.addSubview(backgroundImageView)
-            self.view.sendSubview(toBack: backgroundImageView)
+            self.view.sendSubviewToBack(backgroundImageView)
         }
 
         // left nav button
@@ -70,7 +70,7 @@ public typealias SMViewControllerCallback = (SMViewController, Any?) -> Void
             {
                 if let leftNavigationButton: UIButton = leftNavigationButton.customView as? UIButton
                 {
-                    leftNavigationButton.addTarget(self, action: #selector(self.didBtNavLeftClicked), for: UIControlEvents.touchUpInside)
+                    leftNavigationButton.addTarget(self, action: #selector(self.didBtNavLeftClicked), for: UIControl.Event.touchUpInside)
                 } else
                 {
                     leftNavigationButton.target = self
@@ -94,7 +94,7 @@ public typealias SMViewControllerCallback = (SMViewController, Any?) -> Void
         {
             if let rightNavigationButton: UIButton = rightNavigationButton.customView as? UIButton
             {
-                rightNavigationButton.addTarget(self, action: #selector(self.didBtNavRightClicked), for: UIControlEvents.touchUpInside)
+                rightNavigationButton.addTarget(self, action: #selector(self.didBtNavRightClicked), for: UIControl.Event.touchUpInside)
             } else
             {
                 rightNavigationButton.target = self

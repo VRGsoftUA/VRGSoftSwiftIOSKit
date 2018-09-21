@@ -40,7 +40,7 @@ open class SMSectionReadonly: SMListSection<SMCellData>
         return cell
     }
     
-    open func reload(with anAnimation: UITableViewRowAnimation)
+    open func reload(with anAnimation: UITableView.RowAnimation)
     {
         updateCellDataVisibility()
         if let section: Int = tableDisposer?.index(by: self)
@@ -49,7 +49,7 @@ open class SMSectionReadonly: SMListSection<SMCellData>
         }
     }
     
-    open func reloadRows(at aIndexes: [Int], withRowAnimation aRowAnimation: UITableViewRowAnimation)
+    open func reloadRows(at aIndexes: [Int], withRowAnimation aRowAnimation: UITableView.RowAnimation)
     {
         var indexPaths: [IndexPath] = []
         var indexPath: IndexPath
@@ -65,7 +65,7 @@ open class SMSectionReadonly: SMListSection<SMCellData>
         tableDisposer?.tableView?.reloadRows(at: indexPaths, with: aRowAnimation)
     }
     
-    open func deleteRows(at aIndexes: [Int], withRowAnimation aRowAnimation: UITableViewRowAnimation)
+    open func deleteRows(at aIndexes: [Int], withRowAnimation aRowAnimation: UITableView.RowAnimation)
     {
         var toDelete: [SMCellData] = []
         
@@ -101,15 +101,15 @@ open class SMSectionReadonly: SMListSection<SMCellData>
     
     open func hideCell(by aIndex: Int, needUpdateTable aNeedUpdateTable: Bool)
     {
-        hideCell(by: aIndex, needUpdateTable: aNeedUpdateTable, withRowAnimation: UITableViewRowAnimation.middle)
+        hideCell(by: aIndex, needUpdateTable: aNeedUpdateTable, withRowAnimation: UITableView.RowAnimation.middle)
     }
 
     open func showCell(by aIndex: Int, needUpdateTable aNeedUpdateTable: Bool)
     {
-        showCell(by: aIndex, needUpdateTable: aNeedUpdateTable, withRowAnimation: UITableViewRowAnimation.middle)
+        showCell(by: aIndex, needUpdateTable: aNeedUpdateTable, withRowAnimation: UITableView.RowAnimation.middle)
     }
 
-    open func hideCell(by aIndex: Int, needUpdateTable aNeedUpdateTable: Bool, withRowAnimation aRowAnimation: UITableViewRowAnimation)
+    open func hideCell(by aIndex: Int, needUpdateTable aNeedUpdateTable: Bool, withRowAnimation aRowAnimation: UITableView.RowAnimation)
     {
         let cellData: SMCellData  = self.cellData(at: aIndex)
 
@@ -134,7 +134,7 @@ open class SMSectionReadonly: SMListSection<SMCellData>
         }
     }
     
-    open func showCell(by aIndex: Int, needUpdateTable aNeedUpdateTable: Bool, withRowAnimation aRowAnimation: UITableViewRowAnimation)
+    open func showCell(by aIndex: Int, needUpdateTable aNeedUpdateTable: Bool, withRowAnimation aRowAnimation: UITableView.RowAnimation)
     {
         let cellData: SMCellData  = self.cellData(at: aIndex)
         

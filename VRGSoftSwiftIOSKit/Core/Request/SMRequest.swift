@@ -12,8 +12,8 @@ public typealias SMRequestResponseBlock = (SMResponse) -> Void
 
 open class SMResponseNode
 {
-    open let responseQueue: DispatchQueue
-    open let responseBlock: SMRequestResponseBlock
+    public let responseQueue: DispatchQueue
+    public let responseBlock: SMRequestResponseBlock
     
     public init(responseBlock aResponseBlock: @escaping SMRequestResponseBlock, responseQueue aResponseQueue: DispatchQueue)
     {
@@ -35,7 +35,7 @@ open class SMRequest
         
     }
     
-    open let defaultResponseQueue: DispatchQueue = DispatchQueue.main
+    public let defaultResponseQueue: DispatchQueue = DispatchQueue.main
 
     open var responseBlocks: [SMResponseNode] = []
     open var executeAllResponseBlocksSync: Bool = false

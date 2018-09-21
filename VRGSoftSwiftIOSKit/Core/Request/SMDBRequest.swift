@@ -15,7 +15,7 @@ open class SMDBRequest: SMRequest
     open var cancelled: Bool = false
     open var executing: Bool = false
     
-    open let fetchRequest: NSFetchRequest<NSFetchRequestResult>
+    public let fetchRequest: NSFetchRequest<NSFetchRequestResult>
     
     public init(storage aStorage: SMDBStorage, fetchRequest aFetchRequest: NSFetchRequest<NSFetchRequestResult>)
     {

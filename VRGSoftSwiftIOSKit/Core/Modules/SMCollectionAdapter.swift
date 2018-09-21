@@ -12,7 +12,7 @@ open class SMCollectionAdapter: SMListAdapter, SMCollectionDisposerMulticastDele
 {
     override open var listDisposer: SMListDisposer? { return collectionDisposer }
     
-    open let collectionDisposer: SMCollectionDisposerModeled
+    public let collectionDisposer: SMCollectionDisposerModeled
     
     public init(collectionDisposer aCollectionDisposer: SMCollectionDisposerModeled)
     {

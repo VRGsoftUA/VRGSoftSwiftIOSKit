@@ -20,10 +20,10 @@ open class SMCellData: SMListCellData
         return String(describing: type(of: self))
     }
     
-    open var cellStyle: UITableViewCellStyle = UITableViewCellStyle.default
+    open var cellStyle: UITableViewCell.CellStyle = UITableViewCell.CellStyle.default
 
-    open var cellSelectionStyle: UITableViewCellSelectionStyle = UITableViewCellSelectionStyle.default
-    open var cellAccessoryType: UITableViewCellAccessoryType = UITableViewCellAccessoryType.none
+    open var cellSelectionStyle: UITableViewCell.SelectionStyle = UITableViewCell.SelectionStyle.default
+    open var cellAccessoryType: UITableViewCell.AccessoryType = UITableViewCell.AccessoryType.none
     open var cellSeparatorInset: UIEdgeInsets?
     
     open var isAutoDeselect: Bool = true

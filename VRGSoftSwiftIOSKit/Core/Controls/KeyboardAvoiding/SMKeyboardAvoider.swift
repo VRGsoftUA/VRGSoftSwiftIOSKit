@@ -19,7 +19,7 @@ open class SMKeyboardAvoider: SMKeyboardAvoidingProtocol, SMKeyboardToolbarDeleg
     open var lastReturnKeyType: UIReturnKeyType = UIReturnKeyType.go
     open var selectIndexInputField: Int = 0
     
-    open let scrollView: UIScrollView
+    public let scrollView: UIScrollView
     
     deinit
     {
@@ -34,11 +34,11 @@ open class SMKeyboardAvoider: SMKeyboardAvoidingProtocol, SMKeyboardToolbarDeleg
     
     open func setup()
     {
-        NotificationCenter.default.addObserver(self, selector: #selector(SMKeyboardAvoider.keyboardWillShow(_:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(SMKeyboardAvoider.keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         
-        NotificationCenter.default.addObserver(self, selector: #selector(SMKeyboardAvoider.keyboardWillHide(_:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(SMKeyboardAvoider.keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
         
-        NotificationCenter.default.addObserver(self, selector: #selector(SMKeyboardAvoider.keyboardDidHide(_:)), name: NSNotification.Name.UIKeyboardDidHide, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(SMKeyboardAvoider.keyboardDidHide(_:)), name: UIResponder.keyboardDidHideNotification, object: nil)
     }
     
     open func contentInsetForKeyboard() -> UIEdgeInsets
@@ -157,7 +157,7 @@ open class SMKeyboardAvoider: SMKeyboardAvoidingProtocol, SMKeyboardToolbarDeleg
             }
         }
         
-        guard let kbRect: CGRect = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else
+        guard let kbRect: CGRect = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else
         {
             return
         }
@@ -192,12 +192,12 @@ open class SMKeyboardAvoider: SMKeyboardAvoidingProtocol, SMKeyboardToolbarDeleg
         isKeyboardVisible = false
         selectIndexInputField = 0
         
-        if let cgRectValue: CGRect = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue
+        if let cgRectValue: CGRect = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue
         {
             _keyboardRect = cgRectValue
         }
         
-        if let duration: Double = (notification.userInfo?[UIKeyboardAnimationDurationUserInfoKey] as? NSNumber)?.doubleValue
+        if let duration: Double = (notification.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey] as? NSNumber)?.doubleValue
         {
             UIView.animate(withDuration: duration) {
                 self.scrollView.contentInset = self.priorInset

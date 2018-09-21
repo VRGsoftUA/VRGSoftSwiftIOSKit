@@ -69,7 +69,7 @@ open class SMCollectionDisposer: SMListDisposer, UICollectionViewDelegateFlowLay
 
     open weak var delegate: SMCollectionDisposerDelegate?
     
-    open let multicastDelegate: SMMulticastDelegate<SMCollectionDisposerMulticastDelegate> = SMMulticastDelegate(options: NSPointerFunctions.Options.weakMemory) // swiftlint:disable:this weak_delegate
+    public let multicastDelegate: SMMulticastDelegate<SMCollectionDisposerMulticastDelegate> = SMMulticastDelegate(options: NSPointerFunctions.Options.weakMemory) // swiftlint:disable:this weak_delegate
     
     open func didSetup(cell aCell: UICollectionViewCell, at aIndexPath: IndexPath)
     {
@@ -147,11 +147,11 @@ open class SMCollectionDisposer: SMListDisposer, UICollectionViewDelegateFlowLay
         
         switch kind
         {
-        case UICollectionElementKindSectionHeader:
+        case UICollectionView.elementKindSectionHeader:
             let result: UICollectionReusableView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: section.headerViewIdentifier, for: indexPath as IndexPath)
             section.headerSetupBlock?(result)
             return result
-        case UICollectionElementKindSectionFooter:
+        case UICollectionView.elementKindSectionFooter:
             let result: UICollectionReusableView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: section.footerViewIdentifier, for: indexPath as IndexPath)
             section.footerSetupBlock?(result)
             return result

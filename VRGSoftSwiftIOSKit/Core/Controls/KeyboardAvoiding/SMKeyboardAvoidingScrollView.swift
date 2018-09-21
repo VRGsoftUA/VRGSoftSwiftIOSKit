@@ -97,6 +97,15 @@ open class SMKeyboardAvoidingScrollView: UIScrollView, SMKeyboardAvoidingProtoco
     // MARK: - SMKeyboardAvoidingProtocol
 
     public var keyboardToolbar: SMKeyboardToolbar?
+    {
+        set {
+            keyboardAvoider.keyboardToolbar = newValue
+        }
+        
+        get {
+            return keyboardAvoider.keyboardToolbar
+        }
+    }
 
     public var isShowsKeyboardToolbar: Bool
     {

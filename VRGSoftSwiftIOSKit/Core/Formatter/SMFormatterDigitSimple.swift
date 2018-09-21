@@ -10,8 +10,8 @@ import UIKit
 
 open class SMFormatterDigitSimple: SMFormatter
 {
-    open let formaters: [String]
-    open let acceptableInputCharacters: CharacterSet = CharacterSet(charactersIn: "0123456789")
+    public let formaters: [String]
+    public let acceptableInputCharacters: CharacterSet = CharacterSet(charactersIn: "0123456789")
     
     open var isAcceptsNotPredefinedFormatter: Bool = false
     

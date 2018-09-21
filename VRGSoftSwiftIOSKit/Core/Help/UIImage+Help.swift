@@ -61,7 +61,7 @@ extension UIImage
     
     open class func resizableImageWith(color aColor: UIColor) -> UIImage?
     {
-        let image: UIImage? = imageWith(color: aColor, size: CGSize(width: 1, height: 1))?.resizableImage(withCapInsets: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0), resizingMode: UIImageResizingMode.stretch)
+        let image: UIImage? = imageWith(color: aColor, size: CGSize(width: 1, height: 1))?.resizableImage(withCapInsets: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0), resizingMode: UIImage.ResizingMode.stretch)
         return image
     }
     
@@ -81,15 +81,15 @@ extension UIImage
         
         var compression: CGFloat = 1.0
         
-        var data: Data? = UIImageJPEGRepresentation(self, compression)
+        var data: Data? = self.jpegData(compressionQuality: compression)
         
         while let length: Int = data?.count, length > maxFileSize, compression > maxCompression
         {
             compression -= 0.05
-            data = UIImageJPEGRepresentation(self, compression)
+            data = self.jpegData(compressionQuality: compression)
         }
         
-        data = UIImageJPEGRepresentation(self, compression+0.02)
+        data = self.jpegData(compressionQuality: compression+0.02)
         
         return data
     }

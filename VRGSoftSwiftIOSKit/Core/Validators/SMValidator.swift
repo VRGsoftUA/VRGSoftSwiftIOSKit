@@ -44,7 +44,7 @@ open class SMValidator
 
 open class SMCompoundValidator: SMValidator
 {
-    open let validators: [SMValidator]
+    public let validators: [SMValidator]
     open var successIfAtLeastOne: Bool = false
     
     public init(validators aValidators: [SMValidator])
@@ -145,7 +145,7 @@ open class SMValidatorAny: SMValidator
 
 open class SMValidatorIntWithRange: SMValidator
 {
-    open let range: NSRange
+    public let range: NSRange
     public init(range aRange: NSRange)
     {
         range = aRange
@@ -247,7 +247,7 @@ open class SMValidatorNotEmpty: SMValidator
 
 open class SMValidatorEqual: SMValidator
 {
-    open let testedValidator: SMValidator
+    public let testedValidator: SMValidator
     open var isIgnoreCase: Bool = false
     
     public init(testedValidator aTestedValidator: SMValidator)
@@ -280,7 +280,7 @@ open class SMValidatorEqual: SMValidator
 
 open class SMValidatorRegExp: SMValidator
 {
-    open let regularExpression: NSRegularExpression
+    public let regularExpression: NSRegularExpression
 
     public init(regExp aRegExp: NSRegularExpression)
     {
@@ -345,7 +345,7 @@ open class SMValidatorLatinicOnly: SMValidator
 
 open class SMValidatorLenghtMoreOrEqualThan: SMValidator
 {
-    open let number: Int
+    public let number: Int
     
     public init(aNumber: Int)
     {

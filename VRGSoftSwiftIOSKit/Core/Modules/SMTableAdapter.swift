@@ -13,7 +13,7 @@ open class SMTableAdapter: SMListAdapter, SMTableDisposerMulticastDelegate
 {
     override open var listDisposer: SMListDisposer? { return tableDisposer }
     
-    open let tableDisposer: SMTableDisposerModeled
+    public let tableDisposer: SMTableDisposerModeled
 
     public init(tableDisposer aTableDisposer: SMTableDisposerModeled)
     {

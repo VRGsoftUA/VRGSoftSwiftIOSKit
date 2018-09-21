@@ -16,7 +16,7 @@ open class SMPopupViewController: UIViewController
     var overlayView: UIView = UIView()
     var popupedViewOwner: UIView = UIView()
     var popupedView: SMPopupView = SMPopupView()
-    var btHidden: UIButton = UIButton(type: UIButtonType.custom)
+    var btHidden: UIButton = UIButton(type: UIButton.ButtonType.custom)
     var isShow: Bool = false
     var isAnimatingNow: Bool = false
     
@@ -44,7 +44,7 @@ open class SMPopupViewController: UIViewController
             overlayView.backgroundColor = .gray
             overlayView.alpha = 0.0
             overlayView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
-            self.view.sendSubview(toBack: overlayView)
+            self.view.sendSubviewToBack(overlayView)
         }
         
         // popuped view
@@ -71,7 +71,7 @@ open class SMPopupViewController: UIViewController
         {
             view.frame = superview.bounds
             setupSubviews()
-            superview.bringSubview(toFront: view)
+            superview.bringSubviewToFront(view)
             view.isHidden = false
             popupedView.popupWillAppear(animated: animated)
         }

@@ -13,7 +13,7 @@ public typealias SMListCellDataDidSelectClosureType = (_ cellData: SMListCellDat
 
 open class SMListCellData
 {
-    open let model: AnyObject?
+    public let model: AnyObject?
     
     @available(*, deprecated)
     open var didSelectClosure: SMListCellDataDidSelectClosureType?

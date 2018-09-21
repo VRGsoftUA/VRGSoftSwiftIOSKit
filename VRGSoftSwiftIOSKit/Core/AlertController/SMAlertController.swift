@@ -15,7 +15,7 @@ open class SMAlertController: UIAlertController
     {
         super.viewDidLoad()
         
-        NotificationCenter.default.addObserver(self, selector: #selector(SMAlertController.hide), name: NSNotification.Name.UIApplicationDidEnterBackground, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(SMAlertController.hide), name: UIApplication.didEnterBackgroundNotification, object: nil)
     }
     
     open func show()
@@ -36,7 +36,7 @@ open class SMAlertController: UIAlertController
         aVc.present(self, animated: true, completion: nil)
     }
     
-    open class func showAlertController(style aStyle: UIAlertControllerStyle,
+    open class func showAlertController(style aStyle: UIAlertController.Style,
                                         title aTitle: String?,
                                         message aMessage: String?,
                                         fromVC aVC: UIViewController,
@@ -48,7 +48,7 @@ open class SMAlertController: UIAlertController
         
         unowned let __alertController: SMAlertController = alertController
         
-        let cancelAction: UIAlertAction = UIAlertAction(title: aCancelButtonTitle, style: UIAlertActionStyle.cancel) { (_ action: UIAlertAction) in
+        let cancelAction: UIAlertAction = UIAlertAction(title: aCancelButtonTitle, style: UIAlertAction.Style.cancel) { (_ action: UIAlertAction) in
             aHandler?(__alertController, 0)
         }
         alertController.addAction(cancelAction)
@@ -59,7 +59,7 @@ open class SMAlertController: UIAlertController
             for title: String in otherButtonTitles
             {
                 let j: Int = i
-                let action: UIAlertAction = UIAlertAction(title: title, style: UIAlertActionStyle.default) { (_ action: UIAlertAction) in
+                let action: UIAlertAction = UIAlertAction(title: title, style: UIAlertAction.Style.default) { (_ action: UIAlertAction) in
                     aHandler?(__alertController, j+1)
                 }
                 i = i+1

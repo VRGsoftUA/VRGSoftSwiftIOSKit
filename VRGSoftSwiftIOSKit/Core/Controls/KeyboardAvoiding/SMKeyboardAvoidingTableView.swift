@@ -11,6 +11,15 @@ import UIKit
 open class SMKeyboardAvoidingTableView: UITableView, SMKeyboardAvoidingProtocol
 {
     public var keyboardToolbar: SMKeyboardToolbar?
+    {
+        set {
+            keyboardAvoider.keyboardToolbar = newValue
+        }
+        
+        get {
+            return keyboardAvoider.keyboardToolbar
+        }
+    }
     
     var _keyboardAvoider: SMKeyboardAvoider?
     var keyboardAvoider: SMKeyboardAvoider
@@ -26,7 +35,7 @@ open class SMKeyboardAvoidingTableView: UITableView, SMKeyboardAvoidingProtocol
         }
     }
 
-    override public init(frame: CGRect, style: UITableViewStyle)
+    override public init(frame: CGRect, style: UITableView.Style)
     {
         super.init(frame: frame, style: style)
     

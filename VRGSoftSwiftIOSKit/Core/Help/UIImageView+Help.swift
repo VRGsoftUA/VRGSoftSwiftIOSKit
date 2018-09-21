@@ -12,7 +12,7 @@ extension UIImageView
 {
     func set(image aImage: UIImage, duration aDuration: TimeInterval)
     {
-        UIView.transition(with: self, duration: aDuration, options: UIViewAnimationOptions.transitionCrossDissolve, animations:
+        UIView.transition(with: self, duration: aDuration, options: UIView.AnimationOptions.transitionCrossDissolve, animations:
         {
             self.image = aImage
         }, completion: nil)

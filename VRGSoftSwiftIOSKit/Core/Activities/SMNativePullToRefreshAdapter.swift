@@ -10,7 +10,7 @@ import UIKit
 
 open class SMNativePullToRefreshAdapter: SMPullToRefreshAdapter
 {
-    open let refreshControl: UIRefreshControl = UIRefreshControl()
+    public let refreshControl: UIRefreshControl = UIRefreshControl()
         
     override open var enabled: Bool?
     {
@@ -28,13 +28,13 @@ open class SMNativePullToRefreshAdapter: SMPullToRefreshAdapter
     {
         super.init()
         
-        refreshControl.addTarget(self, action: #selector(refreshControlDidBeginRefreshing(sender:)), for: UIControlEvents.valueChanged)
+        refreshControl.addTarget(self, action: #selector(refreshControlDidBeginRefreshing(sender:)), for: UIControl.Event.valueChanged)
     }
     
     override open func configureWith(scrollView aScrollView: UIScrollView)
     {
         aScrollView.addSubview(refreshControl)
-        aScrollView.sendSubview(toBack: refreshControl)
+        aScrollView.sendSubviewToBack(refreshControl)
     }
     
     override open func beginPullToRefresh()

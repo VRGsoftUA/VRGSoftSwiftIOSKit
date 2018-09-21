@@ -79,7 +79,7 @@ open class SMSectionWritable: SMSectionReadonly
     }
     
     //TODO:
-    override open func reload(with anAnimation: UITableViewRowAnimation)
+    override open func reload(with anAnimation: UITableView.RowAnimation)
     {
         if let keyboardAvoiding: SMKeyboardAvoidingProtocol = tableDisposer?.tableView as? SMKeyboardAvoidingProtocol
         {
@@ -98,7 +98,7 @@ open class SMSectionWritable: SMSectionReadonly
     }
 
     //TODO:
-    override open func reloadRows(at aIndexes: [Int], withRowAnimation aRowAnimation: UITableViewRowAnimation)
+    override open func reloadRows(at aIndexes: [Int], withRowAnimation aRowAnimation: UITableView.RowAnimation)
     {
         var indexPaths: [IndexPath] = []
         var indexPath: IndexPath
@@ -125,7 +125,7 @@ open class SMSectionWritable: SMSectionReadonly
     }
 
     //TODO:
-    override open func showCell(by aIndex: Int, needUpdateTable aNeedUpdateTable: Bool, withRowAnimation aRowAnimation: UITableViewRowAnimation)
+    override open func showCell(by aIndex: Int, needUpdateTable aNeedUpdateTable: Bool, withRowAnimation aRowAnimation: UITableView.RowAnimation)
     {
         let cellData: SMCellData = self.cellData(at: aIndex)
         
@@ -149,7 +149,7 @@ open class SMSectionWritable: SMSectionReadonly
     }
     
     //TODO:
-    override open func hideCell(by aIndex: Int, needUpdateTable aNeedUpdateTable: Bool, withRowAnimation aRowAnimation: UITableViewRowAnimation)
+    override open func hideCell(by aIndex: Int, needUpdateTable aNeedUpdateTable: Bool, withRowAnimation aRowAnimation: UITableView.RowAnimation)
     {
         let cellData: SMCellData = self.cellData(at: aIndex)
         
@@ -181,7 +181,7 @@ open class SMSectionWritable: SMSectionReadonly
         }
     }
     
-    override open func deleteRows(at aIndexes: [Int], withRowAnimation aRowAnimation: UITableViewRowAnimation)
+    override open func deleteRows(at aIndexes: [Int], withRowAnimation aRowAnimation: UITableView.RowAnimation)
     {
         super.deleteRows(at: aIndexes, withRowAnimation: aRowAnimation)
         

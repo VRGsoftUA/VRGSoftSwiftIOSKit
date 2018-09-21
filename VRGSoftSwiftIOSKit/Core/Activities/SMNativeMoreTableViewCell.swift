@@ -17,7 +17,7 @@ open class SMNativeMoreTableViewCellData: SMCellData, SMPagingMoreCellDataProtoc
         self.init(model: nil)
     
         self.cellClass = SMNativeMoreTableViewCell.self
-        self.cellSelectionStyle = UITableViewCellSelectionStyle.none
+        self.cellSelectionStyle = UITableViewCell.SelectionStyle.none
         self.cellHeight = 45
     }
 }
@@ -25,7 +25,7 @@ open class SMNativeMoreTableViewCellData: SMCellData, SMPagingMoreCellDataProtoc
 open class SMNativeMoreTableViewCell: SMCell, SMPagingMoreCellProtocol
 {
 
-    open let activity: UIActivityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.gray)
+    public let activity: UIActivityIndicatorView = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.gray)
     
     override open func setup()
     {

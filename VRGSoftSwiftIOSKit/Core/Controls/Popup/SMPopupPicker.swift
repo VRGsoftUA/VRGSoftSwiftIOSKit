@@ -90,16 +90,15 @@ open class SMPopupPicker: SMPopupView
         return nil
     }
     
+    open var _selectedItem: AnyObject?
     open var selectedItem: AnyObject?
     {
         // override it in subclasses
-        set
-        {
-            self.selectedItem = newValue
+        set {
+            _selectedItem = newValue
         }
-        get
-        {
-            return nil
+        get {
+            return _selectedItem
         }
     }
 }

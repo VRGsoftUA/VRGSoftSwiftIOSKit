@@ -17,7 +17,7 @@ open class SMFetcherWithBlock: SMDataFetcherProtocol
     
     public var callbackQueue: DispatchQueue = DispatchQueue.global()
     
-    open let fetchBlock: SMDataFetchBlock
+    public let fetchBlock: SMDataFetchBlock
     
     
     public init(fetchBlock aFetchBlock: @escaping SMDataFetchBlock)

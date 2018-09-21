@@ -21,7 +21,7 @@ public protocol SMTableDisposerModeledDelegate: class
 
 open class SMTableDisposerModeled: SMTableDisposer
 {
-    open let modeledMulticastDelegate: SMMulticastDelegate<SMTableDisposerModeledMulticastDelegate> = SMMulticastDelegate(options: NSPointerFunctions.Options.weakMemory) // swiftlint:disable:this weak_delegate
+    public let modeledMulticastDelegate: SMMulticastDelegate<SMTableDisposerModeledMulticastDelegate> = SMMulticastDelegate(options: NSPointerFunctions.Options.weakMemory) // swiftlint:disable:this weak_delegate
 
     open var registeredClasses: [String: SMCellData.Type] = [:]
     
