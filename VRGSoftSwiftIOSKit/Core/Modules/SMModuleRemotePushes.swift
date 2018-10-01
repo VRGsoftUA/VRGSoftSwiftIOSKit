@@ -7,22 +7,36 @@
 //
 
 import UIKit
+import UserNotifications
 
 open class SMModuleRemotePushes: Any
 {
-    var deviceToken: String?
+    open var deviceToken: String?
     
-//    open func tryToRegisterForUserNotificationDefault() -> Void
-//    {
-//        self.tryToRegisterFor(userNotificationTypes: [UIUserNotificationType.alert, UIUserNotificationType.badge, UIUserNotificationType.sound])
-//    }
-//
-//    open func tryToRegisterFor(userNotificationTypes aUserNotificationTypes: UIUserNotificationType) -> Void
-//    {
-//        let notificationSettings: UIUserNotificationSettings = UIUserNotificationSettings(types: aUserNotificationTypes, categories: nil)
-//        UIApplication.shared.registerUserNotificationSettings(notificationSettings)
-//    }
-
+    open func tryToRegisterForUserNotificationDefault() -> Void
+    {
+        
+    }
+    
+    @available(iOS 10.0, *)
+    open func tryToRegisterFor(userNotificationTypes aUserNotificationOptions: UNAuthorizationOptions) -> Void
+    {
+        //        UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
+        //        [center requestAuthorizationWithOptions:aOptions completionHandler:^(BOOL granted, NSError * _Nullable error)
+        //            {
+        //            if(!error)
+        //            {
+        //            dispatch_async(dispatch_get_main_queue(), ^{
+        //            [self tryToRegisterForUserNotificationDefault];
+        //            });
+        //            }
+        //            }];
+        let center: UNUserNotificationCenter = UNUserNotificationCenter.current()
+        center.requestAuthorization(options: aUserNotificationOptions) { (isComplite, error) in
+            
+        }
+    }
+    
     public init()
     {
         
@@ -51,7 +65,7 @@ open class SMModuleRemotePushes: Any
             registerDeviceTokenRequest()?.start()
         }
     }
-
+    
     open func unregisterForPushNotifications()
     {
         if deviceToken != nil && canUnregisterDeviceToken()
@@ -59,17 +73,17 @@ open class SMModuleRemotePushes: Any
             unregisterDeviceTokenRequest()?.start()
         }
     }
-
+    
     open func registerDeviceTokenRequest() -> SMRequest?
     {
         return nil
     }
-
+    
     open func unregisterDeviceTokenRequest() -> SMRequest?
     {
         return nil
     }
-
+    
     open func canRegisterDeviceToken() -> Bool
     {
         return true
