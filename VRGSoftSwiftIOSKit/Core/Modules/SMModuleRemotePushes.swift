@@ -9,35 +9,41 @@
 import UIKit
 import UserNotifications
 
-open class SMModuleRemotePushes: Any
+open class SMModuleRemotePushes: NSObject
 {
     open var deviceToken: String?
     
-    open func tryToRegisterForUserNotificationDefault() -> Void
+    open func tryToRegisterAllNotificationSettings() -> Void
     {
-        
-    }
-    
-    @available(iOS 10.0, *)
-    open func tryToRegisterFor(userNotificationTypes aUserNotificationOptions: UNAuthorizationOptions) -> Void
-    {
-        //        UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
-        //        [center requestAuthorizationWithOptions:aOptions completionHandler:^(BOOL granted, NSError * _Nullable error)
-        //            {
-        //            if(!error)
-        //            {
-        //            dispatch_async(dispatch_get_main_queue(), ^{
-        //            [self tryToRegisterForUserNotificationDefault];
-        //            });
-        //            }
-        //            }];
-        let center: UNUserNotificationCenter = UNUserNotificationCenter.current()
-        center.requestAuthorization(options: aUserNotificationOptions) { (isComplite, error) in
+        if #available(iOS 10.0, *)
+        {
+            self.tryToRegisterFor(userNotificationOptions: [UNAuthorizationOptions.alert, UNAuthorizationOptions.badge, UNAuthorizationOptions.sound])
+        } else
+        {
             
         }
     }
     
-    public init()
+    open func tryToRegisterForUserNotificationDefault() -> Void
+    {
+        UIApplication.shared.registerForRemoteNotifications()
+    }
+    
+    @available(iOS 10.0, *)
+    open func tryToRegisterFor(userNotificationOptions aUserNotificationOptions: UNAuthorizationOptions) -> Void
+    {
+        let center: UNUserNotificationCenter = UNUserNotificationCenter.current()
+        center.requestAuthorization(options: aUserNotificationOptions) { (granted, error) in
+            DispatchQueue.main.async {
+                if error == nil
+                {
+                    self.tryToRegisterForUserNotificationDefault()
+                }
+            }
+        }
+    }
+    
+    public override init()
     {
         
     }
