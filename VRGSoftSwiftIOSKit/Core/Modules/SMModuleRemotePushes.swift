@@ -8,7 +8,7 @@
 
 import UIKit
 
-open class SMModuleRemotePushes
+open class SMModuleRemotePushes: Any
 {
     var deviceToken: String?
     
@@ -23,6 +23,11 @@ open class SMModuleRemotePushes
 //        UIApplication.shared.registerUserNotificationSettings(notificationSettings)
 //    }
 
+    public init()
+    {
+        
+    }
+    
     open func didRegisterForRemoteNotificationsWith(deviceTokenData aDeviceTokenData: Data)
     {
         var token: String = ""
