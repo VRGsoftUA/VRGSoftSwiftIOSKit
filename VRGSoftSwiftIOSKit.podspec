@@ -26,7 +26,7 @@ Pod::Spec.new do |s|
 
         s.homepage  = 'https://vrgsoft.net/'
         s.authors   = {'semenag01' => 'semenag01@meta.ua'}
-
+        s.pod_target_xcconfig = { 'SWIFT_VERSION' => '4.2' }
         s.source    = { :git => 'https://github.com/VRGsoftUA/VRGSoftSwiftIOSKit.git', :branch => 'development', :tag => '1.0.0' }
 
     #platform
