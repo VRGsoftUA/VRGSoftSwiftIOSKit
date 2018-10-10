@@ -23,7 +23,7 @@ Pod::Spec.new do |s|
         s.version   = '1.0.0'
         s.summary   = 'VRGSoftSwiftIOSKit descriptions'
         s.license  = 'MIT'
-
+        s.swift_version = '4.2'
         s.homepage  = 'https://vrgsoft.net/'
         s.authors   = {'semenag01' => 'semenag01@meta.ua'}
         s.pod_target_xcconfig = { 'SWIFT_VERSION' => '4.2' }
