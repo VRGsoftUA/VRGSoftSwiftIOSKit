@@ -13,7 +13,7 @@ open class SMModuleRemotePushes: NSObject
 {
     open var deviceToken: String?
     
-    open func tryToRegisterAllNotificationSettings() -> Void
+    open func tryToRegisterAllNotificationSettings()
     {
         if #available(iOS 10.0, *)
         {
@@ -24,16 +24,16 @@ open class SMModuleRemotePushes: NSObject
         }
     }
     
-    open func tryToRegisterForUserNotificationDefault() -> Void
+    open func tryToRegisterForUserNotificationDefault()
     {
         UIApplication.shared.registerForRemoteNotifications()
     }
     
     @available(iOS 10.0, *)
-    open func tryToRegisterFor(userNotificationOptions aUserNotificationOptions: UNAuthorizationOptions) -> Void
+    open func tryToRegisterFor(userNotificationOptions aUserNotificationOptions: UNAuthorizationOptions)
     {
         let center: UNUserNotificationCenter = UNUserNotificationCenter.current()
-        center.requestAuthorization(options: aUserNotificationOptions) { (granted, error) in
+        center.requestAuthorization(options: aUserNotificationOptions) { (_, error) in
             DispatchQueue.main.async {
                 if error == nil
                 {

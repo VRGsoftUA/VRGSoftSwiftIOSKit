@@ -342,7 +342,6 @@ open class SMTableDisposer: SMListDisposer, UITableViewDelegate, UITableViewData
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
     {
         let cellData: SMCellData = self.cellData(by: indexPath)
-        cellData.didSelectClosure?(cellData)
         cellData.baSelect?.performBlockFrom(sender: cellData)
         cellData.performSelectedHandlers()
         
