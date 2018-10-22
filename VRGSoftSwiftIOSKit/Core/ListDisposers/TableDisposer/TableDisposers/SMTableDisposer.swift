@@ -395,6 +395,18 @@ open class SMTableDisposer: SMListDisposer, UITableViewDelegate, UITableViewData
         delegate?.tableView?(tableView, didEndEditingRowAt: indexPath)
     }
 
+    @available(iOS 11.0, *)
+    public func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration?
+    {
+        return delegate?.tableView?(tableView, trailingSwipeActionsConfigurationForRowAt: indexPath)
+    }
+    
+    @available(iOS 11.0, *)
+    public func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration?
+    {
+        return delegate?.tableView?(tableView, leadingSwipeActionsConfigurationForRowAt: indexPath)
+    }
+
     
     // Moving/reordering
     
