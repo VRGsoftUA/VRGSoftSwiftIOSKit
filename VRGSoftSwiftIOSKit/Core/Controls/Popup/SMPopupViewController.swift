@@ -35,7 +35,7 @@ open class SMPopupViewController: UIViewController
         btHidden.frame = self.view.bounds
         btHidden.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         btHidden.addTarget(self, action: #selector(hidedButtonPressed(sender:)), for: .touchUpInside)
-        btHidden.isHidden = popupedView.isHideByTapOutside
+        btHidden.isHidden = !popupedView.isHideByTapOutside
         
         if popupedView.isShowOverlayView
         {

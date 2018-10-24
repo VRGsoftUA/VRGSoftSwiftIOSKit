@@ -49,8 +49,8 @@ open class SMTableDisposerModeled: SMTableDisposer
         {
             if let cellData: SMCellData = cellDataFrom(model: model)
             {
-                aSection.addCellData(cellData)
                 didCreate(cellData: cellData)
+                aSection.addCellData(cellData)
             } else
             {
                 assert(false, String(format: "Model doesn't have registered cellData class %@", String(describing: type(of: model))))

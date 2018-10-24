@@ -29,12 +29,6 @@ open class SMModuleList
     open var listAdapter: SMListAdapter
     
     open var isReloading: Bool = false
-    {
-        didSet
-        {
-            
-        }
-    }
     
     open var pullToRefreshAdapter: SMPullToRefreshAdapter?
     {
