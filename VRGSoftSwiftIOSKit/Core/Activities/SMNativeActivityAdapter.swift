@@ -11,7 +11,7 @@ import UIKit
 open class SMNativeActivityAdapter: SMActivityAdapter
 {
     public let backgroundView: UIView = UIView()
-    public let activity: UIActivityIndicatorView = UIActivityIndicatorView(style: .gray)
+    public var activity: UIActivityIndicatorView = UIActivityIndicatorView(style: .gray)
     
     override open func configureWith(view aView: UIView)
     {
