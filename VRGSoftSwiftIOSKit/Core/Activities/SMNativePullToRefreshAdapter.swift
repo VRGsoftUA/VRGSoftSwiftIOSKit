@@ -10,8 +10,15 @@ import UIKit
 
 open class SMNativePullToRefreshAdapter: SMPullToRefreshAdapter
 {
-    public let refreshControl: UIRefreshControl = UIRefreshControl()
-        
+    public lazy var refreshControl: UIRefreshControl = {
+        return createRefreshControl()
+    }()
+    
+    public func createRefreshControl() -> UIRefreshControl
+    {
+        return UIRefreshControl()
+    }
+    
     override open var enabled: Bool?
     {
         set {

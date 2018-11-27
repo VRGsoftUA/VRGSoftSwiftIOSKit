@@ -13,6 +13,7 @@ open class SMFetcherIntoStorage: SMFetcherWithRequest
     open var isFetchOnlyFromDataBase: Bool = false
     open var isFetchFromDataBaseWhenGatewayRequestFailed: Bool = false
     open var isFetchFromDataBaseWhenGatewayRequestSuccess: Bool = false
+    open var isFetchFromDataBaseIfGatewayRequestIsNil: Bool = false
     
     open var currentMessage: SMFetcherMessage?
     
@@ -131,6 +132,12 @@ open class SMFetcherIntoStorage: SMFetcherWithRequest
             if SMGatewayConfigurator.shared.isInternetReachable()
             {
                 newRequest = self.gatewayRequestBy(message: aMessage)
+                
+                if newRequest == nil && isFetchFromDataBaseIfGatewayRequestIsNil
+                {
+                    newRequest = self.dataBaseRequestBy(message: aMessage)
+                }
+                
             } else
             {
                 newRequest = self.dataBaseRequestBy(message: aMessage)

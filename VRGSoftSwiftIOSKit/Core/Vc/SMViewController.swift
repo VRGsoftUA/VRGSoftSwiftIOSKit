@@ -26,7 +26,12 @@ public typealias SMViewControllerCallback = (SMViewController, Any?) -> Void
     
     open var isVisible: Bool = false
     
-    open var activity: SMNativeActivityAdapter = SMNativeActivityAdapter()
+    open lazy var activity: SMActivityAdapter = createActivity()
+    
+    open func createActivity() -> SMActivityAdapter
+    {
+        return SMNativeActivityAdapter()
+    }
     
     open func showActivity()
     {
