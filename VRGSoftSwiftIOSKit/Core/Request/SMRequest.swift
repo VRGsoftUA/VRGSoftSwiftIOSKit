@@ -35,6 +35,8 @@ open class SMRequest
         
     }
     
+    open var tag: Int = 0
+    
     public let defaultResponseQueue: DispatchQueue = DispatchQueue.main
 
     open var responseBlocks: [SMResponseNode] = []

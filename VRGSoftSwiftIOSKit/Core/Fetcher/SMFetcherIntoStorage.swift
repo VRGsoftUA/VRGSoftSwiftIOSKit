@@ -33,7 +33,7 @@ open class SMFetcherIntoStorage: SMFetcherWithRequest
                     
                     guard let strongSelf: SMFetcherIntoStorage = self else { return }
                     
-                    if newValue is SMGatewayRequest || newValue is SMCompoundRequest
+                    if newValue?.tag == 0
                     {
                         let success: Bool = aResponse.isSuccess
                         if success
@@ -46,6 +46,7 @@ open class SMFetcherIntoStorage: SMFetcherWithRequest
                                 if let currentMessage: SMFetcherMessage = strongSelf.currentMessage
                                 {
                                     strongSelf.request = strongSelf.dataBaseRequestBy(message: currentMessage)
+                                    strongSelf.request?.tag = 1
                                 }
                                 
                                 if strongSelf.request != nil
@@ -74,6 +75,7 @@ open class SMFetcherIntoStorage: SMFetcherWithRequest
                             if let currentMessage: SMFetcherMessage = strongSelf.currentMessage
                             {
                                 strongSelf.request = strongSelf.dataBaseRequestBy(message: currentMessage)
+                                strongSelf.request?.tag = 1
                             }
                             
                             if strongSelf.request != nil
@@ -136,15 +138,18 @@ open class SMFetcherIntoStorage: SMFetcherWithRequest
                 if newRequest == nil && isFetchFromDataBaseIfGatewayRequestIsNil
                 {
                     newRequest = self.dataBaseRequestBy(message: aMessage)
+                    newRequest?.tag = 1
                 }
                 
             } else
             {
                 newRequest = self.dataBaseRequestBy(message: aMessage)
+                newRequest?.tag = 1
             }
         } else
         {
             newRequest = self.dataBaseRequestBy(message: aMessage)
+            newRequest?.tag = 1
         }
         
         return newRequest
@@ -156,7 +161,7 @@ open class SMFetcherIntoStorage: SMFetcherWithRequest
         return nil
     }
     
-    open func dataBaseRequestBy(message aMessage: SMFetcherMessage) -> SMDBRequest?
+    open func dataBaseRequestBy(message aMessage: SMFetcherMessage) -> SMRequest?
     {
         //override it
         return nil

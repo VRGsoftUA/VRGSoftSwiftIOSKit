@@ -110,11 +110,7 @@ open class SMModuleList
                     
                     if aResponse.isSuccess
                     {
-                        // TODO:
-                        /*Preparation of sections changes their number and at that moment a function cellForItemAt: or cellForRowAt: can be called.
-                          Reload disposer to update the data for the table/collection */
                         self?.prepareSections()
-                        self?.listAdapter.reloadData()
                     }
                     
                     self?.didFetchDataWith(message: aMessage, response: aResponse)

@@ -8,7 +8,7 @@
 
 import UIKit
 
-public typealias SMPrepareRequestBlock = (SMFetcherMessage) -> SMRequest
+public typealias SMPrepareRequestBlock = (SMFetcherMessage) -> SMRequest?
 public typealias SMCanFetchBlock = (SMFetcherMessage) -> Bool
 
 open class SMFetcherWithRequestBlock: SMFetcherWithRequest
