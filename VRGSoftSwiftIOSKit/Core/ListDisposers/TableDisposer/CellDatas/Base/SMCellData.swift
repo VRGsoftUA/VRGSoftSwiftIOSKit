@@ -15,10 +15,6 @@ open class SMCellData: SMListCellData
     
     open var cellNibName: String?
     open var cellClass: UITableViewCell.Type = UITableViewCell.self
-    open var cellIdentifier: String
-    {
-        return String(describing: type(of: self))
-    }
     
     open var cellStyle: UITableViewCell.CellStyle = UITableViewCell.CellStyle.default
 

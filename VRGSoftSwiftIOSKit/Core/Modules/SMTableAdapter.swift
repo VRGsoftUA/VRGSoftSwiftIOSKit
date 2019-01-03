@@ -11,114 +11,20 @@ import UIKit
 
 open class SMTableAdapter: SMListAdapter, SMTableDisposerMulticastDelegate
 {
-    override open var listDisposer: SMListDisposer? { return tableDisposer }
-    
-    public let tableDisposer: SMTableDisposerModeled
+    public var tableDisposer: SMTableDisposerModeled? { return listDisposer as? SMTableDisposerModeled }
 
-    public init(tableDisposer aTableDisposer: SMTableDisposerModeled)
+    public override init(listDisposer aListDisposer: SMListDisposer)
     {
-        tableDisposer = aTableDisposer
-        super.init()
-        tableDisposer.multicastDelegate.addDelegate(self)
-    }
-    
-    override open func prepareSections()
-    {
-        if delegate == nil
-        {
-            tableDisposer.sections.removeAll()
-            let section: SMSectionReadonly = SMSectionReadonly()
-            tableDisposer.addSection(section)
-        } else
-        {
-            super.prepareSections()
-        }
-    }
-    
-    override open func cleanMoreCellData()
-    {
-        for section: SMSectionReadonly in tableDisposer.sections
-        {
-            var moreCellDatas: [SMCellData] = []
-            for cd: SMCellData in section.cellDataSource where cd is SMPagingMoreCellDataProtocol
-            {
-                moreCellDatas.append(cd)
-            }
-            
-            for cd: SMCellData in moreCellDatas
-            {
-                section.removeCellData(cd)
-            }
-        }
+        super.init(listDisposer: aListDisposer)
+        
+        tableDisposer?.multicastDelegate.addDelegate(self)
     }
     
     override open func reloadData()
     {
-        tableDisposer.reloadData()
+        listDisposer.reloadData()
     }
     
-    override open func updateSectionWith(models aModels: [AnyObject], sectionIndex aSectionIndex: Int, needLoadMore aNeedLoadMore: SMListAdapterClosureType?)
-    {
-        var section: SMSectionReadonly?
-        
-        if let value: SMSectionReadonly = delegate?.listAdapter(self, sectionForModels: aModels, indexOfSection: aSectionIndex) as? SMSectionReadonly
-        {
-            section = value
-            tableDisposer.addSection(value)
-        } else if let value: SMSectionReadonly = tableDisposer.sections.last
-        {
-            section = value
-        } else if let value: SMSectionReadonly = delegate?.defaultSectionForlistAdapter(self) as? SMSectionReadonly
-        {
-            section = value
-            tableDisposer.addSection(value)
-        }
-        
-        guard let sectionForModels: SMSectionReadonly = section else
-        {
-            assert(false, "SMCollectionAdapter: section for collectionDisposer is nil!")
-            return
-        }
-        
-        self.setupModels(aModels, forSection: sectionForModels)
-        
-//        guard let sectionForModels: SMSectionReadonly = self.delegate?.listAdapter(self, sectionForModels: aModels, indexOfSection: aSectionIndex) as? SMSectionReadonly else
-//        {
-//            guard let sectionForModels: SMSectionReadonly = tableDisposer.sections.last else
-//            {
-//                return
-//            }
-//
-//            self.setupModels(aModels, forSection: sectionForModels)
-//            return
-//        }
-//
-//        self.setupModels(aModels, forSection: sectionForModels)
-        
-        if aNeedLoadMore?() ?? false
-        {
-            if let moreCellData: SMPagingMoreCellDataProtocol = delegate?.moreCellDataForListAdapter(self)
-            {
-                moreCellData.needLoadMore = SMBlockAction(block: { [weak self] _ in // swiftlint:disable:this explicit_type_interface
-                    if let strongSelf: SMTableAdapter  = self
-                    {
-                        strongSelf.moreDelegate?.needLoadMore(listAdapter: strongSelf)
-                    }
-                })
-                
-                if let moreCellData: SMCellData = moreCellData as? SMCellData
-                {
-                    sectionForModels.addCellData(moreCellData)
-                }
-            }
-        }
-    }
-    
-    open func setupModels(_ aModels: [AnyObject], forSection aSection: SMSectionReadonly)
-    {
-        self.tableDisposer.setupModels(aModels, forSection: aSection)
-    }
-
     
     // MARK: - SMTableDisposerMulticastDelegate
     

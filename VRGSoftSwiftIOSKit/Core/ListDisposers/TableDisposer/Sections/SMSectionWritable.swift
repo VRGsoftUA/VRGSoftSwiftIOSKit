@@ -14,7 +14,7 @@ open class SMSectionWritable: SMSectionReadonly
     
     open func mapToObject()
     {
-        for cellData: SMCellData in cellDataSource where cellData is SMCellDataMapedProtocol
+        for cellData: SMListCellData in cellDataSource where cellData is SMCellDataMapedProtocol
         {
             (cellData as? SMCellDataMapedProtocol)?.mapToObject()
         }
@@ -22,7 +22,7 @@ open class SMSectionWritable: SMSectionReadonly
 
     open func mapFromObject()
     {
-        for cellData: SMCellData in cellDataSource where cellData is SMCellDataMapedProtocol
+        for cellData: SMListCellData in cellDataSource where cellData is SMCellDataMapedProtocol
         {
             (cellData as? SMCellDataMapedProtocol)?.mapFromObject()
         }
@@ -33,14 +33,11 @@ open class SMSectionWritable: SMSectionReadonly
     //TODO:
     open func createCell(at anIndex: Int) -> UITableViewCell
     {
-        let cellData: SMCellData = visibleCellData(at: anIndex)
+        let cellData: SMCellData = visibleCellData(at: anIndex) as! SMCellData// swiftlint:disable:this force_cast
         
         let cell: UITableViewCell = cellData.createCell()
         
-        if let cell: SMCellProtocol = cell as? SMCellProtocol
-        {
-            cell.setupCellData(cellData)
-        }
+        (cell as? SMCellProtocol)?.setupCellData(cellData)
     
         if let keyboardAvoiding: SMKeyboardAvoidingProtocol = tableDisposer?.tableView as? SMKeyboardAvoidingProtocol,
             let cell: SMCell = cell as? SMCell,
@@ -104,7 +101,7 @@ open class SMSectionWritable: SMSectionReadonly
         var indexPath: IndexPath
         let sectionIndex: Int = tableDisposer?.index(by: self) ?? 0
         
-        var cellData: SMCellData
+        var cellData: SMListCellData
         var cell: UITableViewCell
         
         for index: Int in aIndexes
@@ -127,7 +124,7 @@ open class SMSectionWritable: SMSectionReadonly
     //TODO:
     override open func showCell(by aIndex: Int, needUpdateTable aNeedUpdateTable: Bool, withRowAnimation aRowAnimation: UITableView.RowAnimation)
     {
-        let cellData: SMCellData = self.cellData(at: aIndex)
+        let cellData: SMListCellData = self.cellData(at: aIndex)
         
         if cellData.isVisible
         {
@@ -151,7 +148,7 @@ open class SMSectionWritable: SMSectionReadonly
     //TODO:
     override open func hideCell(by aIndex: Int, needUpdateTable aNeedUpdateTable: Bool, withRowAnimation aRowAnimation: UITableView.RowAnimation)
     {
-        let cellData: SMCellData = self.cellData(at: aIndex)
+        let cellData: SMListCellData = self.cellData(at: aIndex)
         
         if !cellData.isVisible
         {

@@ -1,0 +1,18 @@
+//
+//  SMListDisposerSetupModelProtocol.swift
+//  VRGSoftSwiftIOSKit
+//
+//  Created by OLEKSANDR SEMENIUK on 1/3/19.
+//  Copyright © 2019 OLEKSANDR SEMENIUK. All rights reserved.
+//
+
+
+public protocol SMListDisposerSetupModelProtocol: class
+{
+    func register(cellDataClass aCellDataClass: SMListCellData.Type, forModelClass aModelClass: AnyClass?)
+    func unregisterCellDataFor(modelClass aModelClass: AnyClass)
+    func setupModels(_ aModels: [AnyObject], forSectionAtIndex aSectionIndex: Int)
+    func setupModels(_ aModels: [AnyObject], forSection aSection: SMListSection)
+    func cellDataFrom(model aModel: AnyObject) -> SMListCellData?
+    func didCreate(cellData aCellData: SMListCellData)
+}

@@ -51,11 +51,11 @@ open class SMCollectionDisposerModeled: SMCollectionDisposer
     
     open func setupModels(_ aModels: [AnyObject], forSectionAtIndex aSectionIndex: Int)
     {
-        let section: SMCollectonSection = sections[aSectionIndex]
+        let section: SMListSection = sections[aSectionIndex]
         setupModels(aModels, forSection: section)
     }
     
-    open func setupModels(_ aModels: [AnyObject], forSection aSection: SMCollectonSection)
+    open func setupModels(_ aModels: [AnyObject], forSection aSection: SMListSection)
     {
         for model: AnyObject in aModels
         {

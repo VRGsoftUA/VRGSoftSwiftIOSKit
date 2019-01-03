@@ -10,7 +10,7 @@ import UIKit
 
 public typealias SMCollectonSectionSetupViewBlock = (UICollectionReusableView) -> Void
 
-open class SMCollectonSection: SMListSection<SMCollectionCellData>
+open class SMCollectonSection: SMListSection
 {
     open weak var collectionDisposer: SMCollectionDisposer?
     {
@@ -104,7 +104,7 @@ open class SMCollectonSection: SMListSection<SMCollectionCellData>
 
     open func cell(forIndexPath aIndexPath: IndexPath) -> UICollectionViewCell
     {
-        let cellData: SMCollectionCellData = visibleCellData(at: aIndexPath.row)
+        let cellData: SMListCellData = visibleCellData(at: aIndexPath.row)
         
         let cell: UICollectionViewCell = collectionDisposer?.collectionView?.dequeueReusableCell(withReuseIdentifier: cellData.cellIdentifier, for: aIndexPath) ?? UICollectionViewCell(frame: CGRect.zero)
 

@@ -17,6 +17,11 @@ open class SMListCellData
     open var tag: Int = 0
     open var userData: [String: Any] = [:]
     
+    open var cellIdentifier: String
+    {
+        return String(describing: type(of: self))
+    }
+    
     public convenience init()
     {
         self.init(model: nil)

@@ -13,8 +13,8 @@ public typealias SMListAdapterClosureType = () -> Bool
 public protocol SMListAdapterDelegate: class
 {
     func prepareSectionsFor(listAdapter aListAdapter: SMListAdapter)
-    func defaultSectionForlistAdapter(_ aListAdapter: SMListAdapter) -> Any?
-    func listAdapter(_ aListAdapter: SMListAdapter, sectionForModels aModels: [AnyObject], indexOfSection aIndex: Int) -> Any?
+    func defaultSectionForlistAdapter(_ aListAdapter: SMListAdapter) -> SMListSection?
+    func listAdapter(_ aListAdapter: SMListAdapter, sectionForModels aModels: [AnyObject], indexOfSection aIndex: Int) -> SMListSection?
     func moreCellDataForListAdapter(_ aListAdapter: SMListAdapter) -> SMPagingMoreCellDataProtocol?
 }
 
@@ -27,15 +27,19 @@ public protocol SMListAdapterMoreDelegate: class
 
 open class SMListAdapter: Any
 {
-    open var listDisposer: SMListDisposer?
-    {
-        return nil
-    }
+    open var listDisposer: SMListDisposer
+    var listDisposerModeled: SMListDisposerSetupModelProtocol? { return listDisposer as? SMListDisposerSetupModelProtocol }
+    
     open var moreCell: SMPagingMoreCellProtocol?
 
     open weak var moreDelegate: SMListAdapterMoreDelegate?
     open weak var delegate: SMListAdapterDelegate?
     
+    public init(listDisposer aListDisposer: SMListDisposer)
+    {
+        listDisposer = aListDisposer
+    }
+
     open func reloadData()
     {
         
@@ -43,19 +47,95 @@ open class SMListAdapter: Any
     
     open func prepareSections()
     {
-        delegate?.prepareSectionsFor(listAdapter: self)
+        if delegate == nil
+        {
+            if let section: SMListSection = defaultSection()
+            {
+                listDisposer.sections.removeAll()
+                listDisposer.addSection(section)
+            }
+        } else
+        {
+            delegate?.prepareSectionsFor(listAdapter: self)
+
+        }
+    }
+
+    open func defaultSection() -> SMListSection?
+    {
+        return nil
     }
     
     open func cleanMoreCellData()
     {
-        
+        for section: SMListSection in listDisposer.sections
+        {
+            var moreCellDatas: [SMListCellData] = []
+            for cd: SMListCellData in section.cellDataSource where cd is SMPagingMoreCellDataProtocol
+            {
+                moreCellDatas.append(cd)
+            }
+            
+            for cd: SMListCellData in moreCellDatas
+            {
+                section.removeCellData(cd)
+            }
+        }
     }
     
     open func updateSectionWith(models aModels: [AnyObject], sectionIndex aSectionIndex: Int, needLoadMore aNeedLoadMore: SMListAdapterClosureType?)
     {
+        var section: SMListSection?
         
+        if let value: SMListSection = delegate?.listAdapter(self, sectionForModels: aModels, indexOfSection: aSectionIndex)
+        {
+            section = value
+            listDisposer.addSection(value)
+        } else if let value: SMListSection = listDisposer.sections.last
+        {
+            section = value
+        } else if let value: SMListSection = delegate?.defaultSectionForlistAdapter(self)
+        {
+            section = value
+            listDisposer.addSection(value)
+        }
+        
+        guard let sectionForModels: SMListSection = section else
+        {
+            assert(false, "SMListAdapter: section for listDisposer is nil!")
+            return
+        }
+        
+        setupModels(aModels, forSection: sectionForModels)
+        
+        if aNeedLoadMore?() ?? false
+        {
+            if let moreCellData: SMPagingMoreCellDataProtocol = delegate?.moreCellDataForListAdapter(self)
+            {
+                if let moreCellDataType: SMListCellData.Type = type(of: moreCellData) as? SMListCellData.Type
+                {
+                    listDisposerModeled?.register(cellDataClass: moreCellDataType, forModelClass: nil)
+                    moreCellData.needLoadMore = SMBlockAction(block: { [weak self] _ in // swiftlint:disable:this explicit_type_interface
+                        if let strongSelf: SMListAdapter = self
+                        {
+                            strongSelf.moreDelegate?.needLoadMore(listAdapter: strongSelf)
+                        }
+                    })
+                    
+                    if let moreCellData: SMListCellData = moreCellData as? SMListCellData
+                    {
+                        sectionForModels.addCellData(moreCellData)
+                    }
+                }
+            }
+        }
     }
-    
+
+    open func setupModels(_ aModels: [AnyObject], forSection aSection: SMListSection)
+    {
+        listDisposerModeled?.setupModels(aModels, forSection: aSection)
+    }
+
     
     // MARK: - Load More
     

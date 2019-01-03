@@ -12,7 +12,7 @@ open class SMTableDisposerMapped: SMTableDisposer
 {
     open func mapFromObject()
     {
-        for section: SMSectionReadonly in sections
+        for section: SMListSection in sections
         {
             if let section: SMSectionWritable = section as? SMSectionWritable
             {
@@ -23,7 +23,7 @@ open class SMTableDisposerMapped: SMTableDisposer
 
     open func mapToObject()
     {
-        for section: SMSectionReadonly in sections
+        for section: SMListSection in sections
         {
             if let section: SMSectionWritable = section as? SMSectionWritable
             {
@@ -38,7 +38,7 @@ open class SMTableDisposerMapped: SMTableDisposer
         
         mapFromObject()
         
-        for section: SMSectionReadonly in sections
+        for section: SMListSection in sections
         {
             section.updateCellDataVisibility()
         }

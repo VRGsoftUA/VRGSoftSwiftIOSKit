@@ -30,7 +30,7 @@ open class SMNativeActivityAdapter: SMActivityAdapter
     
     public func createActivityIndicatorView() -> UIActivityIndicatorView
     {
-        let activity = UIActivityIndicatorView(style: .gray)
+        let activity: UIActivityIndicatorView = UIActivityIndicatorView(style: .gray)
         activity.hidesWhenStopped = true
         return activity
     }
@@ -52,7 +52,7 @@ open class SMNativeActivityAdapter: SMActivityAdapter
     
     override open func show()
     {
-        guard let parentView = parentView else { return }
+        guard let parentView: UIView = parentView else { return }
         
         hide()
         

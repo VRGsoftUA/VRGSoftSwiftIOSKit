@@ -12,7 +12,7 @@ open class SMCollectionCellData: SMListCellData
 {
     open var cellNibName: String?
     open var cellClass: UICollectionViewCell.Type = UICollectionViewCell.self
-    open var cellIdentifier: String
+    override open var cellIdentifier: String
     {
         let result: String = type(of: self).cellIdentifier_
         return result

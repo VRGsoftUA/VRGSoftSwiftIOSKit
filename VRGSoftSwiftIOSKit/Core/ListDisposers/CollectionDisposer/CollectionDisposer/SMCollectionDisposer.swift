@@ -39,32 +39,6 @@ open class SMCollectionDisposer: SMListDisposer, UICollectionViewDelegateFlowLay
         }
     }
     
-    open var sections: [SMCollectonSection] = []
-    {
-        didSet
-        {
-            for section: SMCollectonSection in sections
-            {
-                section.collectionDisposer = self
-            }
-        }
-    }
-    
-    open func addSection(_ aSection: SMCollectonSection)
-    {
-        sections.append(aSection)
-    }
-    
-    open func removeSection(_ aSection: SMCollectonSection)
-    {
-        aSection.collectionDisposer = nil
-        
-        if let index: Int = sections.index(where: {$0 === aSection})
-        {
-            sections.remove(at: index)
-        }
-    }
-    
     open var collectionClass: UICollectionView.Type = UICollectionView.self
 
     open weak var delegate: SMCollectionDisposerDelegate?
@@ -86,27 +60,9 @@ open class SMCollectionDisposer: SMListDisposer, UICollectionViewDelegateFlowLay
         return NSNotFound
     }
     
-    open func indexPath(by aCellData: SMCollectionCellData) -> IndexPath?
-    {
-        for (index, section): (Int, SMCollectonSection) in sections.enumerated()
-        {
-            if let cellDataIndex: Int = section.cellDataSource.index(where: {$0 === aCellData})
-            {
-                return IndexPath(row: cellDataIndex, section: index)
-            }
-        }
-        
-        return nil
-    }
-    
-    override open var listView: UIScrollView?
-    {
-        return collectionView
-    }
-    
     override open func reloadData()
     {
-        for section: SMCollectonSection in sections
+        for section: SMListSection in sections
         {
             section.updateCellDataVisibility()
         }
@@ -114,11 +70,6 @@ open class SMCollectionDisposer: SMListDisposer, UICollectionViewDelegateFlowLay
         collectionView?.reloadData()
     }
     
-    open func cellData(by aIndexPath: IndexPath) -> SMCollectionCellData
-    {
-        return sections[aIndexPath.section].cellData(at: aIndexPath.row)
-    }
-
     
     // MARK: - UICollectionViewDataSource
     
@@ -129,7 +80,7 @@ open class SMCollectionDisposer: SMListDisposer, UICollectionViewDelegateFlowLay
     
     open func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell
     {
-        let result: UICollectionViewCell = sections[indexPath.section].cell(forIndexPath: indexPath)
+        let result: UICollectionViewCell = (sections[indexPath.section] as! SMCollectonSection).cell(forIndexPath: indexPath) // swiftlint:disable:this force_cast
         
         didSetup(cell: result, at: indexPath)
         
@@ -143,21 +94,24 @@ open class SMCollectionDisposer: SMListDisposer, UICollectionViewDelegateFlowLay
     
     open func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView
     {
-        let section: SMCollectonSection = sections[indexPath.section]
+        var result: UICollectionReusableView = UICollectionReusableView(frame: CGRect.zero)
         
-        switch kind
+        if let section: SMCollectonSection = sections[indexPath.section] as? SMCollectonSection
         {
-        case UICollectionView.elementKindSectionHeader:
-            let result: UICollectionReusableView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: section.headerViewIdentifier, for: indexPath as IndexPath)
-            section.headerSetupBlock?(result)
-            return result
-        case UICollectionView.elementKindSectionFooter:
-            let result: UICollectionReusableView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: section.footerViewIdentifier, for: indexPath as IndexPath)
-            section.footerSetupBlock?(result)
-            return result
-        default:
-            return UICollectionReusableView(frame: CGRect.zero)
+            switch kind
+            {
+            case UICollectionView.elementKindSectionHeader:
+                result = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: section.headerViewIdentifier, for: indexPath as IndexPath)
+                section.headerSetupBlock?(result)
+            case UICollectionView.elementKindSectionFooter:
+                result = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: section.footerViewIdentifier, for: indexPath as IndexPath)
+                section.footerSetupBlock?(result)
+            default:
+                break
+            }
         }
+        
+        return result
     }
     
     open func collectionView(_ collectionView: UICollectionView, canMoveItemAt indexPath: IndexPath) -> Bool
@@ -210,7 +164,7 @@ open class SMCollectionDisposer: SMListDisposer, UICollectionViewDelegateFlowLay
     
     open func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath)
     {
-        let cellData: SMCollectionCellData = self.cellData(by: indexPath)
+        let cellData: SMListCellData = self.cellData(by: indexPath)
         cellData.baSelect?.performBlockFrom(sender: cellData)
         delegate?.collectionView?(collectionView, didSelectItemAt: indexPath)
     }
@@ -309,17 +263,19 @@ open class SMCollectionDisposer: SMListDisposer, UICollectionViewDelegateFlowLay
     {
         var result: CGSize?
 
-        let cd: SMCollectionCellData = sections[indexPath.section].cellData(at: indexPath.row)
-        result = cd.cellSizeFor(size: collectionView.frame.size)
-
-        if result == nil
+        if let cd: SMCollectionCellData = sections[indexPath.section].cellData(at: indexPath.row) as? SMCollectionCellData
         {
-            result = delegate?.collectionView?(collectionView, layout: collectionViewLayout, sizeForItemAt: indexPath)
-        }
-
-        if result == nil, let collectionViewLayout: UICollectionViewFlowLayout = collectionViewLayout as? UICollectionViewFlowLayout
-        {
-            result = collectionViewLayout.itemSize
+            result = cd.cellSizeFor(size: collectionView.frame.size)
+            
+            if result == nil
+            {
+                result = delegate?.collectionView?(collectionView, layout: collectionViewLayout, sizeForItemAt: indexPath)
+            }
+            
+            if result == nil, let collectionViewLayout: UICollectionViewFlowLayout = collectionViewLayout as? UICollectionViewFlowLayout
+            {
+                result = collectionViewLayout.itemSize
+            }
         }
 
         return result ?? CGSize.zero
@@ -329,7 +285,7 @@ open class SMCollectionDisposer: SMListDisposer, UICollectionViewDelegateFlowLay
     {
         var result: UIEdgeInsets?
         
-        result = sections[aSection].insetForSection
+        result = (sections[aSection] as? SMCollectonSection)?.insetForSection
         
         if result == nil
         {
@@ -349,7 +305,7 @@ open class SMCollectionDisposer: SMListDisposer, UICollectionViewDelegateFlowLay
     {
         var result: CGFloat?
         
-        result = sections[aSection].minimumLineSpacing
+        result = (sections[aSection] as? SMCollectonSection)?.minimumLineSpacing
         
         if result == nil
         {
@@ -368,7 +324,7 @@ open class SMCollectionDisposer: SMListDisposer, UICollectionViewDelegateFlowLay
     {
         var result: CGFloat?
         
-        result = sections[aSection].minimumInteritemSpacing
+        result = (sections[aSection] as? SMCollectonSection)?.minimumInteritemSpacing
         
         if result == nil
         {
@@ -387,7 +343,7 @@ open class SMCollectionDisposer: SMListDisposer, UICollectionViewDelegateFlowLay
     {
         var result: CGSize?
         
-        result = sections[aSection].headerReferenceSize
+        result = (sections[aSection] as? SMCollectonSection)?.headerReferenceSize
         
         if result == nil
         {
@@ -406,7 +362,7 @@ open class SMCollectionDisposer: SMListDisposer, UICollectionViewDelegateFlowLay
     {
         var result: CGSize?
         
-        result = sections[aSection].footerReferenceSize
+        result = (sections[aSection] as? SMCollectonSection)?.footerReferenceSize
         
         if result == nil
         {

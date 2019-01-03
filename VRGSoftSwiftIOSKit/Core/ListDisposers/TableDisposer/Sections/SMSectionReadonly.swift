@@ -8,7 +8,7 @@
 
 import UIKit
 
-open class SMSectionReadonly: SMListSection<SMCellData>
+open class SMSectionReadonly: SMListSection
 {
     open weak var tableDisposer: SMTableDisposer?
     
@@ -22,7 +22,7 @@ open class SMSectionReadonly: SMListSection<SMCellData>
     
     open func cell(forIndex aIndex: Int) -> UITableViewCell
     {
-        let cellData: SMCellData = visibleCellData(at: aIndex)
+        let cellData: SMCellData = visibleCellData(at: aIndex) as! SMCellData// swiftlint:disable:this force_cast
 
         let reusableCell: UITableViewCell? = tableDisposer?.tableView?.dequeueReusableCell(withIdentifier: cellData.cellIdentifier)
         
@@ -67,16 +67,16 @@ open class SMSectionReadonly: SMListSection<SMCellData>
     
     open func deleteRows(at aIndexes: [Int], withRowAnimation aRowAnimation: UITableView.RowAnimation)
     {
-        var toDelete: [SMCellData] = []
+        var toDelete: [SMListCellData] = []
         
         
         for index: Int in aIndexes
         {
-            let cellData: SMCellData = self.cellData(at: index)
+            let cellData: SMListCellData = self.cellData(at: index)
             toDelete.append(cellData)
         }
         
-        for cd: SMCellData in toDelete
+        for cd: SMListCellData in toDelete
         {
             removeCellData(cd)
         }
@@ -111,7 +111,7 @@ open class SMSectionReadonly: SMListSection<SMCellData>
 
     open func hideCell(by aIndex: Int, needUpdateTable aNeedUpdateTable: Bool, withRowAnimation aRowAnimation: UITableView.RowAnimation)
     {
-        let cellData: SMCellData  = self.cellData(at: aIndex)
+        let cellData: SMListCellData  = self.cellData(at: aIndex)
 
         if !cellData.isVisible
         {
@@ -136,7 +136,7 @@ open class SMSectionReadonly: SMListSection<SMCellData>
     
     open func showCell(by aIndex: Int, needUpdateTable aNeedUpdateTable: Bool, withRowAnimation aRowAnimation: UITableView.RowAnimation)
     {
-        let cellData: SMCellData  = self.cellData(at: aIndex)
+        let cellData: SMListCellData  = self.cellData(at: aIndex)
         
         if cellData.isVisible
         {

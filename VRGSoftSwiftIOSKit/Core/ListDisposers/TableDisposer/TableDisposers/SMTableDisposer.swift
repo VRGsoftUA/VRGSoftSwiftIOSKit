@@ -33,40 +33,19 @@ public protocol SMTableDisposerMulticastDelegate: class
 
 open class SMTableDisposer: SMListDisposer, UITableViewDelegate, UITableViewDataSource
 {
-    open var tableView: UITableView?
+    open override var listView: UIScrollView?
     {
         didSet
         {
-            tableView?.delegate = self
-            tableView?.dataSource = self
-        }
-    }
-    
-    open var sections: [SMSectionReadonly] = []
-    {
-        didSet
-        {
-            for section: SMSectionReadonly in sections
+            if let tableView: UITableView = listView as? UITableView
             {
-                section.tableDisposer = self
+                tableView.delegate = self
+                tableView.dataSource = self
             }
         }
     }
-
-    open func addSection(_ aSection: SMSectionReadonly)
-    {
-        sections.append(aSection)
-    }
     
-    open func removeSection(_ aSection: SMSectionReadonly)
-    {
-        aSection.tableDisposer = nil
-        
-        if let index: Int = sections.index(where: {$0 === aSection})
-        {
-            sections.remove(at: index)
-        }
-    }
+    open var tableView: UITableView? { return listView as? UITableView }
     
     open weak var delegate: SMTableDisposerDelegate?
     
@@ -96,11 +75,6 @@ open class SMTableDisposer: SMListDisposer, UITableViewDelegate, UITableViewData
         return NSNotFound
     }
 
-    override open var listView: UIScrollView?
-    {
-        return tableView
-    }
-
     override open func reloadData()
     {
         if let tableView: SMKeyboardAvoidingTableView = tableView as? SMKeyboardAvoidingTableView
@@ -108,7 +82,7 @@ open class SMTableDisposer: SMListDisposer, UITableViewDelegate, UITableViewData
             tableView.removeAllObjectsForKeyboard()
         }
         
-        for section: SMSectionReadonly in sections
+        for section: SMListSection in sections
         {
             section.updateCellDataVisibility()
         }
@@ -116,24 +90,6 @@ open class SMTableDisposer: SMListDisposer, UITableViewDelegate, UITableViewData
         tableView?.reloadData()
     }
     
-    open func cellData(by aIndexPath: IndexPath) -> SMCellData
-    {
-        return sections[aIndexPath.section].cellData(at: aIndexPath.row)
-    }
-    
-    open func indexPath(by aCellData: SMCellData) -> IndexPath?
-    {
-        for (index, section): (Int, SMSectionReadonly) in sections.enumerated()
-        {
-            if let cellDataIndex: Int = section.cellDataSource.index(where: {$0 === aCellData})
-            {
-                return IndexPath(row: cellDataIndex, section: index)
-            }
-        }
-        
-        return nil
-    }
-
     
     // MARK: UITableViewDataSource
     
@@ -144,7 +100,7 @@ open class SMTableDisposer: SMListDisposer, UITableViewDelegate, UITableViewData
 
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
-        let result: UITableViewCell = sections[indexPath.section].cell(forIndex: indexPath.row)
+        let result: UITableViewCell = (sections[indexPath.section] as! SMSectionReadonly).cell(forIndex: indexPath.row)// swiftlint:disable:this force_cast
         
         didSetup(cell: result, at: indexPath)
         
@@ -158,12 +114,12 @@ open class SMTableDisposer: SMListDisposer, UITableViewDelegate, UITableViewData
 
     public func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String?
     {
-        return sections[section].headerTitle
+        return (sections[section] as? SMSectionReadonly)?.headerTitle
     }
 
     public func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String?
     {
-        return sections[section].footerTitle
+        return (sections[section] as? SMSectionReadonly)?.footerTitle
     }
     
     public func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool
@@ -238,35 +194,43 @@ open class SMTableDisposer: SMListDisposer, UITableViewDelegate, UITableViewData
     // Variable height support
     public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
     {
-        let cellData: SMCellData = sections[indexPath.section].visibleCellDataSource[indexPath.row]
+        var result: CGFloat = 0.0
         
-        if cellData.isCellHeightAutomaticDimension
+        if let cellData: SMCellData = sections[indexPath.section].visibleCellDataSource[indexPath.row] as? SMCellData
         {
-            return UITableView.automaticDimension
-        } else
-        {
-            cellData.cellWidth = tableView.frame.size.width
-            return cellData.cellHeightFor(width: tableView.frame.size.width)
+            if cellData.isCellHeightAutomaticDimension
+            {
+                result = UITableView.automaticDimension
+            } else
+            {
+                cellData.cellWidth = tableView.frame.size.width
+                result = cellData.cellHeightFor(width: tableView.frame.size.width)
+            }
         }
+        
+        return result
     }
     
     public func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat
     {
-        let cellData: SMCellData = sections[indexPath.section].visibleCellDataSource[indexPath.row]
-        cellData.cellWidth = tableView.frame.size.width
-        return cellData.cellHeightFor(width: tableView.frame.size.width)
+        var result: CGFloat = 0.0
+
+        if let cellData: SMCellData = sections[indexPath.section].visibleCellDataSource[indexPath.row] as? SMCellData
+        {
+            cellData.cellWidth = tableView.frame.size.width
+            result = cellData.cellHeightFor(width: tableView.frame.size.width)
+        }
+        
+        return result
     }
     
     public func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat
     {
-        var result: CGFloat = 0
+        var result: CGFloat = 20
         
-        if let headerView: UIView = sections[section].headerView
+        if let section: SMSectionReadonly = sections[section] as? SMSectionReadonly, let headerView: UIView = section.headerView
         {
             result = headerView.frame.size.height
-        } else if sections[section].headerTitle?.count ?? 0 > 0
-        {
-            result = 20
         }
         
         return result
@@ -274,16 +238,13 @@ open class SMTableDisposer: SMListDisposer, UITableViewDelegate, UITableViewData
 
     public func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat
     {
-        var result: CGFloat = 0
+        var result: CGFloat = 20
         
-        if let footerView: UIView = sections[section].footerView
+        if let section: SMSectionReadonly = sections[section] as? SMSectionReadonly, let footerView: UIView = section.footerView
         {
             result = footerView.frame.size.height
-        } else  if sections[section].footerTitle?.count ?? 0 > 0
-        {
-            result = 20
         }
-        
+
         return result
     }
     
@@ -298,12 +259,12 @@ open class SMTableDisposer: SMListDisposer, UITableViewDelegate, UITableViewData
 
     public func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView?
     {
-        return sections[section].headerView
+        return (sections[section] as? SMSectionReadonly)?.headerView
     }
 
     public func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView?
     {
-        return sections[section].footerView
+        return (sections[section] as? SMSectionReadonly)?.footerView
     }
 
     public func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath)
@@ -341,23 +302,25 @@ open class SMTableDisposer: SMListDisposer, UITableViewDelegate, UITableViewData
 
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
     {
-        let cellData: SMCellData = self.cellData(by: indexPath)
-        cellData.baSelect?.performBlockFrom(sender: cellData)
-        cellData.performSelectedHandlers()
-        
-        delegate?.tableView?(tableView, didSelectRowAt: indexPath)
-        
-        if cellData.isAutoDeselect
+        if let cellData: SMCellData = self.cellData(by: indexPath) as? SMCellData
         {
-            tableView.deselectRow(at: indexPath, animated: true)
+            cellData.baSelect?.performBlockFrom(sender: cellData)
+            cellData.performSelectedHandlers()
+            
+            delegate?.tableView?(tableView, didSelectRowAt: indexPath)
+            
+            if cellData.isAutoDeselect
+            {
+                tableView.deselectRow(at: indexPath, animated: true)
+            }
         }
     }
 
     public func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath)
     {
-        let cellData: SMCellData = sections[indexPath.section].visibleCellData(at: indexPath.row)
+        let cellData: SMCellData? = sections[indexPath.section].visibleCellData(at: indexPath.row) as? SMCellData
         
-        cellData.performDeselectedHandlers()
+        cellData?.performDeselectedHandlers()
         
         delegate?.tableView?(tableView, didDeselectRowAt: indexPath)
     }
