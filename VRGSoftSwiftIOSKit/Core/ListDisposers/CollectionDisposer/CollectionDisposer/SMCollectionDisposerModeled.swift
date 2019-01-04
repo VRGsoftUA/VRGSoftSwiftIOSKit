@@ -8,18 +8,6 @@
 
 import UIKit
 
-//public protocol SMCollectionDisposerModeledMulticastDelegate: class
-//{
-//    func collectionDisposer(_ aCollectionDisposer: SMCollectionDisposer, didCreateCellData aCellData: SMCollectionCellData)
-//}
-//
-//
-//public protocol SMCollectionDisposerModeledDelegate: class
-//{
-//    func collectionDisposer(_ aCollectionDisposer: SMCollectionDisposer, didCreateCellData aCellData: SMCollectionCellData)
-//    func collectionDisposer(_ aCollectionDisposer: SMCollectionDisposer, cellDataClassForUnregisteredModel aModel: AnyObject) -> SMCollectionCellData.Type?
-//}
-
 
 open class SMCollectionDisposerModeled: SMCollectionDisposer, SMListDisposerSetupModelProtocol
 {
