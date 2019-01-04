@@ -8,39 +8,52 @@
 
 import UIKit
 
-public protocol SMCollectionDisposerModeledMulticastDelegate: class
+//public protocol SMCollectionDisposerModeledMulticastDelegate: class
+//{
+//    func collectionDisposer(_ aCollectionDisposer: SMCollectionDisposer, didCreateCellData aCellData: SMCollectionCellData)
+//}
+//
+//
+//public protocol SMCollectionDisposerModeledDelegate: class
+//{
+//    func collectionDisposer(_ aCollectionDisposer: SMCollectionDisposer, didCreateCellData aCellData: SMCollectionCellData)
+//    func collectionDisposer(_ aCollectionDisposer: SMCollectionDisposer, cellDataClassForUnregisteredModel aModel: AnyObject) -> SMCollectionCellData.Type?
+//}
+
+
+open class SMCollectionDisposerModeled: SMCollectionDisposer, SMListDisposerSetupModelProtocol
 {
-    func collectionDisposer(_ aCollectionDisposer: SMCollectionDisposer, didCreateCellData aCellData: SMCollectionCellData)
-}
-
-
-public protocol SMCollectionDisposerModeledDelegate: class
-{
-    func collectionDisposer(_ aCollectionDisposer: SMCollectionDisposer, didCreateCellData aCellData: SMCollectionCellData)
-    func collectionDisposer(_ aCollectionDisposer: SMCollectionDisposer, cellDataClassForUnregisteredModel aModel: AnyObject) -> SMCollectionCellData.Type?
-}
-
-
-open class SMCollectionDisposerModeled: SMCollectionDisposer
-{
-    public let modeledMulticastDelegate: SMMulticastDelegate<SMCollectionDisposerModeledMulticastDelegate> = SMMulticastDelegate(options: NSPointerFunctions.Options.weakMemory) // swiftlint:disable:this weak_delegate
-    
-    open var registeredClasses: [String: SMCollectionCellData.Type] = [:]
-    
-    open weak var modeledDelegate: SMCollectionDisposerModeledDelegate?
-    
-    open func register(cellDataClass aCellDataClass: SMCollectionCellData.Type, forModelClass aModelClass: AnyClass? = nil)
+    public override init()
     {
-        if let nibName: String = aCellDataClass.cellNibName_
+        modeledMulticastDelegate = SMMulticastDelegate(options: NSPointerFunctions.Options.weakMemory)
+        
+        super.init()
+    }
+    
+    
+    // MARK: SMListDisposerSetupModelProtocol
+    
+    open var modeledMulticastDelegate: SMMulticastDelegate<SMListDisposerModeledCreateCellDataDelegate>// = SMMulticastDelegate(options: NSPointerFunctions.Options.weakMemory) // swiftlint:disable:this weak_delegate
+
+    open var registeredClasses: [String: SMListCellData.Type] = [:]
+    
+    open weak var modeledDelegate: SMListDisposerModeledDelegate?
+
+    open func register(cellDataClass aCellDataClass: SMListCellData.Type, forModelClass aModelClass: AnyClass? = nil)
+    {
+        if let cellDataClass: SMCollectionCellData.Type = aCellDataClass as? SMCollectionCellData.Type
         {
-            collectionView?.register(UINib(nibName: nibName, bundle: nil), forCellWithReuseIdentifier: aCellDataClass.cellIdentifier_)
-        } else
-        {
-            collectionView?.register(aCellDataClass.cellClass_, forCellWithReuseIdentifier: aCellDataClass.cellIdentifier_)
-        }
-        if let aModelClass: AnyClass = aModelClass
-        {
-            registeredClasses[String(describing: aModelClass)] = aCellDataClass
+            if let nibName: String = cellDataClass.cellNibName_
+            {
+                collectionView?.register(UINib(nibName: nibName, bundle: nil), forCellWithReuseIdentifier: cellDataClass.cellIdentifier_)
+            } else
+            {
+                collectionView?.register(cellDataClass.cellClass_, forCellWithReuseIdentifier: cellDataClass.cellIdentifier_)
+            }
+            if let aModelClass: AnyClass = aModelClass
+            {
+                registeredClasses[String(describing: aModelClass)] = cellDataClass
+            }
         }
     }
 
@@ -59,7 +72,7 @@ open class SMCollectionDisposerModeled: SMCollectionDisposer
     {
         for model: AnyObject in aModels
         {
-            if let cellData: SMCollectionCellData = cellDataFrom(model: model)
+            if let cellData: SMListCellData = cellDataFrom(model: model)
             {
                 didCreate(cellData: cellData)
                 aSection.addCellData(cellData)
@@ -70,13 +83,13 @@ open class SMCollectionDisposerModeled: SMCollectionDisposer
         }
     }
     
-    open func cellDataFrom(model aModel: AnyObject) -> SMCollectionCellData?
+    open func cellDataFrom(model aModel: AnyObject) -> SMListCellData?
     {
         let modelClassName: String = String(describing: type(of: aModel))
         
-        if let cellDataClass: SMCollectionCellData.Type = registeredClasses[modelClassName] ?? modeledDelegate?.collectionDisposer(self, cellDataClassForUnregisteredModel: aModel)
+        if let cellDataClass: SMListCellData.Type = registeredClasses[modelClassName] ?? modeledDelegate?.listDisposer(self, cellDataClassForUnregisteredModel: aModel)
         {
-            let cellData: SMCollectionCellData = cellDataClass.init(model: aModel)
+            let cellData: SMListCellData = cellDataClass.init(model: aModel)
             
             return cellData
         }
@@ -84,37 +97,14 @@ open class SMCollectionDisposerModeled: SMCollectionDisposer
         return nil
     }
     
-    open func didCreate(cellData aCellData: SMCollectionCellData)
+    open func didCreate(cellData aCellData: SMListCellData)
     {
-        modeledDelegate?.collectionDisposer(self, didCreateCellData: aCellData)
+        modeledDelegate?.listDisposer(self, didCreateCellData: aCellData)
         modeledMulticastDelegate.invokeDelegates { [weak self] delegate in // swiftlint:disable:this explicit_type_interface
             if let strongSelf: SMCollectionDisposerModeled = self
             {
-                delegate.collectionDisposer(strongSelf, didCreateCellData: aCellData)
+                delegate.listDisposer(strongSelf, didCreateCellData: aCellData)
             }
         }
-    }
-}
-
-
-public extension SMCollectionDisposerModeledMulticastDelegate
-{
-    public func collectionDisposer(_ aCollectionDisposer: SMCollectionDisposer, didCreateCellData aCellData: SMCollectionCellData)
-    {
-        
-    }
-}
-
-public extension SMCollectionDisposerModeledDelegate
-{
-    public func collectionDisposer(_ aCollectionDisposer: SMCollectionDisposer, didCreateCellData aCellData: SMCollectionCellData)
-    {
-        
-    }
-    
-    public func collectionDisposer(_ aCollectionDisposer: SMCollectionDisposer, cellDataClassForUnregisteredModel aModel: AnyObject) -> SMCollectionCellData.Type?
-    {
-        assert(false)
-        return nil
     }
 }

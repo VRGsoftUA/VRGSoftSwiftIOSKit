@@ -8,26 +8,24 @@
 
 import UIKit
 
-public protocol SMTableDisposerModeledMulticastDelegate: class
+open class SMTableDisposerModeled: SMTableDisposer, SMListDisposerSetupModelProtocol
 {
-    func tableDisposer(_ aTableDisposer: SMTableDisposer, didCreateCellData aCellData: SMCellData)
-}
+    public override init()
+    {
+        modeledMulticastDelegate = SMMulticastDelegate(options: NSPointerFunctions.Options.weakMemory)
 
-public protocol SMTableDisposerModeledDelegate: class
-{
-    func tableDisposer(_ aTableDisposer: SMTableDisposer, didCreateCellData aCellData: SMCellData)
-    func tableDisposer(_ aTableDisposer: SMTableDisposer, cellDataClassForUnregisteredModel aModel: AnyObject) -> SMCellData.Type
-}
-
-open class SMTableDisposerModeled: SMTableDisposer
-{
-    public let modeledMulticastDelegate: SMMulticastDelegate<SMTableDisposerModeledMulticastDelegate> = SMMulticastDelegate(options: NSPointerFunctions.Options.weakMemory) // swiftlint:disable:this weak_delegate
-
-    open var registeredClasses: [String: SMCellData.Type] = [:]
+        super.init()
+    }
     
-    open weak var modeledDelegate: SMTableDisposerModeledDelegate?
+    // MARK: SMListDisposerSetupModelProtocol
     
-    open func register(cellDataClass aCellDataClass: SMCellData.Type, forModelClass aModelClass: AnyClass)
+    open var modeledMulticastDelegate: SMMulticastDelegate<SMListDisposerModeledCreateCellDataDelegate>// = SMMulticastDelegate(options: NSPointerFunctions.Options.weakMemory) // swiftlint:disable:this weak_delegate
+
+    open var registeredClasses: [String: SMListCellData.Type] = [:]
+    
+    open weak var modeledDelegate: SMListDisposerModeledDelegate?
+    
+    open func register(cellDataClass aCellDataClass: SMListCellData.Type, forModelClass aModelClass: AnyClass?)
     {
         registeredClasses[String(describing: aModelClass)] = aCellDataClass
     }
@@ -47,7 +45,7 @@ open class SMTableDisposerModeled: SMTableDisposer
     {
         for model: AnyObject in aModels
         {
-            if let cellData: SMCellData = cellDataFrom(model: model)
+            if let cellData: SMListCellData = cellDataFrom(model: model)
             {
                 didCreate(cellData: cellData)
                 aSection.addCellData(cellData)
@@ -58,44 +56,27 @@ open class SMTableDisposerModeled: SMTableDisposer
         }
     }
 
-    open func cellDataFrom(model aModel: AnyObject) -> SMCellData?
+    open func cellDataFrom(model aModel: AnyObject) -> SMListCellData?
     {
         let modelClassName: String = String(describing: type(of: aModel))
 
-        if let cellDataClass: SMCellData.Type = registeredClasses[modelClassName] ?? modeledDelegate?.tableDisposer(self, cellDataClassForUnregisteredModel: aModel)
+        if let cellDataClass: SMListCellData.Type = registeredClasses[modelClassName] ?? modeledDelegate?.listDisposer(self, cellDataClassForUnregisteredModel: aModel)
         {
-            let cellData: SMCellData = cellDataClass.init(model: aModel)
+            let cellData: SMListCellData = cellDataClass.init(model: aModel)
             return cellData
         }
         
         return nil
     }
 
-    open func didCreate(cellData aCellData: SMCellData)
+    open func didCreate(cellData aCellData: SMListCellData)
     {
-        modeledDelegate?.tableDisposer(self, didCreateCellData: aCellData)
+        modeledDelegate?.listDisposer(self, didCreateCellData: aCellData)
         modeledMulticastDelegate.invokeDelegates { [weak self] delegate in // swiftlint:disable:this explicit_type_interface
             if let strongSelf: SMTableDisposerModeled = self
             {
-                delegate.tableDisposer(strongSelf, didCreateCellData: aCellData)
+                delegate.listDisposer(strongSelf, didCreateCellData: aCellData)
             }
         }
-    }
-}
-
-
-public extension SMTableDisposerModeledMulticastDelegate
-{
-    func tableDisposer(_ aTableDisposer: SMTableDisposer, didCreateCellData aCellData: SMCellData)
-    {
-        
-    }
-}
-
-public extension SMTableDisposerModeledDelegate
-{
-    func tableDisposer(_ aTableDisposer: SMTableDisposer, didCreateCellData aCellData: SMCellData)
-    {
-        
     }
 }

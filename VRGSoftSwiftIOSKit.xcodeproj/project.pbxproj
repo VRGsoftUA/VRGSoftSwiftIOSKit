@@ -94,6 +94,7 @@
 		B7265F5720EDF69C003FBD5C /* SMGatewayConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7265EFF20EDF69C003FBD5C /* SMGatewayConfigurator.swift */; };
 		B7265F5820EDF69C003FBD5C /* SMGatewayRequestMultipart.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7265F0020EDF69C003FBD5C /* SMGatewayRequestMultipart.swift */; };
 		B7265F5920EDF69C003FBD5C /* SMGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7265F0120EDF69C003FBD5C /* SMGateway.swift */; };
+		B73EE0DC21DF86F500F48C5C /* SMListDisposerModeledDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B73EE0DB21DF86F500F48C5C /* SMListDisposerModeledDelegate.swift */; };
 		B74DF39A1F34955500405847 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B74DF3991F34955500405847 /* AppDelegate.swift */; };
 		B74DF39C1F34955500405847 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B74DF39B1F34955500405847 /* ViewController.swift */; };
 		B74DF39F1F34955500405847 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B74DF39D1F34955500405847 /* Main.storyboard */; };
@@ -197,6 +198,7 @@
 		B7265EFF20EDF69C003FBD5C /* SMGatewayConfigurator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMGatewayConfigurator.swift; sourceTree = "<group>"; };
 		B7265F0020EDF69C003FBD5C /* SMGatewayRequestMultipart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMGatewayRequestMultipart.swift; sourceTree = "<group>"; };
 		B7265F0120EDF69C003FBD5C /* SMGateway.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMGateway.swift; sourceTree = "<group>"; };
+		B73EE0DB21DF86F500F48C5C /* SMListDisposerModeledDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMListDisposerModeledDelegate.swift; sourceTree = "<group>"; };
 		B74DF3961F34955500405847 /* VRGSoftSwiftIOSKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VRGSoftSwiftIOSKit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B74DF3991F34955500405847 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B74DF39B1F34955500405847 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -262,6 +264,7 @@
 		B7265E8920EDF69C003FBD5C /* ListDisposers */ = {
 			isa = PBXGroup;
 			children = (
+				B73EE0DA21DF858C00F48C5C /* ModelsProtocol */,
 				B7265E8A20EDF69C003FBD5C /* TableDisposer */,
 				B7265E9B20EDF69C003FBD5C /* CollectionDisposer */,
 				B7265EA820EDF69C003FBD5C /* Base */,
@@ -605,6 +608,14 @@
 			path = Gateway;
 			sourceTree = "<group>";
 		};
+		B73EE0DA21DF858C00F48C5C /* ModelsProtocol */ = {
+			isa = PBXGroup;
+			children = (
+				B73EE0DB21DF86F500F48C5C /* SMListDisposerModeledDelegate.swift */,
+			);
+			path = ModelsProtocol;
+			sourceTree = "<group>";
+		};
 		B74DF38D1F34955500405847 = {
 			isa = PBXGroup;
 			children = (
@@ -857,6 +868,7 @@
 				B7265F2C20EDF69C003FBD5C /* SMKeyboardAvoidingScrollView.swift in Sources */,
 				B7265F0320EDF69C003FBD5C /* SMCell.swift in Sources */,
 				B7265F3020EDF69C003FBD5C /* SMTextField.swift in Sources */,
+				B73EE0DC21DF86F500F48C5C /* SMListDisposerModeledDelegate.swift in Sources */,
 				B7265F4D20EDF69C003FBD5C /* SMHelper.swift in Sources */,
 				B7265F1C20EDF69C003FBD5C /* SMFetcherWithRequest.swift in Sources */,
 				B74DF39A1F34955500405847 /* AppDelegate.swift in Sources */,
