@@ -11,6 +11,9 @@ import UIKit
 open class SMSectionReadonly: SMListSection
 {
     open weak var tableDisposer: SMTableDisposer?
+    {
+        return disposer as? SMTableDisposer
+    }
     
     open var headerTitle: String?
     open var footerTitle: String?

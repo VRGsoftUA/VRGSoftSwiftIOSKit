@@ -12,7 +12,7 @@ open class SMListSection
 {
     open var cellDataSource: [SMListCellData] = []
     open var visibleCellDataSource: [SMListCellData] = []
-    open var disposer: SMListDisposer?
+    open weak var disposer: SMListDisposer?
     
     public init()
     {

@@ -12,12 +12,17 @@ public typealias SMCollectonSectionSetupViewBlock = (UICollectionReusableView) -
 
 open class SMCollectonSection: SMListSection
 {
-    open weak var collectionDisposer: SMCollectionDisposer?
+    open override var disposer: SMListDisposer?
     {
         didSet
         {
             registerHeaderFooterViews()
         }
+    }
+    
+    open weak var collectionDisposer: SMCollectionDisposer?
+    {
+        return disposer as? SMCollectionDisposer
     }
 
     open var headerTitle: String?

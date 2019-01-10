@@ -226,11 +226,17 @@ open class SMTableDisposer: SMListDisposer, UITableViewDelegate, UITableViewData
     
     public func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat
     {
-        var result: CGFloat = 20
+        var result: CGFloat = 0
         
-        if let section: SMSectionReadonly = sections[section] as? SMSectionReadonly, let headerView: UIView = section.headerView
+        if let section: SMSectionReadonly = sections[section] as? SMSectionReadonly
         {
-            result = headerView.frame.size.height
+            if let headerView: UIView = section.headerView
+            {
+                result = headerView.frame.size.height
+            } else if section.headerTitle?.isEmpty ?? false
+            {
+                result = 20
+            }
         }
         
         return result
@@ -238,13 +244,19 @@ open class SMTableDisposer: SMListDisposer, UITableViewDelegate, UITableViewData
 
     public func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat
     {
-        var result: CGFloat = 20
+        var result: CGFloat = 0
         
-        if let section: SMSectionReadonly = sections[section] as? SMSectionReadonly, let footerView: UIView = section.footerView
+        if let section: SMSectionReadonly = sections[section] as? SMSectionReadonly
         {
-            result = footerView.frame.size.height
+            if let footerView: UIView = section.footerView
+            {
+                result = footerView.frame.size.height
+            } else if section.footerTitle?.isEmpty ?? false
+            {
+                result = 20
+            }
         }
-
+        
         return result
     }
     
