@@ -27,7 +27,7 @@ open class SMTableDisposerModeled: SMTableDisposer, SMListDisposerSetupModelProt
     
     open func register(cellDataClass aCellDataClass: SMListCellData.Type, forModelClass aModelClass: AnyClass?)
     {
-        if let aModelClass = aModelClass
+        if let aModelClass: AnyClass = aModelClass
         {
             registeredClasses[String(describing: aModelClass)] = aCellDataClass
         }
