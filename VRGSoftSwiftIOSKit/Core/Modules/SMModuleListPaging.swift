@@ -126,15 +126,15 @@ open class SMModuleListPaging: SMModuleList, SMListAdapterMoreDelegate
         loadMoreData()
     }
     
-    override open func updateSectionWith(models aModels: [AnyObject], sectionIndex aSectionIndex: Int)
+    override open func updateSectionWith(models aModels: [AnyObject], originalModels: [AnyObject], sectionIndex aSectionIndex: Int, isLastSectionForNewModels: Bool)
     {
-        listAdapter.updateSectionWith(models: aModels, sectionIndex: aSectionIndex) {[weak self] in // swiftlint:disable:this explicit_type_interface
+        listAdapter.updateSectionWith(models: aModels, lastModel: models.last, sectionIndex: aSectionIndex) {[weak self] in // swiftlint:disable:this explicit_type_interface
             
             var result: Bool = false
             
             if let strongSelf: SMModuleListPaging = self
             {
-                result = (aModels.count >= strongSelf.pageSize && strongSelf.pageSize != 0)
+                result = (isLastSectionForNewModels && originalModels.fullItemsCount >= strongSelf.pageSize && strongSelf.pageSize != 0)
             }
             
             return result
@@ -241,5 +241,35 @@ extension SMModuleListPagingDelegate
     public func willLoadMore(moduleList aModuleList: SMModuleListPaging)
     {
         
+    }
+}
+
+extension Array
+{
+    var fullItemsCount: Int
+    {
+        var result: Int = 0
+        
+        result = getItemsCount(array: self)
+        
+        return result
+    }
+    
+    func getItemsCount(array: Array) -> Int
+    {
+        var result: Int = 0
+        
+        if let array: [Array] = array as? [Array]
+        {
+            for value: Array in array
+            {
+                result += getItemsCount(array: value)
+            }
+        } else
+        {
+            result = array.count
+        }
+        
+        return result
     }
 }

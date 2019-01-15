@@ -151,14 +151,15 @@ open class SMModuleList
                                     
                                     ms = mutMs
                                 }
-                                self?.updateSectionWith(models: ms, sectionIndex: numberOfPrepareSections)
+                                let isLastSectionForNewModels: Bool = (i + 1 == aModels.count)
+                                self?.updateSectionWith(models: ms, originalModels: aModels, sectionIndex: numberOfPrepareSections, isLastSectionForNewModels: isLastSectionForNewModels)
                                 numberOfPrepareSections += 1
                                 
                                 i += 1
                             }
                         } else
                         {
-                            self?.updateSectionWith(models: aModels, sectionIndex: numberOfPrepareSections)
+                            self?.updateSectionWith(models: aModels, originalModels: aModels, sectionIndex: numberOfPrepareSections, isLastSectionForNewModels: true)
                             numberOfPrepareSections += 1
                         }
                         
@@ -199,9 +200,9 @@ open class SMModuleList
         return message
     }
     
-    open func updateSectionWith(models aModels: [AnyObject], sectionIndex aSectionIndex: Int)
+    open func updateSectionWith(models aModels: [AnyObject], originalModels: [AnyObject], sectionIndex aSectionIndex: Int, isLastSectionForNewModels: Bool)
     {
-        listAdapter.updateSectionWith(models: aModels, sectionIndex: aSectionIndex, needLoadMore: nil)
+        listAdapter.updateSectionWith(models: aModels, lastModel: models.last, sectionIndex: aSectionIndex, needLoadMore: nil)
         models += aModels
     }
     

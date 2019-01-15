@@ -15,6 +15,7 @@ public protocol SMListAdapterDelegate: class
     func prepareSectionsFor(listAdapter aListAdapter: SMListAdapter)
     func defaultSectionForlistAdapter(_ aListAdapter: SMListAdapter) -> SMListSection?
     func listAdapter(_ aListAdapter: SMListAdapter, sectionForModels aModels: [AnyObject], indexOfSection aIndex: Int) -> SMListSection?
+    func listAdapter(_ aListAdapter: SMListAdapter, needAddModels aModels: [AnyObject], toSection aSection: SMListSection, withLastModel aLastModel: AnyObject) -> Bool
     func moreCellDataForListAdapter(_ aListAdapter: SMListAdapter) -> SMPagingMoreCellDataProtocol?
 }
 
@@ -83,7 +84,35 @@ open class SMListAdapter: Any
         }
     }
     
-    open func updateSectionWith(models aModels: [AnyObject], sectionIndex aSectionIndex: Int, needLoadMore aNeedLoadMore: SMListAdapterClosureType?)
+    open func updateSectionWith(models aModels: [AnyObject], lastModel aLastModel: AnyObject?, sectionIndex aSectionIndex: Int, needLoadMore aNeedLoadMore: SMListAdapterClosureType?)
+    {
+        var section: SMListSection?
+        
+        if let aLastModel: AnyObject = aLastModel,
+            let lastSection: SMListSection = listDisposer.sections.last,
+            delegate?.listAdapter(self, needAddModels: aModels, toSection: lastSection, withLastModel: aLastModel) == true
+        {
+            section = lastSection
+        } else
+        {
+            section = sectionForModels(aModels, indexOfSection: aSectionIndex)
+        }
+        
+        guard let sectionForModels: SMListSection = section else
+        {
+            assert(false, "SMListAdapter: section for listDisposer is nil!")
+            return
+        }
+        
+        setupModels(aModels, forSection: sectionForModels)
+        
+        if aNeedLoadMore?() == true
+        {
+            addMoreCellData(section: sectionForModels)
+        }
+    }
+    
+    open func sectionForModels(_ aModels: [AnyObject], indexOfSection aSectionIndex: Int) -> SMListSection?
     {
         var section: SMListSection?
         
@@ -100,32 +129,26 @@ open class SMListAdapter: Any
             listDisposer.addSection(value)
         }
         
-        guard let sectionForModels: SMListSection = section else
+        return section
+    }
+    
+    func addMoreCellData(section: SMListSection)
+    {
+        if let moreCellData: SMPagingMoreCellDataProtocol = delegate?.moreCellDataForListAdapter(self)
         {
-            assert(false, "SMListAdapter: section for listDisposer is nil!")
-            return
-        }
-        
-        setupModels(aModels, forSection: sectionForModels)
-        
-        if aNeedLoadMore?() ?? false
-        {
-            if let moreCellData: SMPagingMoreCellDataProtocol = delegate?.moreCellDataForListAdapter(self)
+            if let moreCellDataType: SMListCellData.Type = type(of: moreCellData) as? SMListCellData.Type
             {
-                if let moreCellDataType: SMListCellData.Type = type(of: moreCellData) as? SMListCellData.Type
-                {
-                    listDisposerModeled?.register(cellDataClass: moreCellDataType, forModelClass: nil)
-                    moreCellData.needLoadMore = SMBlockAction(block: { [weak self] _ in // swiftlint:disable:this explicit_type_interface
-                        if let strongSelf: SMListAdapter = self
-                        {
-                            strongSelf.moreDelegate?.needLoadMore(listAdapter: strongSelf)
-                        }
-                    })
-                    
-                    if let moreCellData: SMListCellData = moreCellData as? SMListCellData
+                listDisposerModeled?.register(cellDataClass: moreCellDataType, forModelClass: nil)
+                moreCellData.needLoadMore = SMBlockAction(block: { [weak self] _ in // swiftlint:disable:this explicit_type_interface
+                    if let strongSelf: SMListAdapter = self
                     {
-                        sectionForModels.addCellData(moreCellData)
+                        strongSelf.moreDelegate?.needLoadMore(listAdapter: strongSelf)
                     }
+                })
+                
+                if let moreCellData: SMListCellData = moreCellData as? SMListCellData
+                {
+                    section.addCellData(moreCellData)
                 }
             }
         }
