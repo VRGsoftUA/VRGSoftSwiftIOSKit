@@ -5,7 +5,7 @@ sudo rm -fr ~/.cocoapods/repos/master
 //sudo gem install -n /usr/local/bin cocoapods
 //sudo gem update -n /usr/local/bin
 
-pod lib lint Semenag01Kit.podspec
+pod lib lint VRGSoftSwiftIOSKit.podspec
 pod trunk register semenag01@meta.ua 'semenag01' --description='macbook pro 15'
-pod trunk push Semenag01Kit.podspec --allow-warnings
-pod spec lint Semenag01Kit.podspec --use-libraries
+pod trunk push VRGSoftSwiftIOSKit.podspec --allow-warnings
+pod spec lint VRGSoftSwiftIOSKit.podspec --use-libraries
