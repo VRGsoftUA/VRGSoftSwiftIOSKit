@@ -71,7 +71,10 @@ open class SMAlertController: UIAlertController
             }
         }
         
+        aProcessHandler?(__alertController)
+        
         alertController.showFrom(vc: aVC)
+        
         return alertController
     }
     

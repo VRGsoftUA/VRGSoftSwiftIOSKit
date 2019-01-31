@@ -41,7 +41,7 @@ extension UIViewController
             return nil
         }
         
-        return sm_showAlertController(title: aTitle, message: aMessage, cancelButtonTitle: aCancelButtonTitle)
+        return sm_showAlertController(title: aTitle, message: aMessage, cancelButtonTitle: aCancelButtonTitle, otherButtonTitles: nil)
         
     }
 
@@ -49,7 +49,7 @@ extension UIViewController
     open func sm_showAlertController(title aTitle: String?,
                                      message aMessage: String?,
                                      cancelButtonTitle aCancelButtonTitle: String? = NSLocalizedString("OK", comment: ""),
-                                     otherButtonTitles aOtherButtonTitles: [String]? = nil,
+                                     otherButtonTitles aOtherButtonTitles: [String]?,
                                      processHandler aProcessHandler: SMAlertControllerProcessHandlerType? = nil,
                                      handler aHandler: SMAlertControllerCompletionHandlerType? = nil) -> SMAlertController
     {
@@ -60,7 +60,7 @@ extension UIViewController
     open func sm_showSheetController(title aTitle: String?,
                                      message aMessage: String?,
                                      cancelButtonTitle aCancelButtonTitle: String? = NSLocalizedString("OK", comment: ""),
-                                     otherButtonTitles aOtherButtonTitles: [String]? = nil,
+                                     otherButtonTitles aOtherButtonTitles: [String]?,
                                      processHandler aProcessHandler: SMAlertControllerProcessHandlerType? = nil,
                                      handler aHandler: SMAlertControllerCompletionHandlerType? = nil) -> SMAlertController
     {
