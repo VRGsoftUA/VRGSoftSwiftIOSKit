@@ -64,8 +64,10 @@ open class SMPopupView: UIView
         
         if SMHelper.isIPad
         {
-            showStrategy = UIViewController()
-            showStrategy?.modalPresentationStyle = .popover
+            let popupController: SMDefaultPopupViewController = SMDefaultPopupViewController()
+            popupController.popupedView = self
+            popupController.modalPresentationStyle = .popover
+            showStrategy = popupController
         } else
         {
             let popupController: SMPopupViewController = SMPopupViewController()
@@ -78,7 +80,7 @@ open class SMPopupView: UIView
     {
         self.isVisible = true
         
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: SMPopupView.kSMPopupViewDidShow), object: self)
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: SMPopupView.kSMPopupViewWillShow), object: self)
     }
     
     open func popupDidAppear(animated: Bool)
@@ -143,5 +145,38 @@ open class SMPopupView: UIView
         {
             assert(false, String(format: "%@: use %@", NSStringFromClass(type(of: self)), NSStringFromSelector(#selector(SMPopupView.show(animated:inView:)))))
         }
+    }
+}
+
+private class SMDefaultPopupViewController: UIViewController
+{
+    var popupedView: SMPopupView?
+    
+    override open func viewWillAppear(_ animated: Bool)
+    {
+        super.viewWillAppear(animated)
+        
+        popupedView?.popupWillAppear(animated: animated)
+    }
+    
+    override open func viewDidAppear(_ animated: Bool)
+    {
+        super.viewDidAppear(animated)
+        
+        popupedView?.popupDidAppear(animated: animated)
+    }
+    
+    override open func viewWillDisappear(_ animated: Bool)
+    {
+        super.viewWillDisappear(animated)
+        
+        popupedView?.popupWillDisappear(animated: animated)
+    }
+    
+    override open func viewDidDisappear(_ animated: Bool)
+    {
+        super.viewDidDisappear(animated)
+        
+        popupedView?.popupDidDisappear(animated: animated)
     }
 }

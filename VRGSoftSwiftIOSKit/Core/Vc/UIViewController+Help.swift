@@ -33,31 +33,37 @@ extension UIViewController
         return controller
     }
     
-    open func sm_showAlertController(title aTitle: String?, message aMessage: String?, cancelButtonTitle aCancelButtonTitle: String?)
+    @discardableResult
+    open func sm_showAlertController(title aTitle: String?, message aMessage: String?, cancelButtonTitle aCancelButtonTitle: String?) -> SMAlertController?
     {
         if aTitle == nil && aMessage == nil
         {
-            return
+            return nil
         }
         
-        self.sm_showAlertController(title: aTitle, message: aMessage, cancelButtonTitle: aCancelButtonTitle, otherButtonTitles: nil, handler: nil)
+        return sm_showAlertController(title: aTitle, message: aMessage, cancelButtonTitle: aCancelButtonTitle)
+        
     }
 
+    @discardableResult
     open func sm_showAlertController(title aTitle: String?,
                                      message aMessage: String?,
                                      cancelButtonTitle aCancelButtonTitle: String? = NSLocalizedString("OK", comment: ""),
-                                     otherButtonTitles aOtherButtonTitles: [String]?,
-                                     handler aHandler: ((_ aVc: SMAlertController, _ aButtonIndex: Int)  -> Swift.Void)? = nil)
+                                     otherButtonTitles aOtherButtonTitles: [String]? = nil,
+                                     processHandler aProcessHandler: SMAlertControllerProcessHandlerType? = nil,
+                                     handler aHandler: SMAlertControllerCompletionHandlerType? = nil) -> SMAlertController
     {
-        SMAlertController.showAlertController(style: .alert, title: aTitle, message: aMessage, fromVC: self, cancelButtonTitle: aCancelButtonTitle, otherButtonTitles: aOtherButtonTitles, handler: aHandler)
+        return SMAlertController.showAlertController(title: aTitle, message: aMessage, fromVC: self, cancelButtonTitle: aCancelButtonTitle, otherButtonTitles: aOtherButtonTitles, processHandler: aProcessHandler, handler: aHandler)
     }
     
+    @discardableResult
     open func sm_showSheetController(title aTitle: String?,
                                      message aMessage: String?,
                                      cancelButtonTitle aCancelButtonTitle: String? = NSLocalizedString("OK", comment: ""),
-                                     otherButtonTitles aOtherButtonTitles: [String]?,
-                                     handler aHandler: ((_ aVc: SMAlertController, _ aButtonIndex: Int)  -> Swift.Void)? = nil)
+                                     otherButtonTitles aOtherButtonTitles: [String]? = nil,
+                                     processHandler aProcessHandler: SMAlertControllerProcessHandlerType? = nil,
+                                     handler aHandler: SMAlertControllerCompletionHandlerType? = nil) -> SMAlertController
     {
-        SMAlertController.showAlertController(style: .actionSheet, title: aTitle, message: aMessage, fromVC: self, cancelButtonTitle: aCancelButtonTitle, otherButtonTitles: aOtherButtonTitles, handler: aHandler)
+        return SMAlertController.showSheetController(title: aTitle, message: aMessage, fromVC: self, cancelButtonTitle: aCancelButtonTitle, otherButtonTitles: aOtherButtonTitles, processHandler: aProcessHandler, handler: aHandler)
     }
 }

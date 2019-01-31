@@ -8,9 +8,11 @@
 
 import UIKit
 
+public typealias SMAlertControllerCompletionHandlerType = (_ aVc: SMAlertController, _ aButtonIndex: Int) -> Void
+public typealias SMAlertControllerProcessHandlerType = (_ aVc: SMAlertController) -> Void
+
 open class SMAlertController: UIAlertController
 {
-    
     override open func viewDidLoad()
     {
         super.viewDidLoad()
@@ -36,13 +38,15 @@ open class SMAlertController: UIAlertController
         aVc.present(self, animated: true, completion: nil)
     }
     
+    @discardableResult
     open class func showAlertController(style aStyle: UIAlertController.Style,
                                         title aTitle: String?,
                                         message aMessage: String?,
                                         fromVC aVC: UIViewController,
                                         cancelButtonTitle aCancelButtonTitle: String? = NSLocalizedString("OK", comment: ""),
                                         otherButtonTitles aOtherButtonTitles: [String]?,
-                                        handler aHandler: ((_ aVc: SMAlertController, _ aButtonIndex: Int)  -> Swift.Void)? = nil)
+                                        processHandler aProcessHandler: SMAlertControllerProcessHandlerType? = nil,
+                                        handler aHandler: SMAlertControllerCompletionHandlerType? = nil) -> SMAlertController
     {
         let alertController: SMAlertController = SMAlertController(title: aTitle, message: aMessage, preferredStyle: aStyle)
         
@@ -68,25 +72,44 @@ open class SMAlertController: UIAlertController
         }
         
         alertController.showFrom(vc: aVC)
+        return alertController
     }
     
+    @discardableResult
     open class func showAlertController(title aTitle: String?,
                                         message aMessage: String?,
                                         fromVC aVC: UIViewController,
                                         cancelButtonTitle aCancelButtonTitle: String? = NSLocalizedString("OK", comment: ""),
                                         otherButtonTitles aOtherButtonTitles: [String]?,
-                                        handler aHandler: ((_ aVc: SMAlertController, _ aButtonIndex: Int)  -> Swift.Void)? = nil)
+                                        processHandler aProcessHandler: SMAlertControllerProcessHandlerType? = nil,
+                                        handler aHandler: SMAlertControllerCompletionHandlerType? = nil) -> SMAlertController
     {
-        showAlertController(style: .alert, title: aTitle, message: aMessage, fromVC: aVC, cancelButtonTitle: aCancelButtonTitle, otherButtonTitles: aOtherButtonTitles, handler: aHandler)
+        return showAlertController(style: .alert,
+                                   title: aTitle,
+                                   message: aMessage,
+                                   fromVC: aVC,
+                                   cancelButtonTitle: aCancelButtonTitle,
+                                   otherButtonTitles: aOtherButtonTitles,
+                                   processHandler: aProcessHandler,
+                                   handler: aHandler)
     }
     
+    @discardableResult
     open class func showSheetController(title aTitle: String?,
                                         message aMessage: String?,
                                         fromVC aVC: UIViewController,
                                         cancelButtonTitle aCancelButtonTitle: String? = NSLocalizedString("Ok", comment: ""),
                                         otherButtonTitles aOtherButtonTitles: [String]?,
-                                        handler aHandler: ((_ aVc: SMAlertController, _ aButtonIndex: Int)  -> Swift.Void)? = nil)
+                                        processHandler aProcessHandler: SMAlertControllerProcessHandlerType? = nil,
+                                        handler aHandler: SMAlertControllerCompletionHandlerType? = nil) -> SMAlertController
     {
-        showAlertController(style: .actionSheet, title: aTitle, message: aMessage, fromVC: aVC, cancelButtonTitle: aCancelButtonTitle, otherButtonTitles: aOtherButtonTitles, handler: aHandler)
+        return showAlertController(style: .actionSheet,
+                                   title: aTitle,
+                                   message: aMessage,
+                                   fromVC: aVC,
+                                   cancelButtonTitle: aCancelButtonTitle,
+                                   otherButtonTitles: aOtherButtonTitles,
+                                   processHandler: aProcessHandler,
+                                   handler: aHandler)
     }
 }

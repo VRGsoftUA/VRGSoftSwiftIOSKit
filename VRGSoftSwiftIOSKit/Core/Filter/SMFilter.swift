@@ -42,3 +42,22 @@ open class SMFilter
         return result
     }
 }
+
+
+open class SMFilterRegExp: SMFilter {
+    
+    open var regex: String
+    
+    public init(regex aRegex: String, maxLenghtText: Int) {
+        regex = aRegex
+        
+        super.init(maxLengthText: maxLenghtText)
+    }
+    
+    override open func inputField(_ inputField: SMFilterProtocol, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        let lengthCondition: Bool = super.inputField(inputField, shouldChangeTextIn: range, replacementText: text)
+        let textCondition: Bool = text.range(of: regex, options: .regularExpression) != nil || text.isEmpty
+        
+        return textCondition && lengthCondition
+    }
+}
