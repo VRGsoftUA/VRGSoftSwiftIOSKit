@@ -47,17 +47,17 @@ open class SMPopupSimplePicker: SMPopupPicker, UIPickerViewDelegate, UIPickerVie
     
     // MARK: override next methods to change default behaviours
     
-    public func numberOfComponents(in pickerView: UIPickerView) -> Int
+    open func numberOfComponents(in pickerView: UIPickerView) -> Int
     {
         return 1
     }
     
-    public func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int
+    open func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int
     {
         return _dataSource.count
     }
     
-    public func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String?
+    open func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String?
     {
         var result: String?
         
@@ -83,7 +83,7 @@ open class SMPopupSimplePicker: SMPopupPicker, UIPickerViewDelegate, UIPickerVie
         return result
     }
     
-    public func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int)
+    open func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int)
     {
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: SMPopupSimplePicker.kSMPopupPickerValueDidChange), object: self)
         if let selectedItem: AnyObject = selectedItem

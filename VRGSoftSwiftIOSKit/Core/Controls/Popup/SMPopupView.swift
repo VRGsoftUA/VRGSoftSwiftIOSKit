@@ -40,7 +40,7 @@ open class SMPopupView: UIView
         self.setup()
     }
     
-    public static func popupViewSize() -> CGSize
+    public class func popupViewSize() -> CGSize
     {
         return CGSize(width: 320, height: 216)
     }

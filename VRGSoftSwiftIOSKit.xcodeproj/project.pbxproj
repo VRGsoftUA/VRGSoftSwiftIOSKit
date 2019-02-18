@@ -104,6 +104,7 @@
 		B7560D172108C427003DF195 /* SMCompoundRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7560D162108C427003DF195 /* SMCompoundRequest.swift */; };
 		B774AE1C20FDD5940065C963 /* NSAttributedString + Help.swift in Sources */ = {isa = PBXBuildFile; fileRef = B774AE1B20FDD5940065C963 /* NSAttributedString + Help.swift */; };
 		B77B0587213D4BEF00A95671 /* SMFormatterDigitSimple.swift in Sources */ = {isa = PBXBuildFile; fileRef = B77B0586213D4BEF00A95671 /* SMFormatterDigitSimple.swift */; };
+		B77E9EAB22170240000CE876 /* Dictionary+Help.swift in Sources */ = {isa = PBXBuildFile; fileRef = B77E9EAA22170240000CE876 /* Dictionary+Help.swift */; };
 		B79ED060210B37540060538B /* SMFetcherWithRequestBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = B79ED05F210B37540060538B /* SMFetcherWithRequestBlock.swift */; };
 		B7ED41F91F34B271006C24DC /* VRGSoftSwiftIOSKit.bundle in Resources */ = {isa = PBXBuildFile; fileRef = B7ED41F81F34B271006C24DC /* VRGSoftSwiftIOSKit.bundle */; };
 		B7F02B4921DE4624009E7E33 /* SMListDisposerSetupModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F02B4821DE4624009E7E33 /* SMListDisposerSetupModelProtocol.swift */; };
@@ -210,6 +211,7 @@
 		B7560D162108C427003DF195 /* SMCompoundRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMCompoundRequest.swift; sourceTree = "<group>"; };
 		B774AE1B20FDD5940065C963 /* NSAttributedString + Help.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSAttributedString + Help.swift"; sourceTree = "<group>"; };
 		B77B0586213D4BEF00A95671 /* SMFormatterDigitSimple.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMFormatterDigitSimple.swift; sourceTree = "<group>"; };
+		B77E9EAA22170240000CE876 /* Dictionary+Help.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Dictionary+Help.swift"; sourceTree = "<group>"; };
 		B79ED05F210B37540060538B /* SMFetcherWithRequestBlock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMFetcherWithRequestBlock.swift; sourceTree = "<group>"; };
 		B7ED41F81F34B271006C24DC /* VRGSoftSwiftIOSKit.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = VRGSoftSwiftIOSKit.bundle; sourceTree = "<group>"; };
 		B7F02B4821DE4624009E7E33 /* SMListDisposerSetupModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMListDisposerSetupModelProtocol.swift; sourceTree = "<group>"; };
@@ -581,6 +583,7 @@
 		B7265EF120EDF69C003FBD5C /* Help */ = {
 			isa = PBXGroup;
 			children = (
+				B77E9EAA22170240000CE876 /* Dictionary+Help.swift */,
 				B774AE1B20FDD5940065C963 /* NSAttributedString + Help.swift */,
 				B7265EF220EDF69C003FBD5C /* UILabel+Help.swift */,
 				B7265EF320EDF69C003FBD5C /* UIView+Help.swift */,
@@ -854,6 +857,7 @@
 				B7265F2720EDF69C003FBD5C /* SMPopupViewController.swift in Sources */,
 				B7265F4C20EDF69C003FBD5C /* UIView+Help.swift in Sources */,
 				B7265F1620EDF69C003FBD5C /* SMAlertController.swift in Sources */,
+				B77E9EAB22170240000CE876 /* Dictionary+Help.swift in Sources */,
 				B7265F0B20EDF69C003FBD5C /* SMCellProtocol.swift in Sources */,
 				B7265F3320EDF69C003FBD5C /* SMFormatter.swift in Sources */,
 				B7265F3F20EDF69C003FBD5C /* SMValidationGroup.swift in Sources */,
