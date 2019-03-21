@@ -11,6 +11,7 @@ import UIKit
 open class SMSectionReadonly: SMListSection {
     
     open weak var tableDisposer: SMTableDisposer? {
+        
         return disposer as? SMTableDisposer
     }
     
@@ -35,6 +36,7 @@ open class SMSectionReadonly: SMListSection {
         (cell as? SMCellProtocol)?.setupCellData(cellData)
         
         if isNewCell {
+            
             tableDisposer?.didCreate(cell: cell)
         }
         
@@ -44,7 +46,9 @@ open class SMSectionReadonly: SMListSection {
     open func reload(with anAnimation: UITableView.RowAnimation) {
         
         updateCellDataVisibility()
+        
         if let section: Int = tableDisposer?.index(by: self) {
+            
             tableDisposer?.tableView?.reloadSections(IndexSet(integer: section), with: anAnimation)
         }
     }
@@ -57,6 +61,7 @@ open class SMSectionReadonly: SMListSection {
         let sectionIndex: Int = tableDisposer?.index(by: self) ?? 0
         
         for index: Int in aIndexes {
+            
             indexPath = IndexPath(row: index, section: sectionIndex)
             indexPaths.append(indexPath)
         }
@@ -69,11 +74,13 @@ open class SMSectionReadonly: SMListSection {
         var toDelete: [SMListCellData] = []
         
         for index: Int in aIndexes {
+            
             let cellData: SMListCellData = self.cellData(at: index)
             toDelete.append(cellData)
         }
         
         for cd: SMListCellData in toDelete {
+            
             removeCellData(cd)
         }
         
@@ -97,10 +104,12 @@ open class SMSectionReadonly: SMListSection {
     // MARK: Show/Hide cells
     
     open func hideCell(by aIndex: Int, needUpdateTable aNeedUpdateTable: Bool) {
+        
         hideCell(by: aIndex, needUpdateTable: aNeedUpdateTable, withRowAnimation: UITableView.RowAnimation.middle)
     }
 
     open func showCell(by aIndex: Int, needUpdateTable aNeedUpdateTable: Bool) {
+        
         showCell(by: aIndex, needUpdateTable: aNeedUpdateTable, withRowAnimation: UITableView.RowAnimation.middle)
     }
 
@@ -109,12 +118,14 @@ open class SMSectionReadonly: SMListSection {
         let cellData: SMListCellData  = self.cellData(at: aIndex)
 
         if !cellData.isVisible {
+            
             return
         }
         
         let index: Int = self.index(byVisible: cellData)
         
         if  let i: Int = cellDataSource.index(where: {$0 === cellData}) {
+            
             cellDataSource.remove(at: i)
         }
 
@@ -132,6 +143,7 @@ open class SMSectionReadonly: SMListSection {
         let cellData: SMListCellData  = self.cellData(at: aIndex)
         
         if cellData.isVisible {
+            
             return
         }
         

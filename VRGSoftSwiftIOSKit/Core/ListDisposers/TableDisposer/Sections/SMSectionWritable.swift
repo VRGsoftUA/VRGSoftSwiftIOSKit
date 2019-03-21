@@ -13,7 +13,9 @@ open class SMSectionWritable: SMSectionReadonly {
     open var cells: [UITableViewCell] = []
     
     open func mapToObject() {
+        
         for cellData: SMListCellData in cellDataSource where cellData is SMCellDataMapedProtocol {
+            
             (cellData as? SMCellDataMapedProtocol)?.mapToObject()
         }
     }
@@ -21,6 +23,7 @@ open class SMSectionWritable: SMSectionReadonly {
     open func mapFromObject() {
         
         for cellData: SMListCellData in cellDataSource where cellData is SMCellDataMapedProtocol {
+            
             (cellData as? SMCellDataMapedProtocol)?.mapFromObject()
         }
         
@@ -40,25 +43,29 @@ open class SMSectionWritable: SMSectionReadonly {
             let cell: SMCell = cell as? SMCell,
             let tableDisposer: SMTableDisposer = tableDisposer {
             
-            if let inputTraits: [UIResponder] = cell.inputTraits() {
-                
-                keyboardAvoiding.addObjectsForKeyboard(inputTraits)
-                if let tableView: SMKeyboardAvoidingTableView = tableDisposer.tableView as? SMKeyboardAvoidingTableView {
-                    tableView.sortedResponders(inputTraits, byIndexPath: IndexPath(row: anIndex, section: tableDisposer.index(by: self)))
+                if let inputTraits: [UIResponder] = cell.inputTraits() {
+                    
+                    keyboardAvoiding.addObjectsForKeyboard(inputTraits)
+                    
+                    if let tableView: SMKeyboardAvoidingTableView = tableDisposer.tableView as? SMKeyboardAvoidingTableView {
+                        
+                        tableView.sortedResponders(inputTraits, byIndexPath: IndexPath(row: anIndex, section: tableDisposer.index(by: self)))
+                    }
                 }
-            }
         }
 
         return cell
     }
 
    open func createCells() {
+    
         // remove old cells
         cells.removeAll()
         updateCellDataVisibility()
     
         var cell: UITableViewCell
-    for index: Int in 0..<visibleCellDataSource.count {
+    
+        for index: Int in 0..<visibleCellDataSource.count {
         
             cell = createCell(at: index)
             cells.append(cell)
@@ -66,6 +73,7 @@ open class SMSectionWritable: SMSectionReadonly {
     }
     
     override open func cell(forIndex aIndex: Int) -> UITableViewCell {
+        
         return cells[aIndex]
     }
     
@@ -77,6 +85,7 @@ open class SMSectionWritable: SMSectionReadonly {
             for cell: UITableViewCell in cells where cell is SMCell {
                 
                 if let inputTrails: [UIResponder] = (cell as? SMCell)?.inputTraits() {
+                    
                     keyboardAvoiding.removeObjectsForKeyboard(inputTrails)
                 }
             }
@@ -120,6 +129,7 @@ open class SMSectionWritable: SMSectionReadonly {
         let cellData: SMListCellData = self.cellData(at: aIndex)
         
         if cellData.isVisible {
+            
             return
         }
         
@@ -143,6 +153,7 @@ open class SMSectionWritable: SMSectionReadonly {
         let cellData: SMListCellData = self.cellData(at: aIndex)
         
         if !cellData.isVisible {
+            
             return
         }
         
@@ -153,6 +164,7 @@ open class SMSectionWritable: SMSectionReadonly {
         if let keyboardAvoiding: SMKeyboardAvoidingProtocol = tableDisposer?.tableView as? SMKeyboardAvoidingProtocol, let cell: SMCell = cell as? SMCell {
             
             if let inputTraits: [UIResponder] = cell.inputTraits() {
+                
                 keyboardAvoiding.addObjectsForKeyboard(inputTraits)
             }
         }
@@ -173,6 +185,7 @@ open class SMSectionWritable: SMSectionReadonly {
         super.deleteRows(at: aIndexes, withRowAnimation: aRowAnimation)
         
         for index: Int in aIndexes {
+            
             cells.remove(at: index)
         }
     }

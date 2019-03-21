@@ -32,6 +32,7 @@ open class SMCellData: SMListCellData {
     open var cellWidth: CGFloat = 0.0
 
     open func cellHeightFor(width aWidth: CGFloat) -> CGFloat {
+        
         return cellHeight
     }
     
@@ -39,21 +40,27 @@ open class SMCellData: SMListCellData {
     // MARK: Handlers
     
     open func addCellSelected(blockAction aBlockAction: SMBlockAction<SMCellData>) {
+        
         cellSelectedHandlers.append(aBlockAction)
     }
     
     open func addCellDeselected(blockAction aBlockAction: SMBlockAction<SMCellData>) {
+        
         cellDeselectedHandlers.append(aBlockAction)
     }
 
     open func performSelectedHandlers() {
+        
         for handler: SMBlockAction<SMCellData> in cellSelectedHandlers {
+            
             handler.performBlockFrom(sender: self)
         }
     }
 
     open func performDeselectedHandlers() {
+        
         for handler: SMBlockAction<SMCellData> in cellDeselectedHandlers {
+            
             handler.performBlockFrom(sender: self)
         }
     }
@@ -68,6 +75,7 @@ open class SMCellData: SMListCellData {
             let cell: UITableViewCell = Bundle.main.loadNibNamed(cellNibName, owner: nil, options: nil)?.last as! UITableViewCell // swiftlint:disable:this force_cast
             return cell
         } else {
+            
             let cell: UITableViewCell = cellClass.init(style: cellStyle, reuseIdentifier: cellIdentifier)
             return cell
         }

@@ -15,6 +15,7 @@ open class SMTableDisposerMapped: SMTableDisposer {
         for section: SMListSection in sections {
             
             if let section: SMSectionWritable = section as? SMSectionWritable {
+                
                 section.mapFromObject()
             }
         }
@@ -25,6 +26,7 @@ open class SMTableDisposerMapped: SMTableDisposer {
         for section: SMListSection in sections {
             
             if let section: SMSectionWritable = section as? SMSectionWritable {
+                
                 section.mapToObject()
             }
         }
@@ -37,6 +39,7 @@ open class SMTableDisposerMapped: SMTableDisposer {
         mapFromObject()
         
         for section: SMListSection in sections {
+            
             section.updateCellDataVisibility()
         }
         

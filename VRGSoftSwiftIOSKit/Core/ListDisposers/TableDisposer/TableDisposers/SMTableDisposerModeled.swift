@@ -28,11 +28,13 @@ open class SMTableDisposerModeled: SMTableDisposer, SMListDisposerSetupModelProt
     open func register(cellDataClass aCellDataClass: SMListCellData.Type, forModelClass aModelClass: AnyClass?) {
         
         if let aModelClass: AnyClass = aModelClass {
+            
             registeredClasses[String(describing: aModelClass)] = aCellDataClass
         }
     }
 
     open func unregisterCellDataFor(modelClass aModelClass: AnyClass) {
+        
         registeredClasses[String(describing: aModelClass)] = nil
     }
 
@@ -51,17 +53,20 @@ open class SMTableDisposerModeled: SMTableDisposer, SMListDisposerSetupModelProt
                 didCreate(cellData: cellData)
                 aSection.addCellData(cellData)
             } else {
+                
                 assert(false, String(format: "Model doesn't have registered cellData class %@", String(describing: type(of: model))))
             }
         }
     }
 
     open func cellDataFrom(model aModel: AnyObject) -> SMListCellData? {
+        
         let modelClassName: String = String(describing: type(of: aModel))
 
         if let cellDataClass: SMListCellData.Type = registeredClasses[modelClassName] ?? modeledDelegate?.listDisposer(self, cellDataClassForUnregisteredModel: aModel) {
             
             let cellData: SMListCellData = cellDataClass.init(model: aModel)
+            
             return cellData
         }
         
@@ -72,7 +77,9 @@ open class SMTableDisposerModeled: SMTableDisposer, SMListDisposerSetupModelProt
         
         modeledDelegate?.listDisposer(self, didCreateCellData: aCellData)
         modeledMulticastDelegate.invokeDelegates { [weak self] delegate in // swiftlint:disable:this explicit_type_interface
+            
             if let strongSelf: SMTableDisposerModeled = self {
+                
                 delegate.listDisposer(strongSelf, didCreateCellData: aCellData)
             }
         }
