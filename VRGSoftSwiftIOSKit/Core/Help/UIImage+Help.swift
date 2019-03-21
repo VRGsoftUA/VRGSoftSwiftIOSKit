@@ -8,10 +8,10 @@
 
 import UIKit
 
-extension UIImage
-{
-    open class func imageWith(color aColor: UIColor, size aSize: CGSize) -> UIImage?
-    {
+extension UIImage {
+    
+    open class func imageWith(color aColor: UIColor, size aSize: CGSize) -> UIImage? {
+        
         let rect: CGRect = CGRect(origin: CGPoint(), size: aSize)
         UIGraphicsBeginImageContext(rect.size)
         
@@ -27,8 +27,8 @@ extension UIImage
         return image
     }
     
-    open func sm_tintedImageWith(color aColor: UIColor) -> UIImage?
-    {
+    open func sm_tintedImageWith(color aColor: UIColor) -> UIImage? {
+        
         var result: UIImage?
         
         let scale: CGFloat = self.scale
@@ -43,30 +43,29 @@ extension UIImage
         let rect: CGRect = CGRect(origin: CGPoint.zero, size: size)
         context?.setBlendMode(CGBlendMode.normal)
         
-        if let cgI: CGImage = cgImage
-        {
+        if let cgI: CGImage = cgImage {
             context?.draw(cgI, in: rect)
         }
         
         context?.setBlendMode(CGBlendMode.sourceIn)
         context?.setFillColor(aColor.cgColor)
         context?.fill(rect)
-        if let image: CGImage = context?.makeImage()
-        {
+        
+        if let image: CGImage = context?.makeImage() {
             result = UIImage(cgImage: image, scale: scale, orientation: self.imageOrientation)
         }
         
         return result
     }
     
-    open class func resizableImageWith(color aColor: UIColor) -> UIImage?
-    {
+    open class func resizableImageWith(color aColor: UIColor) -> UIImage? {
+        
         let image: UIImage? = imageWith(color: aColor, size: CGSize(width: 1, height: 1))?.resizableImage(withCapInsets: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0), resizingMode: UIImage.ResizingMode.stretch)
         return image
     }
     
-    open var roundedImage: UIImage?
-    {
+    open var roundedImage: UIImage? {
+        
         let rect: CGRect = CGRect(origin: CGPoint(x: 0, y: 0), size: self.size)
         UIGraphicsBeginImageContextWithOptions(self.size, false, self.scale)
         UIBezierPath(roundedRect: rect, cornerRadius: self.size.height).addClip()
@@ -74,8 +73,8 @@ extension UIImage
         return UIGraphicsGetImageFromCurrentImageContext()
     }
     
-    open func dataJPEGWithkBSize(aKbSize: Int) -> Data?
-    {
+    open func dataJPEGWithkBSize(aKbSize: Int) -> Data? {
+        
         let maxCompression: CGFloat = 0.1
         let maxFileSize: Int = aKbSize*1024
         
@@ -83,8 +82,8 @@ extension UIImage
         
         var data: Data? = self.jpegData(compressionQuality: compression)
         
-        while let length: Int = data?.count, length > maxFileSize, compression > maxCompression
-        {
+        while let length: Int = data?.count, length > maxFileSize, compression > maxCompression {
+            
             compression -= 0.05
             data = self.jpegData(compressionQuality: compression)
         }
@@ -94,17 +93,15 @@ extension UIImage
         return data
     }
     
-    open func fixedOrientation() -> UIImage?
-    {
-        if imageOrientation == .up
-        {
+    open func fixedOrientation() -> UIImage? {
+        
+        if imageOrientation == .up {
             return self
         }
         
         var transform: CGAffineTransform = .identity
         
-        switch imageOrientation
-        {
+        switch imageOrientation {
         case .down, .downMirrored:
             transform = transform.translatedBy(x: size.width, y: size.height)
             transform = transform.rotated(by: .pi)
@@ -118,8 +115,7 @@ extension UIImage
             break
         }
         
-        switch imageOrientation
-        {
+        switch imageOrientation {
         case .upMirrored, .downMirrored:
             transform = transform.translatedBy(x: size.width, y: 0)
             transform = transform.scaledBy(x: -1, y: 1)
@@ -137,10 +133,9 @@ extension UIImage
         
         context.concatenate(transform)
         
-        if let cgI: CGImage = cgImage
-        {
-            switch imageOrientation
-            {
+        if let cgI: CGImage = cgImage {
+            
+            switch imageOrientation {
             case .left, .leftMirrored, .right, .rightMirrored:
                 context.draw(cgI, in: CGRect(x: 0, y: 0, width: size.height, height: size.width))
             default:

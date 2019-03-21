@@ -8,8 +8,8 @@
 
 import UIKit
 
-open class SMCompoundRequest: SMRequest
-{
+open class SMCompoundRequest: SMRequest {
+    
     open var canceled: Bool = false
     open var finished: Bool = false
     open var executing: Bool = false
@@ -21,10 +21,9 @@ open class SMCompoundRequest: SMRequest
     
     open var requests: [SMRequest] = [SMRequest]()
     
-    public init(withRequests aRequests: [SMRequest])
-    {
-        if aRequests.count == 0
-        {
+    public init(withRequests aRequests: [SMRequest]) {
+        
+        if aRequests.count == 0 {
             assert(false)
         }
         
@@ -33,14 +32,14 @@ open class SMCompoundRequest: SMRequest
         super.init()
     }
     
-    open override func canExecute() -> Bool
-    {
+    open override func canExecute() -> Bool {
+        
         var result: Bool = true
         
-        for request: SMRequest in requests
-        {
-            if !request.canExecute()
-            {
+        for request: SMRequest in requests {
+            
+            if !request.canExecute() {
+                
                 result = false
                 break
             }
@@ -49,31 +48,29 @@ open class SMCompoundRequest: SMRequest
         return result
     }
     
-    open override func start()
-    {
+    open override func start() {
+        
         retainSelf()
         
         canceled = false
         executing = true
         finished = false
         
-        if executingRequestingParallel
-        {
+        if executingRequestingParallel {
             startParallel()
-        } else
-        {
+        } else {
             startSequence()
         }
     }
     
-    private func startParallel()
-    {
+    private func startParallel() {
+        
         let requestGroup: DispatchGroup = DispatchGroup()
         
         var responses: [SMResponse] = [SMResponse](repeating: SMResponse(), count: requests.count)
         
-        for index: Int in 0...requests.count - 1
-        {
+        for index: Int in 0...requests.count - 1 {
+            
             let request: SMRequest = requests[index]
             
             requestGroup.enter()
@@ -89,42 +86,36 @@ open class SMCompoundRequest: SMRequest
         }
     }
     
-    private func startSequence()
-    {
+    private func startSequence() {
+        
         startRequest(withIndex: 0)
         
         var responses: [SMResponse] = [SMResponse](repeating: SMResponse(), count: requests.count)
         
-        for index: Int in 0...responses.count-1
-        {
+        for index: Int in 0...responses.count - 1 {
+            
             requests[index].addResponseBlock({ [weak self] (aResponse) in // swiftlint:disable:this explicit_type_interface
                 
                 guard let strongSelf: SMCompoundRequest = self else { return }
                 
                 responses[index] = aResponse
                 
-                if aResponse.isSuccess
-                {
-                        if index < strongSelf.requests.count - 1
-                        {
+                if aResponse.isSuccess {
+                    
+                        if index < strongSelf.requests.count - 1 {
                             strongSelf.startRequest(withIndex: index + 1)
-                        } else
-                        {
+                        } else {
                             strongSelf.finishedAllRequestsWithResponces(aResponses: responses)
                         }
-                } else
-                {
-                    if strongSelf.continueRequestssIfAtLeastOneFail
-                    {
-                        if index < strongSelf.requests.count - 1
-                        {
+                } else {
+                    if strongSelf.continueRequestssIfAtLeastOneFail {
+                        
+                        if index < strongSelf.requests.count - 1 {
                             strongSelf.startRequest(withIndex: index + 1)
-                        } else
-                        {
+                        } else {
                             strongSelf.finishedAllRequestsWithResponces(aResponses: responses)
                         }
-                    } else
-                    {
+                    } else {
                         strongSelf.finishedAllRequestsWithResponces(aResponses: responses)
                     }
                 }
@@ -133,20 +124,18 @@ open class SMCompoundRequest: SMRequest
         
     }
     
-    open func finishedAllRequestsWithResponces(aResponses: [SMResponse])
-    {
+    open func finishedAllRequestsWithResponces(aResponses: [SMResponse]) {
+        
         let result: SMResponse = SMResponse()
         result.isSuccess = true
         
-        if putResponseToOneResult
-        {
+        if putResponseToOneResult {
             result.boArray = aResponses
-        } else
-        {
-            for response: SMResponse in aResponses
-            {
-                if !response.isSuccess && result.isSuccess
-                {
+        } else {
+            for response: SMResponse in aResponses {
+                
+                if !response.isSuccess && result.isSuccess {
+                    
                     result.isSuccess =  response.isSuccess
                     result.error = response.error
                     result.titleMessage = response.titleMessage
@@ -169,8 +158,8 @@ open class SMCompoundRequest: SMRequest
         retainSelf()
     }
     
-    open override func cancel()
-    {
+    open override func cancel() {
+        
         canceled = true
         executing = false
         finished = true
@@ -178,8 +167,8 @@ open class SMCompoundRequest: SMRequest
         requests[currentExecutingIndex].cancel()
     }
     
-    open func startRequest(withIndex aIndex: Int)
-    {
+    open func startRequest(withIndex aIndex: Int) {
+        
         currentExecutingIndex = aIndex
         requests[currentExecutingIndex].start()
     }

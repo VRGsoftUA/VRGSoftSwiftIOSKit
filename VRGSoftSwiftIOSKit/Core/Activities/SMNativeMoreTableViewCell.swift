@@ -8,12 +8,11 @@
 
 import UIKit
 
-open class SMNativeMoreTableViewCellData: SMCellData, SMPagingMoreCellDataProtocol
-{
+open class SMNativeMoreTableViewCellData: SMCellData, SMPagingMoreCellDataProtocol {
+    
     public var needLoadMore: SMBlockAction<Any>?
     
-    convenience public init()
-    {
+    convenience public init() {
         self.init(model: nil)
     
         self.cellClass = SMNativeMoreTableViewCell.self
@@ -22,13 +21,11 @@ open class SMNativeMoreTableViewCellData: SMCellData, SMPagingMoreCellDataProtoc
     }
 }
 
-open class SMNativeMoreTableViewCell: SMCell, SMPagingMoreCellProtocol
-{
+open class SMNativeMoreTableViewCell: SMCell, SMPagingMoreCellProtocol {
 
     public let activity: UIActivityIndicatorView = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.gray)
     
-    override open func setup()
-    {
+    override open func setup() {
         super.setup()
         
         self.backgroundColor = UIColor.clear
@@ -42,20 +39,17 @@ open class SMNativeMoreTableViewCell: SMCell, SMPagingMoreCellProtocol
         self.contentView.addSubview(activity)
     }
     
-    override open func prepareForReuse()
-    {
+    override open func prepareForReuse() {
         super.prepareForReuse()
         
         self.showActivityIndicator(show: false)
     }
     
-    open func showActivityIndicator(show aIsShow: Bool)
-    {
-        if aIsShow
-        {
+    open func showActivityIndicator(show aIsShow: Bool) {
+        
+        if aIsShow {
             activity.startAnimating()
-        } else
-        {
+        } else {
             activity.stopAnimating()
         }
     }
@@ -63,13 +57,11 @@ open class SMNativeMoreTableViewCell: SMCell, SMPagingMoreCellProtocol
     
     // MARK: SMPagingMoreCellProtocol
 
-    public func didBeginDataLoading()
-    {
+    public func didBeginDataLoading() {
         self.showActivityIndicator(show: true)
     }
     
-    public func didEndDataLoading()
-    {
+    public func didEndDataLoading() {
         self.showActivityIndicator(show: false)
     }
 }

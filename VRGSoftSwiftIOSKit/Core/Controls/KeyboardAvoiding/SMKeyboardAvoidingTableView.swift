@@ -8,10 +8,9 @@
 
 import UIKit
 
-open class SMKeyboardAvoidingTableView: UITableView, SMKeyboardAvoidingProtocol
-{
-    public var keyboardToolbar: SMKeyboardToolbar?
-    {
+open class SMKeyboardAvoidingTableView: UITableView, SMKeyboardAvoidingProtocol {
+    
+    public var keyboardToolbar: SMKeyboardToolbar? {
         set {
             keyboardAvoider.keyboardToolbar = newValue
         }
@@ -22,64 +21,54 @@ open class SMKeyboardAvoidingTableView: UITableView, SMKeyboardAvoidingProtocol
     }
     
     var _keyboardAvoider: SMKeyboardAvoider?
-    var keyboardAvoider: SMKeyboardAvoider
-    {
-        if let keyboardAvoider: SMKeyboardAvoider = _keyboardAvoider
-        {
+    var keyboardAvoider: SMKeyboardAvoider {
+        
+        if let keyboardAvoider: SMKeyboardAvoider = _keyboardAvoider {
             return keyboardAvoider
-        } else
-        {
+        } else {
             let result: SMKeyboardAvoider = SMKeyboardAvoider(scrollView: self)
             _keyboardAvoider = result
             return result
         }
     }
 
-    override public init(frame: CGRect, style: UITableView.Style)
-    {
+    override public init(frame: CGRect, style: UITableView.Style) {
         super.init(frame: frame, style: style)
     
         self.setup()
     }
     
-    required public init?(coder aDecoder: NSCoder)
-    {
+    required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
      
         self.setup()
     }
     
-    open func setup()
-    {
-        if self.contentSize.equalTo(CGSize.zero)
-        {
+    open func setup() {
+        
+        if self.contentSize.equalTo(CGSize.zero) {
             self.contentSize = self.bounds.size
         }
         
         keyboardAvoider.originalContentSize = self.contentSize
     }
     
-    override open var frame: CGRect
-    {
-        didSet
-        {
+    override open var frame: CGRect {
+        didSet {
             var newContentSize: CGSize = keyboardAvoider.originalContentSize
             newContentSize.width = max(newContentSize.width, self.frame.size.width)
             newContentSize.height = max(newContentSize.height, self.frame.size.height)
             
             super.contentSize = newContentSize
             
-            if keyboardAvoider.isKeyboardVisible
-            {
+            if keyboardAvoider.isKeyboardVisible {
                 self.contentInset = keyboardAvoider.contentInsetForKeyboard()
             }
         }
     }
     
-    override open var contentSize: CGSize
-    {
-        set
-        {
+    override open var contentSize: CGSize {
+        set {
             keyboardAvoider.originalContentSize = newValue
             
             var newContentSize: CGSize = keyboardAvoider.originalContentSize
@@ -88,8 +77,7 @@ open class SMKeyboardAvoidingTableView: UITableView, SMKeyboardAvoidingProtocol
             
             super.contentSize = newContentSize
             
-            if keyboardAvoider.isKeyboardVisible
-            {
+            if keyboardAvoider.isKeyboardVisible {
                 self.contentInset = keyboardAvoider.contentInsetForKeyboard()
             }
         }
@@ -97,68 +85,55 @@ open class SMKeyboardAvoidingTableView: UITableView, SMKeyboardAvoidingProtocol
         get { return super.contentSize }
     }
     
-    override open func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?)
-    {
+    override open func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesEnded(touches, with: event)
         
         self.hideKeyBoard()
     }
     
-    public var isShowsKeyboardToolbar: Bool
-    {
-        set
-        {
+    public var isShowsKeyboardToolbar: Bool {
+        set {
             keyboardAvoider.isShowsKeyboardToolbar = newValue
         }
         
-        get
-        {
+        get {
             return keyboardAvoider.isShowsKeyboardToolbar
         }
     }
     
-    public func adjustOffset()
-    {
+    public func adjustOffset() {
         keyboardAvoider.adjustOffset()
     }
     
-    public func hideKeyBoard()
-    {
+    public func hideKeyBoard() {
         keyboardAvoider.hideKeyBoard()
     }
     
-    public func addObjectForKeyboard(_ aObjectForKeyboard: UIResponder)
-    {
+    public func addObjectForKeyboard(_ aObjectForKeyboard: UIResponder) {
         keyboardAvoider.addObjectForKeyboard(aObjectForKeyboard)
     }
     
-    public func removeObjectForKeyboard(_ aObjectForKeyboard: UIResponder)
-    {
+    public func removeObjectForKeyboard(_ aObjectForKeyboard: UIResponder) {
         keyboardAvoider.removeObjectForKeyboard(aObjectForKeyboard)
     }
     
-    public func addObjectsForKeyboard(_ aObjectsForKeyboard: [UIResponder])
-    {
+    public func addObjectsForKeyboard(_ aObjectsForKeyboard: [UIResponder]) {
         keyboardAvoider.addObjectsForKeyboard(aObjectsForKeyboard)
     }
     
-    public func removeObjectsForKeyboard(_ aObjectsForKeyboard: [UIResponder])
-    {
+    public func removeObjectsForKeyboard(_ aObjectsForKeyboard: [UIResponder]) {
         keyboardAvoider.removeObjectsForKeyboard(aObjectsForKeyboard)
     }
     
-    public func removeAllObjectsForKeyboard()
-    {
+    public func removeAllObjectsForKeyboard() {
         keyboardAvoider.removeAllObjectsForKeyboard()
     }
     
-    public func responderShouldReturn(_ aResponder: UIResponder)
-    {
+    public func responderShouldReturn(_ aResponder: UIResponder) {
         keyboardAvoider.responderShouldReturn(aResponder)
     }
 
-    func sortedResponders(_ aResponders: [UIResponder], byIndexPath aIndexPath: IndexPath)
-    {
+    func sortedResponders(_ aResponders: [UIResponder], byIndexPath aIndexPath: IndexPath) {
         keyboardAvoider.sortedResponders(aResponders, byIndexPath: aIndexPath)
     }
 }

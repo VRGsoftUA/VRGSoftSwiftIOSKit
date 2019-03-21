@@ -8,15 +8,15 @@
 
 import UIKit
 
-public protocol SMKeyboardToolbarDelegate: class
-{
+public protocol SMKeyboardToolbarDelegate: class {
+    
     func keyboardToolbar(_ aKeyboardToolbar: SMKeyboardToolbar, didBtNextClicked aSender: AnyObject)
     func keyboardToolbar(_ aKeyboardToolbar: SMKeyboardToolbar, didBtBackClicked aSender: AnyObject)
     func keyboardToolbar(_ aKeyboardToolbar: SMKeyboardToolbar, didBtDoneClicked aSender: AnyObject)
 }
 
-open class SMKeyboardToolbar: SMToolbar
-{
+open class SMKeyboardToolbar: SMToolbar {
+    
     open weak var smdelegate: SMKeyboardToolbarDelegate?
     
     public let bbiDone: UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.done, target: self, action: #selector(SMKeyboardToolbar.didBtDoneClicked(_:)))
@@ -24,8 +24,8 @@ open class SMKeyboardToolbar: SMToolbar
     public let bbiBack: UIBarButtonItem = UIBarButtonItem()
     public let bbiNext: UIBarButtonItem = UIBarButtonItem()
     
-    override open func setup()
-    {
+    override open func setup() {
+        
         self.autoresizingMask = UIView.AutoresizingMask.flexibleWidth
         self.barStyle = UIBarStyle.default
         self.isTranslucent = true
@@ -38,13 +38,13 @@ open class SMKeyboardToolbar: SMToolbar
         self.addSubview(vLine)
     }
     
-    func createButtons()
-    {
+    func createButtons() {
+        
         let mainBundle: Bundle = Bundle(for: type(of: self))
         
         if let path: String = mainBundle.path(forResource: "VRGSoftSwiftIOSKit", ofType: "bundle"),
-            let resourcesBundle: Bundle = Bundle(path: path)
-        {
+            let resourcesBundle: Bundle = Bundle(path: path) {
+            
             let imageLeft: UIImage? = UIImage(named: "SMKeyboardAvoideBarArrowLeft", in: resourcesBundle, compatibleWith: nil)
             let btBack: UIButton = UIButton(type: UIButton.ButtonType.system)
             btBack.setImage(imageLeft, for: UIControl.State.normal)
@@ -68,10 +68,9 @@ open class SMKeyboardToolbar: SMToolbar
         self.items = [bbiBack, bbiNext, bbiFlex, bbiDone, bbiFixed]
     }
     
-    func setKeyboardAppearance(_ aKeyboardAppearance: UIKeyboardAppearance)
-    {
-        switch aKeyboardAppearance
-        {
+    func setKeyboardAppearance(_ aKeyboardAppearance: UIKeyboardAppearance) {
+        
+        switch aKeyboardAppearance {
         case .default:
             self.barTintColor = UIColor(red: 210.0/255.0, green: 213.0/255.0, blue: 219.0/255.0, alpha: 1.0)
             self.tintColor = UIColor.black
@@ -85,21 +84,17 @@ open class SMKeyboardToolbar: SMToolbar
         }
     }
     
-    func selectedInputField(index aIndex: Int, allCount aAllCountInputFields: Int)
-    {
-        if aIndex > 0
-        {
+    func selectedInputField(index aIndex: Int, allCount aAllCountInputFields: Int) {
+        
+        if aIndex > 0 {
             bbiBack.isEnabled = true
-        } else
-        {
+        } else {
             bbiBack.isEnabled = false
         }
         
-        if aIndex < aAllCountInputFields - 1
-        {
+        if aIndex < aAllCountInputFields - 1 {
             bbiNext.isEnabled = true
-        } else
-        {
+        } else {
             bbiNext.isEnabled = false
         }
     }
@@ -107,18 +102,15 @@ open class SMKeyboardToolbar: SMToolbar
     
     // MARK: - Actions
 
-    @objc func didBtBackClicked(_ sender: AnyObject)
-    {
+    @objc func didBtBackClicked(_ sender: AnyObject) {
         smdelegate?.keyboardToolbar(self, didBtBackClicked: sender)
     }
 
-    @objc func didBtNextClicked(_ sender: AnyObject)
-    {
+    @objc func didBtNextClicked(_ sender: AnyObject) {
         smdelegate?.keyboardToolbar(self, didBtNextClicked: sender)
     }
 
-    @objc func didBtDoneClicked(_ sender: AnyObject)
-    {
+    @objc func didBtDoneClicked(_ sender: AnyObject) {
         smdelegate?.keyboardToolbar(self, didBtDoneClicked: sender)
     }
 }

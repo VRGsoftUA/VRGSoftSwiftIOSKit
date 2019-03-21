@@ -780,7 +780,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-VRGSoftSwiftIOSKit/Pods-VRGSoftSwiftIOSKit-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-VRGSoftSwiftIOSKit/Pods-VRGSoftSwiftIOSKit-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -789,7 +789,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-VRGSoftSwiftIOSKit/Pods-VRGSoftSwiftIOSKit-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-VRGSoftSwiftIOSKit/Pods-VRGSoftSwiftIOSKit-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */

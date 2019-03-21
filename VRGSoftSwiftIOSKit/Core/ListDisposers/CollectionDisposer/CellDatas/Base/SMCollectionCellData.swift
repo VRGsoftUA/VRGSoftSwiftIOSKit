@@ -8,28 +8,27 @@
 
 import UIKit
 
-open class SMCollectionCellData: SMListCellData
-{
+open class SMCollectionCellData: SMListCellData {
+    
     open var cellNibName: String?
     open var cellClass: UICollectionViewCell.Type = UICollectionViewCell.self
-    override open var cellIdentifier: String
-    {
+    
+    override open var cellIdentifier: String {
+        
         let result: String = type(of: self).cellIdentifier_
         return result
     }
     
-    open class var cellClass_: UICollectionViewCell.Type
-    {
+    open class var cellClass_: UICollectionViewCell.Type {
         return UICollectionViewCell.self
     }
     
-    open class var cellNibName_: String?
-    {
+    open class var cellNibName_: String? {
         return nil
     }
     
-    open class var cellIdentifier_: String
-    {
+    open class var cellIdentifier_: String {
+        
         let result: String = String(describing: self)
         return result
     }
@@ -38,8 +37,7 @@ open class SMCollectionCellData: SMListCellData
     
     open var cellSize: CGSize?
     
-    open func cellSizeFor(size aSize: CGSize) -> CGSize?
-    {
+    open func cellSizeFor(size aSize: CGSize) -> CGSize? {
         return cellSize
     }
 }

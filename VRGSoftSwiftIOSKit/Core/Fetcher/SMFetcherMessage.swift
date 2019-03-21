@@ -8,18 +8,16 @@
 
 import UIKit
 
-open class SMFetcherMessage
-{
+open class SMFetcherMessage {
+    
     open var defaultParameters: [String: Any] = [:]
     
-    required public init()
-    {
-    }
+    required public init() { }
 }
 
 
-open class SMFetcherMessagePaging: SMFetcherMessage
-{
+open class SMFetcherMessagePaging: SMFetcherMessage {
+    
     open var pagingSize: Int = 0
     open var pagingOffset: Int = 0
     

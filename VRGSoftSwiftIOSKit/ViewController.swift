@@ -8,8 +8,8 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate
-{
+class ViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate {
+    
     @IBOutlet weak var scrollView: SMKeyboardAvoidingScrollView!
 
     @IBOutlet weak var tvTest: SMTextView!
@@ -18,18 +18,18 @@ class ViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate
     
     var picker: SMPopupSimplePicker?
     
-    override func viewDidLoad()
-    {
+    override func viewDidLoad() {
         super.viewDidLoad()
     
         tvTest.smdelegate = self
         
         tvTest.text = nil
         tvTest.placeholder = "test test"
-        for i: Int in 10...13
-        {
-            if let tf: SMTextField = self.view.viewWithTag(i) as? SMTextField
-            {
+        
+        for i: Int in 10...13 {
+            
+            if let tf: SMTextField = self.view.viewWithTag(i) as? SMTextField {
+                
                 tf.smdelegate = self
                 self.scrollView.addObjectForKeyboard(tf)
             }
@@ -39,14 +39,12 @@ class ViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate
         self.scrollView.isShowsKeyboardToolbar = true
     }
     
-    @IBAction func didShowPopoverClicked(sender: UIBarButtonItem)
-    {
+    @IBAction func didShowPopoverClicked(sender: UIBarButtonItem) {
         
         
     }
 
-    /*func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool
-    {
+    /*func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         
         //picker = SMPopupDatePicker()
         
@@ -64,19 +62,17 @@ class ViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate
         picker?.toolbar = self.createToolbar()
         picker?.prepareToShow()
  
-        if SMHelper.isIPad
-        {
+        if SMHelper.isIPad {
             picker?.showFrom(rect: textField.frame, inView: vTitle, permittedArrowDirections: .any)
-        } else
-        {
+        } else {
             picker?.show(animated: true, inView: vTitle)
         }
         
         return false
     }*/
     
-    func createToolbar() -> SMToolbar
-    {
+    func createToolbar() -> SMToolbar {
+        
         let toolbar: SMToolbar = SMToolbar()
         
         let bbi: UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(ViewController.hide))
@@ -85,13 +81,11 @@ class ViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate
         return toolbar
     }
     
-    @objc func hide()
-    {
+    @objc func hide() {
         picker?.hide(animated: true)
     }
     
-    public func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool
-    {
+    public func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         return true
     }
     

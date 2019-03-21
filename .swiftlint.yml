@@ -5,7 +5,7 @@ disabled_rules:
   - trailing_whitespace
   - shorthand_operator
   - identifier_name
-  - opening_brace
+  # - opening_brace
   - type_name
   - block_based_kvo
 

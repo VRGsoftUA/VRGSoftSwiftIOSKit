@@ -8,25 +8,23 @@
 
 import UIKit
 
-public protocol SMPagingMoreCellDataProtocol: class
-{
+public protocol SMPagingMoreCellDataProtocol: class {
     var needLoadMore: SMBlockAction<Any>? { get set }
 }
 
-public protocol SMPagingMoreCellProtocol: class
-{
+public protocol SMPagingMoreCellProtocol: class {
+    
     func didBeginDataLoading()
     func didEndDataLoading()
 }
 
-public protocol SMModuleListPagingDelegate: class
-{
+public protocol SMModuleListPagingDelegate: class {
     func willLoadMore(moduleList aModuleList: SMModuleListPaging)
 }
 
 
-open class SMModuleListPaging: SMModuleList, SMListAdapterMoreDelegate
-{
+open class SMModuleListPaging: SMModuleList, SMListAdapterMoreDelegate {
+    
     open var initialPageOffset: Int = 0
     open var isItemsAsPage: Bool = true
     open var pageOffset: Int = 0
@@ -38,8 +36,7 @@ open class SMModuleListPaging: SMModuleList, SMListAdapterMoreDelegate
     
     weak var pagingDelegate: SMModuleListPagingDelegate?
 
-    required public init(listAdapter aListAdapter: SMListAdapter, initialPageOffset aInitialPageOffset: Int, isItemsAsPage aIsItemsAsPage: Bool)
-    {
+    required public init(listAdapter aListAdapter: SMListAdapter, initialPageOffset aInitialPageOffset: Int, isItemsAsPage aIsItemsAsPage: Bool) {
         super.init(listAdapter: aListAdapter)
         
         initialPageOffset = aInitialPageOffset
@@ -48,28 +45,26 @@ open class SMModuleListPaging: SMModuleList, SMListAdapterMoreDelegate
         listAdapter.moreDelegate = self
     }
     
-    required public init(listAdapter aListAdapter: SMListAdapter)
-    {
+    required public init(listAdapter aListAdapter: SMListAdapter) {
         super.init(listAdapter: aListAdapter)
         
         listAdapter.moreDelegate = self
     }
     
-    override open func reloadData()
-    {
-        if isReloading
-        {
+    override open func reloadData() {
+        
+        if isReloading {
             return
         }
         
-        if let nextMessage: SMFetcherMessagePaging = createFetcherMessage() as? SMFetcherMessagePaging
-        {
+        if let nextMessage: SMFetcherMessagePaging = createFetcherMessage() as? SMFetcherMessagePaging {
+            
             nextMessage.pagingOffset = initialPageOffset
             nextMessage.isReloading = true
             nextMessage.isLoadingMore = false
             
-            if let canFetch: Bool = dataFetcher?.canFetchWith(message: nextMessage), canFetch
-            {
+            if let canFetch: Bool = dataFetcher?.canFetchWith(message: nextMessage), canFetch {
+                
                 pageOffset = nextMessage.pagingOffset
                 isReloading = nextMessage.isReloading
                 isLoadingMore = nextMessage.isLoadingMore
@@ -81,20 +76,17 @@ open class SMModuleListPaging: SMModuleList, SMListAdapterMoreDelegate
         }
     }
     
-    open func loadMoreData()
-    {
-        if isReloading || isLoadingMore
-        {
+    open func loadMoreData() {
+        
+        if isReloading || isLoadingMore {
             return
         }
 
         pagingDelegate?.willLoadMore(moduleList: self)
         
-        if isItemsAsPage
-        {
+        if isItemsAsPage {
             pageOffset += 1
-        } else
-        {
+        } else {
             pageOffset += pageSize
         }
         
@@ -103,12 +95,12 @@ open class SMModuleListPaging: SMModuleList, SMListAdapterMoreDelegate
         fetchDataWith(message: createFetcherMessage())
     }
 
-    override open func createFetcherMessage() -> SMFetcherMessage
-    {
+    override open func createFetcherMessage() -> SMFetcherMessage {
+        
         let result: SMFetcherMessage = super.createFetcherMessage()
         
-        if let result: SMFetcherMessagePaging = result as? SMFetcherMessagePaging
-        {
+        if let result: SMFetcherMessagePaging = result as? SMFetcherMessagePaging {
+            
             result.pagingOffset = pageOffset
             result.pagingSize = pageSize
             result.isReloading = isReloading
@@ -121,19 +113,17 @@ open class SMModuleListPaging: SMModuleList, SMListAdapterMoreDelegate
     
     // MARK: - Actions
     
-    @objc func loadMoreDataPressed()
-    {
+    @objc func loadMoreDataPressed() {
         loadMoreData()
     }
     
-    override open func updateSectionWith(models aModels: [AnyObject], originalModels: [AnyObject], sectionIndex aSectionIndex: Int, isLastSectionForNewModels: Bool)
-    {
+    override open func updateSectionWith(models aModels: [AnyObject], originalModels: [AnyObject], sectionIndex aSectionIndex: Int, isLastSectionForNewModels: Bool) {
+        
         listAdapter.updateSectionWith(models: aModels, lastModel: models.last, sectionIndex: aSectionIndex) {[weak self] in // swiftlint:disable:this explicit_type_interface
             
             var result: Bool = false
             
-            if let strongSelf: SMModuleListPaging = self
-            {
+            if let strongSelf: SMModuleListPaging = self {
                 result = (isLastSectionForNewModels && originalModels.fullItemsCount >= strongSelf.pageSize && strongSelf.pageSize != 0)
             }
             
@@ -143,12 +133,12 @@ open class SMModuleListPaging: SMModuleList, SMListAdapterMoreDelegate
         models += aModels
     }
 
-    override open func willFetchDataWith(message aMessage: SMFetcherMessage)
-    {
-        if isReloading
-        {
-            if !isHideActivityAdapterForOneFetch
-            {
+    override open func willFetchDataWith(message aMessage: SMFetcherMessage) {
+        
+        if isReloading {
+            
+            if !isHideActivityAdapterForOneFetch {
+                
                 DispatchQueue.main.async {
                     self.activityAdapter?.show()
                 }
@@ -156,46 +146,38 @@ open class SMModuleListPaging: SMModuleList, SMListAdapterMoreDelegate
             
             isHideActivityAdapterForOneFetch = false
 
-        } else if isLoadingMore
-        {
+        } else if isLoadingMore {
             listAdapter.didBeginDataLoading()
         }
     }
 
-    override open func didFetchDataWith(message aMessage: SMFetcherMessage, response aResponse: SMResponse)
-    {
+    override open func didFetchDataWith(message aMessage: SMFetcherMessage, response aResponse: SMResponse) {
         super.didFetchDataWith(message: aMessage, response: aResponse)
         
-        if let message: SMFetcherMessagePaging = aMessage as? SMFetcherMessagePaging
-        {
-            if aResponse.isSuccess
-            {
-                if message.isReloading
-                {
+        if let message: SMFetcherMessagePaging = aMessage as? SMFetcherMessagePaging {
+            
+            if aResponse.isSuccess {
+                
+                if message.isReloading {
                     models.removeAll()
-                } else if message.isLoadingMore
-                {
+                } else if message.isLoadingMore {
                     listAdapter.didEndDataLoading()
                 }
             }
             
-            if message.isReloading
-            {
+            if message.isReloading {
                 isReloading = false
-            } else if message.isLoadingMore
-            {
+            } else if message.isLoadingMore {
                 isLoadingMore = false
             }
         }
     }
     
-    override open func prepareSections()
-    {
-        if isLoadingMore
-        {
+    override open func prepareSections() {
+        
+        if isLoadingMore {
             listAdapter.cleanMoreCellData()
-        } else
-        {
+        } else {
             listAdapter.prepareSections()
         }
     }
@@ -203,10 +185,9 @@ open class SMModuleListPaging: SMModuleList, SMListAdapterMoreDelegate
 
     // MARK: SMListAdapterDelegate
 
-    public func needLoadMore(listAdapter aListAdapter: SMListAdapter)
-    {
-        if isLoadMoreDataAuto
-        {
+    public func needLoadMore(listAdapter aListAdapter: SMListAdapter) {
+        
+        if isLoadMoreDataAuto {
             loadMoreData()
         }
     }
@@ -215,39 +196,28 @@ open class SMModuleListPaging: SMModuleList, SMListAdapterMoreDelegate
 
 // MARK: - SMPagingMoreCellProtocol
 
-extension SMPagingMoreCellProtocol
-{
-    public func didBeginDataLoading()
-    {
-        
-    }
+extension SMPagingMoreCellProtocol {
     
-    public func didEndDataLoading()
-    {
-        
-    }
+    public func didBeginDataLoading() { }
+    public func didEndDataLoading() { }
 }
 
 
 // MARK: - SMModuleListPagingDelegate
 
-extension SMModuleListPagingDelegate
-{
-    public func moreCellDataForPaging(moduleList aModuleList: SMModuleListPaging) -> SMPagingMoreCellDataProtocol
-    {
+extension SMModuleListPagingDelegate {
+    
+    public func moreCellDataForPaging(moduleList aModuleList: SMModuleListPaging) -> SMPagingMoreCellDataProtocol {
         return SMNativeMoreTableViewCellData()
     }
     
-    public func willLoadMore(moduleList aModuleList: SMModuleListPaging)
-    {
-        
-    }
+    public func willLoadMore(moduleList aModuleList: SMModuleListPaging) { }
 }
 
-extension Array
-{
-    var fullItemsCount: Int
-    {
+extension Array {
+    
+    var fullItemsCount: Int {
+        
         var result: Int = 0
         
         result = getItemsCount(array: self)
@@ -255,18 +225,16 @@ extension Array
         return result
     }
     
-    func getItemsCount(array: Array) -> Int
-    {
+    func getItemsCount(array: Array) -> Int {
+        
         var result: Int = 0
         
-        if let array: [Array] = array as? [Array]
-        {
-            for value: Array in array
-            {
+        if let array: [Array] = array as? [Array] {
+            
+            for value: Array in array {
                 result += getItemsCount(array: value)
             }
-        } else
-        {
+        } else {
             result = array.count
         }
         

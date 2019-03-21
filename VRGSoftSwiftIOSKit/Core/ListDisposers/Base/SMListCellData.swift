@@ -8,8 +8,8 @@
 
 import UIKit
 
-open class SMListCellData
-{
+open class SMListCellData {
+    
     public let model: AnyObject?
         
     open var baSelect: SMBlockAction<SMListCellData>?
@@ -17,18 +17,15 @@ open class SMListCellData
     open var tag: Int = 0
     open var userData: [String: Any] = [:]
     
-    open var cellIdentifier: String
-    {
+    open var cellIdentifier: String {
         return String(describing: type(of: self))
     }
     
-    public convenience init()
-    {
+    public convenience init() {
         self.init(model: nil)
     }
     
-    public required init(model aModel: AnyObject?)
-    {
+    public required init(model aModel: AnyObject?) {
         model = aModel
     }
 }

@@ -8,8 +8,8 @@
 
 import UIKit
 
-public protocol SMCellDataMapedProtocol
-{
+public protocol SMCellDataMapedProtocol {
+    
     func mapFromObject()
     func mapToObject()
 }

@@ -8,23 +8,20 @@
 
 import UIKit
 
-extension UIImageView
-{
-    func set(image aImage: UIImage, duration aDuration: TimeInterval)
-    {
-        UIView.transition(with: self, duration: aDuration, options: UIView.AnimationOptions.transitionCrossDissolve, animations:
-        {
+extension UIImageView {
+    
+    func set(image aImage: UIImage, duration aDuration: TimeInterval) {
+        
+        UIView.transition(with: self, duration: aDuration, options: UIView.AnimationOptions.transitionCrossDissolve, animations: {
             self.image = aImage
         }, completion: nil)
     }
     
-    func set(image aImage: UIImage, animate aAnimate: Bool)
-    {
-        if aAnimate
-        {
+    func set(image aImage: UIImage, animate aAnimate: Bool) {
+        
+        if aAnimate {
             self.set(image: aImage, duration: 0.25)
-        } else
-        {
+        } else {
             self.image = aImage
         }
     }

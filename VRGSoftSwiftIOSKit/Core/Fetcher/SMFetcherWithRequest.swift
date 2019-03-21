@@ -8,17 +8,11 @@
 
 import UIKit
 
-open class SMFetcherWithRequest: SMDataFetcherProtocol
-{
-    deinit
-    {
-        
-    }
+open class SMFetcherWithRequest: SMDataFetcherProtocol {
     
-    public init()
-    {
-        
-    }
+    deinit { }
+    
+    public init() { }
     
     open var preparedRequest: SMRequest?
 
@@ -29,50 +23,47 @@ open class SMFetcherWithRequest: SMDataFetcherProtocol
     
     open var fetchCallback: SMDataFetchCallback?
     
-    open func canFetchWith(message aMessage: SMFetcherMessage) -> Bool
-    {
-        if preparedRequest == nil
-        {
+    open func canFetchWith(message aMessage: SMFetcherMessage) -> Bool {
+        
+        if preparedRequest == nil {
             preparedRequest = self.preparedRequestBy(message: aMessage)
         }
         
         return preparedRequest?.canExecute() ?? false
     }
     
-    public func fetchDataBy(message aMessage: SMFetcherMessage, withCallback aFetchCallback: @escaping SMDataFetchCallback)
-    {
+    public func fetchDataBy(message aMessage: SMFetcherMessage, withCallback aFetchCallback: @escaping SMDataFetchCallback) {
+        
         fetchCallback = aFetchCallback
-        if preparedRequest == nil
-        {
+        
+        if preparedRequest == nil {
             preparedRequest = self.preparedRequestBy(message: aMessage)
         }
+        
         request = preparedRequest
         preparedRequest = nil
         
         request?.start()
     }
     
-    public func cancelFetching()
-    {
+    public func cancelFetching() {
         self.request?.cancel()
     }
     
     
     // MARK: Requests
     
-    open func preparedRequestBy(message aMessage: SMFetcherMessage) -> SMRequest?
-    {
+    open func preparedRequestBy(message aMessage: SMFetcherMessage) -> SMRequest? {
+        
         assert(false, "Override this method!")
         return nil
     }
     
     open var _request: SMRequest?
-    open var request: SMRequest?
-    {
-        set
-        {
-            if _request !== newValue
-            {
+    open var request: SMRequest? {
+        set {
+            if _request !== newValue {
+                
                 self.cancelFetching()
                 _request = newValue
                 
@@ -89,8 +80,7 @@ open class SMFetcherWithRequest: SMDataFetcherProtocol
         get { return _request }
     }
     
-    open func processFetchedModelsIn(response aResponse: SMResponse) -> [AnyObject]
-    {
+    open func processFetchedModelsIn(response aResponse: SMResponse) -> [AnyObject] {
         return aResponse.boArray
     }
 }

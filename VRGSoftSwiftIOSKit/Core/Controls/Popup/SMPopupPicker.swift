@@ -10,8 +10,8 @@ import UIKit
 
 public typealias SMPickeSelectHendlerBlock = (SMPopupPicker, AnyObject) -> Void
 
-open class SMPopupPicker: SMPopupView
-{
+open class SMPopupPicker: SMPopupView {
+    
     public var selectHandler: SMPickeSelectHendlerBlock?
     
     open var picker: UIView?
@@ -19,8 +19,7 @@ open class SMPopupPicker: SMPopupView
     
     // Create, configure and return popupedView
     
-    override open func setup()
-    {
+    override open func setup() {
         super.setup()
         
         self.frame = CGRect(origin: CGPoint.zero, size: SMPopupView.popupViewSize())
@@ -28,23 +27,22 @@ open class SMPopupPicker: SMPopupView
         
         picker = self.createPicker()
         
-        if let picker: UIView = picker
-        {
+        if let picker: UIView = picker {
             self.addSubview(picker)
         }
         
         self.configureFrames()
     }
     
-    open func configureFrames()
-    {
+    open func configureFrames() {
+        
         self.autoresizingMask = [.flexibleWidth, .flexibleTopMargin]
         picker?.autoresizingMask = [.flexibleWidth, .flexibleBottomMargin]
         
-        if let toolbar: SMToolbar = _toolbar
-        {
-            if var newFrame: CGRect = picker?.frame
-            {
+        if let toolbar: SMToolbar = _toolbar {
+            
+            if var newFrame: CGRect = picker?.frame {
+                
                 newFrame.origin.y = toolbar.bounds.size.height
                 picker?.frame = newFrame
                 
@@ -58,41 +56,35 @@ open class SMPopupPicker: SMPopupView
     }
     
     open var _toolbar: SMToolbar?
-    open var toolbar: SMToolbar?
-    {
-        set
-        {
+    open var toolbar: SMToolbar? {
+        set {
             if _toolbar == newValue { return }
             
             _toolbar = newValue
-            if let toolbar: SMToolbar = _toolbar
-            {
+            if let toolbar: SMToolbar = _toolbar {
+                
                 addSubview(toolbar)
                 toolbar.sizeToFit()
                 toolbar.autoresizingMask = .flexibleWidth
                 
                 self.configureFrames()
-            } else
-            {
+            } else {
                 _toolbar?.removeFromSuperview()
                 _toolbar = nil
             }
         }
-        get
-        {
+        get {
             return _toolbar
         }
     }
     
-    open func createPicker() -> UIView?
-    {
+    open func createPicker() -> UIView? {
         // override it in subclasses
         return nil
     }
     
     open var _selectedItem: AnyObject?
-    open var selectedItem: AnyObject?
-    {
+    open var selectedItem: AnyObject? {
         // override it in subclasses
         set {
             _selectedItem = newValue

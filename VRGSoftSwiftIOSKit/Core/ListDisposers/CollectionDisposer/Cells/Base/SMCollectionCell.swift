@@ -8,29 +8,25 @@
 
 import UIKit
 
-open class SMCollectionCell: UICollectionViewCell, SMCellProtocol
-{
-    public override init(frame: CGRect)
-    {
+open class SMCollectionCell: UICollectionViewCell, SMCellProtocol {
+    
+    public override init(frame: CGRect) {
         super.init(frame: frame)
         
         setup()
     }
     
-    public required init?(coder aDecoder: NSCoder)
-    {
+    public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         
         setup()
     }
     
-    open func setup()
-    {
+    open func setup() {
         backgroundColor = UIColor.clear
     }
     
-    open func inputTraits() -> [UIResponder]?
-    {
+    open func inputTraits() -> [UIResponder]? {
         return nil
     }
     
@@ -39,8 +35,8 @@ open class SMCollectionCell: UICollectionViewCell, SMCellProtocol
     
     open var cellData: SMListCellData?
     
-    open func setupCellData(_ aCellData: SMListCellData)
-    {
+    open func setupCellData(_ aCellData: SMListCellData) {
+        
         cellData = aCellData
         
         tag = aCellData.tag

@@ -8,22 +8,19 @@
 
 import UIKit
 
-open class SMSectionWritable: SMSectionReadonly
-{
+open class SMSectionWritable: SMSectionReadonly {
+    
     open var cells: [UITableViewCell] = []
     
-    open func mapToObject()
-    {
-        for cellData: SMListCellData in cellDataSource where cellData is SMCellDataMapedProtocol
-        {
+    open func mapToObject() {
+        for cellData: SMListCellData in cellDataSource where cellData is SMCellDataMapedProtocol {
             (cellData as? SMCellDataMapedProtocol)?.mapToObject()
         }
     }
 
-    open func mapFromObject()
-    {
-        for cellData: SMListCellData in cellDataSource where cellData is SMCellDataMapedProtocol
-        {
+    open func mapFromObject() {
+        
+        for cellData: SMListCellData in cellDataSource where cellData is SMCellDataMapedProtocol {
             (cellData as? SMCellDataMapedProtocol)?.mapFromObject()
         }
         
@@ -31,8 +28,8 @@ open class SMSectionWritable: SMSectionReadonly
     }
     
     //TODO:
-    open func createCell(at anIndex: Int) -> UITableViewCell
-    {
+    open func createCell(at anIndex: Int) -> UITableViewCell {
+        
         let cellData: SMCellData = visibleCellData(at: anIndex) as! SMCellData// swiftlint:disable:this force_cast
         
         let cell: UITableViewCell = cellData.createCell()
@@ -41,13 +38,12 @@ open class SMSectionWritable: SMSectionReadonly
     
         if let keyboardAvoiding: SMKeyboardAvoidingProtocol = tableDisposer?.tableView as? SMKeyboardAvoidingProtocol,
             let cell: SMCell = cell as? SMCell,
-            let tableDisposer: SMTableDisposer = tableDisposer
-        {
-            if let inputTraits: [UIResponder] = cell.inputTraits()
-            {
+            let tableDisposer: SMTableDisposer = tableDisposer {
+            
+            if let inputTraits: [UIResponder] = cell.inputTraits() {
+                
                 keyboardAvoiding.addObjectsForKeyboard(inputTraits)
-                if let tableView: SMKeyboardAvoidingTableView = tableDisposer.tableView as? SMKeyboardAvoidingTableView
-                {
+                if let tableView: SMKeyboardAvoidingTableView = tableDisposer.tableView as? SMKeyboardAvoidingTableView {
                     tableView.sortedResponders(inputTraits, byIndexPath: IndexPath(row: anIndex, section: tableDisposer.index(by: self)))
                 }
             }
@@ -56,34 +52,31 @@ open class SMSectionWritable: SMSectionReadonly
         return cell
     }
 
-   open func createCells()
-   {
+   open func createCells() {
         // remove old cells
         cells.removeAll()
         updateCellDataVisibility()
     
         var cell: UITableViewCell
-    for index: Int in 0..<visibleCellDataSource.count
-        {
+    for index: Int in 0..<visibleCellDataSource.count {
+        
             cell = createCell(at: index)
             cells.append(cell)
         }
     }
     
-    override open func cell(forIndex aIndex: Int) -> UITableViewCell
-    {
+    override open func cell(forIndex aIndex: Int) -> UITableViewCell {
         return cells[aIndex]
     }
     
     //TODO:
-    override open func reload(with anAnimation: UITableView.RowAnimation)
-    {
-        if let keyboardAvoiding: SMKeyboardAvoidingProtocol = tableDisposer?.tableView as? SMKeyboardAvoidingProtocol
-        {
-            for cell: UITableViewCell in cells where cell is SMCell
-            {
-                if let inputTrails: [UIResponder] = (cell as? SMCell)?.inputTraits()
-                {
+    override open func reload(with anAnimation: UITableView.RowAnimation) {
+        
+        if let keyboardAvoiding: SMKeyboardAvoidingProtocol = tableDisposer?.tableView as? SMKeyboardAvoidingProtocol {
+            
+            for cell: UITableViewCell in cells where cell is SMCell {
+                
+                if let inputTrails: [UIResponder] = (cell as? SMCell)?.inputTraits() {
                     keyboardAvoiding.removeObjectsForKeyboard(inputTrails)
                 }
             }
@@ -95,8 +88,8 @@ open class SMSectionWritable: SMSectionReadonly
     }
 
     //TODO:
-    override open func reloadRows(at aIndexes: [Int], withRowAnimation aRowAnimation: UITableView.RowAnimation)
-    {
+    override open func reloadRows(at aIndexes: [Int], withRowAnimation aRowAnimation: UITableView.RowAnimation) {
+        
         var indexPaths: [IndexPath] = []
         var indexPath: IndexPath
         let sectionIndex: Int = tableDisposer?.index(by: self) ?? 0
@@ -104,8 +97,8 @@ open class SMSectionWritable: SMSectionReadonly
         var cellData: SMListCellData
         var cell: UITableViewCell
         
-        for index: Int in aIndexes
-        {
+        for index: Int in aIndexes {
+            
             cellData = visibleCellData(at: index)
             
             (cellData as? SMCellDataMapedProtocol)?.mapFromObject()
@@ -122,12 +115,11 @@ open class SMSectionWritable: SMSectionReadonly
     }
 
     //TODO:
-    override open func showCell(by aIndex: Int, needUpdateTable aNeedUpdateTable: Bool, withRowAnimation aRowAnimation: UITableView.RowAnimation)
-    {
+    override open func showCell(by aIndex: Int, needUpdateTable aNeedUpdateTable: Bool, withRowAnimation aRowAnimation: UITableView.RowAnimation) {
+        
         let cellData: SMListCellData = self.cellData(at: aIndex)
         
-        if cellData.isVisible
-        {
+        if cellData.isVisible {
             return
         }
         
@@ -138,20 +130,19 @@ open class SMSectionWritable: SMSectionReadonly
         let cell: UITableViewCell = createCell(at: index)
         cells.insert(cell, at: index)
         
-        if aNeedUpdateTable, let tableDisposer: SMTableDisposer = tableDisposer
-        {
+        if aNeedUpdateTable, let tableDisposer: SMTableDisposer = tableDisposer {
+            
             let indexPath: IndexPath = IndexPath(row: index, section: tableDisposer.index(by: self))
             tableDisposer.tableView?.insertRows(at: [indexPath], with: aRowAnimation)
         }
     }
     
     //TODO:
-    override open func hideCell(by aIndex: Int, needUpdateTable aNeedUpdateTable: Bool, withRowAnimation aRowAnimation: UITableView.RowAnimation)
-    {
+    override open func hideCell(by aIndex: Int, needUpdateTable aNeedUpdateTable: Bool, withRowAnimation aRowAnimation: UITableView.RowAnimation) {
+        
         let cellData: SMListCellData = self.cellData(at: aIndex)
         
-        if !cellData.isVisible
-        {
+        if !cellData.isVisible {
             return
         }
         
@@ -159,10 +150,9 @@ open class SMSectionWritable: SMSectionReadonly
         
         let cell: UITableViewCell = self.cell(forIndex: index)
         
-        if let keyboardAvoiding: SMKeyboardAvoidingProtocol = tableDisposer?.tableView as? SMKeyboardAvoidingProtocol, let cell: SMCell = cell as? SMCell
-        {
-            if let inputTraits: [UIResponder] = cell.inputTraits()
-            {
+        if let keyboardAvoiding: SMKeyboardAvoidingProtocol = tableDisposer?.tableView as? SMKeyboardAvoidingProtocol, let cell: SMCell = cell as? SMCell {
+            
+            if let inputTraits: [UIResponder] = cell.inputTraits() {
                 keyboardAvoiding.addObjectsForKeyboard(inputTraits)
             }
         }
@@ -171,19 +161,18 @@ open class SMSectionWritable: SMSectionReadonly
         cells.remove(at: index)
         cellData.isVisible = false
         
-        if aNeedUpdateTable, let tableDisposer: SMTableDisposer = tableDisposer
-        {
+        if aNeedUpdateTable, let tableDisposer: SMTableDisposer = tableDisposer {
+            
             let indexPath: IndexPath = IndexPath(row: index, section: tableDisposer.index(by: self))
             tableDisposer.tableView?.deleteRows(at: [indexPath], with: aRowAnimation)
         }
     }
     
-    override open func deleteRows(at aIndexes: [Int], withRowAnimation aRowAnimation: UITableView.RowAnimation)
-    {
+    override open func deleteRows(at aIndexes: [Int], withRowAnimation aRowAnimation: UITableView.RowAnimation) {
+        
         super.deleteRows(at: aIndexes, withRowAnimation: aRowAnimation)
         
-        for index: Int in aIndexes
-        {
+        for index: Int in aIndexes {
             cells.remove(at: index)
         }
     }

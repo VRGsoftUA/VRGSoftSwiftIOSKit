@@ -8,29 +8,26 @@
 
 import UIKit
 
-open class SMNativeMoreCollectionViewCellData: SMCollectionCellData, SMPagingMoreCellDataProtocol
-{
+open class SMNativeMoreCollectionViewCellData: SMCollectionCellData, SMPagingMoreCellDataProtocol {
+    
     open var needLoadMore: SMBlockAction<Any>?
     
-    public convenience init()
-    {
+    public convenience init() {
         self.init(model: nil)
         
         self.cellSize = CGSize(width: 45.0, height: 45.0)
     }
     
-    override open class var cellClass_: UICollectionViewCell.Type
-    {
+    override open class var cellClass_: UICollectionViewCell.Type {
         return SMNativeMoreCollectionViewCell.self
     }
 }
 
-open class SMNativeMoreCollectionViewCell: SMCollectionCell, SMPagingMoreCellProtocol
-{
+open class SMNativeMoreCollectionViewCell: SMCollectionCell, SMPagingMoreCellProtocol {
+    
     public let activity: UIActivityIndicatorView = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.gray)
         
-    override open func setup()
-    {
+    override open func setup() {
         super.setup()
         
         activity.hidesWhenStopped = true
@@ -40,20 +37,17 @@ open class SMNativeMoreCollectionViewCell: SMCollectionCell, SMPagingMoreCellPro
         self.contentView.addSubview(activity)
     }
     
-    override open func prepareForReuse()
-    {
+    override open func prepareForReuse() {
         super.prepareForReuse()
         
         self.showActivityIndicator(show: false)
     }
     
-    open func showActivityIndicator(show aIsShow: Bool)
-    {
-        if aIsShow
-        {
+    open func showActivityIndicator(show aIsShow: Bool) {
+        
+        if aIsShow {
             activity.startAnimating()
-        } else
-        {
+        } else {
             activity.stopAnimating()
         }
     }
@@ -61,13 +55,11 @@ open class SMNativeMoreCollectionViewCell: SMCollectionCell, SMPagingMoreCellPro
     
     // MARK: SMPagingMoreCellProtocol
     
-    public func didBeginDataLoading()
-    {
+    public func didBeginDataLoading() {
         self.showActivityIndicator(show: true)
     }
     
-    public func didEndDataLoading()
-    {
+    public func didEndDataLoading() {
         self.showActivityIndicator(show: false)
     }
 }

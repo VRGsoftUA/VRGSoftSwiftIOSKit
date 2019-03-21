@@ -9,10 +9,9 @@
 import Foundation
 import UIKit
 
-extension NSAttributedString
-{
-    open func height(withConstrainedWidth width: CGFloat, font: UIFont) -> CGFloat
-    {
+extension NSAttributedString {
+    
+    open func height(withConstrainedWidth width: CGFloat, font: UIFont) -> CGFloat {
         let constraintSize: CGSize = CGSize(width: width, height: .greatestFiniteMagnitude)
         let boundingBox: CGRect = self.boundingRect(with: constraintSize, options: .usesLineFragmentOrigin, context: nil)
         

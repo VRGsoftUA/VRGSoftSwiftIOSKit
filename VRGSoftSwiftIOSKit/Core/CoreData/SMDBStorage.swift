@@ -9,10 +9,10 @@
 import CoreData
 
 public protocol SMDBStorableObject { }
-public extension SMDBStorableObject where Self: NSManagedObject
-{
-    func inContext(_ aContext: NSManagedObjectContext) -> Self?
-    {
+public extension SMDBStorableObject where Self: NSManagedObject {
+    
+    func inContext(_ aContext: NSManagedObjectContext) -> Self? {
+        
         var result: NSManagedObject?
         
         do {
@@ -34,60 +34,52 @@ extension NSManagedObject: SMDBStorableObject { }
 public typealias SMStorageContextBlock = (NSManagedObjectContext) -> Void
 public typealias SMStorageVoidBlock = () -> Void
 
-public enum SMClonePolicy
-{
+public enum SMClonePolicy {
     case asOriginal
     case asTemp
     case insertIntoDefaultContext
 }
 
 @available(iOS 9.0, *)
-open class SMDBStorage
-{
+open class SMDBStorage {
+    
     private var _defaultContext: NSManagedObjectContext?
     private var _persistentStoreCoordinator: NSPersistentStoreCoordinator?
     private var _managedObjectModel: NSManagedObjectModel?
     
     open var shouldCacheStorage: Bool = false
     
-    public init()
-    {
+    public init() {
         _ = defaultContext
     }
 
-    open var defaultContext: NSManagedObjectContext
-    {
-        if let defaultContext: NSManagedObjectContext = _defaultContext
-        {
+    open var defaultContext: NSManagedObjectContext {
+        
+        if let defaultContext: NSManagedObjectContext = _defaultContext {
             return defaultContext
-        } else
-        {
+        } else {
             let defaultContext: NSManagedObjectContext = createDefaultContext(coordinator: persistentStoreCoordinator)
             _defaultContext = defaultContext
             return defaultContext
         }
     }
 
-    open var persistentStoreCoordinator: NSPersistentStoreCoordinator
-    {
-        if let persistentStoreCoordinator: NSPersistentStoreCoordinator = _persistentStoreCoordinator
-        {
+    open var persistentStoreCoordinator: NSPersistentStoreCoordinator {
+        
+        if let persistentStoreCoordinator: NSPersistentStoreCoordinator = _persistentStoreCoordinator {
             return persistentStoreCoordinator
-        } else
-        {
+        } else {
             let persistentStoreCoordinator: NSPersistentStoreCoordinator = createPersistentStoreCoordinator(managedObjectModel)
             _persistentStoreCoordinator = persistentStoreCoordinator
             return persistentStoreCoordinator
         }
     }
 
-    open var managedObjectModel: NSManagedObjectModel
-    {
-        if let managedObjectModel: NSManagedObjectModel = _managedObjectModel
-        {
+    open var managedObjectModel: NSManagedObjectModel {
+        
+        if let managedObjectModel: NSManagedObjectModel = _managedObjectModel {
             return managedObjectModel
-        } else
-        {
+        } else {
             let managedObjectModel: NSManagedObjectModel = createManagedObjectModel()
             _managedObjectModel = managedObjectModel
             return managedObjectModel
@@ -97,8 +89,8 @@ open class SMDBStorage
     
     // MARK: - Create
     
-    open func createDefaultContext(coordinator aCoordinator: NSPersistentStoreCoordinator) -> NSManagedObjectContext
-    {
+    open func createDefaultContext(coordinator aCoordinator: NSPersistentStoreCoordinator) -> NSManagedObjectContext {
+        
         let result: NSManagedObjectContext = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
         
         result.persistentStoreCoordinator = aCoordinator
@@ -108,12 +100,11 @@ open class SMDBStorage
         return result
     }
     
-    open func createPersistentStoreCoordinator(_ objectModel: NSManagedObjectModel) -> NSPersistentStoreCoordinator
-    {
+    open func createPersistentStoreCoordinator(_ objectModel: NSManagedObjectModel) -> NSPersistentStoreCoordinator {
+        
         let fileManager: FileManager = FileManager.default
         guard let directoryURL: URL = fileManager.urls(for: FileManager.SearchPathDirectory.documentDirectory, in: FileManager.SearchPathDomainMask.userDomainMask).last,
-            let persistentStoreName: String = persistentStoreName() else
-        {
+            let persistentStoreName: String = persistentStoreName() else {
             assert(true, #function + " persistentStoreName " + String(describing: self))
             return NSPersistentStoreCoordinator()
         }
@@ -124,47 +115,40 @@ open class SMDBStorage
         
         let result: NSPersistentStoreCoordinator = NSPersistentStoreCoordinator(managedObjectModel: self.managedObjectModel)
         
-        do
-        {
+        do {
             try result.addPersistentStore(ofType: self.storeType(), configurationName: nil, at: storeUrl, options: self.migrationPolicy())
-        } catch let error as NSError // swiftlint:disable:this explicit_type_interface
-        {
+        } catch let error as NSError { // swiftlint:disable:this explicit_type_interface
             print(error.localizedDescription)
         }
         
         return result
     }
     
-    open func createManagedObjectModel() -> NSManagedObjectModel
-    {
+    open func createManagedObjectModel() -> NSManagedObjectModel {
+        
         var result: NSManagedObjectModel
         
-        if self.mergeModels()
-        {
-            if let mergedModel: NSManagedObjectModel = NSManagedObjectModel.mergedModel(from: [Bundle.main])
-            {
+        if self.mergeModels() {
+            
+            if let mergedModel: NSManagedObjectModel = NSManagedObjectModel.mergedModel(from: [Bundle.main]) {
                 result = mergedModel
-            } else
-            {
+            } else {
                 assert(true, #function + String(describing: self))
                 result = NSManagedObjectModel()
             }
-        } else
-        {
+        } else {
             if let name: String = self.persistentStoreName()?.replacingOccurrences(of: ".sqlite", with: ""),
-                let modelPath: String = Bundle.main.path(forResource: name, ofType: "momd")
-            {
+                let modelPath: String = Bundle.main.path(forResource: name, ofType: "momd") {
+                
                 let modelURL: URL = URL(fileURLWithPath: modelPath)
-                if let managedObjectModel: NSManagedObjectModel = NSManagedObjectModel(contentsOf: modelURL)
-                {
+                
+                if let managedObjectModel: NSManagedObjectModel = NSManagedObjectModel(contentsOf: modelURL) {
                     result = managedObjectModel
-                } else
-                {
+                } else {
                     assert(true, #function + String(describing: self))
                     result = NSManagedObjectModel()
                 }
-            } else
-            {
+            } else {
                 assert(true, #function + String(describing: self))
                 result = NSManagedObjectModel()
             }
@@ -176,43 +160,38 @@ open class SMDBStorage
     
     // MARK: - Config
     
-    open func storeType() -> String
-    {
+    open func storeType() -> String {
         return NSSQLiteStoreType
     }
     
-    open func persistentStoreName() -> String?
-    {
+    open func persistentStoreName() -> String? {
         return nil
     }
     
-    open func migrationPolicy() -> [AnyHashable: Any]?
-    {
+    open func migrationPolicy() -> [AnyHashable: Any]? {
         return [NSMigratePersistentStoresAutomaticallyOption: true, NSInferMappingModelAutomaticallyOption: true]
     }
     
-    open func mergeModels() -> Bool
-    {
+    open func mergeModels() -> Bool {
         return true
     }
     
     
     // MARK: - Context
     
-    open var savingContext: NSManagedObjectContext
-    {
+    open var savingContext: NSManagedObjectContext {
         return contextWithParent(defaultContext)
     }
     
-    open func contextWithParent(_ aParentContext: NSManagedObjectContext) -> NSManagedObjectContext
-    {
+    open func contextWithParent(_ aParentContext: NSManagedObjectContext) -> NSManagedObjectContext {
+        
         let result: NSManagedObjectContext = createPrivateQueueContext
         result.parent = aParentContext
         return result
     }
     
-    open var createPrivateQueueContext: NSManagedObjectContext
-    {
+    open var createPrivateQueueContext: NSManagedObjectContext {
+        
         let result: NSManagedObjectContext = NSManagedObjectContext(concurrencyType: .privateQueueConcurrencyType)
         return result
     }
@@ -220,19 +199,16 @@ open class SMDBStorage
     
     // MARK: - Save
     
-    open func save(context aContext: NSManagedObjectContext)
-    {
-        if aContext.hasChanges
-        {
-            do
-            {
+    open func save(context aContext: NSManagedObjectContext) {
+        
+        if aContext.hasChanges {
+            
+            do {
                 try aContext.save()
-                if let parent: NSManagedObjectContext = aContext.parent
-                {
+                if let parent: NSManagedObjectContext = aContext.parent {
                     save(context: parent)
                 }
-            } catch _ as NSError
-            {
+            } catch _ as NSError {
                 #if DEBUG
                     abort()
                 #else
@@ -242,29 +218,27 @@ open class SMDBStorage
         }
     }
 
-    open func save(block aBlock: @escaping SMStorageContextBlock, completion aCompletion: SMStorageVoidBlock? = nil)
-    {
+    open func save(block aBlock: @escaping SMStorageContextBlock, completion aCompletion: SMStorageVoidBlock? = nil) {
+        
         let savingContext: NSManagedObjectContext = self.savingContext
         
         savingContext.perform {
             aBlock(savingContext)
             self.save(context: savingContext)
-            if let completion: SMStorageVoidBlock = aCompletion
-            {
+            if let completion: SMStorageVoidBlock = aCompletion {
                 completion()
             }
         }
     }
     
-    open func saveAndWait(block aBlock: SMStorageContextBlock, completion aCompletion: SMStorageVoidBlock? = nil)
-    {
+    open func saveAndWait(block aBlock: SMStorageContextBlock, completion aCompletion: SMStorageVoidBlock? = nil) {
+        
         let savingContext: NSManagedObjectContext = self.savingContext
         
         savingContext.performAndWait {
             aBlock(savingContext)
             self.save(context: savingContext)
-            if let completion: SMStorageVoidBlock = aCompletion
-            {
+            if let completion: SMStorageVoidBlock = aCompletion {
                 completion()
             }
         }
@@ -273,15 +247,15 @@ open class SMDBStorage
     
     // MARK: - Perform blocks
     
-    open func defaultContext(block aBlock: @escaping SMStorageContextBlock)
-    {
+    open func defaultContext(block aBlock: @escaping SMStorageContextBlock) {
+        
         defaultContext.perform {
             aBlock(self.defaultContext)
         }
     }
 
-    open func defaultContextAndWait(block aBlock: @escaping SMStorageContextBlock)
-    {
+    open func defaultContextAndWait(block aBlock: @escaping SMStorageContextBlock) {
+        
         defaultContext.performAndWait {
             aBlock(self.defaultContext)
         }
@@ -290,8 +264,8 @@ open class SMDBStorage
     
     // MARK: Remove entities
     
-    open func removeAllEntitiesWithName(_ anEntityName: String)
-    {
+    open func removeAllEntitiesWithName(_ anEntityName: String) {
+        
         self.saveAndWait(block: { context in
             let entitiesRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest<NSFetchRequestResult>()
             entitiesRequest.entity = NSEntityDescription.entity(forEntityName: anEntityName, in: context)
@@ -299,45 +273,41 @@ open class SMDBStorage
             
             var aError: Error?
             var entities: [AnyObject]
-            do
-            {
+            
+            do {
                 entities = try context.fetch(entitiesRequest)
-                for object: AnyObject in entities
-                {
-                    if let object: NSManagedObject = object as? NSManagedObject
-                    {
+                for object: AnyObject in entities {
+                    
+                    if let object: NSManagedObject = object as? NSManagedObject {
                         context.delete(object)
                     }
                 }
-            } catch
-            {
+            } catch {
                 aError = error
             }
-            if aError != nil
-            {
+            
+            if aError != nil {
                 print("STStorage: remove entities with error: \(String(describing: aError))")
             }
         })
     }
 
-    open func remove(object aObject: NSManagedObject)
-    {
+    open func remove(object aObject: NSManagedObject) {
+        
         self.saveAndWait(block: { context in
-            if let obj: NSManagedObject = aObject.inContext(context)
-            {
+            if let obj: NSManagedObject = aObject.inContext(context) {
                 context.delete(obj)
             }
         })
     }
     
-    open func remove(objects aObjects: [NSManagedObject])
-    {
+    open func remove(objects aObjects: [NSManagedObject]) {
+        
         self.saveAndWait(block: { context in
             
-            for object: NSManagedObject in aObjects
-            {
-                if let obj: NSManagedObject = object.inContext(context)
-                {
+            for object: NSManagedObject in aObjects {
+                
+                if let obj: NSManagedObject = object.inContext(context) {
                     context.delete(obj)
                 }
             }
@@ -347,39 +317,37 @@ open class SMDBStorage
     
     // MARK: - Clear
 
-    open func clear()
-    {
+    open func clear() {
+        
         self.save(block: { context in
             self.clearIn(context: context)
         }, completion: nil)
     }
     
-    open func clearAndWait()
-    {
+    open func clearAndWait() {
+        
         self.saveAndWait(block: { context in
             self.clearIn(context: context)
         }, completion: nil)
     }
 
-    open func clearIn(context aContext: NSManagedObjectContext)
-    {
+    open func clearIn(context aContext: NSManagedObjectContext) {
+        
         let allEntities: [NSEntityDescription] = self.managedObjectModel.entities
 
-        for entityDescription: NSEntityDescription in allEntities
-        {
+        for entityDescription: NSEntityDescription in allEntities {
+            
             let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest()
             fetchRequest.entity = entityDescription
             fetchRequest.includesPropertyValues = false
             fetchRequest.includesSubentities = false
 
-            do
-            {
+            do {
                 let items: [Any] = try aContext.fetch(fetchRequest)
 
-                for managedObject: Any in items where managedObject is NSManagedObject
-                {
-                    if let managedObject: NSManagedObject = managedObject as? NSManagedObject
-                    {
+                for managedObject: Any in items where managedObject is NSManagedObject {
+                    
+                    if let managedObject: NSManagedObject = managedObject as? NSManagedObject {
                         aContext.delete(managedObject)
                     }
                 }
@@ -393,18 +361,16 @@ open class SMDBStorage
     
     // MARK: - Clone
     
-    open func clone(object aObject: NSManagedObject, clonePolicy aClonePolicy: SMClonePolicy = SMClonePolicy.asTemp) -> NSManagedObject?
-    {
+    open func clone(object aObject: NSManagedObject, clonePolicy aClonePolicy: SMClonePolicy = SMClonePolicy.asTemp) -> NSManagedObject? {
+        
         guard let entityName: String = aObject.entity.name,
-            let entity: NSEntityDescription = NSEntityDescription.entity(forEntityName: entityName, in: self.defaultContext) else
-        {
+            let entity: NSEntityDescription = NSEntityDescription.entity(forEntityName: entityName, in: self.defaultContext) else {
             return nil
         }
         
         var result: NSManagedObject
         
-        switch aClonePolicy
-        {
+        switch aClonePolicy {
         case SMClonePolicy.asOriginal:
             result = (type(of: aObject) as NSManagedObject.Type).init(entity: entity, insertInto: aObject.managedObjectContext)
         case SMClonePolicy.asTemp:
@@ -415,8 +381,7 @@ open class SMDBStorage
         
         let attributes: [String: NSAttributeDescription] = entity.attributesByName
         
-        for attributeName: (key: String, value: NSAttributeDescription) in attributes
-        {
+        for attributeName: (key: String, value: NSAttributeDescription) in attributes {
             result.setValue(aObject.value(forKey: attributeName.key), forKey: attributeName.key)
         }
         

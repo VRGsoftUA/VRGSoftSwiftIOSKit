@@ -8,25 +8,19 @@
 
 import UIKit
 
-open class SMActivityAdapter
-{
-    public init()
-    {
-        
-    }
+open class SMActivityAdapter {
     
-    open func configureWith(view aView: UIView)
-    {
+    public init() { }
+    
+    open func configureWith(view aView: UIView) {
         assert(false)
     }
     
-    open func show()
-    {
+    open func show() {
         assert(false)
     }
     
-    open func hide()
-    {
+    open func hide() {
         assert(false)
     }
 }

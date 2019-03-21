@@ -9,94 +9,81 @@
 import UIKit
 import UserNotifications
 
-open class SMModuleRemotePushes: NSObject
-{
+open class SMModuleRemotePushes: NSObject {
+    
     open var deviceToken: String?
     
-    open func tryToRegisterAllNotificationSettings()
-    {
-        if #available(iOS 10.0, *)
-        {
+    open func tryToRegisterAllNotificationSettings() {
+        
+        if #available(iOS 10.0, *) {
             self.tryToRegisterFor(userNotificationOptions: [UNAuthorizationOptions.alert, UNAuthorizationOptions.badge, UNAuthorizationOptions.sound])
-        } else
-        {
+        } else {
             
         }
     }
     
-    open func tryToRegisterForUserNotificationDefault()
-    {
+    open func tryToRegisterForUserNotificationDefault() {
         UIApplication.shared.registerForRemoteNotifications()
     }
     
     @available(iOS 10.0, *)
-    open func tryToRegisterFor(userNotificationOptions aUserNotificationOptions: UNAuthorizationOptions)
-    {
+    open func tryToRegisterFor(userNotificationOptions aUserNotificationOptions: UNAuthorizationOptions) {
+        
         let center: UNUserNotificationCenter = UNUserNotificationCenter.current()
         center.requestAuthorization(options: aUserNotificationOptions) { (_, error) in
             DispatchQueue.main.async {
-                if error == nil
-                {
+                if error == nil {
                     self.tryToRegisterForUserNotificationDefault()
                 }
             }
         }
     }
     
-    public override init()
-    {
+    public override init() {
         
     }
     
-    open func didRegisterForRemoteNotificationsWith(deviceTokenData aDeviceTokenData: Data)
-    {
+    open func didRegisterForRemoteNotificationsWith(deviceTokenData aDeviceTokenData: Data) {
+        
         var token: String = ""
-        for i: Int in 0..<aDeviceTokenData.count
-        {
+        for i: Int in 0..<aDeviceTokenData.count {
             token += String(format: "%02.2hhx", aDeviceTokenData[i] as CVarArg)
         }
         
         deviceToken = token
         
-        if deviceToken != nil
-        {
+        if deviceToken != nil {
             registerForPushNotifications()
         }
     }
     
-    open func registerForPushNotifications()
-    {
-        if deviceToken != nil && canRegisterDeviceToken()
-        {
+    open func registerForPushNotifications() {
+        
+        if deviceToken != nil && canRegisterDeviceToken() {
             registerDeviceTokenRequest()?.start()
         }
     }
     
-    open func unregisterForPushNotifications()
-    {
-        if deviceToken != nil && canUnregisterDeviceToken()
-        {
+    open func unregisterForPushNotifications() {
+        
+        if deviceToken != nil && canUnregisterDeviceToken() {
             unregisterDeviceTokenRequest()?.start()
         }
     }
     
-    open func registerDeviceTokenRequest() -> SMRequest?
-    {
+    open func registerDeviceTokenRequest() -> SMRequest? {
         return nil
     }
     
-    open func unregisterDeviceTokenRequest() -> SMRequest?
-    {
+    open func unregisterDeviceTokenRequest() -> SMRequest? {
         return nil
     }
     
-    open func canRegisterDeviceToken() -> Bool
-    {
+    open func canRegisterDeviceToken() -> Bool {
         return true
     }
     
-    open func canUnregisterDeviceToken() -> Bool
-    {
+    open func canUnregisterDeviceToken() -> Bool {
         return true
     }
 }

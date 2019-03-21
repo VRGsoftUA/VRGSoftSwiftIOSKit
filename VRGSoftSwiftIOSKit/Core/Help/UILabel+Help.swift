@@ -8,10 +8,10 @@
 
 import UIKit
 
-extension UILabel
-{
-    open func setAtr(interval aInterval: CGFloat)
-    {
+extension UILabel {
+    
+    open func setAtr(interval aInterval: CGFloat) {
+        
         guard let text: String = self.text else { return }
         
         let paragraphStyle: NSMutableParagraphStyle = NSMutableParagraphStyle()
@@ -24,22 +24,21 @@ extension UILabel
         self.textAlignment = textAlignment
     }
     
-    open func setAttributedText(markString: String, markFont: UIFont)
-    {
+    open func setAttributedText(markString: String, markFont: UIFont) {
+        
         guard let text: String = self.text else { return }
         
         let attributedString: NSMutableAttributedString = NSMutableAttributedString(string: text, attributes: [NSAttributedString.Key.font: self.font])
 
         let markAttribute: [NSAttributedString.Key: Any] = [NSAttributedString.Key.font: markFont]
-        if let range: NSRange = (self.text as NSString?)?.range(of: markString)
-        {
+        if let range: NSRange = (self.text as NSString?)?.range(of: markString) {
            attributedString.addAttributes(markAttribute, range: range)
         }
         self.attributedText = attributedString
     }
     
-    open func setAttributedText(markString: String, markTextColor: UIColor)
-    {
+    open func setAttributedText(markString: String, markTextColor: UIColor) {
+        
         guard let text: String = self.text else { return }
 
         let attributedString: NSMutableAttributedString = NSMutableAttributedString(string: text, attributes: [NSAttributedString.Key.font: self.font])
@@ -50,8 +49,8 @@ extension UILabel
         self.attributedText = attributedString
     }
     
-    open func setAttributedText(markString: String, markTextColor: UIColor, markFont: UIFont)
-    {
+    open func setAttributedText(markString: String, markTextColor: UIColor, markFont: UIFont) {
+        
         guard let text: String = self.text else { return }
         
         let attributedString: NSMutableAttributedString = NSMutableAttributedString(string: text, attributes: [NSAttributedString.Key.font: self.font])
@@ -62,8 +61,8 @@ extension UILabel
         self.attributedText = attributedString
     }
     
-    open func setAtrUnderLine()
-    {
+    open func setAtrUnderLine() {
+        
         guard let text: String = self.text else { return }
         
         let attributedString: NSMutableAttributedString = NSMutableAttributedString(string: text, attributes: [NSAttributedString.Key.font: self.font])

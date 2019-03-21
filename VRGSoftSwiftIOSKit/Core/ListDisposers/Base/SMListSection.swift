@@ -8,87 +8,73 @@
 
 import UIKit
 
-open class SMListSection
-{
+open class SMListSection {
+    
     open var cellDataSource: [SMListCellData] = []
     open var visibleCellDataSource: [SMListCellData] = []
     open weak var disposer: SMListDisposer?
     
-    public init()
-    {
-        
-    }
+    public init() { }
     
     // MARK: CellDatas
     
-    open func addCellData(_ aCellData: SMListCellData)
-    {
+    open func addCellData(_ aCellData: SMListCellData) {
         cellDataSource.append(aCellData)
     }
     
-    open func addCellDataFromArray(_ aCellDatas: [SMListCellData])
-    {
+    open func addCellDataFromArray(_ aCellDatas: [SMListCellData]) {
         cellDataSource.append(contentsOf: aCellDatas)
     }
     
-    open func insertCellData(_ aCellData: SMListCellData, index aIndex: Int)
-    {
+    open func insertCellData(_ aCellData: SMListCellData, index aIndex: Int) {
         cellDataSource.insert(aCellData, at: aIndex)
     }
     
-    open func removeCellDataAtIndex(_ aIndex: Int)
-    {
+    open func removeCellDataAtIndex(_ aIndex: Int) {
         cellDataSource.remove(at: aIndex)
     }
     
-    open func removeCellData(_ aCellData: SMListCellData)
-    {
-        if  let index: Int = cellDataSource.index(where: {$0 === aCellData})
-        {
+    open func removeCellData(_ aCellData: SMListCellData) {
+        if  let index: Int = cellDataSource.index(where: {$0 === aCellData}) {
             cellDataSource.remove(at: index)
         }
     }
     
-    open func removeAllCellData()
-    {
+    open func removeAllCellData() {
         cellDataSource.removeAll()
     }
     
-    open func cellData(at anIndex: Int) -> SMListCellData
-    {
+    open func cellData(at anIndex: Int) -> SMListCellData {
         return cellDataSource[anIndex]
     }
     
-    open func visibleCellData(at anIndex: Int) -> SMListCellData
-    {
+    open func visibleCellData(at anIndex: Int) -> SMListCellData {
         return visibleCellDataSource[anIndex]
     }
     
-    open func index(by aCellData: SMListCellData) -> Int
-    {
-        if  let index: Int = cellDataSource.index(where: {$0 === aCellData})
-        {
+    open func index(by aCellData: SMListCellData) -> Int {
+        
+        if  let index: Int = cellDataSource.index(where: {$0 === aCellData}) {
             return index
         }
         
         return NSNotFound
     }
     
-    open func index(byVisible aCellData: SMListCellData) -> Int
-    {
-        if  let index: Int = visibleCellDataSource.index(where: {$0 === aCellData})
-        {
+    open func index(byVisible aCellData: SMListCellData) -> Int {
+        
+        if  let index: Int = visibleCellDataSource.index(where: {$0 === aCellData}) {
             return index
         }
         
         return NSNotFound
     }
     
-    open func cellData(byTag aTag: Int) -> SMListCellData?
-    {
+    open func cellData(byTag aTag: Int) -> SMListCellData? {
+        
         var result: SMListCellData?
-        for cd: SMListCellData in cellDataSource where cd.tag == aTag
-        {
+        
+        for cd: SMListCellData in cellDataSource where cd.tag == aTag {
             result = cd
             break
         }
@@ -96,22 +82,19 @@ open class SMListSection
         return result
     }
     
-    open var cellDataCount: Int
-    {
+    open var cellDataCount: Int {
         return cellDataSource.count
     }
     
-    open var visibleCellDataCount: Int
-    {
+    open var visibleCellDataCount: Int {
         return visibleCellDataSource.count
     }
     
-    open func updateCellDataVisibility()
-    {
+    open func updateCellDataVisibility() {
+        
         visibleCellDataSource.removeAll()
         
-        for cd: SMListCellData in cellDataSource where cd.isVisible
-        {
+        for cd: SMListCellData in cellDataSource where cd.isVisible {
             visibleCellDataSource.append(cd)
         }
     }

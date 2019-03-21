@@ -8,19 +8,17 @@
 
 import UIKit
 
-open class SMNativePullToRefreshAdapter: SMPullToRefreshAdapter
-{
+open class SMNativePullToRefreshAdapter: SMPullToRefreshAdapter {
+    
     public lazy var refreshControl: UIRefreshControl = {
         return createRefreshControl()
     }()
     
-    public func createRefreshControl() -> UIRefreshControl
-    {
+    public func createRefreshControl() -> UIRefreshControl {
         return UIRefreshControl()
     }
     
-    override open var enabled: Bool?
-    {
+    override open var enabled: Bool? {
         set {
             refreshControl.isEnabled = (newValue != nil)
             
@@ -31,34 +29,31 @@ open class SMNativePullToRefreshAdapter: SMPullToRefreshAdapter
         }
     }
     
-    override public init()
-    {
+    override public init() {
         super.init()
         
         refreshControl.addTarget(self, action: #selector(refreshControlDidBeginRefreshing(sender:)), for: UIControl.Event.valueChanged)
     }
     
-    override open func configureWith(scrollView aScrollView: UIScrollView)
-    {
+    override open func configureWith(scrollView aScrollView: UIScrollView) {
+        
         aScrollView.addSubview(refreshControl)
         aScrollView.sendSubviewToBack(refreshControl)
     }
     
-    override open func beginPullToRefresh()
-    {
+    override open func beginPullToRefresh() {
+        
         refreshControl.beginRefreshing()
         super.beginPullToRefresh()
     }
     
-    override open func endPullToRefresh()
-    {
+    override open func endPullToRefresh() {
         refreshControl.endRefreshing()
     }
     
-    @objc open func refreshControlDidBeginRefreshing(sender aSender: UIRefreshControl)
-    {
-        if refreshControl == aSender
-        {
+    @objc open func refreshControlDidBeginRefreshing(sender aSender: UIRefreshControl) {
+        
+        if refreshControl == aSender {
             self.beginPullToRefresh()
         }
     }

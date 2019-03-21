@@ -11,8 +11,8 @@ import Foundation
 public typealias SMDataFetchCallback = (SMResponse) -> Void
 
 
-public protocol SMDataFetcherProtocol
-{
+public protocol SMDataFetcherProtocol {
+    
     var callbackQueue: DispatchQueue {get set}
     
     func canFetchWith(message aMessage: SMFetcherMessage) -> Bool

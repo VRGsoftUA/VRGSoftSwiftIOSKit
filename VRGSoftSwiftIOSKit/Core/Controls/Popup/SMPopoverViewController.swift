@@ -8,13 +8,13 @@
 
 import UIKit
 
-open class SMPopoverViewController: UIViewController
-{
+open class SMPopoverViewController: UIViewController {
+    
     var popupedView: SMPopupView
     var popoverOwner: UIViewController?
     
-    init(popupView aPopupView: SMPopupView)
-    {
+    init(popupView aPopupView: SMPopupView) {
+        
         popupedView = aPopupView
         
         super.init(nibName: nil, bundle: nil)
@@ -25,8 +25,7 @@ open class SMPopoverViewController: UIViewController
         fatalError("init(coder:) has not been implemented")
     }
     
-    override open func viewDidLoad()
-    {
+    override open func viewDidLoad() {
         super.viewDidLoad()
 
         view.backgroundColor = .clear
@@ -35,42 +34,35 @@ open class SMPopoverViewController: UIViewController
         self.view.addSubview(popupedView)
     }
     
-    override open func viewWillAppear(_ animated: Bool)
-    {
+    override open func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         popupedView.popupWillAppear(animated: animated)
     }
     
-    override open func viewDidAppear(_ animated: Bool)
-    {
+    override open func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
         popupedView.popupDidAppear(animated: animated)
     }
     
-    override open func viewWillDisappear(_ animated: Bool)
-    {
+    override open func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
         popupedView.popupWillDisappear(animated: animated)
     }
     
-    override open func viewDidDisappear(_ animated: Bool)
-    {
+    override open func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         
         popupedView.popupDidDisappear(animated: animated)
     }
     
-    override open var preferredContentSize: CGSize
-    {
-        get
-        {
+    override open var preferredContentSize: CGSize {
+        get {
             return popupedView.bounds.size
         }
-        set
-        {
+        set {
             super.preferredContentSize = newValue
         }
     }

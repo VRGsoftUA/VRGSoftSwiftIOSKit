@@ -8,19 +8,17 @@
 
 import Foundation
 
-open class SMBlockAction <SenderType>
-{
+open class SMBlockAction <SenderType> {
+    
     public typealias SMBlockActionBlock = (_ sender: SenderType) -> Void
    
     open var block: SMBlockActionBlock
     
-    public init(block aBlock: @escaping SMBlockActionBlock)
-    {
+    public init(block aBlock: @escaping SMBlockActionBlock) {
         self.block = aBlock
     }
     
-    open func performBlockFrom(sender aSender: SenderType)
-    {
+    open func performBlockFrom(sender aSender: SenderType) {
         self.block(aSender)
     }
 }

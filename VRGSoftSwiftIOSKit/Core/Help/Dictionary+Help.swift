@@ -46,24 +46,18 @@ extension Dictionary where Key == String, Value == Any {
         var result: Any?
         
         if !keyPath.contains(Character(separator)) {
-            
             result = self[keyPath]
         } else {
-            
             var nodes: [String.SubSequence] = keyPath.split(separator: Character(separator))
             
             if nodes.isEmpty {
-                
                 result = self[keyPath]
             } else {
-                
                 if let rootObject: Any = self[String(nodes[0])] {
                     
                     if nodes.count == 1 {
-                        
                         result = rootObject
                     } else {
-                        
                         if let dictionary: [String: Any] = rootObject as? [String: Any] {
                             
                             nodes = Array(nodes[1..<nodes.count])
@@ -75,21 +69,16 @@ extension Dictionary where Key == String, Value == Any {
                                 newKeyPath.append(contentsOf: String(node))
                                 
                                 if node != nodes.last {
-                                    
                                     newKeyPath.append(contentsOf: separator)
                                 }
                             }
                             
                             result = dictionary.value(forKeyPath: newKeyPath)
-                            
                         } else {
-                            
                             result = rootObject
                         }
                     }
-                    
                 } else {
-                    
                     result = nil
                 }
             }
@@ -100,41 +89,37 @@ extension Dictionary where Key == String, Value == Any {
 }
 
 
-public extension Dictionary
-{
-    mutating func setValueIfNotNil(value aValue: Value?, key aKey: Key)
-    {
-        if let value: Value = aValue
-        {
+public extension Dictionary {
+    
+    mutating func setValueIfNotNil(value aValue: Value?, key aKey: Key) {
+        
+        if let value: Value = aValue {
             self[aKey] = value
         }
     }
     
-    mutating func setStringIfNotNilAndNotEmpty(value aValue: String?, key aKey: Key)
-    {
-        if let value: String = aValue
-        {
-            if !value.isEmpty
-            {
-                if let value: Value = value as? Value
-                {
+    mutating func setStringIfNotNilAndNotEmpty(value aValue: String?, key aKey: Key) {
+        
+        if let value: String = aValue {
+            
+            if !value.isEmpty {
+                
+                if let value: Value = value as? Value {
                     self[aKey] = value
                 }
             }
         }
     }
     
-    mutating func setValueNilProtect(value aValue: Value?, key aKey: Key)
-    {
+    mutating func setValueNilProtect(value aValue: Value?, key aKey: Key) {
+        
         var value: Value? = aValue
         
-        if value == nil
-        {
+        if value == nil {
             value = NSNull() as? Value
         }
         
-        if let value: Value = aValue
-        {
+        if let value: Value = aValue {
             self[aKey] = value
         }
     }

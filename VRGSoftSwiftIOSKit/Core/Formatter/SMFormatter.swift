@@ -8,33 +8,29 @@
 
 import Foundation
 
-public protocol SMFormatterProtocol: AnyObject
-{
+public protocol SMFormatterProtocol: AnyObject {
+    
     var formatter: SMFormatter? { get set }
     var formattingText: String? { get set }
 }
 
-open class SMFormatter
-{
+open class SMFormatter {
+    
     weak open var formattableObject: SMFormatterProtocol?
     
-    public init()
-    {
+    public init() {
         
     }
     
-    open func formattedTextFrom(originalString aOriginalString: String?) -> String?
-    {
+    open func formattedTextFrom(originalString aOriginalString: String?) -> String? {
         return aOriginalString
     }
     
-    open func formatWithNewCharactersIn(range aRange: NSRange, replacementString aString: String) -> Bool
-    {
+    open func formatWithNewCharactersIn(range aRange: NSRange, replacementString aString: String) -> Bool {
         return true
     }
     
-    open var rawText: String?
-    {
+    open var rawText: String? {
         get {
             return nil
         }

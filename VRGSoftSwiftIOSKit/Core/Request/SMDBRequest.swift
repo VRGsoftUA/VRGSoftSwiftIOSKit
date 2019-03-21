@@ -9,16 +9,15 @@
 import UIKit
 import CoreData
 
-open class SMDBRequest: SMRequest
-{
+open class SMDBRequest: SMRequest {
+    
     open var storage: SMDBStorage
     open var cancelled: Bool = false
     open var executing: Bool = false
     
     public let fetchRequest: NSFetchRequest<NSFetchRequestResult>
     
-    public init(storage aStorage: SMDBStorage, fetchRequest aFetchRequest: NSFetchRequest<NSFetchRequestResult>)
-    {
+    public init(storage aStorage: SMDBStorage, fetchRequest aFetchRequest: NSFetchRequest<NSFetchRequestResult>) {
         storage = aStorage
         fetchRequest = aFetchRequest
     }
@@ -26,44 +25,38 @@ open class SMDBRequest: SMRequest
     
     // MARK: Request execute
     
-    override open func canExecute() -> Bool
-    {
+    override open func canExecute() -> Bool {
         return true
     }
     
-    override open func start()
-    {
+    override open func start() {
+        
         self.cancelled = false
         self.executing = true
         
         storage.defaultContext(block: { [weak self] aContext in // swiftlint:disable:this explicit_type_interface
-            if let strongSelf: SMDBRequest = self
-            {
-                if strongSelf.isCancelled()
-                {
+            if let strongSelf: SMDBRequest = self {
+                
+                if strongSelf.isCancelled() {
+                    
                     strongSelf.executing = false
                     let response: SMResponse = SMResponse()
                     response.isCancelled = true
                     response.isSuccess = true
                     
-                    if strongSelf.executeAllResponseBlocksSync
-                    {
+                    if strongSelf.executeAllResponseBlocksSync {
                         strongSelf.executeSynchronouslyAllResponseBlocks(response: response)
-                    } else
-                    {
+                    } else {
                         strongSelf.executeAllResponseBlocks(response: response)
                     }
-                } else
-                {
+                } else {
                     let response: SMResponse = strongSelf.executeRequest(request: strongSelf.fetchRequest, inContext: aContext)
                     response.isSuccess = true
                     strongSelf.executing = false
                     
-                    if strongSelf.executeAllResponseBlocksSync
-                    {
+                    if strongSelf.executeAllResponseBlocksSync {
                         strongSelf.executeSynchronouslyAllResponseBlocks(response: response)
-                    } else
-                    {
+                    } else {
                         strongSelf.executeAllResponseBlocks(response: response)
                     }
                 }
@@ -74,8 +67,8 @@ open class SMDBRequest: SMRequest
     
     // MARK: 
 
-    open func executeRequest(request aRequest: NSFetchRequest<NSFetchRequestResult>, inContext aContext: NSManagedObjectContext) -> SMResponse
-    {
+    open func executeRequest(request aRequest: NSFetchRequest<NSFetchRequestResult>, inContext aContext: NSManagedObjectContext) -> SMResponse {
+        
         var aError: Error?
         var results: [AnyObject] = []
         
@@ -84,11 +77,13 @@ open class SMDBRequest: SMRequest
         } catch {
             aError = error
         }
+        
         let response: SMResponse = SMResponse()
-        if results.count > 0
-        {
+        
+        if results.count > 0 {
             response.boArray.append(contentsOf: results)
         }
+        
         response.error = aError
         response.isCancelled = self.isCancelled()
         response.isSuccess = response.error != nil && !response.isCancelled
@@ -96,18 +91,15 @@ open class SMDBRequest: SMRequest
         return response
     }
     
-    override open func cancel()
-    {
+    override open func cancel() {
         cancelled = true
     }
     
-    override open func isExecuting() -> Bool
-    {
+    override open func isExecuting() -> Bool {
         return executing
     }
     
-    override open func isCancelled() -> Bool
-    {
+    override open func isCancelled() -> Bool {
         return cancelled
     }
 }

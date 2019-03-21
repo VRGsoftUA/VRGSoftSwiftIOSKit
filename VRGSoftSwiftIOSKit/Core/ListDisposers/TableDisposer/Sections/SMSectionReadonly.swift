@@ -8,10 +8,9 @@
 
 import UIKit
 
-open class SMSectionReadonly: SMListSection
-{
-    open weak var tableDisposer: SMTableDisposer?
-    {
+open class SMSectionReadonly: SMListSection {
+    
+    open weak var tableDisposer: SMTableDisposer? {
         return disposer as? SMTableDisposer
     }
     
@@ -23,8 +22,8 @@ open class SMSectionReadonly: SMListSection
     
     // MARK: Cells
     
-    open func cell(forIndex aIndex: Int) -> UITableViewCell
-    {
+    open func cell(forIndex aIndex: Int) -> UITableViewCell {
+        
         let cellData: SMCellData = visibleCellData(at: aIndex) as! SMCellData// swiftlint:disable:this force_cast
 
         let reusableCell: UITableViewCell? = tableDisposer?.tableView?.dequeueReusableCell(withIdentifier: cellData.cellIdentifier)
@@ -35,32 +34,29 @@ open class SMSectionReadonly: SMListSection
         
         (cell as? SMCellProtocol)?.setupCellData(cellData)
         
-        if isNewCell
-        {
+        if isNewCell {
             tableDisposer?.didCreate(cell: cell)
         }
         
         return cell
     }
     
-    open func reload(with anAnimation: UITableView.RowAnimation)
-    {
+    open func reload(with anAnimation: UITableView.RowAnimation) {
+        
         updateCellDataVisibility()
-        if let section: Int = tableDisposer?.index(by: self)
-        {
+        if let section: Int = tableDisposer?.index(by: self) {
             tableDisposer?.tableView?.reloadSections(IndexSet(integer: section), with: anAnimation)
         }
     }
     
-    open func reloadRows(at aIndexes: [Int], withRowAnimation aRowAnimation: UITableView.RowAnimation)
-    {
+    open func reloadRows(at aIndexes: [Int], withRowAnimation aRowAnimation: UITableView.RowAnimation) {
+        
         var indexPaths: [IndexPath] = []
         var indexPath: IndexPath
         
         let sectionIndex: Int = tableDisposer?.index(by: self) ?? 0
         
-        for index: Int in aIndexes
-        {
+        for index: Int in aIndexes {
             indexPath = IndexPath(row: index, section: sectionIndex)
             indexPaths.append(indexPath)
         }
@@ -68,19 +64,16 @@ open class SMSectionReadonly: SMListSection
         tableDisposer?.tableView?.reloadRows(at: indexPaths, with: aRowAnimation)
     }
     
-    open func deleteRows(at aIndexes: [Int], withRowAnimation aRowAnimation: UITableView.RowAnimation)
-    {
+    open func deleteRows(at aIndexes: [Int], withRowAnimation aRowAnimation: UITableView.RowAnimation) {
+        
         var toDelete: [SMListCellData] = []
         
-        
-        for index: Int in aIndexes
-        {
+        for index: Int in aIndexes {
             let cellData: SMListCellData = self.cellData(at: index)
             toDelete.append(cellData)
         }
         
-        for cd: SMListCellData in toDelete
-        {
+        for cd: SMListCellData in toDelete {
             removeCellData(cd)
         }
         
@@ -91,58 +84,54 @@ open class SMSectionReadonly: SMListSection
         
         let sectionIndex: Int = tableDisposer?.index(by: self) ?? 0
         
-        for index: Int in aIndexes
-        {
+        for index: Int in aIndexes {
+            
             indexPath = IndexPath(row: index, section: sectionIndex)
             indexPaths.append(indexPath)
         }
+        
         tableDisposer?.tableView?.deleteRows(at: indexPaths, with: aRowAnimation)
     }
     
     
     // MARK: Show/Hide cells
     
-    open func hideCell(by aIndex: Int, needUpdateTable aNeedUpdateTable: Bool)
-    {
+    open func hideCell(by aIndex: Int, needUpdateTable aNeedUpdateTable: Bool) {
         hideCell(by: aIndex, needUpdateTable: aNeedUpdateTable, withRowAnimation: UITableView.RowAnimation.middle)
     }
 
-    open func showCell(by aIndex: Int, needUpdateTable aNeedUpdateTable: Bool)
-    {
+    open func showCell(by aIndex: Int, needUpdateTable aNeedUpdateTable: Bool) {
         showCell(by: aIndex, needUpdateTable: aNeedUpdateTable, withRowAnimation: UITableView.RowAnimation.middle)
     }
 
-    open func hideCell(by aIndex: Int, needUpdateTable aNeedUpdateTable: Bool, withRowAnimation aRowAnimation: UITableView.RowAnimation)
-    {
+    open func hideCell(by aIndex: Int, needUpdateTable aNeedUpdateTable: Bool, withRowAnimation aRowAnimation: UITableView.RowAnimation) {
+        
         let cellData: SMListCellData  = self.cellData(at: aIndex)
 
-        if !cellData.isVisible
-        {
+        if !cellData.isVisible {
             return
         }
         
         let index: Int = self.index(byVisible: cellData)
         
-        if  let i: Int = cellDataSource.index(where: {$0 === cellData})
-        {
+        if  let i: Int = cellDataSource.index(where: {$0 === cellData}) {
             cellDataSource.remove(at: i)
         }
 
         cellData.isVisible = false
         
-        if aNeedUpdateTable, let section: Int = tableDisposer?.index(by: self)
-        {
+        if aNeedUpdateTable, let section: Int = tableDisposer?.index(by: self) {
+            
             let indexPath: IndexPath = IndexPath(row: index, section: section)
             tableDisposer?.tableView?.deleteRows(at: Array(repeating: indexPath, count: 1), with: aRowAnimation)
         }
     }
     
-    open func showCell(by aIndex: Int, needUpdateTable aNeedUpdateTable: Bool, withRowAnimation aRowAnimation: UITableView.RowAnimation)
-    {
+    open func showCell(by aIndex: Int, needUpdateTable aNeedUpdateTable: Bool, withRowAnimation aRowAnimation: UITableView.RowAnimation) {
+        
         let cellData: SMListCellData  = self.cellData(at: aIndex)
         
-        if cellData.isVisible
-        {
+        if cellData.isVisible {
             return
         }
         
@@ -151,8 +140,8 @@ open class SMSectionReadonly: SMListSection
         cellData.isVisible = true
         updateCellDataVisibility()
         
-        if aNeedUpdateTable, let section: Int = tableDisposer?.index(by: self)
-        {
+        if aNeedUpdateTable, let section: Int = tableDisposer?.index(by: self) {
+            
             let indexPath: IndexPath = IndexPath(row: index, section: section)
             tableDisposer?.tableView?.insertRows(at: Array(repeating: indexPath, count: 1), with: aRowAnimation)
         }

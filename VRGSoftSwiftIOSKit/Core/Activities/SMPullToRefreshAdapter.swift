@@ -10,24 +10,19 @@ import UIKit
 
 public typealias SMPullToRefreshAdapterRefreshCallback = (SMPullToRefreshAdapter) -> Void
 
-open class SMPullToRefreshAdapter
-{
+open class SMPullToRefreshAdapter {
+    
     open var enabled: Bool?
     
     public var refreshCallback: SMPullToRefreshAdapterRefreshCallback?
     
-    open func configureWith(scrollView aScrollView: UIScrollView)
-    {
-        
-    }
+    open func configureWith(scrollView aScrollView: UIScrollView) { }
     
-    open func beginPullToRefresh()
-    {
+    open func beginPullToRefresh() {
         self.refreshCallback?(self)
     }
 
-    open func endPullToRefresh()
-    {
+    open func endPullToRefresh() {
         
     }
 }

@@ -11,12 +11,12 @@ import Alamofire
 
 public typealias SMConstructingMultipartFormDataBlock = (MultipartFormData) -> Void
 
-open class SMGatewayRequestMultipart: SMGatewayRequest
-{
+open class SMGatewayRequestMultipart: SMGatewayRequest {
+    
     open var constructingBlock: SMConstructingMultipartFormDataBlock
     
-    public init(gateway aGateway: SMGateway, type aType: HTTPMethod, constructingBlock: @escaping SMConstructingMultipartFormDataBlock)
-    {
+    public init(gateway aGateway: SMGateway, type aType: HTTPMethod, constructingBlock: @escaping SMConstructingMultipartFormDataBlock) {
+        
         self.constructingBlock = constructingBlock
         super.init(gateway: aGateway, type: aType)
     }
@@ -25,38 +25,33 @@ open class SMGatewayRequestMultipart: SMGatewayRequest
         fatalError("init(gateway:type:) has not been implemented")
     }
     
-    override open func getDataRequest(completion: @escaping (_ request: UploadRequest) -> Void)
-    {
+    override open func getDataRequest(completion: @escaping (_ request: UploadRequest) -> Void) {
+        
         guard let baseUrl: URL = gateway.baseUrl else { return }
         
         var fullPath: URL = baseUrl
         
-        if let path: String = path
-        {
+        if let path: String = path {
             fullPath = fullPath.appendingPathComponent(path)
         }
         
         var allParams: [String: Any] = [:]
         
-        for (key, value): (String, AnyObject) in (gateway.defaultParameters)
-        {
+        for (key, value): (String, AnyObject) in (gateway.defaultParameters) {
             allParams.updateValue(value, forKey: key)
         }
         
-        for (key, value): (String, AnyObject) in (parameters)
-        {
+        for (key, value): (String, AnyObject) in (parameters) {
             allParams.updateValue(value, forKey: key)
         }
         
         var allHeaders: [String: String] = [:]
         
-        for (key, value): (String, String) in (gateway.defaultHeaders)
-        {
+        for (key, value): (String, String) in (gateway.defaultHeaders) {
             allHeaders.updateValue(value, forKey: key)
         }
         
-        for (key, value): (String, String) in (headers)
-        {
+        for (key, value): (String, String) in (headers) {
             allHeaders.updateValue(value, forKey: key)
         }
         
@@ -66,14 +61,12 @@ open class SMGatewayRequestMultipart: SMGatewayRequest
         Alamofire.upload(multipartFormData: { multipartFormData in
             self.constructingBlock(multipartFormData)
         }, to: fullPath, method: type, headers: allHeaders, encodingCompletion: { multipartFormDataEncodingResult in
-            switch multipartFormDataEncodingResult
-            {
+            switch multipartFormDataEncodingResult {
             case .success(let request, _, _): // swiftlint:disable:this explicit_type_interface
                 self.dataRequest = request
                 completion(request)
                 self.dataRequest?.responseJSON(completionHandler: {[weak self] responseObject in // swiftlint:disable:this explicit_type_interface
-                    switch responseObject.result
-                    {
+                    switch responseObject.result {
                     case .success:
 //                        print("Request success with data: \(data)")
                         self?.executeSuccessBlock(responseObject: responseObject)

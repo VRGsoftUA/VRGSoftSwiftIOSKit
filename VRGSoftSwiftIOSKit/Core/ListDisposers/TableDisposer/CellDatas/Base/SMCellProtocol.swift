@@ -8,8 +8,8 @@
 
 import Foundation
 
-public protocol SMCellProtocol: class
-{
+public protocol SMCellProtocol: class {
+    
     var cellData: SMListCellData? { get set }
     
     func setupCellData(_ aCellData: SMListCellData)

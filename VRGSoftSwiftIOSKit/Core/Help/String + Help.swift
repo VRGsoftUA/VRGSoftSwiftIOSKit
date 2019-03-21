@@ -9,23 +9,22 @@
 import Foundation
 import UIKit
 
-extension String
-{
-    public func localize() -> String
-    {
+extension String {
+    
+    public func localize() -> String {
         return NSLocalizedString(self, comment: "")
     }
     
-    public func height(withConstrainedWidth width: CGFloat, font: UIFont) -> CGFloat
-    {
+    public func height(withConstrainedWidth width: CGFloat, font: UIFont) -> CGFloat {
+        
         let constraintSize: CGSize = CGSize(width: width, height: .greatestFiniteMagnitude)
         let boundingBox: CGRect = self.boundingRect(with: constraintSize, options: .usesLineFragmentOrigin, attributes: [.font: font], context: nil)
         
         return ceil(boundingBox.height)
     }
     
-    public func attributedStringWithInterval(aInterval: CGFloat, aFont: UIFont) -> NSAttributedString
-    {
+    public func attributedStringWithInterval(aInterval: CGFloat, aFont: UIFont) -> NSAttributedString {
+        
         let paragraphStyle: NSMutableParagraphStyle = NSMutableParagraphStyle()
         paragraphStyle.lineSpacing = aInterval
         

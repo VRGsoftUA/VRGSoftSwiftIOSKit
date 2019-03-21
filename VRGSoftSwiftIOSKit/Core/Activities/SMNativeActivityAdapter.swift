@@ -8,8 +8,8 @@
 
 import UIKit
 
-open class SMNativeActivityAdapter: SMActivityAdapter
-{
+open class SMNativeActivityAdapter: SMActivityAdapter {
+    
     public weak var parentView: UIView?
     
     public lazy var activity: UIActivityIndicatorView = {
@@ -20,28 +20,25 @@ open class SMNativeActivityAdapter: SMActivityAdapter
         return createBackgroundView()
     }()
     
-    public var backgroundViewColor: UIColor = UIColor.black.withAlphaComponent(0.03)
-    {
-        didSet
-        {
+    public var backgroundViewColor: UIColor = UIColor.black.withAlphaComponent(0.03) {
+        didSet {
             backgroundView.backgroundColor = backgroundViewColor
         }
     }
     
-    public func createActivityIndicatorView() -> UIActivityIndicatorView
-    {
+    public func createActivityIndicatorView() -> UIActivityIndicatorView {
+        
         let activity: UIActivityIndicatorView = UIActivityIndicatorView(style: .gray)
         activity.hidesWhenStopped = true
         return activity
     }
     
-    public func createBackgroundView() -> UIView
-    {
+    public func createBackgroundView() -> UIView {
         return UIView()
     }
     
-    override open func configureWith(view aView: UIView)
-    {
+    override open func configureWith(view aView: UIView) {
+        
         parentView = aView
         
         backgroundView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
@@ -50,8 +47,8 @@ open class SMNativeActivityAdapter: SMActivityAdapter
         activity.autoresizingMask = [.flexibleTopMargin, .flexibleBottomMargin, .flexibleLeftMargin, .flexibleRightMargin]
     }
     
-    override open func show()
-    {
+    override open func show() {
+        
         guard let parentView: UIView = parentView else { return }
         
         hide()
@@ -67,8 +64,8 @@ open class SMNativeActivityAdapter: SMActivityAdapter
         activity.startAnimating()
     }
     
-    override open func hide()
-    {
+    override open func hide() {
+        
         activity.stopAnimating()
         
         backgroundView.removeFromSuperview()

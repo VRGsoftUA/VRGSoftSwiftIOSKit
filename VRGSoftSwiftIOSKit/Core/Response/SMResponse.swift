@@ -8,8 +8,8 @@
 
 import Foundation
 
-open class SMResponse
-{
+open class SMResponse {
+    
     open var isSuccess: Bool = false
     open var code: Int?
     open var titleMessage: String?
@@ -19,8 +19,5 @@ open class SMResponse
     open var error: Error?
     open var isCancelled: Bool = false
     
-    public init()
-    {
-        
-    }
+    public init() { }
 }

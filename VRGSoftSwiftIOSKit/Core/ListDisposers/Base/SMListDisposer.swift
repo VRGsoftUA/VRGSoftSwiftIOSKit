@@ -8,62 +8,53 @@
 
 import UIKit
 
-open class SMListDisposer: NSObject
-{
+open class SMListDisposer: NSObject {
+    
     open var listView: UIScrollView?
     
-    open func reloadData()
-    {
+    open func reloadData() {
         assert(false)
     }
     
-    open var sections: [SMListSection] = []
-    {
-        didSet
-        {
-            for section: SMListSection in sections
-            {
+    open var sections: [SMListSection] = [] {
+        didSet {
+            for section: SMListSection in sections {
                 section.disposer = self
             }
         }
     }
     
-    open func addSection(_ aSection: SMListSection)
-    {
+    open func addSection(_ aSection: SMListSection) {
         sections.append(aSection)
     }
     
-    open func removeSection(_ aSection: SMListSection)
-    {
+    open func removeSection(_ aSection: SMListSection) {
+        
         aSection.disposer = nil
         
-        if let index: Int = sections.index(where: {$0 === aSection})
-        {
+        if let index: Int = sections.index(where: {$0 === aSection}) {
             sections.remove(at: index)
         }
     }
     
-    open func index(by aSection: SMListSection) -> Int
-    {
-        if let index: Int = sections.index(where: {$0 === aSection})
-        {
+    open func index(by aSection: SMListSection) -> Int {
+        
+        if let index: Int = sections.index(where: {$0 === aSection}) {
             return index
         }
         
         return NSNotFound
     }
     
-    open func cellData(by aIndexPath: IndexPath) -> SMListCellData
-    {
+    open func cellData(by aIndexPath: IndexPath) -> SMListCellData {
         return sections[aIndexPath.section].cellData(at: aIndexPath.row)
     }
     
-    open func indexPath(by aCellData: SMListCellData) -> IndexPath?
-    {
-        for (index, section): (Int, SMListSection) in sections.enumerated()
-        {
-            if let cellDataIndex: Int = section.cellDataSource.index(where: {$0 === aCellData})
-            {
+    open func indexPath(by aCellData: SMListCellData) -> IndexPath? {
+        
+        for (index, section): (Int, SMListSection) in sections.enumerated() {
+            
+            if let cellDataIndex: Int = section.cellDataSource.index(where: {$0 === aCellData}) {
                 return IndexPath(row: cellDataIndex, section: index)
             }
         }

@@ -8,8 +8,8 @@
 
 import UIKit
 
-open class SMPopupViewController: UIViewController
-{
+open class SMPopupViewController: UIViewController {
+    
     static let motionDuration: Double = 0.4
     
     let overlayViewAlpha: CGFloat = 0.3
@@ -22,8 +22,8 @@ open class SMPopupViewController: UIViewController
     
     
     // MARK: View lifecycle
-    func setupSubviews()
-    {
+    func setupSubviews() {
+        
         var frame: CGRect = self.view.bounds
         frame.origin.y = self.view.bounds.size.height
         popupedViewOwner.frame = frame
@@ -37,8 +37,7 @@ open class SMPopupViewController: UIViewController
         btHidden.addTarget(self, action: #selector(hidedButtonPressed(sender:)), for: .touchUpInside)
         btHidden.isHidden = !popupedView.isHideByTapOutside
         
-        if popupedView.isShowOverlayView
-        {
+        if popupedView.isShowOverlayView {
             overlayView.frame = self.view.bounds
             self.view.addSubview(overlayView)
             overlayView.backgroundColor = .gray
@@ -55,8 +54,7 @@ open class SMPopupViewController: UIViewController
         popupedView.frame = frame
     }
     
-    override open func viewDidLoad()
-    {
+    override open func viewDidLoad() {
         super.viewDidLoad()
         
         view.isHidden = true
@@ -65,10 +63,10 @@ open class SMPopupViewController: UIViewController
         view.backgroundColor = .clear
     }
     
-    func popupWillAppear(animated: Bool)
-    {
-        if let superview: UIView = view.superview
-        {
+    func popupWillAppear(animated: Bool) {
+        
+        if let superview: UIView = view.superview {
+            
             view.frame = superview.bounds
             setupSubviews()
             superview.bringSubviewToFront(view)
@@ -77,18 +75,16 @@ open class SMPopupViewController: UIViewController
         }
     }
     
-    func popupDidAppear(animated: Bool)
-    {
+    func popupDidAppear(animated: Bool) {
         popupedView.popupDidAppear(animated: animated)
     }
     
-    func popupWillDisappear(animated: Bool)
-    {
+    func popupWillDisappear(animated: Bool) {
         popupedView.popupWillDisappear(animated: animated)
     }
     
-    func popupDidDisappear(animated: Bool)
-    {
+    func popupDidDisappear(animated: Bool) {
+        
         isShow = false
         self.view.removeFromSuperview()
         popupedView.popupDidDisappear(animated: animated)
@@ -97,16 +93,15 @@ open class SMPopupViewController: UIViewController
     
     // MARK: Rotations
     
-    override open var shouldAutorotate: Bool
-    {
+    override open var shouldAutorotate: Bool {
         return true
     }
     
     
     // MARK: Show/Hide
     
-    func show(animated: Bool, inView aView: UIView)
-    {
+    func show(animated: Bool, inView aView: UIView) {
+        
         if isShow || isAnimatingNow { return }
         
         aView.addSubview(view)
@@ -115,8 +110,7 @@ open class SMPopupViewController: UIViewController
         //animation
         isShow = true
         
-        if animated
-        {
+        if animated {
             //animations
             UIView.animate(withDuration: SMPopupViewController.motionDuration, animations: { 
                 self.isAnimatingNow = true
@@ -132,8 +126,7 @@ open class SMPopupViewController: UIViewController
                 self.isAnimatingNow = false
                 self.popupDidAppear(animated: animated)
             })
-        } else
-        {
+        } else {
             //placed
             var frame: CGRect = popupedViewOwner.frame
             frame.origin = CGPoint.zero
@@ -143,14 +136,14 @@ open class SMPopupViewController: UIViewController
         }
     }
     
-    func hide(animated: Bool)
-    {
+    func hide(animated: Bool) {
+        
         if !isShow || isAnimatingNow { return }
         
         self.popupWillDisappear(animated: animated)
         
-        if animated
-        {
+        if animated {
+            
             isAnimatingNow = true
             
             //animations
@@ -166,31 +159,24 @@ open class SMPopupViewController: UIViewController
                 self.isAnimatingNow = false
                 self.popupDidDisappear(animated: animated)
             })
-        } else
-        {
+        } else {
             self.popupDidDisappear(animated: animated)
         }
     }
     
-    @objc func hidedButtonPressed(sender: AnyObject)
-    {
+    @objc func hidedButtonPressed(sender: AnyObject) {
         self.hide(animated: true)
     }
     
-    override open var preferredContentSize: CGSize
-    {
-        get
-        {
-            if popupedView.bounds.size != CGSize.zero
-            {
+    override open var preferredContentSize: CGSize {
+        get {
+            if popupedView.bounds.size != CGSize.zero {
                 return popupedView.bounds.size
-            } else
-            {
+            } else {
                 return SMPopupView.popupViewSize()
             }
         }
-        set
-        {
+        set {
             super.preferredContentSize = newValue
         }
     }
