@@ -11,9 +11,11 @@ import UIKit
 public typealias SMAlertControllerCompletionHandlerType = (_ aVc: SMAlertController, _ aButtonIndex: Int) -> Void
 public typealias SMAlertControllerProcessHandlerType = (_ aVc: SMAlertController) -> Void
 
+
 open class SMAlertController: UIAlertController {
     
     override open func viewDidLoad() {
+        
         super.viewDidLoad()
         
         NotificationCenter.default.addObserver(self, selector: #selector(SMAlertController.hide), name: UIApplication.didEnterBackgroundNotification, object: nil)
@@ -22,15 +24,18 @@ open class SMAlertController: UIAlertController {
     open func show() {
         
         if let topViewController: UIViewController = UIViewController.topViewController() {
+            
             self.showFrom(vc: topViewController)
         }
     }
     
     @objc open func hide() {
+        
         self.dismiss(animated: true, completion: nil)
     }
     
     open func showFrom(vc aVc: UIViewController) {
+        
         aVc.present(self, animated: true, completion: nil)
     }
     
@@ -57,6 +62,7 @@ open class SMAlertController: UIAlertController {
         if let otherButtonTitles: [String] = aOtherButtonTitles {
             
             var i: Int = 0
+            
             for title: String in otherButtonTitles {
                 
                 let j: Int = i

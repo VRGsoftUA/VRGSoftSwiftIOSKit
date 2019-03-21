@@ -20,10 +20,12 @@ open class SMCollectionCellData: SMListCellData {
     }
     
     open class var cellClass_: UICollectionViewCell.Type {
+        
         return UICollectionViewCell.self
     }
     
     open class var cellNibName_: String? {
+        
         return nil
     }
     
@@ -38,6 +40,7 @@ open class SMCollectionCellData: SMListCellData {
     open var cellSize: CGSize?
     
     open func cellSizeFor(size aSize: CGSize) -> CGSize? {
+        
         return cellSize
     }
 }

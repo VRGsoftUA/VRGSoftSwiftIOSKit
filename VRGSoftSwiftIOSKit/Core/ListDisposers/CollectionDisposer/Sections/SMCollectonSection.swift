@@ -13,6 +13,7 @@ public typealias SMCollectonSectionSetupViewBlock = (UICollectionReusableView) -
 open class SMCollectonSection: SMListSection {
     
     open override var disposer: SMListDisposer? {
+        
         didSet {
             registerHeaderFooterViews()
         }
@@ -58,9 +59,12 @@ open class SMCollectonSection: SMListSection {
     }
     
     open var headerViewIdentifier: String {
+        
         return String(describing: type(of: self)) + "HeaderView"
     }
+    
     open var footerViewIdentifier: String {
+        
         return String(describing: type(of: self)) + "FooterView"
     }
     
@@ -73,6 +77,7 @@ open class SMCollectonSection: SMListSection {
     open func index(byVisible aCellData: SMCellData) -> Int {
         
         if  let index: Int = visibleCellDataSource.index(where: {$0 === aCellData}) {
+            
             return index
         }
 
@@ -82,14 +87,18 @@ open class SMCollectonSection: SMListSection {
     open func registerHeaderFooterViews() {
         
         if let nibName: String = headerViewNibName {
+            
             collectionDisposer?.collectionView?.register(UINib(nibName: nibName, bundle: nil), forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: headerViewIdentifier)
         } else if let headerViewClass: UICollectionReusableView.Type = headerViewClass {
+            
             collectionDisposer?.collectionView?.register(headerViewClass, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: headerViewIdentifier)
         }
         
         if let nibName: String = footerViewNibName {
+            
             collectionDisposer?.collectionView?.register(UINib(nibName: nibName, bundle: nil), forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: footerViewIdentifier)
         } else if let footerViewClass: UICollectionReusableView.Type = headerViewClass {
+            
             collectionDisposer?.collectionView?.register(footerViewClass, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: footerViewIdentifier)
         }
     }

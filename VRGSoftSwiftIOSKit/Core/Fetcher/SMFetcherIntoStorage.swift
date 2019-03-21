@@ -22,6 +22,7 @@ open class SMFetcherIntoStorage: SMFetcherWithRequest {
     
     override open var request: SMRequest? {
         set {
+            
             if _request !== newValue {
                 
                 self.cancelFetching()
@@ -34,6 +35,7 @@ open class SMFetcherIntoStorage: SMFetcherWithRequest {
                     if newValue?.tag == 0 {
                         
                         let success: Bool = aResponse.isSuccess
+                        
                         if success {
                             
                             let models: [AnyObject] = strongSelf.processFetchedModelsAfterGatewayInResponse(aResponse)
@@ -48,18 +50,23 @@ open class SMFetcherIntoStorage: SMFetcherWithRequest {
                                 }
                                 
                                 if strongSelf.request != nil {
+                                    
                                     strongSelf.request?.start()
                                 } else {
+                                    
                                     aResponse.boArray = strongSelf.processFetchedModelsIn(response: aResponse)
                                     
                                     if let fetchCallback: SMDataFetchCallback = strongSelf.fetchCallback {
+                                        
                                         fetchCallback(aResponse)
                                     }
                                 }
                             } else {
+                                
                                 aResponse.boArray = strongSelf.processFetchedModelsIn(response: aResponse)
                                 
                                 if let fetchCallback: SMDataFetchCallback = strongSelf.fetchCallback {
+                                    
                                     fetchCallback(aResponse)
                                 }
                             }
@@ -72,18 +79,23 @@ open class SMFetcherIntoStorage: SMFetcherWithRequest {
                             }
                             
                             if strongSelf.request != nil {
+                                
                                 strongSelf.request?.start()
                             } else {
+                                
                                 aResponse.boArray = strongSelf.processFetchedModelsIn(response: aResponse)
                                 
                                 if let fetchCallback: SMDataFetchCallback = strongSelf.fetchCallback {
+                                    
                                     fetchCallback(aResponse)
                                 }
                             }
                         } else {
+                            
                             aResponse.boArray = strongSelf.processFetchedModelsIn(response: aResponse)
                             
                             if let fetchCallback: SMDataFetchCallback = strongSelf.fetchCallback {
+                                
                                 fetchCallback(aResponse)
                             }
                         }
@@ -92,6 +104,7 @@ open class SMFetcherIntoStorage: SMFetcherWithRequest {
                         aResponse.boArray = strongSelf.processFetchedModelsIn(response: aResponse)
                         
                         if let fetchCallback: SMDataFetchCallback = strongSelf.fetchCallback {
+                            
                             fetchCallback(aResponse)
                         }
                     }
@@ -105,7 +118,9 @@ open class SMFetcherIntoStorage: SMFetcherWithRequest {
     override open func preparedRequestBy(message aMessage: SMFetcherMessage) -> SMRequest? {
         
         if let currentMessage: SMFetcherMessage = currentMessage {
+            
             if  currentMessage === aMessage {
+                
                 return preparedRequest
             }
         }
@@ -117,6 +132,7 @@ open class SMFetcherIntoStorage: SMFetcherWithRequest {
         if !self.isFetchOnlyFromDataBase {
             
             if SMGatewayConfigurator.shared.isInternetReachable() {
+                
                 newRequest = self.gatewayRequestBy(message: aMessage)
                 
                 if newRequest == nil && isFetchFromDataBaseIfGatewayRequestIsNil {
@@ -126,10 +142,12 @@ open class SMFetcherIntoStorage: SMFetcherWithRequest {
                 }
                 
             } else {
+                
                 newRequest = self.dataBaseRequestBy(message: aMessage)
                 newRequest?.tag = 1
             }
         } else {
+            
             newRequest = self.dataBaseRequestBy(message: aMessage)
             newRequest?.tag = 1
         }
@@ -155,6 +173,7 @@ open class SMFetcherIntoStorage: SMFetcherWithRequest {
         fetchCallback = aFetchCallback
         
         if preparedRequest == nil {
+            
             preparedRequest = self.preparedRequestBy(message: aMessage)
         }
         
@@ -165,14 +184,17 @@ open class SMFetcherIntoStorage: SMFetcherWithRequest {
     }
     
     open func processFetchedModelsAfterGatewayInResponse(_ aResponse: SMResponse) -> [AnyObject] {
+        
         return aResponse.boArray
     }
     
     open func canFetchFromDatabaseForFailedResponse(_ aResponse: SMResponse) -> Bool {
+        
         return true
     }
     
     open func canFetchFromDatabaseForSuccessResponse(_ aResponse: SMResponse) -> Bool {
+        
         return true
     }
 }

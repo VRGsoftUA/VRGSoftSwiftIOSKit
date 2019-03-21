@@ -20,16 +20,19 @@ open class SMFetcherWithBlock: SMDataFetcherProtocol {
     
     
     public init(fetchBlock aFetchBlock: @escaping SMDataFetchBlock) {
+        
         self.fetchBlock = aFetchBlock
     }
     
     open func canFetchWith(message aMessage: SMFetcherMessage) -> Bool {
+        
         return true
     }
     
     public func fetchDataBy(message aMessage: SMFetcherMessage, withCallback aFetchCallback: @escaping SMDataFetchCallback) {
         
         self.callbackQueue.async {
+            
             self.fetchBlock(aMessage, aFetchCallback)
         }
     }

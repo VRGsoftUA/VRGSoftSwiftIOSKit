@@ -32,18 +32,22 @@ open class SMCollectionDisposerModeled: SMCollectionDisposer, SMListDisposerSetu
         if let cellDataClass: SMCollectionCellData.Type = aCellDataClass as? SMCollectionCellData.Type {
             
             if let nibName: String = cellDataClass.cellNibName_ {
+                
                 collectionView?.register(UINib(nibName: nibName, bundle: nil), forCellWithReuseIdentifier: cellDataClass.cellIdentifier_)
             } else {
+                
                 collectionView?.register(cellDataClass.cellClass_, forCellWithReuseIdentifier: cellDataClass.cellIdentifier_)
             }
             
             if let aModelClass: AnyClass = aModelClass {
+                
                 registeredClasses[String(describing: aModelClass)] = cellDataClass
             }
         }
     }
 
     open func unregisterCellDataFor(modelClass aModelClass: AnyClass) {
+        
         registeredClasses[String(describing: aModelClass)] = nil
     }
     
@@ -62,6 +66,7 @@ open class SMCollectionDisposerModeled: SMCollectionDisposer, SMListDisposerSetu
                 didCreate(cellData: cellData)
                 aSection.addCellData(cellData)
             } else {
+                
                 assert(false, String(format: "Model doesn't have registered cellData class %@", String(describing: type(of: model))))
             }
         }
@@ -85,7 +90,9 @@ open class SMCollectionDisposerModeled: SMCollectionDisposer, SMListDisposerSetu
         
         modeledDelegate?.listDisposer(self, didCreateCellData: aCellData)
         modeledMulticastDelegate.invokeDelegates { [weak self] delegate in // swiftlint:disable:this explicit_type_interface
+            
             if let strongSelf: SMCollectionDisposerModeled = self {
+                
                 delegate.listDisposer(strongSelf, didCreateCellData: aCellData)
             }
         }
