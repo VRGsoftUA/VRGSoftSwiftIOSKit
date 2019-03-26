@@ -24,21 +24,25 @@ open class SMKeyboardAvoidingTableView: UITableView, SMKeyboardAvoidingProtocol 
     var keyboardAvoider: SMKeyboardAvoider {
         
         if let keyboardAvoider: SMKeyboardAvoider = _keyboardAvoider {
+            
             return keyboardAvoider
         } else {
             let result: SMKeyboardAvoider = SMKeyboardAvoider(scrollView: self)
             _keyboardAvoider = result
+            
             return result
         }
     }
 
     override public init(frame: CGRect, style: UITableView.Style) {
+        
         super.init(frame: frame, style: style)
     
         self.setup()
     }
     
     required public init?(coder aDecoder: NSCoder) {
+        
         super.init(coder: aDecoder)
      
         self.setup()
@@ -47,6 +51,7 @@ open class SMKeyboardAvoidingTableView: UITableView, SMKeyboardAvoidingProtocol 
     open func setup() {
         
         if self.contentSize.equalTo(CGSize.zero) {
+            
             self.contentSize = self.bounds.size
         }
         
@@ -54,6 +59,7 @@ open class SMKeyboardAvoidingTableView: UITableView, SMKeyboardAvoidingProtocol 
     }
     
     override open var frame: CGRect {
+        
         didSet {
             var newContentSize: CGSize = keyboardAvoider.originalContentSize
             newContentSize.width = max(newContentSize.width, self.frame.size.width)
@@ -62,12 +68,14 @@ open class SMKeyboardAvoidingTableView: UITableView, SMKeyboardAvoidingProtocol 
             super.contentSize = newContentSize
             
             if keyboardAvoider.isKeyboardVisible {
+                
                 self.contentInset = keyboardAvoider.contentInsetForKeyboard()
             }
         }
     }
     
     override open var contentSize: CGSize {
+        
         set {
             keyboardAvoider.originalContentSize = newValue
             
@@ -78,6 +86,7 @@ open class SMKeyboardAvoidingTableView: UITableView, SMKeyboardAvoidingProtocol 
             super.contentSize = newContentSize
             
             if keyboardAvoider.isKeyboardVisible {
+                
                 self.contentInset = keyboardAvoider.contentInsetForKeyboard()
             }
         }
@@ -86,12 +95,14 @@ open class SMKeyboardAvoidingTableView: UITableView, SMKeyboardAvoidingProtocol 
     }
     
     override open func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
         super.touchesEnded(touches, with: event)
         
         self.hideKeyBoard()
     }
     
     public var isShowsKeyboardToolbar: Bool {
+        
         set {
             keyboardAvoider.isShowsKeyboardToolbar = newValue
         }
@@ -102,38 +113,47 @@ open class SMKeyboardAvoidingTableView: UITableView, SMKeyboardAvoidingProtocol 
     }
     
     public func adjustOffset() {
+        
         keyboardAvoider.adjustOffset()
     }
     
     public func hideKeyBoard() {
+        
         keyboardAvoider.hideKeyBoard()
     }
     
     public func addObjectForKeyboard(_ aObjectForKeyboard: UIResponder) {
+        
         keyboardAvoider.addObjectForKeyboard(aObjectForKeyboard)
     }
     
     public func removeObjectForKeyboard(_ aObjectForKeyboard: UIResponder) {
+        
         keyboardAvoider.removeObjectForKeyboard(aObjectForKeyboard)
     }
     
     public func addObjectsForKeyboard(_ aObjectsForKeyboard: [UIResponder]) {
+        
         keyboardAvoider.addObjectsForKeyboard(aObjectsForKeyboard)
     }
     
     public func removeObjectsForKeyboard(_ aObjectsForKeyboard: [UIResponder]) {
+        
         keyboardAvoider.removeObjectsForKeyboard(aObjectsForKeyboard)
     }
     
     public func removeAllObjectsForKeyboard() {
+        
         keyboardAvoider.removeAllObjectsForKeyboard()
     }
     
     public func responderShouldReturn(_ aResponder: UIResponder) {
+        
         keyboardAvoider.responderShouldReturn(aResponder)
     }
 
     func sortedResponders(_ aResponders: [UIResponder], byIndexPath aIndexPath: IndexPath) {
+        
         keyboardAvoider.sortedResponders(aResponders, byIndexPath: aIndexPath)
     }
 }

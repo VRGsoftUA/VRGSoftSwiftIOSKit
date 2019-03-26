@@ -38,6 +38,7 @@ open class SMPopupViewController: UIViewController {
         btHidden.isHidden = !popupedView.isHideByTapOutside
         
         if popupedView.isShowOverlayView {
+            
             overlayView.frame = self.view.bounds
             self.view.addSubview(overlayView)
             overlayView.backgroundColor = .gray
@@ -55,6 +56,7 @@ open class SMPopupViewController: UIViewController {
     }
     
     override open func viewDidLoad() {
+        
         super.viewDidLoad()
         
         view.isHidden = true
@@ -76,10 +78,12 @@ open class SMPopupViewController: UIViewController {
     }
     
     func popupDidAppear(animated: Bool) {
+        
         popupedView.popupDidAppear(animated: animated)
     }
     
     func popupWillDisappear(animated: Bool) {
+        
         popupedView.popupWillDisappear(animated: animated)
     }
     
@@ -94,6 +98,7 @@ open class SMPopupViewController: UIViewController {
     // MARK: Rotations
     
     override open var shouldAutorotate: Bool {
+        
         return true
     }
     
@@ -169,10 +174,13 @@ open class SMPopupViewController: UIViewController {
     }
     
     override open var preferredContentSize: CGSize {
+        
         get {
             if popupedView.bounds.size != CGSize.zero {
+                
                 return popupedView.bounds.size
             } else {
+                
                 return SMPopupView.popupViewSize()
             }
         }

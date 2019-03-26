@@ -12,7 +12,7 @@ public protocol UIViewLoading { }
 
 public extension UIViewLoading where Self: UIView {
     
-    public static func loadFromNib(nibNameOrNil: String? = nil) -> Self {
+    static func loadFromNib(nibNameOrNil: String? = nil) -> Self {
         
         let result: Self = Bundle.main.loadNibNamed(String(describing: self), owner: self, options: nil)?.last as! Self // swiftlint:disable:this force_cast
         return result
@@ -25,11 +25,13 @@ extension UIView: UIViewLoading { }
 extension UIView {
     
     @IBInspectable open var cornerRadius: CGFloat {
+        
         set { layer.cornerRadius = newValue }
         get { return layer.cornerRadius }
     }
 
     @IBInspectable open var borderWidth: CGFloat {
+        
         set { layer.borderWidth = newValue }
         get { return layer.borderWidth }
     }
@@ -48,10 +50,14 @@ extension UIView {
         if aAnimate {
             
             self.isHidden = false
+            
             UIView.animate(withDuration: 0.2, animations: {
+                
                 self.alpha = 1
             }, completion: { finished in
+                
                 if finished {
+                    
                     self.alpha = 1
                 }
             })
@@ -68,6 +74,7 @@ extension UIView {
             UIView.animate(withDuration: 0.2, animations: { 
                 self.alpha = 0
             }, completion: { finished in
+                
                 if finished {
                     
                     self.alpha = 0
@@ -75,6 +82,7 @@ extension UIView {
                 }
             })
         } else {
+            
             self.alpha = 0
             self.isHidden = true
         }
@@ -87,7 +95,9 @@ extension UIView {
         while parentResponder != nil {
             
             parentResponder = parentResponder?.next
+            
             if let viewController: UIViewController = parentResponder as? UIViewController {
+                
                 return viewController
             }
         }

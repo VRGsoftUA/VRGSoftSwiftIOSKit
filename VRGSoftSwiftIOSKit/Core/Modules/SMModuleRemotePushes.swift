@@ -16,6 +16,7 @@ open class SMModuleRemotePushes: NSObject {
     open func tryToRegisterAllNotificationSettings() {
         
         if #available(iOS 10.0, *) {
+            
             self.tryToRegisterFor(userNotificationOptions: [UNAuthorizationOptions.alert, UNAuthorizationOptions.badge, UNAuthorizationOptions.sound])
         } else {
             
@@ -23,6 +24,7 @@ open class SMModuleRemotePushes: NSObject {
     }
     
     open func tryToRegisterForUserNotificationDefault() {
+        
         UIApplication.shared.registerForRemoteNotifications()
     }
     
@@ -31,6 +33,7 @@ open class SMModuleRemotePushes: NSObject {
         
         let center: UNUserNotificationCenter = UNUserNotificationCenter.current()
         center.requestAuthorization(options: aUserNotificationOptions) { (_, error) in
+            
             DispatchQueue.main.async {
                 if error == nil {
                     self.tryToRegisterForUserNotificationDefault()
@@ -46,13 +49,16 @@ open class SMModuleRemotePushes: NSObject {
     open func didRegisterForRemoteNotificationsWith(deviceTokenData aDeviceTokenData: Data) {
         
         var token: String = ""
+        
         for i: Int in 0..<aDeviceTokenData.count {
+            
             token += String(format: "%02.2hhx", aDeviceTokenData[i] as CVarArg)
         }
         
         deviceToken = token
         
         if deviceToken != nil {
+            
             registerForPushNotifications()
         }
     }
@@ -60,6 +66,7 @@ open class SMModuleRemotePushes: NSObject {
     open func registerForPushNotifications() {
         
         if deviceToken != nil && canRegisterDeviceToken() {
+            
             registerDeviceTokenRequest()?.start()
         }
     }
@@ -67,23 +74,28 @@ open class SMModuleRemotePushes: NSObject {
     open func unregisterForPushNotifications() {
         
         if deviceToken != nil && canUnregisterDeviceToken() {
+            
             unregisterDeviceTokenRequest()?.start()
         }
     }
     
     open func registerDeviceTokenRequest() -> SMRequest? {
+        
         return nil
     }
     
     open func unregisterDeviceTokenRequest() -> SMRequest? {
+        
         return nil
     }
     
     open func canRegisterDeviceToken() -> Bool {
+        
         return true
     }
     
     open func canUnregisterDeviceToken() -> Bool {
+        
         return true
     }
 }

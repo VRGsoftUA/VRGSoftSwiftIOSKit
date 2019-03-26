@@ -24,6 +24,7 @@ open class SMCompoundRequest: SMRequest {
     public init(withRequests aRequests: [SMRequest]) {
         
         if aRequests.count == 0 {
+            
             assert(false)
         }
         
@@ -57,8 +58,10 @@ open class SMCompoundRequest: SMRequest {
         finished = false
         
         if executingRequestingParallel {
+            
             startParallel()
         } else {
+            
             startSequence()
         }
     }
@@ -103,19 +106,23 @@ open class SMCompoundRequest: SMRequest {
                 if aResponse.isSuccess {
                     
                         if index < strongSelf.requests.count - 1 {
+                            
                             strongSelf.startRequest(withIndex: index + 1)
                         } else {
                             strongSelf.finishedAllRequestsWithResponces(aResponses: responses)
                         }
                 } else {
+                    
                     if strongSelf.continueRequestssIfAtLeastOneFail {
                         
                         if index < strongSelf.requests.count - 1 {
+                            
                             strongSelf.startRequest(withIndex: index + 1)
                         } else {
                             strongSelf.finishedAllRequestsWithResponces(aResponses: responses)
                         }
                     } else {
+                        
                         strongSelf.finishedAllRequestsWithResponces(aResponses: responses)
                     }
                 }
@@ -130,8 +137,10 @@ open class SMCompoundRequest: SMRequest {
         result.isSuccess = true
         
         if putResponseToOneResult {
+            
             result.boArray = aResponses
         } else {
+            
             for response: SMResponse in aResponses {
                 
                 if !response.isSuccess && result.isSuccess {
@@ -172,5 +181,4 @@ open class SMCompoundRequest: SMRequest {
         currentExecutingIndex = aIndex
         requests[currentExecutingIndex].start()
     }
-    
 }

@@ -20,8 +20,10 @@ extension UIImageView {
     func set(image aImage: UIImage, animate aAnimate: Bool) {
         
         if aAnimate {
+            
             self.set(image: aImage, duration: 0.25)
         } else {
+            
             self.image = aImage
         }
     }

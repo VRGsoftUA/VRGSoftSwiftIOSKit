@@ -23,6 +23,7 @@ open class SMGatewayConfigurator {
     }
     
     open func register(gateway aGateway: SMGateway) {
+        
         gateways.append(aGateway)
     }
     
@@ -33,10 +34,12 @@ open class SMGatewayConfigurator {
             networkReachabilityManager = NetworkReachabilityManager(host: host)
             networkReachabilityManager?.startListening()
         } else {
+            
             assert(false)
         }
         
         for g: SMGateway in gateways {
+            
             g.configureWithBase(url: aUrl)
         }
     }
@@ -44,6 +47,7 @@ open class SMGatewayConfigurator {
     open func setHTTPHeader(value aValue: String?, key aKey: String) {
         
         for g: SMGateway in gateways {
+            
             g.defaultHeaders[aKey] = aValue
         }
     }

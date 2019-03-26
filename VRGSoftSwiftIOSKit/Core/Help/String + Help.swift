@@ -12,6 +12,7 @@ import UIKit
 extension String {
     
     public func localize() -> String {
+        
         return NSLocalizedString(self, comment: "")
     }
     

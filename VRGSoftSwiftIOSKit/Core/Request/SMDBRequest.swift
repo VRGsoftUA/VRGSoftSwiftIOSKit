@@ -18,6 +18,7 @@ open class SMDBRequest: SMRequest {
     public let fetchRequest: NSFetchRequest<NSFetchRequestResult>
     
     public init(storage aStorage: SMDBStorage, fetchRequest aFetchRequest: NSFetchRequest<NSFetchRequestResult>) {
+        
         storage = aStorage
         fetchRequest = aFetchRequest
     }
@@ -26,6 +27,7 @@ open class SMDBRequest: SMRequest {
     // MARK: Request execute
     
     override open func canExecute() -> Bool {
+        
         return true
     }
     
@@ -35,6 +37,7 @@ open class SMDBRequest: SMRequest {
         self.executing = true
         
         storage.defaultContext(block: { [weak self] aContext in // swiftlint:disable:this explicit_type_interface
+            
             if let strongSelf: SMDBRequest = self {
                 
                 if strongSelf.isCancelled() {
@@ -45,8 +48,10 @@ open class SMDBRequest: SMRequest {
                     response.isSuccess = true
                     
                     if strongSelf.executeAllResponseBlocksSync {
+                        
                         strongSelf.executeSynchronouslyAllResponseBlocks(response: response)
                     } else {
+                        
                         strongSelf.executeAllResponseBlocks(response: response)
                     }
                 } else {
@@ -55,8 +60,10 @@ open class SMDBRequest: SMRequest {
                     strongSelf.executing = false
                     
                     if strongSelf.executeAllResponseBlocksSync {
+                        
                         strongSelf.executeSynchronouslyAllResponseBlocks(response: response)
                     } else {
+                        
                         strongSelf.executeAllResponseBlocks(response: response)
                     }
                 }
@@ -92,14 +99,17 @@ open class SMDBRequest: SMRequest {
     }
     
     override open func cancel() {
+        
         cancelled = true
     }
     
     override open func isExecuting() -> Bool {
+        
         return executing
     }
     
     override open func isCancelled() -> Bool {
+        
         return cancelled
     }
 }

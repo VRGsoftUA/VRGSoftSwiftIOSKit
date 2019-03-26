@@ -22,26 +22,31 @@ open class SMPopupView: UIView {
     open var isVisible: Bool = false
     
     deinit {
+        
         NotificationCenter.default.removeObserver(self)
     }
 
     required public init?(coder aDecoder: NSCoder) {
+        
         super.init(coder: aDecoder)
         
         self.setup()
     }
     
     override public init(frame: CGRect) {
+        
         super.init(frame: frame)
         
         self.setup()
     }
     
     public class func popupViewSize() -> CGSize {
+        
         return CGSize(width: 320, height: 216)
     }
     
     open func setup() {
+        
         NotificationCenter.default.addObserver(self, selector: #selector(notificationNeedHide(aNotification:)), name: NSNotification.Name(rawValue: SMPopupView.kSMPopupViewNeedHide), object: nil)
     }
     
@@ -49,6 +54,7 @@ open class SMPopupView: UIView {
     // MARK: Notification
     
     @objc open func notificationNeedHide(aNotification: Notification) {
+        
         self.hide(animated: true)
     }
     
@@ -63,6 +69,7 @@ open class SMPopupView: UIView {
             popupController.modalPresentationStyle = .popover
             showStrategy = popupController
         } else {
+            
             let popupController: SMPopupViewController = SMPopupViewController()
             popupController.popupedView = self
             showStrategy = popupController
@@ -77,10 +84,12 @@ open class SMPopupView: UIView {
     }
     
     open func popupDidAppear(animated: Bool) {
+        
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: SMPopupView.kSMPopupViewDidShow), object: self)
     }
     
     open func popupWillDisappear(animated: Bool) {
+        
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: SMPopupView.kSMPopupViewWillHide), object: self)
     }
     
@@ -95,8 +104,10 @@ open class SMPopupView: UIView {
     open func hide(animated: Bool) {
         
         if SMHelper.isIPad {
+            
             showStrategy?.dismiss(animated: animated, completion: nil)
         } else {
+            
             (showStrategy as? SMPopupViewController)?.hide(animated: animated)
         }
     }
@@ -110,6 +121,7 @@ open class SMPopupView: UIView {
             self.frame = newFrame
             (showStrategy as? SMPopupViewController)?.show(animated: animated, inView: aView)
         } else {
+            
             assert(false, String(format: "%@: use %@", NSStringFromClass(type(of: self)), NSStringFromSelector(#selector(SMPopupView.showFrom(rect:inView:permittedArrowDirections:)))))
         }
     }
@@ -129,6 +141,7 @@ open class SMPopupView: UIView {
                 aView.sm_parentViewController?.present(vc, animated: true, completion: nil)
             }
         } else {
+            
             assert(false, String(format: "%@: use %@", NSStringFromClass(type(of: self)), NSStringFromSelector(#selector(SMPopupView.show(animated:inView:)))))
         }
     }
@@ -139,24 +152,28 @@ private class SMDefaultPopupViewController: UIViewController {
     var popupedView: SMPopupView?
     
     override open func viewWillAppear(_ animated: Bool) {
+        
         super.viewWillAppear(animated)
         
         popupedView?.popupWillAppear(animated: animated)
     }
     
     override open func viewDidAppear(_ animated: Bool) {
+        
         super.viewDidAppear(animated)
         
         popupedView?.popupDidAppear(animated: animated)
     }
     
     override open func viewWillDisappear(_ animated: Bool) {
+        
         super.viewWillDisappear(animated)
         
         popupedView?.popupWillDisappear(animated: animated)
     }
     
     override open func viewDidDisappear(_ animated: Bool) {
+        
         super.viewDidDisappear(animated)
         
         popupedView?.popupDidDisappear(animated: animated)

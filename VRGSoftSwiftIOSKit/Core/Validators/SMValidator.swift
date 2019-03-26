@@ -32,6 +32,7 @@ open class SMValidator {
     open weak var validatableObject: SMValidationProtocol?
     
     open func validate() -> Bool {
+        
         return false
     }
 }
@@ -43,6 +44,7 @@ open class SMCompoundValidator: SMValidator {
     open var successIfAtLeastOne: Bool = false
     
     public init(validators aValidators: [SMValidator]) {
+        
         validators = aValidators
     }
     
@@ -59,8 +61,10 @@ open class SMCompoundValidator: SMValidator {
             let valid: Bool = validator.validate()
             
             if valid && self.successIfAtLeastOne {
+                
                 return true
             } else if !valid && !self.successIfAtLeastOne {
+                
                 return false
             }
         }
@@ -69,10 +73,13 @@ open class SMCompoundValidator: SMValidator {
     }
     
     override open var titleMessage: String? {
+        
         get {
             if super.titleMessage != nil {
+                
                 return super.titleMessage
             } else {
+                
                 return self.firstNotValideValidator?.titleMessage
             }
         }
@@ -83,10 +90,13 @@ open class SMCompoundValidator: SMValidator {
     }
 
     override open var errorMessage: String? {
+        
         get {
             if super.errorMessage != nil {
+                
                 return super.errorMessage
             } else {
+                
                 return self.firstNotValideValidator?.errorMessage
             }
         }
@@ -107,6 +117,7 @@ open class SMCompoundValidator: SMValidator {
             let valid: Bool = validator.validate()
             
             if !valid {
+                
                 result = validator
                 break
             }
@@ -119,6 +130,7 @@ open class SMCompoundValidator: SMValidator {
 open class SMValidatorAny: SMValidator {
     
     override open func validate() -> Bool {
+        
         return true
     }
 }
@@ -150,6 +162,7 @@ open class SMValidatorCountNumberInTextWithRange: SMValidator {
     open var range: NSRange
     
     public init(range aRange: NSRange) {
+        
         range = aRange
     }
     
@@ -170,6 +183,7 @@ open class SMValidatorStringWithRange: SMValidator {
     open var range: NSRange
     
     public init(range aRange: NSRange) {
+        
         range = aRange
     }
 
@@ -229,6 +243,7 @@ open class SMValidatorEqual: SMValidator {
     open var isIgnoreCase: Bool = false
     
     public init(testedValidator aTestedValidator: SMValidator) {
+        
         testedValidator = aTestedValidator
     }
 
@@ -244,9 +259,11 @@ open class SMValidatorEqual: SMValidator {
                 
                 return result == ComparisonResult.orderedSame
             } else {
+                
                 return self.validatableObject?.validatableText == testedValidator.validatableObject?.validatableText
             }
         } else {
+            
             return false
         }
     }
@@ -258,6 +275,7 @@ open class SMValidatorRegExp: SMValidator {
     public let regularExpression: NSRegularExpression
 
     public init(regExp aRegExp: NSRegularExpression) {
+        
         regularExpression = aRegExp
     }
     
@@ -268,6 +286,7 @@ open class SMValidatorRegExp: SMValidator {
         var count: Int = 0
 
         if let validatableText: String = validatableObject?.validatableText {
+            
             count = regularExpression.numberOfMatches(in: validatableText, options: NSRegularExpression.MatchingOptions(rawValue: 0), range: NSRange(location: 0, length: validatableText.count))
         }
         
@@ -308,6 +327,7 @@ open class SMValidatorLatinicOnly: SMValidator {
         self.validatableObject?.validatableText = self.validatableObject?.validatableText?.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines)
         
         if let validetableText: String = validatableObject?.validatableText {
+            
             return validetableText.range(of: "\\P{Latin}", options: .regularExpression) == nil
         }
         
@@ -330,6 +350,7 @@ open class SMValidatorLenghtMoreOrEqualThan: SMValidator {
         self.validatableObject?.validatableText = self.validatableObject?.validatableText?.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines)
         
         if let validetableText: String = validatableObject?.validatableText {
+            
             return validetableText.count >= number
         }
         

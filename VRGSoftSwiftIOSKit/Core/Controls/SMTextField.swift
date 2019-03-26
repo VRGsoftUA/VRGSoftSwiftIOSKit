@@ -58,12 +58,14 @@ open class SMTextField: UITextField, SMKeyboardAvoiderProtocol, SMValidationProt
     open var delegateHolder: SMTextFieldDelegateHolder?
     
     override public init(frame: CGRect) {
+        
         super.init(frame: frame)
         
         setup()
     }
     
     required public init?(coder aDecoder: NSCoder) {
+        
         super.init(coder: aDecoder)
         
         setup()
@@ -88,16 +90,19 @@ open class SMTextField: UITextField, SMKeyboardAvoiderProtocol, SMValidationProt
     }
     
     open var validator: SMValidator? {
+        
         didSet {
             validator?.validatableObject = self
         }
     }
     
     open func validate() -> Bool {
+        
         return validator?.validate() ?? true
     }
     
     open var placeholderColor: UIColor? {
+        
         didSet {
             if let placeholder: String = placeholder, let placeholderColor: UIColor = placeholderColor {
                 
@@ -108,8 +113,10 @@ open class SMTextField: UITextField, SMKeyboardAvoiderProtocol, SMValidationProt
     }
     
     override open var placeholder: String? {
+        
         didSet {
             if let placeholderColor: UIColor = self.placeholderColor {
+                
                 self.placeholderColor = placeholderColor
             }
         }
@@ -119,6 +126,7 @@ open class SMTextField: UITextField, SMKeyboardAvoiderProtocol, SMValidationProt
     // MARK: - SMFormatterProtocol
 
     public var formatter: SMFormatter? {
+        
         didSet {
             formatter?.formattableObject = self
         }
@@ -147,6 +155,7 @@ open class SMTextFieldDelegateHolder: NSObject, UITextFieldDelegate {
     weak var holdedTextField: SMTextField?
     
     required public init(textField aTextField: SMTextField) {
+        
         holdedTextField = aTextField
     }
     
@@ -154,6 +163,7 @@ open class SMTextFieldDelegateHolder: NSObject, UITextFieldDelegate {
     // MARK: - UITextFieldDelegate
     
     public func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        
         return holdedTextField?.smdelegate?.textFieldShouldBeginEditing?(textField) ?? true
     }
     
@@ -165,15 +175,18 @@ open class SMTextFieldDelegateHolder: NSObject, UITextFieldDelegate {
     }
     
     public func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
+        
         return holdedTextField?.smdelegate?.textFieldShouldEndEditing?(textField) ?? true
     }
     
     public func textFieldDidEndEditing(_ textField: UITextField) {
+        
         holdedTextField?.smdelegate?.textFieldDidEndEditing?(textField)
     }
     
     @available(iOS 10.0, *)
     public func textFieldDidEndEditing(_ textField: UITextField, reason: UITextField.DidEndEditingReason) {
+        
         holdedTextField?.smdelegate?.textFieldDidEndEditing?(textField, reason: reason)
     }
     
@@ -182,14 +195,17 @@ open class SMTextFieldDelegateHolder: NSObject, UITextFieldDelegate {
         var result: Bool = true
         
         if let inputField: SMTextField = textField as? SMTextField {
+            
             result = inputField.filter?.inputField(inputField, shouldChangeTextIn: range, replacementText: string) ?? result
         }
                 
         if result {
+            
             result = holdedTextField?.formatter?.formatWithNewCharactersIn(range: range, replacementString: string) ?? result
         }
 
         if result {
+            
             result = holdedTextField?.smdelegate?.textField?(textField, shouldChangeCharactersIn: range, replacementString: string) ?? result
         }
         
@@ -199,6 +215,7 @@ open class SMTextFieldDelegateHolder: NSObject, UITextFieldDelegate {
     public func textFieldShouldClear(_ textField: UITextField) -> Bool {
         
         let result: Bool = holdedTextField?.smdelegate?.textFieldShouldClear?(textField) ?? true
+        
         return result
     }
     
@@ -207,6 +224,7 @@ open class SMTextFieldDelegateHolder: NSObject, UITextFieldDelegate {
         let result: Bool = holdedTextField?.smdelegate?.textFieldShouldReturn?(textField) ?? true
         
         if result {
+            
             holdedTextField?.keyboardAvoiding?.responderShouldReturn(textField)
         }
         

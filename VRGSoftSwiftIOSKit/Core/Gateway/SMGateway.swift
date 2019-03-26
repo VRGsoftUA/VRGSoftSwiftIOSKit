@@ -23,10 +23,12 @@ open class SMGateway {
     }
     
     open func isInternetReachable() -> Bool {
+        
         return SMGatewayConfigurator.shared.isInternetReachable()
     }
     
     open func configureWithBase(url aUrl: URL) {
+        
         baseUrl = aUrl
     }
     
@@ -55,6 +57,7 @@ open class SMGateway {
     // MARK: Request Fabric
     
     open func getRequestClass() -> SMGatewayRequest.Type {
+        
         return SMGatewayRequest.self
     }
     
@@ -65,6 +68,7 @@ open class SMGateway {
         result.path = aPath
         
         if let parameters: [String: AnyObject] = aParameters {
+            
             result.parameters = parameters
         }
         
@@ -82,6 +86,7 @@ open class SMGateway {
         result.path = aPath
         
         if let parameters: [String: AnyObject] = aParameters {
+            
             result.parameters = parameters
         }
         

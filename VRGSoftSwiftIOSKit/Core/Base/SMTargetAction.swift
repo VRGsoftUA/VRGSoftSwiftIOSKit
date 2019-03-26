@@ -15,10 +15,12 @@ open class SMBlockAction <SenderType> {
     open var block: SMBlockActionBlock
     
     public init(block aBlock: @escaping SMBlockActionBlock) {
+        
         self.block = aBlock
     }
     
     open func performBlockFrom(sender aSender: SenderType) {
+        
         self.block(aSender)
     }
 }

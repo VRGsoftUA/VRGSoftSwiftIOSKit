@@ -20,6 +20,7 @@ open class SMPopupPicker: SMPopupView {
     // Create, configure and return popupedView
     
     override open func setup() {
+        
         super.setup()
         
         self.frame = CGRect(origin: CGPoint.zero, size: SMPopupView.popupViewSize())
@@ -28,6 +29,7 @@ open class SMPopupPicker: SMPopupView {
         picker = self.createPicker()
         
         if let picker: UIView = picker {
+            
             self.addSubview(picker)
         }
         
@@ -61,6 +63,7 @@ open class SMPopupPicker: SMPopupView {
             if _toolbar == newValue { return }
             
             _toolbar = newValue
+            
             if let toolbar: SMToolbar = _toolbar {
                 
                 addSubview(toolbar)

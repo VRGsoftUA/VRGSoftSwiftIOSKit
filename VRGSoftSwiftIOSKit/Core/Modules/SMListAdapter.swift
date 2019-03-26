@@ -21,6 +21,7 @@ public protocol SMListAdapterDelegate: class {
 
 
 public protocol SMListAdapterMoreDelegate: class {
+    
     func needLoadMore(listAdapter aListAdapter: SMListAdapter)
 }
 
@@ -36,6 +37,7 @@ open class SMListAdapter: Any {
     open weak var delegate: SMListAdapterDelegate?
     
     public init(listDisposer aListDisposer: SMListDisposer) {
+        
         listDisposer = aListDisposer
     }
 
@@ -53,12 +55,13 @@ open class SMListAdapter: Any {
                 listDisposer.addSection(section)
             }
         } else {
+            
             delegate?.prepareSectionsFor(listAdapter: self)
-
         }
     }
 
     open func defaultSection() -> SMListSection? {
+        
         return nil
     }
     
@@ -69,10 +72,12 @@ open class SMListAdapter: Any {
             var moreCellDatas: [SMListCellData] = []
             
             for cd: SMListCellData in section.cellDataSource where cd is SMPagingMoreCellDataProtocol {
+                
                 moreCellDatas.append(cd)
             }
             
             for cd: SMListCellData in moreCellDatas {
+                
                 section.removeCellData(cd)
             }
         }
@@ -88,10 +93,12 @@ open class SMListAdapter: Any {
             
             section = lastSection
         } else {
+            
             section = sectionForModels(aModels, indexOfSection: aSectionIndex)
         }
         
         guard let sectionForModels: SMListSection = section else {
+            
             assert(false, "SMListAdapter: section for listDisposer is nil!")
             return
         }
@@ -99,6 +106,7 @@ open class SMListAdapter: Any {
         setupModels(aModels, forSection: sectionForModels)
         
         if aNeedLoadMore?() == true {
+            
             addMoreCellData(section: sectionForModels)
         }
     }
@@ -129,12 +137,15 @@ open class SMListAdapter: Any {
                 
                 listDisposerModeled?.register(cellDataClass: moreCellDataType, forModelClass: nil)
                 moreCellData.needLoadMore = SMBlockAction(block: { [weak self] _ in // swiftlint:disable:this explicit_type_interface
+                    
                     if let strongSelf: SMListAdapter = self {
+                        
                         strongSelf.moreDelegate?.needLoadMore(listAdapter: strongSelf)
                     }
                 })
                 
                 if let moreCellData: SMListCellData = moreCellData as? SMListCellData {
+                    
                     section.addCellData(moreCellData)
                 }
             }
@@ -142,6 +153,7 @@ open class SMListAdapter: Any {
     }
 
     open func setupModels(_ aModels: [AnyObject], forSection aSection: SMListSection) {
+        
         listDisposerModeled?.setupModels(aModels, forSection: aSection)
     }
 
@@ -149,10 +161,12 @@ open class SMListAdapter: Any {
     // MARK: - Load More
     
     open func didBeginDataLoading() {
+        
         moreCell?.didBeginDataLoading()
     }
     
     open func didEndDataLoading() {
+        
         moreCell?.didEndDataLoading()
     }
 }

@@ -13,14 +13,17 @@ open class SMActivityAdapter {
     public init() { }
     
     open func configureWith(view aView: UIView) {
+        
         assert(false)
     }
     
     open func show() {
+        
         assert(false)
     }
     
     open func hide() {
+        
         assert(false)
     }
 }

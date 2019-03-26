@@ -21,6 +21,7 @@ open class SMNativeActivityAdapter: SMActivityAdapter {
     }()
     
     public var backgroundViewColor: UIColor = UIColor.black.withAlphaComponent(0.03) {
+        
         didSet {
             backgroundView.backgroundColor = backgroundViewColor
         }
@@ -34,6 +35,7 @@ open class SMNativeActivityAdapter: SMActivityAdapter {
     }
     
     public func createBackgroundView() -> UIView {
+        
         return UIView()
     }
     

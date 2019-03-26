@@ -13,17 +13,20 @@ extension UIViewController {
     open class func topViewController(controller: UIViewController? = UIApplication.shared.keyWindow?.rootViewController) -> UIViewController? {
         
         if let navigationController: UINavigationController = controller as? UINavigationController {
+            
             return topViewController(controller: navigationController.visibleViewController)
         }
         
         if let tabController: UITabBarController = controller as? UITabBarController {
             
             if let selected: UIViewController = tabController.selectedViewController {
+                
                 return topViewController(controller: selected)
             }
         }
         
         if let presented: UIViewController = controller?.presentedViewController {
+            
             return topViewController(controller: presented)
         }
         
@@ -34,6 +37,7 @@ extension UIViewController {
     open func sm_showAlertController(title aTitle: String?, message aMessage: String?, cancelButtonTitle aCancelButtonTitle: String?) -> SMAlertController? {
         
         if aTitle == nil && aMessage == nil {
+            
             return nil
         }
         

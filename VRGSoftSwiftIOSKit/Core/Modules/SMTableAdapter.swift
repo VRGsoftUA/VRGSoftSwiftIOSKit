@@ -10,15 +10,18 @@ import UIKit
 
 
 open class SMTableAdapter: SMListAdapter, SMTableDisposerMulticastDelegate {
+    
     public var tableDisposer: SMTableDisposerModeled? { return listDisposer as? SMTableDisposerModeled }
 
     public override init(listDisposer aListDisposer: SMListDisposer) {
+        
         super.init(listDisposer: aListDisposer)
         
         tableDisposer?.multicastDelegate.addDelegate(self)
     }
     
     override open func reloadData() {
+        
         listDisposer.reloadData()
     }
     

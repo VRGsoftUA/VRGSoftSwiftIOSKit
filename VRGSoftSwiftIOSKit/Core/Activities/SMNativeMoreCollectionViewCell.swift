@@ -13,12 +13,14 @@ open class SMNativeMoreCollectionViewCellData: SMCollectionCellData, SMPagingMor
     open var needLoadMore: SMBlockAction<Any>?
     
     public convenience init() {
+        
         self.init(model: nil)
         
         self.cellSize = CGSize(width: 45.0, height: 45.0)
     }
     
     override open class var cellClass_: UICollectionViewCell.Type {
+        
         return SMNativeMoreCollectionViewCell.self
     }
 }
@@ -28,6 +30,7 @@ open class SMNativeMoreCollectionViewCell: SMCollectionCell, SMPagingMoreCellPro
     public let activity: UIActivityIndicatorView = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.gray)
         
     override open func setup() {
+        
         super.setup()
         
         activity.hidesWhenStopped = true
@@ -38,6 +41,7 @@ open class SMNativeMoreCollectionViewCell: SMCollectionCell, SMPagingMoreCellPro
     }
     
     override open func prepareForReuse() {
+        
         super.prepareForReuse()
         
         self.showActivityIndicator(show: false)
@@ -46,8 +50,10 @@ open class SMNativeMoreCollectionViewCell: SMCollectionCell, SMPagingMoreCellPro
     open func showActivityIndicator(show aIsShow: Bool) {
         
         if aIsShow {
+            
             activity.startAnimating()
         } else {
+            
             activity.stopAnimating()
         }
     }
@@ -56,10 +62,12 @@ open class SMNativeMoreCollectionViewCell: SMCollectionCell, SMPagingMoreCellPro
     // MARK: SMPagingMoreCellProtocol
     
     public func didBeginDataLoading() {
+        
         self.showActivityIndicator(show: true)
     }
     
     public func didEndDataLoading() {
+        
         self.showActivityIndicator(show: false)
     }
 }

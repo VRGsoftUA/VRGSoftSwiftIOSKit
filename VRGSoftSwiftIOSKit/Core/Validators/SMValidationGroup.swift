@@ -24,14 +24,17 @@ open class SMValidationGroup {
     }
     
     open func add(validator aValidator: SMValidator) {
+        
         validators.append(aValidator)
     }
 
     open func add(validators aValidators: [SMValidator]) {
+        
         validators.append(contentsOf: aValidators)
     }
     
     open func removeAllValidators() {
+        
         validators.removeAll()
     }
     
@@ -72,8 +75,10 @@ open class SMValidationGroup {
             if let field: SMValidationGroupProtocol = v.validatableObject as? SMValidationGroupProtocol {
                 
                 if v.validate() {
+                    
                     field.applyValideState(group: self)
                 } else {
+                    
                     field.applyInvalideState(group: self)
                 }
             }

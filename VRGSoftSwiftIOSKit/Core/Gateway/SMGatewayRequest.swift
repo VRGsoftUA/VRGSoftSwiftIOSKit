@@ -47,10 +47,12 @@ open class SMGatewayRequest: SMRequest {
         var result: [String: Any] = [:]
         
         for (key, value): (String, AnyObject) in (gateway.defaultParameters) {
+            
             result.updateValue(value, forKey: key)
         }
         
         for (key, value): (String, AnyObject) in (parameters) {
+            
             result.updateValue(value, forKey: key)
         }
         
@@ -62,10 +64,12 @@ open class SMGatewayRequest: SMRequest {
         var result: [String: String] = [:]
         
         for (key, value): (String, String) in (gateway.defaultHeaders) {
+            
             result.updateValue(value, forKey: key)
         }
         
         for (key, value): (String, String) in (headers) {
+            
             result.updateValue(value, forKey: key)
         }
         
@@ -77,6 +81,7 @@ open class SMGatewayRequest: SMRequest {
         var result: URL? = gateway.baseUrl
         
         if let path: String = path {
+            
             result = result?.appendingPathComponent(path)
         }
         
@@ -91,28 +96,34 @@ open class SMGatewayRequest: SMRequest {
     }
     
     override open func start() {
+        
         super.start()
         
         gateway.start(request: self)
     }
     
     override open func cancel() {
+        
         dataRequest?.cancel()
     }
     
     override open func canExecute() -> Bool {
+        
         return gateway.isInternetReachable()
     }
     
     override open func isCancelled() -> Bool {
+        
         return dataRequest?.task?.state == URLSessionTask.State.completed
     }
     
     override open func isExecuting() -> Bool {
+        
         return dataRequest?.task?.state == URLSessionTask.State.running
     }
     
     override open func isFinished() -> Bool {
+        
         return dataRequest?.task?.state == URLSessionTask.State.completed
     }
     
@@ -123,6 +134,7 @@ open class SMGatewayRequest: SMRequest {
         var fullPath: URL = baseUrl
         
         if let path: String = path {
+            
             fullPath = fullPath.appendingPathComponent(path)
         }
                 
@@ -162,9 +174,11 @@ open class SMGatewayRequest: SMRequest {
                     }
                     
                     if let successParserBlock: SMGatewayRequestSuccessParserBlock = self?.successParserBlock {
+                        
                         successParserBlock(dataRequest, responseObject, callBack)
                     } else {
                         if let response: SMResponse = self?.successBlock?(dataRequest, responseObject) {
+                            
                             callBack(response)
                         }
                     }
@@ -186,8 +200,10 @@ open class SMGatewayRequest: SMRequest {
             let response: SMResponse = successBlock(dataRequest, aResponseObject)
             
             if executeAllResponseBlocksSync {
+                
                 executeSynchronouslyAllResponseBlocks(response: response)
             } else {
+                
                 executeAllResponseBlocks(response: response)
             }
         }
@@ -201,8 +217,10 @@ open class SMGatewayRequest: SMRequest {
             let response: SMResponse = failureBlock(dataRequest, aResponseObject)
             
             if executeAllResponseBlocksSync {
+                
                 executeSynchronouslyAllResponseBlocks(response: response)
             } else {
+                
                 executeAllResponseBlocks(response: response)
             }
         }

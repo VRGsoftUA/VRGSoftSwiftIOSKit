@@ -22,6 +22,7 @@ open class SMGatewayRequestMultipart: SMGatewayRequest {
     }
     
     public required init(gateway aGateway: SMGateway, type aType: HTTPMethod) {
+        
         fatalError("init(gateway:type:) has not been implemented")
     }
     
@@ -32,26 +33,31 @@ open class SMGatewayRequestMultipart: SMGatewayRequest {
         var fullPath: URL = baseUrl
         
         if let path: String = path {
+            
             fullPath = fullPath.appendingPathComponent(path)
         }
         
         var allParams: [String: Any] = [:]
         
         for (key, value): (String, AnyObject) in (gateway.defaultParameters) {
+            
             allParams.updateValue(value, forKey: key)
         }
         
         for (key, value): (String, AnyObject) in (parameters) {
+            
             allParams.updateValue(value, forKey: key)
         }
         
         var allHeaders: [String: String] = [:]
         
         for (key, value): (String, String) in (gateway.defaultHeaders) {
+            
             allHeaders.updateValue(value, forKey: key)
         }
         
         for (key, value): (String, String) in (headers) {
+            
             allHeaders.updateValue(value, forKey: key)
         }
         

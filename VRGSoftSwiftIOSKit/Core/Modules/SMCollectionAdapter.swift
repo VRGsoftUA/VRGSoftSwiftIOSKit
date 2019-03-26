@@ -13,12 +13,14 @@ open class SMCollectionAdapter: SMListAdapter, SMCollectionDisposerMulticastDele
     public var collectionDisposer: SMCollectionDisposerModeled? { return listDisposer as? SMCollectionDisposerModeled }
     
     public override init(listDisposer aListDisposer: SMListDisposer) {
+        
         super.init(listDisposer: aListDisposer)
         
         collectionDisposer?.multicastDelegate.addDelegate(self)
     }
     
     override open func reloadData() {
+        
         listDisposer.reloadData()
     }
     

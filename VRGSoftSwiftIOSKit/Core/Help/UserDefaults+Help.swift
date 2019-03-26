@@ -11,13 +11,13 @@ import Foundation
 //aCoding have to inherit from NSObject
 public extension UserDefaults {
     
-    public func setCoding(_ aCoding: NSCoding, forKey aKey: String) {
+    func setCoding(_ aCoding: NSCoding, forKey aKey: String) {
         
         let data: Data = NSKeyedArchiver.archivedData(withRootObject: aCoding)
         self.set(data, forKey: aKey)
     }
     
-    public func coding<T: NSCoding>(forKey aKey: String) -> T? {
+    func coding<T: NSCoding>(forKey aKey: String) -> T? {
         
         var result: T?
         

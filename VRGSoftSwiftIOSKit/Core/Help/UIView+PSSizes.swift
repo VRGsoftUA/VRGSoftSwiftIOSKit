@@ -11,6 +11,7 @@ import UIKit
 extension UIView {
     
     open var left: CGFloat {
+        
         get {
             return self.frame.origin.x
         }
@@ -22,6 +23,7 @@ extension UIView {
     }
     
     open var top: CGFloat {
+        
         get {
             return self.frame.origin.y
         }
@@ -33,6 +35,7 @@ extension UIView {
     }
 
     open var right: CGFloat {
+        
         get {
             return self.frame.origin.x + self.frame.size.width
         }
@@ -44,6 +47,7 @@ extension UIView {
     }
     
     open var bottom: CGFloat {
+        
         get {
             return self.frame.origin.y + self.frame.size.height
         }
@@ -55,6 +59,7 @@ extension UIView {
     }
     
     open var width: CGFloat {
+        
         get {
             return self.frame.size.width
         }
@@ -66,6 +71,7 @@ extension UIView {
     }
 
     open var height: CGFloat {
+        
         get {
             return self.frame.size.height
         }
@@ -77,6 +83,7 @@ extension UIView {
     }
 
     open var origin: CGPoint {
+        
         get {
             return self.frame.origin
         }
@@ -88,6 +95,7 @@ extension UIView {
     }
 
     open var size: CGSize {
+        
         get {
             return self.frame.size
         }
@@ -99,15 +107,19 @@ extension UIView {
     }
     
     open var rightMargin: CGFloat {
+        
         get {
             if let sWidth: CGFloat = superview?.width {
+                
                 return sWidth - frame.size.width - frame.origin.x
             } else {
+                
                 return 0
             }
             
         }
         set(rightMargin) {
+            
             if let sWidth: CGFloat = superview?.frame.size.width {
                 
                 var frame: CGRect = self.frame
@@ -118,6 +130,7 @@ extension UIView {
     }
     
     open var bottomMargin: CGFloat {
+        
         get {
             if let sHeight: CGFloat = superview?.height {
                 return sHeight - frame.size.height - frame.origin.y
@@ -126,6 +139,7 @@ extension UIView {
             }
         }
         set(bottomMargin) {
+            
             if let sHeight: CGFloat = superview?.frame.size.height {
                 
                 var frame: CGRect = self.frame
@@ -138,6 +152,7 @@ extension UIView {
     open func sm_updateConstrainIfExist(height aHeight: CGFloat) {
         
         for constraint: NSLayoutConstraint in self.constraints where constraint.firstAttribute == NSLayoutConstraint.Attribute.height {
+            
             constraint.constant = aHeight
             break
         }
@@ -146,6 +161,7 @@ extension UIView {
     open func sm_updateConstrainIfExist(width aWidth: CGFloat) {
         
         for constraint: NSLayoutConstraint in self.constraints where constraint.firstAttribute == NSLayoutConstraint.Attribute.width {
+            
             constraint.constant = aWidth
             break
         }

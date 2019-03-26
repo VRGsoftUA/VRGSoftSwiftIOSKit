@@ -14,21 +14,25 @@ open class SMKeyboardAvoidingScrollView: UIScrollView, SMKeyboardAvoidingProtoco
     var keyboardAvoider: SMKeyboardAvoider {
         
         if let keyboardAvoider: SMKeyboardAvoider = _keyboardAvoider {
+            
             return keyboardAvoider
         } else {
             let result: SMKeyboardAvoider = SMKeyboardAvoider(scrollView: self)
             _keyboardAvoider = result
+            
             return result
         }
     }
 
     public override init(frame: CGRect) {
+        
         super.init(frame: frame)
         
         setup()
     }
     
     required public init?(coder aDecoder: NSCoder) {
+        
         super.init(coder: aDecoder)
         
         setup()
@@ -37,6 +41,7 @@ open class SMKeyboardAvoidingScrollView: UIScrollView, SMKeyboardAvoidingProtoco
     open func setup() {
         
         if contentSize.equalTo(CGSize.zero) {
+            
             self.contentSize = self.bounds.size
         }
 
@@ -44,6 +49,7 @@ open class SMKeyboardAvoidingScrollView: UIScrollView, SMKeyboardAvoidingProtoco
     }
     
     override open var frame: CGRect {
+        
         didSet {
             var newContentSize: CGSize = keyboardAvoider.originalContentSize
             newContentSize.width = max(newContentSize.width, self.frame.size.width)
@@ -52,6 +58,7 @@ open class SMKeyboardAvoidingScrollView: UIScrollView, SMKeyboardAvoidingProtoco
             super.contentSize = newContentSize
             
             if keyboardAvoider.isKeyboardVisible {
+                
                 self.contentInset = keyboardAvoider.contentInsetForKeyboard()
             }
         }
@@ -68,6 +75,7 @@ open class SMKeyboardAvoidingScrollView: UIScrollView, SMKeyboardAvoidingProtoco
             super.contentSize = newContentSize
             
             if keyboardAvoider.isKeyboardVisible {
+                
                 self.contentInset = keyboardAvoider.contentInsetForKeyboard()
             }
         }
@@ -76,6 +84,7 @@ open class SMKeyboardAvoidingScrollView: UIScrollView, SMKeyboardAvoidingProtoco
     }
 
     override open func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
         super.touchesEnded(touches, with: event)
      
         self.hideKeyBoard()
@@ -85,6 +94,7 @@ open class SMKeyboardAvoidingScrollView: UIScrollView, SMKeyboardAvoidingProtoco
     // MARK: - SMKeyboardAvoidingProtocol
 
     public var keyboardToolbar: SMKeyboardToolbar? {
+        
         set {
             keyboardAvoider.keyboardToolbar = newValue
         }
@@ -95,6 +105,7 @@ open class SMKeyboardAvoidingScrollView: UIScrollView, SMKeyboardAvoidingProtoco
     }
 
     public var isShowsKeyboardToolbar: Bool {
+        
         set {
             keyboardAvoider.isShowsKeyboardToolbar = newValue
         }
@@ -105,34 +116,42 @@ open class SMKeyboardAvoidingScrollView: UIScrollView, SMKeyboardAvoidingProtoco
     }
 
     public func adjustOffset() {
+        
         keyboardAvoider.adjustOffset()
     }
 
     public func hideKeyBoard() {
+        
         keyboardAvoider.hideKeyBoard()
     }
     
     public func addObjectForKeyboard(_ aObjectForKeyboard: UIResponder) {
+        
         keyboardAvoider.addObjectForKeyboard(aObjectForKeyboard)
     }
     
     public func removeObjectForKeyboard(_ aObjectForKeyboard: UIResponder) {
+        
         keyboardAvoider.removeObjectForKeyboard(aObjectForKeyboard)
     }
     
     public func addObjectsForKeyboard(_ aObjectsForKeyboard: [UIResponder]) {
+        
         keyboardAvoider.addObjectsForKeyboard(aObjectsForKeyboard)
     }
     
     public func removeObjectsForKeyboard(_ aObjectsForKeyboard: [UIResponder]) {
+        
         keyboardAvoider.removeObjectsForKeyboard(aObjectsForKeyboard)
     }
     
     public func removeAllObjectsForKeyboard() {
+        
         keyboardAvoider.removeAllObjectsForKeyboard()
     }
     
     public func responderShouldReturn(_ aResponder: UIResponder) {
+        
         keyboardAvoider.responderShouldReturn(aResponder)
     }
 }

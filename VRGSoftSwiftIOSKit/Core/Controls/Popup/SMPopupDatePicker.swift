@@ -21,10 +21,12 @@ open class SMPopupDatePicker: SMPopupPicker {
     }
     
     open var popupedPicker: UIDatePicker? {
+        
         return self.picker as? UIDatePicker
     }
     
     override open var selectedItem: AnyObject? {
+        
         get {
             return self.popupedPicker?.date as AnyObject
         }
@@ -32,17 +34,21 @@ open class SMPopupDatePicker: SMPopupPicker {
             guard let date: Date = newValue as? Date else {
                 return
             }
+            
             self.popupedPicker?.date = date
         }
     }
     
     override open func popupWillAppear(animated: Bool) {
+        
         super.popupWillAppear(animated: animated)
         
         //setup current value
         if let selectedItem: Date = selectedItem as? Date {
+            
             self.popupedPicker?.date = selectedItem
         } else {
+            
             assert(false, "Wrong class type !!!")
         }
     }
@@ -53,6 +59,7 @@ open class SMPopupDatePicker: SMPopupPicker {
     @objc open func didPopupDatePickerChanged(sender: AnyObject) {
         
         if let selectedItem: AnyObject = selectedItem {
+            
             self.selectHandler?(self, selectedItem)
         }
     }

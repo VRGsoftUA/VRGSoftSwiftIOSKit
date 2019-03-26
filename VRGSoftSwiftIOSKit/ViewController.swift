@@ -19,6 +19,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate 
     var picker: SMPopupSimplePicker?
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
     
         tvTest.smdelegate = self
@@ -82,10 +83,12 @@ class ViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate 
     }
     
     @objc func hide() {
+        
         picker?.hide(animated: true)
     }
     
     public func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        
         return true
     }
     

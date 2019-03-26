@@ -26,6 +26,7 @@ open class SMPopupSimplePicker: SMPopupPicker, UIPickerViewDelegate, UIPickerVie
     
     open var _dataSource: [AnyObject] = []
     open var dataSource: [AnyObject] {
+        
         set {
             _dataSource = newValue
             popupedPicker?.reloadAllComponents()
@@ -36,6 +37,7 @@ open class SMPopupSimplePicker: SMPopupPicker, UIPickerViewDelegate, UIPickerVie
     }
     
     open var popupedPicker: UIPickerView? {
+        
         return picker as? UIPickerView
     }
     
@@ -43,10 +45,12 @@ open class SMPopupSimplePicker: SMPopupPicker, UIPickerViewDelegate, UIPickerVie
     // MARK: override next methods to change default behaviours
     
     open func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        
         return 1
     }
     
     open func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        
         return _dataSource.count
     }
     
@@ -59,12 +63,16 @@ open class SMPopupSimplePicker: SMPopupPicker, UIPickerViewDelegate, UIPickerVie
             let item: AnyObject = _dataSource[row]
             
             if item is SMTitledID {
+                
                 result = (item as? SMTitledID)?.title
             } else if item is String {
+                
                 result = item as? String
             } else if let itemConforms: SMPopupPickerItemTitled = item as? SMPopupPickerItemTitled {
+                
                 result = itemConforms.itemTitled
             } else {
+                
                 assert(false, "Wrong class in dataSource !!!")
             }
         }
@@ -75,25 +83,32 @@ open class SMPopupSimplePicker: SMPopupPicker, UIPickerViewDelegate, UIPickerVie
     open func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: SMPopupSimplePicker.kSMPopupPickerValueDidChange), object: self)
+        
         if let selectedItem: AnyObject = selectedItem {
+            
             selectHandler?(self, selectedItem)
         }
     }
     
     override open var selectedItem: AnyObject? {
+        
         get {
             guard let index: Int = popupedPicker?.selectedRow(inComponent: 0) else {
                 return nil
             }
+            
             return index < _dataSource.count ? _dataSource[index] : nil
         }
         set {
+            
             if newValue != nil {
                 
                 let index: Int! = _dataSource.index(where: { item -> Bool in
                     item.isEqual(newValue)
                 })
+                
                 if let index: Int = index {
+                    
                     popupedPicker?.selectRow(index, inComponent: 0, animated: false)
                 }
             }
@@ -101,6 +116,7 @@ open class SMPopupSimplePicker: SMPopupPicker, UIPickerViewDelegate, UIPickerVie
     }
     
     override open func popupWillAppear(animated: Bool) {
+        
         super.popupWillAppear(animated: animated)
         
         selectedItem = super.selectedItem

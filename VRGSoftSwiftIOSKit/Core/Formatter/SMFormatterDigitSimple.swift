@@ -24,6 +24,7 @@ open class SMFormatterDigitSimple: SMFormatter {
     override open func formatWithNewCharactersIn(range aRange: NSRange, replacementString aString: String) -> Bool {
         
         if let textField: UITextField = self.formattableObject as? UITextField {
+            
             return format(forTextField: textField, shouldChangeCharactersInRange: aRange, replacementString: aString)
         }
         
@@ -41,10 +42,12 @@ open class SMFormatterDigitSimple: SMFormatter {
                 var newText: String? = (aTextField.text as NSString?)?.replacingCharacters(in: aRange, with: aString)
                 
                 if let text: String = newText {
+                    
                     newText = format(text: text)
                 }
                 
                 if newText != nil {
+                    
                     aTextField.text = newText
                 }
             }
@@ -52,10 +55,12 @@ open class SMFormatterDigitSimple: SMFormatter {
             var newText: String? = (aTextField.text as NSString?)?.replacingCharacters(in: aRange, with: aString)
             
             if let text: String = newText {
+                
                 newText = format(text: text)
             }
             
             if newText != nil {
+                
                 aTextField.text = newText
             }
         }
@@ -68,6 +73,7 @@ open class SMFormatterDigitSimple: SMFormatter {
         var result: String = aOriginalStr
         
         if let str: String = format(text: aOriginalStr) {
+            
             result = str
         }
         

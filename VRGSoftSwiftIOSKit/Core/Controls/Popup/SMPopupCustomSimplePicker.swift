@@ -26,18 +26,27 @@ open class SMPopupCustomSimplePicker: SMPopupSimplePicker {
             result.backgroundColor = .clear
             
             if font != nil {
+                
                 result.font = font
             }
+            
             if textColor != nil {
+                
                 result.textColor = textColor
             }
+            
             if shadowColor != nil {
+                
                 result.shadowColor = shadowColor
             }
+            
             if let shadowOffset: CGSize = shadowOffset {
+                
                 result.shadowOffset = shadowOffset
             }
+            
             if let textAlignment: NSTextAlignment = textAlignment {
+                
                 result.textAlignment = textAlignment
             }
         }
@@ -49,15 +58,20 @@ open class SMPopupCustomSimplePicker: SMPopupSimplePicker {
             let item: AnyObject = dataSource[row]
             
             if let item: SMTitledID = item as? SMTitledID {
+                
                 result.text = item.title
             } else if let item: String = item as? String {
+                
                 result.text = item
             } else if let itemConforms: SMPopupPickerItemTitled = item as? SMPopupPickerItemTitled {
+                
                 result.text = itemConforms.itemTitled
             } else {
+                
                 assert(false, "Wrong class in dataSource !!!")
             }
         } else {
+            
             result.text = nil
         }
         

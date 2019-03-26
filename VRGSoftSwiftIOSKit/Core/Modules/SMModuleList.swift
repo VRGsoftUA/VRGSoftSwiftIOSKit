@@ -31,12 +31,14 @@ open class SMModuleList {
     open var isReloading: Bool = false
     
     open var pullToRefreshAdapter: SMPullToRefreshAdapter? {
+        
         didSet {
             pullToRefreshAdapter?.refreshCallback = { [weak self] (aPullToRefreshAdapter: SMPullToRefreshAdapter) in // swiftlint:disable:this explicit_type_interface
                 
                 if let strongSelf: SMModuleList = self {
                     
                     if !strongSelf.isUseActivityAdapterWithPullToRefreshAdapter {
+                        
                         strongSelf.isHideActivityAdapterForOneFetch = true
                     }
                     
@@ -55,18 +57,21 @@ open class SMModuleList {
     open weak var delegate: SMModuleListDelegate?
     
     open var dataFetcher: SMDataFetcherProtocol? {
+        
         didSet {
             dataFetcher?.callbackQueue = moduleQueue
         }
     }
     
     required public init(listAdapter aListAdapter: SMListAdapter) {
+        
         listAdapter = aListAdapter
     }
     
     open func reloadData() {
         
         if isReloading {
+            
             return
         }
         
@@ -87,6 +92,7 @@ open class SMModuleList {
     open func processFetchedModelsIn(response aResponse: SMResponse) -> [AnyObject] {
         
         let result: [AnyObject] = delegate?.moduleList(self, processFetchedModelsInResponse: aResponse) ?? []
+        
         return result
     }
     
@@ -101,6 +107,7 @@ open class SMModuleList {
                 DispatchQueue.main.sync {
                     
                     if aResponse.isSuccess {
+                        
                         self?.prepareSections()
                     }
                     
@@ -121,6 +128,7 @@ open class SMModuleList {
                                 var ms: [AnyObject]
                                 
                                 if let obj: [AnyObject] = obj as? [AnyObject] {
+                                    
                                     ms = obj
                                 } else {
                                     var mutMs: [AnyObject] = []
@@ -129,8 +137,10 @@ open class SMModuleList {
                                         i = j
                                         
                                         if !(aModels[j] is [AnyObject]) {
+                                            
                                             mutMs.append(aModels[j])
                                         } else {
+                                            
                                             i -= 1
                                             break
                                         }
@@ -146,6 +156,7 @@ open class SMModuleList {
                                 i += 1
                             }
                         } else {
+                            
                             self?.updateSectionWith(models: aModels, originalModels: aModels, sectionIndex: numberOfPrepareSections, isLastSectionForNewModels: true)
                             numberOfPrepareSections += 1
                         }
@@ -153,12 +164,15 @@ open class SMModuleList {
                         self?.listAdapter.reloadData()
                         
                         if let strongSelf: SMModuleList = self {
+                            
                             self?.delegate?.moduleList(strongSelf, didReloadDataWithModels: aModels)
                         }
                     } else {
+                        
                         if !aResponse.isCancelled {
                             
                             if let strongSelf: SMModuleList = self {
+                                
                                 self?.fetcherFailedCallback?(strongSelf, aResponse)
                             }
                         }
@@ -189,6 +203,7 @@ open class SMModuleList {
     }
     
     open func prepareSections() {
+        
         listAdapter.prepareSections()
     }
 
@@ -197,6 +212,7 @@ open class SMModuleList {
         if !isHideActivityAdapterForOneFetch {
             
             isHideActivityAdapterForOneFetch = false
+            
             DispatchQueue.main.async {
                 self.activityAdapter?.show()
             }

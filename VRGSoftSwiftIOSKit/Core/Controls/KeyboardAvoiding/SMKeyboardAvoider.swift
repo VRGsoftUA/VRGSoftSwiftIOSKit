@@ -59,6 +59,7 @@ open class SMKeyboardAvoider: SMKeyboardAvoidingProtocol, SMKeyboardToolbarDeleg
         var keyboardRect: CGRect = self.scrollView.convert(_keyboardRect, from: nil)
         
         if keyboardRect.origin.y == 0 {
+            
             let screenBounds: CGRect = self.scrollView.convert(UIScreen.main.bounds, from: nil)
             
             keyboardRect.origin = CGPoint(x: 0, y: screenBounds.size.height - keyboardRect.size.height)
@@ -78,6 +79,7 @@ open class SMKeyboardAvoider: SMKeyboardAvoidingProtocol, SMKeyboardToolbarDeleg
                 self.selectIndexInputField = index
                 
                 if let keyboardToolbar: SMKeyboardToolbar = keyboardToolbar {
+                    
                     keyboardToolbar.selectedInputField(index: self.selectIndexInputField, allCount: objectsInKeyboard.count)
                 }
             }
@@ -87,12 +89,17 @@ open class SMKeyboardAvoider: SMKeyboardAvoidingProtocol, SMKeyboardToolbarDeleg
             offset = rect.origin.y
             
             if self.scrollView.contentSize.height - offset < aSpace {
+                
                 offset -= (floor(aSpace - view.bounds.size.height) - 20)
             } else {
+                
                 if view.bounds.size.height < aSpace {
+                    
                     offset -= (floor(aSpace - view.bounds.size.height) - 20)
                 }
+                
                 if offset + aSpace > scrollView.contentSize.height {
+                    
                     offset = scrollView.contentSize.height - aSpace
                 }
             }
@@ -112,6 +119,7 @@ open class SMKeyboardAvoider: SMKeyboardAvoidingProtocol, SMKeyboardToolbarDeleg
         for childView: UIView in aView.subviews {
             
             if childView.responds(to: #selector(getter: UIResponder.isFirstResponder)) && childView.isFirstResponder {
+                
                 result = childView
                 
                 break
@@ -120,6 +128,7 @@ open class SMKeyboardAvoider: SMKeyboardAvoidingProtocol, SMKeyboardToolbarDeleg
             result = findFirstResponderBeneath(view: childView)
             
             if result != nil {
+                
                 break
             }
         }
@@ -132,12 +141,14 @@ open class SMKeyboardAvoider: SMKeyboardAvoidingProtocol, SMKeyboardToolbarDeleg
     @objc open func keyboardWillShow(_ notification: Notification) {
         
         DispatchQueue.main.async {
+            
             for responder: UIResponder in self.objectsInKeyboard {
                 
                 if responder.isFirstResponder,
                     let responder: UITextInputTraits = responder as? UITextInputTraits {
                     
                     if let keyboardAppearance: UIKeyboardAppearance = responder.keyboardAppearance {
+                        
                         self.keyboardToolbar?.setKeyboardAppearance(keyboardAppearance)
                     }
                 }
@@ -158,6 +169,7 @@ open class SMKeyboardAvoider: SMKeyboardAvoidingProtocol, SMKeyboardToolbarDeleg
                 if let firstResponder: UIResponder = self.findFirstResponderBeneath(view: scrollView) {
                     
                     if self.objectsInKeyboard.contains(firstResponder) {
+                        
                         self.selectIndexInputField = self.objectsInKeyboard.index(of: firstResponder) ?? 0
                     }
                     
@@ -178,6 +190,7 @@ open class SMKeyboardAvoider: SMKeyboardAvoidingProtocol, SMKeyboardToolbarDeleg
         selectIndexInputField = 0
         
         if let cgRectValue: CGRect = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            
             _keyboardRect = cgRectValue
         }
         
@@ -194,6 +207,7 @@ open class SMKeyboardAvoider: SMKeyboardAvoidingProtocol, SMKeyboardToolbarDeleg
     @objc open func keyboardDidHide(_ notification: Notification) {
         
         if scrollView.contentOffset.y > 0 && scrollView.frame.size.height > scrollView.contentSize.height - 20 {
+            
             scrollView.contentOffset = CGPoint.zero
         }
     }
@@ -206,8 +220,10 @@ open class SMKeyboardAvoider: SMKeyboardAvoidingProtocol, SMKeyboardToolbarDeleg
     public var isShowsKeyboardToolbar: Bool {
         set {
             if newValue {
+                
                 self.createToolbar()
             } else {
+                
                 self.deleteToolbar()
             }
         }
@@ -220,6 +236,7 @@ open class SMKeyboardAvoider: SMKeyboardAvoidingProtocol, SMKeyboardToolbarDeleg
     public func adjustOffset() {
         
         if !isKeyboardVisible {
+            
             return
         }
         
@@ -239,6 +256,7 @@ open class SMKeyboardAvoider: SMKeyboardAvoidingProtocol, SMKeyboardToolbarDeleg
     public func addObjectForKeyboard(_ aObjectForKeyboard: UIResponder) {
         
         if self.objectsInKeyboard.count > 0 {
+            
             (self.objectsInKeyboard.last as? UITextField)?.returnKeyType = UIReturnKeyType.next
             (self.objectsInKeyboard.last as? UITextView)?.returnKeyType = UIReturnKeyType.next
             (self.objectsInKeyboard.last as? UISearchBar)?.returnKeyType = UIReturnKeyType.next
@@ -277,6 +295,7 @@ open class SMKeyboardAvoider: SMKeyboardAvoidingProtocol, SMKeyboardToolbarDeleg
             for obj: UIResponder in responders where obj == aObjectForKeyboard {
                 
                 deleteIndexPath = сortege.key
+                
                 break
             }
         }
@@ -301,6 +320,7 @@ open class SMKeyboardAvoider: SMKeyboardAvoidingProtocol, SMKeyboardToolbarDeleg
     public func removeObjectsForKeyboard(_ aObjectsForKeyboard: [UIResponder]) {
         
         for obj: UIResponder in aObjectsForKeyboard {
+            
             self.removeObjectForKeyboard(obj)
         }
     }
@@ -343,6 +363,7 @@ open class SMKeyboardAvoider: SMKeyboardAvoidingProtocol, SMKeyboardToolbarDeleg
     open func setInputAccessoryView(_ aAccessoryView: UIView?) {
         
         for obj: UIResponder in self.objectsInKeyboard {
+            
             (obj as? UITextField)?.inputAccessoryView = aAccessoryView
             (obj as? UITextView)?.inputAccessoryView = aAccessoryView
             (obj as? UISearchBar)?.inputAccessoryView = aAccessoryView
@@ -388,6 +409,7 @@ open class SMKeyboardAvoider: SMKeyboardAvoidingProtocol, SMKeyboardToolbarDeleg
     }
     
     public func keyboardToolbar(_ aKeyboardToolbar: SMKeyboardToolbar, didBtDoneClicked aSender: AnyObject) {
+        
         self.hideKeyBoard()
     }
     
@@ -417,6 +439,7 @@ open class SMKeyboardAvoider: SMKeyboardAvoidingProtocol, SMKeyboardToolbarDeleg
             
             self.indexPathseObjectsInKeyboard = tempIndexPathseObjectsInKeyboard
         } else {
+            
             self.indexPathseObjectsInKeyboard[aIndexPath] = aResponders
         }
         

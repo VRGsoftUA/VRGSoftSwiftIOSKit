@@ -15,12 +15,14 @@ open class SMTextView: UITextView, SMKeyboardAvoiderProtocol, SMValidationProtoc
     open var delegateHolder: SMTextViewDelegateHolder?
     
     override public init(frame: CGRect, textContainer: NSTextContainer?) {
+        
         super.init(frame: frame, textContainer: textContainer)
         
         setup()
     }
     
     required public init?(coder aDecoder: NSCoder) {
+        
         super.init(coder: aDecoder)
         
         setup()
@@ -49,6 +51,7 @@ open class SMTextView: UITextView, SMKeyboardAvoiderProtocol, SMValidationProtoc
     open var placeholderTextView: UITextView = UITextView()
 
     open var placeholder: String? {
+        
         set {
             placeholderTextView.text = newValue
             placeholderTextView.isHidden = self.text.count > 0
@@ -58,6 +61,7 @@ open class SMTextView: UITextView, SMKeyboardAvoiderProtocol, SMValidationProtoc
     }
     
     open var attributedPlaceholder: NSAttributedString {
+        
         set {
             placeholderTextView.attributedText = newValue
             placeholderTextView.isHidden = self.text.count > 0
@@ -67,6 +71,7 @@ open class SMTextView: UITextView, SMKeyboardAvoiderProtocol, SMValidationProtoc
     }
     
     open var placeholderColor: UIColor? {
+        
         set {
             placeholderTextView.textColor = newValue
         }
@@ -75,6 +80,7 @@ open class SMTextView: UITextView, SMKeyboardAvoiderProtocol, SMValidationProtoc
     }
 
     override open var textContainerInset: UIEdgeInsets {
+        
         set {
             super.textContainerInset = newValue
             placeholderTextView.textContainerInset = newValue
@@ -84,6 +90,7 @@ open class SMTextView: UITextView, SMKeyboardAvoiderProtocol, SMValidationProtoc
     }
 
     override open var textAlignment: NSTextAlignment {
+        
         set {
             super.textAlignment = newValue
             placeholderTextView.textAlignment = newValue
@@ -93,6 +100,7 @@ open class SMTextView: UITextView, SMKeyboardAvoiderProtocol, SMValidationProtoc
     }
 
     open var isPlaceHolderHidden: Bool {
+        
         set {
             placeholderTextView.isHidden = newValue
         }
@@ -101,6 +109,7 @@ open class SMTextView: UITextView, SMKeyboardAvoiderProtocol, SMValidationProtoc
     }
     
     override open var text: String! {
+        
         set {
             super.text = newValue
             placeholderTextView.isHidden = self.text.count > 0
@@ -110,6 +119,7 @@ open class SMTextView: UITextView, SMKeyboardAvoiderProtocol, SMValidationProtoc
     }
     
     override open var font: UIFont? {
+        
         set {
             super.font = newValue
             placeholderTextView.font = newValue
@@ -134,6 +144,7 @@ open class SMTextView: UITextView, SMKeyboardAvoiderProtocol, SMValidationProtoc
     // MARK: - SMValidationProtocol
     
     public var validatableText: String? {
+        
         get {
             return self.text
         }
@@ -143,12 +154,14 @@ open class SMTextView: UITextView, SMKeyboardAvoiderProtocol, SMValidationProtoc
     }
     
     public var validator: SMValidator? {
+        
         didSet {
             validator?.validatableObject = self
         }
     }
     
     public func validate() -> Bool {
+        
         return validator?.validate() ?? true
     }
 }
@@ -158,6 +171,7 @@ open class SMTextViewDelegateHolder: NSObject, UITextViewDelegate {
     weak var holdedTextView: SMTextView?
     
     required public init(textView aTextView: SMTextView) {
+        
         super.init()
         
         holdedTextView = aTextView
@@ -167,10 +181,12 @@ open class SMTextViewDelegateHolder: NSObject, UITextViewDelegate {
     // MARK: - UITextViewDelegate
     
     public func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
+        
         return holdedTextView?.smdelegate?.textViewShouldBeginEditing?(_:textView) ?? true
     }
     
     public func textViewShouldEndEditing(_ textView: UITextView) -> Bool {
+        
         return holdedTextView?.smdelegate?.textViewShouldEndEditing?(_:textView) ?? true
     }
     
@@ -182,6 +198,7 @@ open class SMTextViewDelegateHolder: NSObject, UITextViewDelegate {
     }
     
     public func textViewDidEndEditing(_ textView: UITextView) {
+        
         holdedTextView?.smdelegate?.textViewDidEndEditing?(_:textView)
     }
 
@@ -190,6 +207,7 @@ open class SMTextViewDelegateHolder: NSObject, UITextViewDelegate {
         var result: Bool = true
         
         if let inputField: SMTextView = textView as? SMTextView {
+            
             result = inputField.filter?.inputField(inputField, shouldChangeTextIn: range, replacementText: text) ?? result
         }
         
@@ -209,37 +227,7 @@ open class SMTextViewDelegateHolder: NSObject, UITextViewDelegate {
     }
     
     public func textViewDidChange(_ textView: UITextView) {
+        
         holdedTextView?.smdelegate?.textViewDidChange?(_:textView)
     }
-    
-//    public func textViewDidChangeSelection(_ textView: UITextView)
-//    {
-//        holdedTextView?.smdelegate?.textViewDidChangeSelection?(_:textView)
-//    }
-    
-//    public func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool
-//    {
-//        if self.holdedTextView != nil && self.holdedTextView!.smdelegate != nil && self.holdedTextView!.smdelegate!.responds(to: #selector(UITextViewDelegate.textView(_:shouldInteractWith:in:interaction:)))
-//        {
-//            return self.holdedTextView!.smdelegate!.textView!(textView, shouldInteractWith: URL, in: characterRange, interaction: interaction)
-//        }
-//        
-//        return true
-//    }
-    
-//    @available(iOS 10.0, *)
-//    public func textView(_ textView: UITextView, shouldInteractWith textAttachment: NSTextAttachment, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool
-//    {
-//        
-//    }
-    
-//    optional public func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange) -> Bool
-//    {
-//        
-//    }
-//    
-//    optional public func textView(_ textView: UITextView, shouldInteractWith textAttachment: NSTextAttachment, in characterRange: NSRange) -> Bool
-//    {
-//        
-//    }
 }

@@ -26,6 +26,7 @@ open class SMResponseNode {
 open class SMRequest {
     
     deinit {
+        
         print(#function + " - \(type(of: self))")
     }
     
@@ -41,22 +42,27 @@ open class SMRequest {
     open var executeAllResponseBlocksSync: Bool = false
         
     open func canExecute() -> Bool {
+        
         return false
     }
     
     open func start() {
+        
         retainSelf()
     }
     
     open func startWithResponseBlockInMainQueue(responseBlock aResponseBlock: @escaping SMRequestResponseBlock) {
+        
         addResponseBlock(aResponseBlock, responseQueue: DispatchQueue.main).start()
     }
 
     open func startWithResponseBlockInGlobalQueue(responseBlock aResponseBlock: @escaping SMRequestResponseBlock) {
+        
         addResponseBlock(aResponseBlock, responseQueue: DispatchQueue.global()).start()
     }
 
     open func isExecuting() -> Bool {
+        
         return false
     }
     
@@ -65,24 +71,29 @@ open class SMRequest {
     }
     
     open func isCancelled() -> Bool {
+        
         return false
     }
     
     open func isFinished() -> Bool {
+        
         return false
     }
     
     @discardableResult open func addResponseBlock(_ aResponseBlock: @escaping SMRequestResponseBlock, responseQueue aResponseQueue: DispatchQueue) -> SMRequest {
         
         responseBlocks.append(SMResponseNode(responseBlock: aResponseBlock, responseQueue: aResponseQueue))
+        
         return self
     }
 
     open func addResponseBlockDefaultResponseQueue(_ aResponseBlock: @escaping SMRequestResponseBlock) -> SMRequest {
+        
         return addResponseBlock(aResponseBlock, responseQueue: defaultResponseQueue)
     }
 
     open func clearAllResponseBlocks() {
+        
         responseBlocks.removeAll()
     }
     
@@ -101,6 +112,7 @@ open class SMRequest {
     open func executeSynchronouslyAllResponseBlocks(response aResponse: SMResponse) {
         
         for node: SMResponseNode in responseBlocks {
+            
             node.responseQueue.sync {
                 node.responseBlock(aResponse)
             }

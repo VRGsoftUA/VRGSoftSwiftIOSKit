@@ -19,6 +19,7 @@ public typealias SMViewControllerCallback = (SMViewController, Any?) -> Void
         self.callBack?(self, aSender)
         
         if isGoBack {
+            
             self.close()
         }
     }
@@ -28,26 +29,31 @@ public typealias SMViewControllerCallback = (SMViewController, Any?) -> Void
     open lazy var activity: SMActivityAdapter = createActivity()
     
     open func createActivity() -> SMActivityAdapter {
+        
         return SMNativeActivityAdapter()
     }
     
     open func showActivity() {
+        
         self.activity.show()
     }
 
     open func hideActivity() {
+        
         self.activity.hide()
     }
 
     open var isFirstAppear: Bool = true
     
     open var isModal: Bool {
+        
         return (self.navigationController?.children[0] == self || self.navigationController == nil)
     }
     
     open lazy var backgroundImageView: UIImageView = UIImageView()
     
     override open func viewDidLoad() {
+        
         super.viewDidLoad()
 
         // bg image
@@ -68,8 +74,10 @@ public typealias SMViewControllerCallback = (SMViewController, Any?) -> Void
             if let leftNavigationButton: UIBarButtonItem = self.createLeftNavButton() {
                 
                 if let leftNavigationButton: UIButton = leftNavigationButton.customView as? UIButton {
+                    
                     leftNavigationButton.addTarget(self, action: #selector(self.didBtNavLeftClicked), for: UIControl.Event.touchUpInside)
                 } else {
+                    
                     leftNavigationButton.target = self
                     leftNavigationButton.action = #selector(self.didBtNavLeftClicked)
                 }
@@ -80,6 +88,7 @@ public typealias SMViewControllerCallback = (SMViewController, Any?) -> Void
                     fullLeftBbis.append(contentsOf: leftBbis)
                     self.navigationItem.leftBarButtonItems = fullLeftBbis
                 } else {
+                    
                     self.navigationItem.leftBarButtonItem = leftNavigationButton
                 }
             }
@@ -89,6 +98,7 @@ public typealias SMViewControllerCallback = (SMViewController, Any?) -> Void
         if let rightNavigationButton: UIBarButtonItem = self.createRightNavButton() {
             
             if let rightNavigationButton: UIButton = rightNavigationButton.customView as? UIButton {
+                
                 rightNavigationButton.addTarget(self, action: #selector(self.didBtNavRightClicked), for: UIControl.Event.touchUpInside)
             } else {
                 rightNavigationButton.target = self
@@ -101,12 +111,14 @@ public typealias SMViewControllerCallback = (SMViewController, Any?) -> Void
                 fullRightBbis.append(contentsOf: rightBbis)
                 self.navigationItem.rightBarButtonItems = fullRightBbis
             } else {
+                
                 self.navigationItem.rightBarButtonItem = rightNavigationButton
             }
         }
         
         // custom title view for nav.item
         if let titleView: UIView = self.createTitleViewNavItem() {
+            
             self.navigationItem.titleView = titleView
         }
         
@@ -114,42 +126,51 @@ public typealias SMViewControllerCallback = (SMViewController, Any?) -> Void
     }
 
     open func backgroundImage() -> UIImage? {
+        
         return nil
     }
 
     open func createLeftNavButton() -> UIBarButtonItem? {
+        
         return nil
     }
     
     open func createLeftNavButtonsAdditionals() -> [UIBarButtonItem]? {
+        
         return nil
     }
 
     open func createRightNavButton() -> UIBarButtonItem? {
+        
         return nil
     }
     
     open func createRightNavButtonsAdditionals() -> [UIBarButtonItem]? {
+        
         return nil
     }
 
     open func createTitleViewNavItem() -> UIView? {
+        
         return nil
     }
     
     override open func viewDidAppear(_ animated: Bool) {
+        
         super.viewDidAppear(animated)
         
         self.isFirstAppear = false
     }
     
     override open func viewWillAppear(_ animated: Bool) {
+        
         super.viewWillAppear(animated)
         
         isVisible = true
     }
     
     override open func viewWillDisappear(_ animated: Bool) {
+        
         super.viewWillDisappear(animated)
         isVisible = false
     }
@@ -158,6 +179,7 @@ public typealias SMViewControllerCallback = (SMViewController, Any?) -> Void
     // MARK: - Actions
     
     @objc open func didBtNavLeftClicked() {
+        
         self.close()
     }
 
@@ -168,6 +190,7 @@ public typealias SMViewControllerCallback = (SMViewController, Any?) -> Void
     open func close() {
         
         if self.isModal {
+            
             self.dismiss(animated: true, completion: nil)
         } else {
             self.navigationController?.popViewController(animated: true)

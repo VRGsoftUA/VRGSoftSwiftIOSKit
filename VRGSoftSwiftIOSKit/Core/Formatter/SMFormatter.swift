@@ -23,14 +23,17 @@ open class SMFormatter {
     }
     
     open func formattedTextFrom(originalString aOriginalString: String?) -> String? {
+        
         return aOriginalString
     }
     
     open func formatWithNewCharactersIn(range aRange: NSRange, replacementString aString: String) -> Bool {
+        
         return true
     }
     
     open var rawText: String? {
+        
         get {
             return nil
         }

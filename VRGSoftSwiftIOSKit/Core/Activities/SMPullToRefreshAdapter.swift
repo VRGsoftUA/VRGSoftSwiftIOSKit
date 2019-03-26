@@ -19,6 +19,7 @@ open class SMPullToRefreshAdapter {
     open func configureWith(scrollView aScrollView: UIScrollView) { }
     
     open func beginPullToRefresh() {
+        
         self.refreshCallback?(self)
     }
 

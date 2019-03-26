@@ -26,6 +26,7 @@ open class SMFetcherWithRequest: SMDataFetcherProtocol {
     open func canFetchWith(message aMessage: SMFetcherMessage) -> Bool {
         
         if preparedRequest == nil {
+            
             preparedRequest = self.preparedRequestBy(message: aMessage)
         }
         
@@ -37,6 +38,7 @@ open class SMFetcherWithRequest: SMDataFetcherProtocol {
         fetchCallback = aFetchCallback
         
         if preparedRequest == nil {
+            
             preparedRequest = self.preparedRequestBy(message: aMessage)
         }
         
@@ -47,6 +49,7 @@ open class SMFetcherWithRequest: SMDataFetcherProtocol {
     }
     
     public func cancelFetching() {
+        
         self.request?.cancel()
     }
     
@@ -62,6 +65,7 @@ open class SMFetcherWithRequest: SMDataFetcherProtocol {
     open var _request: SMRequest?
     open var request: SMRequest? {
         set {
+            
             if _request !== newValue {
                 
                 self.cancelFetching()
@@ -81,6 +85,7 @@ open class SMFetcherWithRequest: SMDataFetcherProtocol {
     }
     
     open func processFetchedModelsIn(response aResponse: SMResponse) -> [AnyObject] {
+        
         return aResponse.boArray
     }
 }

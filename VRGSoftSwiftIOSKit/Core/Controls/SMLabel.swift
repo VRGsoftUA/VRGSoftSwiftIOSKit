@@ -17,6 +17,7 @@ open class SMLabel: UILabel {
     @IBInspectable open var rightT: CGFloat = 0.0
 
     override open func draw(_ rect: CGRect) {
+        
         super.drawText(in: rect.inset(by: UIEdgeInsets(top: topT, left: leftT, bottom: bottomT, right: rightT)))
     }
     

@@ -18,6 +18,7 @@ open class SMFilter {
     open var maxLengthText: Int = Int.max
     
     public init(maxLengthText aMaxLengthText: Int) {
+        
         maxLengthText = aMaxLengthText
     }
     
@@ -30,6 +31,7 @@ open class SMFilter {
             var charactersCount: Int = 0
             
             if let filteredText: String = inputField.filteredText {
+                
                 charactersCount = (filteredText as NSString).replacingCharacters(in: range, with: text).count
             }
             

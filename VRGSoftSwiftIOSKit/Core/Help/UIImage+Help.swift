@@ -44,6 +44,7 @@ extension UIImage {
         context?.setBlendMode(CGBlendMode.normal)
         
         if let cgI: CGImage = cgImage {
+            
             context?.draw(cgI, in: rect)
         }
         
@@ -52,6 +53,7 @@ extension UIImage {
         context?.fill(rect)
         
         if let image: CGImage = context?.makeImage() {
+            
             result = UIImage(cgImage: image, scale: scale, orientation: self.imageOrientation)
         }
         
@@ -96,6 +98,7 @@ extension UIImage {
     open func fixedOrientation() -> UIImage? {
         
         if imageOrientation == .up {
+            
             return self
         }
         

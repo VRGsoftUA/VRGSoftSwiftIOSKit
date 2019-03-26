@@ -87,14 +87,18 @@ open class SMKeyboardToolbar: SMToolbar {
     func selectedInputField(index aIndex: Int, allCount aAllCountInputFields: Int) {
         
         if aIndex > 0 {
+            
             bbiBack.isEnabled = true
         } else {
+            
             bbiBack.isEnabled = false
         }
         
         if aIndex < aAllCountInputFields - 1 {
+            
             bbiNext.isEnabled = true
         } else {
+            
             bbiNext.isEnabled = false
         }
     }
@@ -103,14 +107,17 @@ open class SMKeyboardToolbar: SMToolbar {
     // MARK: - Actions
 
     @objc func didBtBackClicked(_ sender: AnyObject) {
+        
         smdelegate?.keyboardToolbar(self, didBtBackClicked: sender)
     }
 
     @objc func didBtNextClicked(_ sender: AnyObject) {
+        
         smdelegate?.keyboardToolbar(self, didBtNextClicked: sender)
     }
 
     @objc func didBtDoneClicked(_ sender: AnyObject) {
+        
         smdelegate?.keyboardToolbar(self, didBtDoneClicked: sender)
     }
 }

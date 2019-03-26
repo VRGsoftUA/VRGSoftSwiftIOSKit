@@ -13,6 +13,7 @@ open class SMNativeMoreTableViewCellData: SMCellData, SMPagingMoreCellDataProtoc
     public var needLoadMore: SMBlockAction<Any>?
     
     convenience public init() {
+        
         self.init(model: nil)
     
         self.cellClass = SMNativeMoreTableViewCell.self
@@ -26,6 +27,7 @@ open class SMNativeMoreTableViewCell: SMCell, SMPagingMoreCellProtocol {
     public let activity: UIActivityIndicatorView = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.gray)
     
     override open func setup() {
+        
         super.setup()
         
         self.backgroundColor = UIColor.clear
@@ -40,6 +42,7 @@ open class SMNativeMoreTableViewCell: SMCell, SMPagingMoreCellProtocol {
     }
     
     override open func prepareForReuse() {
+        
         super.prepareForReuse()
         
         self.showActivityIndicator(show: false)
@@ -48,8 +51,10 @@ open class SMNativeMoreTableViewCell: SMCell, SMPagingMoreCellProtocol {
     open func showActivityIndicator(show aIsShow: Bool) {
         
         if aIsShow {
+            
             activity.startAnimating()
         } else {
+            
             activity.stopAnimating()
         }
     }
@@ -58,10 +63,12 @@ open class SMNativeMoreTableViewCell: SMCell, SMPagingMoreCellProtocol {
     // MARK: SMPagingMoreCellProtocol
 
     public func didBeginDataLoading() {
+        
         self.showActivityIndicator(show: true)
     }
     
     public func didEndDataLoading() {
+        
         self.showActivityIndicator(show: false)
     }
 }

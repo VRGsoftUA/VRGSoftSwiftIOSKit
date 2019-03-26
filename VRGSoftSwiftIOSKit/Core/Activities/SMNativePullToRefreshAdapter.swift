@@ -19,6 +19,7 @@ open class SMNativePullToRefreshAdapter: SMPullToRefreshAdapter {
     }
     
     override open var enabled: Bool? {
+        
         set {
             refreshControl.isEnabled = (newValue != nil)
             
@@ -30,6 +31,7 @@ open class SMNativePullToRefreshAdapter: SMPullToRefreshAdapter {
     }
     
     override public init() {
+        
         super.init()
         
         refreshControl.addTarget(self, action: #selector(refreshControlDidBeginRefreshing(sender:)), for: UIControl.Event.valueChanged)
@@ -48,12 +50,14 @@ open class SMNativePullToRefreshAdapter: SMPullToRefreshAdapter {
     }
     
     override open func endPullToRefresh() {
+        
         refreshControl.endRefreshing()
     }
     
     @objc open func refreshControlDidBeginRefreshing(sender aSender: UIRefreshControl) {
         
         if refreshControl == aSender {
+            
             self.beginPullToRefresh()
         }
     }

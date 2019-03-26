@@ -20,10 +20,12 @@ open class SMPair <FirstType, SecondType> {
     }
     
     open func copy() -> Any {
+        
         return SMPair(first: first, second: second)
     }
     
     open var description: String {
+        
         return "\(String(describing: first)) \(String(describing: second))"
     }
 }

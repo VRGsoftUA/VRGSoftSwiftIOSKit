@@ -28,5 +28,6 @@ public protocol SMKeyboardAvoidingProtocol: class {
 }
 
 public protocol SMKeyboardAvoiderProtocol: class {
+    
     var keyboardAvoiding: SMKeyboardAvoidingProtocol? {get set}
 }

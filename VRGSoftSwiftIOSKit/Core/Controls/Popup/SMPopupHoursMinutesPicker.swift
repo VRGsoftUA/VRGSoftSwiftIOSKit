@@ -22,6 +22,7 @@ open class SMPopupHoursMinutesPicker: SMPopupPicker, UIPickerViewDelegate, UIPic
     }
     
     open var popupedPicker: UIPickerView? {
+        
         get {
             return picker as? UIPickerView
         }
@@ -31,21 +32,26 @@ open class SMPopupHoursMinutesPicker: SMPopupPicker, UIPickerViewDelegate, UIPic
     }
     
     public func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        
         return 2
     }
     
     public func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        
         return (component == 0) ? 24 : 60
     }
     
     public func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        
         return "\(row)"
     }
     
     override open var selectedItem: AnyObject? {
+        
         get {
             guard let hours: Int = popupedPicker?.selectedRow(inComponent: 0),
                  let minutes: Int = popupedPicker?.selectedRow(inComponent: 1) else {
+                    
                 return nil
             }
             return NSNumber(value: 60 * hours + minutes)
@@ -62,8 +68,10 @@ open class SMPopupHoursMinutesPicker: SMPopupPicker, UIPickerViewDelegate, UIPic
         
         //hours
         if  UIApplication.shared.statusBarOrientation.isPortrait {
+            
             newFrame = CGRect(x: 60, y: 130, width: 70, height: 44)
         } else {
+            
             newFrame = CGRect(x: 60, y: 90, width: 70, height: 44)
         }
         
@@ -74,8 +82,10 @@ open class SMPopupHoursMinutesPicker: SMPopupPicker, UIPickerViewDelegate, UIPic
         
         //minutes
         if UIApplication.shared.statusBarOrientation.isPortrait {
+            
             newFrame = CGRect(x: 200, y: 130, width: 70, height: 44)
         } else {
+            
             newFrame = CGRect(x: 370, y: 90, width: 70, height: 44)
         }
         

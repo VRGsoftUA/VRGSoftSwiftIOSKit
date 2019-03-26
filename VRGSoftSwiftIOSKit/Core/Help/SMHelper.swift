@@ -11,6 +11,7 @@ import UIKit
 open class SMHelper: Any {
     
     public static var isIPad: Bool {
+        
         return UIDevice.current.userInterfaceIdiom == .pad
     }
 

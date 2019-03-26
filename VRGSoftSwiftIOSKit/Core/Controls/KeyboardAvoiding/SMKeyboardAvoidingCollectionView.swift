@@ -24,19 +24,23 @@ open class SMKeyboardAvoidingCollectionView: UICollectionView, SMKeyboardAvoidin
     open var keyboardAvoider: SMKeyboardAvoider {
         
         if let keyboardAvoider: SMKeyboardAvoider = _keyboardAvoider {
+            
             return keyboardAvoider
         } else {
             let result: SMKeyboardAvoider = SMKeyboardAvoider(scrollView: self)
             _keyboardAvoider = result
+            
             return result
         }
     }
     
     override public init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout) {
+        
         super.init(frame: frame, collectionViewLayout: layout)
     }
     
     required public init?(coder aDecoder: NSCoder) {
+        
         super.init(coder: aDecoder)
         
         self.setup()
@@ -45,6 +49,7 @@ open class SMKeyboardAvoidingCollectionView: UICollectionView, SMKeyboardAvoidin
     open func setup() {
         
         if self.contentSize.equalTo(CGSize.zero) {
+            
             self.contentSize = self.bounds.size
         }
         
@@ -52,6 +57,7 @@ open class SMKeyboardAvoidingCollectionView: UICollectionView, SMKeyboardAvoidin
     }
     
     override open var frame: CGRect {
+        
         didSet {
             var newContentSize: CGSize = keyboardAvoider.originalContentSize
             newContentSize.width = max(newContentSize.width, self.frame.size.width)
@@ -60,6 +66,7 @@ open class SMKeyboardAvoidingCollectionView: UICollectionView, SMKeyboardAvoidin
             super.contentSize = newContentSize
             
             if keyboardAvoider.isKeyboardVisible {
+                
                 self.contentInset = keyboardAvoider.contentInsetForKeyboard()
             }
         }
@@ -76,6 +83,7 @@ open class SMKeyboardAvoidingCollectionView: UICollectionView, SMKeyboardAvoidin
             super.contentSize = newContentSize
             
             if keyboardAvoider.isKeyboardVisible {
+                
                 self.contentInset = keyboardAvoider.contentInsetForKeyboard()
             }
         }
@@ -84,6 +92,7 @@ open class SMKeyboardAvoidingCollectionView: UICollectionView, SMKeyboardAvoidin
     }
     
     override open func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
         super.touchesEnded(touches, with: event)
         
         self.hideKeyBoard()
@@ -100,38 +109,47 @@ open class SMKeyboardAvoidingCollectionView: UICollectionView, SMKeyboardAvoidin
     }
     
     open func adjustOffset() {
+        
         keyboardAvoider.adjustOffset()
     }
     
     open func hideKeyBoard() {
+        
         keyboardAvoider.hideKeyBoard()
     }
     
     open func addObjectForKeyboard(_ aObjectForKeyboard: UIResponder) {
+        
         keyboardAvoider.addObjectForKeyboard(aObjectForKeyboard)
     }
     
     open func removeObjectForKeyboard(_ aObjectForKeyboard: UIResponder) {
+        
         keyboardAvoider.removeObjectForKeyboard(aObjectForKeyboard)
     }
     
     open func addObjectsForKeyboard(_ aObjectsForKeyboard: [UIResponder]) {
+        
         keyboardAvoider.addObjectsForKeyboard(aObjectsForKeyboard)
     }
     
     open func removeObjectsForKeyboard(_ aObjectsForKeyboard: [UIResponder]) {
+        
         keyboardAvoider.removeObjectsForKeyboard(aObjectsForKeyboard)
     }
     
     open func removeAllObjectsForKeyboard() {
+        
         keyboardAvoider.removeAllObjectsForKeyboard()
     }
     
     open func responderShouldReturn(_ aResponder: UIResponder) {
+        
         keyboardAvoider.responderShouldReturn(aResponder)
     }
     
     func sortedResponders(_ aResponders: [UIResponder], byIndexPath aIndexPath: IndexPath) {
+        
         keyboardAvoider.sortedResponders(aResponders, byIndexPath: aIndexPath)
     }
 }

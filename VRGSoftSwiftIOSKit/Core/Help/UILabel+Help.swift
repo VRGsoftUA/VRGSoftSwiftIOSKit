@@ -31,9 +31,11 @@ extension UILabel {
         let attributedString: NSMutableAttributedString = NSMutableAttributedString(string: text, attributes: [NSAttributedString.Key.font: self.font])
 
         let markAttribute: [NSAttributedString.Key: Any] = [NSAttributedString.Key.font: markFont]
+        
         if let range: NSRange = (self.text as NSString?)?.range(of: markString) {
            attributedString.addAttributes(markAttribute, range: range)
         }
+        
         self.attributedText = attributedString
     }
     
