@@ -41,8 +41,6 @@ open class SMGatewayConfigurator {
     
     private func configureGatewaysWithBase(url aUrl: URL) {
         
-        url = aUrl
-        
         if let host: String = aUrl.host {
             
             networkReachabilityManager = NetworkReachabilityManager(host: host)
