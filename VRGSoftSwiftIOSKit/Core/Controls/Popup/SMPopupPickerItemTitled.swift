@@ -10,5 +10,5 @@ import Foundation
 
 public protocol SMPopupPickerItemTitled {
     
-    var itemTitled: String { get set }
+    var itemTitled: String { get }
 }
