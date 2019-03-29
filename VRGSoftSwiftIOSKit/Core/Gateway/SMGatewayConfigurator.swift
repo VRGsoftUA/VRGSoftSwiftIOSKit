@@ -13,12 +13,24 @@ open class SMGatewayConfigurator {
     
     public static var shared: SMGatewayConfigurator = SMGatewayConfigurator()
 
+    open var url: URL? {
+        
+        didSet {
+            
+            if let url: URL = url {
+                
+                configureGatewaysWithBase(url: url)
+            }
+        }
+    }
+    
     open var gateways: [SMGateway] = []
     open var networkReachabilityManager: NetworkReachabilityManager?
     
     open func isInternetReachable() -> Bool {
         
         let result: Bool = networkReachabilityManager?.isReachable ?? false
+        
         return result
     }
     
@@ -27,7 +39,9 @@ open class SMGatewayConfigurator {
         gateways.append(aGateway)
     }
     
-    open func configureGatewaysWithBase(url aUrl: URL) {
+    private func configureGatewaysWithBase(url aUrl: URL) {
+        
+        url = aUrl
         
         if let host: String = aUrl.host {
             
@@ -38,7 +52,7 @@ open class SMGatewayConfigurator {
             assert(false)
         }
         
-        for g: SMGateway in gateways {
+        for g: SMGateway in gateways where g.baseUrl != aUrl {
             
             g.configureWithBase(url: aUrl)
         }
