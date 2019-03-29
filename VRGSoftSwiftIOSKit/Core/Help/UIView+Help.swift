@@ -101,11 +101,12 @@ extension UIView {
                 return viewController
             }
         }
+        
         return nil
     }
     
-    open func sm_imageCreate() -> UIImage?
-    {
+    open func sm_imageCreate() -> UIImage? {
+        
         let result: UIImage? = self.layer.sm_imageCreate()
         
         return result
@@ -113,16 +114,16 @@ extension UIView {
 }
 
 
-extension CALayer
-{
-    open func sm_imageCreate() -> UIImage?
-    {
+public extension CALayer {
+    
+    public func sm_imageCreate() -> UIImage? {
+        
         var result: UIImage?
         
         UIGraphicsBeginImageContextWithOptions(self.bounds.size, false, UIScreen.main.scale)
         
-        if let context: CGContext = UIGraphicsGetCurrentContext()
-        {
+        if let context: CGContext = UIGraphicsGetCurrentContext() {
+            
             self.render(in: context)
             result = UIGraphicsGetImageFromCurrentImageContext()
         }
