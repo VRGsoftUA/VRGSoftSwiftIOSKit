@@ -11,8 +11,11 @@ import Alamofire
 
 open class SMGatewayConfigurator {
     
+    private var defaultParameters: [String: AnyObject] = [:]
+    private var defaultHeaders: [String: String] = [:]
+    
     public static var shared: SMGatewayConfigurator = SMGatewayConfigurator()
-
+    
     open var url: URL? {
         
         didSet {
@@ -36,6 +39,16 @@ open class SMGatewayConfigurator {
     
     open func register(gateway aGateway: SMGateway) {
         
+        defaultHeaders.forEach { (aKey, aValue) in
+            
+            aGateway.defaultHeaders[aKey] = aValue
+        }
+        
+        defaultParameters.forEach { (aKey, aValue) in
+            
+            aGateway.defaultParameters[aKey] = aValue
+        }
+        
         gateways.append(aGateway)
     }
     
@@ -55,12 +68,24 @@ open class SMGatewayConfigurator {
             g.configureWithBase(url: aUrl)
         }
     }
-
+    
     open func setHTTPHeader(value aValue: String?, key aKey: String) {
+        
+        defaultHeaders[aKey] = aValue
         
         for g: SMGateway in gateways {
             
             g.defaultHeaders[aKey] = aValue
+        }
+    }
+    
+    open func setDefaulParameter(value aValue: AnyObject?, key aKey: String) {
+        
+        defaultParameters[aKey] = aValue
+        
+        for g: SMGateway in gateways {
+            
+            g.defaultParameters[aKey] = aValue
         }
     }
 }
