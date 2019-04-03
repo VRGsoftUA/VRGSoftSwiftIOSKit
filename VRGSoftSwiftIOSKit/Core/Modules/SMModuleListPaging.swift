@@ -55,12 +55,7 @@ open class SMModuleListPaging: SMModuleList, SMListAdapterMoreDelegate {
     }
     
     override open func reloadData() {
-        
-        if isReloading {
-            
-            return
-        }
-        
+                
         if let nextMessage: SMFetcherMessagePaging = createFetcherMessage() as? SMFetcherMessagePaging {
             
             nextMessage.pagingOffset = initialPageOffset
