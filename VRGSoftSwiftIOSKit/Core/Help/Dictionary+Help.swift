@@ -8,7 +8,7 @@
 
 import Foundation
 
-extension Dictionary where Key == String, Value == Any {
+public extension Dictionary where Key == String, Value == Any {
 
     /**
      
@@ -41,7 +41,7 @@ extension Dictionary where Key == String, Value == Any {
      
      */
     
-    func value(forKeyPath keyPath: String, separator: String = ".") -> Any? {
+    public func value(forKeyPath keyPath: String, separator: String = ".") -> Any? {
         
         var result: Any?
         
@@ -100,7 +100,7 @@ extension Dictionary where Key == String, Value == Any {
 
 public extension Dictionary {
     
-    mutating func setValueIfNotNil(value aValue: Value?, key aKey: Key) {
+    public mutating func setValueIfNotNil(value aValue: Value?, key aKey: Key) {
         
         if let value: Value = aValue {
             
@@ -108,7 +108,7 @@ public extension Dictionary {
         }
     }
     
-    mutating func setStringIfNotNilAndNotEmpty(value aValue: String?, key aKey: Key) {
+    public mutating func setStringIfNotNilAndNotEmpty(value aValue: String?, key aKey: Key) {
         
         if let value: String = aValue {
             
@@ -122,7 +122,7 @@ public extension Dictionary {
         }
     }
     
-    mutating func setValueNilProtect(value aValue: Value?, key aKey: Key) {
+    public mutating func setValueNilProtect(value aValue: Value?, key aKey: Key) {
         
         var value: Value? = aValue
         

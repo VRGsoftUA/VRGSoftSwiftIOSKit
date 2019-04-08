@@ -20,6 +20,12 @@ open class SMGateway {
     
     public init() {
         
+        defaultGatewayConfigurator().register(gateway: self)
+        
+        if let url: URL = defaultGatewayConfigurator().url {
+            
+            configureWithBase(url: url)
+        }
     }
     
     open func isInternetReachable() -> Bool {
@@ -37,6 +43,11 @@ open class SMGateway {
         aRequest.getDataRequest { request in
             request.resume()
         }
+    }
+    
+    open func defaultGatewayConfigurator() -> SMGatewayConfigurator {
+        
+        return SMGatewayConfigurator.shared
     }
     
     open func defaultFailureBlockFor(request aRequest: SMGatewayRequest) -> SMGatewayRequestResponseBlock {

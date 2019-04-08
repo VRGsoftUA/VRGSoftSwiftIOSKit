@@ -101,6 +101,35 @@ extension UIView {
                 return viewController
             }
         }
+        
         return nil
+    }
+    
+    open func sm_imageCreate() -> UIImage? {
+        
+        let result: UIImage? = self.layer.sm_imageCreate()
+        
+        return result
+    }
+}
+
+
+public extension CALayer {
+    
+    public func sm_imageCreate() -> UIImage? {
+        
+        var result: UIImage?
+        
+        UIGraphicsBeginImageContextWithOptions(self.bounds.size, false, UIScreen.main.scale)
+        
+        if let context: CGContext = UIGraphicsGetCurrentContext() {
+            
+            self.render(in: context)
+            result = UIGraphicsGetImageFromCurrentImageContext()
+        }
+        
+        UIGraphicsEndImageContext()
+        
+        return result
     }
 }

@@ -70,11 +70,6 @@ open class SMModuleList {
     
     open func reloadData() {
         
-        if isReloading {
-            
-            return
-        }
-        
         isReloading = true
         models.removeAll()
         
