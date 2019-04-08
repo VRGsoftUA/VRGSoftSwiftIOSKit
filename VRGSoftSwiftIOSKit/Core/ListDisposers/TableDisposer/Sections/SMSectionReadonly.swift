@@ -10,7 +10,7 @@ import UIKit
 
 open class SMSectionReadonly: SMListSection {
     
-    open weak var tableDisposer: SMTableDisposer? {
+    open var tableDisposer: SMTableDisposer? {
         
         return disposer as? SMTableDisposer
     }
@@ -124,7 +124,7 @@ open class SMSectionReadonly: SMListSection {
         
         let index: Int = self.index(byVisible: cellData)
         
-        if  let i: Int = cellDataSource.index(where: {$0 === cellData}) {
+        if  let i: Int = cellDataSource.firstIndex(where: {$0 === cellData}) {
             
             cellDataSource.remove(at: i)
         }

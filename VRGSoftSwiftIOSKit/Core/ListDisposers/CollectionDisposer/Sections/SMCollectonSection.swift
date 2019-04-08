@@ -19,7 +19,7 @@ open class SMCollectonSection: SMListSection {
         }
     }
     
-    open weak var collectionDisposer: SMCollectionDisposer? {
+    open var collectionDisposer: SMCollectionDisposer? {
         return disposer as? SMCollectionDisposer
     }
 
@@ -76,7 +76,7 @@ open class SMCollectonSection: SMListSection {
     
     open func index(byVisible aCellData: SMCellData) -> Int {
         
-        if  let index: Int = visibleCellDataSource.index(where: {$0 === aCellData}) {
+        if  let index: Int = visibleCellDataSource.firstIndex(where: {$0 === aCellData}) {
             
             return index
         }

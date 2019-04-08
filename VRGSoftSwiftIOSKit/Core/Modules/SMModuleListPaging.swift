@@ -127,7 +127,7 @@ open class SMModuleListPaging: SMModuleList, SMListAdapterMoreDelegate {
     
     override open func updateSectionWith(models aModels: [AnyObject], originalModels: [AnyObject], sectionIndex aSectionIndex: Int, isLastSectionForNewModels: Bool) {
         
-        listAdapter.updateSectionWith(models: aModels, lastModel: models.last, sectionIndex: aSectionIndex) {[weak self] in // swiftlint:disable:this explicit_type_interface
+        listAdapter.updateSectionWith(models: aModels, lastModel: models.last, sectionIndex: aSectionIndex) {[weak self] in
             
             var result: Bool = false
             

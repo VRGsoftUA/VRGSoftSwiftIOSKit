@@ -40,7 +40,7 @@ open class SMListSection {
     
     open func removeCellData(_ aCellData: SMListCellData) {
         
-        if  let index: Int = cellDataSource.index(where: {$0 === aCellData}) {
+        if  let index: Int = cellDataSource.firstIndex(where: {$0 === aCellData}) {
             
             cellDataSource.remove(at: index)
         }
@@ -63,7 +63,7 @@ open class SMListSection {
     
     open func index(by aCellData: SMListCellData) -> Int {
         
-        if  let index: Int = cellDataSource.index(where: {$0 === aCellData}) {
+        if  let index: Int = cellDataSource.firstIndex(where: {$0 === aCellData}) {
             
             return index
         }
@@ -73,7 +73,7 @@ open class SMListSection {
     
     open func index(byVisible aCellData: SMListCellData) -> Int {
         
-        if  let index: Int = visibleCellDataSource.index(where: {$0 === aCellData}) {
+        if  let index: Int = visibleCellDataSource.firstIndex(where: {$0 === aCellData}) {
             
             return index
         }

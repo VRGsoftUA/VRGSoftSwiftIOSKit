@@ -103,7 +103,7 @@ open class SMPopupSimplePicker: SMPopupPicker, UIPickerViewDelegate, UIPickerVie
             
             if newValue != nil {
                 
-                let index: Int! = _dataSource.index(where: { item -> Bool in
+                let index: Int! = _dataSource.firstIndex(where: { item -> Bool in
                     item.isEqual(newValue)
                 })
                 

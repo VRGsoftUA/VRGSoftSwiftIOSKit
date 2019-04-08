@@ -66,7 +66,7 @@ open class SMTableDisposer: SMListDisposer, UITableViewDelegate, UITableViewData
 
     open func index(by aSection: SMSectionReadonly) -> Int {
         
-        if let index: Int = sections.index(where: {$0 === aSection}) {
+        if let index: Int = sections.firstIndex(where: {$0 === aSection}) {
             
             return index
         }

@@ -28,7 +28,7 @@ open class SMFetcherIntoStorage: SMFetcherWithRequest {
                 self.cancelFetching()
                 _request = newValue
                 
-                _request?.addResponseBlock({[weak self] aResponse in // swiftlint:disable:this explicit_type_interface
+                _request?.addResponseBlock({[weak self] aResponse in
                     
                     guard let strongSelf: SMFetcherIntoStorage = self else { return }
                     

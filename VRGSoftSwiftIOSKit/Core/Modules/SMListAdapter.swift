@@ -136,7 +136,7 @@ open class SMListAdapter: Any {
             if let moreCellDataType: SMListCellData.Type = type(of: moreCellData) as? SMListCellData.Type {
                 
                 listDisposerModeled?.register(cellDataClass: moreCellDataType, forModelClass: nil)
-                moreCellData.needLoadMore = SMBlockAction(block: { [weak self] _ in // swiftlint:disable:this explicit_type_interface
+                moreCellData.needLoadMore = SMBlockAction(block: { [weak self] _ in
                     
                     if let strongSelf: SMListAdapter = self {
                         

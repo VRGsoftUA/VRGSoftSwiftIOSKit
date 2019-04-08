@@ -68,20 +68,20 @@ open class SMGatewayRequestMultipart: SMGatewayRequest {
             self.constructingBlock(multipartFormData)
         }, to: fullPath, method: type, headers: allHeaders, encodingCompletion: { multipartFormDataEncodingResult in
             switch multipartFormDataEncodingResult {
-            case .success(let request, _, _): // swiftlint:disable:this explicit_type_interface
+            case .success(let request, _, _):
                 self.dataRequest = request
                 completion(request)
-                self.dataRequest?.responseJSON(completionHandler: {[weak self] responseObject in // swiftlint:disable:this explicit_type_interface
+                self.dataRequest?.responseJSON(completionHandler: {[weak self] responseObject in
                     switch responseObject.result {
                     case .success:
 //                        print("Request success with data: \(data)")
                         self?.executeSuccessBlock(responseObject: responseObject)
-                    case .failure(let error): // swiftlint:disable:this explicit_type_interface
+                    case .failure(let error):
                         print("Request failed with error: \(error)")
                         self?.executeFailureBlock(responseObject: responseObject)
                     }
                 })
-            case .failure(let error): // swiftlint:disable:this explicit_type_interface
+            case .failure(let error):
                 print(error)
             }
         })

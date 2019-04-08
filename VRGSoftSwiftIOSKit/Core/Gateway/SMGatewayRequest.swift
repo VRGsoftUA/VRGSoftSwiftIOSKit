@@ -157,7 +157,7 @@ open class SMGatewayRequest: SMRequest {
             print("\n\nSTART", self)
             print(debugDescription)
             
-            dataRequest.responseJSON(completionHandler: {[weak self] responseObject in // swiftlint:disable:this explicit_type_interface
+            dataRequest.responseJSON(completionHandler: {[weak self] responseObject in
                 
                 switch responseObject.result {
                 case .success:
@@ -182,7 +182,7 @@ open class SMGatewayRequest: SMRequest {
                             callBack(response)
                         }
                     }
-                case .failure(let error): // swiftlint:disable:this explicit_type_interface
+                case .failure(let error):
                     print("Request failed with error: \(error)")
                     self?.executeFailureBlock(responseObject: responseObject)
                 }

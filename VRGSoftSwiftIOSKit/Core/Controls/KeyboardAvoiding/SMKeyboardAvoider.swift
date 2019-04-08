@@ -74,7 +74,7 @@ open class SMKeyboardAvoider: SMKeyboardAvoidingProtocol, SMKeyboardToolbarDeleg
         
         if let view: UIView = aView {
             
-            if let index: Int = objectsInKeyboard.index(of: view) {
+            if let index: Int = objectsInKeyboard.firstIndex(of: view) {
                 
                 self.selectIndexInputField = index
                 
@@ -170,7 +170,7 @@ open class SMKeyboardAvoider: SMKeyboardAvoidingProtocol, SMKeyboardToolbarDeleg
                     
                     if self.objectsInKeyboard.contains(firstResponder) {
                         
-                        self.selectIndexInputField = self.objectsInKeyboard.index(of: firstResponder) ?? 0
+                        self.selectIndexInputField = self.objectsInKeyboard.firstIndex(of: firstResponder) ?? 0
                     }
                     
                     self.priorInset = self.scrollView.contentInset
@@ -273,7 +273,7 @@ open class SMKeyboardAvoider: SMKeyboardAvoidingProtocol, SMKeyboardToolbarDeleg
     
     public func removeObjectForKeyboard(_ aObjectForKeyboard: UIResponder) {
         
-        if self.objectsInKeyboard.contains(aObjectForKeyboard), let index: Int = self.objectsInKeyboard.index(of: aObjectForKeyboard) {
+        if self.objectsInKeyboard.contains(aObjectForKeyboard), let index: Int = self.objectsInKeyboard.firstIndex(of: aObjectForKeyboard) {
             
             objectsInKeyboard.remove(at: index)
             
@@ -333,7 +333,7 @@ open class SMKeyboardAvoider: SMKeyboardAvoidingProtocol, SMKeyboardToolbarDeleg
     
     public func responderShouldReturn(_ aResponder: UIResponder) {
         
-        let index: Int = self.objectsInKeyboard.index(of: aResponder) ?? NSNotFound
+        let index: Int = self.objectsInKeyboard.firstIndex(of: aResponder) ?? NSNotFound
         
         assert(index != NSNotFound, String.init(format: "SMKeyboardAvoidingScrollView: _objectsInKeyboard is empty in %@", NSStringFromClass(type(of: self))))
         
