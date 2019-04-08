@@ -92,9 +92,9 @@ open class SMFormatterDigitSimple: SMFormatter {
             
             while temp != nil && inputIndex < input.count && formatIndex < format.count {
                 
-                let formatChar: Character = format[String.Index(encodedOffset: formatIndex)]
+                let formatChar: Character = format[String.Index(utf16Offset: formatIndex, in: aText)]
                 let isRequred: Bool = canBeInputtedByPhonePad(char: formatChar)
-                let nextInputChar: Character = input[String.Index(encodedOffset: inputIndex)]
+                let nextInputChar: Character = input[String.Index(utf16Offset: inputIndex, in: aText)]
                 
                 switch formatChar {
                 case "#":
@@ -142,8 +142,8 @@ open class SMFormatterDigitSimple: SMFormatter {
         
         for index: Int in 0..<aText.count {
             
-            if canBeInputtedByPhonePad(char: aText[String.Index(encodedOffset: index)]) {
-                result.append(String(aText[String.Index(encodedOffset: index)]))
+            if canBeInputtedByPhonePad(char: aText[String.Index(utf16Offset: index, in: aText)]) {
+                result.append(String(aText[String.Index(utf16Offset: index, in: aText)]))
             }
         }
         

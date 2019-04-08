@@ -81,6 +81,8 @@ open class SMKeyboardToolbar: SMToolbar {
         case .dark:
             self.barTintColor = UIColor(red: 80.0/255.0, green: 80.0/255.0, blue: 80.0/255.0, alpha: 0.97)
             self.tintColor = UIColor.white
+        @unknown default: break
+            
         }
     }
     

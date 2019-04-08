@@ -41,7 +41,7 @@ public extension Dictionary where Key == String, Value == Any {
      
      */
     
-    public func value(forKeyPath keyPath: String, separator: String = ".") -> Any? {
+    func value(forKeyPath keyPath: String, separator: String = ".") -> Any? {
         
         var result: Any?
         
@@ -100,7 +100,7 @@ public extension Dictionary where Key == String, Value == Any {
 
 public extension Dictionary {
     
-    public mutating func setValueIfNotNil(value aValue: Value?, key aKey: Key) {
+    mutating func setValueIfNotNil(value aValue: Value?, key aKey: Key) {
         
         if let value: Value = aValue {
             
@@ -108,7 +108,7 @@ public extension Dictionary {
         }
     }
     
-    public mutating func setStringIfNotNilAndNotEmpty(value aValue: String?, key aKey: Key) {
+    mutating func setStringIfNotNilAndNotEmpty(value aValue: String?, key aKey: Key) {
         
         if let value: String = aValue {
             
@@ -122,7 +122,7 @@ public extension Dictionary {
         }
     }
     
-    public mutating func setValueNilProtect(value aValue: Value?, key aKey: Key) {
+    mutating func setValueNilProtect(value aValue: Value?, key aKey: Key) {
         
         var value: Value? = aValue
         

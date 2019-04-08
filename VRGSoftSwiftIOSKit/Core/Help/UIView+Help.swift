@@ -116,7 +116,7 @@ extension UIView {
 
 public extension CALayer {
     
-    public func sm_imageCreate() -> UIImage? {
+    func sm_imageCreate() -> UIImage? {
         
         var result: UIImage?
         

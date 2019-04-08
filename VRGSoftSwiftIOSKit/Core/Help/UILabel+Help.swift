@@ -26,49 +26,53 @@ extension UILabel {
     
     open func setAttributedText(markString: String, markFont: UIFont) {
         
-        guard let text: String = self.text else { return }
-        
-        let attributedString: NSMutableAttributedString = NSMutableAttributedString(string: text, attributes: [NSAttributedString.Key.font: self.font])
-
-        let markAttribute: [NSAttributedString.Key: Any] = [NSAttributedString.Key.font: markFont]
-        
-        if let range: NSRange = (self.text as NSString?)?.range(of: markString) {
-           attributedString.addAttributes(markAttribute, range: range)
+        if let text: String = self.text, let font: UIFont = self.font {
+            
+            let attributedString: NSMutableAttributedString = NSMutableAttributedString(string: text, attributes: [NSAttributedString.Key.font: font])
+            
+            let markAttribute: [NSAttributedString.Key: Any] = [NSAttributedString.Key.font: markFont]
+            
+            if let range: NSRange = (self.text as NSString?)?.range(of: markString) {
+                attributedString.addAttributes(markAttribute, range: range)
+            }
+            
+            self.attributedText = attributedString
         }
-        
-        self.attributedText = attributedString
     }
     
     open func setAttributedText(markString: String, markTextColor: UIColor) {
         
-        guard let text: String = self.text else { return }
+        if let text: String = self.text, let font: UIFont = self.font {
 
-        let attributedString: NSMutableAttributedString = NSMutableAttributedString(string: text, attributes: [NSAttributedString.Key.font: self.font])
-        
-        let markAttribute: [NSAttributedString.Key: Any] = [NSAttributedString.Key.foregroundColor: markTextColor]
-        let range: NSRange = (text as NSString).range(of: markString)
-        attributedString.addAttributes(markAttribute, range: range)
-        self.attributedText = attributedString
+            let attributedString: NSMutableAttributedString = NSMutableAttributedString(string: text, attributes: [NSAttributedString.Key.font: font])
+            
+            let markAttribute: [NSAttributedString.Key: Any] = [NSAttributedString.Key.foregroundColor: markTextColor]
+            let range: NSRange = (text as NSString).range(of: markString)
+            attributedString.addAttributes(markAttribute, range: range)
+            self.attributedText = attributedString
+        }
     }
     
     open func setAttributedText(markString: String, markTextColor: UIColor, markFont: UIFont) {
         
-        guard let text: String = self.text else { return }
-        
-        let attributedString: NSMutableAttributedString = NSMutableAttributedString(string: text, attributes: [NSAttributedString.Key.font: self.font])
-        
-        let markAttribute: [NSAttributedString.Key: Any] = [NSAttributedString.Key.foregroundColor: markTextColor, NSAttributedString.Key.font: markFont]
-        let range: NSRange = (text as NSString).range(of: markString)
-        attributedString.addAttributes(markAttribute, range: range)
-        self.attributedText = attributedString
+        if let text: String = self.text, let font: UIFont = self.font {
+
+            let attributedString: NSMutableAttributedString = NSMutableAttributedString(string: text, attributes: [NSAttributedString.Key.font: font])
+            
+            let markAttribute: [NSAttributedString.Key: Any] = [NSAttributedString.Key.foregroundColor: markTextColor, NSAttributedString.Key.font: markFont]
+            let range: NSRange = (text as NSString).range(of: markString)
+            attributedString.addAttributes(markAttribute, range: range)
+            self.attributedText = attributedString
+        }
     }
     
     open func setAtrUnderLine() {
         
-        guard let text: String = self.text else { return }
-        
-        let attributedString: NSMutableAttributedString = NSMutableAttributedString(string: text, attributes: [NSAttributedString.Key.font: self.font])
-        attributedString.addAttribute(NSAttributedString.Key.underlineStyle, value: 1, range: NSRange.init(location: 0, length: attributedString.length))
-        self.attributedText = attributedString
+        if let text: String = self.text, let font: UIFont = self.font {
+
+            let attributedString: NSMutableAttributedString = NSMutableAttributedString(string: text, attributes: [NSAttributedString.Key.font: font])
+            attributedString.addAttribute(NSAttributedString.Key.underlineStyle, value: 1, range: NSRange.init(location: 0, length: attributedString.length))
+            self.attributedText = attributedString
+        }
     }
 }

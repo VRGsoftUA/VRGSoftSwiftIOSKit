@@ -116,6 +116,8 @@ extension UIImage {
             transform = transform.rotated(by: -.pi/2)
         case .up, .upMirrored:
             break
+        @unknown default: break
+            
         }
         
         switch imageOrientation {
@@ -127,6 +129,8 @@ extension UIImage {
             transform = transform.scaledBy(x: -1, y: 1)
         case .up, .down, .left, .right:
             break
+        @unknown default: break
+
         }
         
         let colorSpace: CGColorSpace = CGColorSpaceCreateDeviceRGB()
