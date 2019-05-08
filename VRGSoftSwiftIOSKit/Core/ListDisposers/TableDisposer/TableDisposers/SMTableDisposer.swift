@@ -311,12 +311,14 @@ open class SMTableDisposer: SMListDisposer, UITableViewDelegate, UITableViewData
 
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        if let cellData: SMCellData = self.cellData(by: indexPath) as? SMCellData {
+        let cellData: SMListCellData = self.cellData(by: indexPath)
+        
+        cellData.baSelect?.performBlockFrom(sender: cellData)
+        delegate?.tableView?(tableView, didSelectRowAt: indexPath)
+
+        if let cellData: SMCellData = cellData as? SMCellData {
             
-            cellData.baSelect?.performBlockFrom(sender: cellData)
             cellData.performSelectedHandlers()
-            
-            delegate?.tableView?(tableView, didSelectRowAt: indexPath)
             
             if cellData.isAutoDeselect {
                 
