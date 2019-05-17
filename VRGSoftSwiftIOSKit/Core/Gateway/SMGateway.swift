@@ -59,6 +59,7 @@ open class SMGateway {
             response.isCancelled = (responseObject.error as NSError?)?.code == NSURLErrorCancelled
             response.isSuccess = false
             response.textMessage = responseObject.error?.localizedDescription
+            response.error = responseObject.error
             
             return response
         }
