@@ -2,8 +2,8 @@
 //  UIButton+SM.swift
 //  VRGSoftSwiftIOSKit
 //
-//  Created by OLEKSANDR SEMENIUK on 4/11/17.
-//  Copyright © 2017 Contractors.com. All rights reserved.
+//  Created by OLEKSANDR SEMENIUK on 8/21/17.
+//  Copyright © 2017 VRG Soft. All rights reserved.
 //
 
 import UIKit

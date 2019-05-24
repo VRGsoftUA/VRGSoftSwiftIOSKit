@@ -2,8 +2,8 @@
 //  Dictionary+SM.swift
 //  VRGSoftSwiftIOSKit
 //
-//  Created by OLEKSANDR SEMENIUK on 12/17/18.
-//  Copyright © 2018 OLEKSANDR SEMENIUK. All rights reserved.
+//  Created by OLEKSANDR SEMENIUK on 8/21/17.
+//  Copyright © 2017 VRG Soft. All rights reserved.
 //
 
 import Foundation

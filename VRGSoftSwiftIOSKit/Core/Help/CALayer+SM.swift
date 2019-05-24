@@ -2,8 +2,8 @@
 //  CALayer+SM.swift
 //  VRGSoftSwiftIOSKit
 //
-//  Created by OLEKSANDR SEMENIUK on 5/22/19.
-//  Copyright © 2019 OLEKSANDR SEMENIUK. All rights reserved.
+//  Created by OLEKSANDR SEMENIUK on 8/21/17.
+//  Copyright © 2017 VRG Soft. All rights reserved.
 //
 
 import UIKit

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		048337FB2297DDD1004267F7 /* Date+SM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048337FA2297DDD1004267F7 /* Date+SM.swift */; };
 		04E31F1F229553AD00C77351 /* SMWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E31F1E229553AD00C77351 /* SMWrapper.swift */; };
 		04E31F212295611100C77351 /* Dictionary+Help.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E31F202295611100C77351 /* Dictionary+Help.swift */; };
 		04E31F232295614800C77351 /* UIView+Help.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E31F222295614800C77351 /* UIView+Help.swift */; };
@@ -115,6 +116,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		048337FA2297DDD1004267F7 /* Date+SM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+SM.swift"; sourceTree = "<group>"; };
 		04E31F1E229553AD00C77351 /* SMWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMWrapper.swift; sourceTree = "<group>"; };
 		04E31F202295611100C77351 /* Dictionary+Help.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dictionary+Help.swift"; sourceTree = "<group>"; };
 		04E31F222295614800C77351 /* UIView+Help.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Help.swift"; sourceTree = "<group>"; };
@@ -593,21 +595,22 @@
 			isa = PBXGroup;
 			children = (
 				04E31F242295624200C77351 /* CALayer+SM.swift */,
+				048337FA2297DDD1004267F7 /* Date+SM.swift */,
 				04E31F202295611100C77351 /* Dictionary+Help.swift */,
 				B77E9EAA22170240000CE876 /* Dictionary+SM.swift */,
 				B774AE1B20FDD5940065C963 /* NSAttributedString+SM.swift */,
-				B7265EF220EDF69C003FBD5C /* UILabel+SM.swift */,
-				04E31F222295614800C77351 /* UIView+Help.swift */,
-				B7265EF320EDF69C003FBD5C /* UIView+SM.swift */,
+				B7265EFB20EDF69C003FBD5C /* SMColor.swift */,
 				B7265EF420EDF69C003FBD5C /* SMHelper.swift */,
+				B7265EFA20EDF69C003FBD5C /* String+SM.swift */,
 				B7265EF520EDF69C003FBD5C /* UIButton+SM.swift */,
 				B7265EF620EDF69C003FBD5C /* UIImage+SM.swift */,
-				B7265EF720EDF69C003FBD5C /* UserDefaults+SM.swift */,
 				B7265EF820EDF69C003FBD5C /* UIImageView+SM.swift */,
-				B7265EF920EDF69C003FBD5C /* UIView+PSSizes.swift */,
-				B7265EFA20EDF69C003FBD5C /* String+SM.swift */,
-				B7265EFB20EDF69C003FBD5C /* SMColor.swift */,
+				B7265EF220EDF69C003FBD5C /* UILabel+SM.swift */,
 				B7265EFC20EDF69C003FBD5C /* UIView+Animation.swift */,
+				04E31F222295614800C77351 /* UIView+Help.swift */,
+				B7265EF920EDF69C003FBD5C /* UIView+PSSizes.swift */,
+				B7265EF320EDF69C003FBD5C /* UIView+SM.swift */,
+				B7265EF720EDF69C003FBD5C /* UserDefaults+SM.swift */,
 			);
 			path = Help;
 			sourceTree = "<group>";
@@ -825,6 +828,7 @@
 				B7265F1D20EDF69C003FBD5C /* SMDBStorage.swift in Sources */,
 				B7265F5520EDF69C003FBD5C /* UIView+Animation.swift in Sources */,
 				B7265F2620EDF69C003FBD5C /* SMPopupSimplePicker.swift in Sources */,
+				048337FB2297DDD1004267F7 /* Date+SM.swift in Sources */,
 				B7265F2F20EDF69C003FBD5C /* SMKeyboardAvoidingCollectionView.swift in Sources */,
 				B7265F0820EDF69C003FBD5C /* SMTableDisposer.swift in Sources */,
 				B7265F3920EDF69C003FBD5C /* SMNativeActivityAdapter.swift in Sources */,
