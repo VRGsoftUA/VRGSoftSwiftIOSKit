@@ -134,11 +134,11 @@ open class SMPopupView: UIView {
                 let popover: UIPopoverPresentationController  = vc.popoverPresentationController {
                 
                 vc.view = self
-                vc.preferredContentSize = self.size
+                vc.preferredContentSize = self.sm.size
                 popover.sourceRect = rect
                 popover.sourceView = aView
                 popover.permittedArrowDirections = directions
-                aView.sm_parentViewController?.present(vc, animated: true, completion: nil)
+                aView.sm.parentViewController?.present(vc, animated: true, completion: nil)
             }
         } else {
             

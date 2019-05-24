@@ -23,7 +23,7 @@ open class SMAlertController: UIAlertController {
     
     open func show() {
         
-        if let topViewController: UIViewController = UIViewController.topViewController() {
+        if let topViewController: UIViewController = UIViewController.sm.topViewController() {
             
             self.showFrom(vc: topViewController)
         }

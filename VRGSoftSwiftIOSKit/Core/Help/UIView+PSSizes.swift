@@ -1,6 +1,6 @@
 //
 //  UIView+PSSizes.swift
-//  SwiftKit
+//  VRGSoftSwiftIOSKit
 //
 //  Created by OLEKSANDR SEMENIUK on 1/14/17.
 //  Copyright © 2017 VRG Soft. All rights reserved.
@@ -8,110 +8,110 @@
 
 import UIKit
 
-extension UIView {
+public extension SMWrapper where Base: UIView {
     
-    open var left: CGFloat {
+    var left: CGFloat {
         
         get {
-            return self.frame.origin.x
+            return base.frame.origin.x
         }
         set(left) {
-            var frame: CGRect = self.frame
+            var frame: CGRect = base.frame
             frame.origin.x = left
-            self.frame = frame
+            base.frame = frame
         }
     }
     
-    open var top: CGFloat {
+    var top: CGFloat {
         
         get {
-            return self.frame.origin.y
+            return base.frame.origin.y
         }
         set(top) {
-            var frame: CGRect = self.frame
+            var frame: CGRect = base.frame
             frame.origin.y = top
-            self.frame = frame
+            base.frame = frame
         }
     }
-
-    open var right: CGFloat {
+    
+    var right: CGFloat {
         
         get {
-            return self.frame.origin.x + self.frame.size.width
+            return base.frame.origin.x + base.frame.size.width
         }
         set(right) {
-            var frame: CGRect = self.frame
+            var frame: CGRect = base.frame
             frame.origin.x = right - frame.size.width
-            self.frame = frame
+            base.frame = frame
         }
     }
     
-    open var bottom: CGFloat {
+    var bottom: CGFloat {
         
         get {
-            return self.frame.origin.y + self.frame.size.height
+            return base.frame.origin.y + base.frame.size.height
         }
         set(bottom) {
-            var frame: CGRect = self.frame
+            var frame: CGRect = base.frame
             frame.origin.y = bottom - frame.size.height
-            self.frame = frame
+            base.frame = frame
         }
     }
     
-    open var width: CGFloat {
+    var width: CGFloat {
         
         get {
-            return self.frame.size.width
+            return base.frame.size.width
         }
         set(width) {
-            var frame: CGRect = self.frame
+            var frame: CGRect = base.frame
             frame.size.width = width
-            self.frame = frame
-        }
-    }
-
-    open var height: CGFloat {
-        
-        get {
-            return self.frame.size.height
-        }
-        set(height) {
-            var frame: CGRect = self.frame
-            frame.size.height = height
-            self.frame = frame
-        }
-    }
-
-    open var origin: CGPoint {
-        
-        get {
-            return self.frame.origin
-        }
-        set(origin) {
-            var frame: CGRect = self.frame
-            frame.origin = origin
-            self.frame = frame
-        }
-    }
-
-    open var size: CGSize {
-        
-        get {
-            return self.frame.size
-        }
-        set(size) {
-            var frame: CGRect = self.frame
-            frame.size = size
-            self.frame = frame
+            base.frame = frame
         }
     }
     
-    open var rightMargin: CGFloat {
+    var height: CGFloat {
         
         get {
-            if let sWidth: CGFloat = superview?.width {
+            return base.frame.size.height
+        }
+        set(height) {
+            var frame: CGRect = base.frame
+            frame.size.height = height
+            base.frame = frame
+        }
+    }
+    
+    var origin: CGPoint {
+        
+        get {
+            return base.frame.origin
+        }
+        set(origin) {
+            var frame: CGRect = base.frame
+            frame.origin = origin
+            base.frame = frame
+        }
+    }
+    
+    var size: CGSize {
+        
+        get {
+            return base.frame.size
+        }
+        set(size) {
+            var frame: CGRect = base.frame
+            frame.size = size
+            base.frame = frame
+        }
+    }
+    
+    var rightMargin: CGFloat {
+        
+        get {
+            if let sWidth: CGFloat = base.superview?.sm.width {
                 
-                return sWidth - frame.size.width - frame.origin.x
+                return sWidth - base.frame.size.width - base.frame.origin.x
             } else {
                 
                 return 0
@@ -120,47 +120,47 @@ extension UIView {
         }
         set(rightMargin) {
             
-            if let sWidth: CGFloat = superview?.frame.size.width {
+            if let sWidth: CGFloat = base.superview?.frame.size.width {
                 
-                var frame: CGRect = self.frame
+                var frame: CGRect = base.frame
                 frame.origin.x = sWidth - rightMargin - frame.size.width
-                self.frame = frame
+                base.frame = frame
             }
         }
     }
     
-    open var bottomMargin: CGFloat {
+    var bottomMargin: CGFloat {
         
         get {
-            if let sHeight: CGFloat = superview?.height {
-                return sHeight - frame.size.height - frame.origin.y
+            if let sHeight: CGFloat = base.superview?.sm.height {
+                return sHeight - base.frame.size.height - base.frame.origin.y
             } else {
                 return 0
             }
         }
         set(bottomMargin) {
             
-            if let sHeight: CGFloat = superview?.frame.size.height {
+            if let sHeight: CGFloat = base.superview?.frame.size.height {
                 
-                var frame: CGRect = self.frame
+                var frame: CGRect = base.frame
                 frame.origin.y = sHeight - bottomMargin - frame.size.height
-                self.frame = frame
+                base.frame = frame
             }
         }
     }
     
-    open func sm_updateConstrainIfExist(height aHeight: CGFloat) {
+    func updateConstrainIfExist(height aHeight: CGFloat) {
         
-        for constraint: NSLayoutConstraint in self.constraints where constraint.firstAttribute == NSLayoutConstraint.Attribute.height {
+        for constraint: NSLayoutConstraint in base.constraints where constraint.firstAttribute == NSLayoutConstraint.Attribute.height {
             
             constraint.constant = aHeight
             break
         }
     }
-
-    open func sm_updateConstrainIfExist(width aWidth: CGFloat) {
+    
+    func updateConstrainIfExist(width aWidth: CGFloat) {
         
-        for constraint: NSLayoutConstraint in self.constraints where constraint.firstAttribute == NSLayoutConstraint.Attribute.width {
+        for constraint: NSLayoutConstraint in base.constraints where constraint.firstAttribute == NSLayoutConstraint.Attribute.width {
             
             constraint.constant = aWidth
             break

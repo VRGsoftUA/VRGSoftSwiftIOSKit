@@ -1,6 +1,6 @@
 //
-//  UIImage+Help.swift
-//  SwiftKit
+//  UIImage+SM.swift
+//  VRGSoftSwiftIOSKit
 //
 //  Created by OLEKSANDR SEMENIUK on 1/18/17.
 //  Copyright © 2017 VRG Soft. All rights reserved.
@@ -8,9 +8,9 @@
 
 import UIKit
 
-extension UIImage {
+public extension SMWrapper where Base: UIImage {
     
-    open class func imageWith(color aColor: UIColor, size aSize: CGSize) -> UIImage? {
+    static func imageWith(color aColor: UIColor, size aSize: CGSize) -> UIImage? {
         
         let rect: CGRect = CGRect(origin: CGPoint(), size: aSize)
         UIGraphicsBeginImageContext(rect.size)
@@ -27,12 +27,12 @@ extension UIImage {
         return image
     }
     
-    open func sm_tintedImageWith(color aColor: UIColor) -> UIImage? {
+    func tintedImageWith(color aColor: UIColor) -> UIImage? {
         
         var result: UIImage?
         
-        let scale: CGFloat = self.scale
-        let size: CGSize = CGSize(width: scale*self.size.width, height: scale*self.size.height)
+        let scale: CGFloat = base.scale
+        let size: CGSize = CGSize(width: scale*base.size.width, height: scale*base.size.height)
         UIGraphicsBeginImageContext(size)
         
         let context: CGContext? = UIGraphicsGetCurrentContext()
@@ -43,7 +43,7 @@ extension UIImage {
         let rect: CGRect = CGRect(origin: CGPoint.zero, size: size)
         context?.setBlendMode(CGBlendMode.normal)
         
-        if let cgI: CGImage = cgImage {
+        if let cgI: CGImage = base.cgImage {
             
             context?.draw(cgI, in: rect)
         }
@@ -54,65 +54,65 @@ extension UIImage {
         
         if let image: CGImage = context?.makeImage() {
             
-            result = UIImage(cgImage: image, scale: scale, orientation: self.imageOrientation)
+            result = UIImage(cgImage: image, scale: scale, orientation: base.imageOrientation)
         }
         
         return result
     }
     
-    open class func resizableImageWith(color aColor: UIColor) -> UIImage? {
+    static func resizableImageWith(color aColor: UIColor) -> UIImage? {
         
         let image: UIImage? = imageWith(color: aColor, size: CGSize(width: 1, height: 1))?.resizableImage(withCapInsets: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0), resizingMode: UIImage.ResizingMode.stretch)
         return image
     }
     
-    open var roundedImage: UIImage? {
+    var roundedImage: UIImage? {
         
-        let rect: CGRect = CGRect(origin: CGPoint(x: 0, y: 0), size: self.size)
-        UIGraphicsBeginImageContextWithOptions(self.size, false, self.scale)
-        UIBezierPath(roundedRect: rect, cornerRadius: self.size.height).addClip()
-        self.draw(in: rect)
+        let rect: CGRect = CGRect(origin: CGPoint(x: 0, y: 0), size: base.size)
+        UIGraphicsBeginImageContextWithOptions(base.size, false, base.scale)
+        UIBezierPath(roundedRect: rect, cornerRadius: base.size.height).addClip()
+        base.draw(in: rect)
         return UIGraphicsGetImageFromCurrentImageContext()
     }
     
-    open func dataJPEGWithkBSize(aKbSize: Int) -> Data? {
+    func dataJPEGWithkBSize(aKbSize: Int) -> Data? {
         
         let maxCompression: CGFloat = 0.1
         let maxFileSize: Int = aKbSize*1024
         
         var compression: CGFloat = 1.0
         
-        var data: Data? = self.jpegData(compressionQuality: compression)
+        var data: Data? = base.jpegData(compressionQuality: compression)
         
         while let length: Int = data?.count, length > maxFileSize, compression > maxCompression {
             
             compression -= 0.05
-            data = self.jpegData(compressionQuality: compression)
+            data = base.jpegData(compressionQuality: compression)
         }
         
-        data = self.jpegData(compressionQuality: compression+0.02)
+        data = base.jpegData(compressionQuality: compression+0.02)
         
         return data
     }
     
-    open func fixedOrientation() -> UIImage? {
+    func fixedOrientation() -> UIImage? {
         
-        if imageOrientation == .up {
+        if base.imageOrientation == .up {
             
-            return self
+            return base
         }
         
         var transform: CGAffineTransform = .identity
         
-        switch imageOrientation {
+        switch base.imageOrientation {
         case .down, .downMirrored:
-            transform = transform.translatedBy(x: size.width, y: size.height)
+            transform = transform.translatedBy(x: base.size.width, y: base.size.height)
             transform = transform.rotated(by: .pi)
         case .left, .leftMirrored:
-            transform = transform.translatedBy(x: size.width, y: 0)
+            transform = transform.translatedBy(x: base.size.width, y: 0)
             transform = transform.rotated(by: .pi/2)
         case .right, .rightMirrored:
-            transform = transform.translatedBy(x: 0, y: size.height)
+            transform = transform.translatedBy(x: 0, y: base.size.height)
             transform = transform.rotated(by: -.pi/2)
         case .up, .upMirrored:
             break
@@ -120,12 +120,12 @@ extension UIImage {
             
         }
         
-        switch imageOrientation {
+        switch base.imageOrientation {
         case .upMirrored, .downMirrored:
-            transform = transform.translatedBy(x: size.width, y: 0)
+            transform = transform.translatedBy(x: base.size.width, y: 0)
             transform = transform.scaledBy(x: -1, y: 1)
         case .leftMirrored, .rightMirrored:
-            transform = transform.translatedBy(x: size.height, y: 0)
+            transform = transform.translatedBy(x: base.size.height, y: 0)
             transform = transform.scaledBy(x: -1, y: 1)
         case .up, .down, .left, .right:
             break
@@ -135,18 +135,18 @@ extension UIImage {
         
         let colorSpace: CGColorSpace = CGColorSpaceCreateDeviceRGB()
         let bitmapInfo: CGBitmapInfo = CGBitmapInfo(rawValue: CGImageAlphaInfo.premultipliedLast.rawValue)
-        guard let context: CGContext = CGContext(data: nil, width: Int(UInt(size.width)), height: Int(UInt(
-            size.height)), bitsPerComponent: 8, bytesPerRow: 0, space: colorSpace, bitmapInfo: bitmapInfo.rawValue) else { return nil }
+        guard let context: CGContext = CGContext(data: nil, width: Int(UInt(base.size.width)), height: Int(UInt(
+            base.size.height)), bitsPerComponent: 8, bytesPerRow: 0, space: colorSpace, bitmapInfo: bitmapInfo.rawValue) else { return nil }
         
         context.concatenate(transform)
         
-        if let cgI: CGImage = cgImage {
+        if let cgI: CGImage = base.cgImage {
             
-            switch imageOrientation {
+            switch base.imageOrientation {
             case .left, .leftMirrored, .right, .rightMirrored:
-                context.draw(cgI, in: CGRect(x: 0, y: 0, width: size.height, height: size.width))
+                context.draw(cgI, in: CGRect(x: 0, y: 0, width: base.size.height, height: base.size.width))
             default:
-                context.draw(cgI, in: CGRect(x: 0, y: 0, width: size.width, height: size.height))
+                context.draw(cgI, in: CGRect(x: 0, y: 0, width: base.size.width, height: base.size.height))
             }
         }
         
@@ -155,3 +155,6 @@ extension UIImage {
         return UIImage(cgImage: cgImage)
     }
 }
+
+
+extension UIImage: SMCompatible { }
