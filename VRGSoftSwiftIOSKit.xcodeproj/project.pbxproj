@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		048337FB2297DDD1004267F7 /* Date+SM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048337FA2297DDD1004267F7 /* Date+SM.swift */; };
+		04B0BE84229BB952001F7A31 /* Optional+Help.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B0BE83229BB952001F7A31 /* Optional+Help.swift */; };
+		04B0BE86229BB99C001F7A31 /* Sequence+Help.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B0BE85229BB99C001F7A31 /* Sequence+Help.swift */; };
+		04B0BE88229BB9E6001F7A31 /* Collection+Help.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B0BE87229BB9E6001F7A31 /* Collection+Help.swift */; };
+		04B0BE8A229BBA34001F7A31 /* Array+Help.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B0BE89229BBA34001F7A31 /* Array+Help.swift */; };
 		04E31F1F229553AD00C77351 /* SMWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E31F1E229553AD00C77351 /* SMWrapper.swift */; };
 		04E31F212295611100C77351 /* Dictionary+Help.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E31F202295611100C77351 /* Dictionary+Help.swift */; };
 		04E31F232295614800C77351 /* UIView+Help.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E31F222295614800C77351 /* UIView+Help.swift */; };
@@ -117,6 +121,10 @@
 
 /* Begin PBXFileReference section */
 		048337FA2297DDD1004267F7 /* Date+SM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+SM.swift"; sourceTree = "<group>"; };
+		04B0BE83229BB952001F7A31 /* Optional+Help.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Optional+Help.swift"; sourceTree = "<group>"; };
+		04B0BE85229BB99C001F7A31 /* Sequence+Help.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sequence+Help.swift"; sourceTree = "<group>"; };
+		04B0BE87229BB9E6001F7A31 /* Collection+Help.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+Help.swift"; sourceTree = "<group>"; };
+		04B0BE89229BBA34001F7A31 /* Array+Help.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Help.swift"; sourceTree = "<group>"; };
 		04E31F1E229553AD00C77351 /* SMWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMWrapper.swift; sourceTree = "<group>"; };
 		04E31F202295611100C77351 /* Dictionary+Help.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dictionary+Help.swift"; sourceTree = "<group>"; };
 		04E31F222295614800C77351 /* UIView+Help.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Help.swift"; sourceTree = "<group>"; };
@@ -594,11 +602,15 @@
 		B7265EF120EDF69C003FBD5C /* Help */ = {
 			isa = PBXGroup;
 			children = (
+				04B0BE89229BBA34001F7A31 /* Array+Help.swift */,
 				04E31F242295624200C77351 /* CALayer+SM.swift */,
+				04B0BE87229BB9E6001F7A31 /* Collection+Help.swift */,
 				048337FA2297DDD1004267F7 /* Date+SM.swift */,
 				04E31F202295611100C77351 /* Dictionary+Help.swift */,
 				B77E9EAA22170240000CE876 /* Dictionary+SM.swift */,
 				B774AE1B20FDD5940065C963 /* NSAttributedString+SM.swift */,
+				04B0BE83229BB952001F7A31 /* Optional+Help.swift */,
+				04B0BE85229BB99C001F7A31 /* Sequence+Help.swift */,
 				B7265EFB20EDF69C003FBD5C /* SMColor.swift */,
 				B7265EF420EDF69C003FBD5C /* SMHelper.swift */,
 				B7265EFA20EDF69C003FBD5C /* String+SM.swift */,
@@ -828,6 +840,7 @@
 				B7265F1D20EDF69C003FBD5C /* SMDBStorage.swift in Sources */,
 				B7265F5520EDF69C003FBD5C /* UIView+Animation.swift in Sources */,
 				B7265F2620EDF69C003FBD5C /* SMPopupSimplePicker.swift in Sources */,
+				04B0BE8A229BBA34001F7A31 /* Array+Help.swift in Sources */,
 				048337FB2297DDD1004267F7 /* Date+SM.swift in Sources */,
 				B7265F2F20EDF69C003FBD5C /* SMKeyboardAvoidingCollectionView.swift in Sources */,
 				B7265F0820EDF69C003FBD5C /* SMTableDisposer.swift in Sources */,
@@ -849,6 +862,7 @@
 				B774AE1C20FDD5940065C963 /* NSAttributedString+SM.swift in Sources */,
 				B7265F0C20EDF69C003FBD5C /* SMCellDataMapedProtocol.swift in Sources */,
 				B7265F0920EDF69C003FBD5C /* SMCellData.swift in Sources */,
+				04B0BE84229BB952001F7A31 /* Optional+Help.swift in Sources */,
 				B7265F1720EDF69C003FBD5C /* SMResponse.swift in Sources */,
 				B7265F5920EDF69C003FBD5C /* SMGateway.swift in Sources */,
 				B7265F4420EDF69C003FBD5C /* SMCollectionAdapter.swift in Sources */,
@@ -877,6 +891,7 @@
 				B7265F1620EDF69C003FBD5C /* SMAlertController.swift in Sources */,
 				B77E9EAB22170240000CE876 /* Dictionary+SM.swift in Sources */,
 				B7265F0B20EDF69C003FBD5C /* SMCellProtocol.swift in Sources */,
+				04B0BE88229BB9E6001F7A31 /* Collection+Help.swift in Sources */,
 				B7265F3320EDF69C003FBD5C /* SMFormatter.swift in Sources */,
 				B7265F3F20EDF69C003FBD5C /* SMValidationGroup.swift in Sources */,
 				B7265F3420EDF69C003FBD5C /* SMViewController.swift in Sources */,
@@ -892,6 +907,7 @@
 				B7265F3020EDF69C003FBD5C /* SMTextField.swift in Sources */,
 				B73EE0DC21DF86F500F48C5C /* SMListDisposerModeledDelegate.swift in Sources */,
 				B7265F4D20EDF69C003FBD5C /* SMHelper.swift in Sources */,
+				04B0BE86229BB99C001F7A31 /* Sequence+Help.swift in Sources */,
 				B7265F1C20EDF69C003FBD5C /* SMFetcherWithRequest.swift in Sources */,
 				B74DF39A1F34955500405847 /* AppDelegate.swift in Sources */,
 				04E31F1F229553AD00C77351 /* SMWrapper.swift in Sources */,
