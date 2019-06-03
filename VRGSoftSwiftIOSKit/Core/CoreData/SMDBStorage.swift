@@ -1,35 +1,12 @@
 //
 //  SMStorage.swift
-//  SwiftKit
+//  VRGSoftSwiftIOSKit
 //
 //  Created by OLEKSANDR SEMENIUK on 12/26/16.
 //  Copyright © 2016 VRG Soft. All rights reserved.
 //
 
 import CoreData
-
-public protocol SMDBStorableObject { }
-public extension SMDBStorableObject where Self: NSManagedObject {
-    
-    func inContext(_ aContext: NSManagedObjectContext) -> Self? {
-        
-        var result: NSManagedObject?
-        
-        do {
-            try managedObjectContext?.obtainPermanentIDs(for: [self])
-            aContext.performAndWait {
-                result = aContext.object(with: objectID)
-            }
-        } catch {
-            
-        }
-
-        return result as? Self
-    }
-}
-
-extension NSManagedObject: SMDBStorableObject { }
-
 
 public typealias SMStorageContextBlock = (NSManagedObjectContext) -> Void
 public typealias SMStorageVoidBlock = () -> Void
@@ -50,7 +27,7 @@ open class SMDBStorage {
     
     open var shouldCacheStorage: Bool = false
     
-    public init() {
+    public required init() {
         
         _ = defaultContext
     }
