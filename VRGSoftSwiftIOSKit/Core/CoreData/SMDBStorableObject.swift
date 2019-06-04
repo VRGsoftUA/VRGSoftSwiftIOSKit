@@ -280,10 +280,12 @@ public extension SMDBStorableObject {
         return result
     }
     
+    /// Make or update (if exist) objects in the specified NSManagedObjectContext
+    ///
     /// - Parameters:
-    ///   - aData: Данные для makeOrUpdateObjectWithData
-    ///   - aContext: NSManagedObjectContext для мержа
-    /// - Returns: NSManagedObjects в заданном NSManagedObjectContext
+    ///   - aData: data to make or update (if exist) objects
+    ///   - aContext: specified NSManagedObjectContext for save
+    /// - Returns: Array of NSManagedObjects in the specified NSManagedObjectContext
     @discardableResult static func mergeWithData(_ aData: Any, inContext aContext: NSManagedObjectContext) -> [Self] {
         
         var result: [Self] = []
@@ -307,10 +309,11 @@ public extension SMDBStorableObject {
         return result
     }
     
+    /// Make or update (if exist) objects in the default (mainQueueConcurrencyType) NSManagedObjectContext
+    ///
     /// - Parameters:
-    ///   - aData: Данные для makeOrUpdateObjectWithData
-    ///   - aContext: NSManagedObjectContext для мержа
-    /// - Returns: NSManagedObjects в дефолтном (mainQueueConcurrencyType) NSManagedObjectContext
+    /// - aData: data to make or update (if exist) objects
+    /// - Returns: Array of NSManagedObjects in the default (mainQueueConcurrencyType) NSManagedObjectContext
     @discardableResult static func mergeWithDataDefault(_ aData: Any) -> [Self] {
         
         var result: [Self] = []
@@ -326,11 +329,13 @@ public extension SMDBStorableObject {
         return result
     }
     
+    /// Make or update (if exist) objects in the specified NSManagedObjectContext
+    ///
     /// - Parameters:
-    ///   - aData: Данные для makeOrUpdateObjectWithData
-    ///   - aContext: NSManagedObjectContext для мержа
-    ///   - aOldObjects: NSManagedObjects для мержа. Будут удалены неиспользуемые
-    /// - Returns: NSManagedObjects в заданном NSManagedObjectContext
+    ///   - aData: data to make or update (if exist) objects
+    ///   - aContext: specified NSManagedObjectContext for save
+    ///   - aOldObjects: Array of NSManagedObjects for update. Unused will be removed
+    /// - Returns: Array of NSManagedObjects in the specified NSManagedObjectContext
     @discardableResult static func mergeWithData(_ aData: Any, inContext aContext: NSManagedObjectContext, oldObjects aOldObjects: [Self]?) -> [Self] {
         
         let result: [Self] = mergeWithData(aData, inContext: aContext)
@@ -364,11 +369,12 @@ public extension SMDBStorableObject {
         return result
     }
     
-    
+    /// Make or update (if exist) objects in the default (mainQueueConcurrencyType) NSManagedObjectContext
+    ///
     /// - Parameters:
-    ///   - aData: Данные для makeOrUpdateObjectWithData
-    ///   - aOldObjects: NSManagedObjects для мержа. Будут удалены неиспользуемые
-    /// - Returns: NSManagedObjects в дефолтном (mainQueueConcurrencyType) NSManagedObjectContext
+    ///   - aData: data to make or update (if exist) objects
+    ///   - aOldObjects: Array of NSManagedObjects for update. Unused will be removed
+    /// - Returns: Array of NSManagedObjects in the specified NSManagedObjectContext
     @discardableResult static func mergeWithDataDefault(_ aData: Any, oldObjects aOldObjects: [Self]?) -> [Self] {
         
         var result: [Self] = []
