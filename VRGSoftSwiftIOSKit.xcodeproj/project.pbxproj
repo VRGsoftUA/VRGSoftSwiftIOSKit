@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0490B1A422A5132E00A1FD7B /* SMBOModelHelp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0490B1A322A5132E00A1FD7B /* SMBOModelHelp.swift */; };
 		0490B1A622A5149600A1FD7B /* SMBOReloadProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0490B1A522A5149600A1FD7B /* SMBOReloadProtocol.swift */; };
 		0490B1A822A5162C00A1FD7B /* SMDBStorageConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0490B1A722A5162C00A1FD7B /* SMDBStorageConfigurator.swift */; };
 		0490B1AA22A51D9900A1FD7B /* Array+NSManagedObjectContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0490B1A922A51D9900A1FD7B /* Array+NSManagedObjectContext.swift */; };
@@ -116,7 +115,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0490B1A322A5132E00A1FD7B /* SMBOModelHelp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMBOModelHelp.swift; sourceTree = "<group>"; };
 		0490B1A522A5149600A1FD7B /* SMBOReloadProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMBOReloadProtocol.swift; sourceTree = "<group>"; };
 		0490B1A722A5162C00A1FD7B /* SMDBStorageConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMDBStorageConfigurator.swift; sourceTree = "<group>"; };
 		0490B1A922A51D9900A1FD7B /* Array+NSManagedObjectContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+NSManagedObjectContext.swift"; sourceTree = "<group>"; };
@@ -455,7 +453,6 @@
 				B7265EB720EDF69C003FBD5C /* SMDBStorage.swift */,
 				0490B1A722A5162C00A1FD7B /* SMDBStorageConfigurator.swift */,
 				0490B1A922A51D9900A1FD7B /* Array+NSManagedObjectContext.swift */,
-				0490B1A322A5132E00A1FD7B /* SMBOModelHelp.swift */,
 				0490B1A522A5149600A1FD7B /* SMBOReloadProtocol.swift */,
 				0490B1AB22A51DCB00A1FD7B /* SMDBStorableObject.swift */,
 			);
@@ -839,7 +836,6 @@
 				B7265F3620EDF69C003FBD5C /* SMActivityAdapter.swift in Sources */,
 				B7265F1F20EDF69C003FBD5C /* SMPopupTimePicker.swift in Sources */,
 				B7265F1120EDF69C003FBD5C /* SMCollectionDisposerModeled.swift in Sources */,
-				0490B1A422A5132E00A1FD7B /* SMBOModelHelp.swift in Sources */,
 				B7265F4320EDF69C003FBD5C /* SMModuleList.swift in Sources */,
 				B7265F3B20EDF69C003FBD5C /* SMNativeMoreCollectionViewCell.swift in Sources */,
 				B7265F3A20EDF69C003FBD5C /* SMNativeMoreTableViewCell.swift in Sources */,

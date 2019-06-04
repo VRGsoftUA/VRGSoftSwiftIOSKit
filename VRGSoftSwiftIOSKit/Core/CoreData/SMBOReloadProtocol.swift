@@ -8,11 +8,14 @@
 
 import CoreData
 
-public protocol SMBOReloadProtocol { }
+public protocol SMBOReloadProtocol {
+    func reloadNotificationKey() -> String
+    func sendDidReloadNotification()
+}
 
-extension SMBOReloadProtocol where Self: SMBOModelHelp {
+public extension SMBOReloadProtocol where Self: SMDBStorableObject {
     
-    public func reloadNotificationKey() -> String {
+    func reloadNotificationKey() -> String {
         
         let description: String = String(describing: type(of: self))
         let result: String = "SMBOReloadProtocol" + "\(description)" + "\(_identifier ?? "")"
@@ -20,7 +23,7 @@ extension SMBOReloadProtocol where Self: SMBOModelHelp {
         return result
     }
     
-    public func sendDidReloadNotification() {
+    func sendDidReloadNotification() {
         
         DispatchQueue.main.async {
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: self.reloadNotificationKey()), object: self)

@@ -8,12 +8,12 @@
 
 import Foundation
 
-public class SMDBStorageConfigurator {
+open class SMDBStorageConfigurator {
     
-    static var storageType: SMDBStorage.Type?
-    static var storage: SMDBStorage? = SMDBStorageConfigurator.storageType?.init()
+    public static var storageType: SMDBStorage.Type?
+    public static var storage: SMDBStorage? = SMDBStorageConfigurator.storageType?.init()
     
-    static func registerStorageClass(_ storageType: SMDBStorage.Type) {
+    public static func registerStorageClass(_ storageType: SMDBStorage.Type) {
         
         self.storageType = storageType
         storage = storageType.init()

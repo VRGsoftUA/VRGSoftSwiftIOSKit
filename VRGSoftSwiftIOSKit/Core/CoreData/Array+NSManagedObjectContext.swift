@@ -8,7 +8,7 @@
 
 import CoreData
 
-public extension Array where Element: SMBOModelHelp {
+public extension Array where Element: SMDBStorableObject {
     
     func moveToContext(_ aContext: NSManagedObjectContext) -> [Element] {
         

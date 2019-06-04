@@ -308,7 +308,7 @@ open class SMDBStorage {
         })
     }
 
-    open func remove(object aObject: NSManagedObject) {
+    open func remove(object aObject: SMDBStorableObject) {
         
         self.saveAndWait(block: { context in
             
@@ -319,11 +319,11 @@ open class SMDBStorage {
         })
     }
     
-    open func remove(objects aObjects: [NSManagedObject]) {
+    open func remove(objects aObjects: [SMDBStorableObject]) {
         
         self.saveAndWait(block: { context in
             
-            for object: NSManagedObject in aObjects {
+            for object: SMDBStorableObject in aObjects {
                 
                 if let obj: NSManagedObject = object.inContext(context) {
                     
