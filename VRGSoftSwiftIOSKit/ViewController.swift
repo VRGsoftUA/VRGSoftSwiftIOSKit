@@ -38,6 +38,10 @@ class ViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate 
         
         self.scrollView.addObjectForKeyboard(self.tvTest)
         self.scrollView.isShowsKeyboardToolbar = true
+        
+        SMTestGateway.shared.getTestData().startWithResponseBlockInMainQueue { _ in
+            
+        }
     }
     
     @IBAction func didShowPopoverClicked(sender: UIBarButtonItem) {

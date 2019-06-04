@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		04DEC93F22A69CD900E7C52F /* SMTestGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DEC93E22A69CD900E7C52F /* SMTestGateway.swift */; };
+		04DEC94122A6AB8D00E7C52F /* SMRequestRetrier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DEC94022A6AB8D00E7C52F /* SMRequestRetrier.swift */; };
 		442C1DDCEB2B2B292945F835 /* Pods_VRGSoftSwiftIOSKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BC56EDC4EEA30A01FF18969 /* Pods_VRGSoftSwiftIOSKit.framework */; };
 		B7265F0320EDF69C003FBD5C /* SMCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7265E8D20EDF69C003FBD5C /* SMCell.swift */; };
 		B7265F0420EDF69C003FBD5C /* SMSectionWritable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7265E8F20EDF69C003FBD5C /* SMSectionWritable.swift */; };
@@ -111,6 +113,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		04DEC93E22A69CD900E7C52F /* SMTestGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SMTestGateway.swift; path = Resources/SMTestGateway.swift; sourceTree = "<group>"; };
+		04DEC94022A6AB8D00E7C52F /* SMRequestRetrier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMRequestRetrier.swift; sourceTree = "<group>"; };
 		74D214329718139F3B918BE8 /* Pods-VRGSoftSwiftIOSKit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VRGSoftSwiftIOSKit.debug.xcconfig"; path = "Pods/Target Support Files/Pods-VRGSoftSwiftIOSKit/Pods-VRGSoftSwiftIOSKit.debug.xcconfig"; sourceTree = "<group>"; };
 		8BC56EDC4EEA30A01FF18969 /* Pods_VRGSoftSwiftIOSKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VRGSoftSwiftIOSKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B7265E8D20EDF69C003FBD5C /* SMCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMCell.swift; sourceTree = "<group>"; };
@@ -607,6 +611,7 @@
 				B7265EFF20EDF69C003FBD5C /* SMGatewayConfigurator.swift */,
 				B7265F0020EDF69C003FBD5C /* SMGatewayRequestMultipart.swift */,
 				B7265F0120EDF69C003FBD5C /* SMGateway.swift */,
+				04DEC94022A6AB8D00E7C52F /* SMRequestRetrier.swift */,
 			);
 			path = Gateway;
 			sourceTree = "<group>";
@@ -645,6 +650,7 @@
 				B7ED41F71F34B1B6006C24DC /* Resources */,
 				B74DF3991F34955500405847 /* AppDelegate.swift */,
 				B74DF39B1F34955500405847 /* ViewController.swift */,
+				04DEC93E22A69CD900E7C52F /* SMTestGateway.swift */,
 				B74DF39D1F34955500405847 /* Main.storyboard */,
 				B74DF3A01F34955500405847 /* Assets.xcassets */,
 				B74DF3A21F34955500405847 /* LaunchScreen.storyboard */,
@@ -832,6 +838,7 @@
 				B774AE1C20FDD5940065C963 /* NSAttributedString + Help.swift in Sources */,
 				B7265F0C20EDF69C003FBD5C /* SMCellDataMapedProtocol.swift in Sources */,
 				B7265F0920EDF69C003FBD5C /* SMCellData.swift in Sources */,
+				04DEC94122A6AB8D00E7C52F /* SMRequestRetrier.swift in Sources */,
 				B7265F1720EDF69C003FBD5C /* SMResponse.swift in Sources */,
 				B7265F5920EDF69C003FBD5C /* SMGateway.swift in Sources */,
 				B7265F4420EDF69C003FBD5C /* SMCollectionAdapter.swift in Sources */,
@@ -863,6 +870,7 @@
 				B7265F3F20EDF69C003FBD5C /* SMValidationGroup.swift in Sources */,
 				B7265F3420EDF69C003FBD5C /* SMViewController.swift in Sources */,
 				B7560D172108C427003DF195 /* SMCompoundRequest.swift in Sources */,
+				04DEC93F22A69CD900E7C52F /* SMTestGateway.swift in Sources */,
 				B7265F4120EDF69C003FBD5C /* SMModuleListPaging.swift in Sources */,
 				B7265F4020EDF69C003FBD5C /* SMFilter.swift in Sources */,
 				B7265F5220EDF69C003FBD5C /* UIView+PSSizes.swift in Sources */,
