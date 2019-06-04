@@ -2,8 +2,8 @@
 //  SMTestGateway.swift
 //  VRGSoftSwiftIOSKit
 //
-//  Created by mac on 6/4/19.
-//  Copyright © 2019 OLEKSANDR SEMENIUK. All rights reserved.
+//  Created by OLEKSANDR SEMENIUK on 6/4/19.
+//  Copyright © 2017 VRG Soft. All rights reserved.
 //
 
 import Alamofire
