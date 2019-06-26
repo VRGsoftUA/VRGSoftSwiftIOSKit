@@ -26,7 +26,7 @@ public protocol SMListAdapterMoreDelegate: class {
 }
 
 
-open class SMListAdapter: Any {
+open class SMListAdapter {
     
     open var listDisposer: SMListDisposer
     var listDisposerModeled: SMListDisposerSetupModelProtocol? { return listDisposer as? SMListDisposerSetupModelProtocol }
