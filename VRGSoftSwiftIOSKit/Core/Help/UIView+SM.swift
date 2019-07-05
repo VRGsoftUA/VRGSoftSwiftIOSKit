@@ -12,7 +12,7 @@ public extension SMWrapper where Base: UIView {
     
     static func loadFromNib(nibNameOrNil: String? = nil) -> Base {
         
-        let result: Base = Bundle.main.loadNibNamed(String(describing: self), owner: self, options: nil)?.last as! Base // swiftlint:disable:this force_cast
+        let result: Base = Bundle.main.loadNibNamed(String(describing: Base.self), owner: Base.self, options: nil)?.last as! Base // swiftlint:disable:this force_cast
         return result
     }
     
