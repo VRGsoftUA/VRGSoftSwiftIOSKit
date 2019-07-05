@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		04DEC93F22A69CD900E7C52F /* SMTestGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DEC93E22A69CD900E7C52F /* SMTestGateway.swift */; };
 		04DEC94122A6AB8D00E7C52F /* SMRequestRetrier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DEC94022A6AB8D00E7C52F /* SMRequestRetrier.swift */; };
+		0490B1A622A5149600A1FD7B /* SMBOReloadProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0490B1A522A5149600A1FD7B /* SMBOReloadProtocol.swift */; };
+		0490B1A822A5162C00A1FD7B /* SMDBStorageConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0490B1A722A5162C00A1FD7B /* SMDBStorageConfigurator.swift */; };
+		0490B1AA22A51D9900A1FD7B /* Array+NSManagedObjectContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0490B1A922A51D9900A1FD7B /* Array+NSManagedObjectContext.swift */; };
+		0490B1AC22A51DCB00A1FD7B /* SMDBStorableObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0490B1AB22A51DCB00A1FD7B /* SMDBStorableObject.swift */; };
 		442C1DDCEB2B2B292945F835 /* Pods_VRGSoftSwiftIOSKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BC56EDC4EEA30A01FF18969 /* Pods_VRGSoftSwiftIOSKit.framework */; };
 		B7265F0320EDF69C003FBD5C /* SMCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7265E8D20EDF69C003FBD5C /* SMCell.swift */; };
 		B7265F0420EDF69C003FBD5C /* SMSectionWritable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7265E8F20EDF69C003FBD5C /* SMSectionWritable.swift */; };
@@ -115,6 +119,10 @@
 /* Begin PBXFileReference section */
 		04DEC93E22A69CD900E7C52F /* SMTestGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SMTestGateway.swift; path = Resources/SMTestGateway.swift; sourceTree = "<group>"; };
 		04DEC94022A6AB8D00E7C52F /* SMRequestRetrier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMRequestRetrier.swift; sourceTree = "<group>"; };
+		0490B1A522A5149600A1FD7B /* SMBOReloadProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMBOReloadProtocol.swift; sourceTree = "<group>"; };
+		0490B1A722A5162C00A1FD7B /* SMDBStorageConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMDBStorageConfigurator.swift; sourceTree = "<group>"; };
+		0490B1A922A51D9900A1FD7B /* Array+NSManagedObjectContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+NSManagedObjectContext.swift"; sourceTree = "<group>"; };
+		0490B1AB22A51DCB00A1FD7B /* SMDBStorableObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMDBStorableObject.swift; sourceTree = "<group>"; };
 		74D214329718139F3B918BE8 /* Pods-VRGSoftSwiftIOSKit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VRGSoftSwiftIOSKit.debug.xcconfig"; path = "Pods/Target Support Files/Pods-VRGSoftSwiftIOSKit/Pods-VRGSoftSwiftIOSKit.debug.xcconfig"; sourceTree = "<group>"; };
 		8BC56EDC4EEA30A01FF18969 /* Pods_VRGSoftSwiftIOSKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VRGSoftSwiftIOSKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B7265E8D20EDF69C003FBD5C /* SMCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMCell.swift; sourceTree = "<group>"; };
@@ -447,6 +455,10 @@
 			isa = PBXGroup;
 			children = (
 				B7265EB720EDF69C003FBD5C /* SMDBStorage.swift */,
+				0490B1A722A5162C00A1FD7B /* SMDBStorageConfigurator.swift */,
+				0490B1A922A51D9900A1FD7B /* Array+NSManagedObjectContext.swift */,
+				0490B1A522A5149600A1FD7B /* SMBOReloadProtocol.swift */,
+				0490B1AB22A51DCB00A1FD7B /* SMDBStorableObject.swift */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -835,6 +847,7 @@
 				B7265F3A20EDF69C003FBD5C /* SMNativeMoreTableViewCell.swift in Sources */,
 				B7265F4A20EDF69C003FBD5C /* SMPair.swift in Sources */,
 				B7265F2E20EDF69C003FBD5C /* SMKeyboardAvoider.swift in Sources */,
+				0490B1AA22A51D9900A1FD7B /* Array+NSManagedObjectContext.swift in Sources */,
 				B774AE1C20FDD5940065C963 /* NSAttributedString + Help.swift in Sources */,
 				B7265F0C20EDF69C003FBD5C /* SMCellDataMapedProtocol.swift in Sources */,
 				B7265F0920EDF69C003FBD5C /* SMCellData.swift in Sources */,
@@ -880,6 +893,7 @@
 				B7265F2C20EDF69C003FBD5C /* SMKeyboardAvoidingScrollView.swift in Sources */,
 				B7265F0320EDF69C003FBD5C /* SMCell.swift in Sources */,
 				B7265F3020EDF69C003FBD5C /* SMTextField.swift in Sources */,
+				0490B1A822A5162C00A1FD7B /* SMDBStorageConfigurator.swift in Sources */,
 				B73EE0DC21DF86F500F48C5C /* SMListDisposerModeledDelegate.swift in Sources */,
 				B7265F4D20EDF69C003FBD5C /* SMHelper.swift in Sources */,
 				B7265F1C20EDF69C003FBD5C /* SMFetcherWithRequest.swift in Sources */,
@@ -892,6 +906,7 @@
 				B7265F2B20EDF69C003FBD5C /* SMKeyboardAvoidingTableView.swift in Sources */,
 				B7265F5720EDF69C003FBD5C /* SMGatewayConfigurator.swift in Sources */,
 				B77B0587213D4BEF00A95671 /* SMFormatterDigitSimple.swift in Sources */,
+				0490B1A622A5149600A1FD7B /* SMBOReloadProtocol.swift in Sources */,
 				B7265F0A20EDF69C003FBD5C /* SMCellDataMaped.swift in Sources */,
 				B7F02B4921DE4624009E7E33 /* SMListDisposerSetupModelProtocol.swift in Sources */,
 				B7265F1520EDF69C003FBD5C /* SMListCellData.swift in Sources */,
@@ -899,6 +914,7 @@
 				B7265F1E20EDF69C003FBD5C /* SMLabel.swift in Sources */,
 				B7265F2420EDF69C003FBD5C /* SMPopupHoursMinutesPicker.swift in Sources */,
 				B7265F1320EDF69C003FBD5C /* SMListDisposer.swift in Sources */,
+				0490B1AC22A51DCB00A1FD7B /* SMDBStorableObject.swift in Sources */,
 				B7265F5020EDF69C003FBD5C /* UserDefaults+Help.swift in Sources */,
 				B7265F4720EDF69C003FBD5C /* SMMulticastDelegate.swift in Sources */,
 				B7265F4B20EDF69C003FBD5C /* UILabel+Help.swift in Sources */,
