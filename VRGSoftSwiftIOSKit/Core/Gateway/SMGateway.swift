@@ -38,9 +38,32 @@ open class SMGateway {
         baseUrl = aUrl
     }
     
+    open func acceptableStatusCodes() -> [Int]? {
+        return Array(200..<300)
+    }
+    
+    open func acceptableContentTypes(for dataRequest: DataRequest) -> [String]? {
+        
+        if let accept: String = dataRequest.request?.value(forHTTPHeaderField: "Accept") {
+            
+            return accept.components(separatedBy: ",")
+        }
+        
+        return ["*/*"]
+    }
+    
     open func start(request aRequest: SMGatewayRequest) {
         
-        aRequest.getDataRequest { request in
+        aRequest.getDataRequest { [weak self] request in
+            
+            if let acceptableStatusCodes: [Int] = self?.acceptableStatusCodes() {
+                request.validate(statusCode: acceptableStatusCodes)
+            }
+            
+            if let acceptableContentTypes: [String] = self?.acceptableContentTypes(for: request) {
+                request.validate(contentType: acceptableContentTypes)
+            }
+            
             request.resume()
         }
     }

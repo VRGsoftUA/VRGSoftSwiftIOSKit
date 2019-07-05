@@ -31,6 +31,9 @@ open class SMGatewayRequest: SMRequest {
     open unowned var gateway: SMGateway
     open var dataRequest: DataRequest?
     
+    open var retryCount: Int = 4
+    open var retryTime: TimeInterval = 0.5
+    
     open var path: String?
     open var type: HTTPMethod
     open var parameterEncoding: ParameterEncoding?
@@ -157,10 +160,17 @@ open class SMGatewayRequest: SMRequest {
             print("\n\nSTART", self)
             print(debugDescription)
             
+            SMGatewayConfigurator.shared.retrier.addRetryInfo(gatewayRequest: self)
+            
             dataRequest.responseJSON(completionHandler: {[weak self] responseObject in
                 
                 switch responseObject.result {
                 case .success:
+                    
+                    if let strongSelf: SMGatewayRequest = self {
+                        SMGatewayConfigurator.shared.retrier.deleteRetryInfo(gatewayRequest: strongSelf)
+                    }
+                    
                     //                    print("Request success with data: \(data)")
                     let callBack: SMRequestParserBlock = { (aResponse: SMResponse) in
                         if let strongSelf: SMGatewayRequest = self {
