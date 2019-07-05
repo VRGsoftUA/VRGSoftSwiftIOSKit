@@ -1,6 +1,6 @@
 //
-//  UIImageView+Help.swift
-//  SwiftKit
+//  UIImageView+SM.swift
+//  VRGSoftSwiftIOSKit
 //
 //  Created by OLEKSANDR SEMENIUK on 1/16/17.
 //  Copyright © 2017 VRG Soft. All rights reserved.
@@ -8,12 +8,12 @@
 
 import UIKit
 
-extension UIImageView {
-    
+public extension SMWrapper where Base: UIImageView {
+
     func set(image aImage: UIImage, duration aDuration: TimeInterval) {
         
-        UIView.transition(with: self, duration: aDuration, options: UIView.AnimationOptions.transitionCrossDissolve, animations: {
-            self.image = aImage
+        UIView.transition(with: base, duration: aDuration, options: UIView.AnimationOptions.transitionCrossDissolve, animations: {
+            self.base.image = aImage
         }, completion: nil)
     }
     
@@ -21,10 +21,10 @@ extension UIImageView {
         
         if aAnimate {
             
-            self.set(image: aImage, duration: 0.25)
+            base.sm.set(image: aImage, duration: 0.25)
         } else {
             
-            self.image = aImage
+            base.image = aImage
         }
     }
 }
