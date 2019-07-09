@@ -6,7 +6,7 @@
 //  Copyright © 2019 OLEKSANDR SEMENIUK. All rights reserved.
 //
 
-public struct SMWrapper<Base> {
+public class SMWrapper<Base> {
     
     public let base: Base
     
