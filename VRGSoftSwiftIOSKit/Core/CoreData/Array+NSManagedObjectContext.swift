@@ -8,7 +8,7 @@
 
 import CoreData
 
-public extension Array where Element: SMDBStorableObject {
+public extension Array where Element: NSManagedObject {
     
     func moveToContext(_ aContext: NSManagedObjectContext) -> [Element] {
         
@@ -19,6 +19,28 @@ public extension Array where Element: SMDBStorableObject {
             if let newObj: Element = obj.inContext(aContext) {
                 result.append(newObj)
             }
+        }
+        
+        return result
+    }
+}
+
+extension NSManagedObject {
+    
+    func inContext(_ aContext: NSManagedObjectContext) -> Self? {
+        return inContext(aContext, type: type(of: self))
+    }
+    
+    private func inContext<T>(_ aContext: NSManagedObjectContext, type: T.Type) -> T? {
+        var result: T?
+        
+        do {
+            try managedObjectContext?.obtainPermanentIDs(for: [self])
+            aContext.performAndWait {
+                result = aContext.object(with: objectID) as? T
+            }
+        } catch {
+            
         }
         
         return result
