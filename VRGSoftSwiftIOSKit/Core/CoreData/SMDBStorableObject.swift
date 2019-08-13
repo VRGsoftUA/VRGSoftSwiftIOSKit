@@ -16,7 +16,6 @@ public protocol SMDBStorableObject: NSManagedObject {
     static var _entityName: String { get }
     func setupPrimaryKeyWithDictionary(_ aData: [String: Any], context aContext: NSManagedObjectContext)
     func setupWithDictionary(_ aData: [String: Any], context aContext: NSManagedObjectContext)
-    func inContext(_ aContext: NSManagedObjectContext) -> Self?
 }
 
 public extension SMDBStorableObject {
@@ -448,21 +447,5 @@ public extension SMDBStorableObject {
         
         return objects.compactMap { object -> Any? in
             return object._identifier }
-    }
-    
-    func inContext(_ aContext: NSManagedObjectContext) -> Self? {
-        
-        var result: Self?
-        
-        do {
-            try managedObjectContext?.obtainPermanentIDs(for: [self])
-            aContext.performAndWait {
-                result = aContext.object(with: objectID) as? Self
-            }
-        } catch {
-            
-        }
-        
-        return result
     }
 }
