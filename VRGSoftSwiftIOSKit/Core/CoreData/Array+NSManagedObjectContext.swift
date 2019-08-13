@@ -25,7 +25,7 @@ public extension Array where Element: NSManagedObject {
     }
 }
 
-extension NSManagedObject {
+public extension NSManagedObject {
     
     func inContext(_ aContext: NSManagedObjectContext) -> Self? {
         return inContext(aContext, type: type(of: self))
