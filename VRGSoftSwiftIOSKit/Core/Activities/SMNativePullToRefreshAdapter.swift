@@ -39,8 +39,14 @@ open class SMNativePullToRefreshAdapter: SMPullToRefreshAdapter {
     
     override open func configureWith(scrollView aScrollView: UIScrollView) {
         
-        aScrollView.addSubview(refreshControl)
-        aScrollView.sendSubviewToBack(refreshControl)
+        if #available(iOS 10.0, *) {
+            
+            aScrollView.refreshControl = refreshControl
+        } else {
+            
+            aScrollView.addSubview(refreshControl)
+            aScrollView.sendSubviewToBack(refreshControl)
+        }
     }
     
     override open func beginPullToRefresh() {

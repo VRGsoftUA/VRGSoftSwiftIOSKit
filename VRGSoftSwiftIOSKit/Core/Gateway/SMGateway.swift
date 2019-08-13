@@ -55,8 +55,11 @@ open class SMGateway {
         func result(data: DataRequest, responseObject: DataResponse<Any>) -> SMResponse {
             
             let response: SMResponse = SMResponse()
+            
+            response.isCancelled = (responseObject.error as NSError?)?.code == NSURLErrorCancelled
             response.isSuccess = false
             response.textMessage = responseObject.error?.localizedDescription
+            response.error = responseObject.error
             
             return response
         }

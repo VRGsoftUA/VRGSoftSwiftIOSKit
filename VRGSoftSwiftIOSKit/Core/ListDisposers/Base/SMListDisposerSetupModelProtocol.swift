@@ -8,7 +8,7 @@
 
 //SMListDisposerModeledCreateCellDataDelegate
 
-public protocol SMListDisposerSetupModelProtocol: class {
+public protocol SMListDisposerSetupModelProtocol where Self: SMListDisposer {
     
     var modeledMulticastDelegate: SMMulticastDelegate<SMListDisposerModeledCreateCellDataDelegate> { get }
     var modeledDelegate: SMListDisposerModeledDelegate? { get set }
