@@ -20,14 +20,14 @@ Pod::Spec.new do |s|
 
     #root
         s.name      = 'VRGSoftSwiftIOSKit'
-        s.version   = '1.3.0'
+        s.version   = '2.0.0'
         s.summary   = 'VRGSoftSwiftIOSKit descriptions'
         s.license  = 'MIT'
         s.swift_version = '5.0'
         s.homepage  = 'https://vrgsoft.net/'
         s.authors   = {'semenag01' => 'semenag01@meta.ua'}
         s.pod_target_xcconfig = { 'SWIFT_VERSION' => '5.0' }
-        s.source    = { :git => 'https://github.com/VRGsoftUA/VRGSoftSwiftIOSKit.git', :branch => 'master', :tag => '1.3.0' }
+        s.source    = { :git => 'https://github.com/VRGsoftUA/VRGSoftSwiftIOSKit.git', :branch => 'master', :tag => '2.0.0' }
 
     #platform
         s.platform = :ios
