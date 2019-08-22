@@ -7,17 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		04DEC93F22A69CD900E7C52F /* SMTestGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DEC93E22A69CD900E7C52F /* SMTestGateway.swift */; };
-		04DEC94122A6AB8D00E7C52F /* SMRequestRetrier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DEC94022A6AB8D00E7C52F /* SMRequestRetrier.swift */; };
+		048337FB2297DDD1004267F7 /* Date+SM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048337FA2297DDD1004267F7 /* Date+SM.swift */; };
 		0490B1A622A5149600A1FD7B /* SMBOReloadProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0490B1A522A5149600A1FD7B /* SMBOReloadProtocol.swift */; };
 		0490B1A822A5162C00A1FD7B /* SMDBStorageConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0490B1A722A5162C00A1FD7B /* SMDBStorageConfigurator.swift */; };
 		0490B1AA22A51D9900A1FD7B /* Array+NSManagedObjectContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0490B1A922A51D9900A1FD7B /* Array+NSManagedObjectContext.swift */; };
 		0490B1AC22A51DCB00A1FD7B /* SMDBStorableObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0490B1AB22A51DCB00A1FD7B /* SMDBStorableObject.swift */; };
-		048337FB2297DDD1004267F7 /* Date+SM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048337FA2297DDD1004267F7 /* Date+SM.swift */; };
 		04B0BE84229BB952001F7A31 /* Optional+Help.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B0BE83229BB952001F7A31 /* Optional+Help.swift */; };
 		04B0BE86229BB99C001F7A31 /* Sequence+Help.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B0BE85229BB99C001F7A31 /* Sequence+Help.swift */; };
 		04B0BE88229BB9E6001F7A31 /* Collection+Help.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B0BE87229BB9E6001F7A31 /* Collection+Help.swift */; };
 		04B0BE8A229BBA34001F7A31 /* Array+Help.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B0BE89229BBA34001F7A31 /* Array+Help.swift */; };
+		04DEC93F22A69CD900E7C52F /* SMTestGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DEC93E22A69CD900E7C52F /* SMTestGateway.swift */; };
+		04DEC94122A6AB8D00E7C52F /* SMRequestRetrier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DEC94022A6AB8D00E7C52F /* SMRequestRetrier.swift */; };
 		04E31F1F229553AD00C77351 /* SMWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E31F1E229553AD00C77351 /* SMWrapper.swift */; };
 		04E31F212295611100C77351 /* Dictionary+Help.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E31F202295611100C77351 /* Dictionary+Help.swift */; };
 		04E31F232295614800C77351 /* UIView+Help.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E31F222295614800C77351 /* UIView+Help.swift */; };
@@ -29,10 +29,8 @@
 		B7265F0620EDF69C003FBD5C /* SMTableDisposerMapped.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7265E9220EDF69C003FBD5C /* SMTableDisposerMapped.swift */; };
 		B7265F0720EDF69C003FBD5C /* SMTableDisposerModeled.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7265E9320EDF69C003FBD5C /* SMTableDisposerModeled.swift */; };
 		B7265F0820EDF69C003FBD5C /* SMTableDisposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7265E9420EDF69C003FBD5C /* SMTableDisposer.swift */; };
-		B7265F0920EDF69C003FBD5C /* SMCellData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7265E9720EDF69C003FBD5C /* SMCellData.swift */; };
 		B7265F0A20EDF69C003FBD5C /* SMCellDataMaped.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7265E9820EDF69C003FBD5C /* SMCellDataMaped.swift */; };
 		B7265F0B20EDF69C003FBD5C /* SMCellProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7265E9920EDF69C003FBD5C /* SMCellProtocol.swift */; };
-		B7265F0C20EDF69C003FBD5C /* SMCellDataMapedProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7265E9A20EDF69C003FBD5C /* SMCellDataMapedProtocol.swift */; };
 		B7265F0D20EDF69C003FBD5C /* SMCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7265E9E20EDF69C003FBD5C /* SMCollectionCell.swift */; };
 		B7265F0E20EDF69C003FBD5C /* SMCollectonSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7265EA020EDF69C003FBD5C /* SMCollectonSection.swift */; };
 		B7265F0F20EDF69C003FBD5C /* SMCollectionCellData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7265EA320EDF69C003FBD5C /* SMCollectionCellData.swift */; };
@@ -99,7 +97,6 @@
 		B7265F4D20EDF69C003FBD5C /* SMHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7265EF420EDF69C003FBD5C /* SMHelper.swift */; };
 		B7265F4E20EDF69C003FBD5C /* UIButton+SM.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7265EF520EDF69C003FBD5C /* UIButton+SM.swift */; };
 		B7265F4F20EDF69C003FBD5C /* UIImage+SM.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7265EF620EDF69C003FBD5C /* UIImage+SM.swift */; };
-		B7265F5020EDF69C003FBD5C /* UserDefaults+SM.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7265EF720EDF69C003FBD5C /* UserDefaults+SM.swift */; };
 		B7265F5120EDF69C003FBD5C /* UIImageView+SM.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7265EF820EDF69C003FBD5C /* UIImageView+SM.swift */; };
 		B7265F5220EDF69C003FBD5C /* UIView+PSSizes.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7265EF920EDF69C003FBD5C /* UIView+PSSizes.swift */; };
 		B7265F5320EDF69C003FBD5C /* String+SM.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7265EFA20EDF69C003FBD5C /* String+SM.swift */; };
@@ -109,6 +106,8 @@
 		B7265F5720EDF69C003FBD5C /* SMGatewayConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7265EFF20EDF69C003FBD5C /* SMGatewayConfigurator.swift */; };
 		B7265F5820EDF69C003FBD5C /* SMGatewayRequestMultipart.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7265F0020EDF69C003FBD5C /* SMGatewayRequestMultipart.swift */; };
 		B7265F5920EDF69C003FBD5C /* SMGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7265F0120EDF69C003FBD5C /* SMGateway.swift */; };
+		B73E89BA230ECB210020F0CB /* SMCellData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7265E9720EDF69C003FBD5C /* SMCellData.swift */; };
+		B73E89BB230ECB3A0020F0CB /* SMCellDataMapedProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7265E9A20EDF69C003FBD5C /* SMCellDataMapedProtocol.swift */; };
 		B73EE0DC21DF86F500F48C5C /* SMListDisposerModeledDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B73EE0DB21DF86F500F48C5C /* SMListDisposerModeledDelegate.swift */; };
 		B74DF39A1F34955500405847 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B74DF3991F34955500405847 /* AppDelegate.swift */; };
 		B74DF39C1F34955500405847 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B74DF39B1F34955500405847 /* ViewController.swift */; };
@@ -117,7 +116,6 @@
 		B74DF3A41F34955500405847 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B74DF3A21F34955500405847 /* LaunchScreen.storyboard */; };
 		B74DF3AC1F34A3FC00405847 /* VRGSoftSwiftIOSKit.podspec in Resources */ = {isa = PBXBuildFile; fileRef = B74DF3AB1F34A3FC00405847 /* VRGSoftSwiftIOSKit.podspec */; };
 		B7560D172108C427003DF195 /* SMCompoundRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7560D162108C427003DF195 /* SMCompoundRequest.swift */; };
-		B774AE1C20FDD5940065C963 /* NSAttributedString+SM.swift in Sources */ = {isa = PBXBuildFile; fileRef = B774AE1B20FDD5940065C963 /* NSAttributedString+SM.swift */; };
 		B77B0587213D4BEF00A95671 /* SMFormatterDigitSimple.swift in Sources */ = {isa = PBXBuildFile; fileRef = B77B0586213D4BEF00A95671 /* SMFormatterDigitSimple.swift */; };
 		B77E9EAB22170240000CE876 /* Dictionary+SM.swift in Sources */ = {isa = PBXBuildFile; fileRef = B77E9EAA22170240000CE876 /* Dictionary+SM.swift */; };
 		B79ED060210B37540060538B /* SMFetcherWithRequestBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = B79ED05F210B37540060538B /* SMFetcherWithRequestBlock.swift */; };
@@ -126,17 +124,17 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		04DEC93E22A69CD900E7C52F /* SMTestGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SMTestGateway.swift; path = Resources/SMTestGateway.swift; sourceTree = "<group>"; };
-		04DEC94022A6AB8D00E7C52F /* SMRequestRetrier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMRequestRetrier.swift; sourceTree = "<group>"; };
+		048337FA2297DDD1004267F7 /* Date+SM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+SM.swift"; sourceTree = "<group>"; };
 		0490B1A522A5149600A1FD7B /* SMBOReloadProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMBOReloadProtocol.swift; sourceTree = "<group>"; };
 		0490B1A722A5162C00A1FD7B /* SMDBStorageConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMDBStorageConfigurator.swift; sourceTree = "<group>"; };
 		0490B1A922A51D9900A1FD7B /* Array+NSManagedObjectContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+NSManagedObjectContext.swift"; sourceTree = "<group>"; };
 		0490B1AB22A51DCB00A1FD7B /* SMDBStorableObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMDBStorableObject.swift; sourceTree = "<group>"; };
-		048337FA2297DDD1004267F7 /* Date+SM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+SM.swift"; sourceTree = "<group>"; };
 		04B0BE83229BB952001F7A31 /* Optional+Help.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Optional+Help.swift"; sourceTree = "<group>"; };
 		04B0BE85229BB99C001F7A31 /* Sequence+Help.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sequence+Help.swift"; sourceTree = "<group>"; };
 		04B0BE87229BB9E6001F7A31 /* Collection+Help.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+Help.swift"; sourceTree = "<group>"; };
 		04B0BE89229BBA34001F7A31 /* Array+Help.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Help.swift"; sourceTree = "<group>"; };
+		04DEC93E22A69CD900E7C52F /* SMTestGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SMTestGateway.swift; path = Resources/SMTestGateway.swift; sourceTree = "<group>"; };
+		04DEC94022A6AB8D00E7C52F /* SMRequestRetrier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMRequestRetrier.swift; sourceTree = "<group>"; };
 		04E31F1E229553AD00C77351 /* SMWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMWrapper.swift; sourceTree = "<group>"; };
 		04E31F202295611100C77351 /* Dictionary+Help.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dictionary+Help.swift"; sourceTree = "<group>"; };
 		04E31F222295614800C77351 /* UIView+Help.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Help.swift"; sourceTree = "<group>"; };
@@ -844,6 +842,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B73E89BB230ECB3A0020F0CB /* SMCellDataMapedProtocol.swift in Sources */,
+				B73E89BA230ECB210020F0CB /* SMCellData.swift in Sources */,
 				B7265F0620EDF69C003FBD5C /* SMTableDisposerMapped.swift in Sources */,
 				B7265F4620EDF69C003FBD5C /* SMModuleRemotePushes.swift in Sources */,
 				B7265F1920EDF69C003FBD5C /* SMFetcherWithBlock.swift in Sources */,
@@ -878,13 +878,7 @@
 				B7265F4A20EDF69C003FBD5C /* SMPair.swift in Sources */,
 				B7265F2E20EDF69C003FBD5C /* SMKeyboardAvoider.swift in Sources */,
 				0490B1AA22A51D9900A1FD7B /* Array+NSManagedObjectContext.swift in Sources */,
-				B774AE1C20FDD5940065C963 /* NSAttributedString + Help.swift in Sources */,
-				B7265F0C20EDF69C003FBD5C /* SMCellDataMapedProtocol.swift in Sources */,
-				B7265F0920EDF69C003FBD5C /* SMCellData.swift in Sources */,
 				04DEC94122A6AB8D00E7C52F /* SMRequestRetrier.swift in Sources */,
-				B774AE1C20FDD5940065C963 /* NSAttributedString+SM.swift in Sources */,
-				B7265F0C20EDF69C003FBD5C /* SMCellDataMapedProtocol.swift in Sources */,
-				B7265F0920EDF69C003FBD5C /* SMCellData.swift in Sources */,
 				04B0BE84229BB952001F7A31 /* Optional+Help.swift in Sources */,
 				B7265F1720EDF69C003FBD5C /* SMResponse.swift in Sources */,
 				B7265F5920EDF69C003FBD5C /* SMGateway.swift in Sources */,
@@ -954,8 +948,6 @@
 				B7265F2420EDF69C003FBD5C /* SMPopupHoursMinutesPicker.swift in Sources */,
 				B7265F1320EDF69C003FBD5C /* SMListDisposer.swift in Sources */,
 				0490B1AC22A51DCB00A1FD7B /* SMDBStorableObject.swift in Sources */,
-				B7265F5020EDF69C003FBD5C /* UserDefaults+Help.swift in Sources */,
-				B7265F5020EDF69C003FBD5C /* UserDefaults+SM.swift in Sources */,
 				B7265F4720EDF69C003FBD5C /* SMMulticastDelegate.swift in Sources */,
 				B7265F4B20EDF69C003FBD5C /* UILabel+SM.swift in Sources */,
 			);
