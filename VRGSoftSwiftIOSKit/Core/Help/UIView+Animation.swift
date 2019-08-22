@@ -1,9 +1,9 @@
 //
 //  UIView+Animation.swift
-//  SwiftKit
+//  VRGSoftSwiftIOSKit
 //
-//  Created by OLEKSANDR SEMENIUK on 4/11/17.
-//  Copyright © 2017 Contractors.com. All rights reserved.
+//  Created by OLEKSANDR SEMENIUK on 6/22/18.
+//  Copyright © 2018 VRG Soft. All rights reserved.
 //
 
 import UIKit

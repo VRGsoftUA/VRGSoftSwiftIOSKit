@@ -34,7 +34,7 @@ open class SMNativeMoreCollectionViewCell: SMCollectionCell, SMPagingMoreCellPro
         super.setup()
         
         activity.hidesWhenStopped = true
-        activity.center = CGPoint(x: self.contentView.width/2, y: self.contentView.height/2)
+        activity.center = CGPoint(x: self.contentView.sm.width/2, y: self.contentView.sm.height/2)
         activity.autoresizingMask = [.flexibleLeftMargin, .flexibleTopMargin, .flexibleRightMargin, .flexibleBottomMargin]
         
         self.contentView.addSubview(activity)
