@@ -28,13 +28,18 @@ public protocol SMCollectionDisposerDelegate: UICollectionViewDelegateFlowLayout
 
 open class SMCollectionDisposer: SMListDisposer, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
     
-    open var collectionView: UICollectionView? {
+    open override var listView: UIScrollView? {
         didSet {
-            collectionView?.delegate = self
-            collectionView?.dataSource = self
+            if let collectionView: UICollectionView = listView as? UICollectionView {
+
+                collectionView.delegate = self
+                collectionView.dataSource = self
+            }
         }
     }
     
+    open var collectionView: UICollectionView? { return listView as? UICollectionView }
+
     open var collectionClass: UICollectionView.Type = UICollectionView.self
 
     open weak var delegate: SMCollectionDisposerDelegate?
