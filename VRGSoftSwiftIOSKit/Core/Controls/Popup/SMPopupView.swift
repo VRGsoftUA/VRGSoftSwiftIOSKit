@@ -134,7 +134,7 @@ open class SMPopupView: UIView {
                 let popover: UIPopoverPresentationController  = vc.popoverPresentationController {
                 
                 vc.view = self
-                vc.preferredContentSize = self.sm.size
+                vc.preferredContentSize = self.size
                 popover.sourceRect = rect
                 popover.sourceView = aView
                 popover.permittedArrowDirections = directions

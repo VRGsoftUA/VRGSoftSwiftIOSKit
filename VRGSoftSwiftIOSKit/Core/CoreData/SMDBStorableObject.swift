@@ -92,7 +92,7 @@ public extension SMDBStorableObject {
         
         if let objID: Any = objID {
             
-            defaultStorage.defaultContextAndWait (block: { aContext in
+            defaultStorage.defaultContextAndWait(block: { aContext in
                 do {
                     let request: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest<NSFetchRequestResult>(entityName: _entityName)
                     
@@ -119,7 +119,7 @@ public extension SMDBStorableObject {
         
         var array: [Self] = []
         
-        defaultStorage.defaultContextAndWait (block: { aContext in
+        defaultStorage.defaultContextAndWait(block: { aContext in
             do {
                 let request: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest<NSFetchRequestResult>(entityName: _entityName)
                 request.sortDescriptors = sortDescriptors ?? dafaultSortDescriptors
@@ -137,7 +137,7 @@ public extension SMDBStorableObject {
         
         var array: [Self] = []
         
-        defaultStorage.defaultContextAndWait (block: { aContext in
+        defaultStorage.defaultContextAndWait(block: { aContext in
             do {
                 let request: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest<NSFetchRequestResult>(entityName: _entityName)
                 request.sortDescriptors = sortDescriptors ?? dafaultSortDescriptors
@@ -158,7 +158,7 @@ public extension SMDBStorableObject {
         let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest<NSFetchRequestResult>(entityName: _entityName)
         fetchRequest.sortDescriptors = dafaultSortDescriptors
         
-        defaultStorage.defaultContextAndWait (block: { aContext in
+        defaultStorage.defaultContextAndWait(block: { aContext in
             do {
                 let fetchedEntities: [Self] = try aContext.fetch(fetchRequest) as? [Self] ?? []
                 array = fetchedEntities
@@ -181,7 +181,7 @@ public extension SMDBStorableObject {
         
         var result: Self?
         
-        defaultStorage.defaultContextAndWait (block: { aContext in
+        defaultStorage.defaultContextAndWait(block: { aContext in
             if let entity: NSEntityDescription = NSEntityDescription.entity(forEntityName: _entityName, in: aContext) {
                 result = (self as NSManagedObject.Type).init(entity: entity, insertInto: aContext) as? Self
             }

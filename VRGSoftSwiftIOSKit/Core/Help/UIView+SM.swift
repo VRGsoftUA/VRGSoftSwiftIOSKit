@@ -88,6 +88,24 @@ public extension SMWrapper where Base: UIView {
         
         return result
     }
+    
+    func updateConstrainIfExist(height aHeight: CGFloat) {
+        
+        for constraint: NSLayoutConstraint in base.constraints where constraint.firstAttribute == NSLayoutConstraint.Attribute.height {
+            
+            constraint.constant = aHeight
+            break
+        }
+    }
+    
+    func updateConstrainIfExist(width aWidth: CGFloat) {
+        
+        for constraint: NSLayoutConstraint in base.constraints where constraint.firstAttribute == NSLayoutConstraint.Attribute.width {
+            
+            constraint.constant = aWidth
+            break
+        }
+    }
 }
 
 
