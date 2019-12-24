@@ -31,7 +31,7 @@ open class SMGatewayRequest: SMRequest {
     open unowned var gateway: SMGateway
     open var dataRequest: DataRequest?
     
-    open var retryCount: Int = 4
+    open var retryCount: Int = 0
     open var retryTime: TimeInterval = 0.5
     
     open var path: String?
