@@ -31,7 +31,7 @@ open class SMDBRequest: SMRequest {
         return true
     }
     
-    override open func start() {
+    override open func start() -> Self {
         
         self.cancelled = false
         self.executing = true
@@ -69,6 +69,8 @@ open class SMDBRequest: SMRequest {
                 }
             }
         })
+        
+        return self
     }
     
     

@@ -98,11 +98,14 @@ open class SMGatewayRequest: SMRequest {
         self.type = aType
     }
     
-    override open func start() {
+    @discardableResult
+    override open func start() -> Self {
         
         super.start()
         
         gateway.start(request: self)
+        
+        return self
     }
     
     override open func cancel() {

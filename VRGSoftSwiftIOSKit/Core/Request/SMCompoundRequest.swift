@@ -49,7 +49,8 @@ open class SMCompoundRequest: SMRequest {
         return result
     }
     
-    open override func start() {
+    @discardableResult
+    open override func start() -> Self {
         
         retainSelf()
         
@@ -64,6 +65,8 @@ open class SMCompoundRequest: SMRequest {
             
             startSequence()
         }
+        
+        return self
     }
     
     private func startParallel() {

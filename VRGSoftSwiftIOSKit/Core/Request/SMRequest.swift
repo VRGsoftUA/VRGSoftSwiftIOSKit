@@ -46,19 +46,24 @@ open class SMRequest {
         return false
     }
     
-    open func start() {
+    @discardableResult
+    open func start() -> Self {
         
         retainSelf()
+        
+        return self
     }
     
-    open func startWithResponseBlockInMainQueue(responseBlock aResponseBlock: @escaping SMRequestResponseBlock) {
+    @discardableResult
+    open func startWithResponseBlockInMainQueue(responseBlock aResponseBlock: @escaping SMRequestResponseBlock) -> Self {
         
-        addResponseBlock(aResponseBlock, responseQueue: DispatchQueue.main).start()
+        return addResponseBlock(aResponseBlock, responseQueue: DispatchQueue.main).start()
     }
 
-    open func startWithResponseBlockInGlobalQueue(responseBlock aResponseBlock: @escaping SMRequestResponseBlock) {
+    @discardableResult
+    open func startWithResponseBlockInGlobalQueue(responseBlock aResponseBlock: @escaping SMRequestResponseBlock) -> Self {
         
-        addResponseBlock(aResponseBlock, responseQueue: DispatchQueue.global()).start()
+        return addResponseBlock(aResponseBlock, responseQueue: DispatchQueue.global()).start()
     }
 
     open func isExecuting() -> Bool {
@@ -80,7 +85,8 @@ open class SMRequest {
         return false
     }
     
-    @discardableResult open func addResponseBlock(_ aResponseBlock: @escaping SMRequestResponseBlock, responseQueue aResponseQueue: DispatchQueue) -> SMRequest {
+    @discardableResult
+    open func addResponseBlock(_ aResponseBlock: @escaping SMRequestResponseBlock, responseQueue aResponseQueue: DispatchQueue) -> Self {
         
         responseBlocks.append(SMResponseNode(responseBlock: aResponseBlock, responseQueue: aResponseQueue))
         
