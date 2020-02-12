@@ -18,7 +18,6 @@ public enum SMClonePolicy {
     case insertIntoDefaultContext
 }
 
-@available(iOS 9.0, *)
 open class SMDBStorage {
     
     private var _defaultContext: NSManagedObjectContext?

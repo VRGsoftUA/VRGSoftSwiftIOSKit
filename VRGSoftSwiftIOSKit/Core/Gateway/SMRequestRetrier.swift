@@ -58,7 +58,7 @@ open class SMRequestRetrier: RequestRetrier {
         
         let (request, retryCount, retryTime): (SMGatewayRequest, Int, TimeInterval) = requestsRetryCountsAndRetryTime[index]
         
-        if retryCount == 0 {
+        if retryCount == 0 || (error as NSError?)?.code == NSURLErrorCancelled {
             
             completion(false, 0)
             

@@ -17,10 +17,11 @@ class SMTestGateway: SMGateway {
     }
     
     func getTestData() -> SMGatewayRequest {
-        return request(type: .get, path: "get", parameters: nil) { _, _ -> SMResponse in
+        let req: SMGatewayRequest = request(type: .get, path: "get", parameters: nil) { _, _ -> SMResponse in
             
             return SMResponse()
         }
+        return req
     }
     
     open override func defaultFailureBlockFor(request aRequest: SMGatewayRequest) -> SMGatewayRequestResponseBlock {
