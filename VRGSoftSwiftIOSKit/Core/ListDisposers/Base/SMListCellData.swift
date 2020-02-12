@@ -1,6 +1,6 @@
 //
 //  SMListCellData.swift
-//  SwiftKit
+//  VRGSoftSwiftIOSKit
 //
 //  Created by OLEKSANDR SEMENIUK on 4/20/18.
 //  Copyright © 2018 VRG Soft. All rights reserved.

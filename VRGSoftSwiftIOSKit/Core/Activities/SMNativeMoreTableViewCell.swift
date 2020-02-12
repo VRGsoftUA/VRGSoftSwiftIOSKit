@@ -1,9 +1,9 @@
 //
 //  SMNativeMoreTableViewCell.swift
-//  SwiftKit
+//  VRGSoftSwiftIOSKit
 //
 //  Created by OLEKSANDR SEMENIUK on 8/3/17.
-//  Copyright © 2017 semenag01. All rights reserved.
+//  Copyright © 2017 VRG Soft. All rights reserved.
 //
 
 import UIKit

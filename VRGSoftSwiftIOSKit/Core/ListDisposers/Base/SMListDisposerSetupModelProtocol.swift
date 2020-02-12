@@ -3,7 +3,7 @@
 //  VRGSoftSwiftIOSKit
 //
 //  Created by OLEKSANDR SEMENIUK on 1/3/19.
-//  Copyright © 2019 OLEKSANDR SEMENIUK. All rights reserved.
+//  Copyright © 2019 VRG Soft. All rights reserved.
 //
 
 //SMListDisposerModeledCreateCellDataDelegate

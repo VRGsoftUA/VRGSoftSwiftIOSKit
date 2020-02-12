@@ -1,6 +1,6 @@
 //
 //  SMActivityAdapter.swift
-//  SwiftKit
+//  VRGSoftSwiftIOSKit
 //
 //  Created by OLEKSANDR SEMENIUK on 12/23/16.
 //  Copyright © 2017 VRG Soft. All rights reserved.

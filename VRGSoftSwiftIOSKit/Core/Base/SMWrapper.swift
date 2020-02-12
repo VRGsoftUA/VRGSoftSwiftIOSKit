@@ -3,7 +3,7 @@
 //  VRGSoftSwiftIOSKit
 //
 //  Created by OLEKSANDR SEMENIUK on 5/22/19.
-//  Copyright © 2019 OLEKSANDR SEMENIUK. All rights reserved.
+//  Copyright © 2019 VRG Soft. All rights reserved.
 //
 
 public class SMWrapper<Base> {

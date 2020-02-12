@@ -1,6 +1,6 @@
 //
 //  SMNativeActivityAdapter.swift
-//  SwiftKit
+//  VRGSoftSwiftIOSKit
 //
 //  Created by OLEKSANDR SEMENIUK on 2/8/18.
 //  Copyright © 2018 VRG Soft. All rights reserved.

@@ -1,9 +1,9 @@
 //
 //  SMFilter.swift
-//  SwiftKit
+//  VRGSoftSwiftIOSKit
 //
 //  Created by OLEKSANDR SEMENIUK on 7/17/17.
-//  Copyright © 2017 semenag01. All rights reserved.
+//  Copyright © 2017 VRG Soft. All rights reserved.
 //
 
 import Foundation

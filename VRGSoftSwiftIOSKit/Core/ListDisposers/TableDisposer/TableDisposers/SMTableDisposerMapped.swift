@@ -1,6 +1,6 @@
 //
 //  SMTableDisposerMapped.swift
-//  SwiftKit
+//  VRGSoftSwiftIOSKit
 //
 //  Created by OLEKSANDR SEMENIUK on 6/23/18.
 //  Copyright © 2018 VRG Soft. All rights reserved.

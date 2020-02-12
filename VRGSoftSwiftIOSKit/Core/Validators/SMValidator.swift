@@ -1,6 +1,6 @@
 //
 //  SMValidator.swift
-//  SwiftKit
+//  VRGSoftSwiftIOSKit
 //
 //  Created by OLEKSANDR SEMENIUK on 12/22/16.
 //  Copyright © 2016 VRG Soft. All rights reserved.

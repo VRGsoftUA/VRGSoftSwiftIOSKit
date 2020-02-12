@@ -1,6 +1,6 @@
 //
 //  SMPopupView.swift
-//  SwiftKit
+//  VRGSoftSwiftIOSKit
 //
 //  Created by OLEKSANDR SEMENIUK on 8/18/17.
 //  Copyright © 2017 VRG Soft. All rights reserved.
