@@ -23,6 +23,7 @@
 		04E31F232295614800C77351 /* UIView+Help.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E31F222295614800C77351 /* UIView+Help.swift */; };
 		04E31F252295624200C77351 /* CALayer+SM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E31F242295624200C77351 /* CALayer+SM.swift */; };
 		442C1DDCEB2B2B292945F835 /* Pods_VRGSoftSwiftIOSKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BC56EDC4EEA30A01FF18969 /* Pods_VRGSoftSwiftIOSKit.framework */; };
+		8BC5E20A23F416D000E9928C /* SMFetcherWithArrayBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BC5E20923F416CF00E9928C /* SMFetcherWithArrayBlock.swift */; };
 		B7265F0320EDF69C003FBD5C /* SMCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7265E8D20EDF69C003FBD5C /* SMCell.swift */; };
 		B7265F0420EDF69C003FBD5C /* SMSectionWritable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7265E8F20EDF69C003FBD5C /* SMSectionWritable.swift */; };
 		B7265F0520EDF69C003FBD5C /* SMSectionReadonly.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7265E9020EDF69C003FBD5C /* SMSectionReadonly.swift */; };
@@ -141,6 +142,7 @@
 		04E31F242295624200C77351 /* CALayer+SM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CALayer+SM.swift"; sourceTree = "<group>"; };
 		74D214329718139F3B918BE8 /* Pods-VRGSoftSwiftIOSKit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VRGSoftSwiftIOSKit.debug.xcconfig"; path = "Pods/Target Support Files/Pods-VRGSoftSwiftIOSKit/Pods-VRGSoftSwiftIOSKit.debug.xcconfig"; sourceTree = "<group>"; };
 		8BC56EDC4EEA30A01FF18969 /* Pods_VRGSoftSwiftIOSKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VRGSoftSwiftIOSKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8BC5E20923F416CF00E9928C /* SMFetcherWithArrayBlock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMFetcherWithArrayBlock.swift; sourceTree = "<group>"; };
 		B7265E8D20EDF69C003FBD5C /* SMCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMCell.swift; sourceTree = "<group>"; };
 		B7265E8F20EDF69C003FBD5C /* SMSectionWritable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMSectionWritable.swift; sourceTree = "<group>"; };
 		B7265E9020EDF69C003FBD5C /* SMSectionReadonly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMSectionReadonly.swift; sourceTree = "<group>"; };
@@ -457,6 +459,7 @@
 		B7265EB020EDF69C003FBD5C /* Fetcher */ = {
 			isa = PBXGroup;
 			children = (
+				8BC5E20923F416CF00E9928C /* SMFetcherWithArrayBlock.swift */,
 				B79ED05F210B37540060538B /* SMFetcherWithRequestBlock.swift */,
 				B7265EB120EDF69C003FBD5C /* SMDataFetcherProtocol.swift */,
 				B7265EB220EDF69C003FBD5C /* SMFetcherWithBlock.swift */,
@@ -849,6 +852,7 @@
 				B7265F1920EDF69C003FBD5C /* SMFetcherWithBlock.swift in Sources */,
 				B7265F3720EDF69C003FBD5C /* SMPullToRefreshAdapter.swift in Sources */,
 				B7265F0E20EDF69C003FBD5C /* SMCollectonSection.swift in Sources */,
+				8BC5E20A23F416D000E9928C /* SMFetcherWithArrayBlock.swift in Sources */,
 				B7265F4220EDF69C003FBD5C /* SMTableAdapter.swift in Sources */,
 				B7265F2A20EDF69C003FBD5C /* SMKeyboardAvoiding.swift in Sources */,
 				B7265F5420EDF69C003FBD5C /* SMColor.swift in Sources */,
