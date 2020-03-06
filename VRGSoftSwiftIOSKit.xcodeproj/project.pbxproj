@@ -8,10 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		048337FB2297DDD1004267F7 /* Date+SM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048337FA2297DDD1004267F7 /* Date+SM.swift */; };
-		0490B1A622A5149600A1FD7B /* SMBOReloadProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0490B1A522A5149600A1FD7B /* SMBOReloadProtocol.swift */; };
-		0490B1A822A5162C00A1FD7B /* SMDBStorageConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0490B1A722A5162C00A1FD7B /* SMDBStorageConfigurator.swift */; };
-		0490B1AA22A51D9900A1FD7B /* Array+NSManagedObjectContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0490B1A922A51D9900A1FD7B /* Array+NSManagedObjectContext.swift */; };
-		0490B1AC22A51DCB00A1FD7B /* SMDBStorableObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0490B1AB22A51DCB00A1FD7B /* SMDBStorableObject.swift */; };
 		04B0BE84229BB952001F7A31 /* Optional+Help.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B0BE83229BB952001F7A31 /* Optional+Help.swift */; };
 		04B0BE86229BB99C001F7A31 /* Sequence+Help.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B0BE85229BB99C001F7A31 /* Sequence+Help.swift */; };
 		04B0BE88229BB9E6001F7A31 /* Collection+Help.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B0BE87229BB9E6001F7A31 /* Collection+Help.swift */; };
@@ -22,7 +18,7 @@
 		04E31F212295611100C77351 /* Dictionary+Help.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E31F202295611100C77351 /* Dictionary+Help.swift */; };
 		04E31F232295614800C77351 /* UIView+Help.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E31F222295614800C77351 /* UIView+Help.swift */; };
 		04E31F252295624200C77351 /* CALayer+SM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E31F242295624200C77351 /* CALayer+SM.swift */; };
-		442C1DDCEB2B2B292945F835 /* Pods_VRGSoftSwiftIOSKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BC56EDC4EEA30A01FF18969 /* Pods_VRGSoftSwiftIOSKit.framework */; };
+		8B0516E62411506E008087B0 /* SMDBStorableObject+SMDBRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B0516E52411506E008087B0 /* SMDBStorableObject+SMDBRequest.swift */; };
 		B7265F0320EDF69C003FBD5C /* SMCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7265E8D20EDF69C003FBD5C /* SMCell.swift */; };
 		B7265F0420EDF69C003FBD5C /* SMSectionWritable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7265E8F20EDF69C003FBD5C /* SMSectionWritable.swift */; };
 		B7265F0520EDF69C003FBD5C /* SMSectionReadonly.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7265E9020EDF69C003FBD5C /* SMSectionReadonly.swift */; };
@@ -46,7 +42,6 @@
 		B7265F1A20EDF69C003FBD5C /* SMFetcherIntoStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7265EB320EDF69C003FBD5C /* SMFetcherIntoStorage.swift */; };
 		B7265F1B20EDF69C003FBD5C /* SMFetcherMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7265EB420EDF69C003FBD5C /* SMFetcherMessage.swift */; };
 		B7265F1C20EDF69C003FBD5C /* SMFetcherWithRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7265EB520EDF69C003FBD5C /* SMFetcherWithRequest.swift */; };
-		B7265F1D20EDF69C003FBD5C /* SMDBStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7265EB720EDF69C003FBD5C /* SMDBStorage.swift */; };
 		B7265F1E20EDF69C003FBD5C /* SMLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7265EB920EDF69C003FBD5C /* SMLabel.swift */; };
 		B7265F1F20EDF69C003FBD5C /* SMPopupTimePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7265EBB20EDF69C003FBD5C /* SMPopupTimePicker.swift */; };
 		B7265F2020EDF69C003FBD5C /* SMPopupDateTimePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7265EBC20EDF69C003FBD5C /* SMPopupDateTimePicker.swift */; };
@@ -121,14 +116,11 @@
 		B79ED060210B37540060538B /* SMFetcherWithRequestBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = B79ED05F210B37540060538B /* SMFetcherWithRequestBlock.swift */; };
 		B7ED41F91F34B271006C24DC /* VRGSoftSwiftIOSKit.bundle in Resources */ = {isa = PBXBuildFile; fileRef = B7ED41F81F34B271006C24DC /* VRGSoftSwiftIOSKit.bundle */; };
 		B7F02B4921DE4624009E7E33 /* SMListDisposerSetupModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F02B4821DE4624009E7E33 /* SMListDisposerSetupModelProtocol.swift */; };
+		D60863473864854F8C0793DF /* Pods_VRGSoftSwiftIOSKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7C4E9BA7EC4DF02B9B4E44A /* Pods_VRGSoftSwiftIOSKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		048337FA2297DDD1004267F7 /* Date+SM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+SM.swift"; sourceTree = "<group>"; };
-		0490B1A522A5149600A1FD7B /* SMBOReloadProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMBOReloadProtocol.swift; sourceTree = "<group>"; };
-		0490B1A722A5162C00A1FD7B /* SMDBStorageConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMDBStorageConfigurator.swift; sourceTree = "<group>"; };
-		0490B1A922A51D9900A1FD7B /* Array+NSManagedObjectContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+NSManagedObjectContext.swift"; sourceTree = "<group>"; };
-		0490B1AB22A51DCB00A1FD7B /* SMDBStorableObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMDBStorableObject.swift; sourceTree = "<group>"; };
 		04B0BE83229BB952001F7A31 /* Optional+Help.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Optional+Help.swift"; sourceTree = "<group>"; };
 		04B0BE85229BB99C001F7A31 /* Sequence+Help.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sequence+Help.swift"; sourceTree = "<group>"; };
 		04B0BE87229BB9E6001F7A31 /* Collection+Help.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+Help.swift"; sourceTree = "<group>"; };
@@ -139,8 +131,9 @@
 		04E31F202295611100C77351 /* Dictionary+Help.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dictionary+Help.swift"; sourceTree = "<group>"; };
 		04E31F222295614800C77351 /* UIView+Help.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Help.swift"; sourceTree = "<group>"; };
 		04E31F242295624200C77351 /* CALayer+SM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CALayer+SM.swift"; sourceTree = "<group>"; };
-		74D214329718139F3B918BE8 /* Pods-VRGSoftSwiftIOSKit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VRGSoftSwiftIOSKit.debug.xcconfig"; path = "Pods/Target Support Files/Pods-VRGSoftSwiftIOSKit/Pods-VRGSoftSwiftIOSKit.debug.xcconfig"; sourceTree = "<group>"; };
-		8BC56EDC4EEA30A01FF18969 /* Pods_VRGSoftSwiftIOSKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VRGSoftSwiftIOSKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5ABDCD18FF6D1E55124DBD26 /* Pods-VRGSoftSwiftIOSKit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VRGSoftSwiftIOSKit.debug.xcconfig"; path = "Target Support Files/Pods-VRGSoftSwiftIOSKit/Pods-VRGSoftSwiftIOSKit.debug.xcconfig"; sourceTree = "<group>"; };
+		6B7B71DCA00B28A17505DBCE /* Pods-VRGSoftSwiftIOSKit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VRGSoftSwiftIOSKit.release.xcconfig"; path = "Target Support Files/Pods-VRGSoftSwiftIOSKit/Pods-VRGSoftSwiftIOSKit.release.xcconfig"; sourceTree = "<group>"; };
+		8B0516E52411506E008087B0 /* SMDBStorableObject+SMDBRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "SMDBStorableObject+SMDBRequest.swift"; path = "VRGSoftSwiftIOSKit/Core/Help/SMDBStorableObject+SMDBRequest.swift"; sourceTree = SOURCE_ROOT; };
 		B7265E8D20EDF69C003FBD5C /* SMCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMCell.swift; sourceTree = "<group>"; };
 		B7265E8F20EDF69C003FBD5C /* SMSectionWritable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMSectionWritable.swift; sourceTree = "<group>"; };
 		B7265E9020EDF69C003FBD5C /* SMSectionReadonly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMSectionReadonly.swift; sourceTree = "<group>"; };
@@ -166,7 +159,6 @@
 		B7265EB320EDF69C003FBD5C /* SMFetcherIntoStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMFetcherIntoStorage.swift; sourceTree = "<group>"; };
 		B7265EB420EDF69C003FBD5C /* SMFetcherMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMFetcherMessage.swift; sourceTree = "<group>"; };
 		B7265EB520EDF69C003FBD5C /* SMFetcherWithRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMFetcherWithRequest.swift; sourceTree = "<group>"; };
-		B7265EB720EDF69C003FBD5C /* SMDBStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMDBStorage.swift; sourceTree = "<group>"; };
 		B7265EB920EDF69C003FBD5C /* SMLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMLabel.swift; sourceTree = "<group>"; };
 		B7265EBB20EDF69C003FBD5C /* SMPopupTimePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMPopupTimePicker.swift; sourceTree = "<group>"; };
 		B7265EBC20EDF69C003FBD5C /* SMPopupDateTimePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMPopupDateTimePicker.swift; sourceTree = "<group>"; };
@@ -241,9 +233,9 @@
 		B77B0586213D4BEF00A95671 /* SMFormatterDigitSimple.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMFormatterDigitSimple.swift; sourceTree = "<group>"; };
 		B77E9EAA22170240000CE876 /* Dictionary+SM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Dictionary+SM.swift"; sourceTree = "<group>"; };
 		B79ED05F210B37540060538B /* SMFetcherWithRequestBlock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMFetcherWithRequestBlock.swift; sourceTree = "<group>"; };
+		B7C4E9BA7EC4DF02B9B4E44A /* Pods_VRGSoftSwiftIOSKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VRGSoftSwiftIOSKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B7ED41F81F34B271006C24DC /* VRGSoftSwiftIOSKit.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = VRGSoftSwiftIOSKit.bundle; sourceTree = "<group>"; };
 		B7F02B4821DE4624009E7E33 /* SMListDisposerSetupModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMListDisposerSetupModelProtocol.swift; sourceTree = "<group>"; };
-		E744888B69F1358D3BD7E3F5 /* Pods-VRGSoftSwiftIOSKit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VRGSoftSwiftIOSKit.release.xcconfig"; path = "Pods/Target Support Files/Pods-VRGSoftSwiftIOSKit/Pods-VRGSoftSwiftIOSKit.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -251,20 +243,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				442C1DDCEB2B2B292945F835 /* Pods_VRGSoftSwiftIOSKit.framework in Frameworks */,
+				D60863473864854F8C0793DF /* Pods_VRGSoftSwiftIOSKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		585C76D6BBCBEE819A29BC44 /* Pods */ = {
+		170B6B8BAF55D347CE9CC139 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				74D214329718139F3B918BE8 /* Pods-VRGSoftSwiftIOSKit.debug.xcconfig */,
-				E744888B69F1358D3BD7E3F5 /* Pods-VRGSoftSwiftIOSKit.release.xcconfig */,
+				5ABDCD18FF6D1E55124DBD26 /* Pods-VRGSoftSwiftIOSKit.debug.xcconfig */,
+				6B7B71DCA00B28A17505DBCE /* Pods-VRGSoftSwiftIOSKit.release.xcconfig */,
 			);
-			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		9949A6DD57757EF13DB1227B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B7C4E9BA7EC4DF02B9B4E44A /* Pods_VRGSoftSwiftIOSKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		B7265E8720EDF69C003FBD5C /* Core */ = {
@@ -274,7 +274,6 @@
 				B7265EAC20EDF69C003FBD5C /* AlertController */,
 				B7265EAE20EDF69C003FBD5C /* Response */,
 				B7265EB020EDF69C003FBD5C /* Fetcher */,
-				B7265EB620EDF69C003FBD5C /* CoreData */,
 				B7265EB820EDF69C003FBD5C /* Controls */,
 				B7265ED020EDF69C003FBD5C /* Formatter */,
 				B7265ED220EDF69C003FBD5C /* Vc */,
@@ -467,18 +466,6 @@
 			path = Fetcher;
 			sourceTree = "<group>";
 		};
-		B7265EB620EDF69C003FBD5C /* CoreData */ = {
-			isa = PBXGroup;
-			children = (
-				B7265EB720EDF69C003FBD5C /* SMDBStorage.swift */,
-				0490B1A722A5162C00A1FD7B /* SMDBStorageConfigurator.swift */,
-				0490B1A922A51D9900A1FD7B /* Array+NSManagedObjectContext.swift */,
-				0490B1A522A5149600A1FD7B /* SMBOReloadProtocol.swift */,
-				0490B1AB22A51DCB00A1FD7B /* SMDBStorableObject.swift */,
-			);
-			path = CoreData;
-			sourceTree = "<group>";
-		};
 		B7265EB820EDF69C003FBD5C /* Controls */ = {
 			isa = PBXGroup;
 			children = (
@@ -626,6 +613,7 @@
 				04B0BE83229BB952001F7A31 /* Optional+Help.swift */,
 				04B0BE85229BB99C001F7A31 /* Sequence+Help.swift */,
 				B7265EFB20EDF69C003FBD5C /* SMColor.swift */,
+				8B0516E52411506E008087B0 /* SMDBStorableObject+SMDBRequest.swift */,
 				B7265EF420EDF69C003FBD5C /* SMHelper.swift */,
 				B7265EFA20EDF69C003FBD5C /* String+SM.swift */,
 				B7265EF520EDF69C003FBD5C /* UIButton+SM.swift */,
@@ -667,8 +655,8 @@
 				B74DF3AB1F34A3FC00405847 /* VRGSoftSwiftIOSKit.podspec */,
 				B74DF3981F34955500405847 /* VRGSoftSwiftIOSKit */,
 				B74DF3971F34955500405847 /* Products */,
-				585C76D6BBCBEE819A29BC44 /* Pods */,
-				E57EA640F164A220DF80EC71 /* Frameworks */,
+				170B6B8BAF55D347CE9CC139 /* Pods */,
+				9949A6DD57757EF13DB1227B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -704,14 +692,6 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
-		E57EA640F164A220DF80EC71 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				8BC56EDC4EEA30A01FF18969 /* Pods_VRGSoftSwiftIOSKit.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -719,12 +699,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B74DF3A81F34955500405847 /* Build configuration list for PBXNativeTarget "VRGSoftSwiftIOSKit" */;
 			buildPhases = (
-				8047E08A137C9DA4DBABE677 /* [CP] Check Pods Manifest.lock */,
+				B3041496326A2F7E0AB49F50 /* [CP] Check Pods Manifest.lock */,
 				B74DF3921F34955500405847 /* Sources */,
 				B74DF3931F34955500405847 /* Frameworks */,
 				B74DF3941F34955500405847 /* Resources */,
-				C66E164DD5DA24212F9ED3EE /* [CP] Embed Pods Frameworks */,
 				B7E92FAD21132F870054A79D /* ShellScript */,
+				F1DB383241BDA8A09DB32482 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -786,16 +766,20 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		8047E08A137C9DA4DBABE677 /* [CP] Check Pods Manifest.lock */ = {
+		B3041496326A2F7E0AB49F50 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			inputFileListPaths = (
 			);
 			inputPaths = (
 				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
 				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-VRGSoftSwiftIOSKit-checkManifestLockResult.txt",
 			);
@@ -817,7 +801,7 @@
 			shellPath = /bin/sh;
 			shellScript = "if which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
 		};
-		C66E164DD5DA24212F9ED3EE /* [CP] Embed Pods Frameworks */ = {
+		F1DB383241BDA8A09DB32482 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -825,10 +809,12 @@
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-VRGSoftSwiftIOSKit/Pods-VRGSoftSwiftIOSKit-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/VRGSoftIOSDBKit/VRGSoftIOSDBKit.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/VRGSoftIOSDBKit.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -855,13 +841,13 @@
 				B7265F2120EDF69C003FBD5C /* SMPopupPickerItemTitled.swift in Sources */,
 				B7265F1A20EDF69C003FBD5C /* SMFetcherIntoStorage.swift in Sources */,
 				B7265F4F20EDF69C003FBD5C /* UIImage+SM.swift in Sources */,
-				B7265F1D20EDF69C003FBD5C /* SMDBStorage.swift in Sources */,
 				B7265F5520EDF69C003FBD5C /* UIView+Animation.swift in Sources */,
 				B7265F2620EDF69C003FBD5C /* SMPopupSimplePicker.swift in Sources */,
 				04B0BE8A229BBA34001F7A31 /* Array+Help.swift in Sources */,
 				048337FB2297DDD1004267F7 /* Date+SM.swift in Sources */,
 				B7265F2F20EDF69C003FBD5C /* SMKeyboardAvoidingCollectionView.swift in Sources */,
 				B7265F0820EDF69C003FBD5C /* SMTableDisposer.swift in Sources */,
+				8B0516E62411506E008087B0 /* SMDBStorableObject+SMDBRequest.swift in Sources */,
 				B7265F3920EDF69C003FBD5C /* SMNativeActivityAdapter.swift in Sources */,
 				B7265F1820EDF69C003FBD5C /* SMDataFetcherProtocol.swift in Sources */,
 				B7265F3D20EDF69C003FBD5C /* SMRequest.swift in Sources */,
@@ -877,7 +863,6 @@
 				B7265F3A20EDF69C003FBD5C /* SMNativeMoreTableViewCell.swift in Sources */,
 				B7265F4A20EDF69C003FBD5C /* SMPair.swift in Sources */,
 				B7265F2E20EDF69C003FBD5C /* SMKeyboardAvoider.swift in Sources */,
-				0490B1AA22A51D9900A1FD7B /* Array+NSManagedObjectContext.swift in Sources */,
 				04DEC94122A6AB8D00E7C52F /* SMRequestRetrier.swift in Sources */,
 				04B0BE84229BB952001F7A31 /* Optional+Help.swift in Sources */,
 				B7265F1720EDF69C003FBD5C /* SMResponse.swift in Sources */,
@@ -923,7 +908,6 @@
 				B7265F2C20EDF69C003FBD5C /* SMKeyboardAvoidingScrollView.swift in Sources */,
 				B7265F0320EDF69C003FBD5C /* SMCell.swift in Sources */,
 				B7265F3020EDF69C003FBD5C /* SMTextField.swift in Sources */,
-				0490B1A822A5162C00A1FD7B /* SMDBStorageConfigurator.swift in Sources */,
 				B73EE0DC21DF86F500F48C5C /* SMListDisposerModeledDelegate.swift in Sources */,
 				B7265F4D20EDF69C003FBD5C /* SMHelper.swift in Sources */,
 				04B0BE86229BB99C001F7A31 /* Sequence+Help.swift in Sources */,
@@ -938,7 +922,6 @@
 				B7265F2B20EDF69C003FBD5C /* SMKeyboardAvoidingTableView.swift in Sources */,
 				B7265F5720EDF69C003FBD5C /* SMGatewayConfigurator.swift in Sources */,
 				B77B0587213D4BEF00A95671 /* SMFormatterDigitSimple.swift in Sources */,
-				0490B1A622A5149600A1FD7B /* SMBOReloadProtocol.swift in Sources */,
 				04E31F232295614800C77351 /* UIView+Help.swift in Sources */,
 				B7265F0A20EDF69C003FBD5C /* SMCellDataMaped.swift in Sources */,
 				B7F02B4921DE4624009E7E33 /* SMListDisposerSetupModelProtocol.swift in Sources */,
@@ -947,7 +930,6 @@
 				B7265F1E20EDF69C003FBD5C /* SMLabel.swift in Sources */,
 				B7265F2420EDF69C003FBD5C /* SMPopupHoursMinutesPicker.swift in Sources */,
 				B7265F1320EDF69C003FBD5C /* SMListDisposer.swift in Sources */,
-				0490B1AC22A51DCB00A1FD7B /* SMDBStorableObject.swift in Sources */,
 				B7265F4720EDF69C003FBD5C /* SMMulticastDelegate.swift in Sources */,
 				B7265F4B20EDF69C003FBD5C /* UILabel+SM.swift in Sources */,
 			);
@@ -1092,7 +1074,7 @@
 		};
 		B74DF3A91F34955500405847 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 74D214329718139F3B918BE8 /* Pods-VRGSoftSwiftIOSKit.debug.xcconfig */;
+			baseConfigurationReference = 5ABDCD18FF6D1E55124DBD26 /* Pods-VRGSoftSwiftIOSKit.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = VRGSoftSwiftIOSKit/Info.plist;
@@ -1106,7 +1088,7 @@
 		};
 		B74DF3AA1F34955500405847 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E744888B69F1358D3BD7E3F5 /* Pods-VRGSoftSwiftIOSKit.release.xcconfig */;
+			baseConfigurationReference = 6B7B71DCA00B28A17505DBCE /* Pods-VRGSoftSwiftIOSKit.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = VRGSoftSwiftIOSKit/Info.plist;
