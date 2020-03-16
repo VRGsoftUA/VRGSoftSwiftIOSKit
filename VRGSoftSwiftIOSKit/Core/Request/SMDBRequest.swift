@@ -6,7 +6,6 @@
 //  Copyright © 2017 VRG Soft. All rights reserved.
 //
 
-import UIKit
 import CoreData
 import VRGSoftIOSDBKit
 import VRGSoftIOSNetworkKit
@@ -33,8 +32,8 @@ open class SMDBRequest: SMRequest {
         return true
     }
     
-    override open func start() {
-        
+    open override func start() -> Self {
+                
         self.cancelled = false
         self.executing = true
         
@@ -70,7 +69,9 @@ open class SMDBRequest: SMRequest {
                     }
                 }
             }
-        })        
+        })
+        
+        return self
     }
     
     
