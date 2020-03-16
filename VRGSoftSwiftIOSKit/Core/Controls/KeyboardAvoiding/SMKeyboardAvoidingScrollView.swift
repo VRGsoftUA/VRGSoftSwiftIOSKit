@@ -1,6 +1,6 @@
 //
 //  SMKeyboardAvoidingScrollView.swift
-//  SwiftKit
+//  VRGSoftSwiftIOSKit
 //
 //  Created by OLEKSANDR SEMENIUK on 8/10/17.
 //  Copyright © 2017 VRG Soft. All rights reserved.

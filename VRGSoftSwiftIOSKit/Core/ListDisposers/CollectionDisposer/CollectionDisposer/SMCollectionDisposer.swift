@@ -1,6 +1,6 @@
 //
 //  SMCollectionDisposer.swift
-//  SwiftKit
+//  VRGSoftSwiftIOSKit
 //
 //  Created by OLEKSANDR SEMENIUK on 4/11/18.
 //  Copyright © 2018 VRG Soft. All rights reserved.
@@ -31,7 +31,6 @@ open class SMCollectionDisposer: SMListDisposer, UICollectionViewDelegateFlowLay
     open override var listView: UIScrollView? {
         didSet {
             if let collectionView: UICollectionView = listView as? UICollectionView {
-
                 collectionView.delegate = self
                 collectionView.dataSource = self
             }
@@ -110,18 +109,22 @@ open class SMCollectionDisposer: SMListDisposer, UICollectionViewDelegateFlowLay
     }
     
     open func collectionView(_ collectionView: UICollectionView, canMoveItemAt indexPath: IndexPath) -> Bool {
+        
         return delegate?.collectionView(collectionView, canMoveItemAt: indexPath) ?? false
     }
     
     open func collectionView(_ collectionView: UICollectionView, moveItemAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        
         delegate?.collectionView(collectionView, moveItemAt: sourceIndexPath, to: destinationIndexPath)
     }
     
     open func indexTitles(for collectionView: UICollectionView) -> [String]? {
+        
         return delegate?.indexTitles(for: collectionView)
     }
     
     open func collectionView(_ collectionView: UICollectionView, indexPathForIndexTitle title: String, at index: Int) -> IndexPath {
+        
         return delegate?.collectionView(collectionView, indexPathForIndexTitle: title, at: index) ?? IndexPath()
     }
     
@@ -129,22 +132,27 @@ open class SMCollectionDisposer: SMListDisposer, UICollectionViewDelegateFlowLay
     // MARK: - UICollectionViewDelegate
     
     open func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
+        
         return delegate?.collectionView?(collectionView, shouldHighlightItemAt: indexPath) ?? true
     }
 
     open func collectionView(_ collectionView: UICollectionView, didHighlightItemAt indexPath: IndexPath) {
+        
         delegate?.collectionView?(collectionView, didHighlightItemAt: indexPath)
     }
     
     open func collectionView(_ collectionView: UICollectionView, didUnhighlightItemAt indexPath: IndexPath) {
+        
         delegate?.collectionView?(collectionView, didUnhighlightItemAt: indexPath)
     }
     
     open func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
+        
         return delegate?.collectionView?(collectionView, shouldSelectItemAt: indexPath) ?? true
     }
     
     open func collectionView(_ collectionView: UICollectionView, shouldDeselectItemAt indexPath: IndexPath) -> Bool {
+        
         return delegate?.collectionView?(collectionView, shouldDeselectItemAt: indexPath) ?? true
     }
     
@@ -156,6 +164,7 @@ open class SMCollectionDisposer: SMListDisposer, UICollectionViewDelegateFlowLay
     }
 
     open func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        
         delegate?.collectionView?(collectionView, didDeselectItemAt: indexPath)
     }
     
@@ -169,62 +178,121 @@ open class SMCollectionDisposer: SMListDisposer, UICollectionViewDelegateFlowLay
     }
     
     open func collectionView(_ collectionView: UICollectionView, willDisplaySupplementaryView view: UICollectionReusableView, forElementKind elementKind: String, at indexPath: IndexPath) {
+        
         delegate?.collectionView?(collectionView, willDisplaySupplementaryView: view, forElementKind: elementKind, at: indexPath)
     }
     
     open func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        
         delegate?.collectionView?(collectionView, didEndDisplaying: cell, forItemAt: indexPath)
     }
     
     open func collectionView(_ collectionView: UICollectionView, didEndDisplayingSupplementaryView view: UICollectionReusableView, forElementOfKind elementKind: String, at indexPath: IndexPath) {
+        
         delegate?.collectionView?(collectionView, didEndDisplayingSupplementaryView: view, forElementOfKind: elementKind, at: indexPath)
     }
     
+    @available(iOS, introduced: 6.0, deprecated: 13.0, renamed: "collectionView(_:contextMenuConfigurationForItemAt:point:)")
     open func collectionView(_ collectionView: UICollectionView, shouldShowMenuForItemAt indexPath: IndexPath) -> Bool {
+        
         return delegate?.collectionView?(collectionView, shouldShowMenuForItemAt: indexPath) ?? false
     }
     
+    @available(iOS, introduced: 6.0, deprecated: 13.0, renamed: "collectionView(_:contextMenuConfigurationForItemAt:point:)")
     open func collectionView(_ collectionView: UICollectionView, canPerformAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) -> Bool {
+        
         return delegate?.collectionView?(collectionView, canPerformAction: action, forItemAt: indexPath, withSender: sender) ?? false
     }
     
+    @available(iOS, introduced: 6.0, deprecated: 13.0, renamed: "collectionView(_:contextMenuConfigurationForItemAt:point:)")
     open func collectionView(_ collectionView: UICollectionView, performAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) {
+        
         delegate?.collectionView?(collectionView, performAction: action, forItemAt: indexPath, withSender: sender)
     }
     
     open func collectionView(_ collectionView: UICollectionView, transitionLayoutForOldLayout fromLayout: UICollectionViewLayout, newLayout toLayout: UICollectionViewLayout) -> UICollectionViewTransitionLayout {
+        
         return delegate?.collectionView?(collectionView,
                                          transitionLayoutForOldLayout: fromLayout,
                                          newLayout: toLayout) ?? fromLayout as? UICollectionViewTransitionLayout ?? UICollectionViewTransitionLayout(currentLayout: fromLayout, nextLayout: toLayout)
     }
     
     open func collectionView(_ collectionView: UICollectionView, canFocusItemAt indexPath: IndexPath) -> Bool {
+        
         return delegate?.collectionView?(collectionView, canFocusItemAt: indexPath) ?? true
     }
     
     open func collectionView(_ collectionView: UICollectionView, shouldUpdateFocusIn context: UICollectionViewFocusUpdateContext) -> Bool {
+        
         return delegate?.collectionView?(collectionView, shouldUpdateFocusIn: context) ?? true
     }
     
     open func collectionView(_ collectionView: UICollectionView, didUpdateFocusIn context: UICollectionViewFocusUpdateContext, with coordinator: UIFocusAnimationCoordinator) {
+        
         delegate?.collectionView?(collectionView, didUpdateFocusIn: context, with: coordinator)
     }
     
     open func indexPathForPreferredFocusedView(in collectionView: UICollectionView) -> IndexPath? {
+        
         return delegate?.indexPathForPreferredFocusedView?(in: collectionView)
     }
     
     open func collectionView(_ collectionView: UICollectionView, targetIndexPathForMoveFromItemAt originalIndexPath: IndexPath, toProposedIndexPath proposedIndexPath: IndexPath) -> IndexPath {
+        
         return delegate?.collectionView?(collectionView, targetIndexPathForMoveFromItemAt: originalIndexPath, toProposedIndexPath: proposedIndexPath) ?? proposedIndexPath
     }
     
     open func collectionView(_ collectionView: UICollectionView, targetContentOffsetForProposedContentOffset proposedContentOffset: CGPoint) -> CGPoint {
+        
         return delegate?.collectionView?(collectionView, targetContentOffsetForProposedContentOffset: proposedContentOffset) ?? CGPoint()
     }
     
     @available(iOS 11.0, *)
     open func collectionView(_ collectionView: UICollectionView, shouldSpringLoadItemAt indexPath: IndexPath, with context: UISpringLoadedInteractionContext) -> Bool {
+        
         return delegate?.collectionView?(collectionView, shouldSpringLoadItemAt: indexPath, with: context) ?? false
+    }
+    
+    @available(iOS 13.0, *)
+    public func collectionView(_ collectionView: UICollectionView, contextMenuConfigurationForItemAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
+        
+        return delegate?.collectionView?(collectionView, contextMenuConfigurationForItemAt: indexPath, point: point)
+    }
+    
+    @available(iOS 13.0, *)
+    public func collectionView(_ collectionView: UICollectionView, shouldBeginMultipleSelectionInteractionAt indexPath: IndexPath) -> Bool {
+        
+        return delegate?.collectionView?(collectionView, shouldBeginMultipleSelectionInteractionAt: indexPath) ?? false
+    }
+    
+    @available(iOS 13.0, *)
+    public func collectionView(_ collectionView: UICollectionView, didBeginMultipleSelectionInteractionAt indexPath: IndexPath) {
+        
+        delegate?.collectionView?(collectionView, didBeginMultipleSelectionInteractionAt: indexPath)
+    }
+    
+    @available(iOS 13.0, *)
+    public func collectionViewDidEndMultipleSelectionInteraction(_ collectionView: UICollectionView) {
+        
+        delegate?.collectionViewDidEndMultipleSelectionInteraction?(collectionView)
+    }
+    
+    @available(iOS 13.0, *)
+    public func collectionView(_ collectionView: UICollectionView, previewForHighlightingContextMenuWithConfiguration configuration: UIContextMenuConfiguration) -> UITargetedPreview? {
+        
+        return delegate?.collectionView?(collectionView, previewForHighlightingContextMenuWithConfiguration: configuration)
+    }
+    
+    @available(iOS 13.0, *)
+    public func collectionView(_ collectionView: UICollectionView, previewForDismissingContextMenuWithConfiguration configuration: UIContextMenuConfiguration) -> UITargetedPreview? {
+        
+        return delegate?.collectionView?(collectionView, previewForDismissingContextMenuWithConfiguration: configuration)
+    }
+    
+    @available(iOS 13.0, *)
+    public func collectionView(_ collectionView: UICollectionView, willPerformPreviewActionForMenuWith configuration: UIContextMenuConfiguration, animator: UIContextMenuInteractionCommitAnimating) {
+        
+        delegate?.collectionView?(collectionView, willPerformPreviewActionForMenuWith: configuration, animator: animator)
     }
     
     

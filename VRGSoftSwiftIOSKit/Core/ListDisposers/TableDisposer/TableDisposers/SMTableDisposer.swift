@@ -1,6 +1,6 @@
 //
 //  SMTableDisposer.swift
-//  SwiftKit
+//  VRGSoftSwiftIOSKit
 //
 //  Created by OLEKSANDR SEMENIUK on 01/31/17.
 //  Copyright © 2016 VRG Soft. All rights reserved.
@@ -349,6 +349,7 @@ open class SMTableDisposer: SMListDisposer, UITableViewDelegate, UITableViewData
         return delegate?.tableView?(tableView, titleForDeleteConfirmationButtonForRowAt: indexPath)
     }
     
+    @available(iOS, introduced: 8.0, deprecated: 13.0, renamed: "tableView(_:trailingSwipeActionsConfigurationForRowAt:)")
     public func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         
         return delegate?.tableView?(tableView, editActionsForRowAt: indexPath)
@@ -400,16 +401,19 @@ open class SMTableDisposer: SMListDisposer, UITableViewDelegate, UITableViewData
     
     // Copy/Paste.
     
+    @available(iOS, introduced: 5.0, deprecated: 13.0, renamed: "tableView(_:contextMenuConfigurationForRowAt:point:)")
     public func tableView(_ tableView: UITableView, shouldShowMenuForRowAt indexPath: IndexPath) -> Bool {
         
         return delegate?.tableView?(tableView, shouldShowMenuForRowAt: indexPath) ?? false
     }
     
+    @available(iOS, introduced: 5.0, deprecated: 13.0, renamed: "tableView(_:contextMenuConfigurationForRowAt:point:)")
     public func tableView(_ tableView: UITableView, canPerformAction action: Selector, forRowAt indexPath: IndexPath, withSender sender: Any?) -> Bool {
         
         return delegate?.tableView?(tableView, canPerformAction: action, forRowAt: indexPath, withSender: sender) ?? false
     }
     
+    @available(iOS, introduced: 5.0, deprecated: 13.0, renamed: "tableView(_:contextMenuConfigurationForRowAt:point:)")
     public func tableView(_ tableView: UITableView, performAction action: Selector, forRowAt indexPath: IndexPath, withSender sender: Any?) {
         
         delegate?.tableView?(tableView, performAction: action, forRowAt: indexPath, withSender: sender)
@@ -418,28 +422,72 @@ open class SMTableDisposer: SMListDisposer, UITableViewDelegate, UITableViewData
     
     // Focus
     
-    @available(iOS 9.0, *)
     public func tableView(_ tableView: UITableView, canFocusRowAt indexPath: IndexPath) -> Bool {
         
         return delegate?.tableView?(tableView, canFocusRowAt: indexPath) ?? false
     }
 
-    @available(iOS 9.0, *)
     public func tableView(_ tableView: UITableView, shouldUpdateFocusIn context: UITableViewFocusUpdateContext) -> Bool {
         
         return delegate?.tableView?(tableView, shouldUpdateFocusIn: context) ?? false
     }
 
-    @available(iOS 9.0, *)
     public func tableView(_ tableView: UITableView, didUpdateFocusIn context: UITableViewFocusUpdateContext, with coordinator: UIFocusAnimationCoordinator) {
         
         delegate?.tableView?(tableView, didUpdateFocusIn: context, with: coordinator)
     }
 
-    @available(iOS 9.0, *)
     public func indexPathForPreferredFocusedView(in tableView: UITableView) -> IndexPath? {
         
         return delegate?.indexPathForPreferredFocusedView?(in: tableView)
+    }
+    
+    @available(iOS 11.0, *)
+    public func tableView(_ tableView: UITableView, shouldSpringLoadRowAt indexPath: IndexPath, with context: UISpringLoadedInteractionContext) -> Bool {
+        
+        return delegate?.tableView?(tableView, shouldSpringLoadRowAt: indexPath, with: context) ?? false
+    }
+      
+    @available(iOS 13.0, *)
+    public func tableView(_ tableView: UITableView, shouldBeginMultipleSelectionInteractionAt indexPath: IndexPath) -> Bool {
+        
+        return delegate?.tableView?(tableView, shouldBeginMultipleSelectionInteractionAt: indexPath) ?? false
+    }
+    
+    @available(iOS 13.0, *)
+    public func tableView(_ tableView: UITableView, didBeginMultipleSelectionInteractionAt indexPath: IndexPath) {
+        
+        delegate?.tableView?(tableView, didBeginMultipleSelectionInteractionAt: indexPath)
+    }
+    
+    @available(iOS 13.0, *)
+    public func tableViewDidEndMultipleSelectionInteraction(_ tableView: UITableView) {
+        
+        delegate?.tableViewDidEndMultipleSelectionInteraction?(tableView)
+    }
+
+    @available(iOS 13.0, *)
+    public func tableView(_ tableView: UITableView, contextMenuConfigurationForRowAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
+        
+        return delegate?.tableView?(tableView, contextMenuConfigurationForRowAt: indexPath, point: point)
+    }
+    
+    @available(iOS 13.0, *)
+    public func tableView(_ tableView: UITableView, previewForHighlightingContextMenuWithConfiguration configuration: UIContextMenuConfiguration) -> UITargetedPreview? {
+        
+        return delegate?.tableView?(tableView, previewForHighlightingContextMenuWithConfiguration: configuration)
+    }
+    
+    @available(iOS 13.0, *)
+    public func tableView(_ tableView: UITableView, previewForDismissingContextMenuWithConfiguration configuration: UIContextMenuConfiguration) -> UITargetedPreview? {
+        
+        return delegate?.tableView?(tableView, previewForDismissingContextMenuWithConfiguration: configuration)
+    }
+    
+    @available(iOS 13.0, *)
+    public func tableView(_ tableView: UITableView, willPerformPreviewActionForMenuWith configuration: UIContextMenuConfiguration, animator: UIContextMenuInteractionCommitAnimating) {
+        
+        delegate?.tableView?(tableView, willPerformPreviewActionForMenuWith: configuration, animator: animator)
     }
     
     

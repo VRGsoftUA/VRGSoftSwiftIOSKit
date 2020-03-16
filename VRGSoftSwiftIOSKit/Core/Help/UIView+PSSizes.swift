@@ -8,110 +8,110 @@
 
 import UIKit
 
-public extension SMWrapper where Base: UIView {
+public extension UIView {
     
     var left: CGFloat {
         
         get {
-            return base.frame.origin.x
+            return frame.origin.x
         }
         set(left) {
-            var frame: CGRect = base.frame
+            var frame: CGRect = self.frame
             frame.origin.x = left
-            base.frame = frame
+            self.frame = frame
         }
     }
     
     var top: CGFloat {
         
         get {
-            return base.frame.origin.y
+            return frame.origin.y
         }
         set(top) {
-            var frame: CGRect = base.frame
+            var frame: CGRect = self.frame
             frame.origin.y = top
-            base.frame = frame
+            self.frame = frame
         }
     }
     
     var right: CGFloat {
         
         get {
-            return base.frame.origin.x + base.frame.size.width
+            return frame.origin.x + frame.size.width
         }
         set(right) {
-            var frame: CGRect = base.frame
+            var frame: CGRect = self.frame
             frame.origin.x = right - frame.size.width
-            base.frame = frame
+            self.frame = frame
         }
     }
     
     var bottom: CGFloat {
         
         get {
-            return base.frame.origin.y + base.frame.size.height
+            return frame.origin.y + frame.size.height
         }
         set(bottom) {
-            var frame: CGRect = base.frame
+            var frame: CGRect = self.frame
             frame.origin.y = bottom - frame.size.height
-            base.frame = frame
+            self.frame = frame
         }
     }
     
     var width: CGFloat {
         
         get {
-            return base.frame.size.width
+            return frame.size.width
         }
         set(width) {
-            var frame: CGRect = base.frame
+            var frame: CGRect = self.frame
             frame.size.width = width
-            base.frame = frame
+            self.frame = frame
         }
     }
     
     var height: CGFloat {
         
         get {
-            return base.frame.size.height
+            return frame.size.height
         }
         set(height) {
-            var frame: CGRect = base.frame
+            var frame: CGRect = self.frame
             frame.size.height = height
-            base.frame = frame
+            self.frame = frame
         }
     }
     
     var origin: CGPoint {
         
         get {
-            return base.frame.origin
+            return frame.origin
         }
         set(origin) {
-            var frame: CGRect = base.frame
+            var frame: CGRect = self.frame
             frame.origin = origin
-            base.frame = frame
+            self.frame = frame
         }
     }
     
     var size: CGSize {
         
         get {
-            return base.frame.size
+            return frame.size
         }
         set(size) {
-            var frame: CGRect = base.frame
+            var frame: CGRect = self.frame
             frame.size = size
-            base.frame = frame
+            self.frame = frame
         }
     }
     
     var rightMargin: CGFloat {
         
         get {
-            if let sWidth: CGFloat = base.superview?.sm.width {
+            if let sWidth: CGFloat = superview?.width {
                 
-                return sWidth - base.frame.size.width - base.frame.origin.x
+                return sWidth - frame.size.width - frame.origin.x
             } else {
                 
                 return 0
@@ -120,11 +120,11 @@ public extension SMWrapper where Base: UIView {
         }
         set(rightMargin) {
             
-            if let sWidth: CGFloat = base.superview?.frame.size.width {
+            if let sWidth: CGFloat = superview?.frame.size.width {
                 
-                var frame: CGRect = base.frame
+                var frame: CGRect = self.frame
                 frame.origin.x = sWidth - rightMargin - frame.size.width
-                base.frame = frame
+                self.frame = frame
             }
         }
     }
@@ -132,38 +132,20 @@ public extension SMWrapper where Base: UIView {
     var bottomMargin: CGFloat {
         
         get {
-            if let sHeight: CGFloat = base.superview?.sm.height {
-                return sHeight - base.frame.size.height - base.frame.origin.y
+            if let sHeight: CGFloat = superview?.height {
+                return sHeight - frame.size.height - frame.origin.y
             } else {
                 return 0
             }
         }
         set(bottomMargin) {
             
-            if let sHeight: CGFloat = base.superview?.frame.size.height {
+            if let sHeight: CGFloat = superview?.frame.size.height {
                 
-                var frame: CGRect = base.frame
+                var frame: CGRect = self.frame
                 frame.origin.y = sHeight - bottomMargin - frame.size.height
-                base.frame = frame
+                self.frame = frame
             }
-        }
-    }
-    
-    func updateConstrainIfExist(height aHeight: CGFloat) {
-        
-        for constraint: NSLayoutConstraint in base.constraints where constraint.firstAttribute == NSLayoutConstraint.Attribute.height {
-            
-            constraint.constant = aHeight
-            break
-        }
-    }
-    
-    func updateConstrainIfExist(width aWidth: CGFloat) {
-        
-        for constraint: NSLayoutConstraint in base.constraints where constraint.firstAttribute == NSLayoutConstraint.Attribute.width {
-            
-            constraint.constant = aWidth
-            break
         }
     }
 }

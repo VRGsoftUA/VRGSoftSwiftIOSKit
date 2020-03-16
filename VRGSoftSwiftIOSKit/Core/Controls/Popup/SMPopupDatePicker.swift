@@ -1,6 +1,6 @@
 //
 //  SMPopupDatePicker.swift
-//  SwiftKit
+//  VRGSoftSwiftIOSKit
 //
 //  Created by OLEKSANDR SEMENIUK on 8/22/17.
 //  Copyright © 2017 VRG Soft. All rights reserved.

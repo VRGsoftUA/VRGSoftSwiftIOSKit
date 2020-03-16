@@ -1,6 +1,6 @@
 //
 //  SMNativeActivityAdapter.swift
-//  SwiftKit
+//  VRGSoftSwiftIOSKit
 //
 //  Created by OLEKSANDR SEMENIUK on 2/8/18.
 //  Copyright © 2018 VRG Soft. All rights reserved.
@@ -58,7 +58,7 @@ open class SMNativeActivityAdapter: SMActivityAdapter {
         backgroundView.frame = parentView.bounds
         parentView.addSubview(backgroundView)
         
-        activity.center = CGPoint(x: backgroundView.sm.width/2.0, y: backgroundView.sm.height/2.0)
+        activity.center = CGPoint(x: backgroundView.width/2.0, y: backgroundView.height/2.0)
         backgroundView.addSubview(activity)
         
         backgroundView.superview?.bringSubviewToFront(backgroundView)

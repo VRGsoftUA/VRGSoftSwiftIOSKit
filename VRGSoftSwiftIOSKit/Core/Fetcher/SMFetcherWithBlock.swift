@@ -1,9 +1,9 @@
 //
 //  SMFetcherWithBlock.swift
-//  SwiftKit
+//  VRGSoftSwiftIOSKit
 //
 //  Created by OLEKSANDR SEMENIUK on 3/23/17.
-//  Copyright © 2017 Contractors.com. All rights reserved.
+//  Copyright © 2017 VRG Soft. All rights reserved.
 //
 
 import UIKit

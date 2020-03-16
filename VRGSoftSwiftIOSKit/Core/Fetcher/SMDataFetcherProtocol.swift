@@ -1,6 +1,6 @@
 //
 //  SMDataFetcherProtocol.swift
-//  SwiftKit
+//  VRGSoftSwiftIOSKit
 //
 //  Created by OLEKSANDR SEMENIUK on 2/3/17.
 //  Copyright © 2017 VRG Soft. All rights reserved.

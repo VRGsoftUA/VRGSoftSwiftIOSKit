@@ -1,9 +1,9 @@
 //
 //  SMNativeMoreTableViewCell.swift
-//  SwiftKit
+//  VRGSoftSwiftIOSKit
 //
 //  Created by OLEKSANDR SEMENIUK on 8/3/17.
-//  Copyright © 2017 semenag01. All rights reserved.
+//  Copyright © 2017 VRG Soft. All rights reserved.
 //
 
 import UIKit
@@ -32,10 +32,10 @@ open class SMNativeMoreTableViewCell: SMCell, SMPagingMoreCellProtocol {
         
         self.backgroundColor = UIColor.clear
         self.contentView.backgroundColor = UIColor.clear
-        self.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: self.sm.width)
+        self.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: self.width)
         
         activity.hidesWhenStopped = true
-        activity.center = CGPoint(x: self.contentView.sm.width/2, y: self.contentView.sm.height/2)
+        activity.center = CGPoint(x: self.contentView.width/2, y: self.contentView.height/2)
         activity.autoresizingMask = [.flexibleLeftMargin, .flexibleTopMargin, .flexibleRightMargin, .flexibleBottomMargin]
       
         self.contentView.addSubview(activity)

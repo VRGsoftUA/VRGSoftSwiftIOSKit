@@ -1,9 +1,9 @@
 //
 //  SMMulticastDelegate.swift
-//  MulticastDelegateDemo
+//  VRGSoftSwiftIOSKit
 //
-//  Created by Joao Nunes on 28/12/15.
-//  Copyright © 2015 Joao Nunes. All rights reserved.
+//  Created by OLEKSANDR SEMENIUK on 28/12/15.
+//  Copyright © 2015 VRG Soft. All rights reserved.
 //
 
 import Foundation

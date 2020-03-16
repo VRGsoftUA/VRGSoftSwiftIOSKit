@@ -1,6 +1,6 @@
 //
 //  SMPopupPicker.swift
-//  SwiftKit
+//  VRGSoftSwiftIOSKit
 //
 //  Created by OLEKSANDR SEMENIUK on 8/21/17.
 //  Copyright © 2017 VRG Soft. All rights reserved.

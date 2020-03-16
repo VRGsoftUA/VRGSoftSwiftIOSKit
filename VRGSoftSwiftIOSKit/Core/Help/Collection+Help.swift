@@ -6,7 +6,7 @@
 //  Copyright © 2017 VRG Soft. All rights reserved.
 //
 
-extension Collection {
+public extension Collection {
     
     subscript(safe index: Index) -> Element? {
         
@@ -16,7 +16,7 @@ extension Collection {
     }
 }
 
-extension Collection where Element: Numeric {
+public extension Collection where Element: Numeric {
     
     func sum() -> Element {
         
