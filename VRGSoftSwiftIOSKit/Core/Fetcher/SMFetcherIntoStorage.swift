@@ -131,6 +131,7 @@ open class SMFetcherIntoStorage: SMFetcherWithRequest {
         
         if !self.isFetchOnlyFromDataBase {
             
+            #warning("After switching to VRGSoftIOSNetworkKit v.2.0 - create a gatewayRequest and ask canExecute() from it")
             if SMGatewayConfigurator.shared.isInternetReachable() {
                 
                 newRequest = self.gatewayRequestBy(message: aMessage)
