@@ -6,7 +6,7 @@
 //  Copyright © 2017 VRG Soft. All rights reserved.
 //
 
-import Foundation
+import VRGSoftIOSNetworkKit
 
 public typealias SMDataFetchCallback = (SMResponse) -> Void
 

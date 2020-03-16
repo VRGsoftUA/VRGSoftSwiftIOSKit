@@ -6,6 +6,7 @@
 //  Copyright © 2017 VRG Soft. All rights reserved.
 //
 
+import VRGSoftIOSNetworkKit
 import Alamofire
 
 class SMTestGateway: SMGateway {

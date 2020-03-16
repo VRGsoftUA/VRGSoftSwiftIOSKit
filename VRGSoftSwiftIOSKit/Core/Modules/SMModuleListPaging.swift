@@ -6,7 +6,7 @@
 //  Copyright © 2017 semenag01. All rights reserved.
 //
 
-import UIKit
+import VRGSoftIOSNetworkKit
 
 public protocol SMPagingMoreCellDataProtocol: class {
     

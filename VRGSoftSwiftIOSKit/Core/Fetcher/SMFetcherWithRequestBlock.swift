@@ -6,7 +6,7 @@
 //  Copyright © 2018 VRG Soft. All rights reserved.
 //
 
-import UIKit
+import VRGSoftIOSNetworkKit
 
 public typealias SMPrepareRequestBlock = (SMFetcherMessage) -> SMRequest?
 public typealias SMCanFetchBlock = (SMFetcherMessage) -> Bool

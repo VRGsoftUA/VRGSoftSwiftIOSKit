@@ -9,6 +9,7 @@
 import UIKit
 import CoreData
 import VRGSoftIOSDBKit
+import VRGSoftIOSNetworkKit
 
 open class SMDBRequest: SMRequest {
     

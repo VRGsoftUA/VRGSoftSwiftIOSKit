@@ -13,7 +13,6 @@
 		04B0BE88229BB9E6001F7A31 /* Collection+Help.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B0BE87229BB9E6001F7A31 /* Collection+Help.swift */; };
 		04B0BE8A229BBA34001F7A31 /* Array+Help.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B0BE89229BBA34001F7A31 /* Array+Help.swift */; };
 		04DEC93F22A69CD900E7C52F /* SMTestGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DEC93E22A69CD900E7C52F /* SMTestGateway.swift */; };
-		04DEC94122A6AB8D00E7C52F /* SMRequestRetrier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DEC94022A6AB8D00E7C52F /* SMRequestRetrier.swift */; };
 		04E31F1F229553AD00C77351 /* SMWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E31F1E229553AD00C77351 /* SMWrapper.swift */; };
 		04E31F212295611100C77351 /* Dictionary+Help.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E31F202295611100C77351 /* Dictionary+Help.swift */; };
 		04E31F232295614800C77351 /* UIView+Help.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E31F222295614800C77351 /* UIView+Help.swift */; };
@@ -36,7 +35,6 @@
 		B7265F1420EDF69C003FBD5C /* SMListSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7265EAA20EDF69C003FBD5C /* SMListSection.swift */; };
 		B7265F1520EDF69C003FBD5C /* SMListCellData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7265EAB20EDF69C003FBD5C /* SMListCellData.swift */; };
 		B7265F1620EDF69C003FBD5C /* SMAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7265EAD20EDF69C003FBD5C /* SMAlertController.swift */; };
-		B7265F1720EDF69C003FBD5C /* SMResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7265EAF20EDF69C003FBD5C /* SMResponse.swift */; };
 		B7265F1820EDF69C003FBD5C /* SMDataFetcherProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7265EB120EDF69C003FBD5C /* SMDataFetcherProtocol.swift */; };
 		B7265F1920EDF69C003FBD5C /* SMFetcherWithBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7265EB220EDF69C003FBD5C /* SMFetcherWithBlock.swift */; };
 		B7265F1A20EDF69C003FBD5C /* SMFetcherIntoStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7265EB320EDF69C003FBD5C /* SMFetcherIntoStorage.swift */; };
@@ -73,7 +71,6 @@
 		B7265F3A20EDF69C003FBD5C /* SMNativeMoreTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7265EDA20EDF69C003FBD5C /* SMNativeMoreTableViewCell.swift */; };
 		B7265F3B20EDF69C003FBD5C /* SMNativeMoreCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7265EDB20EDF69C003FBD5C /* SMNativeMoreCollectionViewCell.swift */; };
 		B7265F3C20EDF69C003FBD5C /* SMDBRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7265EDD20EDF69C003FBD5C /* SMDBRequest.swift */; };
-		B7265F3D20EDF69C003FBD5C /* SMRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7265EDE20EDF69C003FBD5C /* SMRequest.swift */; };
 		B7265F3E20EDF69C003FBD5C /* SMValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7265EE020EDF69C003FBD5C /* SMValidator.swift */; };
 		B7265F3F20EDF69C003FBD5C /* SMValidationGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7265EE120EDF69C003FBD5C /* SMValidationGroup.swift */; };
 		B7265F4020EDF69C003FBD5C /* SMFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7265EE320EDF69C003FBD5C /* SMFilter.swift */; };
@@ -97,10 +94,6 @@
 		B7265F5320EDF69C003FBD5C /* String+SM.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7265EFA20EDF69C003FBD5C /* String+SM.swift */; };
 		B7265F5420EDF69C003FBD5C /* SMColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7265EFB20EDF69C003FBD5C /* SMColor.swift */; };
 		B7265F5520EDF69C003FBD5C /* UIView+Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7265EFC20EDF69C003FBD5C /* UIView+Animation.swift */; };
-		B7265F5620EDF69C003FBD5C /* SMGatewayRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7265EFE20EDF69C003FBD5C /* SMGatewayRequest.swift */; };
-		B7265F5720EDF69C003FBD5C /* SMGatewayConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7265EFF20EDF69C003FBD5C /* SMGatewayConfigurator.swift */; };
-		B7265F5820EDF69C003FBD5C /* SMGatewayRequestMultipart.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7265F0020EDF69C003FBD5C /* SMGatewayRequestMultipart.swift */; };
-		B7265F5920EDF69C003FBD5C /* SMGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7265F0120EDF69C003FBD5C /* SMGateway.swift */; };
 		B73E89BA230ECB210020F0CB /* SMCellData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7265E9720EDF69C003FBD5C /* SMCellData.swift */; };
 		B73E89BB230ECB3A0020F0CB /* SMCellDataMapedProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7265E9A20EDF69C003FBD5C /* SMCellDataMapedProtocol.swift */; };
 		B73EE0DC21DF86F500F48C5C /* SMListDisposerModeledDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B73EE0DB21DF86F500F48C5C /* SMListDisposerModeledDelegate.swift */; };
@@ -110,7 +103,6 @@
 		B74DF3A11F34955500405847 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B74DF3A01F34955500405847 /* Assets.xcassets */; };
 		B74DF3A41F34955500405847 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B74DF3A21F34955500405847 /* LaunchScreen.storyboard */; };
 		B74DF3AC1F34A3FC00405847 /* VRGSoftSwiftIOSKit.podspec in Resources */ = {isa = PBXBuildFile; fileRef = B74DF3AB1F34A3FC00405847 /* VRGSoftSwiftIOSKit.podspec */; };
-		B7560D172108C427003DF195 /* SMCompoundRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7560D162108C427003DF195 /* SMCompoundRequest.swift */; };
 		B77B0587213D4BEF00A95671 /* SMFormatterDigitSimple.swift in Sources */ = {isa = PBXBuildFile; fileRef = B77B0586213D4BEF00A95671 /* SMFormatterDigitSimple.swift */; };
 		B77E9EAB22170240000CE876 /* Dictionary+SM.swift in Sources */ = {isa = PBXBuildFile; fileRef = B77E9EAA22170240000CE876 /* Dictionary+SM.swift */; };
 		B79ED060210B37540060538B /* SMFetcherWithRequestBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = B79ED05F210B37540060538B /* SMFetcherWithRequestBlock.swift */; };
@@ -126,7 +118,6 @@
 		04B0BE87229BB9E6001F7A31 /* Collection+Help.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+Help.swift"; sourceTree = "<group>"; };
 		04B0BE89229BBA34001F7A31 /* Array+Help.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Help.swift"; sourceTree = "<group>"; };
 		04DEC93E22A69CD900E7C52F /* SMTestGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SMTestGateway.swift; path = Resources/SMTestGateway.swift; sourceTree = "<group>"; };
-		04DEC94022A6AB8D00E7C52F /* SMRequestRetrier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMRequestRetrier.swift; sourceTree = "<group>"; };
 		04E31F1E229553AD00C77351 /* SMWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMWrapper.swift; sourceTree = "<group>"; };
 		04E31F202295611100C77351 /* Dictionary+Help.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dictionary+Help.swift"; sourceTree = "<group>"; };
 		04E31F222295614800C77351 /* UIView+Help.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Help.swift"; sourceTree = "<group>"; };
@@ -153,7 +144,6 @@
 		B7265EAA20EDF69C003FBD5C /* SMListSection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMListSection.swift; sourceTree = "<group>"; };
 		B7265EAB20EDF69C003FBD5C /* SMListCellData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMListCellData.swift; sourceTree = "<group>"; };
 		B7265EAD20EDF69C003FBD5C /* SMAlertController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMAlertController.swift; sourceTree = "<group>"; };
-		B7265EAF20EDF69C003FBD5C /* SMResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMResponse.swift; sourceTree = "<group>"; };
 		B7265EB120EDF69C003FBD5C /* SMDataFetcherProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMDataFetcherProtocol.swift; sourceTree = "<group>"; };
 		B7265EB220EDF69C003FBD5C /* SMFetcherWithBlock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMFetcherWithBlock.swift; sourceTree = "<group>"; };
 		B7265EB320EDF69C003FBD5C /* SMFetcherIntoStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMFetcherIntoStorage.swift; sourceTree = "<group>"; };
@@ -190,7 +180,6 @@
 		B7265EDA20EDF69C003FBD5C /* SMNativeMoreTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMNativeMoreTableViewCell.swift; sourceTree = "<group>"; };
 		B7265EDB20EDF69C003FBD5C /* SMNativeMoreCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMNativeMoreCollectionViewCell.swift; sourceTree = "<group>"; };
 		B7265EDD20EDF69C003FBD5C /* SMDBRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMDBRequest.swift; sourceTree = "<group>"; };
-		B7265EDE20EDF69C003FBD5C /* SMRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMRequest.swift; sourceTree = "<group>"; };
 		B7265EE020EDF69C003FBD5C /* SMValidator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMValidator.swift; sourceTree = "<group>"; };
 		B7265EE120EDF69C003FBD5C /* SMValidationGroup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMValidationGroup.swift; sourceTree = "<group>"; };
 		B7265EE320EDF69C003FBD5C /* SMFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMFilter.swift; sourceTree = "<group>"; };
@@ -215,10 +204,6 @@
 		B7265EFA20EDF69C003FBD5C /* String+SM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+SM.swift"; sourceTree = "<group>"; };
 		B7265EFB20EDF69C003FBD5C /* SMColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMColor.swift; sourceTree = "<group>"; };
 		B7265EFC20EDF69C003FBD5C /* UIView+Animation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Animation.swift"; sourceTree = "<group>"; };
-		B7265EFE20EDF69C003FBD5C /* SMGatewayRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMGatewayRequest.swift; sourceTree = "<group>"; };
-		B7265EFF20EDF69C003FBD5C /* SMGatewayConfigurator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMGatewayConfigurator.swift; sourceTree = "<group>"; };
-		B7265F0020EDF69C003FBD5C /* SMGatewayRequestMultipart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMGatewayRequestMultipart.swift; sourceTree = "<group>"; };
-		B7265F0120EDF69C003FBD5C /* SMGateway.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMGateway.swift; sourceTree = "<group>"; };
 		B73EE0DB21DF86F500F48C5C /* SMListDisposerModeledDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMListDisposerModeledDelegate.swift; sourceTree = "<group>"; };
 		B74DF3961F34955500405847 /* VRGSoftSwiftIOSKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VRGSoftSwiftIOSKit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B74DF3991F34955500405847 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -228,7 +213,6 @@
 		B74DF3A31F34955500405847 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B74DF3A51F34955500405847 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B74DF3AB1F34A3FC00405847 /* VRGSoftSwiftIOSKit.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = VRGSoftSwiftIOSKit.podspec; sourceTree = "<group>"; };
-		B7560D162108C427003DF195 /* SMCompoundRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMCompoundRequest.swift; sourceTree = "<group>"; };
 		B774AE1B20FDD5940065C963 /* NSAttributedString+SM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSAttributedString+SM.swift"; sourceTree = "<group>"; };
 		B77B0586213D4BEF00A95671 /* SMFormatterDigitSimple.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMFormatterDigitSimple.swift; sourceTree = "<group>"; };
 		B77E9EAA22170240000CE876 /* Dictionary+SM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Dictionary+SM.swift"; sourceTree = "<group>"; };
@@ -272,7 +256,6 @@
 			children = (
 				B7265E8920EDF69C003FBD5C /* ListDisposers */,
 				B7265EAC20EDF69C003FBD5C /* AlertController */,
-				B7265EAE20EDF69C003FBD5C /* Response */,
 				B7265EB020EDF69C003FBD5C /* Fetcher */,
 				B7265EB820EDF69C003FBD5C /* Controls */,
 				B7265ED020EDF69C003FBD5C /* Formatter */,
@@ -285,7 +268,6 @@
 				B7265EEB20EDF69C003FBD5C /* MulticastDelegate */,
 				B7265EED20EDF69C003FBD5C /* Base */,
 				B7265EF120EDF69C003FBD5C /* Help */,
-				B7265EFD20EDF69C003FBD5C /* Gateway */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -445,14 +427,6 @@
 			path = AlertController;
 			sourceTree = "<group>";
 		};
-		B7265EAE20EDF69C003FBD5C /* Response */ = {
-			isa = PBXGroup;
-			children = (
-				B7265EAF20EDF69C003FBD5C /* SMResponse.swift */,
-			);
-			path = Response;
-			sourceTree = "<group>";
-		};
 		B7265EB020EDF69C003FBD5C /* Fetcher */ = {
 			isa = PBXGroup;
 			children = (
@@ -544,9 +518,7 @@
 		B7265EDC20EDF69C003FBD5C /* Request */ = {
 			isa = PBXGroup;
 			children = (
-				B7560D162108C427003DF195 /* SMCompoundRequest.swift */,
 				B7265EDD20EDF69C003FBD5C /* SMDBRequest.swift */,
-				B7265EDE20EDF69C003FBD5C /* SMRequest.swift */,
 			);
 			path = Request;
 			sourceTree = "<group>";
@@ -627,18 +599,6 @@
 				B7265EF720EDF69C003FBD5C /* UserDefaults+SM.swift */,
 			);
 			path = Help;
-			sourceTree = "<group>";
-		};
-		B7265EFD20EDF69C003FBD5C /* Gateway */ = {
-			isa = PBXGroup;
-			children = (
-				B7265EFE20EDF69C003FBD5C /* SMGatewayRequest.swift */,
-				B7265EFF20EDF69C003FBD5C /* SMGatewayConfigurator.swift */,
-				B7265F0020EDF69C003FBD5C /* SMGatewayRequestMultipart.swift */,
-				B7265F0120EDF69C003FBD5C /* SMGateway.swift */,
-				04DEC94022A6AB8D00E7C52F /* SMRequestRetrier.swift */,
-			);
-			path = Gateway;
 			sourceTree = "<group>";
 		};
 		B73EE0DA21DF858C00F48C5C /* ModelsProtocol */ = {
@@ -810,11 +770,13 @@
 				"${PODS_ROOT}/Target Support Files/Pods-VRGSoftSwiftIOSKit/Pods-VRGSoftSwiftIOSKit-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/VRGSoftIOSDBKit/VRGSoftIOSDBKit.framework",
+				"${BUILT_PRODUCTS_DIR}/VRGSoftIOSNetworkKit/VRGSoftIOSNetworkKit.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/VRGSoftIOSDBKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/VRGSoftIOSNetworkKit.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -850,7 +812,6 @@
 				8B0516E62411506E008087B0 /* SMDBStorableObject+SMDBRequest.swift in Sources */,
 				B7265F3920EDF69C003FBD5C /* SMNativeActivityAdapter.swift in Sources */,
 				B7265F1820EDF69C003FBD5C /* SMDataFetcherProtocol.swift in Sources */,
-				B7265F3D20EDF69C003FBD5C /* SMRequest.swift in Sources */,
 				04E31F252295624200C77351 /* CALayer+SM.swift in Sources */,
 				B7265F0720EDF69C003FBD5C /* SMTableDisposerModeled.swift in Sources */,
 				B7265F0D20EDF69C003FBD5C /* SMCollectionCell.swift in Sources */,
@@ -863,10 +824,7 @@
 				B7265F3A20EDF69C003FBD5C /* SMNativeMoreTableViewCell.swift in Sources */,
 				B7265F4A20EDF69C003FBD5C /* SMPair.swift in Sources */,
 				B7265F2E20EDF69C003FBD5C /* SMKeyboardAvoider.swift in Sources */,
-				04DEC94122A6AB8D00E7C52F /* SMRequestRetrier.swift in Sources */,
 				04B0BE84229BB952001F7A31 /* Optional+Help.swift in Sources */,
-				B7265F1720EDF69C003FBD5C /* SMResponse.swift in Sources */,
-				B7265F5920EDF69C003FBD5C /* SMGateway.swift in Sources */,
 				B7265F4420EDF69C003FBD5C /* SMCollectionAdapter.swift in Sources */,
 				B74DF39C1F34955500405847 /* ViewController.swift in Sources */,
 				B7265F3120EDF69C003FBD5C /* SMTextView.swift in Sources */,
@@ -897,14 +855,11 @@
 				B7265F3320EDF69C003FBD5C /* SMFormatter.swift in Sources */,
 				B7265F3F20EDF69C003FBD5C /* SMValidationGroup.swift in Sources */,
 				B7265F3420EDF69C003FBD5C /* SMViewController.swift in Sources */,
-				B7560D172108C427003DF195 /* SMCompoundRequest.swift in Sources */,
 				04DEC93F22A69CD900E7C52F /* SMTestGateway.swift in Sources */,
 				B7265F4120EDF69C003FBD5C /* SMModuleListPaging.swift in Sources */,
 				B7265F4020EDF69C003FBD5C /* SMFilter.swift in Sources */,
 				B7265F5220EDF69C003FBD5C /* UIView+PSSizes.swift in Sources */,
-				B7265F5820EDF69C003FBD5C /* SMGatewayRequestMultipart.swift in Sources */,
 				B7265F1420EDF69C003FBD5C /* SMListSection.swift in Sources */,
-				B7265F5620EDF69C003FBD5C /* SMGatewayRequest.swift in Sources */,
 				B7265F2C20EDF69C003FBD5C /* SMKeyboardAvoidingScrollView.swift in Sources */,
 				B7265F0320EDF69C003FBD5C /* SMCell.swift in Sources */,
 				B7265F3020EDF69C003FBD5C /* SMTextField.swift in Sources */,
@@ -920,7 +875,6 @@
 				B7265F2D20EDF69C003FBD5C /* SMKeyboardToolbar.swift in Sources */,
 				B7265F2320EDF69C003FBD5C /* SMPopupCustomSimplePicker.swift in Sources */,
 				B7265F2B20EDF69C003FBD5C /* SMKeyboardAvoidingTableView.swift in Sources */,
-				B7265F5720EDF69C003FBD5C /* SMGatewayConfigurator.swift in Sources */,
 				B77B0587213D4BEF00A95671 /* SMFormatterDigitSimple.swift in Sources */,
 				04E31F232295614800C77351 /* UIView+Help.swift in Sources */,
 				B7265F0A20EDF69C003FBD5C /* SMCellDataMaped.swift in Sources */,

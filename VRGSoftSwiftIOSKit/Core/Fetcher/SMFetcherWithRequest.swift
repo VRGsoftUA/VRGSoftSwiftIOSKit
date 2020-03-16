@@ -6,7 +6,7 @@
 //  Copyright © 2017 VRG Soft. All rights reserved.
 //
 
-import UIKit
+import VRGSoftIOSNetworkKit
 
 open class SMFetcherWithRequest: SMDataFetcherProtocol {
     
