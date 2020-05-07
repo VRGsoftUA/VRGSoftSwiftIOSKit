@@ -163,8 +163,6 @@ open class SMCompoundRequest: SMRequest {
         finished = true
         
         executeAllResponseBlocks(response: result)
-        
-        retainSelf()
     }
     
     open override func cancel() {
