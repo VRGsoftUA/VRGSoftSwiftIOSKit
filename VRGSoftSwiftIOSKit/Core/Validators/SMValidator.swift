@@ -209,7 +209,7 @@ open class SMValidatorEmail: SMValidator {
         
         self.validatableObject?.validatableText = self.validatableObject?.validatableText?.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines)
         
-        let mailRegExp: String = "^[A-Z0-9._%+-]+@(?:[A-Z0-9-]+\\.)+(?:[A-Z]{2}|com|org|net|edu|gov|mil|biz|info|mobi|name|aero|asia|jobs|museum)$"
+        let mailRegExp: String = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
         
         let regExp: NSRegularExpression? = try? NSRegularExpression(pattern: mailRegExp, options: NSRegularExpression.Options.caseInsensitive)
         
