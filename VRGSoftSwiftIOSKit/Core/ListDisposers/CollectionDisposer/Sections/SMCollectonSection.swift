@@ -58,31 +58,25 @@ open class SMCollectonSection: SMListSection {
         footerSetupBlock = setupBlock
     }
     
-    open var headerViewIdentifier: String {
+    open var headerViewIdentifier: String? {
 
-        if let nibName: String = headerViewNibName {
-
-            return nibName
-        } else if let headerClass = headerViewClass {
+        if let headerClass = headerViewClass {
 
             return String(describing: headerClass)
         } else {
 
-            return String(describing: self) + "HeaderView"
+            return headerViewNibName
         }
     }
     
-    open var footerViewIdentifier: String {
+    open var footerViewIdentifier: String? {
 
-        if let nibName: String = footerViewNibName {
-
-            return nibName
-        } else if let footerClass = footerViewClass {
+       if let footerClass = footerViewClass {
 
             return String(describing: footerClass)
         } else {
 
-            return String(describing: self) + "FooterView"
+            return footerViewNibName
         }
     }
     
@@ -109,14 +103,14 @@ open class SMCollectonSection: SMListSection {
             collectionDisposer?.collectionView?.register(
                 UINib(nibName: nibName, bundle: nil),
                 forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
-                withReuseIdentifier: headerViewIdentifier
+                withReuseIdentifier: nibName
             )
         } else if let headerViewClass: UICollectionReusableView.Type = headerViewClass {
 
             collectionDisposer?.collectionView?.register(
                 headerViewClass,
                 forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
-                withReuseIdentifier: headerViewIdentifier
+                withReuseIdentifier: String(describing: headerViewClass)
             )
         }
         
@@ -125,14 +119,14 @@ open class SMCollectonSection: SMListSection {
             collectionDisposer?.collectionView?.register(
                 UINib(nibName: nibName, bundle: nil),
                 forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter,
-                withReuseIdentifier: footerViewIdentifier
+                withReuseIdentifier: nibName
             )
         } else if let footerViewClass: UICollectionReusableView.Type = headerViewClass {
             
             collectionDisposer?.collectionView?.register(
                 footerViewClass,
                 forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter,
-                withReuseIdentifier: footerViewIdentifier
+                withReuseIdentifier: String(describing: footerViewClass)
             )
         }
     }

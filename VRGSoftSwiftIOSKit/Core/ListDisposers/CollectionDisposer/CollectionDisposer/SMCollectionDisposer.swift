@@ -96,11 +96,17 @@ open class SMCollectionDisposer: SMListDisposer, UICollectionViewDelegateFlowLay
             
             switch kind {
             case UICollectionView.elementKindSectionHeader:
-                result = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: section.headerViewIdentifier, for: indexPath as IndexPath)
-                section.headerSetupBlock?(result)
+
+                if let headerViewIdentifier: String = section.headerViewIdentifier {
+                    result = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: headerViewIdentifier, for: indexPath as IndexPath)
+                    section.headerSetupBlock?(result)
+                }
             case UICollectionView.elementKindSectionFooter:
-                result = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: section.footerViewIdentifier, for: indexPath as IndexPath)
-                section.footerSetupBlock?(result)
+
+                if let footerViewIdentifier: String = section.footerViewIdentifier {
+                    result = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: footerViewIdentifier, for: indexPath as IndexPath)
+                    section.footerSetupBlock?(result)
+                }
             default:
                 break
             }
