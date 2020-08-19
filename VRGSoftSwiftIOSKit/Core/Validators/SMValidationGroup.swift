@@ -17,7 +17,7 @@ public protocol SMValidationGroupProtocol {
 
 open class SMValidationGroup {
     
-    var validators: [SMValidator] = []
+    public var validators: [SMValidator] = []
 
     public init() {
         
