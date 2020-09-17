@@ -46,4 +46,6 @@ Pod::Spec.new do |s|
         s.source_files = 'VRGSoftSwiftIOSKit/Core/**/*.swift'
 
         s.dependency 'Alamofire', '~> 4.8'
+        s.dependency 'VRGSoftIOSDBKit'
+        s.dependency 'VRGSoftIOSNetworkKit'
 end
