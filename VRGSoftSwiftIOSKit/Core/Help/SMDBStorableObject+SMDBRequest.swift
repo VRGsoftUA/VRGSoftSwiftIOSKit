@@ -9,7 +9,7 @@
 import CoreData
 import VRGSoftIOSDBKit
 
-extension SMDBStorableObject where Self: NSManagedObject {
+public extension SMDBStorableObject where Self: NSManagedObject {
     
     static func objectsReqWith(offset: Int, limit: Int, predicate: NSPredicate? = nil) -> SMDBRequest {
         
