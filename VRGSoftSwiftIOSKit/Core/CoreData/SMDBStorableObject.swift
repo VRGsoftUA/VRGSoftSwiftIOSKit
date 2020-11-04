@@ -115,6 +115,33 @@ public extension SMDBStorableObject {
         return object
     }
     
+    static func objectByID(_ objID: Any?, inContext aContext: NSManagedObjectContext) -> Self? {
+        
+        var object: Self?
+        
+        if let objID: Any = objID {
+
+            do {
+                let request: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest<NSFetchRequestResult>(entityName: _entityName)
+                
+                if let objID: String = objID as? String {
+                    request.predicate = NSPredicate(format: "%K LIKE[c] %@", primaryKey, objID)
+                }
+                
+                if objID is Int || objID is NSNumber {
+                    request.predicate = NSPredicate(format: "self.\(primaryKey) == \(objID)")
+                }
+                
+                let array: [Self]? = try aContext.fetch(request) as? [Self]
+                object = array?.last
+            } catch {
+                
+            }
+        }
+        
+        return object
+    }
+
     static func objectsByAttributePredicate(_ attribute: String, _ value: Any, sortDescriptors: [NSSortDescriptor]? = nil) -> [Self] {
         
         var array: [Self] = []
@@ -252,7 +279,7 @@ public extension SMDBStorableObject {
         
         if aData is NSNumber || aData is String || aData is NSString {
             
-            result = objectByID(aData)
+            result = objectByID(aData, inContext: aContext)
             
             if result == nil {
                 
@@ -265,7 +292,7 @@ public extension SMDBStorableObject {
             }
         } else if let data: [String: Any] = aData as? [String: Any] {
             
-            result = objectByID(data[keyId])
+            result = objectByID(data[keyId], inContext: aContext)
             
             if result == nil {
                 result = makeObjectContext(context: aContext)
