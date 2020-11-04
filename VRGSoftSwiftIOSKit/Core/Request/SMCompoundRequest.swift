@@ -154,6 +154,11 @@ open class SMCompoundRequest: SMRequest {
                     result.textMessage = response.textMessage
                 }
                 
+                if response.isCancelled && !result.isCancelled {
+                    
+                    result.isCancelled = response.isCancelled
+                }
+                
                 result.boArray.append(response.boArray as AnyObject)
                 response.dataDictionary.forEach { (key, value) in
                     result.dataDictionary[key] = value

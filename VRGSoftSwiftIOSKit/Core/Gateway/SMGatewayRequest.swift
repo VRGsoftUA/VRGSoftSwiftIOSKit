@@ -120,7 +120,7 @@ open class SMGatewayRequest: SMRequest {
     
     override open func isCancelled() -> Bool {
         
-        return dataRequest?.task?.state == URLSessionTask.State.completed
+        return dataRequest?.task?.state == URLSessionTask.State.canceling
     }
     
     override open func isExecuting() -> Bool {
