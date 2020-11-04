@@ -100,7 +100,7 @@ open class SMModuleList {
 
             dataFetcher?.fetchDataBy(message: aMessage, withCallback: { [weak self] (aResponse: SMResponse) in
                 
-                DispatchQueue.main.sync {
+                DispatchQueue.main.async {
                     
                     if aResponse.isSuccess {
                         
