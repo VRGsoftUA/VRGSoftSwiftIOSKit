@@ -8,6 +8,8 @@
 
 import UIKit
 
+public let kSMModuleListPagingPageCountResponseKey: String = "kSMModuleListPagingPageCountResponseKey"
+
 public protocol SMPagingMoreCellDataProtocol: class {
     
     var needLoadMore: SMBlockAction<Any>? { get set }
@@ -31,6 +33,8 @@ open class SMModuleListPaging: SMModuleList, SMListAdapterMoreDelegate {
     open var isItemsAsPage: Bool = true
     open var pageOffset: Int = 0
     open var pageSize: Int = 10
+    open var pageCount: Int?
+    
     open var isLoadMoreDataAuto: Bool = true
     open var isLoadingMore: Bool = false
     
@@ -128,7 +132,15 @@ open class SMModuleListPaging: SMModuleList, SMListAdapterMoreDelegate {
             
             if let strongSelf: SMModuleListPaging = self {
                 
-                result = (isLastSectionForNewModels && originalModels.fullItemsCount >= strongSelf.pageSize && strongSelf.pageSize != 0)
+                if let pageCount: Int = self?.pageCount, let pageSize: Int = self?.pageSize, pageSize > 0 {
+                    
+                    var currentPageCount: Int = originalModels.count / pageSize
+                    
+                    result = (isLastSectionForNewModels && originalModels.fullItemsCount >= strongSelf.pageSize && strongSelf.pageSize != 0 && currentPageCount < pageCount)
+                } else {
+                    
+                    result = (isLastSectionForNewModels && originalModels.fullItemsCount >= strongSelf.pageSize && strongSelf.pageSize != 0)
+                }
             }
             
             return result
@@ -164,6 +176,8 @@ open class SMModuleListPaging: SMModuleList, SMListAdapterMoreDelegate {
             if aResponse.isSuccess {
                 
                 if message.isReloading {
+                    
+                    self.pageCount = aResponse.dataDictionary[kSMModuleListPagingPageCountResponseKey] as? Int
                     
                     models.removeAll()
                 } else if message.isLoadingMore {
