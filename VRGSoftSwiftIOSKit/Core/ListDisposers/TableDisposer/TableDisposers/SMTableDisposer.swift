@@ -230,7 +230,7 @@ open class SMTableDisposer: SMListDisposer, UITableViewDelegate, UITableViewData
             
             if let headerView: UIView = section.headerView {
                 
-                result = headerView.frame.size.height
+                result = section.isAutomaticDimensionHeader ? UITableView.automaticDimension : headerView.frame.size.height
             } else if section.headerTitle?.isEmpty == false {
                 
                 result = 20
@@ -247,7 +247,7 @@ open class SMTableDisposer: SMListDisposer, UITableViewDelegate, UITableViewData
             
             if let footerView: UIView = section.footerView {
                 
-                result = footerView.frame.size.height
+                result = section.isAutomaticDimensionFooter ? UITableView.automaticDimension : footerView.frame.size.height
             } else if section.footerTitle?.isEmpty == false {
                 
                 result = 20

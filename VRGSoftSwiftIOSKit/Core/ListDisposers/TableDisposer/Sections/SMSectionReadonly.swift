@@ -20,6 +20,8 @@ open class SMSectionReadonly: SMListSection {
     open var headerView: UIView?
     open var footerView: UIView?
     
+    open var isAutomaticDimensionHeader: Bool = false
+    open var isAutomaticDimensionFooter: Bool = false
     
     // MARK: Cells
     
