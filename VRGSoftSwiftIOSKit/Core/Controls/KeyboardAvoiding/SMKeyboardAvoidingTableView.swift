@@ -21,7 +21,7 @@ open class SMKeyboardAvoidingTableView: UITableView, SMKeyboardAvoidingProtocol 
     }
     
     var _keyboardAvoider: SMKeyboardAvoider?
-    var keyboardAvoider: SMKeyboardAvoider {
+    open var keyboardAvoider: SMKeyboardAvoider {
         
         if let keyboardAvoider: SMKeyboardAvoider = _keyboardAvoider {
             
