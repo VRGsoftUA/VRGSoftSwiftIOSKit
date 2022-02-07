@@ -20,12 +20,12 @@ open class SMNativePullToRefreshAdapter: SMPullToRefreshAdapter {
     
     override open var enabled: Bool? {
         
-        set {
-            refreshControl.isEnabled = (newValue != nil)
-            
-        }
         get {
             return refreshControl.isEnabled
+
+        }
+        set {
+            refreshControl.isEnabled = (newValue != nil)
             
         }
     }
@@ -39,14 +39,7 @@ open class SMNativePullToRefreshAdapter: SMPullToRefreshAdapter {
     
     override open func configureWith(scrollView aScrollView: UIScrollView) {
         
-        if #available(iOS 10.0, *) {
-            
-            aScrollView.refreshControl = refreshControl
-        } else {
-            
-            aScrollView.addSubview(refreshControl)
-            aScrollView.sendSubviewToBack(refreshControl)
-        }
+        aScrollView.refreshControl = refreshControl
     }
     
     override open func beginPullToRefresh() {

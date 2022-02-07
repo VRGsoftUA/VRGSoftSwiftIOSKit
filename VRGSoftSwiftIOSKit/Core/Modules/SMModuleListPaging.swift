@@ -10,18 +10,18 @@ import UIKit
 
 public let kSMModuleListPagingPageCountResponseKey: String = "kSMModuleListPagingPageCountResponseKey"
 
-public protocol SMPagingMoreCellDataProtocol: class {
+public protocol SMPagingMoreCellDataProtocol: AnyObject {
     
     var needLoadMore: SMBlockAction<Any>? { get set }
 }
 
-public protocol SMPagingMoreCellProtocol: class {
+public protocol SMPagingMoreCellProtocol: AnyObject {
     
     func didBeginDataLoading()
     func didEndDataLoading()
 }
 
-public protocol SMModuleListPagingDelegate: class {
+public protocol SMModuleListPagingDelegate: AnyObject {
     
     func willLoadMore(moduleList aModuleList: SMModuleListPaging)
 }
@@ -134,7 +134,7 @@ open class SMModuleListPaging: SMModuleList, SMListAdapterMoreDelegate {
                 
                 if let pageCount: Int = self?.pageCount, let pageSize: Int = self?.pageSize, pageSize > 0 {
                     
-                    var currentPageCount: Int = originalModels.count / pageSize
+                    let currentPageCount: Int = originalModels.count / pageSize
                     
                     result = (isLastSectionForNewModels && originalModels.fullItemsCount >= strongSelf.pageSize && strongSelf.pageSize != 0 && currentPageCount < pageCount)
                 } else {

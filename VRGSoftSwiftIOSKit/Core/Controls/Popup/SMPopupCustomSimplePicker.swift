@@ -20,7 +20,7 @@ open class SMPopupCustomSimplePicker: SMPopupSimplePicker {
         
         let result: UILabel = view as? UILabel ?? UILabel(frame: CGRect(x: 20, y: 0, width: 270, height: 44))
         
-        //configure label
+        // configure label
         if view == nil {
             
             result.backgroundColor = .clear
@@ -52,7 +52,7 @@ open class SMPopupCustomSimplePicker: SMPopupSimplePicker {
         }
         
         
-        //setup text
+        // setup text
         if row < dataSource.count {
             
             let item: AnyObject = dataSource[row]

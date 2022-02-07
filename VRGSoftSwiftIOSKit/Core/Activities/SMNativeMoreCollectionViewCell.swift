@@ -27,7 +27,7 @@ open class SMNativeMoreCollectionViewCellData: SMCollectionCellData, SMPagingMor
 
 open class SMNativeMoreCollectionViewCell: SMCollectionCell, SMPagingMoreCellProtocol {
     
-    public let activity: UIActivityIndicatorView = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.gray)
+    public let activity: UIActivityIndicatorView = UIActivityIndicatorView(style: .medium)
         
     override open func setup() {
         

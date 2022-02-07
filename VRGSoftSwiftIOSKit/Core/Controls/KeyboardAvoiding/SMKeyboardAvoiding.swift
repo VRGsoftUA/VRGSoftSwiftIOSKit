@@ -8,7 +8,7 @@
 
 import UIKit
 
-public protocol SMKeyboardAvoidingProtocol: class {
+public protocol SMKeyboardAvoidingProtocol: AnyObject {
     
     var keyboardToolbar: SMKeyboardToolbar? {get set}
     var isShowsKeyboardToolbar: Bool {get set}
@@ -27,7 +27,7 @@ public protocol SMKeyboardAvoidingProtocol: class {
     func responderShouldReturn(_ aResponder: UIResponder)
 }
 
-public protocol SMKeyboardAvoiderProtocol: class {
+public protocol SMKeyboardAvoiderProtocol: AnyObject {
     
     var keyboardAvoiding: SMKeyboardAvoidingProtocol? {get set}
 }

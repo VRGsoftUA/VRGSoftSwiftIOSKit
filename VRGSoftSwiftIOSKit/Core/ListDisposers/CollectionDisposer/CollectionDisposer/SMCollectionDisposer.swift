@@ -8,7 +8,7 @@
 
 import UIKit
 
-public protocol SMCollectionViewDataSource: class {
+public protocol SMCollectionViewDataSource: AnyObject {
     
     func collectionView(_ collectionView: UICollectionView, canMoveItemAt indexPath: IndexPath) -> Bool
     func collectionView(_ collectionView: UICollectionView, moveItemAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath)
@@ -17,7 +17,7 @@ public protocol SMCollectionViewDataSource: class {
 }
 
 
-public protocol SMCollectionDisposerMulticastDelegate: class {
+public protocol SMCollectionDisposerMulticastDelegate: AnyObject {
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath)
 }
 

@@ -8,7 +8,7 @@
 
 import UIKit
 
-public protocol SMKeyboardToolbarDelegate: class {
+public protocol SMKeyboardToolbarDelegate: AnyObject {
     
     func keyboardToolbar(_ aKeyboardToolbar: SMKeyboardToolbar, didBtNextClicked aSender: AnyObject)
     func keyboardToolbar(_ aKeyboardToolbar: SMKeyboardToolbar, didBtBackClicked aSender: AnyObject)

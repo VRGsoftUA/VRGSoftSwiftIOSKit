@@ -235,6 +235,10 @@ open class SMKeyboardAvoider: SMKeyboardAvoidingProtocol, SMKeyboardToolbarDeleg
     public var keyboardToolbar: SMKeyboardToolbar?
     
     public var isShowsKeyboardToolbar: Bool {
+        
+        get {
+            return keyboardToolbar != nil
+        }
         set {
             if newValue {
                 
@@ -243,10 +247,6 @@ open class SMKeyboardAvoider: SMKeyboardAvoidingProtocol, SMKeyboardToolbarDeleg
                 
                 deleteToolbar()
             }
-        }
-        
-        get {
-            return keyboardToolbar != nil
         }
     }
     

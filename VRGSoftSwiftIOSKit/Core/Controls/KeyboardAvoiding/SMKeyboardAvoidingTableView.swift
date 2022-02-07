@@ -11,12 +11,11 @@ import UIKit
 open class SMKeyboardAvoidingTableView: UITableView, SMKeyboardAvoidingProtocol {
     
     public var keyboardToolbar: SMKeyboardToolbar? {
-        set {
-            keyboardAvoider.keyboardToolbar = newValue
-        }
-        
         get {
             return keyboardAvoider.keyboardToolbar
+        }
+        set {
+            keyboardAvoider.keyboardToolbar = newValue
         }
     }
     
@@ -75,7 +74,8 @@ open class SMKeyboardAvoidingTableView: UITableView, SMKeyboardAvoidingProtocol 
     }
     
     override open var contentSize: CGSize {
-        
+
+        get { return super.contentSize }
         set {
             keyboardAvoider.originalContentSize = newValue
             
@@ -90,8 +90,6 @@ open class SMKeyboardAvoidingTableView: UITableView, SMKeyboardAvoidingProtocol 
                 self.contentInset = keyboardAvoider.contentInsetForKeyboard()
             }
         }
-        
-        get { return super.contentSize }
     }
     
     override open func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -103,12 +101,11 @@ open class SMKeyboardAvoidingTableView: UITableView, SMKeyboardAvoidingProtocol 
     
     public var isShowsKeyboardToolbar: Bool {
         
-        set {
-            keyboardAvoider.isShowsKeyboardToolbar = newValue
-        }
-        
         get {
             return keyboardAvoider.isShowsKeyboardToolbar
+        }
+        set {
+            keyboardAvoider.isShowsKeyboardToolbar = newValue
         }
     }
     

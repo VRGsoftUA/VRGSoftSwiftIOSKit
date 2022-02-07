@@ -30,7 +30,7 @@ open class SMSectionWritable: SMSectionReadonly {
         createCells()
     }
     
-    //TODO:
+    // TODO:
     open func createCell(at anIndex: Int) -> UITableViewCell {
         
         let cellData: SMCellData = visibleCellData(at: anIndex) as! SMCellData// swiftlint:disable:this force_cast
@@ -77,7 +77,7 @@ open class SMSectionWritable: SMSectionReadonly {
         return cells[aIndex]
     }
     
-    //TODO:
+    // TODO:
     override open func reload(with anAnimation: UITableView.RowAnimation) {
         
         if let keyboardAvoiding: SMKeyboardAvoidingProtocol = tableDisposer?.tableView as? SMKeyboardAvoidingProtocol {
@@ -96,7 +96,7 @@ open class SMSectionWritable: SMSectionReadonly {
         super.reload(with: anAnimation)
     }
 
-    //TODO:
+    // TODO:
     override open func reloadRows(at aIndexes: [Int], withRowAnimation aRowAnimation: UITableView.RowAnimation) {
         
         var indexPaths: [IndexPath] = []
@@ -123,7 +123,7 @@ open class SMSectionWritable: SMSectionReadonly {
         tableDisposer?.tableView?.reloadRows(at: indexPaths, with: aRowAnimation)
     }
 
-    //TODO:
+    // TODO:
     override open func showCell(by aIndex: Int, needUpdateTable aNeedUpdateTable: Bool, withRowAnimation aRowAnimation: UITableView.RowAnimation) {
         
         let cellData: SMListCellData = self.cellData(at: aIndex)
@@ -147,7 +147,7 @@ open class SMSectionWritable: SMSectionReadonly {
         }
     }
     
-    //TODO:
+    // TODO:
     override open func hideCell(by aIndex: Int, needUpdateTable aNeedUpdateTable: Bool, withRowAnimation aRowAnimation: UITableView.RowAnimation) {
         
         let cellData: SMListCellData = self.cellData(at: aIndex)

@@ -112,27 +112,27 @@ open class SMPopupViewController: UIViewController {
         aView.addSubview(view)
         self.popupWillAppear(animated: animated)
         
-        //animation
+        // animation
         isShow = true
         
         if animated {
-            //animations
+            // animations
             UIView.animate(withDuration: SMPopupViewController.motionDuration, animations: { 
                 self.isAnimatingNow = true
                 
-                //motion
+                // motion
                 var frame: CGRect = self.popupedViewOwner.frame
                 frame.origin = CGPoint.zero
                 self.popupedViewOwner.frame = frame
                 
-                //change overlay alpha
+                // change overlay alpha
                 self.overlayView.alpha = CGFloat(self.overlayViewAlpha)
             }, completion: { _ in
                 self.isAnimatingNow = false
                 self.popupDidAppear(animated: animated)
             })
         } else {
-            //placed
+            // placed
             var frame: CGRect = popupedViewOwner.frame
             frame.origin = CGPoint.zero
             popupedViewOwner.frame = frame
@@ -151,14 +151,14 @@ open class SMPopupViewController: UIViewController {
             
             isAnimatingNow = true
             
-            //animations
+            // animations
             UIView.animate(withDuration: SMPopupViewController.motionDuration, animations: { 
-                //motion
+                // motion
                 var frame: CGRect = self.popupedViewOwner.frame
                 frame.origin.y = self.view.bounds.size.height
                 self.popupedViewOwner.frame = frame
                 
-                //change overlay alpha
+                // change overlay alpha
                 self.overlayView.alpha = 0.0
             }, completion: { _ in
                 self.isAnimatingNow = false

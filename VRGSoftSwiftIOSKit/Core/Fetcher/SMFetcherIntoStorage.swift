@@ -21,6 +21,8 @@ open class SMFetcherIntoStorage: SMFetcherWithRequest {
     // MARK: Request
     
     override open var request: SMRequest? {
+        
+        get { return _request }
         set {
             
             if _request !== newValue {
@@ -111,8 +113,6 @@ open class SMFetcherIntoStorage: SMFetcherWithRequest {
                     }, responseQueue: self.callbackQueue)
             }
         }
-        
-        get { return _request }
     }
     
     override open func preparedRequestBy(message aMessage: SMFetcherMessage) -> SMRequest? {
@@ -156,12 +156,12 @@ open class SMFetcherIntoStorage: SMFetcherWithRequest {
     }
     
     open func gatewayRequestBy(message aMessage: SMFetcherMessage) -> SMRequest? {
-        //override it
+        // override it
         return nil
     }
     
     open func dataBaseRequestBy(message aMessage: SMFetcherMessage) -> SMRequest? {
-        //override it
+        // override it
         return nil
     }
     

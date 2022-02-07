@@ -6,7 +6,7 @@
 //  Copyright © 2019 VRG Soft. All rights reserved.
 //
 
-//SMListDisposerModeledCreateCellDataDelegate
+// SMListDisposerModeledCreateCellDataDelegate
 
 public protocol SMListDisposerSetupModelProtocol where Self: SMListDisposer {
     

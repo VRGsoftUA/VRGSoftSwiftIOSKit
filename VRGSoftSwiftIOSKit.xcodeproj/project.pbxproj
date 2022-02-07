@@ -23,6 +23,7 @@
 		04E31F232295614800C77351 /* UIView+Help.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E31F222295614800C77351 /* UIView+Help.swift */; };
 		04E31F252295624200C77351 /* CALayer+SM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E31F242295624200C77351 /* CALayer+SM.swift */; };
 		442C1DDCEB2B2B292945F835 /* Pods_VRGSoftSwiftIOSKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BC56EDC4EEA30A01FF18969 /* Pods_VRGSoftSwiftIOSKit.framework */; };
+		8B00007A27B1209800E292EF /* UserDefaults+SM.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7265EF720EDF69C003FBD5C /* UserDefaults+SM.swift */; };
 		8BC5E20A23F416D000E9928C /* SMFetcherWithArrayBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BC5E20923F416CF00E9928C /* SMFetcherWithArrayBlock.swift */; };
 		B7265F0320EDF69C003FBD5C /* SMCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7265E8D20EDF69C003FBD5C /* SMCell.swift */; };
 		B7265F0420EDF69C003FBD5C /* SMSectionWritable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7265E8F20EDF69C003FBD5C /* SMSectionWritable.swift */; };
@@ -745,7 +746,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0830;
-				LastUpgradeCheck = 1020;
+				LastUpgradeCheck = 1300;
 				ORGANIZATIONNAME = "OLEKSANDR SEMENIUK";
 				TargetAttributes = {
 					B74DF3951F34955500405847 = {
@@ -818,7 +819,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
+			shellScript = "if which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
 		};
 		C66E164DD5DA24212F9ED3EE /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -945,6 +946,7 @@
 				0490B1A622A5149600A1FD7B /* SMBOReloadProtocol.swift in Sources */,
 				04E31F232295614800C77351 /* UIView+Help.swift in Sources */,
 				B7265F0A20EDF69C003FBD5C /* SMCellDataMaped.swift in Sources */,
+				8B00007A27B1209800E292EF /* UserDefaults+SM.swift in Sources */,
 				B7F02B4921DE4624009E7E33 /* SMListDisposerSetupModelProtocol.swift in Sources */,
 				B7265F1520EDF69C003FBD5C /* SMListCellData.swift in Sources */,
 				B7265F3820EDF69C003FBD5C /* SMNativePullToRefreshAdapter.swift in Sources */,
@@ -1005,6 +1007,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -1029,7 +1032,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -1066,6 +1069,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -1084,7 +1088,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -1100,7 +1104,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = VRGSoftSwiftIOSKit/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = VRGSoft.VRGSoftSwiftIOSKit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1114,7 +1118,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = VRGSoftSwiftIOSKit/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = VRGSoft.VRGSoftSwiftIOSKit;
 				PRODUCT_NAME = "$(TARGET_NAME)";

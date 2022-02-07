@@ -10,7 +10,7 @@ import UIKit
 
 public extension SMWrapper where Base: UIViewController {
 
-    static func topViewController(controller: UIViewController? = UIApplication.shared.keyWindow?.rootViewController) -> UIViewController? {
+    static func topViewController(controller: UIViewController? = UIApplication.shared.windows.first(where: { $0.isKeyWindow })?.rootViewController) -> UIViewController? {
         
         if let navigationController: UINavigationController = controller as? UINavigationController {
             

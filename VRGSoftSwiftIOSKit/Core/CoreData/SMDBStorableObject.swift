@@ -30,11 +30,12 @@ public extension SMDBStorableObject {
     }
     
     var _identifier: Any? {
-        set {
-            setValue(newValue, forKey: primaryKey)
-        }
+
         get {
             return value(forKey: primaryKey) as Any
+        }
+        set {
+            setValue(newValue, forKey: primaryKey)
         }
     }
     
@@ -57,12 +58,7 @@ public extension SMDBStorableObject {
     static var _entityName: String {
         
         let entityName: String? = {
-            
-            if #available(iOS 10.0, *) {
-                return entity().name
-            } else {
-                return nil
-            }
+            return entity().name
         }()
         
         if let entityName: String = entityName {

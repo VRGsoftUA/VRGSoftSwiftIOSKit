@@ -12,7 +12,7 @@ public typealias SMModuleListFetcherFailedCallback = (SMModuleList, SMResponse) 
 public typealias SMModuleListFetcherCantFetch = (SMModuleList, SMFetcherMessage) -> Void
 
 
-public protocol SMModuleListDelegate: class {
+public protocol SMModuleListDelegate: AnyObject {
     
     func fetcherMessageFor(moduleList aModule: SMModuleList) -> SMFetcherMessage
     func willReload(moduleList aModule: SMModuleList)
@@ -33,7 +33,7 @@ open class SMModuleList {
     open var pullToRefreshAdapter: SMPullToRefreshAdapter? {
         
         didSet {
-            pullToRefreshAdapter?.refreshCallback = { [weak self] (aPullToRefreshAdapter: SMPullToRefreshAdapter) in
+            pullToRefreshAdapter?.refreshCallback = { [weak self] _ in
                 
                 if let strongSelf: SMModuleList = self {
                     

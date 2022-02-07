@@ -18,7 +18,7 @@ open class SMPopoverViewController: UIViewController {
         popupedView = aPopupView
         
         super.init(nibName: nil, bundle: nil)
-        isModalInPopover = !(popupedView.isHideByTapOutside)
+        isModalInPresentation = !(popupedView.isHideByTapOutside)
     }
     
     required public init?(coder aDecoder: NSCoder) {

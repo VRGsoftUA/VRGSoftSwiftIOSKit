@@ -60,7 +60,7 @@ open class SMCollectonSection: SMListSection {
     
     open var headerViewIdentifier: String? {
 
-        if let headerClass = headerViewClass {
+        if let headerClass: UICollectionReusableView.Type = headerViewClass {
 
             return String(describing: headerClass)
         } else {
@@ -71,7 +71,7 @@ open class SMCollectonSection: SMListSection {
     
     open var footerViewIdentifier: String? {
 
-       if let footerClass = footerViewClass {
+        if let footerClass: UICollectionReusableView.Type = footerViewClass {
 
             return String(describing: footerClass)
         } else {

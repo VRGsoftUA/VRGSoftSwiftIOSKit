@@ -51,81 +51,73 @@ open class SMTextView: UITextView, SMKeyboardAvoiderProtocol, SMValidationProtoc
     open var placeholderTextView: UITextView = UITextView()
 
     open var placeholder: String? {
-        
+
+        get { return placeholderTextView.text }
         set {
             placeholderTextView.text = newValue
             placeholderTextView.isHidden = self.text.count > 0
         }
-        
-        get { return placeholderTextView.text }
     }
     
     open var attributedPlaceholder: NSAttributedString {
         
+        get { return self.attributedText }
         set {
             placeholderTextView.attributedText = newValue
             placeholderTextView.isHidden = self.text.count > 0
         }
-        
-        get { return self.attributedText }
     }
     
     open var placeholderColor: UIColor? {
-        
+
+        get { return self.placeholderTextView.textColor }
         set {
             placeholderTextView.textColor = newValue
         }
-        
-        get { return self.placeholderTextView.textColor }
     }
 
     override open var textContainerInset: UIEdgeInsets {
-        
+
+        get { return super.textContainerInset }
         set {
             super.textContainerInset = newValue
             placeholderTextView.textContainerInset = newValue
         }
-        
-        get { return super.textContainerInset }
     }
 
     override open var textAlignment: NSTextAlignment {
         
+        get { return super.textAlignment }
         set {
             super.textAlignment = newValue
             placeholderTextView.textAlignment = newValue
         }
-        
-        get { return super.textAlignment }
     }
 
     open var isPlaceHolderHidden: Bool {
         
+        get { return placeholderTextView.isHidden }
         set {
             placeholderTextView.isHidden = newValue
         }
-        
-        get { return placeholderTextView.isHidden }
     }
     
     override open var text: String! {
-        
+
+        get { return super.text }
         set {
             super.text = newValue
             placeholderTextView.isHidden = self.text.count > 0
         }
-        
-        get { return super.text }
     }
     
     override open var font: UIFont? {
-        
+
+        get { return super.font }
         set {
             super.font = newValue
             placeholderTextView.font = newValue
         }
-        
-        get { return super.font }
     }
 
     

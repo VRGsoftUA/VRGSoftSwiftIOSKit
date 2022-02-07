@@ -64,6 +64,8 @@ open class SMFetcherWithRequest: SMDataFetcherProtocol {
     
     open var _request: SMRequest?
     open var request: SMRequest? {
+
+        get { return _request }
         set {
             
             if _request !== newValue {
@@ -81,8 +83,6 @@ open class SMFetcherWithRequest: SMDataFetcherProtocol {
                     }, responseQueue: self.callbackQueue)
             }
         }
-        
-        get { return _request }
     }
     
     open func processFetchedModelsIn(response aResponse: SMResponse) -> [AnyObject] {

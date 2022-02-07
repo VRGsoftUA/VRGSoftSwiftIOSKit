@@ -8,26 +8,24 @@
 
 import Foundation
 
-//aCoding have to inherit from NSObject
 public extension SMWrapper where Base: UserDefaults {
 
-    func setCoding(_ aCoding: NSCoding, forKey aKey: String) {
-        
-        let data: Data = NSKeyedArchiver.archivedData(withRootObject: aCoding)
-        base.set(data, forKey: aKey)
-    }
-    
-    func coding<T: NSCoding>(forKey aKey: String) -> T? {
-        
-        var result: T?
-        
-        let data: Any? = base.object(forKey: aKey)
-        
-        if let data: Data = data as? Data {
-            result = NSKeyedUnarchiver.unarchiveObject(with: data) as? T
+    func value<Value: Codable>(forKey key: String) -> Value? {
+        if let data: Data  = base.object(forKey: key) as? Data {
+            return try? JSONDecoder().decode(Value.self, from: data)
+        } else {
+            return nil
         }
-        
-        return result
+    }
+
+    func set<Value: Codable>(_ value: Value, forKey key: String) {
+        if let data: Data = try? JSONEncoder().encode(value) {
+            base.set(data, forKey: key)
+        }
+    }
+
+    func clearValue(forKey key: String) {
+        base.removeObject(forKey: key)
     }
 }
 

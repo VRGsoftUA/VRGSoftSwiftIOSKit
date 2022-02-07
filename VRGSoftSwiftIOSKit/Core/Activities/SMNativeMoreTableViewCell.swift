@@ -24,7 +24,7 @@ open class SMNativeMoreTableViewCellData: SMCellData, SMPagingMoreCellDataProtoc
 
 open class SMNativeMoreTableViewCell: SMCell, SMPagingMoreCellProtocol {
 
-    public let activity: UIActivityIndicatorView = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.gray)
+    public let activity: UIActivityIndicatorView = UIActivityIndicatorView(style: .medium)
     
     override open func setup() {
         

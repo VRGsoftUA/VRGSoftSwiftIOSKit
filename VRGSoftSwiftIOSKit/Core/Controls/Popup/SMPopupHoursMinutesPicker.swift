@@ -16,8 +16,7 @@ open class SMPopupHoursMinutesPicker: SMPopupPicker, UIPickerViewDelegate, UIPic
         let pv: UIPickerView = UIPickerView(frame: CGRect(origin: CGPoint.zero, size: SMPopupView.popupViewSize()))
         pv.delegate = self
         pv.dataSource = self
-        pv.showsSelectionIndicator = true
-        
+
         return pv
     }
     
@@ -66,8 +65,8 @@ open class SMPopupHoursMinutesPicker: SMPopupPicker, UIPickerViewDelegate, UIPic
         
         var newFrame: CGRect
         
-        //hours
-        if  UIApplication.shared.statusBarOrientation.isPortrait {
+        // hours
+        if  UIApplication.shared.windows.first(where: { $0.isKeyWindow })?.windowScene?.interfaceOrientation.isPortrait == true {
             
             newFrame = CGRect(x: 60, y: 130, width: 70, height: 44)
         } else {
@@ -80,8 +79,8 @@ open class SMPopupHoursMinutesPicker: SMPopupPicker, UIPickerViewDelegate, UIPic
         lbHours.backgroundColor = .clear
         self.addSubview(lbHours)
         
-        //minutes
-        if UIApplication.shared.statusBarOrientation.isPortrait {
+        // minutes
+        if UIApplication.shared.windows.first(where: { $0.isKeyWindow })?.windowScene?.interfaceOrientation.isPortrait == true {
             
             newFrame = CGRect(x: 200, y: 130, width: 70, height: 44)
         } else {
@@ -95,7 +94,7 @@ open class SMPopupHoursMinutesPicker: SMPopupPicker, UIPickerViewDelegate, UIPic
         lbMinutes.autoresizingMask = .flexibleLeftMargin
         self.addSubview(lbMinutes)
         
-        //setup current view
+        // setup current view
         if selectedItem != nil {
             
             guard let selNumber: NSNumber = selectedItem as? NSNumber else { return }

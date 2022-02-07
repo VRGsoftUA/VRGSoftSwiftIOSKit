@@ -10,7 +10,7 @@ import UIKit
 
 public typealias SMListAdapterClosureType = () -> Bool
 
-public protocol SMListAdapterDelegate: class {
+public protocol SMListAdapterDelegate: AnyObject {
     
     func prepareSectionsFor(listAdapter aListAdapter: SMListAdapter)
     func defaultSectionForlistAdapter(_ aListAdapter: SMListAdapter) -> SMListSection?
@@ -20,7 +20,7 @@ public protocol SMListAdapterDelegate: class {
 }
 
 
-public protocol SMListAdapterMoreDelegate: class {
+public protocol SMListAdapterMoreDelegate: AnyObject {
     
     func needLoadMore(listAdapter aListAdapter: SMListAdapter)
 }

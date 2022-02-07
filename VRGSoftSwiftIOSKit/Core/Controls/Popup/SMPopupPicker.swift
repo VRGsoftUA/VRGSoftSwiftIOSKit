@@ -59,6 +59,10 @@ open class SMPopupPicker: SMPopupView {
     
     open var _toolbar: SMToolbar?
     open var toolbar: SMToolbar? {
+
+        get {
+            return _toolbar
+        }
         set {
             if _toolbar == newValue { return }
             
@@ -76,9 +80,6 @@ open class SMPopupPicker: SMPopupView {
                 _toolbar = nil
             }
         }
-        get {
-            return _toolbar
-        }
     }
     
     open func createPicker() -> UIView? {
@@ -89,11 +90,12 @@ open class SMPopupPicker: SMPopupView {
     open var _selectedItem: AnyObject?
     open var selectedItem: AnyObject? {
         // override it in subclasses
-        set {
-            _selectedItem = newValue
-        }
         get {
             return _selectedItem
+        }
+
+        set {
+            _selectedItem = newValue
         }
     }
 }

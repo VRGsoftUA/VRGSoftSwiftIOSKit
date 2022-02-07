@@ -43,7 +43,7 @@ open class SMPopupDatePicker: SMPopupPicker {
         
         super.popupWillAppear(animated: animated)
         
-        //setup current value
+        // setup current value
         if let selectedItem: Date = selectedItem as? Date {
             
             self.popupedPicker?.date = selectedItem

@@ -8,7 +8,7 @@
 
 import UIKit
 
-public protocol SMTableViewDataSource: class {
+public protocol SMTableViewDataSource: AnyObject {
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool
     func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool
@@ -24,7 +24,7 @@ public protocol SMTableDisposerDelegate: UITableViewDelegate, SMTableViewDataSou
     func tableDisposer(_ aTableDisposer: SMTableDisposer, didSetupCell aCell: UITableViewCell, at aIndexPath: IndexPath)
 }
 
-public protocol SMTableDisposerMulticastDelegate: class {
+public protocol SMTableDisposerMulticastDelegate: AnyObject {
     
     func tableDisposer(_ aTableDisposer: SMTableDisposer, didCreateCell aCell: UITableViewCell)
     func tableView(_ aTableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath)

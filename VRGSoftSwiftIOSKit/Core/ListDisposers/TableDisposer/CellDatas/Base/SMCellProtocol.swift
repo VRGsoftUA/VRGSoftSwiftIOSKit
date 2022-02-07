@@ -8,7 +8,7 @@
 
 import Foundation
 
-public protocol SMCellProtocol: class {
+public protocol SMCellProtocol: AnyObject {
     
     var cellData: SMListCellData? { get set }
     

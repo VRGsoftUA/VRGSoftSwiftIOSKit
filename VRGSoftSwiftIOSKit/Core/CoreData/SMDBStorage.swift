@@ -104,7 +104,7 @@ open class SMDBStorage {
         
         do {
             try result.addPersistentStore(ofType: self.storeType(), configurationName: nil, at: storeUrl, options: self.migrationPolicy())
-        } catch let error as NSError { // swiftlint:disable:this explicit_type_interface
+        } catch {
             print(error.localizedDescription)
         }
         
@@ -370,8 +370,7 @@ open class SMDBStorage {
                         aContext.delete(managedObject)
                     }
                 }
-            } catch let error as NSError // swiftlint:disable:this explicit_type_interface
-            {
+            } catch {
                 print(error)
             }
         }

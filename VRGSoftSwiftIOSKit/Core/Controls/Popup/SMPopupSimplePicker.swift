@@ -19,20 +19,19 @@ open class SMPopupSimplePicker: SMPopupPicker, UIPickerViewDelegate, UIPickerVie
         let pv: UIPickerView = UIPickerView(frame: CGRect(origin: CGPoint.zero, size: SMPopupView.popupViewSize()))
         pv.delegate = self
         pv.dataSource = self
-        pv.showsSelectionIndicator = true
-        
+
         return pv
     }
     
     open var _dataSource: [AnyObject] = []
     open var dataSource: [AnyObject] {
-        
+
+        get {
+            return _dataSource
+        }
         set {
             _dataSource = newValue
             popupedPicker?.reloadAllComponents()
-        }
-        get {
-            return _dataSource
         }
     }
     

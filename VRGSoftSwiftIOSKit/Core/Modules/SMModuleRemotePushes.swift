@@ -15,12 +15,7 @@ open class SMModuleRemotePushes: NSObject {
     
     open func tryToRegisterAllNotificationSettings() {
         
-        if #available(iOS 10.0, *) {
-            
-            self.tryToRegisterFor(userNotificationOptions: [UNAuthorizationOptions.alert, UNAuthorizationOptions.badge, UNAuthorizationOptions.sound])
-        } else {
-            
-        }
+        self.tryToRegisterFor(userNotificationOptions: [UNAuthorizationOptions.alert, UNAuthorizationOptions.badge, UNAuthorizationOptions.sound])
     }
     
     open func tryToRegisterForUserNotificationDefault() {

@@ -65,6 +65,8 @@ open class SMKeyboardAvoidingScrollView: UIScrollView, SMKeyboardAvoidingProtoco
     }
     
     override open var contentSize: CGSize {
+        get { return super.contentSize }
+
         set {
             keyboardAvoider.originalContentSize = newValue
             
@@ -79,8 +81,6 @@ open class SMKeyboardAvoidingScrollView: UIScrollView, SMKeyboardAvoidingProtoco
                 self.contentInset = keyboardAvoider.contentInsetForKeyboard()
             }
         }
-        
-        get { return super.contentSize }
     }
 
     override open func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -94,24 +94,22 @@ open class SMKeyboardAvoidingScrollView: UIScrollView, SMKeyboardAvoidingProtoco
     // MARK: - SMKeyboardAvoidingProtocol
 
     public var keyboardToolbar: SMKeyboardToolbar? {
-        
-        set {
-            keyboardAvoider.keyboardToolbar = newValue
-        }
-        
+
         get {
             return keyboardAvoider.keyboardToolbar
+        }
+        set {
+            keyboardAvoider.keyboardToolbar = newValue
         }
     }
 
     public var isShowsKeyboardToolbar: Bool {
-        
-        set {
-            keyboardAvoider.isShowsKeyboardToolbar = newValue
-        }
-        
+
         get {
             return keyboardAvoider.isShowsKeyboardToolbar
+        }
+        set {
+            keyboardAvoider.isShowsKeyboardToolbar = newValue
         }
     }
 

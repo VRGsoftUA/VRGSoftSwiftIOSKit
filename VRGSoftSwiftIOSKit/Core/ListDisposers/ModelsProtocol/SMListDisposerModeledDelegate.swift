@@ -6,7 +6,7 @@
 //  Copyright © 2019 VRG Soft. All rights reserved.
 //
 
-public protocol SMListDisposerModeledCreateCellDataDelegate: class {
+public protocol SMListDisposerModeledCreateCellDataDelegate: AnyObject {
     
     func listDisposer(_ aListDisposer: SMListDisposer, didCreateCellData aCellData: SMListCellData)
 }

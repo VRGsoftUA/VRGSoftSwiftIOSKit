@@ -29,7 +29,7 @@ open class SMNativeActivityAdapter: SMActivityAdapter {
     
     public func createActivityIndicatorView() -> UIActivityIndicatorView {
         
-        let activity: UIActivityIndicatorView = UIActivityIndicatorView(style: .gray)
+        let activity: UIActivityIndicatorView = UIActivityIndicatorView(style: .medium)
         activity.hidesWhenStopped = true
         return activity
     }

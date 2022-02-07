@@ -12,13 +12,13 @@ extension UIView {
     
     @IBInspectable open var cornerRadius: CGFloat {
         
-        set { layer.cornerRadius = newValue }
         get { return layer.cornerRadius }
+        set { layer.cornerRadius = newValue }
     }
     
     @IBInspectable open var borderWidth: CGFloat {
-        
-        set { layer.borderWidth = newValue }
+
         get { return layer.borderWidth }
+        set { layer.borderWidth = newValue }
     }
 }
