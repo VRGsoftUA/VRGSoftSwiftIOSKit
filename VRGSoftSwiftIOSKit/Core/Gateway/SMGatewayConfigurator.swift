@@ -26,16 +26,12 @@ open class SMGatewayConfigurator {
             }
         }
     }
+
+    open var interceptor: SMRequestInterceptor = SMRequestInterceptor()
     
     open var gateways: [SMGateway] = []
     open var networkReachabilityManager: NetworkReachabilityManager?
-    
-    public let retrier: SMRequestRetrier = SMRequestRetrier()
-    
-    init() {
-        SessionManager.default.retrier = retrier
-    }
-    
+
     open func isInternetReachable() -> Bool {
         
         let result: Bool = networkReachabilityManager?.isReachable ?? false
@@ -63,7 +59,7 @@ open class SMGatewayConfigurator {
         if let host: String = aUrl.host {
             
             networkReachabilityManager = NetworkReachabilityManager(host: host)
-            networkReachabilityManager?.startListening()
+            networkReachabilityManager?.startListening(onUpdatePerforming: { _ in })
         } else {
             
             assert(false)

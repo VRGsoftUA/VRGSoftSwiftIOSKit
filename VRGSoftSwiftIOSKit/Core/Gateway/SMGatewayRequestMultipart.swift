@@ -26,64 +26,65 @@ open class SMGatewayRequestMultipart: SMGatewayRequest {
         fatalError("init(gateway:type:) has not been implemented")
     }
     
-    override open func getDataRequest(completion: @escaping (_ request: UploadRequest) -> Void) {
+    override open func getDataRequest() -> UploadRequest? {
+
+        guard let fullPath: URL = fullPath else { return nil }
         
-        guard let baseUrl: URL = gateway.baseUrl else { return }
-        
-        var fullPath: URL = baseUrl
-        
-        if let path: String = path {
-            
-            fullPath = fullPath.appendingPathComponent(path)
-        }
-        
-        var allParams: [String: Any] = [:]
-        
-        for (key, value): (String, AnyObject) in (gateway.defaultParameters) {
-            
-            allParams.updateValue(value, forKey: key)
-        }
-        
-        for (key, value): (String, AnyObject) in (parameters) {
-            
-            allParams.updateValue(value, forKey: key)
-        }
-        
-        var allHeaders: [String: String] = [:]
-        
-        for (key, value): (String, String) in (gateway.defaultHeaders) {
-            
-            allHeaders.updateValue(value, forKey: key)
-        }
-        
-        for (key, value): (String, String) in (headers) {
-            
-            allHeaders.updateValue(value, forKey: key)
-        }
-        
-        print("\n\nSTART", self)
-        print("URL - ", fullPath, "\n", "TYPE - ", type, "\n", "HEADERS - ", allHeaders, "\n", "PARAMS - ", allParams, "\n\n")
-        
-        Alamofire.upload(multipartFormData: { multipartFormData in
+        let dataRequest: UploadRequest = AF.upload(multipartFormData: { multipartFormData in
             self.constructingBlock(multipartFormData)
-        }, to: fullPath, method: type, headers: allHeaders, encodingCompletion: { multipartFormDataEncodingResult in
-            switch multipartFormDataEncodingResult {
-            case .success(let request, _, _):
-                self.dataRequest = request
-                completion(request)
-                self.dataRequest?.responseJSON(completionHandler: {[weak self] responseObject in
-                    switch responseObject.result {
-                    case .success:
-//                        print("Request success with data: \(data)")
-                        self?.executeSuccessBlock(responseObject: responseObject)
-                    case .failure(let error):
-                        print("Request failed with error: \(error)")
-                        self?.executeFailureBlock(responseObject: responseObject)
-                    }
-                })
-            case .failure(let error):
-                print(error)
+        },
+                                                   to: fullPath,
+                                                   method: type,
+                                                   headers: allHeaders,
+                                                   interceptor: SMGatewayConfigurator.shared.interceptor)
+
+        self.dataRequest = dataRequest
+
+        dataRequest.cURLDescription { curl in
+            print("\nSTART", self)
+            print(curl)
+            print("\n")
+        }
+
+        SMGatewayConfigurator.shared.interceptor.addRetryInfo(gatewayRequest: self)
+
+        dataRequest.responseJSON { [weak self] responseObject in
+
+            guard let self = self else {
+                return
             }
-        })
+
+            switch responseObject.result {
+            case .success:
+
+                SMGatewayConfigurator.shared.interceptor.deleteRetryInfo(gatewayRequest: self)
+
+                let callBack: SMRequestParserBlock = { (aResponse: SMResponse) in
+                    if self.executeAllResponseBlocksSync {
+                        self.executeSynchronouslyAllResponseBlocks(response: aResponse)
+                    } else {
+                        self.executeAllResponseBlocks(response: aResponse)
+                    }
+                }
+
+                if let successParserBlock: SMGatewayRequestSuccessParserBlock = self.successParserBlock,
+                   let dataRequest: DataRequest = self.dataRequest {
+
+                    successParserBlock(dataRequest, responseObject, callBack)
+                } else {
+
+                    if let dataRequest: DataRequest = self.dataRequest,
+                       let response: SMResponse = self.successBlock?(dataRequest, responseObject) {
+
+                        callBack(response)
+                    }
+                }
+            case .failure(let error):
+                print("Request failed with error: \(error)")
+                self.executeFailureBlock(responseObject: responseObject)
+            }
+        }
+
+        return dataRequest
     }
 }

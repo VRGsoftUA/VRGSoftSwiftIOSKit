@@ -53,19 +53,19 @@ open class SMGateway {
     }
     
     open func start(request aRequest: SMGatewayRequest) {
-        
-        aRequest.getDataRequest { [weak self] request in
-            
-            if let acceptableStatusCodes: [Int] = self?.acceptableStatusCodes() {
-                request.validate(statusCode: acceptableStatusCodes)
-            }
-            
-            if let acceptableContentTypes: [String] = self?.acceptableContentTypes(for: request) {
-                request.validate(contentType: acceptableContentTypes)
-            }
-            
-            request.resume()
+        guard let request = aRequest.getDataRequest() else {
+            return
         }
+        
+        if let acceptableStatusCodes: [Int] = acceptableStatusCodes() {
+            request.validate(statusCode: acceptableStatusCodes)
+        }
+
+        if let acceptableContentTypes: [String] = acceptableContentTypes(for: request) {
+            request.validate(contentType: acceptableContentTypes)
+        }
+
+        request.resume()
     }
     
     open func defaultGatewayConfigurator() -> SMGatewayConfigurator {
@@ -75,11 +75,11 @@ open class SMGateway {
     
     open func defaultFailureBlockFor(request aRequest: SMGatewayRequest) -> SMGatewayRequestResponseBlock {
         
-        func result(data: DataRequest, responseObject: DataResponse<Any>) -> SMResponse {
+        func result(data: DataRequest, responseObject: DataResponse<Any, AFError>) -> SMResponse {
             
             let response: SMResponse = SMResponse()
-            
-            response.isCancelled = (responseObject.error as NSError?)?.code == NSURLErrorCancelled
+
+            response.isCancelled = responseObject.error?.isExplicitlyCancelledError == true
             response.isSuccess = false
             response.textMessage = responseObject.error?.localizedDescription
             response.error = responseObject.error

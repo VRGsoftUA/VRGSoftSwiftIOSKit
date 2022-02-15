@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class ViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate {
     
@@ -38,8 +39,8 @@ class ViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate 
         
         self.scrollView.addObjectForKeyboard(self.tvTest)
         self.scrollView.isShowsKeyboardToolbar = true
-        
-        SMTestGateway.shared.getTestData().startWithResponseBlockInMainQueue { _ in
+
+        SMTestGateway.shared.getTestData() .startWithResponseBlockInMainQueue { _ in
             
         }
     }

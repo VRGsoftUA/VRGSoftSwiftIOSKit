@@ -17,7 +17,7 @@
 		04B0BE88229BB9E6001F7A31 /* Collection+Help.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B0BE87229BB9E6001F7A31 /* Collection+Help.swift */; };
 		04B0BE8A229BBA34001F7A31 /* Array+Help.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B0BE89229BBA34001F7A31 /* Array+Help.swift */; };
 		04DEC93F22A69CD900E7C52F /* SMTestGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DEC93E22A69CD900E7C52F /* SMTestGateway.swift */; };
-		04DEC94122A6AB8D00E7C52F /* SMRequestRetrier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DEC94022A6AB8D00E7C52F /* SMRequestRetrier.swift */; };
+		04DEC94122A6AB8D00E7C52F /* SMRequestInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DEC94022A6AB8D00E7C52F /* SMRequestInterceptor.swift */; };
 		04E31F1F229553AD00C77351 /* SMWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E31F1E229553AD00C77351 /* SMWrapper.swift */; };
 		04E31F212295611100C77351 /* Dictionary+Help.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E31F202295611100C77351 /* Dictionary+Help.swift */; };
 		04E31F232295614800C77351 /* UIView+Help.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E31F222295614800C77351 /* UIView+Help.swift */; };
@@ -136,7 +136,7 @@
 		04B0BE87229BB9E6001F7A31 /* Collection+Help.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+Help.swift"; sourceTree = "<group>"; };
 		04B0BE89229BBA34001F7A31 /* Array+Help.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Help.swift"; sourceTree = "<group>"; };
 		04DEC93E22A69CD900E7C52F /* SMTestGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SMTestGateway.swift; path = Resources/SMTestGateway.swift; sourceTree = "<group>"; };
-		04DEC94022A6AB8D00E7C52F /* SMRequestRetrier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMRequestRetrier.swift; sourceTree = "<group>"; };
+		04DEC94022A6AB8D00E7C52F /* SMRequestInterceptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMRequestInterceptor.swift; sourceTree = "<group>"; };
 		04E31F1E229553AD00C77351 /* SMWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMWrapper.swift; sourceTree = "<group>"; };
 		04E31F202295611100C77351 /* Dictionary+Help.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dictionary+Help.swift"; sourceTree = "<group>"; };
 		04E31F222295614800C77351 /* UIView+Help.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Help.swift"; sourceTree = "<group>"; };
@@ -652,7 +652,7 @@
 				B7265EFF20EDF69C003FBD5C /* SMGatewayConfigurator.swift */,
 				B7265F0020EDF69C003FBD5C /* SMGatewayRequestMultipart.swift */,
 				B7265F0120EDF69C003FBD5C /* SMGateway.swift */,
-				04DEC94022A6AB8D00E7C52F /* SMRequestRetrier.swift */,
+				04DEC94022A6AB8D00E7C52F /* SMRequestInterceptor.swift */,
 			);
 			path = Gateway;
 			sourceTree = "<group>";
@@ -883,7 +883,7 @@
 				B7265F4A20EDF69C003FBD5C /* SMPair.swift in Sources */,
 				B7265F2E20EDF69C003FBD5C /* SMKeyboardAvoider.swift in Sources */,
 				0490B1AA22A51D9900A1FD7B /* Array+NSManagedObjectContext.swift in Sources */,
-				04DEC94122A6AB8D00E7C52F /* SMRequestRetrier.swift in Sources */,
+				04DEC94122A6AB8D00E7C52F /* SMRequestInterceptor.swift in Sources */,
 				04B0BE84229BB952001F7A31 /* Optional+Help.swift in Sources */,
 				B7265F1720EDF69C003FBD5C /* SMResponse.swift in Sources */,
 				B7265F5920EDF69C003FBD5C /* SMGateway.swift in Sources */,

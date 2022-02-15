@@ -9,10 +9,10 @@
 import Foundation
 import Alamofire
 
-public typealias SMGatewayRequestResponseBlock = (DataRequest, DataResponse<Any>) -> SMResponse
+public typealias SMGatewayRequestResponseBlock = (DataRequest, DataResponse<Any, AFError>) -> SMResponse
 
 public typealias SMRequestParserBlock = (SMResponse) -> Void
-public typealias SMGatewayRequestSuccessParserBlock = (DataRequest, DataResponse<Any>, @escaping SMRequestParserBlock) -> Void
+public typealias SMGatewayRequestSuccessParserBlock = (DataRequest, DataResponse<Any, AFError>, @escaping SMRequestParserBlock) -> Void
 
 open class SMGatewayRequest: SMRequest {
     
@@ -62,7 +62,7 @@ open class SMGatewayRequest: SMRequest {
         return result
     }
     
-    var allHeaders: [String: String] {
+    var allHeaders: HTTPHeaders {
         
         var result: [String: String] = [:]
         
@@ -76,7 +76,7 @@ open class SMGatewayRequest: SMRequest {
             result.updateValue(value, forKey: key)
         }
         
-        return result
+        return HTTPHeaders(result)
     }
     
     var fullPath: URL? {
@@ -133,19 +133,11 @@ open class SMGatewayRequest: SMRequest {
         return dataRequest?.task?.state == URLSessionTask.State.completed
     }
     
-    open func getDataRequest(completion: @escaping (_ request: DataRequest) -> Void) {
+    open func getDataRequest() -> DataRequest? {
         
-        guard let baseUrl: URL = gateway.baseUrl else { return }
-        
-        var fullPath: URL = baseUrl
-        
-        if let path: String = path {
-            
-            fullPath = fullPath.appendingPathComponent(path)
-        }
-                
+        guard let fullPath: URL = fullPath else { return nil }
+
         if parameterEncoding == nil {
-            
             switch type {
             case .options, .head, .get, .delete:
                 parameterEncoding = URLEncoding.default
@@ -157,58 +149,69 @@ open class SMGatewayRequest: SMRequest {
         
         if let parameterEncoding: ParameterEncoding = parameterEncoding {
             
-            let dataRequest: DataRequest = Alamofire.request(fullPath, method: type, parameters: allParams, encoding: parameterEncoding, headers: allHeaders)
+            let dataRequest: DataRequest = AF.request(fullPath,
+                                                      method: type,
+                                                      parameters: allParams,
+                                                      encoding: parameterEncoding,
+                                                      headers: allHeaders,
+                                                      interceptor: SMGatewayConfigurator.shared.interceptor)
+
             self.dataRequest = dataRequest
-            
-            print("\n\nSTART", self)
-            print(debugDescription)
-            
-            SMGatewayConfigurator.shared.retrier.addRetryInfo(gatewayRequest: self)
-            
-            dataRequest.responseJSON(completionHandler: {[weak self] responseObject in
-                
+
+            dataRequest.cURLDescription { curl in
+                print("\nSTART", self)
+                print(curl)
+                print("\n")
+            }
+
+            SMGatewayConfigurator.shared.interceptor.addRetryInfo(gatewayRequest: self)
+
+            dataRequest.responseJSON { [weak self] responseObject in
+
+                guard let self = self else {
+                    return
+                }
+
                 switch responseObject.result {
                 case .success:
-                    
-                    if let strongSelf: SMGatewayRequest = self {
-                        SMGatewayConfigurator.shared.retrier.deleteRetryInfo(gatewayRequest: strongSelf)
-                    }
-                    
-                    //                    print("Request success with data: \(data)")
+                    SMGatewayConfigurator.shared.interceptor.deleteRetryInfo(gatewayRequest: self)
+
                     let callBack: SMRequestParserBlock = { (aResponse: SMResponse) in
-                        if let strongSelf: SMGatewayRequest = self {
-                            
-                            if strongSelf.executeAllResponseBlocksSync {
-                                strongSelf.executeSynchronouslyAllResponseBlocks(response: aResponse)
-                            } else {
-                                strongSelf.executeAllResponseBlocks(response: aResponse)
-                            }
+                        if self.executeAllResponseBlocksSync {
+                            self.executeSynchronouslyAllResponseBlocks(response: aResponse)
+                        } else {
+                            self.executeAllResponseBlocks(response: aResponse)
                         }
                     }
-                    
-                    if let successParserBlock: SMGatewayRequestSuccessParserBlock = self?.successParserBlock {
-                        
+
+                    if let successParserBlock: SMGatewayRequestSuccessParserBlock = self.successParserBlock,
+                       let dataRequest: DataRequest = self.dataRequest {
+
                         successParserBlock(dataRequest, responseObject, callBack)
                     } else {
-                        if let response: SMResponse = self?.successBlock?(dataRequest, responseObject) {
-                            
+
+                        if let dataRequest: DataRequest = self.dataRequest,
+                           let response: SMResponse = self.successBlock?(dataRequest, responseObject) {
+
                             callBack(response)
                         }
                     }
                 case .failure(let error):
                     print("Request failed with error: \(error)")
-                    self?.executeFailureBlock(responseObject: responseObject)
+                    self.executeFailureBlock(responseObject: responseObject)
                 }
-            })
-            
-            return completion(dataRequest)
+            }
+
+            return dataRequest
+        } else {
+            return nil
         }
     }
     
-    open func executeSuccessBlock(responseObject aResponseObject: DataResponse<Any>) {
+    open func executeSuccessBlock(responseObject aResponseObject: DataResponse<Any, AFError>) {
         
         if let successBlock: SMGatewayRequestResponseBlock = successBlock,
-            let dataRequest: DataRequest = dataRequest {
+           let dataRequest: DataRequest = dataRequest {
             
             let response: SMResponse = successBlock(dataRequest, aResponseObject)
             
@@ -222,10 +225,10 @@ open class SMGatewayRequest: SMRequest {
         }
     }
     
-    open func executeFailureBlock(responseObject aResponseObject: DataResponse<Any>) {
+    open func executeFailureBlock(responseObject aResponseObject: DataResponse<Any, AFError>) {
         
         if let failureBlock: SMGatewayRequestResponseBlock = failureBlock,
-            let dataRequest: DataRequest = dataRequest {
+           let dataRequest: DataRequest = dataRequest {
             
             let response: SMResponse = failureBlock(dataRequest, aResponseObject)
             
