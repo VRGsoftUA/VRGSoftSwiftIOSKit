@@ -14,8 +14,8 @@ public protocol SMListAdapterDelegate: AnyObject {
     
     func prepareSectionsFor(listAdapter aListAdapter: SMListAdapter)
     func defaultSectionForlistAdapter(_ aListAdapter: SMListAdapter) -> SMListSection?
-    func listAdapter(_ aListAdapter: SMListAdapter, sectionForModels aModels: [AnyObject], indexOfSection aIndex: Int) -> SMListSection?
-    func listAdapter(_ aListAdapter: SMListAdapter, needAddModels aModels: [AnyObject], toSection aSection: SMListSection, withLastModel aLastModel: AnyObject) -> Bool
+    func listAdapter(_ aListAdapter: SMListAdapter, sectionForModels aModels: [Any], indexOfSection aIndex: Int) -> SMListSection?
+    func listAdapter(_ aListAdapter: SMListAdapter, needAddModels aModels: [Any], toSection aSection: SMListSection, withLastModel aLastModel: Any) -> Bool
     func moreCellDataForListAdapter(_ aListAdapter: SMListAdapter) -> SMPagingMoreCellDataProtocol?
 }
 
@@ -83,11 +83,11 @@ open class SMListAdapter {
         }
     }
     
-    open func updateSectionWith(models aModels: [AnyObject], lastModel aLastModel: AnyObject?, sectionIndex aSectionIndex: Int, needLoadMore aNeedLoadMore: SMListAdapterClosureType?) {
+    open func updateSectionWith(models aModels: [Any], lastModel aLastModel: Any?, sectionIndex aSectionIndex: Int, needLoadMore aNeedLoadMore: SMListAdapterClosureType?) {
         
         var section: SMListSection?
         
-        if let aLastModel: AnyObject = aLastModel,
+        if let aLastModel: Any = aLastModel,
             let lastSection: SMListSection = listDisposer.sections.last,
             delegate?.listAdapter(self, needAddModels: aModels, toSection: lastSection, withLastModel: aLastModel) == true {
             
@@ -111,7 +111,7 @@ open class SMListAdapter {
         }
     }
     
-    open func sectionForModels(_ aModels: [AnyObject], indexOfSection aSectionIndex: Int) -> SMListSection? {
+    open func sectionForModels(_ aModels: [Any], indexOfSection aSectionIndex: Int) -> SMListSection? {
         
         var section: SMListSection?
         
@@ -152,7 +152,7 @@ open class SMListAdapter {
         }
     }
 
-    open func setupModels(_ aModels: [AnyObject], forSection aSection: SMListSection) {
+    open func setupModels(_ aModels: [Any], forSection aSection: SMListSection) {
         
         listDisposerModeled?.setupModels(aModels, forSection: aSection)
     }

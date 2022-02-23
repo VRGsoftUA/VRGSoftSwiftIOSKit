@@ -10,7 +10,7 @@ import UIKit
 
 open class SMListCellData {
     
-    public let model: AnyObject?
+    public let model: Any?
         
     open var baSelect: SMBlockAction<SMListCellData>?
     open var isVisible: Bool = true
@@ -27,7 +27,7 @@ open class SMListCellData {
         self.init(model: nil)
     }
     
-    public required init(model aModel: AnyObject?) {
+    public required init(model aModel: Any?) {
         
         model = aModel
     }

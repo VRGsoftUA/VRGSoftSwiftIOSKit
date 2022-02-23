@@ -11,7 +11,7 @@ import Alamofire
 
 open class SMGatewayConfigurator {
     
-    private var defaultParameters: [String: AnyObject] = [:]
+    private var defaultParameters: [String: Any] = [:]
     private var defaultHeaders: [String: String] = [:]
     
     public static var shared: SMGatewayConfigurator = SMGatewayConfigurator()
@@ -81,7 +81,7 @@ open class SMGatewayConfigurator {
         }
     }
     
-    open func setDefaulParameter(value aValue: AnyObject?, key aKey: String) {
+    open func setDefaulParameter(value aValue: Any?, key aKey: String) {
         
         defaultParameters[aKey] = aValue
         

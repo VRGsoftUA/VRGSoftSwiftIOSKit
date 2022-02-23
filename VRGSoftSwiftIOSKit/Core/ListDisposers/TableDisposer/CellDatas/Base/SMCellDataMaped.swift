@@ -12,7 +12,7 @@ open class SMCellDataMaped: SMCellData, SMCellDataMapedProtocol {
     
     open var key: String?
     
-    public convenience init(model aModel: AnyObject?, key aKey: String?) {
+    public convenience init(model aModel: Any?, key aKey: String?) {
         
         self.init(model: aModel)
         

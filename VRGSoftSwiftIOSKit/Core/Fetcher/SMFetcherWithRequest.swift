@@ -85,7 +85,7 @@ open class SMFetcherWithRequest: SMDataFetcherProtocol {
         }
     }
     
-    open func processFetchedModelsIn(response aResponse: SMResponse) -> [AnyObject] {
+    open func processFetchedModelsIn(response aResponse: SMResponse) -> [Any] {
         
         return aResponse.boArray
     }

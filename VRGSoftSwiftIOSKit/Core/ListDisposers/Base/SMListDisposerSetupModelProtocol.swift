@@ -14,11 +14,11 @@ public protocol SMListDisposerSetupModelProtocol where Self: SMListDisposer {
     var modeledDelegate: SMListDisposerModeledDelegate? { get set }
 
     func didCreate(cellData aCellData: SMListCellData)
-    func cellDataFrom(model aModel: AnyObject) -> SMListCellData?
+    func cellDataFrom(model aModel: Any) -> SMListCellData?
 
-    func register(cellDataClass aCellDataClass: SMListCellData.Type, forModelClass aModelClass: AnyClass?)
-    func unregisterCellDataFor(modelClass aModelClass: AnyClass)
+    func register(cellDataClass aCellDataClass: SMListCellData.Type, forModelClass aModelClass: Any?)
+    func unregisterCellDataFor(modelClass aModelClass: Any)
     
-    func setupModels(_ aModels: [AnyObject], forSectionAtIndex aSectionIndex: Int)
-    func setupModels(_ aModels: [AnyObject], forSection aSection: SMListSection)
+    func setupModels(_ aModels: [Any], forSectionAtIndex aSectionIndex: Int)
+    func setupModels(_ aModels: [Any], forSection aSection: SMListSection)
 }

@@ -16,15 +16,15 @@ public protocol SMModuleListDelegate: AnyObject {
     
     func fetcherMessageFor(moduleList aModule: SMModuleList) -> SMFetcherMessage
     func willReload(moduleList aModule: SMModuleList)
-    func moduleList(_ aModule: SMModuleList, processFetchedModelsInResponse aResponse: SMResponse) -> [AnyObject]
-    func moduleList(_ aModule: SMModuleList, didReloadDataWithModels aModels: [AnyObject])
+    func moduleList(_ aModule: SMModuleList, processFetchedModelsInResponse aResponse: SMResponse) -> [Any]
+    func moduleList(_ aModule: SMModuleList, didReloadDataWithModels aModels: [Any])
 }
 
 open class SMModuleList {
     
     open var moduleQueue: DispatchQueue = DispatchQueue(label: "SMModuleList.Queue")
     open var lastUpdateDate: Date?
-    open var models: [AnyObject] = []
+    open var models: [Any] = []
     
     open var listAdapter: SMListAdapter
     
@@ -84,9 +84,9 @@ open class SMModuleList {
 //        activityAdapter?.configureWith(view: aScrollView)
     }
 
-    open func processFetchedModelsIn(response aResponse: SMResponse) -> [AnyObject] {
+    open func processFetchedModelsIn(response aResponse: SMResponse) -> [Any] {
         
-        let result: [AnyObject] = delegate?.moduleList(self, processFetchedModelsInResponse: aResponse) ?? []
+        let result: [Any] = delegate?.moduleList(self, processFetchedModelsInResponse: aResponse) ?? []
         
         return result
     }
@@ -109,7 +109,7 @@ open class SMModuleList {
                     
                     self?.didFetchDataWith(message: aMessage, response: aResponse)
                     
-                    if aResponse.isSuccess, let aModels: [AnyObject] = (self?.processFetchedModelsIn(response: aResponse)) {
+                    if aResponse.isSuccess, let aModels: [Any] = (self?.processFetchedModelsIn(response: aResponse)) {
                         
                         var numberOfPrepareSections: Int = 0
                         
@@ -119,20 +119,20 @@ open class SMModuleList {
                             
                             while i < aModels.count {
                                 
-                                let obj: AnyObject = aModels[i]
+                                let obj: Any = aModels[i]
                                 
-                                var ms: [AnyObject]
+                                var ms: [Any]
                                 
-                                if let obj: [AnyObject] = obj as? [AnyObject] {
+                                if let obj: [Any] = obj as? [Any] {
                                     
                                     ms = obj
                                 } else {
-                                    var mutMs: [AnyObject] = []
+                                    var mutMs: [Any] = []
                                     for j: Int in (i..<aModels.count) {
                                         
                                         i = j
                                         
-                                        if !(aModels[j] is [AnyObject]) {
+                                        if !(aModels[j] is [Any]) {
                                             
                                             mutMs.append(aModels[j])
                                         } else {
@@ -192,7 +192,7 @@ open class SMModuleList {
         return message
     }
     
-    open func updateSectionWith(models aModels: [AnyObject], originalModels: [AnyObject], sectionIndex aSectionIndex: Int, isLastSectionForNewModels: Bool) {
+    open func updateSectionWith(models aModels: [Any], originalModels: [Any], sectionIndex aSectionIndex: Int, isLastSectionForNewModels: Bool) {
         
         listAdapter.updateSectionWith(models: aModels, lastModel: models.last, sectionIndex: aSectionIndex, needLoadMore: nil)
         models += aModels

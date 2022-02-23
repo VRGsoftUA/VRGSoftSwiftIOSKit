@@ -159,7 +159,7 @@ open class SMCompoundRequest: SMRequest {
                     result.isCancelled = response.isCancelled
                 }
                 
-                result.boArray.append(response.boArray as AnyObject)
+                result.boArray.append(response.boArray)
                 response.dataDictionary.forEach { (key, value) in
                     result.dataDictionary[key] = value
                     

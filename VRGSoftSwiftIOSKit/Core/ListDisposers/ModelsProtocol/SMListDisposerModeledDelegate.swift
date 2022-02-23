@@ -14,7 +14,7 @@ public protocol SMListDisposerModeledCreateCellDataDelegate: AnyObject {
 
 public protocol SMListDisposerModeledDelegate: SMListDisposerModeledCreateCellDataDelegate {
     
-    func listDisposer(_ aListDisposer: SMListDisposer, cellDataClassForUnregisteredModel aModel: AnyObject) -> SMListCellData.Type
+    func listDisposer(_ aListDisposer: SMListDisposer, cellDataClassForUnregisteredModel aModel: Any) -> SMListCellData.Type
 }
 
 

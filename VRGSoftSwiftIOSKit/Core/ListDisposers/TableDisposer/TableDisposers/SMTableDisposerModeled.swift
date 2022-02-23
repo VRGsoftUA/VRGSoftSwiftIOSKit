@@ -25,28 +25,28 @@ open class SMTableDisposerModeled: SMTableDisposer, SMListDisposerSetupModelProt
     
     open weak var modeledDelegate: SMListDisposerModeledDelegate?
     
-    open func register(cellDataClass aCellDataClass: SMListCellData.Type, forModelClass aModelClass: AnyClass?) {
+    open func register(cellDataClass aCellDataClass: SMListCellData.Type, forModelClass aModelClass: Any?) {
         
-        if let aModelClass: AnyClass = aModelClass {
+        if let aModelClass: Any = aModelClass {
             
             registeredClasses[String(describing: aModelClass)] = aCellDataClass
         }
     }
 
-    open func unregisterCellDataFor(modelClass aModelClass: AnyClass) {
+    open func unregisterCellDataFor(modelClass aModelClass: Any) {
         
         registeredClasses[String(describing: aModelClass)] = nil
     }
 
-    open func setupModels(_ aModels: [AnyObject], forSectionAtIndex aSectionIndex: Int) {
+    open func setupModels(_ aModels: [Any], forSectionAtIndex aSectionIndex: Int) {
         
         let section: SMListSection = sections[aSectionIndex]
         setupModels(aModels, forSection: section)
     }
 
-    open func setupModels(_ aModels: [AnyObject], forSection aSection: SMListSection) {
+    open func setupModels(_ aModels: [Any], forSection aSection: SMListSection) {
         
-        for model: AnyObject in aModels {
+        for model: Any in aModels {
             
             if let cellData: SMListCellData = cellDataFrom(model: model) {
                 
@@ -59,7 +59,7 @@ open class SMTableDisposerModeled: SMTableDisposer, SMListDisposerSetupModelProt
         }
     }
 
-    open func cellDataFrom(model aModel: AnyObject) -> SMListCellData? {
+    open func cellDataFrom(model aModel: Any) -> SMListCellData? {
         
         let modelClassName: String = String(describing: type(of: aModel))
 

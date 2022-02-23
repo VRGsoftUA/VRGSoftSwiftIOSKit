@@ -11,7 +11,7 @@ import Alamofire
 
 open class SMGateway {
     
-    open var defaultParameters: [String: AnyObject] = [:]
+    open var defaultParameters: [String: Any] = [:]
     open var defaultHeaders: [String: String] = [:]
     
     open var baseUrl: URL?
@@ -98,13 +98,13 @@ open class SMGateway {
         return SMGatewayRequest.self
     }
     
-    open func request(type aType: HTTPMethod, path aPath: String, parameters aParameters: [String: AnyObject]? = [:], successBlock aSuccessBlock: @escaping SMGatewayRequestResponseBlock) -> SMGatewayRequest {
+    open func request(type aType: HTTPMethod, path aPath: String, parameters aParameters: [String: Any]? = [:], successBlock aSuccessBlock: @escaping SMGatewayRequestResponseBlock) -> SMGatewayRequest {
         
         let result: SMGatewayRequest = getRequestClass().init(gateway: self, type: aType)
         
         result.path = aPath
         
-        if let parameters: [String: AnyObject] = aParameters {
+        if let parameters: [String: Any] = aParameters {
             
             result.parameters = parameters
         }
@@ -116,13 +116,13 @@ open class SMGateway {
         return result
     }
 
-    open func request(type aType: HTTPMethod, path aPath: String, parameters aParameters: [String: AnyObject]? = [:], successParserBlock aSuccessParserBlock: @escaping SMGatewayRequestSuccessParserBlock) -> SMGatewayRequest {
+    open func request(type aType: HTTPMethod, path aPath: String, parameters aParameters: [String: Any]? = [:], successParserBlock aSuccessParserBlock: @escaping SMGatewayRequestSuccessParserBlock) -> SMGatewayRequest {
         
         let result: SMGatewayRequest = getRequestClass().init(gateway: self, type: aType)
         
         result.path = aPath
         
-        if let parameters: [String: AnyObject] = aParameters {
+        if let parameters: [String: Any] = aParameters {
             
             result.parameters = parameters
         }

@@ -35,7 +35,7 @@ open class SMFetcherWithArrayBlock: SMDataFetcherProtocol {
             
             let response: SMResponse = SMResponse()
             response.isSuccess = true
-            response.boArray = self.fetchBlock() as [AnyObject]? ?? []
+            response.boArray = self.fetchBlock() ?? []
             aFetchCallback(response)
         }
     }

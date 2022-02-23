@@ -40,7 +40,7 @@ open class SMFetcherIntoStorage: SMFetcherWithRequest {
                         
                         if success {
                             
-                            let models: [AnyObject] = strongSelf.processFetchedModelsAfterGatewayInResponse(aResponse)
+                            let models: [Any] = strongSelf.processFetchedModelsAfterGatewayInResponse(aResponse)
                             aResponse.boArray = models
                             
                             if strongSelf.isFetchFromDataBaseWhenGatewayRequestSuccess && strongSelf.canFetchFromDatabaseForFailedResponse(aResponse) {
@@ -183,7 +183,7 @@ open class SMFetcherIntoStorage: SMFetcherWithRequest {
         request?.start()
     }
     
-    open func processFetchedModelsAfterGatewayInResponse(_ aResponse: SMResponse) -> [AnyObject] {
+    open func processFetchedModelsAfterGatewayInResponse(_ aResponse: SMResponse) -> [Any] {
         
         return aResponse.boArray
     }

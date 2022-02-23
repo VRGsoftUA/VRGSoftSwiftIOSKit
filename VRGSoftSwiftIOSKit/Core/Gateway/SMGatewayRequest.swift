@@ -38,7 +38,7 @@ open class SMGatewayRequest: SMRequest {
     open var type: HTTPMethod
     open var parameterEncoding: ParameterEncoding?
     
-    open var parameters: [String: AnyObject] = [:]
+    open var parameters: [String: Any] = [:]
     open var headers: [String: String] = [:]
     
     open var successBlock: SMGatewayRequestResponseBlock?
@@ -49,12 +49,12 @@ open class SMGatewayRequest: SMRequest {
         
         var result: [String: Any] = [:]
         
-        for (key, value): (String, AnyObject) in (gateway.defaultParameters) {
+        for (key, value): (String, Any) in (gateway.defaultParameters) {
             
             result.updateValue(value, forKey: key)
         }
         
-        for (key, value): (String, AnyObject) in (parameters) {
+        for (key, value): (String, Any) in (parameters) {
             
             result.updateValue(value, forKey: key)
         }

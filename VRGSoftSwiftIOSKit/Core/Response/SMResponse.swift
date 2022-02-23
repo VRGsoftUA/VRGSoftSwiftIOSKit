@@ -14,8 +14,8 @@ open class SMResponse {
     open var code: Int?
     open var titleMessage: String?
     open var textMessage: String?
-    open var dataDictionary: [String: AnyObject] = [:]
-    open var boArray: [AnyObject] = []
+    open var dataDictionary: [String: Any] = [:]
+    open var boArray: [Any] = []
     open var error: Error?
     open var isCancelled: Bool = false
     

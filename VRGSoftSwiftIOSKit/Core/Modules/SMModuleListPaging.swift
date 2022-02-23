@@ -124,7 +124,7 @@ open class SMModuleListPaging: SMModuleList, SMListAdapterMoreDelegate {
         loadMoreData()
     }
     
-    override open func updateSectionWith(models aModels: [AnyObject], originalModels: [AnyObject], sectionIndex aSectionIndex: Int, isLastSectionForNewModels: Bool) {
+    override open func updateSectionWith(models aModels: [Any], originalModels: [Any], sectionIndex aSectionIndex: Int, isLastSectionForNewModels: Bool) {
         
         listAdapter.updateSectionWith(models: aModels, lastModel: models.last, sectionIndex: aSectionIndex) {[weak self] in
             
