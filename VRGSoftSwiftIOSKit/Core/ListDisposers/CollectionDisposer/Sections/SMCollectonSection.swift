@@ -121,7 +121,7 @@ open class SMCollectonSection: SMListSection {
                 forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter,
                 withReuseIdentifier: nibName
             )
-        } else if let footerViewClass: UICollectionReusableView.Type = headerViewClass {
+        } else if let footerViewClass: UICollectionReusableView.Type = footerViewClass {
             
             collectionDisposer?.collectionView?.register(
                 footerViewClass,
