@@ -22,13 +22,14 @@ open class SMResponseNode {
     }
 }
 
+public enum SMRequestConsoleOutputType {
+    case none
+    case simply
+    case debugDescription
+    case cURL
+}
 
 open class SMRequest {
-    
-    deinit {
-        
-        print(#function + " - \(type(of: self))")
-    }
     
     public init() {
         

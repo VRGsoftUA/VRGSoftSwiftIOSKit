@@ -20,9 +20,9 @@ open class SMGatewayRequest: SMRequest {
         
         var array: [String] = []
         
-        array.append("URL - " + (dataRequest?.request?.url?.absoluteString ?? (fullPath?.absoluteString) ?? ""))
+        array.append("URL - " + (dataRequest?.request?.url?.absoluteString ?? (fullPath?.absoluteString) ?? "???"))
         array.append("TYPE - " + type.rawValue)
-        array.append("HEADERS - " + allHeaders.description)
+        array.append("HEADERS - " + (dataRequest?.request?.headers.description ?? allHeaders.description))
         array.append("PARAMS - " + allParams.description)
         
         return  array.joined(separator: "\n")
@@ -158,12 +158,6 @@ open class SMGatewayRequest: SMRequest {
 
             self.dataRequest = dataRequest
 
-            dataRequest.cURLDescription { curl in
-                print("\nSTART", self)
-                print(curl)
-                print("\n")
-            }
-
             SMGatewayConfigurator.shared.interceptor.addRetryInfo(gatewayRequest: self)
 
             dataRequest.responseJSON { [weak self] responseObject in
@@ -174,6 +168,11 @@ open class SMGatewayRequest: SMRequest {
 
                 switch responseObject.result {
                 case .success:
+                    
+                    if self.gateway.requestConsoleOutputType != .none {
+                        print("✅ SUCCESS", self.type.rawValue, self.path ?? "???", String(format: "%.2f", responseObject.metrics?.taskInterval.duration ?? 0), "s")
+                    }
+                    
                     SMGatewayConfigurator.shared.interceptor.deleteRetryInfo(gatewayRequest: self)
 
                     let callBack: SMRequestParserBlock = { (aResponse: SMResponse) in
@@ -197,7 +196,7 @@ open class SMGatewayRequest: SMRequest {
                         }
                     }
                 case .failure(let error):
-                    print("Request failed with error: \(error)")
+                    print("🛑 ERROR", self.type.rawValue, self.path ?? "???", error)
                     self.executeFailureBlock(responseObject: responseObject)
                 }
             }
@@ -252,5 +251,21 @@ open class SMGatewayRequest: SMRequest {
         
         successParserBlock = aSuccessParserBlock
         failureBlock = aFailureBlock
+    }
+    
+    open func printStart(isRetry: Bool) {
+        let message: String = isRetry ? "🔁 RETRY" : "➡️ START"
+        switch gateway.requestConsoleOutputType {
+        case .none:
+            break
+        case .simply:
+            print(message, type.rawValue, path ?? "???")
+        case .debugDescription:
+            print("\(message)\n\(debugDescription)\n")
+        case .cURL:
+            dataRequest?.cURLDescription { curl in
+                print("\(message)\n\(curl)\n")
+            }
+        }
     }
 }

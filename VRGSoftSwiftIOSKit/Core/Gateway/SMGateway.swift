@@ -16,6 +16,8 @@ open class SMGateway {
     
     open var baseUrl: URL?
     
+    open var requestConsoleOutputType: SMRequestConsoleOutputType = .cURL
+    
     open var requests: [SMGatewayRequest] = []
     
     public init() {
@@ -64,8 +66,12 @@ open class SMGateway {
         if let acceptableContentTypes: [String] = acceptableContentTypes(for: request) {
             request.validate(contentType: acceptableContentTypes)
         }
-
+        
         request.resume()
+        
+        DispatchQueue.main.async {
+            aRequest.printStart(isRetry: false)
+        }
     }
     
     open func defaultGatewayConfigurator() -> SMGatewayConfigurator {

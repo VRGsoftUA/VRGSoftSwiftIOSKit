@@ -40,12 +40,6 @@ open class SMGatewayRequestMultipart: SMGatewayRequest {
 
         self.dataRequest = dataRequest
 
-        dataRequest.cURLDescription { curl in
-            print("\nSTART", self)
-            print(curl)
-            print("\n")
-        }
-
         SMGatewayConfigurator.shared.interceptor.addRetryInfo(gatewayRequest: self)
 
         dataRequest.responseJSON { [weak self] responseObject in

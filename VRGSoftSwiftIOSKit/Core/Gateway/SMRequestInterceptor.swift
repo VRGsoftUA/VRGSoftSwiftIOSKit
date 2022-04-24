@@ -55,8 +55,7 @@ open class SMRequestInterceptor: RequestInterceptor {
         } else {
 
             completion(.retryWithDelay(retryTime))
-            print("\n\nRETRY", request)
-            print(request.debugDescription)
+            request.printStart(isRetry: true)
             return (request, retryCount - 1, retryTime)
         }
     }
