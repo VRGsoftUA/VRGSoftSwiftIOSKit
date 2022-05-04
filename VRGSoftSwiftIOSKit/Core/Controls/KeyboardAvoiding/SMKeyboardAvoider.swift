@@ -10,7 +10,7 @@ import UIKit
 
 open class SMKeyboardAvoider: SMKeyboardAvoidingProtocol, SMKeyboardToolbarDelegate {
     
-    open var priorInset: UIEdgeInsets = UIEdgeInsets()
+    open var priorInset: UIEdgeInsets?
     open var isKeyboardVisible: Bool = false
     open var _keyboardRect: CGRect = CGRect.zero
     open var originalContentSize: CGSize = CGSize.zero
@@ -179,14 +179,14 @@ open class SMKeyboardAvoider: SMKeyboardAvoidingProtocol, SMKeyboardToolbarDeleg
                 _keyboardRect = kbRect
                 isKeyboardVisible = true
                 
+                priorInset = scrollView.contentInset
+                
                 if let firstResponder: UIResponder = findFirstResponderBeneath(view: scrollView) {
                     
                     if objectsInKeyboard.contains(firstResponder) {
                         
                         selectIndexInputField = objectsInKeyboard.firstIndex(of: firstResponder) ?? 0
                     }
-                    
-                    priorInset = scrollView.contentInset
                     
                     scrollView.contentInset = contentInsetForKeyboard()
                     
@@ -209,8 +209,10 @@ open class SMKeyboardAvoider: SMKeyboardAvoidingProtocol, SMKeyboardToolbarDeleg
         
         if let duration: Double = (notification.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey] as? NSNumber)?.doubleValue {
             
-            UIView.animate(withDuration: duration) {
-                self.scrollView?.contentInset = self.priorInset
+            if let priorInset: UIEdgeInsets = priorInset {
+                UIView.animate(withDuration: duration) {
+                    self.scrollView?.contentInset = priorInset
+                }
             }
         }
         
