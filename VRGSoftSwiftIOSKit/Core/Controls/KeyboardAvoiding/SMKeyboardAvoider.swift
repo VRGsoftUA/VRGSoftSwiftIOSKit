@@ -49,7 +49,10 @@ open class SMKeyboardAvoider: SMKeyboardAvoidingProtocol, SMKeyboardToolbarDeleg
         var result: UIEdgeInsets = scrollView.contentInset
         
         let keyboardRect: CGRect = self.keyboardRect()
-        result.bottom = keyboardRect.size.height - ((keyboardRect.origin.y + keyboardRect.size.height) - (scrollView.bounds.origin.y + scrollView.bounds.size.height))
+                
+        let bottomInset: CGFloat = keyboardRect.size.height - ((keyboardRect.origin.y + keyboardRect.size.height) - (scrollView.bounds.origin.y + scrollView.bounds.size.height))
+                      
+        result.bottom = bottomInset.rounded()
         
         if result.bottom < 0 {
             result.bottom = 0
