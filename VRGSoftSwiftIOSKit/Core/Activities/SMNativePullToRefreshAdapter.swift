@@ -14,7 +14,7 @@ open class SMNativePullToRefreshAdapter: SMPullToRefreshAdapter {
         return createRefreshControl()
     }()
     
-    public func createRefreshControl() -> UIRefreshControl {
+    open func createRefreshControl() -> UIRefreshControl {
         return UIRefreshControl()
     }
     
