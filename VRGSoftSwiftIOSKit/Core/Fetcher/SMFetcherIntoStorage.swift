@@ -131,7 +131,7 @@ open class SMFetcherIntoStorage: SMFetcherWithRequest {
         
         if !self.isFetchOnlyFromDataBase {
             
-            if SMGatewayConfigurator.shared.isInternetReachable() {
+            if canExecute() {
                 
                 newRequest = self.gatewayRequestBy(message: aMessage)
                 
@@ -165,6 +165,10 @@ open class SMFetcherIntoStorage: SMFetcherWithRequest {
         return nil
     }
     
+    open func canExecute() -> Bool {
+
+        return SMGatewayConfigurator.shared.isInternetReachable()
+    }
     
     // MARK: Fetch
     
