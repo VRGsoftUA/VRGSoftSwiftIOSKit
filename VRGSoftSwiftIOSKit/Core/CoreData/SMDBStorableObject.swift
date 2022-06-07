@@ -146,7 +146,11 @@ public extension SMDBStorableObject {
             do {
                 let request: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest<NSFetchRequestResult>(entityName: _entityName)
                 request.sortDescriptors = sortDescriptors ?? dafaultSortDescriptors
-                request.predicate = NSPredicate(format: "self.\(attribute) == \(value)")
+                if let value: String = value as? String {
+                    request.predicate = NSPredicate(format: "%K LIKE[c] %@", attribute, value)
+                } else {
+                    request.predicate = NSPredicate(format: "self.\(attribute) == \(value)")
+                }
                 array = try aContext.fetch(request) as? [Self] ?? []
             } catch {
                 
