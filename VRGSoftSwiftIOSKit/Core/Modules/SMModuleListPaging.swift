@@ -132,9 +132,9 @@ open class SMModuleListPaging: SMModuleList, SMListAdapterMoreDelegate {
             
             if let strongSelf: SMModuleListPaging = self {
                 
-                if let pageCount: Int = self?.pageCount, let pageSize: Int = self?.pageSize, pageSize > 0 {
+                if let pageCount: Int = self?.pageCount, strongSelf.pageSize > 0 {
                     
-                    let currentPageCount: Int = originalModels.count / pageSize
+                    let currentPageCount: Int = strongSelf.isItemsAsPage ? strongSelf.pageOffset : strongSelf.pageOffset / strongSelf.pageSize
                     
                     result = (isLastSectionForNewModels && originalModels.fullItemsCount >= strongSelf.pageSize && strongSelf.pageSize != 0 && currentPageCount < pageCount)
                 } else {
