@@ -180,9 +180,11 @@ open class SMKeyboardAvoider: SMKeyboardAvoidingProtocol, SMKeyboardToolbarDeleg
             if kbRect.size.height > 0 {
                 
                 _keyboardRect = kbRect
-                isKeyboardVisible = true
                 
-                priorInset = scrollView.contentInset
+                if !isKeyboardVisible {
+                    isKeyboardVisible = true
+                    priorInset = scrollView.contentInset
+                }
                 
                 if let firstResponder: UIResponder = findFirstResponderBeneath(view: scrollView) {
                     
