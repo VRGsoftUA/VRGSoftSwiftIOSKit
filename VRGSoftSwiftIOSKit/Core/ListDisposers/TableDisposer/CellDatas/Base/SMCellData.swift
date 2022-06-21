@@ -31,8 +31,7 @@ open class SMCellData: SMListCellData {
     open var cellHeight: CGFloat = 44.0
     open var cellWidth: CGFloat = 0.0
 
-    open func cellHeightFor(width aWidth: CGFloat) -> CGFloat {
-        
+    open func cellHeightFor(size: CGSize) -> CGFloat {
         return cellHeight
     }
     

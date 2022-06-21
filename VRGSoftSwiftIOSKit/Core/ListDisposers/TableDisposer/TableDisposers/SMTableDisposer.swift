@@ -204,7 +204,7 @@ open class SMTableDisposer: SMListDisposer, UITableViewDelegate, UITableViewData
             } else {
                 
                 cellData.cellWidth = tableView.frame.size.width
-                result = cellData.cellHeightFor(width: tableView.frame.size.width)
+                result = cellData.cellHeightFor(size: tableView.frame.size)
             }
         }
         
@@ -217,7 +217,7 @@ open class SMTableDisposer: SMListDisposer, UITableViewDelegate, UITableViewData
         if let cellData: SMCellData = sections[indexPath.section].visibleCellDataSource[indexPath.row] as? SMCellData {
             
             cellData.cellWidth = tableView.frame.size.width
-            result = cellData.cellHeightFor(width: tableView.frame.size.width)
+            result = cellData.cellHeightFor(size: tableView.frame.size)
         }
         
         return result
