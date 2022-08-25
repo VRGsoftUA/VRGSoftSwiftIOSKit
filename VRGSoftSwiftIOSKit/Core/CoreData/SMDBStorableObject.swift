@@ -243,7 +243,7 @@ public extension SMDBStorableObject {
                     
                     defaultStorage.saveAndWait(block: { aContext in
                         result = makeObjectContext(context: aContext)
-                        result?._identifier = aData as? NSNumber
+                        result?._identifier = aData
                     }, completion: {
                         result = result?.inContext(defaultStorage.defaultContext)
                     })
