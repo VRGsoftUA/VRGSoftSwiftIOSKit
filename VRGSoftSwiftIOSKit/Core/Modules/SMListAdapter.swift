@@ -129,7 +129,7 @@ open class SMListAdapter {
         return section
     }
     
-    func addMoreCellData(section: SMListSection) {
+    open func addMoreCellData(section: SMListSection) {
         
         if let moreCellData: SMPagingMoreCellDataProtocol = delegate?.moreCellDataForListAdapter(self) {
             
