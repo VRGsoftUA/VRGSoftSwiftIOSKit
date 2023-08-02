@@ -37,8 +37,8 @@ open class SMRequest {
     
     open var tag: Int = 0
     
-    public let defaultResponseQueue: DispatchQueue = DispatchQueue.main
-
+    open var queue: DispatchQueue = .main
+    
     open var responseBlocks: [SMResponseNode] = []
     open var executeAllResponseBlocksSync: Bool = false
         
@@ -57,14 +57,20 @@ open class SMRequest {
     
     @discardableResult
     open func startWithResponseBlockInMainQueue(responseBlock aResponseBlock: @escaping SMRequestResponseBlock) -> Self {
-        
-        return addResponseBlock(aResponseBlock, responseQueue: DispatchQueue.main).start()
+        queue = DispatchQueue.main
+        return addResponseBlock(aResponseBlock, responseQueue: queue).start()
     }
 
     @discardableResult
     open func startWithResponseBlockInGlobalQueue(responseBlock aResponseBlock: @escaping SMRequestResponseBlock) -> Self {
-        
-        return addResponseBlock(aResponseBlock, responseQueue: DispatchQueue.global()).start()
+        queue = DispatchQueue.global()
+        return addResponseBlock(aResponseBlock, responseQueue: queue).start()
+    }
+    
+    @discardableResult
+    open func startWithResponseBlock(in queue: DispatchQueue, responseBlock aResponseBlock: @escaping SMRequestResponseBlock) -> Self {
+        self.queue = queue
+        return addResponseBlock(aResponseBlock, responseQueue: queue).start()
     }
 
     open func isExecuting() -> Bool {
@@ -92,11 +98,6 @@ open class SMRequest {
         responseBlocks.append(SMResponseNode(responseBlock: aResponseBlock, responseQueue: aResponseQueue))
         
         return self
-    }
-
-    open func addResponseBlockDefaultResponseQueue(_ aResponseBlock: @escaping SMRequestResponseBlock) -> SMRequest {
-        
-        return addResponseBlock(aResponseBlock, responseQueue: defaultResponseQueue)
     }
 
     open func clearAllResponseBlocks() {

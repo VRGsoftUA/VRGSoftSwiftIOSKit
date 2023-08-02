@@ -160,7 +160,7 @@ open class SMGatewayRequest: SMRequest {
 
             SMGatewayConfigurator.shared.interceptor.addRetryInfo(gatewayRequest: self)
 
-            dataRequest.responseJSON { [weak self] responseObject in
+            dataRequest.responseJSON(queue: queue) { [weak self] responseObject in
 
                 guard let self = self else {
                     return
