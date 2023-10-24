@@ -80,8 +80,6 @@ open class SMKeyboardAvoidingTableView: UITableView, SMKeyboardAvoidingProtocol 
             keyboardAvoider.originalContentSize = newValue
             
             var newContentSize: CGSize = keyboardAvoider.originalContentSize
-            newContentSize.width = max(newContentSize.width, self.frame.size.width)
-            newContentSize.height = max(newContentSize.height, self.frame.size.height)
             
             super.contentSize = newContentSize
             
