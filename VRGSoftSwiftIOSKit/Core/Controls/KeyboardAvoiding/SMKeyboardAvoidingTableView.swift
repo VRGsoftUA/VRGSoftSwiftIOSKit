@@ -79,8 +79,8 @@ open class SMKeyboardAvoidingTableView: UITableView, SMKeyboardAvoidingProtocol 
         set {
             keyboardAvoider.originalContentSize = newValue
             
-            var newContentSize: CGSize = keyboardAvoider.originalContentSize
-            
+            let newContentSize: CGSize = keyboardAvoider.originalContentSize
+
             super.contentSize = newContentSize
             
             if keyboardAvoider.isKeyboardVisible {
