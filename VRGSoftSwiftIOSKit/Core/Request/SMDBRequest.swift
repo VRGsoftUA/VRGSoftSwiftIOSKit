@@ -95,7 +95,7 @@ open class SMDBRequest: SMRequest {
         
         response.error = aError
         response.isCancelled = self.isCancelled()
-        response.isSuccess = response.error != nil && !response.isCancelled
+        response.isSuccess = response.error == nil && !response.isCancelled
         
         return response
     }
