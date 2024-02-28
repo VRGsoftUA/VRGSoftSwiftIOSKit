@@ -11,9 +11,9 @@ import Alamofire
 
 open class SMGatewayConfigurator {
     
-    private var defaultParameters: [String: Any] = [:]
-    private var defaultHeaders: [String: String] = [:]
-    
+    open private(set) var defaultParameters: [String: Any] = [:]
+    open private(set) var defaultHeaders: [String: String] = [:]
+
     public static var shared: SMGatewayConfigurator = SMGatewayConfigurator()
     
     open var url: URL? {
