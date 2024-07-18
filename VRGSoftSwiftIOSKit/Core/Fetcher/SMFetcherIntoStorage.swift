@@ -29,12 +29,14 @@ open class SMFetcherIntoStorage: SMFetcherWithRequest {
                 
                 self.cancelFetching()
                 _request = newValue
-                
+
+                let requestTag: Int? = request?.tag
+
                 _request?.addResponseBlock({[weak self] aResponse in
                     
                     guard let strongSelf: SMFetcherIntoStorage = self else { return }
                     
-                    if newValue?.tag == 0 {
+                    if requestTag == 0 {
                         
                         let success: Bool = aResponse.isSuccess
                         
