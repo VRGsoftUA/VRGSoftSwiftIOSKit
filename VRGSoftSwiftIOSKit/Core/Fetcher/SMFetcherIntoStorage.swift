@@ -30,7 +30,7 @@ open class SMFetcherIntoStorage: SMFetcherWithRequest {
                 self.cancelFetching()
                 _request = newValue
 
-                let requestTag: Int? = request?.tag
+                let requestTag: Int? = newValue?.tag
 
                 _request?.addResponseBlock({[weak self] aResponse in
                     
