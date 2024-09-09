@@ -23,6 +23,7 @@ public protocol SMListAdapterDelegate: AnyObject {
 public protocol SMListAdapterMoreDelegate: AnyObject {
     
     func needLoadMore(listAdapter aListAdapter: SMListAdapter)
+    func forceLoadMore(listAdapter aListAdapter: SMListAdapter)
 }
 
 
@@ -141,6 +142,14 @@ open class SMListAdapter {
                     if let strongSelf: SMListAdapter = self {
                         
                         strongSelf.moreDelegate?.needLoadMore(listAdapter: strongSelf)
+                    }
+                })
+                
+                moreCellData.didTapButtonLoadMore = SMBlockAction(block: { [weak self] _ in
+                    
+                    if let strongSelf: SMListAdapter = self {
+                        
+                        strongSelf.moreDelegate?.forceLoadMore(listAdapter: strongSelf)
                     }
                 })
                 

@@ -12,6 +12,8 @@ open class SMNativeMoreCollectionViewCellData: SMCollectionCellData, SMPagingMor
     
     open var needLoadMore: SMBlockAction<Any>?
     
+    open var didTapButtonLoadMore: SMBlockAction<Any>?
+    
     public convenience init() {
         
         self.init(model: nil)

@@ -12,6 +12,8 @@ open class SMNativeMoreTableViewCellData: SMCellData, SMPagingMoreCellDataProtoc
     
     public var needLoadMore: SMBlockAction<Any>?
     
+    public var didTapButtonLoadMore: SMBlockAction<Any>?
+    
     convenience public init() {
         
         self.init(model: nil)

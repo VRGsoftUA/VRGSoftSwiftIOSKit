@@ -13,6 +13,7 @@ public let kSMModuleListPagingPageCountResponseKey: String = "kSMModuleListPagin
 public protocol SMPagingMoreCellDataProtocol: AnyObject {
     
     var needLoadMore: SMBlockAction<Any>? { get set }
+    var didTapButtonLoadMore: SMBlockAction<Any>? { get set }
 }
 
 public protocol SMPagingMoreCellProtocol: AnyObject {
@@ -216,6 +217,10 @@ open class SMModuleListPaging: SMModuleList, SMListAdapterMoreDelegate {
             
             loadMoreData()
         }
+    }
+    
+    public func forceLoadMore(listAdapter aListAdapter: SMListAdapter) {
+        loadMoreData()
     }
 }
 
