@@ -41,8 +41,13 @@ open class SMGatewayRequestMultipart: SMGatewayRequest {
         self.dataRequest = dataRequest
 
         SMGatewayConfigurator.shared.interceptor.addRetryInfo(gatewayRequest: self)
-
-        dataRequest.responseJSON(queue: queue) { [weak self] responseObject in
+                
+        dataRequest.uploadProgress(queue: .main, closure: { [weak self] progress in
+        
+            self?.executeAllUploadProgressBlocksWith(progress: progress)
+        })
+        
+        dataRequest.responseJSON(queue: successFailureDispatchQueue) { [weak self] responseObject in
 
             guard let self = self else {
                 return
@@ -78,7 +83,7 @@ open class SMGatewayRequestMultipart: SMGatewayRequest {
                 self.executeFailureBlock(responseObject: responseObject)
             }
         }
-
+        
         return dataRequest
     }
 }

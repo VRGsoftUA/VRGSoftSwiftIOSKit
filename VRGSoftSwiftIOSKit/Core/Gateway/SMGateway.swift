@@ -104,7 +104,7 @@ open class SMGateway {
         return SMGatewayRequest.self
     }
     
-    open func request(type aType: HTTPMethod, path aPath: String, parameters aParameters: [String: Any]? = [:], successBlock aSuccessBlock: @escaping SMGatewayRequestResponseBlock) -> SMGatewayRequest {
+    open func request(type aType: HTTPMethod, path aPath: String, parameters aParameters: [String: Any]? = [:], successBlock aSuccessBlock: @escaping SMGatewayRequestResponseBlock, successFailureDispatchQueue aSuccessFailureDispatchQueue: DispatchQueue = .global(qos: .default)) -> SMGatewayRequest {
         
         let result: SMGatewayRequest = getRequestClass().init(gateway: self, type: aType)
         
@@ -117,12 +117,12 @@ open class SMGateway {
         
         let failureBlock: SMGatewayRequestResponseBlock = self.defaultFailureBlockFor(request: result)
         
-        result.setup(successBlock: aSuccessBlock, failureBlock: failureBlock)
+        result.setup(successBlock: aSuccessBlock, failureBlock: failureBlock, successFailureDispatchQueue: aSuccessFailureDispatchQueue)
         
         return result
     }
 
-    open func request(type aType: HTTPMethod, path aPath: String, parameters aParameters: [String: Any]? = [:], successParserBlock aSuccessParserBlock: @escaping SMGatewayRequestSuccessParserBlock) -> SMGatewayRequest {
+    open func request(type aType: HTTPMethod, path aPath: String, parameters aParameters: [String: Any]? = [:], successParserBlock aSuccessParserBlock: @escaping SMGatewayRequestSuccessParserBlock, successFailureDispatchQueue aSuccessFailureDispatchQueue: DispatchQueue = .global(qos: .default)) -> SMGatewayRequest {
         
         let result: SMGatewayRequest = getRequestClass().init(gateway: self, type: aType)
         
@@ -135,19 +135,19 @@ open class SMGateway {
         
         let failureBlock: SMGatewayRequestResponseBlock = self.defaultFailureBlockFor(request: result)
         
-        result.setup(successParserBlock: aSuccessParserBlock, failureBlock: failureBlock)
+        result.setup(successParserBlock: aSuccessParserBlock, failureBlock: failureBlock, successFailureDispatchQueue: aSuccessFailureDispatchQueue)
         
         return result
     }
 
-    open func uploadRequest(type aType: HTTPMethod = .post, path aPath: String, constructingBlock: @escaping SMConstructingMultipartFormDataBlock, successBlock aSuccessBlock: @escaping SMGatewayRequestResponseBlock) -> SMGatewayRequestMultipart {
+    open func uploadRequest(type aType: HTTPMethod = .post, path aPath: String, constructingBlock: @escaping SMConstructingMultipartFormDataBlock, successBlock aSuccessBlock: @escaping SMGatewayRequestResponseBlock, successFailureDispatchQueue aSuccessFailureDispatchQueue: DispatchQueue = .global(qos: .default)) -> SMGatewayRequestMultipart {
         
         let result: SMGatewayRequestMultipart = SMGatewayRequestMultipart(gateway: self, type: aType, constructingBlock: constructingBlock)
         result.path = aPath
         
         let failureBlock: SMGatewayRequestResponseBlock = self.defaultFailureBlockFor(request: result)
         
-        result.setup(successBlock: aSuccessBlock, failureBlock: failureBlock)
+        result.setup(successBlock: aSuccessBlock, failureBlock: failureBlock, successFailureDispatchQueue: aSuccessFailureDispatchQueue)
         
         return result
     }

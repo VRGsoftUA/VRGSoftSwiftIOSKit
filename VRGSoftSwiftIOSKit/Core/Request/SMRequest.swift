@@ -9,18 +9,32 @@
 import Foundation
 
 public typealias SMRequestResponseBlock = (SMResponse) -> Void
+public typealias SMRequestProgressBlock = (SMRequest, Progress) -> Void
 
 open class SMResponseNode {
     
     public let responseQueue: DispatchQueue
     public let responseBlock: SMRequestResponseBlock
-    
+
     public init(responseBlock aResponseBlock: @escaping SMRequestResponseBlock, responseQueue aResponseQueue: DispatchQueue) {
         
         responseBlock = aResponseBlock
         responseQueue = aResponseQueue
     }
 }
+
+open class SMRequestProgressNode {
+    
+    public let requestQueue: DispatchQueue
+    public let requestProgressBlock: SMRequestProgressBlock
+
+    public init(requestProgressBlock anProgressBlock: @escaping SMRequestProgressBlock, requestQueue aRequestQueue: DispatchQueue) {
+        
+        requestProgressBlock = anProgressBlock
+        requestQueue = aRequestQueue
+    }
+}
+
 
 public enum SMRequestConsoleOutputType {
     case none
@@ -36,10 +50,11 @@ open class SMRequest {
     }
     
     open var tag: Int = 0
-    
-    open var queue: DispatchQueue = .main
-    
+
     open var responseBlocks: [SMResponseNode] = []
+    open var uploadProgressBlocks: [SMRequestProgressNode] = []
+    open var downloadProgressBlocks: [SMRequestProgressNode] = []
+    
     open var executeAllResponseBlocksSync: Bool = false
         
     open func canExecute() -> Bool {
@@ -57,19 +72,16 @@ open class SMRequest {
     
     @discardableResult
     open func startWithResponseBlockInMainQueue(responseBlock aResponseBlock: @escaping SMRequestResponseBlock) -> Self {
-        queue = DispatchQueue.main
-        return addResponseBlock(aResponseBlock, responseQueue: queue).start()
+        return addResponseBlock(aResponseBlock, responseQueue: .main).start()
     }
 
     @discardableResult
     open func startWithResponseBlockInGlobalQueue(responseBlock aResponseBlock: @escaping SMRequestResponseBlock) -> Self {
-        queue = DispatchQueue.global()
-        return addResponseBlock(aResponseBlock, responseQueue: queue).start()
+        return addResponseBlock(aResponseBlock, responseQueue: .global(qos: .default)).start()
     }
     
     @discardableResult
     open func startWithResponseBlock(in queue: DispatchQueue, responseBlock aResponseBlock: @escaping SMRequestResponseBlock) -> Self {
-        self.queue = queue
         return addResponseBlock(aResponseBlock, responseQueue: queue).start()
     }
 
@@ -93,6 +105,22 @@ open class SMRequest {
     }
     
     @discardableResult
+    open func addUploadProgressBlock(_ anProgressBlock: @escaping SMRequestProgressBlock, responseQueue aResponseQueue: DispatchQueue) -> Self {
+        
+        uploadProgressBlocks.append(SMRequestProgressNode(requestProgressBlock: anProgressBlock, requestQueue: aResponseQueue))
+        
+        return self
+    }
+
+    @discardableResult
+    open func addDownloadProgressBlock(_ anProgressBlock: @escaping SMRequestProgressBlock, responseQueue aResponseQueue: DispatchQueue) -> Self {
+        
+        downloadProgressBlocks.append(SMRequestProgressNode(requestProgressBlock: anProgressBlock, requestQueue: aResponseQueue))
+        
+        return self
+    }
+
+    @discardableResult
     open func addResponseBlock(_ aResponseBlock: @escaping SMRequestResponseBlock, responseQueue aResponseQueue: DispatchQueue) -> Self {
         
         responseBlocks.append(SMResponseNode(responseBlock: aResponseBlock, responseQueue: aResponseQueue))
@@ -104,7 +132,27 @@ open class SMRequest {
         
         responseBlocks.removeAll()
     }
+        
+    open func executeAllUploadProgressBlocksWith(progress aProgress: Progress) {
+        
+        for node: SMRequestProgressNode in uploadProgressBlocks {
+            
+            node.requestQueue.async {
+                node.requestProgressBlock(self, aProgress)
+            }
+        }
+    }
     
+    open func executeAllDownloadProgressBlocksWith(progress aProgress: Progress) {
+        
+        for node: SMRequestProgressNode in uploadProgressBlocks {
+            
+            node.requestQueue.async {
+                node.requestProgressBlock(self, aProgress)
+            }
+        }
+    }
+
     open func executeAllResponseBlocks(response aResponse: SMResponse) {
         
         for node: SMResponseNode in responseBlocks {

@@ -16,7 +16,9 @@ public typealias SMGatewayRequestSuccessParserBlock = (DataRequest, DataResponse
 
 open class SMGatewayRequest: SMRequest {
     
-    public var debugDescription: String {
+    open var successFailureDispatchQueue: DispatchQueue = .global(qos: .default)
+    
+    open var debugDescription: String {
         
         var array: [String] = []
         
@@ -33,8 +35,7 @@ open class SMGatewayRequest: SMRequest {
     
     open var retryCount: Int = 0
     open var retryTime: TimeInterval = 0.5
-    open var timeoutInterval: TimeInterval = 60
-
+    
     open var path: String?
     open var type: HTTPMethod
     open var parameterEncoding: ParameterEncoding?
@@ -155,13 +156,23 @@ open class SMGatewayRequest: SMRequest {
                                                       parameters: allParams,
                                                       encoding: parameterEncoding,
                                                       headers: allHeaders,
-                                                      interceptor: SMGatewayConfigurator.shared.interceptor) { $0.timeoutInterval = self.timeoutInterval }
+                                                      interceptor: SMGatewayConfigurator.shared.interceptor)
 
             self.dataRequest = dataRequest
 
             SMGatewayConfigurator.shared.interceptor.addRetryInfo(gatewayRequest: self)
 
-            dataRequest.responseJSON(queue: queue) { [weak self] responseObject in
+            dataRequest.uploadProgress(closure: { [weak self] progress in
+
+                self?.executeAllUploadProgressBlocksWith(progress: progress)
+            })
+            
+            dataRequest.downloadProgress(closure: { [weak self] progress in
+            
+                self?.executeAllDownloadProgressBlocksWith(progress: progress)
+            })
+
+            dataRequest.responseJSON(queue: successFailureDispatchQueue) { [weak self] responseObject in
 
                 guard let self = self else {
                     return
@@ -241,17 +252,19 @@ open class SMGatewayRequest: SMRequest {
             }
         }
     }
-    
-    open func setup(successBlock aSuccessBlock: @escaping SMGatewayRequestResponseBlock, failureBlock aFailureBlock: @escaping SMGatewayRequestResponseBlock) {
+        
+    open func setup(successBlock aSuccessBlock: @escaping SMGatewayRequestResponseBlock, failureBlock aFailureBlock: @escaping SMGatewayRequestResponseBlock, successFailureDispatchQueue aSuccessFailureDispatchQueue: DispatchQueue = .global(qos: .default)) {
         
         successBlock = aSuccessBlock
         failureBlock = aFailureBlock
+        successFailureDispatchQueue = aSuccessFailureDispatchQueue
     }
     
-    open func setup(successParserBlock aSuccessParserBlock: @escaping SMGatewayRequestSuccessParserBlock, failureBlock aFailureBlock: @escaping SMGatewayRequestResponseBlock) {
+    open func setup(successParserBlock aSuccessParserBlock: @escaping SMGatewayRequestSuccessParserBlock, failureBlock aFailureBlock: @escaping SMGatewayRequestResponseBlock, successFailureDispatchQueue aSuccessFailureDispatchQueue: DispatchQueue = .global(qos: .default)) {
         
         successParserBlock = aSuccessParserBlock
         failureBlock = aFailureBlock
+        successFailureDispatchQueue = aSuccessFailureDispatchQueue
     }
     
     open func printStart(isRetry: Bool) {
