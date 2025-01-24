@@ -35,6 +35,7 @@ open class SMGatewayRequest: SMRequest {
     
     open var retryCount: Int = 0
     open var retryTime: TimeInterval = 0.5
+    open var timeoutInterval: TimeInterval = 60
     
     open var path: String?
     open var type: HTTPMethod
@@ -156,7 +157,7 @@ open class SMGatewayRequest: SMRequest {
                                                       parameters: allParams,
                                                       encoding: parameterEncoding,
                                                       headers: allHeaders,
-                                                      interceptor: SMGatewayConfigurator.shared.interceptor)
+                                                      interceptor: SMGatewayConfigurator.shared.interceptor) { $0.timeoutInterval = self.timeoutInterval }
 
             self.dataRequest = dataRequest
 
