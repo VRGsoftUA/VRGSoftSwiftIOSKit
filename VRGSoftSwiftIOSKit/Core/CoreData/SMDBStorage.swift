@@ -210,9 +210,10 @@ open class SMDBStorage {
                     
                     save(context: parent)
                 }
-            } catch _ as NSError {
+            } catch {
                 
                 #if DEBUG
+                    print("SMDBStorage.save(context:) error: \(error)")
                     abort()
                 #else
                     aContext.rollback()
@@ -331,7 +332,18 @@ open class SMDBStorage {
             }
         })
     }
-    
+
+    open func remove(objects aObjects: [NSManagedObject], context aContext: NSManagedObjectContext) {
+        
+        for object: NSManagedObject in aObjects {
+            
+            if let obj: NSManagedObject = object.inContext(aContext) {
+                
+                aContext.delete(obj)
+            }
+        }
+    }
+
     
     // MARK: - Clear
 
