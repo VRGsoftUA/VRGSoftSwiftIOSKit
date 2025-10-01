@@ -192,7 +192,8 @@ open class SMDBStorage {
     open var createPrivateQueueContext: NSManagedObjectContext {
         
         let result: NSManagedObjectContext = NSManagedObjectContext(concurrencyType: .privateQueueConcurrencyType)
-        
+        result.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
+
         return result
     }
 
@@ -207,8 +208,9 @@ open class SMDBStorage {
                 try aContext.save()
                 
                 if let parent: NSManagedObjectContext = aContext.parent {
-                    
-                    save(context: parent)
+                    parent.performAndWait {
+                        self.save(context: parent)
+                    }
                 }
             } catch {
                 
