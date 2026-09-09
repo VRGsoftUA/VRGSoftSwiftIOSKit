@@ -28,7 +28,7 @@ open class SMGatewayConfigurator {
     }
 
     open var interceptor: SMRequestInterceptor = SMRequestInterceptor()
-    
+    open var session: Session = Session.default
     open var gateways: [SMGateway] = []
     open var networkReachabilityManager: NetworkReachabilityManager?
 
